@@ -1,0 +1,671 @@
+/* Resetting */
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Lato";
+}
+
+p {
+  margin: 0;
+}
+
+/* ---------- Global ---------- */
+
+/* Color Variables */
+
+/* Dimensions */
+
+/* Shadows */
+
+/* Mixins */
+
+.blue-text {
+  color: #15B2D3;
+}
+
+/* blue title underline */
+
+.blue-underline {
+  width: 100px;
+  height: 2px;
+  margin-top: 10px;
+  background: #15B2D3;
+  border-radius: 50px;
+  margin-bottom: 5px;
+}
+
+/* ---------- XX Global XX ---------- */
+
+/* ---------- Header  ----------  */
+
+.header-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+  height: 40px;
+  border-bottom: 1px solid #15B2D3;
+}
+
+.header-container .left,
+.header-container .right {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-container .left .icon-title-div,
+.header-container .right .icon-title-div {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.header-container .left .icon-title-div .icon,
+.header-container .right .icon-title-div .icon {
+  margin: 0 10px;
+}
+
+.header-container .left .icon-title-div p,
+.header-container .right .icon-title-div p {
+  color: #15B2D3;
+}
+
+.header-container .left .icon,
+.header-container .right .icon {
+  margin: 0 10px;
+}
+
+/* ---------- XX Header XX ----------  */
+
+/* ---------- Navbar  ----------  */
+
+.navbar-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  height: 122px;
+}
+
+.navbar-container .navbar-item {
+  margin: 0 10px;
+}
+
+/* ---------- XX Navbar XX ----------  */
+
+/* ----------  Hero Section  ----------  */
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding: 0 100px;
+  height: calc(100vh - 162px);
+}
+
+.hero-container .left .title {
+  color: #15B2D3;
+  font-size: 31px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.hero-container .left .description {
+  text-align: justify;
+  font-size: 18px;
+  color: #000000B3;
+}
+
+.hero-container .left .buttons-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  width: 348px;
+}
+
+.hero-container .left .buttons-container .large-button {
+  border-radius: 20px;
+  width: 150px;
+  height: 40px;
+  background: #fff;
+  color: #FDBD42;
+  border: 1px solid #FDBD42;
+  font-size: 15px;
+}
+
+.hero-container .left .buttons-container .large-button.active {
+  background: #FDBD42 !important;
+  color: #fff !important;
+}
+
+.hero-container .right {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---------- XX Hero Section XX ----------  */
+
+/* ---------- City Location ----------  */
+
+.city-location {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  position: relative;
+  padding: 0 140px;
+  width: 100%;
+  height: 172px;
+  border-radius: 0px 0px 50px 50px;
+  background: #15B2D3;
+}
+
+.city-location .left {
+  color: #fff;
+  direction: rtl;
+}
+
+.city-location .left .title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.city-location .left .city-location-underline {
+  margin-top: 10px;
+  width: 100px;
+  height: 2px;
+  background: #FDBD42;
+  border-radius: 50px;
+  margin-bottom: 5px;
+}
+
+.city-location .left .description {
+  font-size: 14px;
+}
+
+.city-location .right {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.city-location .right .address-box {
+  position: relative;
+  width: 100%;
+  margin: 0 0 0 50px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px #00000033;
+}
+
+.city-location .right .address-box .address {
+  width: 90%;
+  height: 50px;
+  border-radius: 10px;
+  padding: 0 30px;
+  font-size: 16px;
+}
+
+.city-location .right .address-box .address-go-button {
+  position: absolute;
+  border-radius: 10px;
+  background: #FDBD42;
+  color: #fff;
+  right: 0px;
+  width: 150px;
+  height: 50px;
+  font-size: 15px;
+}
+
+/* ---------- XX City Location XX ----------  */
+
+/* ---------- Why Us ----------  */
+
+.why-choose-us-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  height: 600px;
+  padding: 20px 130px;
+  background: #F8F8F8;
+}
+
+.why-choose-us-container .title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.why-choose-us-container .title-container .title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.why-choose-us-container .title-container .subtitle {
+  width: 300px;
+  color: #000000B3;
+}
+
+.why-choose-us-container .why-us-features {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  flex-wrap: wrap;
+}
+
+.why-choose-us-container .why-us-features .feature-container {
+  width: 260px;
+  height: 183px;
+  border: 1px solid #E7E7E7;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 10px #0000001A;
+  background: #fff;
+  margin: 7px 5px;
+  padding: 10px;
+}
+
+.why-choose-us-container .why-us-features .feature-container.active {
+  color: #fff;
+  background: #FDBD42;
+  box-shadow: none;
+}
+
+.why-choose-us-container .why-us-features .feature-container .icon {
+  width: 60px;
+  height: 60px;
+}
+
+.why-choose-us-container .why-us-features .feature-container .feature-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  width: 100%;
+  line-height: 1;
+}
+
+.why-choose-us-container .why-us-features .feature-container .feature-description {
+  font-size: 10px;
+  text-align: center;
+}
+
+/* ---------- XX Why Us XX ----------  */
+
+/* ---------- Our Services ----------  */
+
+.our-services-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 500px;
+  padding: 20px 130px 0 130px;
+}
+
+.our-services-container .title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.our-services-container .title-container .title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.our-services-container .title-container .subtitle {
+  width: 300px;
+  color: #000000B3;
+}
+
+.our-services-container .services-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  background: #fff;
+}
+
+.our-services-container .services-container .services-part {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 10px 0;
+}
+
+.our-services-container .services-container .services-part .service-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 300px;
+}
+
+.our-services-container .services-container .services-part .service-container .icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 20px;
+}
+
+.our-services-container .services-container .services-part .service-container .service-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.our-services-container .services-container .services-part .service-container .service-info .title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.our-services-container .services-container .services-part .service-container .service-info .subtitle {
+  font-size: 12px;
+}
+
+.our-services-container .services-container .services-part .service-container .service-info .read-more {
+  font-size: 12px;
+  margin: 5px 0 0 40px;
+  color: #FDBD42;
+  font-weight: bold;
+}
+
+/* ---------- XX Our Services XX ----------  */
+
+/* ----------  Download  ----------  */
+
+.download {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  background: #F8F8F8;
+  padding: 20px 130px;
+  height: 374px;
+}
+
+.download .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.download .left .download-title {
+  color: #15B2D3;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.download .left .download-subtitle {
+  color: #15B2D3;
+  font-size: 14px;
+  margin: 20px 0;
+  color: #000000B3;
+}
+
+.download .left .buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.download .left .buttons-container .download-button {
+  width: 127px;
+  height: 38px;
+  background: #15B2D3;
+  color: #fff;
+  border-radius: 5px;
+  margin: 20px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.download .left .buttons-container .download-button .icon {
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+}
+
+.download .left .buttons-container .download-button .button-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.download .left .buttons-container .download-button .button-text .title {
+  font-size: 8px;
+}
+
+.download .left .buttons-container .download-button .button-text .subtitle {
+  font-size: 14px;
+}
+
+/* ---------- XX Download XX ----------  */
+
+/* ---------- How it work ----------  */
+
+.how-it-works {
+  padding: 20px 130px;
+}
+
+.how-it-works .title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.how-it-works .title-container .title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.how-it-works .title-container .subtitle {
+  width: 300px;
+  color: #000000B3;
+}
+
+.how-it-works .steps-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.how-it-works .steps-container .step-container {
+  margin: 5px 0 5px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  text-align: right;
+}
+
+.how-it-works .steps-container .step-container.reverse {
+  margin: 20px auto 20px 0;
+  text-align: left;
+}
+
+.how-it-works .steps-container .step-container .step-image {
+  width: 150px;
+  height: 190px;
+  margin: 0 40px;
+}
+
+.how-it-works .steps-container .step-container .step-text .title {
+  font-size: 18px;
+  color: #15B2D3;
+}
+
+/* ---------- XX How it work XX ----------  */
+
+/* --------------- Contact US ------------ */
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto 0 auto;
+  height: 700px;
+  padding: 20px 130px;
+  background: #F8F8F8;
+}
+
+.contact-us .title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.contact-us .title-container .title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.contact-us .title-container .subtitle {
+  width: 300px;
+}
+
+.contact-us .contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.contact-us .contact-form .left .form-image {
+  width: 444px;
+}
+
+.contact-us .contact-form .right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-us .contact-form .right .form-input {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 24px;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.contact-us .contact-form .right .form-text-area {
+  width: 100%;
+  border-radius: 25px;
+  padding: 24px;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.contact-us .contact-form .right .button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-us .contact-form .right .button-container .submit-button {
+  width: 150px;
+  height: 50px;
+  background: #15B2D3;
+  color: #fff;
+  border-radius: 10px;
+  margin: 20px auto;
+  border: 2px solid #22AEE4;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* ------------- XX Contact US XX ---------- */
+
+/* ------------- Get in Touch ---------- */
+
+.get-in-touch {
+  position: relative;
+  height: 200px;
+  background: #FFA800;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.get-in-touch .title {
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.get-in-touch .info {
+  margin: 10px 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.get-in-touch .info .info-section {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.get-in-touch .info .info-section .icon {
+  margin: 0 10px;
+}
+
+.get-in-touch .info .double-info {
+  width: 270px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.get-in-touch .copyright {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  bottom: 0px;
+  border-top: 2px solid #fff;
+  padding: 15px 0;
+}
+
+/* ------------- XX Contact US XX ---------- */
+

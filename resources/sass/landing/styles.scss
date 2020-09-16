@@ -1,0 +1,592 @@
+    /* Resetting */
+    
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: 'Lato';
+    }
+    
+    p {
+        margin: 0;
+    }
+    /* ---------- Global ---------- */
+    /* Color Variables */
+    
+    $blue: #15B2D3;
+    $orange: #FDBD42;
+    $dark-orange: #FFA800;
+    $white: #fff;
+    $dark-grey: #00000080;
+    $light-grey: #F8F8F8;
+    $text-dark-grey: #000000B3;
+    /* Dimensions */
+    
+    $header-height: 40px;
+    $navbar-height: 122px;
+    $landing-top-height: 162px;
+    /* Shadows */
+    
+    $feature-shadeow: 0px 0px 10px #0000001A;
+    $address-box-shadow: 0px 3px 6px #00000033;
+    /* Mixins */
+    
+    @mixin flex-center-center {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    @mixin flex-center-center-column {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    @mixin flex-space-between-center {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    @mixin grid-1fr-1fr {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    @mixin grid-1fr-2fr {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    @mixin grid-1fr-3fr {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    @mixin large-rounded-button {
+        border-radius: 20px;
+        width: 150px;
+        height: 40px;
+    }
+    
+    .blue-text {
+        color: $blue;
+    }
+    /* blue title underline */
+    
+    .blue-underline {
+        width: 100px;
+        height: 2px;
+        margin-top: 10px;
+        background: $blue;
+        border-radius: 50px;
+        margin-bottom: 5px;
+    }
+    /* ---------- XX Global XX ---------- */
+    /* ---------- Header  ----------  */
+    
+    .header-container {
+        @include flex-space-between-center;
+        padding: 0 80px;
+        height: $header-height;
+        border-bottom: 1px solid $blue;
+        .left,
+        .right {
+            display: flex;
+            flex-direction: row;
+            // on left
+            .icon-title-div {
+                @include flex-space-between-center;
+                margin: 0 10px;
+                width: fit-content;
+                .icon {
+                    margin: 0 10px;
+                }
+                p {
+                    color: $blue;
+                }
+            }
+            // on right
+            .icon {
+                margin: 0 10px;
+            }
+        }
+    }
+    /* ---------- XX Header XX ----------  */
+    /* ---------- Navbar  ----------  */
+    
+    .navbar-container {
+        @include flex-center-center;
+        padding: 20px 0;
+        height: $navbar-height;
+        .navbar-item {
+            margin: 0 10px;
+        }
+    }
+    /* ---------- XX Navbar XX ----------  */
+    /* ----------  Hero Section  ----------  */
+    
+    .hero-container {
+        @include grid-1fr-1fr;
+        padding: 0 100px;
+        height: calc(100vh - 162px);
+        .left {
+            .title {
+                color: $blue;
+                font-size: 31px;
+                font-weight: bold;
+                margin: 20px 0;
+            }
+            .description {
+                text-align: justify;
+                font-size: 18px;
+                color: $text-dark-grey;
+            }
+            .buttons-container {
+                @include flex-space-between-center;
+                margin: 20px 0;
+                width: 348px;
+                .large-button {
+                    @include large-rounded-button;
+                    background: $white;
+                    color: $orange;
+                    border: 1px solid $orange;
+                    font-size: 15px;
+                    &.active {
+                        background: $orange !important;
+                        color: $white !important;
+                    }
+                }
+            }
+        }
+        .right {
+            @include flex-center-center;
+        }
+    }
+    /* ---------- XX Hero Section XX ----------  */
+    /* ---------- City Location ----------  */
+    
+    .city-location {
+        @include grid-1fr-3fr;
+        column-gap: 30px;
+        position: relative;
+        padding: 0 140px;
+        width: 100%;
+        height: 172px;
+        border-radius: 0px 0px 50px 50px;
+        background: $blue;
+        .left {
+            color: $white;
+            direction: rtl;
+            .title {
+                font-size: 24px;
+                font-weight: bold;
+            }
+            .city-location-underline {
+                margin-top: 10px;
+                width: 100px;
+                height: 2px;
+                background: $orange;
+                border-radius: 50px;
+                margin-bottom: 5px;
+            }
+            .description {
+                font-size: 14px;
+            }
+        }
+        .right {
+            @include flex-center-center;
+            .address-box {
+                position: relative;
+                width: 100%;
+                margin: 0 0 0 50px;
+                border-radius: 10px;
+                box-shadow: $address-box-shadow;
+                .address {
+                    width: 90%;
+                    height: 50px;
+                    border-radius: 10px;
+                    padding: 0 30px;
+                    font-size: 16px;
+                }
+                .address-go-button {
+                    position: absolute;
+                    border-radius: 10px;
+                    background: $orange;
+                    color: $white;
+                    right: 0px;
+                    width: 150px;
+                    height: 50px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    /* ---------- XX City Location XX ----------  */
+    /* ---------- Why Us ----------  */
+    
+    .why-choose-us-container {
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
+        height: 600px;
+        padding: 20px 130px;
+        background: $light-grey;
+        .title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            text-align: right;
+            .title {
+                font-size: 24px;
+                font-weight: bold;
+            }
+            .subtitle {
+                width: 300px;
+                color: $text-dark-grey;
+            }
+        }
+        .why-us-features {
+            @include flex-center-center;
+            margin: 20px auto;
+            flex-wrap: wrap;
+            .feature-container {
+                width: 260px;
+                height: 183px;
+                border: 1px solid #E7E7E7;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: $feature-shadeow;
+                background: $white;
+                margin: 7px 5px;
+                padding: 10px;
+                &.active {
+                    color: $white;
+                    background: $orange;
+                    box-shadow: none;
+                }
+                .icon {
+                    width: 60px;
+                    height: 60px;
+                }
+                .feature-title {
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                    width: 100%;
+                    line-height: 1;
+                }
+                .feature-description {
+                    font-size: 10px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    /* ---------- XX Why Us XX ----------  */
+    /* ---------- Our Services ----------  */
+    
+    .our-services-container {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        height: 500px;
+        padding: 20px 130px 0 130px;
+        .title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            .title {
+                font-size: 24px;
+                font-weight: bold;
+            }
+            .subtitle {
+                width: 300px;
+                color: $text-dark-grey;
+            }
+        }
+        .services-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0;
+            background: #fff;
+            .services-part {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 80%;
+                margin: 10px 0;
+                .service-container {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    justify-content: center;
+                    width: 300px;
+                    .icon {
+                        width: 50px;
+                        height: 50px;
+                        margin: 0 20px;
+                    }
+                    .service-info {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        .title {
+                            font-size: 16px;
+                            font-weight: bold;
+                        }
+                        .subtitle {
+                            font-size: 12px;
+                        }
+                        .read-more {
+                            font-size: 12px;
+                            margin: 5px 0 0 40px;
+                            color: $orange;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /* ---------- XX Our Services XX ----------  */
+    /* ----------  Download  ----------  */
+    
+    .download {
+        @include grid-1fr-1fr;
+        background: $light-grey;
+        padding: 20px 130px;
+        height: 374px;
+        .left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .download-title {
+                color: $blue;
+                font-size: 18px;
+                margin: 20px 0;
+            }
+            .download-subtitle {
+                color: $blue;
+                font-size: 14px;
+                margin: 20px 0;
+                color: $text-dark-grey;
+            }
+            .buttons-container {
+                display: flex;
+                flex-direction: row;
+                .download-button {
+                    width: 127px;
+                    height: 38px;
+                    background: $blue;
+                    color: $white;
+                    border-radius: 5px;
+                    margin: 20px 10px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    .icon {
+                        width: 20px;
+                        height: 20px;
+                        margin: 10px;
+                    }
+                    .button-text {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        .title {
+                            font-size: 8px;
+                        }
+                        .subtitle {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /* ---------- XX Download XX ----------  */
+    /* ---------- How it work ----------  */
+    
+    .how-it-works {
+        padding: 20px 130px;
+        .title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            text-align: right;
+            .title {
+                font-size: 24px;
+                font-weight: bold;
+            }
+            .subtitle {
+                width: 300px;
+                color: $text-dark-grey;
+            }
+        }
+        .steps-container {
+            @include flex-center-center-column;
+            width: 100%;
+            margin-top: 50px;
+            .step-container {
+                margin: 5px 0 5px auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 600px;
+                text-align: right;
+                &.reverse {
+                    margin: 20px auto 20px 0;
+                    text-align: left;
+                }
+                .step-image {
+                    width: 150px;
+                    height: 190px;
+                    margin: 0 40px;
+                }
+                .step-text {
+                    .title {
+                        font-size: 18px;
+                        color: $blue;
+                    }
+                }
+            }
+        }
+    }
+    /* ---------- XX How it work XX ----------  */
+    /* --------------- Contact US ------------ */
+    
+    .contact-us {
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto 0 auto;
+        height: 700px;
+        padding: 20px 130px;
+        background: $light-grey;
+        .title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            .title {
+                font-size: 24px;
+                font-weight: bold;
+            }
+            .subtitle {
+                width: 300px;
+            }
+        }
+        .contact-form {
+            @include grid-1fr-1fr;
+            margin: 30px 0;
+            .left {
+                .form-image {
+                    width: 444px;
+                }
+            }
+            .right {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .form-input {
+                    width: 100%;
+                    height: 50px;
+                    border-radius: 25px;
+                    padding: 0 24px;
+                    font-size: 16px;
+                    margin: 5px 0;
+                }
+                .form-text-area {
+                    width: 100%;
+                    border-radius: 25px;
+                    padding: 24px;
+                    font-size: 16px;
+                    margin: 5px 0;
+                }
+                .button-container {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .submit-button {
+                        width: 150px;
+                        height: 50px;
+                        background: $blue;
+                        color: $white;
+                        border-radius: 10px;
+                        margin: 20px auto;
+                        border: 2px solid #22AEE4;
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+    /* ------------- XX Contact US XX ---------- */
+    /* ------------- Get in Touch ---------- */
+    
+    .get-in-touch {
+        position: relative;
+        height: 200px;
+        background: $dark-orange;
+        color: $white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .title {
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .info {
+            margin: 10px 0;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            .info-section {
+                width: fit-content;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                .icon {
+                    margin: 0 10px;
+                }
+            }
+            .double-info {
+                width: 270px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin: 10px 0;
+            }
+        }
+        .copyright {
+            width: 100%;
+            position: absolute;
+            text-align: center;
+            bottom: 0px;
+            border-top: 2px solid $white;
+            padding: 15px 0;
+        }
+    }
+    /* ------------- XX Contact US XX ---------- */
