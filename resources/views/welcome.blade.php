@@ -60,14 +60,16 @@
         <div class="why-us-features">
             <div class="feature-container">
                 <img src="{{ asset('images/icons/diamond.svg') }}" alt="" class="icon">
+                <img src="{{ asset('images/icons/diamond-white.svg') }}" alt="" class="icon-active">
                 <p class="feature-title">Unique Added Value Services</p>
                 <p class="feature-description">
                     We offer way more than just washing! Laundry scenting, individual wrapping and laundry hangers are among many other services that you will love.            
                 </p>
             </div>
 
-            <div class="feature-container active">
-                <img src="{{ asset('images/icons/bag-white.svg') }}" alt="" class="icon">
+            <div class="feature-container">
+                <img src="{{ asset('images/icons/bag-white.svg') }}" alt="" class="icon-active">
+                <img src="{{ asset('images/icons/bag.svg') }}" alt="" class="icon">
                 <p class="feature-title">Per Pound Packages</p>
                 <p class="feature-description">
                     Pay exactly for what your laundry weights not by its volume. We weigh your laundry after being washed & dried to avoid unfair charges due to wet items                </p>
@@ -75,6 +77,7 @@
 
             <div class="feature-container">
                 <img src="{{ asset('images/icons/car.svg') }}" alt="" class="icon">
+                <img src="{{ asset('images/icons/car-white.svg') }}" alt="" class="icon-active">
                 <p class="feature-title">Complementary pickup and delivery</p>
                 <p class="feature-description">
                     Enjoy our complementary pickup and delivery with our wash & fold service                </p>
@@ -82,24 +85,28 @@
 
             <div class="feature-container">
                 <img src="{{ asset('images/icons/dollar.svg') }}" alt="" class="icon">
+                <img src="{{ asset('images/icons/dollar-white.svg') }}" alt="" class="icon-active">
                 <p class="feature-title">No surprising charges</p>
                 <p class="feature-description">
                     You pay only for services you chosen, while added value services are calculated based on actual used not lump sum                </p>
             </div>
             <div class="feature-container">
                 <img src="{{ asset('images/icons/soap-bottle.svg') }}" alt="" class="icon">
+                <img src="{{ asset('images/icons/soap-bottle-white.svg') }}" alt="" class="icon-active">
                 <p class="feature-title">Nature Friendly Detergents</p>
                 <p class="feature-description">
                     We have chosen a range of naturally derived products & detergents to clean your clothes, yet gentle enough on your skin                </p>
             </div>
             <div class="feature-container">
                 <img src="{{ asset('images/icons/teriangle.svg') }}" alt="" class="icon">
+                <img src="{{ asset('images/icons/teriangle-white.svg') }}" alt="" class="icon-active">
                 <p class="feature-title">Follow Manufacturer’s instruction</p>
                 <p class="feature-description">
                     We follow fabric care labels and place it in appropriate washing cycles                </p>
             </div>
             <div class="feature-container">
                 <img src="{{ asset('images/icons/contactless.svg') }}" alt="" class="icon">
+                <img src="{{ asset('images/icons/contactless-white.svg') }}" alt="" class="icon-active">
                 <p class="feature-title">Contactless Service</p>
                 <p class="feature-description">
                     Feel safe with our 100% contactless service during picking up and delivery                </p>
@@ -204,26 +211,11 @@
             </p>
             <div class="buttons-container">
                 <div class="download-button">
-                    <img src="" alt="" class="icon">
-                    <div class="button-text">
-                        <p class="title">
-                            Download on the
-                        </p>
-                        <p class="subtitle">
-                            App Store
-                        </p>
-                    </div>
+                    <img src="{{ asset('images/download-apple.svg') }}" alt="">
+                    
                 </div>
                 <div class="download-button">
-                    <img src="" alt="" class="icon">
-                    <div class="button-text">
-                        <p class="title">
-                            Available on the
-                        </p>
-                        <p class="subtitle">
-                            Google Play
-                        </p>
-                    </div>
+                    <img src="{{ asset('images/download-google.svg') }}" alt="">
                 </div>
                 
             </div>
@@ -371,7 +363,7 @@
                     <input type="text" placeholder="Name" class="form-input" name="name">
                     <input type="text" placeholder="Email" class="form-input" name="email">
                     <input type="text" placeholder="ZIP Code" class="form-input" name="zip-code">
-                    <textarea name="message"  placeholder="Message" cols="30" class="form-text-area" rows="5"></textarea>
+                    <textarea name="message"  placeholder="Message"  class="form-text-area" rows="5"></textarea>
                 <div class="button-container">
 
                     <button class="submit-button" type="submit">
@@ -413,6 +405,5 @@
         </div>
     </div>
     {{-- --- XX Get in touch XX --- --}}
-    @include('components.landing.footer')
 
-        
+    @include('components.landing.footer')

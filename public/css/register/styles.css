@@ -1,0 +1,163 @@
+/* ----- register Container ----- */
+
+/* Resetting */
+
+@font-face {
+  font-family: Lato-Regular;
+  src: url(/fonts/Lato-Regular.ttf?2d36b1a925432bae7f3c53a340868c6e);
+}
+
+@font-face {
+  font-family: Lato-Bold;
+  src: url(/fonts/Lato-Bold.ttf?85d339d916479f729938d2911b85bf1f);
+}
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Lato-Regular" !important;
+}
+
+p {
+  margin: 0;
+}
+
+/* ---------- Global ---------- */
+
+/* Color Variables */
+
+/* Dimensions */
+
+/* Mixins */
+
+/* Mixins */
+
+button {
+  cursor: pointer;
+}
+
+/* Shadows */
+
+.register-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 28px);
+  padding: 0 140px;
+}
+
+.register-container .left .signup-vector {
+  width: 438px;
+  height: 346px;
+}
+
+.register-container .right {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.register-container .right .title {
+  font-size: 24px;
+  color: #15B2D3;
+  margin-bottom: 36px;
+  margin-top: 24px;
+}
+
+.register-container .right .form-container {
+  width: 100%;
+}
+
+.register-container .right .form-container .double-input-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+
+.register-container .right .form-container .input-container {
+  display: flex;
+  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0 auto 36px auto;
+  height: 82px;
+}
+
+.register-container .right .form-container .input-container.no-bottom-margin {
+  margin-bottom: 5px !important;
+}
+
+.register-container .right .form-container .input-container .form-label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 18px;
+  color: #000;
+}
+
+.register-container .right .form-container .input-container .form-input {
+  width: 100%;
+  height: 45px;
+  background: #F3F3F3;
+  border-radius: 23px;
+  padding: 24px;
+  font-size: 14px;
+}
+
+.register-container .right .form-container .button-container {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-container .right .form-container .button-container .register-button {
+  border-radius: 20px;
+  width: 150px;
+  height: 40px;
+  background: #FDBD42;
+  width: 200px;
+  margin: 40px auto;
+  font-size: 18px;
+  color: #fff;
+}
+
+.register-container .right .form-container .errors-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 24px 0 20px 20px;
+}
+
+.register-container .right .form-container .errors-container .error-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 6px 0;
+}
+
+.register-container .right .form-container .errors-container .error-container .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.register-container .right .form-container .errors-container .error-container .error-message {
+  margin-left: 12px;
+  font-size: 12px;
+  color: #000;
+}
+
+/* ----- XX register Container XX ----- */
+

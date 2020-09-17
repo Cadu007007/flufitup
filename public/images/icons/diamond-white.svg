@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_463" data-name="Rectangle 463" width="60" height="60" transform="translate(323 1164)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_33" data-name="Mask Group 33" transform="translate(-323 -1164)" clip-path="url(#clip-path)">
+    <g id="_07-diamond" data-name="07-diamond" transform="translate(322.661 1158.683)">
+      <g id="Glyph">
+        <path id="Path_1770" data-name="Path 1770" d="M22.4,24.018H38.273L30.339,10.133Z" fill="#fff"/>
+        <path id="Path_1771" data-name="Path 1771" d="M42.732,24.018h17.6a2.571,2.571,0,0,0-.213-.316L50.47,11.637Z" fill="#fff"/>
+        <path id="Path_1772" data-name="Path 1772" d="M40.5,22.82l7.921-12.673a2.506,2.506,0,0,0-.385-.034h-14.8Z" fill="#fff"/>
+        <path id="Path_1773" data-name="Path 1773" d="M21.845,26.546l8.494,33.975,8.494-33.975Z" fill="#fff"/>
+        <path id="Path_1774" data-name="Path 1774" d="M41.439,26.546,33.491,58.339,60.079,26.916a2.533,2.533,0,0,0,.259-.369Z" fill="#fff"/>
+        <path id="Path_1775" data-name="Path 1775" d="M19.239,26.546H.339a2.533,2.533,0,0,0,.259.369L27.187,58.339Z" fill="#fff"/>
+        <path id="Path_1776" data-name="Path 1776" d="M20.177,22.82l7.261-12.707h-14.8a2.506,2.506,0,0,0-.385.032Z" fill="#fff"/>
+        <path id="Path_1777" data-name="Path 1777" d="M17.945,24.018,10.208,11.637.554,23.7a2.57,2.57,0,0,0-.213.316Z" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

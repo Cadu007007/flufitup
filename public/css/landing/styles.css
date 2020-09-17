@@ -1,10 +1,20 @@
 /* Resetting */
 
+@font-face {
+  font-family: Lato-Regular;
+  src: url(/fonts/Lato-Regular.ttf?2d36b1a925432bae7f3c53a340868c6e);
+}
+
+@font-face {
+  font-family: Lato-Bold;
+  src: url(/fonts/Lato-Bold.ttf?85d339d916479f729938d2911b85bf1f);
+}
+
 html,
 body {
   margin: 0 !important;
   padding: 0 !important;
-  font-family: "Lato";
+  font-family: "Lato-Regular" !important;
 }
 
 p {
@@ -17,9 +27,15 @@ p {
 
 /* Dimensions */
 
-/* Shadows */
+/* Mixins */
 
 /* Mixins */
+
+button {
+  cursor: pointer;
+}
+
+/* Shadows */
 
 .blue-text {
   color: #15B2D3;
@@ -46,7 +62,7 @@ p {
   justify-content: space-between;
   align-items: center;
   padding: 0 80px;
-  height: 40px;
+  height: 28px;
   border-bottom: 1px solid #15B2D3;
 }
 
@@ -71,11 +87,14 @@ p {
 .header-container .left .icon-title-div .icon,
 .header-container .right .icon-title-div .icon {
   margin: 0 10px;
+  width: 19px;
+  height: 19px;
 }
 
-.header-container .left .icon-title-div p,
-.header-container .right .icon-title-div p {
+.header-container .left .icon-title-div .header-text,
+.header-container .right .icon-title-div .header-text {
   color: #15B2D3;
+  font-size: 14px;
 }
 
 .header-container .left .icon,
@@ -110,7 +129,7 @@ p {
   justify-content: center;
   align-items: center;
   padding: 0 100px;
-  height: calc(100vh - 162px);
+  height: calc(100vh - 28px - 122px);
 }
 
 .hero-container .left .title {
@@ -287,10 +306,32 @@ p {
 .why-choose-us-container .why-us-features .feature-container.active {
   color: #fff;
   background: #FDBD42;
-  box-shadow: none;
+}
+
+.why-choose-us-container .why-us-features .feature-container.active .icon-active {
+  width: 60px;
+  height: 60px;
+  margin: 10px auto;
+  display: block !important;
+}
+
+.why-choose-us-container .why-us-features .feature-container.active .icon {
+  margin: 10px auto;
+  width: 60px;
+  height: 60px;
+  display: none !important;
 }
 
 .why-choose-us-container .why-us-features .feature-container .icon {
+  margin: 10px auto;
+  width: 60px;
+  height: 60px;
+  display: block;
+}
+
+.why-choose-us-container .why-us-features .feature-container .icon-active {
+  margin: 10px auto;
+  display: none;
   width: 60px;
   height: 60px;
 }
@@ -427,39 +468,13 @@ p {
 .download .left .buttons-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 280px;
 }
 
 .download .left .buttons-container .download-button {
   width: 127px;
   height: 38px;
-  background: #15B2D3;
-  color: #fff;
-  border-radius: 5px;
-  margin: 20px 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.download .left .buttons-container .download-button .icon {
-  width: 20px;
-  height: 20px;
-  margin: 10px;
-}
-
-.download .left .buttons-container .download-button .button-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.download .left .buttons-container .download-button .button-text .title {
-  font-size: 8px;
-}
-
-.download .left .buttons-container .download-button .button-text .subtitle {
-  font-size: 14px;
 }
 
 /* ---------- XX Download XX ----------  */
@@ -584,6 +599,7 @@ p {
   padding: 24px;
   font-size: 16px;
   margin: 5px 0;
+  resize: none;
 }
 
 .contact-us .contact-form .right .button-container {
@@ -603,6 +619,7 @@ p {
   border: 2px solid #22AEE4;
   font-size: 15px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* ------------- XX Contact US XX ---------- */

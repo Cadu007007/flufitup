@@ -1,0 +1,114 @@
+/* Resetting */
+
+@font-face {
+    font-family: Lato-Regular;
+    src: url(../fonts/Lato/Lato-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lato-Bold;
+    src: url(../fonts/Lato/Lato-Bold.ttf);
+}
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Lato-Regular' !important;
+}
+
+p {
+    margin: 0;
+}
+
+
+/* ---------- Global ---------- */
+
+
+/* Color Variables */
+
+$blue: #15B2D3;
+$orange: #FDBD42;
+$dark-orange: #FFA800;
+$white: #fff;
+$dark-white: #F3F3F3;
+$dark-grey: #00000080;
+$light-grey: #F8F8F8;
+$text-dark-grey: #000000B3;
+$black: #000;
+
+/* Dimensions */
+
+$header-height: 28px;
+$navbar-height: 122px;
+
+/* Mixins */
+
+@mixin flex-center-center {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-center-center-column {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-space-between-center {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-center-flex-start {
+    display: flex;
+    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+@mixin grid-1fr-1fr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin grid-1fr-2fr {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin grid-1fr-3fr {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Mixins */
+
+@mixin large-rounded-button {
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* Shadows */
+
+$small-shadow: 0px 0px 10px #0000001A;
+$big-shadow: 0px 3px 6px #00000033;

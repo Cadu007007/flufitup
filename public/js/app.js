@@ -49882,16 +49882,40 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/login/styles.scss":
+/*!******************************************!*\
+  !*** ./resources/sass/login/styles.scss ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/register/styles.scss":
+/*!*********************************************!*\
+  !*** ./resources/sass/register/styles.scss ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!**************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/landing/styles.scss ***!
-  \**************************************************************************************************/
+/*!***************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/landing/styles.scss ./resources/sass/login/styles.scss ./resources/sass/register/styles.scss ***!
+  \***************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /media/sala7thedeveloper/Never Stop/Work/Loundery/flufitup/resources/js/app.js */"./resources/js/app.js");
 __webpack_require__(/*! /media/sala7thedeveloper/Never Stop/Work/Loundery/flufitup/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /media/sala7thedeveloper/Never Stop/Work/Loundery/flufitup/resources/sass/landing/styles.scss */"./resources/sass/landing/styles.scss");
+__webpack_require__(/*! /media/sala7thedeveloper/Never Stop/Work/Loundery/flufitup/resources/sass/landing/styles.scss */"./resources/sass/landing/styles.scss");
+__webpack_require__(/*! /media/sala7thedeveloper/Never Stop/Work/Loundery/flufitup/resources/sass/login/styles.scss */"./resources/sass/login/styles.scss");
+module.exports = __webpack_require__(/*! /media/sala7thedeveloper/Never Stop/Work/Loundery/flufitup/resources/sass/register/styles.scss */"./resources/sass/register/styles.scss");
 
 
 /***/ })
