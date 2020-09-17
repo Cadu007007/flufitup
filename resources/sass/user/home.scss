@@ -1,0 +1,28 @@
+@import "../global.scss";
+
+/* Dimenstions */
+
+$sidebar-width: 215px;
+
+/* XX Dimenstions XX */
+
+
+/* Main user pages structure */
+
+#app {
+    display: grid;
+    grid-template-columns: $sidebar-width auto;
+    .Sidebar {
+        height: calc(100vh - #{$header-height});
+        width: $sidebar-width;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .Home {
+        background: $dark-white;
+    }
+}
+
+
+/* XX Main user pages structure XX */

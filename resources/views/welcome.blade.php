@@ -8,6 +8,8 @@
             <p class="title">
                 FLUFFIT-UP
             </p>
+
+
             <p class="description">
                 <span class="blue-text"> FLUFFIT-UP</span> we know how dreadful laundry can be especially when you have enough to block out the sun! luckily,
                 <span class="blue-text"> FLUFFIT-UP</span> is like a day-care centre for your clothes, we take good care of the clothes you wear.
@@ -23,7 +25,7 @@
     </div>
     {{-- XX Hero Section XX --}}
     
-    
+
     {{-- City Location --}}
     <div class="city-location">
         <div class="left">
