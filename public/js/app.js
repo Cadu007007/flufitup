@@ -38491,7 +38491,11 @@ var render = function() {
       _vm._v(" "),
       _c("SidebarItem", {
         staticClass: "logout",
-        attrs: { title: "Logout", icon: "/images/icons/logout.svg" }
+        attrs: {
+          title: "Logout",
+          icon: "/images/icons/logout.svg",
+          iconActive: "/images/icons/logout.svg"
+        }
       })
     ],
     1

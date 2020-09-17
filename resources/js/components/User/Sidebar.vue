@@ -8,7 +8,7 @@
   <SidebarItem title="Chat" icon='/images/icons/chat-grey.svg' iconActive='/images/icons/chat.svg'/>
   <SidebarItem title="Old Orders" icon='/images/icons/old-order-grey.svg' iconActive='/images/icons/old-order.svg'/>
 
-  <SidebarItem class="logout" title="Logout" icon='/images/icons/logout.svg'/>
+  <SidebarItem class="logout" title="Logout" icon='/images/icons/logout.svg' iconActive='/images/icons/logout.svg'/>
 
 </div>
 </template>

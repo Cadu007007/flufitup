@@ -3,5 +3,6 @@
     "/css/app.css": "/css/app.css",
     "/css/landing/styles.css": "/css/landing/styles.css",
     "/css/login/styles.css": "/css/login/styles.css",
-    "/css/register/styles.css": "/css/register/styles.css"
+    "/css/register/styles.css": "/css/register/styles.css",
+    "/css/user/home.css": "/css/user/home.css"
 }
