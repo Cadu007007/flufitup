@@ -35,6 +35,10 @@ button {
   cursor: pointer;
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* Shadows */
 
 /* Dimenstions */
@@ -49,7 +53,7 @@ button {
 }
 
 #app .Sidebar {
-  height: calc(100vh - 28px);
+  min-height: calc(100vh - 28px);
   width: 215px;
   display: flex;
   flex-direction: column;

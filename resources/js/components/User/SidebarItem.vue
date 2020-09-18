@@ -1,9 +1,10 @@
 <template>
-  <div class="SidebarItem">
+  <a class="SidebarItem">
     <img class="icon" :src=icon alt="">
     <img class="icon-active" :src=iconActive alt="">
     <p class="item-title">{{ title }}</p>
-  </div>
+    <span class="active-column"></span>
+  </a>
 </template>
 
 <script>
@@ -14,7 +15,7 @@ props: ['title','icon', 'iconActive']
 
 <style lang="scss">
 .SidebarItem{
-    min-width: 200px;
+    width: 100%;
     display: grid;
     grid-template-columns: 80px auto;
     justify-content: flex-start;
@@ -42,8 +43,16 @@ props: ['title','icon', 'iconActive']
     &.active{
         .item-title{                        
             color: #222 !important;
-            }
-
+        }
+        .active-column{
+            position: absolute;
+            width: 3px;
+            height: 27px;
+            display: block !important;
+            background: #22AEE4 0% 0% no-repeat padding-box;
+            right: 0;
+            top: 0;
+        }
         .icon{
         width: 27px;
         height: 27px;;
@@ -56,6 +65,9 @@ props: ['title','icon', 'iconActive']
             margin-left: 30px;
             display: block !important;
         }
+        }
+        .active-column{
+            display: none;
         }
 }
 </style>
