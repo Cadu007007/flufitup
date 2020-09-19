@@ -4,15 +4,15 @@
         <img class="icon" src="{{ asset('images/login-vector.svg') }}" alt="">
     </div>
     <div class="right">
-        <div class="title">
+        <p class="title">
             Login
-        </div>
+        </p>
         <div class="form-container">
 
             <form action="/login" method="POST">
                 <div class="input-container">
                     <label for="phone" class="form-label">Phone Number</label>
-                    <input name="phone" type="text" class="form-input" placeholder="(XXX)-XXX-XXXX" value=" {{  old('phone') }}"/>
+                    <input name="phone" type="text" class="form-input" placeholder="(XXX)-XXX-XXXX" value="{{ old('phone') }}"/>
                 </div>
                  <div class="input-container">
                     <label for="password" class="form-label">Password</label>

@@ -2516,56 +2516,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      title: 'Packages',
-      packages: [{
-        title: 'Ad Hoc',
-        price: '75 $',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        button: 'Subscribe'
-      }, {
-        title: 'Ad Hoc - Heavy',
-        price: '75 $',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        button: 'Subscribe'
-      }, {
-        title: 'Bi-Weekly',
-        price: '75 $',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        button: 'Subscribe'
-      }, {
-        title: 'Bi-Weekly – Big Job',
-        price: '75 $',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        button: 'Subscribe'
-      }, {
-        title: 'Monthly',
-        price: '75 $',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        button: 'Subscribe'
-      }, {
-        title: 'Monthly - Busy',
-        price: '75 $',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        button: 'Subscribe'
-      }, {
-        title: 'Monthly - Heavy',
-        price: '75 $',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        button: 'Subscribe'
-      }, {
-        title: 'Create your package',
-        price: '',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        button: 'Create'
-      }]
+      title: 'Packages'
     };
   },
   props: {
-    packageslist: Array,
+    packagesadhoclist: Array,
+    packagebiweeklylist: Array,
+    packagesmonthlylist: Array,
     date: String
   },
   components: {
@@ -7102,7 +7119,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".PackageContainer {\n  background: #FFFFFF;\n  width: 233px;\n  height: 300px;\n  box-shadow: 0px 0px 3px #0000001A;\n  border-radius: 20px;\n  margin: 18px 13px 18px 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  padding: 20px 0 0 0;\n  position: relative;\n}\n.PackageContainer .title {\n  font-size: 16px;\n}\n.PackageContainer .price {\n  margin-top: 23px;\n  font-size: 36px;\n  color: #00000099;\n}\n.PackageContainer .description {\n  margin-top: 28px;\n  color: #00000080;\n  font-size: 14px;\n  text-align: center;\n}\n.PackageContainer .see-details {\n  margin-top: 18px;\n  font-size: 16px;\n  margin-bottom: 20px;\n}\n.PackageContainer .subscribe {\n  width: 148px;\n  height: 31px;\n  border-radius: 20px;\n  background: #FDBD42;\n  font-size: 14px;\n  color: #FFFFFF;\n  position: absolute;\n  bottom: 18px;\n}\n.PackageContainer .subscribe.create {\n  background: #22AEE4;\n}", ""]);
+exports.push([module.i, ".PackageContainer {\n  background: #FFFFFF;\n  width: 233px;\n  height: 300px;\n  box-shadow: 0px 0px 3px #0000001A;\n  border-radius: 20px;\n  margin: 20px 20px 20px 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  padding: 20px 0 0 0;\n  position: relative;\n}\n.PackageContainer .title {\n  font-size: 16px;\n}\n.PackageContainer .price {\n  margin-top: 23px;\n  font-size: 36px;\n  color: #00000099;\n}\n.PackageContainer .description {\n  margin-top: 28px;\n  color: #00000080;\n  font-size: 14px;\n  text-align: center;\n}\n.PackageContainer .see-details {\n  margin-top: 18px;\n  font-size: 16px;\n  margin-bottom: 20px;\n}\n.PackageContainer .subscribe {\n  width: 148px;\n  height: 31px;\n  border-radius: 20px;\n  background: #FDBD42;\n  font-size: 14px;\n  color: #FFFFFF;\n  position: absolute;\n  bottom: 18px;\n}\n.PackageContainer .subscribe.create {\n  background: #22AEE4;\n}", ""]);
 
 // exports
 
@@ -7292,7 +7309,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".Packages {\n  padding: 0 139px 0 16px;\n}\n.Packages .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Packages .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.Packages .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.Packages .page-title {\n  height: 25px;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.Packages .page-title .title {\n  font-size: 21px;\n  color: #22AEE4;\n  margin-bottom: 8px;\n}\n.Packages .packages-container {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n  align-items: center;\n}", ""]);
+exports.push([module.i, ".Packages .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Packages .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.Packages .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.Packages .packages-title {\n  font-size: 18px;\n  font-family: \"Lato-Bold\";\n  color: #000000;\n  margin-top: 20px;\n  margin-bottom: 30px;\n}\n.Packages .page-title {\n  height: 25px;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.Packages .page-title .title {\n  font-size: 21px;\n  color: #22AEE4;\n  margin-bottom: 8px;\n}\n.Packages .packages-container {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n  align-items: center;\n}", ""]);
 
 // exports
 
@@ -40165,10 +40182,14 @@ var render = function() {
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
+    _c("p", { staticClass: "packages-title" }, [
+      _vm._v("\n  Ad Hoc Packages\n  ")
+    ]),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "packages-container" },
-      _vm._l(_vm.packageslist, function(item, index) {
+      _vm._l(_vm.packagesadhoclist, function(item, index) {
         return _c("PackageContainer", {
           key: index,
           attrs: {
@@ -40179,6 +40200,68 @@ var render = function() {
           }
         })
       }),
+      1
+    ),
+    _vm._v(" "),
+    _c("p", { staticClass: "packages-title" }, [
+      _vm._v("\n    Bi-Weekly Packages\n  ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "packages-container" },
+      _vm._l(_vm.packagebiweeklylist, function(item, index) {
+        return _c("PackageContainer", {
+          key: index,
+          attrs: {
+            title: item.title,
+            price: item.price,
+            description: item.description,
+            button: item.button
+          }
+        })
+      }),
+      1
+    ),
+    _vm._v(" "),
+    _c("p", { staticClass: "packages-title" }, [
+      _vm._v("\nMonthly Packages\n  ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "packages-container" },
+      _vm._l(_vm.packagesmonthlylist, function(item, index) {
+        return _c("PackageContainer", {
+          key: index,
+          attrs: {
+            title: item.title,
+            price: item.price,
+            description: item.description,
+            button: item.button
+          }
+        })
+      }),
+      1
+    ),
+    _vm._v(" "),
+    _c("p", { staticClass: "packages-title" }, [
+      _vm._v("\nCreate Your Package\n  ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "packages-container" },
+      [
+        _c("PackageContainer", {
+          attrs: {
+            title: "Create your package",
+            description:
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+            button: "Create"
+          }
+        })
+      ],
       1
     )
   ])

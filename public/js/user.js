@@ -47,6 +47,8 @@ function collapseSidebar() {
     /* update app with */
     $('#app').css('grid-template-columns', `${intSmallWidth}px auto`)
 
+    $('.PageContentContainer').css('padding', '0 120px 0 80px !important')
+
 }
 
 
@@ -63,6 +65,8 @@ function expandSidebar() {
 
     /* update app with */
     $('#app').css('grid-template-columns', `${intInitialSidebarWidth}px auto`)
+
+    $('.PageContentContainer').css('padding', '0 139px 0 16px !important')
 
 
 }

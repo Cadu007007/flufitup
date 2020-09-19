@@ -65,3 +65,188 @@
 
 
 /* ----- XX Login Container XX ----- */
+
+
+/* --------- Reset Password --------- */
+
+.reset-password-container {
+    @include grid-1fr-1fr;
+    height: calc(100vh - #{$header-height});
+    padding: 0 140px;
+    .right {
+        @include flex-center-center-column;
+        width: 100%;
+        .title {
+            font-size: 24px;
+            color: $blue;
+            margin-bottom: 36px;
+            font-family: 'Lato-Bold';
+        }
+        .subtitle {
+            font-size: 14px;
+            text-align: center;
+            width: 250px;
+            color: $dark-grey;
+            margin-bottom: 30px;
+        }
+        .form-container {
+            width: 100%;
+            .input-container {
+                @include flex-center-flex-start;
+                width: fit-content;
+                margin: 0 auto;
+                .form-label {
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin-bottom: 18px;
+                    margin-top: 12px;
+                    ;
+                    color: $black;
+                }
+                .form-input {
+                    width: 536px;
+                    height: 45px;
+                    background: $dark-white;
+                    border-radius: 23px;
+                    padding: 24px;
+                    margin-bottom: 24px;
+                    font-size: 14px;
+                }
+            }
+            .button-container {
+                width: 100%;
+                @include flex-center-center;
+                .login-button {
+                    @include large-rounded-button;
+                    background: $orange;
+                    width: 200px;
+                    margin: 40px auto;
+                    font-size: 18px;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+
+/* --------- XX Reset Password XX --------- */
+
+
+/* ---------  Verify Phone  --------- */
+
+.verify-phone-container {
+    @include grid-1fr-1fr;
+    height: calc(100vh - #{$header-height});
+    padding: 0 140px;
+    .right {
+        @include flex-center-center-column;
+        width: 100%;
+        .title {
+            font-size: 24px;
+            font-family: 'Lato-Bold';
+            color: $blue;
+            margin-bottom: 36px;
+        }
+        .subtitle {
+            font-size: 14px;
+            text-align: center;
+            color: $dark-grey;
+            margin-bottom: 30px;
+        }
+        .form-container {
+            width: 100%;
+            .input-container {
+                @include flex-center-flex-start;
+                flex-direction: row;
+                width: fit-content;
+                margin: 0 auto;
+                .digit-input {
+                    height: 45px;
+                    width: 45px;
+                    background: $dark-white;
+                    border-radius: 5px;
+                    padding: 15px;
+                    margin-bottom: 24px;
+                    font-size: 14px;
+                    text-align: center;
+                    margin: 0 6px;
+                }
+            }
+            .button-container {
+                width: 100%;
+                @include flex-center-center;
+                .login-button {
+                    @include large-rounded-button;
+                    background: $orange;
+                    width: 200px;
+                    margin: 40px auto;
+                    font-size: 18px;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+
+/* ---------  XX Verify Phone XX  --------- */
+
+.renew-password-container {
+    @include grid-1fr-1fr;
+    height: calc(100vh - #{$header-height});
+    padding: 0 140px;
+    .right {
+        @include flex-center-center-column;
+        width: 100%;
+        .title {
+            font-size: 24px;
+            color: $blue;
+            margin-bottom: 36px;
+            font-family: 'Lato-Bold';
+        }
+        .subtitle {
+            font-size: 14px;
+            text-align: center;
+            color: $dark-grey;
+            margin-bottom: 40px;
+        }
+        .form-container {
+            width: 100%;
+            .input-container {
+                @include flex-center-flex-start;
+                width: fit-content;
+                margin: 0 auto;
+                .form-label {
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin-bottom: 18px;
+                    margin-top: 12px;
+                    ;
+                    color: $black;
+                }
+                .form-input {
+                    width: 536px;
+                    height: 45px;
+                    background: $dark-white;
+                    border-radius: 23px;
+                    padding: 24px;
+                    margin-bottom: 24px;
+                    font-size: 14px;
+                }
+            }
+            .button-container {
+                width: 100%;
+                @include flex-center-center;
+                .login-button {
+                    @include large-rounded-button;
+                    background: $orange;
+                    width: 200px;
+                    margin: 40px auto;
+                    font-size: 18px;
+                    color: $white;
+                }
+            }
+        }
+    }
+}

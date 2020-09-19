@@ -78,6 +78,7 @@ button {
   background: #F3F3F3;
   min-height: calc(100vh - 28px);
   overflow-x: hidden;
+  padding: 0 130px 0 30px;
 }
 
 /* XX Main user pages structure XX */

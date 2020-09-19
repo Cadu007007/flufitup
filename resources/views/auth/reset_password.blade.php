@@ -1,28 +1,32 @@
 @include('components.landing.header')
-<div class="reset-password-container">
+<div class="renew-password-container">
     <div class="left">
         <img class="icon" src="{{ asset('images/login-vector.svg') }}" alt="">
     </div>
     <div class="right">
         <p class="title">
-            Forget Password
+            Reset Password
         </p>
-        
         <p class="subtitle">
-            Enter your Phone Number to send you a verification code to reset Password.
+            Enter your New Password
         </p>
         <div class="form-container">
 
             <form action="/login" method="POST">
                 <div class="input-container">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input name="phone" type="text" class="form-input" placeholder="(XXX)-XXX-XXXX" value="{{ old('phone') }}"/>
+                    <label for="password" class="form-label">New Password</label>
+                    <input name="password" type="password" class="form-input" placeholder="Enter Your New Password"/>
+                </div>
+                 <div class="input-container">
+                    <label for="confirm_password" class="form-label">Re-enter New Password</label>
+                    <input namer="confirm_password"  type="password" class="form-input" placeholder="Enter Your New Password"/>
                 </div>
 
+                
                 <div class="button-container">
 
                     <button type="submit" class="login-button">
-                        Send
+                        Reset
                     </button>
                 </div>
             </form>

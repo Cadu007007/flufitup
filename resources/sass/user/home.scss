@@ -30,6 +30,7 @@ $sidebar-width: 215px;
         background: $dark-white;
         min-height: calc(100vh - #{$header-height});
         overflow-x: hidden;
+        padding: 0 130px 0 30px;
     }
 }
 

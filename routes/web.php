@@ -28,14 +28,20 @@ Route::get('/user', function () {
 
 Route::get('/packages', function () {
     $packages = collect();
-    $packages->push( ['title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description'  => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button' =>'Subscribe']);
-    $packages->push(['title'=> 'Bi-Weekly', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
-    $packages->push(['title'=> 'Bi-Weekly – Big Job', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
-    $packages->push(['title'=> 'Monthly', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
-    $packages->push(['title'=> 'Monthly - Busy', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
-    $packages->push(['title'=> 'Monthly - Heavy', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
-    $packages->push(['title'=> 'Create your package', 'price'=> '', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Create']);
-     
+    $packages->adhoc= collect();
+    $packages->bi_weekly= collect();
+    $packages->monthly= collect();
+
+    $packages->adhoc->push( ['title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description'  => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button' =>'Subscribe']);
+    $packages->adhoc->push( ['title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description'  => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button' =>'Subscribe']);
+    
+    $packages->bi_weekly->push(['title'=> 'Bi-Weekly', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->bi_weekly->push(['title'=> 'Bi-Weekly – Big Job', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    
+    $packages->monthly->push(['title'=> 'Monthly', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->monthly->push(['title'=> 'Monthly - Busy', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->monthly->push(['title'=> 'Monthly - Heavy', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    
     return view('user.packages',  ['active' => 'packages', 'packages' => $packages]);
 })->name('packages');
 
@@ -57,6 +63,18 @@ Route::get('/old_orders', function () {
 
     return view('user.old_orders', ['active' => 'old_orders','orders' => $orders]);
 })->name('old_orders');
+
+
+Route::get('/register/verifyphone', function () {
+    return view('auth.verify_phone', ['active' => 'logout']);
+})->name('verify_phone');
+
+
+Route::get('/password/new', function () {
+    return view('auth.reset_password', ['active' => 'logout']);
+})->name('reset_password');
+
+
 
 Route::get('/login', function () {
     return view('auth.login', ['active' => 'logout']);

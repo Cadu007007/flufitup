@@ -7,14 +7,65 @@
   <div class="page-title">
     <p class="title">Choose from our service offers</p>
   </div>
+  <p class="packages-title">
+  Ad Hoc Packages
+  </p>
+
   <div class="packages-container">
-    <PackageContainer v-for="(item,index) in packageslist" :key="index"
+    <PackageContainer v-for="(item,index) in packagesadhoclist" :key="index"
+    :title="item.title"
+    :price="item.price"
+    :description="item.description"
+    :button="item.button"
+    />
+    
+  </div>
+
+
+<p class="packages-title">
+    Bi-Weekly Packages
+  </p>
+
+  <div class="packages-container">
+    <PackageContainer v-for="(item,index) in packagebiweeklylist" :key="index"
     :title="item.title"
     :price="item.price"
     :description="item.description"
     :button="item.button"
     />
   </div>
+    
+<p class="packages-title">
+Monthly Packages
+  </p>
+
+  <div class="packages-container">
+    <PackageContainer v-for="(item,index) in packagesmonthlylist" :key="index"
+    :title="item.title"
+    :price="item.price"
+    :description="item.description"
+    :button="item.button"
+    />
+    
+  </div>
+
+    
+<p class="packages-title">
+Create Your Package
+  </p>
+ 
+  <div class="packages-container">
+    <PackageContainer
+    title="Create your package"
+    description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+    button="Create"
+    />
+    
+  </div>
+
+
+
+
 </div>
 
 
@@ -23,10 +74,9 @@
 <style lang="scss">
 $text-grey: #00000066;
 $blue: #22AEE4;
-
+$black: #000000;
 
 .Packages{
-  padding: 0 139px 0 16px;
 .page-header{
   display: flex;
   flex-direction: row;
@@ -44,7 +94,13 @@ $blue: #22AEE4;
   }
 
 }
-
+.packages-title{
+  font-size: 18px;
+  font-family: 'Lato-Bold';
+  color: $black;
+  margin-top: 20px;
+margin-bottom: 30px;
+}
 .page-title{
   height: 25px;
   width: 100%;
@@ -73,20 +129,12 @@ export default {
   data() {
     return {
       title: 'Packages',
-      packages:[
-        {title: 'Ad Hoc', price: '75 $', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',button:'Subscribe'},
-        {title: 'Ad Hoc - Heavy', price: '75 $', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',button:'Subscribe'},
-        {title: 'Bi-Weekly', price: '75 $', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',button:'Subscribe'},
-        {title: 'Bi-Weekly – Big Job', price: '75 $', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',button:'Subscribe'},
-        {title: 'Monthly', price: '75 $', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',button:'Subscribe'},
-        {title: 'Monthly - Busy', price: '75 $', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',button:'Subscribe'},
-        {title: 'Monthly - Heavy', price: '75 $', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',button:'Subscribe'},
-        {title: 'Create your package', price: '', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',button:'Create'},
-      ],
     }
   },
   props: {
-        packageslist: Array,
+        packagesadhoclist: Array,
+        packagebiweeklylist: Array,
+        packagesmonthlylist: Array,
         date: String,
   },
   components:{
