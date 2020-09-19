@@ -1,5 +1,5 @@
 <template>
-<div class="Home">
+<div class="Profile">
   <div class="page-header">
     <p class="title">{{title}}</p>
     <p class="lastlogin">{{lastlogin}}</p>
@@ -54,7 +54,7 @@ export default {
 $text-grey: #00000066;
 
 
-.Home{
+.Profile{
   padding: 0 140px 0 16px;
 .page-header{
   display: flex;

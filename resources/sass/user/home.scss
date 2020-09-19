@@ -12,16 +12,24 @@ $sidebar-width: 215px;
 #app {
     display: grid;
     grid-template-columns: $sidebar-width auto;
-    .Sidebar {
-        height: calc(100vh - #{$header-height});
+    .Sidebar-container {
+        min-height: calc(100vh - #{$header-height});
+        height: 768px;
         width: $sidebar-width;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        position: relative;
+        .Sidebar {
+            height: 100%;
+            width: $sidebar-width;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: fixed;
+        }
     }
     .PageContentContainer {
         background: $dark-white;
         min-height: calc(100vh - #{$header-height});
+        overflow-x: hidden;
     }
 }
 

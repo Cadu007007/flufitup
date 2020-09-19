@@ -10,6 +10,7 @@ var Home = require('./components/User/Pages/Home.vue').default
 var Packages = require('./components/User/Pages/Packages.vue').default
 var Profile = require('./components/User/Pages/Profile.vue').default
 var Oldorders = require('./components/User/Pages/Oldorders.vue').default
+var Chat = require('./components/User/Pages/Chat.vue').default
 
 const app = new Vue({
     el: '#app',
@@ -18,6 +19,7 @@ const app = new Vue({
         Home,
         Packages,
         Profile,
-        Oldorders
+        Oldorders,
+        Chat
     }
 });

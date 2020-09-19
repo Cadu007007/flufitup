@@ -58,17 +58,26 @@ button {
   grid-template-columns: 215px auto;
 }
 
-#app .Sidebar {
-  height: calc(100vh - 28px);
+#app .Sidebar-container {
+  min-height: calc(100vh - 28px);
+  height: 768px;
+  width: 215px;
+  position: relative;
+}
+
+#app .Sidebar-container .Sidebar {
+  height: 100%;
   width: 215px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  position: fixed;
 }
 
 #app .PageContentContainer {
   background: #F3F3F3;
   min-height: calc(100vh - 28px);
+  overflow-x: hidden;
 }
 
 /* XX Main user pages structure XX */

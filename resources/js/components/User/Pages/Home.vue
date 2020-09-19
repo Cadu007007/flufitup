@@ -8,7 +8,7 @@
 <WelcomePanner 
   title="Welcome, Mohamed" 
   description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-  vector="/images/login-vector.svg" />
+  vector="/images/welcome-vector.svg" />
 
 <NoOrdersPanner text="No Active Orders Yet" />
 </div>
@@ -40,7 +40,7 @@ $text-grey: #00000066;
 }
 
 .NoOrdersPanner{
-    margin-top: 36px;
+    margin-top: 30px;
 
 }
 }

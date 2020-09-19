@@ -25,11 +25,11 @@ $shadow-color: #0000001A;
 
 .PackageContainer{
     background: $white;
-    width: 237px;
+    width: 233px;
     height: 300px;
     box-shadow: 0px 0px 3px $shadow-color;
     border-radius: 20px;
-    margin: 18px 8px;
+    margin: 18px 13px 18px 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

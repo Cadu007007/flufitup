@@ -1,6 +1,7 @@
 @extends('layouts.user')
 @section('content')
 
-Chat
+<Chat class="PageContentContainer" id="Chat"/>
+
 
 @endsection
