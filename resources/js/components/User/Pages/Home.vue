@@ -47,8 +47,8 @@ $text-grey: #00000066;
 </style>
 
 <script>
-import WelcomePanner from '../WelcomePanner';
-import NoOrdersPanner from '../NoOrdersPanner';
+import WelcomePanner from '../Components/WelcomePanner';
+import NoOrdersPanner from '../Components/NoOrdersPanner';
 
 export default {
   data() {

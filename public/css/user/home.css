@@ -1,6 +1,7 @@
 /* Resetting */
 
 @font-face {
+  font-weight: bolder;
   font-family: Lato-Regular;
   src: url(/fonts/Lato-Regular.ttf?2d36b1a925432bae7f3c53a340868c6e);
 }
@@ -8,6 +9,11 @@
 @font-face {
   font-family: Lato-Bold;
   src: url(/fonts/Lato-Bold.ttf?85d339d916479f729938d2911b85bf1f);
+}
+
+@font-face {
+  font-family: Lato-Medium;
+  src: url(/fonts/Lato-Black.ttf?e631d2735799aa943d93d301abf423d2);
 }
 
 html,

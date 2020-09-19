@@ -68,7 +68,7 @@ $blue: #22AEE4;
 </style>
 
 <script>
-import PackageContainer from '../PackageContainer'
+import PackageContainer from '../Components/PackageContainer'
 export default {
   data() {
     return {

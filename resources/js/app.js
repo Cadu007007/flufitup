@@ -2,19 +2,20 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+/* user components */
+var Sidebar = require('./components/User/Components/Sidebar.vue').default
 
-var Sidebar = require('./components/User/Sidebar.vue').default
-
+/* user pages */
 var Home = require('./components/User/Pages/Home.vue').default
-
 var Packages = require('./components/User/Pages/Packages.vue').default
+var Profile = require('./components/User/Pages/Profile.vue').default
 
 const app = new Vue({
     el: '#app',
     components: {
         Sidebar,
         Home,
-        Packages
+        Packages,
+        Profile
     }
 });
