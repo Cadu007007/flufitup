@@ -31,7 +31,6 @@ $text-grey: #00000066;
   margin: 26px 0;
   font-size: 12px;
   font-weight: bold;
-
   }
     .date{
     font-size: 10px;

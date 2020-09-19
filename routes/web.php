@@ -27,7 +27,16 @@ Route::get('/user', function () {
 })->name('home');
 
 Route::get('/packages', function () {
-    return view('user.packages', ['active' => 'packages']);
+    $packages = collect();
+    $packages->push( ['title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description'  => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button' =>'Subscribe']);
+    $packages->push(['title'=> 'Bi-Weekly', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->push(['title'=> 'Bi-Weekly – Big Job', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->push(['title'=> 'Monthly', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->push(['title'=> 'Monthly - Busy', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->push(['title'=> 'Monthly - Heavy', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->push(['title'=> 'Create your package', 'price'=> '', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Create']);
+     
+    return view('user.packages',  ['active' => 'packages', 'packages' => $packages]);
 })->name('packages');
 
 Route::get('/profile', function () {
