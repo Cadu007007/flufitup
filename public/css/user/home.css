@@ -59,7 +59,7 @@ button {
 }
 
 #app .Sidebar {
-  min-height: calc(100vh - 28px);
+  height: calc(100vh - 28px);
   width: 215px;
   display: flex;
   flex-direction: column;
@@ -68,6 +68,7 @@ button {
 
 #app .PageContentContainer {
   background: #F3F3F3;
+  min-height: calc(100vh - 28px);
 }
 
 /* XX Main user pages structure XX */

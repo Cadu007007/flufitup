@@ -13,7 +13,7 @@ $sidebar-width: 215px;
     display: grid;
     grid-template-columns: $sidebar-width auto;
     .Sidebar {
-        min-height: calc(100vh - #{$header-height});
+        height: calc(100vh - #{$header-height});
         width: $sidebar-width;
         display: flex;
         flex-direction: column;
@@ -21,6 +21,7 @@ $sidebar-width: 215px;
     }
     .PageContentContainer {
         background: $dark-white;
+        min-height: calc(100vh - #{$header-height});
     }
 }
 

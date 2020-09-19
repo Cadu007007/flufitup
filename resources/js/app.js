@@ -9,6 +9,7 @@ var Sidebar = require('./components/User/Components/Sidebar.vue').default
 var Home = require('./components/User/Pages/Home.vue').default
 var Packages = require('./components/User/Pages/Packages.vue').default
 var Profile = require('./components/User/Pages/Profile.vue').default
+var Oldorders = require('./components/User/Pages/Oldorders.vue').default
 
 const app = new Vue({
     el: '#app',
@@ -16,6 +17,7 @@ const app = new Vue({
         Sidebar,
         Home,
         Packages,
-        Profile
+        Profile,
+        Oldorders
     }
 });

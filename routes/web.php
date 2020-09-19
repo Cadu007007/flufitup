@@ -48,7 +48,14 @@ Route::get('/chat', function () {
 })->name('chat');
 
 Route::get('/old_orders', function () {
-    return view('user.old_orders', ['active' => 'old_orders']);
+    $orders = collect();
+    $orders->push(['orderdate'=> '18/08/2020','ordernumber'=> '12121212121','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
+    $orders->push(['orderdate'=> '21/08/2020','ordernumber'=> '12121212121','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
+    $orders->push(['orderdate'=> '22/08/2020','ordernumber'=> '12121212121','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
+    $orders->push(['orderdate'=> '23/08/2020','ordernumber'=> '12121212121','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
+    $orders->push(['orderdate'=> '24/08/2020','ordernumber'=> '12121212121','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
+
+    return view('user.old_orders', ['active' => 'old_orders','orders' => $orders]);
 })->name('old_orders');
 
 Route::get('/login', function () {

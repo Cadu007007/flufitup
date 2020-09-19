@@ -80,7 +80,7 @@ $blue: #22AEE4;
             width: 90px;
             height: 90px;
             margin-top: 17px;
-            border-radius: 45px;
+            border-radius: 25px;
         }
         .name{
             margin-top: 24px;

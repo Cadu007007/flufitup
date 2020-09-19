@@ -56,7 +56,7 @@
     margin: 100px auto 20px auto ;
   }
   .logout{
-    margin-top: 108px;
+    margin-top: 88px;
     margin-bottom: 48px;;
   }
 </style>

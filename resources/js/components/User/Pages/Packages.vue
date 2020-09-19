@@ -9,10 +9,10 @@
   </div>
   <div class="packages-container">
     <PackageContainer v-for="(item,index) in packageslist" :key="index"
-    :title=item.title
-    :price=item.price
-    :description=item.description
-    :button=item.button
+    :title="item.title"
+    :price="item.price"
+    :description="item.description"
+    :button="item.button"
     />
   </div>
 </div>

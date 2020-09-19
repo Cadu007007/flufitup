@@ -74,6 +74,7 @@ button {
   padding: 0 80px;
   height: 28px;
   border-bottom: 1px solid #15B2D3;
+  background: #fff;
 }
 
 .header-container .left,
