@@ -9,7 +9,7 @@
         routetoprofile={{ route('profile') }}
         routetochat={{ route('chat') }}
         routetooldorders={{ route('old_orders') }}
-        routetologout={{ route('login') }}
+        routetologout={{ route('logout') }}
         ></Sidebar>
     </div>
     @yield('content')

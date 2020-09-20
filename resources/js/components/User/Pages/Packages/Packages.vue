@@ -124,7 +124,7 @@ margin-bottom: 30px;
 </style>
 
 <script>
-import PackageContainer from '../Components/PackageContainer'
+import PackageContainer from './Components/PackageContainer'
 export default {
   data() {
     return {

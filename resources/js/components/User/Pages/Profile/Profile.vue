@@ -28,8 +28,8 @@
 
 
 <script>
-import ProfileCard from '../Components/ProfileCard'
-import WalletCard from '../Components/WalletCard'
+import ProfileCard from './Components/ProfileCard'
+import WalletCard from './Components/WalletCard'
 
 export default {
   data() {

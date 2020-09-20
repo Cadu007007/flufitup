@@ -6,7 +6,7 @@
         <p class="name">Mohamed Samir</p>
     
         <a :href="editprofileroute">
-            <img src="/images/icons/profile.svg" alt="" class="edit-icon">
+            <img src="/images/icons/edit-button.svg" alt="" class="edit-icon">
         </a>
     </div>
     <div class="details">

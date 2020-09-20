@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import OrderContainer from '../Components/OrderContainer'
+import OrderContainer from './Components/OrderContainer'
 export default {
     data() {
         return {
