@@ -33,7 +33,42 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /**************************** */
 
 Route::get('/user', function () {
-    return view('user.home.index', ['active' => 'home']);
+    $orders = collect();
+    $orders->push(['id' => 1111111111,
+                    'service'=>'Washing clothes',
+                    'start_date' => '20/09/2020',
+                    'price'=> '50 $',
+                    'finish_date'=>"25/09/2020",
+                    'status'=>"Test",
+                    'service_return_duration'=>"Test",
+                    'added_value_service'=>"Test",
+                    'package_duration'=>"Test",
+                    'number_of_pickups_per_package'=>"Test",
+                    'volume_per_package'=>"Test",
+                    'number_of_bags_per_package'=>"Test",
+                    'pickup_address'=>"Test",
+                    'drop_off_address'=>"Test",
+                    'added_notes'=>"notes",
+                    ]);
+
+    $orders->push(['id' => 2222222222,
+                    'service'=>'Washing clothes',
+                    'start_date' => '20/09/2020',
+                    'price'=> '120 $',
+                    'finish_date'=>"Test",
+                    'status'=>"Test",
+                    'service_return_duration'=>"Test",
+                    'added_value_service'=>"Test",
+                    'package_duration'=>"Test",
+                    'number_of_pickups_per_package'=>"Test",
+                    'volume_per_package'=>"Test",
+                    'number_of_bags_per_package'=>"Test",
+                    'pickup_address'=>"Test",
+                    'drop_off_address'=>"Test",
+                    'added_notes'=>"notes",
+                    ]);
+                    
+    return view('user.home.index', ['active' => 'home', 'orders' => $orders]);
 })->name('home');
 
 
