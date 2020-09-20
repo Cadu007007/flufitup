@@ -4,6 +4,7 @@
 <Profile-Edit 
 class="PageContentContainer" 
 id="ProfileEdit" 
+formactionroute="{{ route('dummy') }}"
 />
 
 @endsection

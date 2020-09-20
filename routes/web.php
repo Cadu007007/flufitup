@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,3 +138,9 @@ Route::get('/password/new', function () {
 Route::get('/login', function () {
     return view('auth.login', ['active' => 'logout']);
 })->name('logout');
+
+
+Route::post('/dummy', function (Request $request) {
+    return dd($request);
+})->name('dummy');
+

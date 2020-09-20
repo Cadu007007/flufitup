@@ -3,7 +3,9 @@
 
 <Profile-Change-Password 
 class="PageContentContainer" 
-id="ProfileChangePassword" 
+id="ProfileChangePassword"
+formactionroute="{{ route('dummy') }}"
 />
+
 
 @endsection

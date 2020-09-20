@@ -27,8 +27,11 @@
     
 
     {{-- City Location --}}
-    <div class="city-location">
+    <div class="city-location" style="background-image: url(/images/city-location-vector.svg)">
         <div class="left">
+    {{--             <img src="/images/city-location-vector.svg" class="city-location-image" alt="">
+ --}}
+            
             <p class="title">City Search</p>
             <div class="city-location-underline"></div>
             <p class="description">

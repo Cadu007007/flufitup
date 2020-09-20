@@ -1,0 +1,43 @@
+<template>
+  <div class="SmartInputContainer">
+    <label  class="label" :for="name" > {{ title }}</label>
+    <input class="input" :name="name" :placeholder="placeholder" :type="type">
+  </div>
+</template>
+
+<script>
+export default {
+props:['title','name','placeholder','type']
+}
+</script>
+
+<style lang="scss">
+$white: #FFFFFF;
+$black: #000000;
+$container-height: 82px;
+
+.SmartInputContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: $container-height;
+    margin-bottom: 36px;
+    .label{
+        font-size: 16px;
+        font-family: 'Lato-Bold';
+        margin-bottom: 18px;;
+        color: $black;
+    }
+    .input{
+        color: $black;
+        width: 100%;
+        height: 45px;
+        background: $white;
+        padding: 14px 24px;
+        border-radius: 23px;
+        font-size: 14px;
+    }
+
+}
+</style>
