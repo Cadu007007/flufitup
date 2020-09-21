@@ -17,6 +17,7 @@
     :price="item.price"
     :description="item.description"
     :button="item.button"
+    @show-package-details="goToPackageDetails(item.id)"
     />
     
   </div>
@@ -32,6 +33,7 @@
     :price="item.price"
     :description="item.description"
     :button="item.button"
+    @show-package-details="goToPackageDetails(item.id)"
     />
   </div>
     
@@ -45,6 +47,8 @@ Monthly Packages
     :price="item.price"
     :description="item.description"
     :button="item.button"
+    @show-package-details="goToPackageDetails(item.id)"
+
     />
     
   </div>
@@ -136,9 +140,16 @@ export default {
         packagebiweeklylist: Array,
         packagesmonthlylist: Array,
         date: String,
+        packageshowroute: String
   },
   components:{
     PackageContainer
-  }
+  },
+  methods: {
+    goToPackageDetails(id){
+      var packageDetailsUrl = this.packageshowroute.replace('package_id', id)
+      window.location.href = packageDetailsUrl
+    }
+  },
 }
 </script>

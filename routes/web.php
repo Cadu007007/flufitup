@@ -82,22 +82,40 @@ Route::get('/packages', function () {
     $packages->bi_weekly= collect();
     $packages->monthly= collect();
 
-    $packages->adhoc->push( ['title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description'  => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button' =>'Subscribe']);
-    $packages->adhoc->push( ['title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description'  => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button' =>'Subscribe']);
+    $packages->adhoc->push( ['id' => 1 , 'title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description'  => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button' =>'Subscribe']);
+    $packages->adhoc->push( ['id' => 2 , 'title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description'  => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button' =>'Subscribe']);
     
-    $packages->bi_weekly->push(['title'=> 'Bi-Weekly', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
-    $packages->bi_weekly->push(['title'=> 'Bi-Weekly – Big Job', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->bi_weekly->push(['id' => 3 , 'title'=> 'Bi-Weekly', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->bi_weekly->push(['id' => 4 , 'title'=> 'Bi-Weekly – Big Job', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
     
-    $packages->monthly->push(['title'=> 'Monthly', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
-    $packages->monthly->push(['title'=> 'Monthly - Busy', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
-    $packages->monthly->push(['title'=> 'Monthly - Heavy', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->monthly->push(['id' => 5, 'title'=> 'Monthly', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->monthly->push(['id' => 6 , 'title'=> 'Monthly - Busy', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
+    $packages->monthly->push(['id' => 7 , 'title'=> 'Monthly - Heavy', 'price'=> '75 $', 'description'=> 'Lorem Ipsum is simply dummy text of the printing and typesetting industry','button'=>'Subscribe']);
     
     return view('user.packages.index',  ['active' => 'packages', 'packages' => $packages]);
 })->name('packages');
 
-Route::get('/packages/show', function () {
-    return view('user.packages.show',  ['active' => 'packages']);
-})->name('packages.show');
+Route::get('/packages/show/{id}', function () {
+    $packages = collect();
+    $packages->push(['id' => 1111111111,
+                    'package_duration'=>'1 Day',
+                    'no_of_pickups' => '1 Pickup',
+                    'no_of_bags'=> '2 Bags',
+                    'max_weight'=>"30 Pounds",
+                    'return_duration'=>"24 Hours",
+                    'dry_clean_credit'=>"12 Points",
+                    'added_value_service_credit'=>"10 Points",
+                    'reward_points'=>"3.75 Points",
+                    'price_of_extra_pound'=>"1.96/Lbs",
+                    'advance_notice'=>"2 Days",
+                    'price'=>'50',
+                    'currency'=>'$',
+                    
+                    ]);
+
+
+    return view('user.packages.show',  ['active' => 'packages','package' => $packages]);
+})->name('package.show');
 
 /***************************** 
  *  Profile

@@ -3,7 +3,7 @@
     <p class="title">{{title}}</p>
     <p class="price">{{price}}</p>
     <p class="description">{{description}}</p>
-    <p class="see-details" :class="button == 'Create' ? 'hidden' : ''">See Details</p>
+    <p class="see-details" :class="button == 'Create' ? 'hidden' : ''" @click="$emit('show-package-details')">See Details</p>
     <button class="subscribe" :class="button == 'Create' ? 'create' : ''">{{button}}</button>
   </div>
 </template>
@@ -55,7 +55,7 @@ $shadow-color: #0000001A;
         margin-top: 18px;
         font-size: 16px;
         margin-bottom: 20px;
-
+        cursor: pointer;
     }
     .subscribe{
         width: 148px;

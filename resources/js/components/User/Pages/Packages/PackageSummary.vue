@@ -5,19 +5,40 @@
     <p class="date">{{date}}</p>
   </div>
 
+  <div class="page-container">
+
+    <PackageDetailsCard
+    class="package-details"
+    :package="package"
+    />
+
+    <PackagePriceCard
+    class="package-price"
+    :price="package[0].price"
+    :currency="package[0].currency"
+     />
+
+  </div>
 </div>
 
 </template>
 
 
 <script>
+import PackageDetailsCard from './Components/PackageDetailsCard'
+import PackagePriceCard from './Components/PackagePriceCard'
+
 export default {
   data() {
     return {
       title: 'Package Summary'
     }
   },
-  props: ['date']
+  props: ['date','package'],
+  components:{
+    PackageDetailsCard,
+    PackagePriceCard
+  }
 
 
 }
@@ -43,6 +64,20 @@ $text-grey: #00000066;
     color: $text-grey;
   }
 
+}
+
+.page-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  .package-details{
+    margin: 8px 8px 8px 0;
+  }
+  .package-price{
+    margin: 8px 0 8px 4px;
+  }
 }
 
 }
