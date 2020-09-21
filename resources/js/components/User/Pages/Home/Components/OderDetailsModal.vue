@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import OrderDetail from './OrderDetail'
+  import OrderDetail from '../../../Components/OrderDetail'
 export default {
 components:{
   OrderDetail

@@ -5,26 +5,40 @@
     <p class="date">{{date}}</p>
   </div>
 
+  <div class="page-container">
+    <Old-Order-Details-Card 
+    class="order-card"
+    :oldOrder="order"
+    />
+
+    <Order-Rate 
+    class="order-rate"
+   :formactionroute="feedbackactionroute"
+    />
+  </div>
 </div>
 
 </template>
 
 
 <script>
+import OldOrderDetailsCard from './Components/OldOrderDetailsCard' 
+import OrderRate from './Components/OrderRate' 
 export default {
   data() {
     return {
       title: 'Old Order Details'
     }
   },
-  props: ['date']
-
-
+  props: ['date','order','feedbackactionroute'],
+  components:{
+    OldOrderDetailsCard,
+    OrderRate
+  }
 }
 </script>
 <style lang="scss">
 $text-grey: #00000066;
-
 
 .OldOrderDetails{
   padding: 0 140px 0 16px;
@@ -43,6 +57,20 @@ $text-grey: #00000066;
     color: $text-grey;
   }
 
+}
+
+.page-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  .order-card{
+    margin: 8px 8px 8px 0;
+  }
+  .order-rate{
+    margin: 8px 0;
+  }
 }
 
 }

@@ -131,17 +131,30 @@ Route::get('/chat', function () {
 
 Route::get('/old_orders', function () {
     $orders = collect();
-    $orders->push(['orderdate'=> '18/08/2020','ordernumber'=> '12121212121','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
-    $orders->push(['orderdate'=> '21/08/2020','ordernumber'=> '12121212121','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
-    $orders->push(['orderdate'=> '22/08/2020','ordernumber'=> '12121212121','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
-    $orders->push(['orderdate'=> '23/08/2020','ordernumber'=> '12121212121','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
-    $orders->push(['orderdate'=> '24/08/2020','ordernumber'=> '12121212121','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
+    $orders->push(['orderdate'=> '18/08/2020','ordernumber'=> '11111111111','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
+    $orders->push(['orderdate'=> '21/08/2020','ordernumber'=> '22222222222','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
+    $orders->push(['orderdate'=> '22/08/2020','ordernumber'=> '33333333333','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
+    $orders->push(['orderdate'=> '23/08/2020','ordernumber'=> '44444444444','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
+    $orders->push(['orderdate'=> '24/08/2020','ordernumber'=> '55555555555','startdate'=> '20/08/2020','finishdate'=> '20/08/2020','status'=> 'Delievered']);
 
     return view('user.old_orders.index', ['active' => 'old_orders','orders' => $orders]);
 })->name('old_orders');
 
-Route::get('/old_orders/show', function () {
-    return view('user.old_orders.show', ['active' => 'old_orders']);
+Route::get('/old_orders/show/{id}', function () {
+    $order = collect();
+    $order->push(['id' => 1111111111,
+                    'service'=>'Wash and Fold',
+                    'start_date' => '20/09/2020',
+                    'price'=> '80 $',
+                    'finish_date'=>"25/09/2020",
+                    'status'=>"Delivered",
+                    'service_return_duration'=>"Standard : Within 48 Hours",
+                    'added_value_service'=>"All nature garment freshener",
+                    'pickup_address'=>"12 - Amr Ibn El Aass - Miami - Alexandria",
+                    'drop_off_address'=>"12 - Amr Ibn El Aass - Miami - Alexandria",
+                    'added_notes'=>"Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                    ]);
+    return view('user.old_orders.show', ['active' => 'old_orders','order' => $order]);
 })->name('old_orders.show');
 
 

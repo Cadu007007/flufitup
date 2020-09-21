@@ -29,6 +29,7 @@
   <AddressInputsContainer 
   title="Pickup"
   addressTypeName="pickup_address_type"
+  residentialTypeName="pickup_residential_type"
   streetAddressName="pickup_street"
   cityName="pickup_city"
   stateName="pickup_state"
@@ -47,6 +48,7 @@
   v-if="showdDropOffAddress"
   title="Drop off"
   addressTypeName="drop_off_address_type"
+  residentialTypeName="drop_off_residential_type"
   streetAddressName="drop_off_street"
   cityName="drop_off_city"
   stateName="drop_off_state"

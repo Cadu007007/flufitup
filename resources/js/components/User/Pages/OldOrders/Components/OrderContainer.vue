@@ -19,7 +19,7 @@
             <p class="title">Status</p>
             <p class="value">{{ status }} </p>
         </div>
-            <a href="" class="view-order-details">View Order Details</a>
+            <p class="view-order-details" @click="$emit('show-order-details',ordernumber)">View Order Details</p>
         <div class="show-details">
         </div>
     </div>
@@ -86,6 +86,7 @@ $orange: #FDBD42;
             position: relative;
             bottom: 5px;
             color: $orange;
+            cursor: pointer;
         }
     }
     }

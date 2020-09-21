@@ -23,11 +23,12 @@
      <div class="orders-container">
 
         <OrderContainer v-for="(item,index) in orders" :key="index"
-            :orderdate="item.orderdate"
             :ordernumber="item.ordernumber"
+            :orderdate="item.orderdate"
             :startdate="item.startdate"
             :finishdate="item.finishdate"
             :status="item.status"
+            @show-order-details="showOrder(item.ordernumber)"
          />
         
      </div>
@@ -42,10 +43,16 @@ export default {
             title: 'Old Orders',
         }
     },
-    props:['date','orderdate','ordernumber','startdate','finishdate','status','orders'],
+    props:['date','orderdate','ordernumber','startdate','finishdate','status','orders','showorderroute'],
     components:{
         OrderContainer,
-    }
+    },
+    methods: {
+        showOrder(orderNumber){
+            var showOrderURL = this.showorderroute.replace('order_id',orderNumber)
+            window.location.href = showOrderURL
+        }
+    },
 }
 </script>
 

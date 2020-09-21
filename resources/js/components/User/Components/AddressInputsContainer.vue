@@ -5,25 +5,27 @@
 
      <div class="filter-options">
         <div class="filter">
-            <input class="radio" type="radio" checked :name="addressTypeName" value="residential" id="">
-            <label class="filter-label" for="address_type">Residential</label>
+            <input class="radio" type="radio" checked @click="showResidentialOptions" :name="addressTypeName" value="residential" id="">
+            <label class="filter-label" :for="addressTypeName">Residential</label>
         </div> 
         <div class="filter">
-            <input class="radio" type="radio" :name="addressTypeName" value="business" id="">
-            <label class="filter-label" for="address_type">Business</label>
-        </div>
-         <div class="filter">
-            <input class="radio" type="radio" :name="addressTypeName" value="appartment" id="">
-            <label class="filter-label" for="address_type">Appartment</label>
-        </div>
-        <div class="filter">
-            <input class="radio" type="radio" :name="addressTypeName" value="house" id="">
-            <label class="filter-label" for="address_type">House</label>
+            <input class="radio" type="radio"  @click="hideResidentialOptions" :name="addressTypeName" value="business" id="">
+            <label class="filter-label" :for="addressTypeName">Business</label>
         </div>
      </div>
-
-
-
+     
+     <div class="filter-options" v-if="isResidential">
+        <div class="filter">
+            <input class="radio" type="radio" :name="residentialTypeName" value="appartment" id="">
+            <label class="filter-label" :for="residentialTypeName">Appartment</label>
+        </div>
+        <div class="filter">
+            <input class="radio" type="radio" :name="residentialTypeName" value="house" id="">
+            <label class="filter-label" :for="residentialTypeName">House</label>
+        </div>    
+     </div>
+     
+    
   <div class="inputs-container">
     <input class="input" :name="streetAddressName" placeholder="Street Address" />
     <input class="input" :name="cityName" placeholder="City"/>
@@ -38,8 +40,21 @@
 
 <script>
 export default {
+    data() {
+        return {
+            isResidential: true
+        }
+    },
 props: ['title','streetAddressName','cityName','stateName','zipCodeName','unitNumberName',
-        'buildingNumberName','gateCodeName','addressTypeName']
+        'buildingNumberName','gateCodeName','addressTypeName','residentialTypeName'],
+        methods: {
+            hideResidentialOptions(){
+                this.isResidential = false
+            },
+            showResidentialOptions(){
+                this.isResidential = true
+            }
+        },
 }
 </script>
 
@@ -80,6 +95,7 @@ $text-grey: #00000066;
             .filter-label{
                 margin-left: 24px;
                 font-size: 14px;
+                width: 70px;
                 color: $black;
             }
         }
