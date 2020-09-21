@@ -7,11 +7,11 @@
         <div class="OrderRate">
         <p class="title">Order Rate</p>
             <div class="order-stars">
-                <img @click="changeRate(1)" class="star" :class="rate > 0 ? 'full' : '' " :src="rate > 0 ? '/images/icons/edit-button.svg' : '/images/icons/profile.svg' " alt="">
-                <img @click="changeRate(2)" class="star" :class="rate > 1 ? 'full' : '' " :src="rate > 1 ? '/images/icons/edit-button.svg' : '/images/icons/profile.svg' " alt="">
-                <img @click="changeRate(3)" class="star" :class="rate > 2 ? 'full' : '' " :src="rate > 2 ? '/images/icons/edit-button.svg' : '/images/icons/profile.svg' " alt="">
-                <img @click="changeRate(4)" class="star" :class="rate > 3 ? 'full' : '' " :src="rate > 3 ? '/images/icons/edit-button.svg' : '/images/icons/profile.svg' " alt="">
-                <img @click="changeRate(5)" class="star" :class="rate > 4 ? 'full' : '' " :src="rate > 4 ? '/images/icons/edit-button.svg' : '/images/icons/profile.svg' " alt="">
+                <img @click="changeRate(1)" class="star" :class="rate > 0 ? 'full' : '' " :src="rate > 0 ? '/images/icons/star-full.svg' : '/images/icons/star.svg' " alt="">
+                <img @click="changeRate(2)" class="star" :class="rate > 1 ? 'full' : '' " :src="rate > 1 ? '/images/icons/star-full.svg' : '/images/icons/star.svg' " alt="">
+                <img @click="changeRate(3)" class="star" :class="rate > 2 ? 'full' : '' " :src="rate > 2 ? '/images/icons/star-full.svg' : '/images/icons/star.svg' " alt="">
+                <img @click="changeRate(4)" class="star" :class="rate > 3 ? 'full' : '' " :src="rate > 3 ? '/images/icons/star-full.svg' : '/images/icons/star.svg' " alt="">
+                <img @click="changeRate(5)" class="star" :class="rate > 4 ? 'full' : '' " :src="rate > 4 ? '/images/icons/star-full.svg' : '/images/icons/star.svg' " alt="">
             </div>
             <div class="order-feedback">
                 <textarea name="feedback"  placeholder="Leave your Feedback"  class="feedback-text-area" rows="5"></textarea>

@@ -41807,8 +41807,8 @@ var render = function() {
             attrs: {
               src:
                 _vm.rate > 0
-                  ? "/images/icons/edit-button.svg"
-                  : "/images/icons/profile.svg",
+                  ? "/images/icons/star-full.svg"
+                  : "/images/icons/star.svg",
               alt: ""
             },
             on: {
@@ -41824,8 +41824,8 @@ var render = function() {
             attrs: {
               src:
                 _vm.rate > 1
-                  ? "/images/icons/edit-button.svg"
-                  : "/images/icons/profile.svg",
+                  ? "/images/icons/star-full.svg"
+                  : "/images/icons/star.svg",
               alt: ""
             },
             on: {
@@ -41841,8 +41841,8 @@ var render = function() {
             attrs: {
               src:
                 _vm.rate > 2
-                  ? "/images/icons/edit-button.svg"
-                  : "/images/icons/profile.svg",
+                  ? "/images/icons/star-full.svg"
+                  : "/images/icons/star.svg",
               alt: ""
             },
             on: {
@@ -41858,8 +41858,8 @@ var render = function() {
             attrs: {
               src:
                 _vm.rate > 3
-                  ? "/images/icons/edit-button.svg"
-                  : "/images/icons/profile.svg",
+                  ? "/images/icons/star-full.svg"
+                  : "/images/icons/star.svg",
               alt: ""
             },
             on: {
@@ -41875,8 +41875,8 @@ var render = function() {
             attrs: {
               src:
                 _vm.rate > 4
-                  ? "/images/icons/edit-button.svg"
-                  : "/images/icons/profile.svg",
+                  ? "/images/icons/star-full.svg"
+                  : "/images/icons/star.svg",
               alt: ""
             },
             on: {
