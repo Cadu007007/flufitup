@@ -26,7 +26,7 @@
             <input class="custom-search-input" type="date" name="start_date" placeholder="Start Date">
             <input class="custom-search-input" type="date" name="end_date" placeholder="End Date">
             <button class="custom-search-button" type="submit">
-                <img src="/images/icons/star-full.svg" alt="">
+                <img src="/images/icons/search.svg" alt="">
             </button>
         </div>
     </form>

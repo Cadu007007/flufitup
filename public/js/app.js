@@ -42580,7 +42580,7 @@ var staticRenderFns = [
     return _c(
       "button",
       { staticClass: "custom-search-button", attrs: { type: "submit" } },
-      [_c("img", { attrs: { src: "/images/icons/star-full.svg", alt: "" } })]
+      [_c("img", { attrs: { src: "/images/icons/search.svg", alt: "" } })]
     )
   }
 ]
