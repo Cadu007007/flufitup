@@ -11,6 +11,7 @@ var Home = require('./components/User/Pages/Home/Home.vue').default
 /* Packages */
 var Packages = require('./components/User/Pages/Packages/Packages.vue').default
 var PackageSummary = require('./components/User/Pages/Packages/PackageSummary.vue').default
+var PackageCreate = require('./components/User/Pages/Packages/PackageCreate.vue').default
     /* XX Packages XX */
 
 /* Profile  */
@@ -31,6 +32,7 @@ const app = new Vue({
         Home,
         Packages,
         PackageSummary,
+        PackageCreate,
         Profile,
         ProfileChangePassword,
         ProfileEdit,

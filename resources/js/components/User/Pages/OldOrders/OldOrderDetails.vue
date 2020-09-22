@@ -13,7 +13,8 @@
 
     <Order-Rate 
     class="order-rate"
-   :formactionroute="feedbackactionroute"
+    :rate="order[0].rate"
+    :formactionroute="feedbackactionroute"
     />
   </div>
 </div>

@@ -110,12 +110,58 @@ Route::get('/packages/show/{id}', function () {
                     'advance_notice'=>"2 Days",
                     'price'=>'50',
                     'currency'=>'$',
-                    
                     ]);
-
-
     return view('user.packages.show',  ['active' => 'packages','package' => $packages]);
 })->name('package.show');
+
+Route::get('/packages/create', function () {
+    $options = collect();
+    $options->service= collect();
+    $options->wash= collect();
+    $options->pickup= collect();
+    $options->load_size= collect();
+    $options->date= collect();
+    $options->return_duration= collect();
+    $options->added_value= collect();
+    
+    $options->service->push(['title' => 'Washing and Folding', 'value' => '1']);
+    $options->service->push(['title' => 'Wash, Fold and Dry Clean', 'value' => '2']);
+    $options->service->push(['title' => 'Dry Clean Service with Delivery', 'value' => '3']);
+    $options->service->push(['title' => 'Dry Clean Delivery Service Only', 'value' => '4']);
+
+    $options->wash->push(['title' => 'Washing and Folding', 'value' => '1']);
+    $options->wash->push(['title' => 'Wash, Fold and Dry Clean', 'value' => '2']);
+    $options->wash->push(['title' => 'Dry Clean Service with Delivery', 'value' => '3']);
+    $options->wash->push(['title' => 'Dry Clean Delivery Service Only', 'value' => '4']);
+
+    $options->pickup->push(['title' => 'Value 1', 'value' => '1']);
+    $options->pickup->push(['title' => 'Value 2', 'value' => '2']);
+    $options->pickup->push(['title' => 'Value 3', 'value' => '3']);
+    $options->pickup->push(['title' => 'Value 4', 'value' => '4']);
+
+    $options->load_size->push(['title' => 'Value 1', 'value' => '1']);
+    $options->load_size->push(['title' => 'Value 2', 'value' => '2']);
+    $options->load_size->push(['title' => 'Value 3', 'value' => '3']);
+    $options->load_size->push(['title' => 'Value 4', 'value' => '4']);
+
+    $options->date->push(['title' => 'Week One', 'value' => '1']);
+    $options->date->push(['title' => 'Week Two', 'value' => '2']);
+    $options->date->push(['title' => 'Week Three', 'value' => '3']);
+    $options->date->push(['title' => 'Week Four', 'value' => '4']);
+
+    $options->return_duration->push(['title' => 'Week One', 'value' => '1']);
+    $options->return_duration->push(['title' => 'Week Two', 'value' => '2']);
+    $options->return_duration->push(['title' => 'Week Three', 'value' => '3']);
+    $options->return_duration->push(['title' => 'Week Four', 'value' => '4']);
+
+    $options->added_value->push(['title' => 'Value 1', 'value' => '1']);
+    $options->added_value->push(['title' => 'Value 2', 'value' => '2']);
+    $options->added_value->push(['title' => 'Value 3', 'value' => '3']);
+    $options->added_value->push(['title' => 'Value 4', 'value' => '4']);
+
+    return view('user.packages.create',  ['active' => 'packages', 'options' => $options]);
+})->name('package.create');
+
 
 /***************************** 
  *  Profile
@@ -171,6 +217,7 @@ Route::get('/old_orders/show/{id}', function () {
                     'pickup_address'=>"12 - Amr Ibn El Aass - Miami - Alexandria",
                     'drop_off_address'=>"12 - Amr Ibn El Aass - Miami - Alexandria",
                     'added_notes'=>"Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                    'rate'=>3
                     ]);
     return view('user.old_orders.show', ['active' => 'old_orders','order' => $order]);
 })->name('old_orders.show');

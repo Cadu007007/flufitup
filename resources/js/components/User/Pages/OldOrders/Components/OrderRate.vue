@@ -27,11 +27,10 @@
 export default {
 data() {
     return {
-        rate: 0,
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }
 },
-props:['formactionroute'],
+props:['formactionroute','rate'],
 methods: {
     changeRate(index) {
         this.rate = index;

@@ -1,8 +1,10 @@
 /* Why choose us hover effects */
-$('.feature-container').hover(function() {
-
+$('.feature-container').mouseenter(function() {
     $('.feature-container').removeClass('active');
     $(this).addClass('active');
+});
+$('.feature-container').mouseleave(function() {
+    $('.feature-container').removeClass('active');
 });
 /* XX Why choose us hover effects XX */
 
