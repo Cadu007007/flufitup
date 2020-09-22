@@ -123,6 +123,7 @@ Route::get('/packages/create', function () {
     $options->date= collect();
     $options->return_duration= collect();
     $options->added_value= collect();
+    $options->added_value_choices= collect();
     
     $options->service->push(['title' => 'Washing and Folding', 'value' => '1']);
     $options->service->push(['title' => 'Wash, Fold and Dry Clean', 'value' => '2']);
@@ -154,10 +155,24 @@ Route::get('/packages/create', function () {
     $options->return_duration->push(['title' => 'Week Three', 'value' => '3']);
     $options->return_duration->push(['title' => 'Week Four', 'value' => '4']);
 
-    $options->added_value->push(['title' => 'Value 1', 'value' => '1']);
-    $options->added_value->push(['title' => 'Value 2', 'value' => '2']);
-    $options->added_value->push(['title' => 'Value 3', 'value' => '3']);
-    $options->added_value->push(['title' => 'Value 4', 'value' => '4']);
+    $options->added_value->push(['title' => 'Use hungers instead of Folding', 'value' => '1']);
+    $options->added_value->push(['title' => 'Individual Garment Wrapping', 'value' => '2']);
+    
+    $options->added_value_choices->push(['title' => 'T‐Shirts', 'name' => 't-shirt']);
+    $options->added_value_choices->push(['title' => 'Trousers', 'name' => 'trousers']);
+    $options->added_value_choices->push(['title' => 'V‐Neck', 'name' => 'v_neck']);
+    $options->added_value_choices->push(['title' => 'Blouses', 'name' => 'blouses']);
+    $options->added_value_choices->push(['title' => 'Hoodies', 'name' => 'hoodies']);
+    $options->added_value_choices->push(['title' => 'Sleep-Wear', 'name' => 'sleep_wear']);
+    $options->added_value_choices->push(['title' => 'Shirts', 'name' => 'shirts']);
+    $options->added_value_choices->push(['title' => 'Polo Shirts', 'name' => 'polo_shirts']);
+    $options->added_value_choices->push(['title' => 'Skirts', 'name' => 'skirts']);
+    $options->added_value_choices->push(['title' => 'Sweat Shirts', 'name' => 'sweat_shirts']);
+    $options->added_value_choices->push(['title' => 'Dresses', 'name' => 'dresses']);
+    $options->added_value_choices->push(['title' => 'Jeans', 'name' => 'jeans']);
+    $options->added_value_choices->push(['title' => 'Bra ( Up to 4 )', 'name' => 'bra']);
+    $options->added_value_choices->push(['title' => 'Shorts', 'name' => 'shorts']);
+    $options->added_value_choices->push(['title' => 'Overalls', 'name' => 'overalls']);
 
     return view('user.packages.create',  ['active' => 'packages', 'options' => $options]);
 })->name('package.create');

@@ -1,29 +1,14 @@
 <template>
   <div class="Accordion">
-    <div class="header"   @click="changeIsOpenState">
+    <div class="header"   @click="changeIsOpenState()">
         <p class="title">{{title}}</p>
-        <img :src=" isOpen ? '/images/icons/arrow-up.svg' : '/images/icons/arrow-down.svg' " alt="">
+        <img :src=" isopen ? '/images/icons/arrow-up.svg' : '/images/icons/arrow-down.svg' " alt="">
     </div>
-     <div class="options" v-show="isOpen">
+     <div class="options" v-show="isopen">
         <div class="option" v-for="(option,index) in options" :key="index">
             <input class="radio" type="radio" :checked="index == 0" :name="name" :value="option.value" id="">
             <label class="option-label" for="filter">{{option.title}}</label>
         </div> 
-
-        <!--
-        <div class="option">
-            <input class="radio" type="radio" :name="name" value="three_months" id="">
-            <label class="option-label" for="filter">Wash, Fold and Dry Clean</label>
-        </div>
-        <div class="option">
-            <input class="radio" type="radio" :name="name" value="custom_search" id="">
-            <label class="option-label" for="filter">Dry Clean Service with Delivery</label>
-        </div>
-        <div class="option">
-            <input class="radio" type="radio" :name="name" value="custom_search" id="">
-            <label class="option-label" for="filter">Dry Clean Delivery Service Only</label>
-        </div>
-        -->
      </div>
 
   </div>
@@ -31,11 +16,11 @@
 
 <script>
 export default {
-    props: ['title','name','options','isOpen'],
+    props: ['title','name','options','isopen'],
     methods: {
         changeIsOpenState(){
-            this.isOpen = ! this.isOpen
-        }
+            this.isopen = !this.isopen;
+        },
     },
 }
 </script>

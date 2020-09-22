@@ -73,10 +73,10 @@ $text-grey: #00000066;
   align-items: center;
   flex-wrap: wrap;
   .package-details{
-    margin: 8px 8px 8px 0;
+    margin: 8px 4px 8px 0;
   }
   .package-price{
-    margin: 8px 0 8px 4px;
+    margin: 8px 0 8px 0px;
   }
 }
 

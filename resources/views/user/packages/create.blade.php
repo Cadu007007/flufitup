@@ -12,6 +12,7 @@ date="21/09/2020"
 :dateoptions="{{ $options->date }}"
 :returndurationoptions="{{ $options->return_duration }}"
 :addedvalueoptions="{{ $options->added_value }}"
+:addedvaluechoices="{{ $options->added_value_choices }}"
 formactionroute="{{ route('dummy') }}"
 />
 

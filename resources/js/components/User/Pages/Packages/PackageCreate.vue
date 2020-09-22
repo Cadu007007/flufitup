@@ -10,7 +10,7 @@
   <div class="page-container">
       <div class="options-container">
           <Accordion
-          :isOpen="true"
+          :isopen="true"
           class="accordion"
           title="Choose your Service"
           name="service"
@@ -52,12 +52,14 @@
           :options="returndurationoptions"
           />
 
-          <Accordion
+          <AddedValuesAccordion
           class="accordion"
           title="Choose your Add Value Service"
           name="added_value"
           :options="addedvalueoptions"
+          :addedvaluechoices="addedvaluechoices"
           />
+
 
       </div>
 
@@ -77,21 +79,32 @@
 
 <script>
 import Accordion from './Components/Accordion'
+import AddedValuesAccordion from './Components/AddedValuesAccordion'
 import PackageCreatePriceCard from './Components/PackageCreatePriceCard'
 export default {
   data() {
     return {
       title: 'Package Create',
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-
+      showaddedvalueschoices: false,
     }
   },
   props: ['date','serviceoptions','washoptions','pickupsoptions','loadoptions','dateoptions',
-          'returndurationoptions','addedvalueoptions','formactionroute'],
+          'returndurationoptions','addedvalueoptions','addedvaluechoices','formactionroute'],
   components:{
     Accordion,
+    AddedValuesAccordion,
     PackageCreatePriceCard
-  }
+  },
+  methods: {
+    showAddedValues(){
+      this.showaddedvalueschoices = !this.showaddedvalueschoices
+      alert(this.showaddedvalueschoices)
+    },
+    addedValuesClicked(){
+      alert('Added values')
+    }
+  },
 }
 </script>
 <style lang="scss">
@@ -134,8 +147,32 @@ $text-grey: #00000066;
         margin: 12px 0;
       }
     }
+
+    .added-values-container{
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      .added-value{
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        .input{
+
+        }
+        .label{
+          font-size: 12px;
+          margin-left: 12px;
+        }
+      }
+
+    }
     .package-price{
-      margin-left: 20px;
+      margin-left: 10px;
     }
 }
 

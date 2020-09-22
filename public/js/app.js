@@ -2726,6 +2726,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['title', 'name', 'options', 'isopen'],
+  methods: {
+    changeIsOpenState: function changeIsOpenState() {
+      this.isopen = !this.isopen;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2742,10 +2787,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['title', 'name', 'options', 'isOpen'],
+  props: ['title', 'name', 'options', 'isopen', 'addedvaluechoices'],
   methods: {
     changeIsOpenState: function changeIsOpenState() {
-      this.isOpen = !this.isOpen;
+      this.isopen = !this.isopen;
     }
   }
 });
@@ -2878,7 +2923,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Accordion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Components/Accordion */ "./resources/js/components/User/Pages/Packages/Components/Accordion.vue");
-/* harmony import */ var _Components_PackageCreatePriceCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Components/PackageCreatePriceCard */ "./resources/js/components/User/Pages/Packages/Components/PackageCreatePriceCard.vue");
+/* harmony import */ var _Components_AddedValuesAccordion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Components/AddedValuesAccordion */ "./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue");
+/* harmony import */ var _Components_PackageCreatePriceCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Components/PackageCreatePriceCard */ "./resources/js/components/User/Pages/Packages/Components/PackageCreatePriceCard.vue");
 //
 //
 //
@@ -2956,19 +3002,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       title: 'Package Create',
-      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      showaddedvalueschoices: false
     };
   },
-  props: ['date', 'serviceoptions', 'washoptions', 'pickupsoptions', 'loadoptions', 'dateoptions', 'returndurationoptions', 'addedvalueoptions', 'formactionroute'],
+  props: ['date', 'serviceoptions', 'washoptions', 'pickupsoptions', 'loadoptions', 'dateoptions', 'returndurationoptions', 'addedvalueoptions', 'addedvaluechoices', 'formactionroute'],
   components: {
     Accordion: _Components_Accordion__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PackageCreatePriceCard: _Components_PackageCreatePriceCard__WEBPACK_IMPORTED_MODULE_1__["default"]
+    AddedValuesAccordion: _Components_AddedValuesAccordion__WEBPACK_IMPORTED_MODULE_1__["default"],
+    PackageCreatePriceCard: _Components_PackageCreatePriceCard__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  methods: {
+    showAddedValues: function showAddedValues() {
+      this.showaddedvalueschoices = !this.showaddedvalueschoices;
+      alert(this.showaddedvalueschoices);
+    },
+    addedValuesClicked: function addedValuesClicked() {
+      alert('Added values');
+    }
   }
 });
 
@@ -8285,6 +8345,25 @@ exports.push([module.i, ".Accordion {\n  width: 100%;\n  box-shadow: 0px 0px 10p
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".ComponentContainer {\n  width: 100%;\n}\n.ComponentContainer .AddedValuesAccordion {\n  width: 100%;\n  box-shadow: 0px 0px 10px #0000001A;\n  border-radius: 10px 10px 0px 0px;\n}\n.ComponentContainer .AddedValuesAccordion .header {\n  height: 60px;\n  background: #F1F3F7;\n  padding: 16px 24px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n.ComponentContainer .AddedValuesAccordion .header .title {\n  font-size: 18px;\n}\n.ComponentContainer .AddedValuesAccordion .options {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  background: #FFFFFF;\n  padding: 24px 48px;\n}\n.ComponentContainer .AddedValuesAccordion .options .option {\n  margin-bottom: 16px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 24px;\n}\n.ComponentContainer .AddedValuesAccordion .options .option .radio {\n  width: 24px;\n  height: 24px;\n  color: #000000;\n}\n.ComponentContainer .AddedValuesAccordion .options .option .option-label {\n  margin-left: 24px;\n  font-size: 14px;\n  color: #000000;\n}\n.ComponentContainer .question-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  width: 520px;\n  margin: 40px 0;\n}\n.ComponentContainer .question-container .question {\n  font-size: 18px;\n  font-family: \"Lato-Bold\";\n  color: #000000;\n}\n.ComponentContainer .question-container .answers {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.ComponentContainer .question-container .answers .answer {\n  width: 80px;\n  margin-top: 12px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.ComponentContainer .question-container .answers .answer .option-label {\n  margin-left: 10px;\n}\n.ComponentContainer .question-container .answers .answer .radio {\n  width: 24px;\n  height: 24px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/Components/PackageContainer.vue?vue&type=style&index=0&lang=scss&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/Components/PackageContainer.vue?vue&type=style&index=0&lang=scss& ***!
@@ -8373,7 +8452,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".PackageSummary {\n  padding: 0 140px 0 16px;\n}\n.PackageSummary .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.PackageSummary .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.PackageSummary .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.PackageSummary .page-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  flex-wrap: wrap;\n}\n.PackageSummary .page-container .options-container {\n  width: 444px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex-wrap: wrap;\n}\n.PackageSummary .page-container .options-container .accordion {\n  margin: 12px 0;\n}\n.PackageSummary .page-container .package-price {\n  margin-left: 20px;\n}", ""]);
+exports.push([module.i, ".PackageSummary {\n  padding: 0 140px 0 16px;\n}\n.PackageSummary .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.PackageSummary .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.PackageSummary .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.PackageSummary .page-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  flex-wrap: wrap;\n}\n.PackageSummary .page-container .options-container {\n  width: 444px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex-wrap: wrap;\n}\n.PackageSummary .page-container .options-container .accordion {\n  margin: 12px 0;\n}\n.PackageSummary .page-container .added-values-container {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  flex-wrap: wrap;\n  justify-content: center;\n  align-items: center;\n}\n.PackageSummary .page-container .added-values-container .added-value {\n  height: 40px;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.PackageSummary .page-container .added-values-container .added-value .label {\n  font-size: 12px;\n  margin-left: 12px;\n}\n.PackageSummary .page-container .package-price {\n  margin-left: 10px;\n}", ""]);
 
 // exports
 
@@ -8392,7 +8471,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".PackageSummary {\n  padding: 0 140px 0 16px;\n}\n.PackageSummary .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.PackageSummary .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.PackageSummary .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.PackageSummary .page-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.PackageSummary .page-container .package-details {\n  margin: 8px 8px 8px 0;\n}\n.PackageSummary .page-container .package-price {\n  margin: 8px 0 8px 4px;\n}", ""]);
+exports.push([module.i, ".PackageSummary {\n  padding: 0 140px 0 16px;\n}\n.PackageSummary .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.PackageSummary .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.PackageSummary .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.PackageSummary .page-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.PackageSummary .page-container .package-details {\n  margin: 8px 4px 8px 0;\n}\n.PackageSummary .page-container .package-price {\n  margin: 8px 0 8px 0px;\n}", ""]);
 
 // exports
 
@@ -40201,6 +40280,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--11-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/Components/PackageContainer.vue?vue&type=style&index=0&lang=scss&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/Components/PackageContainer.vue?vue&type=style&index=0&lang=scss& ***!
@@ -42497,18 +42606,29 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "Accordion" }, [
-    _c("div", { staticClass: "header", on: { click: _vm.changeIsOpenState } }, [
-      _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
-      _vm._v(" "),
-      _c("img", {
-        attrs: {
-          src: _vm.isOpen
-            ? "/images/icons/arrow-up.svg"
-            : "/images/icons/arrow-down.svg",
-          alt: ""
+    _c(
+      "div",
+      {
+        staticClass: "header",
+        on: {
+          click: function($event) {
+            return _vm.changeIsOpenState()
+          }
         }
-      })
-    ]),
+      },
+      [
+        _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
+        _vm._v(" "),
+        _c("img", {
+          attrs: {
+            src: _vm.isopen
+              ? "/images/icons/arrow-up.svg"
+              : "/images/icons/arrow-down.svg",
+            alt: ""
+          }
+        })
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -42517,8 +42637,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.isOpen,
-            expression: "isOpen"
+            value: _vm.isopen,
+            expression: "isopen"
           }
         ],
         staticClass: "options"
@@ -42543,6 +42663,183 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=template&id=489b1231&":
+/*!******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=template&id=489b1231& ***!
+  \******************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "ComponentContainer" }, [
+    _c("div", { staticClass: "AddedValuesAccordion" }, [
+      _c(
+        "div",
+        {
+          staticClass: "header",
+          on: {
+            click: function($event) {
+              return _vm.changeIsOpenState()
+            }
+          }
+        },
+        [
+          _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
+          _vm._v(" "),
+          _c("img", {
+            attrs: {
+              src: _vm.isopen
+                ? "/images/icons/arrow-up.svg"
+                : "/images/icons/arrow-down.svg",
+              alt: ""
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.isopen,
+              expression: "isopen"
+            }
+          ],
+          staticClass: "options"
+        },
+        _vm._l(_vm.options, function(option, index) {
+          return _c("div", { key: index, staticClass: "option" }, [
+            _c("input", {
+              staticClass: "radio",
+              attrs: { type: "radio", name: _vm.name, id: "" },
+              domProps: { checked: index == 0, value: option.value }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              { staticClass: "option-label", attrs: { for: "filter" } },
+              [_vm._v(_vm._s(option.title))]
+            )
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.isopen,
+            expression: "isopen"
+          }
+        ],
+        staticClass: "added-values-container"
+      },
+      _vm._l(_vm.addedvaluechoices, function(choice, index) {
+        return _c("div", { key: index, staticClass: "added-value" }, [
+          _c("input", {
+            staticClass: "input",
+            attrs: { type: "checkbox", name: choice.name }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "label", attrs: { for: choice.name } }, [
+            _vm._v(_vm._s(choice.title))
+          ])
+        ])
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.isopen,
+            expression: "isopen"
+          }
+        ],
+        staticClass: "question-container"
+      },
+      [
+        _c("p", { staticClass: "question" }, [
+          _vm._v(
+            "Add Nature friendly garment Freshener ( Only for 1.5s per bag )"
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "answers" }, [
+      _c("div", { staticClass: "answer" }, [
+        _c("input", {
+          staticClass: "radio",
+          attrs: {
+            type: "radio",
+            checked: "",
+            name: "add_nature_garment",
+            value: "yes",
+            id: ""
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "option-label", attrs: { for: "add_nature_garment" } },
+          [_vm._v("Yes")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "answer" }, [
+        _c("input", {
+          staticClass: "radio",
+          attrs: {
+            type: "radio",
+            name: "add_nature_garment",
+            value: "no",
+            id: ""
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "option-label", attrs: { for: "add_nature_garment" } },
+          [_vm._v("No")]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -42820,7 +43117,7 @@ var render = function() {
               _c("Accordion", {
                 staticClass: "accordion",
                 attrs: {
-                  isOpen: true,
+                  isopen: true,
                   title: "Choose your Service",
                   name: "service",
                   options: _vm.serviceoptions
@@ -42872,12 +43169,13 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("Accordion", {
+              _c("AddedValuesAccordion", {
                 staticClass: "accordion",
                 attrs: {
                   title: "Choose your Add Value Service",
                   name: "added_value",
-                  options: _vm.addedvalueoptions
+                  options: _vm.addedvalueoptions,
+                  addedvaluechoices: _vm.addedvaluechoices
                 }
               })
             ],
@@ -57289,6 +57587,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Accordion_vue_vue_type_template_id_f0047f66___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Accordion_vue_vue_type_template_id_f0047f66___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddedValuesAccordion_vue_vue_type_template_id_489b1231___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddedValuesAccordion.vue?vue&type=template&id=489b1231& */ "./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=template&id=489b1231&");
+/* harmony import */ var _AddedValuesAccordion_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddedValuesAccordion.vue?vue&type=script&lang=js& */ "./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _AddedValuesAccordion_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _AddedValuesAccordion_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddedValuesAccordion_vue_vue_type_template_id_489b1231___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddedValuesAccordion_vue_vue_type_template_id_489b1231___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddedValuesAccordion.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/style-loader!../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--11-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=template&id=489b1231&":
+/*!************************************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=template&id=489b1231& ***!
+  \************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_template_id_489b1231___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddedValuesAccordion.vue?vue&type=template&id=489b1231& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/Components/AddedValuesAccordion.vue?vue&type=template&id=489b1231&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_template_id_489b1231___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddedValuesAccordion_vue_vue_type_template_id_489b1231___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
