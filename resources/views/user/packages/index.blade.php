@@ -9,6 +9,7 @@ date="18/09/2020"
 :packagebiweeklylist="{{ $packages->bi_weekly}}"
 :packagesmonthlylist="{{ $packages->monthly}}"
 packageshowroute="{{ route('package.show', 'package_id') }}"
+packagecreateroute="{{ route('package.create') }}"
 />
 
 @endsection

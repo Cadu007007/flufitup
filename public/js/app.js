@@ -2772,7 +2772,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['title', 'price', 'description', 'button']
+  props: ['title', 'price', 'description', 'button', 'buttonroute']
 });
 
 /***/ }),
@@ -3179,7 +3179,8 @@ __webpack_require__.r(__webpack_exports__);
     packagebiweeklylist: Array,
     packagesmonthlylist: Array,
     date: String,
-    packageshowroute: String
+    packageshowroute: String,
+    packagecreateroute: String
   },
   components: {
     PackageContainer: _Components_PackageContainer__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -8296,7 +8297,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../node_mod
 
 
 // module
-exports.push([module.i, ".PackageContainer {\n  background: #FFFFFF;\n  width: 233px;\n  height: 300px;\n  box-shadow: 0px 0px 3px #0000001A;\n  border-radius: 20px;\n  margin: 20px 20px 20px 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  padding: 20px 0 0 0;\n  position: relative;\n}\n.PackageContainer .title {\n  font-size: 16px;\n}\n.PackageContainer .price {\n  margin-top: 23px;\n  font-size: 36px;\n  color: #00000099;\n}\n.PackageContainer .description {\n  margin-top: 28px;\n  color: #00000080;\n  font-size: 14px;\n  text-align: center;\n}\n.PackageContainer .see-details {\n  margin-top: 18px;\n  font-size: 16px;\n  margin-bottom: 20px;\n  cursor: pointer;\n}\n.PackageContainer .subscribe {\n  width: 148px;\n  height: 31px;\n  border-radius: 20px;\n  background: #FDBD42;\n  font-size: 14px;\n  color: #FFFFFF;\n  position: absolute;\n  bottom: 18px;\n}\n.PackageContainer .subscribe.create {\n  background: #22AEE4;\n}", ""]);
+exports.push([module.i, ".PackageContainer {\n  background: #FFFFFF;\n  width: 233px;\n  height: 300px;\n  box-shadow: 0px 0px 3px #0000001A;\n  border-radius: 20px;\n  margin: 20px 20px 20px 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  padding: 20px 0 0 0;\n  position: relative;\n}\n.PackageContainer .title {\n  font-size: 16px;\n}\n.PackageContainer .price {\n  margin-top: 23px;\n  font-size: 36px;\n  color: #00000099;\n}\n.PackageContainer .description {\n  margin-top: 28px;\n  color: #00000080;\n  font-size: 14px;\n  text-align: center;\n}\n.PackageContainer .see-details {\n  margin-top: 18px;\n  font-size: 16px;\n  margin-bottom: 20px;\n  cursor: pointer;\n}\n.PackageContainer .subscribe {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n  width: 148px;\n  height: 31px;\n  border-radius: 20px;\n  background: #FDBD42;\n  font-size: 14px;\n  color: #FFFFFF;\n  position: absolute;\n  bottom: 18px;\n}\n.PackageContainer .subscribe.create {\n  background: #22AEE4;\n}", ""]);
 
 // exports
 
@@ -42585,10 +42586,11 @@ var render = function() {
     ),
     _vm._v(" "),
     _c(
-      "button",
+      "a",
       {
         staticClass: "subscribe",
-        class: _vm.button == "Create" ? "create" : ""
+        class: _vm.button == "Create" ? "create" : "",
+        attrs: { href: _vm.buttonroute }
       },
       [_vm._v(_vm._s(_vm.button))]
     )
@@ -43064,7 +43066,8 @@ var render = function() {
             title: "Create your package",
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-            button: "Create"
+            button: "Create",
+            buttonroute: _vm.packagecreateroute
           }
         })
       ],

@@ -48,7 +48,6 @@ Monthly Packages
     :description="item.description"
     :button="item.button"
     @show-package-details="goToPackageDetails(item.id)"
-
     />
     
   </div>
@@ -63,6 +62,7 @@ Create Your Package
     title="Create your package"
     description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
     button="Create"
+    :buttonroute="packagecreateroute"
     />
     
   </div>
@@ -140,7 +140,8 @@ export default {
         packagebiweeklylist: Array,
         packagesmonthlylist: Array,
         date: String,
-        packageshowroute: String
+        packageshowroute: String,
+        packagecreateroute: String
   },
   components:{
     PackageContainer

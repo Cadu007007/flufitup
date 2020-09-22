@@ -4,13 +4,13 @@
     <p class="price">{{price}}</p>
     <p class="description">{{description}}</p>
     <p class="see-details" :class="button == 'Create' ? 'hidden' : ''" @click="$emit('show-package-details')">See Details</p>
-    <button class="subscribe" :class="button == 'Create' ? 'create' : ''">{{button}}</button>
+    <a :href="buttonroute" class="subscribe" :class="button == 'Create' ? 'create' : ''">{{button}}</a>
   </div>
 </template>
 
 <script>
 export default {
-props:['title','price','description','button']
+props:['title','price','description','button','buttonroute']
 }
 </script>
 
@@ -58,6 +58,10 @@ $shadow-color: #0000001A;
         cursor: pointer;
     }
     .subscribe{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
         width: 148px;
         height: 31px;
         border-radius: 20px;
