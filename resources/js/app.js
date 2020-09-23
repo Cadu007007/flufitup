@@ -12,6 +12,7 @@ var Home = require('./components/User/Pages/Home/Home.vue').default
 var Packages = require('./components/User/Pages/Packages/Packages.vue').default
 var PackageSummary = require('./components/User/Pages/Packages/PackageSummary.vue').default
 var PackageCreate = require('./components/User/Pages/Packages/PackageCreate.vue').default
+var OnlinePayment = require('./components/User/Pages/Packages/OnlinePayment.vue').default
     /* XX Packages XX */
 
 /* Profile  */
@@ -33,6 +34,7 @@ const app = new Vue({
         Packages,
         PackageSummary,
         PackageCreate,
+        OnlinePayment,
         Profile,
         ProfileChangePassword,
         ProfileEdit,

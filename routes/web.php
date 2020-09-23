@@ -178,6 +178,11 @@ Route::get('/packages/create', function () {
 })->name('package.create');
 
 
+Route::get('/packages/payment', function () {
+    return view('user.packages.payment',  ['active' => 'packages']);
+})->name('package.payment');
+
+
 /***************************** 
  *  Profile
 /**************************** */

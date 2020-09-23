@@ -1,13 +1,21 @@
 <template>
   <div class="SmartInputContainer">
     <label  class="label" :for="name" > {{ title }}</label>
-    <input class="input" :name="name" :placeholder="placeholder" :type="type">
+    <input class="input" :name="name" :maxlength="maxlength" :placeholder="placeholder" :type="type" v-model="inputval" 
+    @keyup="$emit('input-keyup')" :id="inputid"
+    @keydown="$emit('input-keydown')"
+    >
   </div>
 </template>
 
 <script>
 export default {
-props:['title','name','placeholder','type']
+  data() {
+    return {
+      inputval: '',
+    }
+  },
+props:['title','name','placeholder','type','maxlength','inputid']
 }
 </script>
 
@@ -22,7 +30,7 @@ $container-height: 82px;
     justify-content: center;
     align-items: flex-start;
     height: $container-height;
-    margin-bottom: 36px;
+    
     .label{
         font-size: 16px;
         font-family: 'Lato-Bold';

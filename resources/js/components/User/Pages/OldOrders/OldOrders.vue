@@ -32,7 +32,6 @@
     </form>
 
      <div class="orders-container">
-
         <OrderContainer v-for="(item,index) in orders" :key="index"
             :ordernumber="item.ordernumber"
             :orderdate="item.orderdate"

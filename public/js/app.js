@@ -2149,8 +2149,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['title', 'name', 'placeholder', 'type']
+  data: function data() {
+    return {
+      inputval: ''
+    };
+  },
+  props: ['title', 'name', 'placeholder', 'type', 'maxlength', 'inputid']
 });
 
 /***/ }),
@@ -2677,7 +2685,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2909,6 +2916,174 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['price', 'currency']
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Components_SmartInputContainer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Components/SmartInputContainer */ "./resources/js/components/User/Components/SmartInputContainer.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      title: 'Online Payment',
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      expireDateId: 'expireDateId',
+      CVVId: 'CVVId',
+      cardNumberId: 'cardNumberId'
+    };
+  },
+  props: ['date', 'formactionroute'],
+  components: {
+    SmartInputContainer: _Components_SmartInputContainer__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    formatExpirDate: function formatExpirDate() {
+      var digit1;
+      var digit2;
+      var digit3;
+      var digit4;
+      var expireDateInput = document.getElementById(this.expireDateId);
+      expireDateInput.value = this.olnyNumbers(expireDateInput.value);
+
+      if (expireDateInput.value.length >= 4) {
+        digit1 = expireDateInput.value[0];
+        digit2 = expireDateInput.value[1];
+        digit3 = expireDateInput.value[2];
+        digit4 = expireDateInput.value[3];
+
+        if (Number(digit1) > 1) {
+          digit1 = 1;
+          digit2 = 2;
+        } else if (Number(digit1) == 1 && Number(digit2) > 2) {
+          digit1 = 1;
+          digit2 = 2;
+        }
+
+        if (!expireDateInput.value.includes('/')) {
+          expireDateInput.value = digit1.toString() + digit2.toString() + '/' + digit3.toString() + digit4.toString();
+        }
+      }
+    },
+    formatCVV: function formatCVV() {
+      var CVVInput = document.getElementById(this.CVVId);
+      CVVInput.value = this.olnyNumbers(CVVInput.value);
+    },
+    formatCardNumber: function formatCardNumber() {
+      var cardNumberInput = document.getElementById(this.cardNumberId);
+      cardNumberInput.value = this.olnyNumbers(cardNumberInput.value);
+    },
+    olnyNumbers: function olnyNumbers(number) {
+      if (number.length > 0) {
+        for (var i = 0; i <= number.length; i++) {
+          if (isNaN(number[i])) {
+            number = number.replace(number[i], '');
+          }
+        }
+
+        for (var i = number.length; i >= 0; i--) {
+          if (isNaN(number[i])) {
+            number = number.replace(number[i], '');
+          }
+        }
+
+        return number;
+      } else {
+        return '';
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -8110,7 +8285,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".SmartInputContainer {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  height: 82px;\n  margin-bottom: 36px;\n}\n.SmartInputContainer .label {\n  font-size: 16px;\n  font-family: \"Lato-Bold\";\n  margin-bottom: 18px;\n  color: #000000;\n}\n.SmartInputContainer .input {\n  color: #000000;\n  width: 100%;\n  height: 45px;\n  background: #FFFFFF;\n  padding: 14px 24px;\n  border-radius: 23px;\n  font-size: 14px;\n}", ""]);
+exports.push([module.i, ".SmartInputContainer {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  height: 82px;\n}\n.SmartInputContainer .label {\n  font-size: 16px;\n  font-family: \"Lato-Bold\";\n  margin-bottom: 18px;\n  color: #000000;\n}\n.SmartInputContainer .input {\n  color: #000000;\n  width: 100%;\n  height: 45px;\n  background: #FFFFFF;\n  padding: 14px 24px;\n  border-radius: 23px;\n  font-size: 14px;\n}", ""]);
 
 // exports
 
@@ -8440,6 +8615,25 @@ exports.push([module.i, ".PackagePriceCard {\n  background: #ffffff;\n  width: 4
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=style&index=0&lang=scss&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=style&index=0&lang=scss& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".OnlinePayment {\n  padding: 0 140px 0 16px;\n}\n.OnlinePayment .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.OnlinePayment .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.OnlinePayment .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.OnlinePayment .promo-code {\n  position: relative;\n  width: 444px;\n  margin: 0 auto;\n  border-radius: 10px;\n  box-shadow: 0px 3px 6px #00000033;\n}\n.OnlinePayment .promo-code .promocode {\n  width: 90%;\n  height: 50px;\n  border-radius: 10px;\n  padding: 0 30px;\n  font-size: 16px;\n}\n.OnlinePayment .promo-code .promocode-button {\n  font-family: \"Lato-Bold\";\n  position: absolute;\n  border-radius: 10px;\n  background: #FDBD42;\n  color: #fff;\n  right: 0px;\n  width: 150px;\n  height: 50px;\n  font-size: 15px;\n}\n.OnlinePayment .tip-driver {\n  width: 630px;\n  margin: 36px auto 36px 100px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n}\n.OnlinePayment .tip-driver .title {\n  font-size: 16px;\n  color: #15B2D3;\n}\n.OnlinePayment .tip-driver .tip-driver-select {\n  width: 444px;\n  height: 35px;\n  border-radius: 20px;\n  margin: 36px 0 0 auto;\n  padding: 7px 24px;\n  font-size: 14px;\n  background: #fff;\n  color: #00000066;\n  box-shadow: 0px 3px 6px #00000033;\n}\n.OnlinePayment .payment-card-container {\n  width: 630px;\n  margin: 36px auto 36px 100px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n}\n.OnlinePayment .payment-card-container .title {\n  font-size: 16px;\n  color: #15B2D3;\n}\n.OnlinePayment .payment-card-container .payment-inputs {\n  width: 628px;\n  height: 194px;\n  margin-top: 36px;\n  margin-left: 100px;\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  -moz-column-gap: 100px;\n       column-gap: 100px;\n  row-gap: 20px;\n}\n.OnlinePayment .payment-card-container .payment-inputs .SmartInputContainer {\n  margin-bottom: 20px;\n}\n.OnlinePayment .payment-card-container .payment-inputs .SmartInputContainer .input {\n  height: 35px;\n  box-shadow: 0px 3px 6px #00000033;\n}\n.OnlinePayment .button-container {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 70px auto 0 auto;\n}\n.OnlinePayment .button-container .button-payment-button {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 444px;\n  height: 50px;\n  border-radius: 35px;\n  box-shadow: 0px 3px 6px #00000033;\n  background: #15B2D3;\n  color: #fff;\n  padding: 16px 24px;\n  font-size: 16px;\n}\n.OnlinePayment .button-container .button-payment-button .right {\n  font-family: \"Lato-Bold\";\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/PackageCreate.vue?vue&type=style&index=0&lang=scss&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/PackageCreate.vue?vue&type=style&index=0&lang=scss& ***!
@@ -8604,7 +8798,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".ProfileEdit {\n  padding: 0 140px 0 16px;\n}\n.ProfileEdit .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.ProfileEdit .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.ProfileEdit .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.ProfileEdit .edit-profile-form-container {\n  width: 100%;\n}\n.ProfileEdit .edit-profile-form-container .form-input-container {\n  width: 444px;\n}\n.ProfileEdit .edit-profile-form-container .drop-off-hint {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 36px;\n}\n.ProfileEdit .edit-profile-form-container .drop-off-hint .hint {\n  color: #00000066;\n  font-size: 14px;\n}\n.ProfileEdit .edit-profile-form-container .drop-off-hint .show-dropoff {\n  font-size: 16px;\n  font-family: \"Lato-Bold\";\n  color: #22AEE4;\n  cursor: pointer;\n}\n.ProfileEdit .button-container {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 36px;\n}\n.ProfileEdit .button-container .action-button {\n  width: 200px;\n  height: 40px;\n  background: #22AEE4;\n  border-radius: 35px;\n  font-size: 18px;\n  color: #ffffff;\n}", ""]);
+exports.push([module.i, ".ProfileEdit {\n  padding: 0 140px 0 16px;\n}\n.ProfileEdit .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.ProfileEdit .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.ProfileEdit .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.ProfileEdit .edit-profile-form-container {\n  width: 100%;\n}\n.ProfileEdit .edit-profile-form-container .form-input-container {\n  width: 444px;\n}\n.ProfileEdit .edit-profile-form-container .form-input-container .SmartInputContainer {\n  margin-bottom: 36px;\n}\n.ProfileEdit .edit-profile-form-container .drop-off-hint {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 36px;\n}\n.ProfileEdit .edit-profile-form-container .drop-off-hint .hint {\n  color: #00000066;\n  font-size: 14px;\n}\n.ProfileEdit .edit-profile-form-container .drop-off-hint .show-dropoff {\n  font-size: 16px;\n  font-family: \"Lato-Bold\";\n  color: #22AEE4;\n  cursor: pointer;\n}\n.ProfileEdit .button-container {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 36px;\n}\n.ProfileEdit .button-container .action-button {\n  width: 200px;\n  height: 40px;\n  background: #22AEE4;\n  border-radius: 35px;\n  font-size: 18px;\n  color: #ffffff;\n}", ""]);
 
 // exports
 
@@ -40430,6 +40624,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=style&index=0&lang=scss&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=style&index=0&lang=scss& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--11-2!../../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./OnlinePayment.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/PackageCreate.vue?vue&type=style&index=0&lang=scss&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/PackageCreate.vue?vue&type=style&index=0&lang=scss& ***!
@@ -41645,10 +41869,121 @@ var render = function() {
       _vm._v(" " + _vm._s(_vm.title))
     ]),
     _vm._v(" "),
-    _c("input", {
-      staticClass: "input",
-      attrs: { name: _vm.name, placeholder: _vm.placeholder, type: _vm.type }
-    })
+    _vm.type === "checkbox"
+      ? _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.inputval,
+              expression: "inputval"
+            }
+          ],
+          staticClass: "input",
+          attrs: {
+            name: _vm.name,
+            maxlength: _vm.maxlength,
+            placeholder: _vm.placeholder,
+            id: _vm.inputid,
+            type: "checkbox"
+          },
+          domProps: {
+            checked: Array.isArray(_vm.inputval)
+              ? _vm._i(_vm.inputval, null) > -1
+              : _vm.inputval
+          },
+          on: {
+            keyup: function($event) {
+              return _vm.$emit("input-keyup")
+            },
+            keydown: function($event) {
+              return _vm.$emit("input-keydown")
+            },
+            change: function($event) {
+              var $$a = _vm.inputval,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.inputval = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.inputval = $$a
+                      .slice(0, $$i)
+                      .concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.inputval = $$c
+              }
+            }
+          }
+        })
+      : _vm.type === "radio"
+      ? _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.inputval,
+              expression: "inputval"
+            }
+          ],
+          staticClass: "input",
+          attrs: {
+            name: _vm.name,
+            maxlength: _vm.maxlength,
+            placeholder: _vm.placeholder,
+            id: _vm.inputid,
+            type: "radio"
+          },
+          domProps: { checked: _vm._q(_vm.inputval, null) },
+          on: {
+            keyup: function($event) {
+              return _vm.$emit("input-keyup")
+            },
+            keydown: function($event) {
+              return _vm.$emit("input-keydown")
+            },
+            change: function($event) {
+              _vm.inputval = null
+            }
+          }
+        })
+      : _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.inputval,
+              expression: "inputval"
+            }
+          ],
+          staticClass: "input",
+          attrs: {
+            name: _vm.name,
+            maxlength: _vm.maxlength,
+            placeholder: _vm.placeholder,
+            id: _vm.inputid,
+            type: _vm.type
+          },
+          domProps: { value: _vm.inputval },
+          on: {
+            keyup: function($event) {
+              return _vm.$emit("input-keyup")
+            },
+            keydown: function($event) {
+              return _vm.$emit("input-keydown")
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.inputval = $event.target.value
+            }
+          }
+        })
   ])
 }
 var staticRenderFns = []
@@ -43069,6 +43404,158 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "button-container" }, [
       _c("button", { staticClass: "place-order" }, [_vm._v("Place Order")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=template&id=7499c045&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=template&id=7499c045& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "OnlinePayment" }, [
+    _c("div", { staticClass: "page-header" }, [
+      _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "date" }, [_vm._v(_vm._s(_vm.date))])
+    ]),
+    _vm._v(" "),
+    _c("form", { attrs: { action: _vm.formactionroute, method: "post" } }, [
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "payment-card-container" }, [
+        _c("p", { staticClass: "title" }, [
+          _vm._v("Add your Credit Card details")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "payment-inputs" },
+          [
+            _c("Smart-Input-Container", {
+              attrs: {
+                title: "Card Holder Name",
+                name: "card_holder_name",
+                placeholder: "Card Holder Name",
+                type: "text"
+              }
+            }),
+            _vm._v(" "),
+            _c("Smart-Input-Container", {
+              attrs: {
+                title: "Card Number",
+                name: "card_number",
+                placeholder: "Card Number",
+                inputid: _vm.cardNumberId,
+                type: "text"
+              },
+              on: { "input-keyup": _vm.formatCardNumber }
+            }),
+            _vm._v(" "),
+            _c("Smart-Input-Container", {
+              attrs: {
+                title: "CVV",
+                name: "ccv",
+                placeholder: "CVV",
+                inputid: _vm.CVVId,
+                type: "text",
+                maxlength: "3"
+              },
+              on: { "input-keyup": _vm.formatCVV }
+            }),
+            _vm._v(" "),
+            _c("Smart-Input-Container", {
+              attrs: {
+                title: "Expiration Date",
+                name: "card_expire_date",
+                placeholder: "MM / YY",
+                type: "text",
+                maxlength: "5",
+                inputid: _vm.expireDateId
+              },
+              on: { "input-keyup": _vm.formatExpirDate }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(2)
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "promo-code" }, [
+      _c("input", {
+        staticClass: "promocode",
+        attrs: {
+          type: "text",
+          placeholder: "Enter Your promo code",
+          name: "promocode"
+        }
+      }),
+      _vm._v(" "),
+      _c("button", { staticClass: "promocode-button" }, [_vm._v("Redeem")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tip-driver" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Tip Driver")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        { staticClass: "tip-driver-select", attrs: { name: "tip_driver" } },
+        [
+          _c("option", { attrs: { value: "" } }, [_vm._v("No.")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "1" } }, [_vm._v("Value 1")])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "button-container" }, [
+      _c("button", { staticClass: "button-payment-button" }, [
+        _c("p", { staticClass: "left" }, [
+          _vm._v("\n                Place Order\n            ")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "right" }, [
+          _vm._v("\n                Total Price : 80 $\n            ")
+        ])
+      ])
     ])
   }
 ]
@@ -56026,6 +56513,8 @@ var Packages = __webpack_require__(/*! ./components/User/Pages/Packages/Packages
 var PackageSummary = __webpack_require__(/*! ./components/User/Pages/Packages/PackageSummary.vue */ "./resources/js/components/User/Pages/Packages/PackageSummary.vue")["default"];
 
 var PackageCreate = __webpack_require__(/*! ./components/User/Pages/Packages/PackageCreate.vue */ "./resources/js/components/User/Pages/Packages/PackageCreate.vue")["default"];
+
+var OnlinePayment = __webpack_require__(/*! ./components/User/Pages/Packages/OnlinePayment.vue */ "./resources/js/components/User/Pages/Packages/OnlinePayment.vue")["default"];
 /* XX Packages XX */
 
 /* Profile  */
@@ -56057,6 +56546,7 @@ var app = new Vue({
     Packages: Packages,
     PackageSummary: PackageSummary,
     PackageCreate: PackageCreate,
+    OnlinePayment: OnlinePayment,
     Profile: Profile,
     ProfileChangePassword: ProfileChangePassword,
     ProfileEdit: ProfileEdit,
@@ -58022,6 +58512,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PackagePriceCard_vue_vue_type_template_id_fdf02344___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PackagePriceCard_vue_vue_type_template_id_fdf02344___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Packages/OnlinePayment.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Packages/OnlinePayment.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _OnlinePayment_vue_vue_type_template_id_7499c045___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OnlinePayment.vue?vue&type=template&id=7499c045& */ "./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=template&id=7499c045&");
+/* harmony import */ var _OnlinePayment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OnlinePayment.vue?vue&type=script&lang=js& */ "./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _OnlinePayment_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OnlinePayment.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _OnlinePayment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _OnlinePayment_vue_vue_type_template_id_7499c045___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _OnlinePayment_vue_vue_type_template_id_7499c045___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/User/Pages/Packages/OnlinePayment.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./OnlinePayment.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=style&index=0&lang=scss&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=style&index=0&lang=scss& ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--11-2!../../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./OnlinePayment.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=template&id=7499c045&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=template&id=7499c045& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_template_id_7499c045___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./OnlinePayment.vue?vue&type=template&id=7499c045& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Packages/OnlinePayment.vue?vue&type=template&id=7499c045&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_template_id_7499c045___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OnlinePayment_vue_vue_type_template_id_7499c045___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -9,7 +9,7 @@
 <div class="edit-profile-form-container">
   <div class="form-input-container">
     <input type="hidden" :value="csrf" name="_token"/>
-    <Smart-Input-Container 
+    <Smart-Input-Container
     title="Email"
     name="email"
     placeholder="Enter Your Email"
@@ -127,6 +127,9 @@ $white: #ffffff;
   width: 100%;
     .form-input-container{
       width: 444px;
+      .SmartInputContainer{
+        margin-bottom: 36px;
+      }
     }
 
     .drop-off-hint{
