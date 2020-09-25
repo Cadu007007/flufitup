@@ -11,11 +11,10 @@
   class="WeekPickupsContainer"
   title="Week One"
 
-  :activepickups="weekonepickupone[0].pickup_one_state + weekonepickuptwo[0].pickup_two_state"
+  :activepickups="parseInt(weekonepickupone[0].pickup_one_state + weekonepickuptwo[0].pickup_two_state)"
   :pickuponestate="weekonepickupone[0].pickup_one_state"
   :pickuptwostate="weekonepickuptwo[0].pickup_two_state"
   
-
 :pickuponeday="weekonepickupone[0].pickup_one_day"
 :pickuponedate="weekonepickupone[0].pickup_one_date"
 :pickuponetime="weekonepickupone[0].pickup_one_time"
@@ -60,7 +59,6 @@
   :activepickups="weekthreepickupone[0].pickup_one_state + weekthreepickuptwo[0].pickup_two_state"
   :pickuponestate="weekthreepickupone[0].pickup_one_state"
   :pickuptwostate="weekthreepickuptwo[0].pickup_two_state"
-
   
 :pickuponeday="weekthreepickupone[0].pickup_one_day"
 :pickuponedate="weekthreepickupone[0].pickup_one_date"
@@ -81,13 +79,11 @@
   <WeekPickupsContainer 
   class="WeekPickupsContainer"
   title="Week Four"
-
   
   :activepickups="weekfourpickupone[0].pickup_one_state + weekfourpickuptwo[0].pickup_two_state"
   :pickuponestate="weekfourpickupone[0].pickup_one_state"
   :pickuptwostate="weekfourpickuptwo[0].pickup_two_state"
 
-  
 :pickuponeday="weekfourpickupone[0].pickup_one_day"
 :pickuponedate="weekfourpickupone[0].pickup_one_date"
 :pickuponetime="weekfourpickupone[0].pickup_one_time"

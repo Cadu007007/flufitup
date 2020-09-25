@@ -17,7 +17,7 @@ import PickupInfoItem from './PickupInfoItem'
 
 export default {
     props: ['title','state','day','date',
-            'pickuponetime','volume','numberofbags','drycleanincluded'],
+            'time','volume','numberofbags','drycleanincluded'],
 components:{
         PickupInfoItem
     }

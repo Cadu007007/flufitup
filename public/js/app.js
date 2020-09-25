@@ -2344,7 +2344,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['title', 'state', 'day', 'date', 'pickuponetime', 'volume', 'numberofbags', 'drycleanincluded'],
+  props: ['title', 'state', 'day', 'date', 'time', 'volume', 'numberofbags', 'drycleanincluded'],
   components: {
     PickupInfoItem: _PickupInfoItem__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -2474,10 +2474,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_WeekPickupsContainer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Components/WeekPickupsContainer */ "./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue");
-//
-//
-//
-//
 //
 //
 //
@@ -42921,7 +42917,7 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _vm.pickuponestate || _vm.pickuptwostate
+    _vm.activepickups > 0
       ? _c("div", { staticClass: "button-container" }, [
           _c(
             "button",
@@ -43003,9 +42999,10 @@ var render = function() {
           staticClass: "WeekPickupsContainer",
           attrs: {
             title: "Week One",
-            activepickups:
+            activepickups: parseInt(
               _vm.weekonepickupone[0].pickup_one_state +
-              _vm.weekonepickuptwo[0].pickup_two_state,
+                _vm.weekonepickuptwo[0].pickup_two_state
+            ),
             pickuponestate: _vm.weekonepickupone[0].pickup_one_state,
             pickuptwostate: _vm.weekonepickuptwo[0].pickup_two_state,
             pickuponeday: _vm.weekonepickupone[0].pickup_one_day,

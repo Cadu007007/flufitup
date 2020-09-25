@@ -29,7 +29,7 @@
     </div>
 
 
-    <div class="button-container" v-if="pickuponestate || pickuptwostate">
+    <div class="button-container" v-if="activepickups >0">
         <button type="button" class="modify-button">
             Modify
         </button>
