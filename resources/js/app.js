@@ -7,6 +7,7 @@ var Sidebar = require('./components/User/Components/Sidebar.vue').default
 
 /* user pages */
 var Home = require('./components/User/Pages/Home/Home.vue').default
+var EditOrder = require('./components/User/Pages/Home/EditOrder.vue').default
 
 /* Packages */
 var Packages = require('./components/User/Pages/Packages/Packages.vue').default
@@ -31,6 +32,7 @@ const app = new Vue({
     components: {
         Sidebar,
         Home,
+        EditOrder,
         Packages,
         PackageSummary,
         PackageCreate,

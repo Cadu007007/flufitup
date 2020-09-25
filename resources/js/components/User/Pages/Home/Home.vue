@@ -20,7 +20,7 @@
   :startDate="order.start_date"
   :price="order.price"
   @show-modal="showDetailsModal(index)"
-
+  @go-to-edit-order="goToEditOrder(order.id)"
  />
 
 <!--  :showOrderDetailsModal="showModal"  -->
@@ -65,7 +65,7 @@ export default {
       selectedOrderIndex: 0
     }
   },
-  props: ['date','orders'],
+  props: ['date','orders','editorderroute'],
   components:{
     WelcomePanner,
     NoOrdersPanner,
@@ -81,6 +81,10 @@ export default {
     hideDetailsModal(){
       this.showModal = false;
       document.getElementsByTagName('body')[0].style.overflow = "auto"
+    },
+    goToEditOrder(id){
+      var url = this.editorderroute.replace('order_id', id)
+      window.location.href= url
     }
 
   },

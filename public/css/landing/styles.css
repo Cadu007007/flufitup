@@ -108,6 +108,11 @@ button {
   font-size: 14px;
 }
 
+.header-container .left .header-link,
+.header-container .right .header-link {
+  height: 21px;
+}
+
 .header-container .left .icon,
 .header-container .right .icon {
   margin: 0 10px;
@@ -204,6 +209,8 @@ button {
   height: 172px;
   border-radius: 0px 0px 50px 50px;
   position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .city-location .city-location-image {
@@ -411,7 +418,7 @@ button {
   flex-direction: row;
   justify-content: space-between;
   width: 80%;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 .our-services-container .services-container .services-part .service-container {
@@ -541,13 +548,13 @@ button {
 }
 
 .how-it-works .steps-container .step-container.reverse {
-  margin: 20px auto 20px 0;
+  margin: 5px auto 5px 0;
   text-align: left;
 }
 
 .how-it-works .steps-container .step-container .step-image {
-  width: 150px;
-  height: 190px;
+  width: 120px;
+  height: 160px;
   margin: 0 40px;
 }
 

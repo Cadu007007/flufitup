@@ -47,6 +47,9 @@
             }
         }
         // on right
+        .header-link {
+            height: 21px;
+        }
         .icon {
             margin: 0 10px;
         }
@@ -128,6 +131,8 @@
     border-radius: 0px 0px 50px 50px;
     //background: $blue;
     position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
     .city-location-image {
         position: absolute;
         left: 0;
@@ -305,7 +310,7 @@
             flex-direction: row;
             justify-content: space-between;
             width: 80%;
-            margin: 10px 0;
+            margin: 20px 0;
             .service-container {
                 display: flex;
                 flex-direction: row;
@@ -415,12 +420,12 @@
             width: 600px;
             text-align: right;
             &.reverse {
-                margin: 20px auto 20px 0;
+                margin: 5px auto 5px 0;
                 text-align: left;
             }
             .step-image {
-                width: 150px;
-                height: 190px;
+                width: 120px;
+                height: 160px;
                 margin: 0 40px;
             }
             .step-text {

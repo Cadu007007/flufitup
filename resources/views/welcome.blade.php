@@ -9,13 +9,16 @@
                 FLUFFIT-UP
             </p>
 
-
             <p class="description">
                 <span class="blue-text"> FLUFFIT-UP</span> we know how dreadful laundry can be especially when you have enough to block out the sun! luckily,
                 <span class="blue-text"> FLUFFIT-UP</span> is like a day-care centre for your clothes, we take good care of the clothes you wear.
             <div class="buttons-container">
-              <button class="large-button active">LOG IN</button>  
-              <button class="large-button">SIGN UP</button>  
+                <a href="{{ url('/login') }}">
+                    <button class="large-button active">LOG IN</button>  
+                </a>
+                <a href="{{ url('/register') }}">
+                    <button class="large-button">SIGN UP</button>  
+                </a>
             </div>
         </div>
 
@@ -49,7 +52,7 @@
     {{-- XX City Location XX --}}
 
     {{-- Why Choose US --}}
-    <div class="why-choose-us-container">
+    <div class="why-choose-us-container" id="whyChooseUs">
         <div class="title-container">
 
             <p class="title">
@@ -122,7 +125,7 @@
     
     
     {{-- Our Services --}}
-    <div class="our-services-container">
+    <div class="our-services-container" id="ourService">
         <div class="title-container">
 
             <p class="title">
@@ -216,25 +219,26 @@
             </p>
             <div class="buttons-container">
                 <div class="download-button">
-                    <img src="{{ asset('images/download-apple.svg') }}" alt="">
-                    
+                    <a href=""" target="_blank">    
+                        <img src="{{ asset('images/download-apple.svg') }}" alt="">
+                    </a>
                 </div>
                 <div class="download-button">
-                    <img src="{{ asset('images/download-google.svg') }}" alt="">
+                   <a href=""" target="_blank">        
+                     <img src="{{ asset('images/download-google.svg') }}" alt="">
+                   </a>
                 </div>
-                
             </div>
         </div>
         <div class="right">
             <img class="icon" src="{{ asset('images/download-image.png') }}" alt="">
-
         </div>
     </div>
     {{-- XX Download section XX --}}
     
     
     {{-- ------- How it works -------- --}}
-    <div class="how-it-works">
+    <div class="how-it-works" id="howItWork">
         <div class="title-container">
 
             <p class="title">
@@ -345,7 +349,7 @@
     {{-- -----XX How it works XX------ --}}
 
     {{-- ------- Contact Us -------- --}}
-    <div class="contact-us">
+    <div class="contact-us" id="contactUs">
         <div class="title-container">
 
             <p class="title">
@@ -364,13 +368,13 @@
                 <img src="{{ asset('images/contact-us.svg') }}" alt="" class="form-image">
             </div>
             <div class="right">
-                <form action="" method="post">
+                <form action="{{ route('dummy') }}" method="post">
+                    @csrf
                     <input type="text" placeholder="Name" class="form-input" name="name">
                     <input type="text" placeholder="Email" class="form-input" name="email">
                     <input type="text" placeholder="ZIP Code" class="form-input" name="zip-code">
                     <textarea name="message"  placeholder="Message"  class="form-text-area" rows="5"></textarea>
                 <div class="button-container">
-
                     <button class="submit-button" type="submit">
                         SUBMIT
                     </button>

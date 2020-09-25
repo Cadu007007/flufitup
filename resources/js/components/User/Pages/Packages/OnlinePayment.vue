@@ -10,7 +10,7 @@
 
 <div class="promo-code">
     <input type="text" class="promocode" placeholder="Enter Your promo code" name="promocode">
-    <button class="promocode-button">Redeem</button>
+    <button class="promocode-button" type="button">Redeem</button>
 </div>
 
 <div class="tip-driver">

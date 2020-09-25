@@ -16,6 +16,7 @@
     class="package-price"
     :price="package[0].price"
     :currency="package[0].currency"
+    @go-to-payment="goToPayment"
      />
 
   </div>
@@ -34,11 +35,17 @@ export default {
       title: 'Package Summary'
     }
   },
-  props: ['date','package'],
+  props: ['date','package','paymentroute'],
   components:{
     PackageDetailsCard,
     PackagePriceCard
-  }
+  },
+  methods: {
+    goToPayment(){
+      var url = this.paymentroute.replace('package_id', this.package[0].id)
+      window.location.href = url
+    }
+  },
 
 
 }

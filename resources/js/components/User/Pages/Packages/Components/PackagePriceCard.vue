@@ -4,7 +4,7 @@
     <div class="price">{{price}} {{ currency }}</div>
 
     <div class="button-container">
-        <button class="place-order">Place Order</button>
+        <button class="place-order" @click="$emit('go-to-payment')">Place Order</button>
     </div>
 
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    props:['price','currency']
+    props:['price','currency','gotopaymentroute']
 }
 </script>
 

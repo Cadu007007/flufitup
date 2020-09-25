@@ -29,8 +29,14 @@
         </div>
     </div>
     <div class="right">
-        <img class="icon" src="{{ asset('images/icons/facebook-grey.svg') }}" alt="">
-        <img class="icon" src="{{ asset('images/icons/twitter.svg') }}" alt="">
-        <img class="icon" src="{{ asset('images/icons/insta-grey.svg') }}" alt="">
+        <a class="header-link" href="" target="_blank">
+            <img class="icon" src="{{ asset('images/icons/facebook-grey.svg') }}" alt="">
+        </a>
+        <a class="header-link" href="" target="_blank">
+            <img class="icon" src="{{ asset('images/icons/twitter.svg') }}" alt="">
+        </a>
+        <a class="header-link" href="" target="_blank">    
+            <img class="icon" src="{{ asset('images/icons/insta-grey.svg') }}" alt="">
+        </a>
     </div>
 </div>

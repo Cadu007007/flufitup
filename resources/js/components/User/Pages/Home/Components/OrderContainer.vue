@@ -39,7 +39,7 @@
             <button class="order-detailsbutton" @click="$emit('show-modal')">Order Details</button>
         </div>
     </div>
-    <p class="view-order-schedule">View Pickup Schedule</p>
+    <p class="view-order-schedule" @click="$emit('go-to-edit-order')">View Pickup Schedule</p>
 
   </div>
 </template>

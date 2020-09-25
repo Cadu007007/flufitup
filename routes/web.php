@@ -72,6 +72,12 @@ Route::get('/user', function () {
 })->name('home');
 
 
+
+Route::get('/order/edit/{id}', function () {
+    return view('user.home.edit', ['active' => 'home']);
+})->name('order.edit');
+
+
 /***************************** 
  *  Packages
 /**************************** */
