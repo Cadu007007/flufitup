@@ -2,12 +2,12 @@
   <div class="Accordion">
     <div class="header"   @click="changeIsOpenState()">
         <p class="title">{{title}}</p>
-        <img :src=" isopen ? '/images/icons/arrow-up.svg' : '/images/icons/arrow-down.svg' " alt="">
+        <img :src=" isopen || openstate ? '/images/icons/arrow-up.svg' : '/images/icons/arrow-down.svg' " alt="">
     </div>
-     <div class="options" v-show="isopen">
+     <div class="options" v-show="isopen || openstate">
         <div class="option" v-for="(option,index) in options" :key="index">
-            <input class="radio" type="radio" :checked="index == 0" :name="name" :value="option.value" id="">
-            <label class="option-label" for="filter">{{option.title}}</label>
+            <input class="radio" v-if="hasradio" type="radio" @click="$emit('option-selected', option)" :checked="index == 0" :name="name" :value="option.value" id="">
+            <label class="option-label" @click="$emit('label-clicked')" for="filter">{{option.title}}</label>
         </div> 
      </div>
 
@@ -16,10 +16,21 @@
 
 <script>
 export default {
-    props: ['title','name','options','isopen'],
+    data() {
+        return {
+            isopen: false
+        }
+    },
+    props: ['title','name','options','openstate','hasradio'],
     methods: {
         changeIsOpenState(){
-            this.isopen = !this.isopen;
+            if(this.openstate){
+                this.openstate = false;
+                this.isopen = false;
+            } else {
+
+                this.isopen = !this.isopen;
+            }
         },
     },
 }

@@ -1,4 +1,6 @@
-collapseSidebar();
+var collapseAnimationDuration = 200;
+
+immediateCollapse();
 
 $(document).ready(function() {
     if (localStorage.getItem('collapsed_sidebar') == null) {
@@ -10,6 +12,10 @@ $(document).ready(function() {
             expandSidebar();
         }
     }
+    setTimeout(() => {
+        $('.collapse-sidebar').addClass('opacity-1')
+        $('.expand-sidebar').addClass('opacity-1')
+    }, 200);
 })
 
 /* Sidebar */
@@ -17,9 +23,9 @@ var intInitialSidebarWidth = 215;
 var intSmallWidth = 103;
 
 /* Collapse  */
+//$('.collapse-sidebar').click(function() {
 $('.collapse-sidebar').click(function() {
     collapseSidebar();
-
     /* change value is local storage */
     localStorage.setItem('collapsed_sidebar', '1')
 });
@@ -34,15 +40,90 @@ $('.expand-sidebar').click(function() {
 
 
 function collapseSidebar() {
+
+    $(".Sidebar").animate({
+        width: `${intSmallWidth}px`,
+    }, collapseAnimationDuration);
+
+    $(".Sidebar-container").animate({
+        width: `${intSmallWidth}px`,
+    }, collapseAnimationDuration);
+
+
+    setTimeout(() => {
+        $('.expand-sidebar').removeClass('hidden')
+        $('.collapse-sidebar').addClass('hidden')
+    }, collapseAnimationDuration);
+
+
+    setTimeout(() => {
+
+        /* hide sidebar text */
+        $('.Sidebar .item-title').addClass('hidden');
+
+        /* update app with */
+        $('#app').css('grid-template-columns', `${intSmallWidth}px auto`)
+
+        $('.PageContentContainer').css('padding', '0 120px 0 80px !important')
+
+    }, collapseAnimationDuration - 50);
+
+
+
+}
+
+
+function expandSidebar() {
+
+
+    $(".Sidebar").animate({
+        width: `${intInitialSidebarWidth}px`,
+    }, collapseAnimationDuration);
+
+    $(".Sidebar-container").animate({
+        width: `${intInitialSidebarWidth}px`,
+    }, collapseAnimationDuration);
+
+
     /* change arrow */
-    $('.collapse-sidebar').addClass('hidden');
-    $('.expand-sidebar').removeClass('hidden');
+
+    setTimeout(() => {
+        $('.collapse-sidebar').removeClass('hidden')
+        $('.expand-sidebar').addClass('hidden')
+    }, collapseAnimationDuration);
+
+    setTimeout(() => {
+
+        /* hide sidebar text */
+        $('.Sidebar .item-title').removeClass('hidden');
+
+        /* update app with */
+        $('#app').css('grid-template-columns', `${intInitialSidebarWidth}px auto`)
+
+        $('.PageContentContainer').css('padding', '0 139px 0 16px !important')
+
+    }, collapseAnimationDuration - 50);
+
+
+}
+
+
+
+
+
+
+function immediateCollapse() {
+
+    $(".Sidebar").css('width', intSmallWidth)
+    $(".Sidebar-container").css('width', intSmallWidth)
+
+
+    $('.expand-sidebar').removeClass('hidden')
+    $('.collapse-sidebar').addClass('hidden')
+
+
     /* hide sidebar text */
     $('.Sidebar .item-title').addClass('hidden');
-
-    /* reduce sideba width */
-    $('.Sidebar').css('width', intSmallWidth);
-    $('.Sidebar-container').css('width', intSmallWidth);
 
     /* update app with */
     $('#app').css('grid-template-columns', `${intSmallWidth}px auto`)
@@ -52,22 +133,4 @@ function collapseSidebar() {
 }
 
 
-function expandSidebar() {
-    /* change arrow */
-    $('.expand-sidebar').addClass('hidden');
-    $('.collapse-sidebar').removeClass('hidden');
-    /* hide sidebar text */
-    $('.Sidebar .item-title').removeClass('hidden');
-
-    /* reduce sideba width */
-    $('.Sidebar').css('width', intInitialSidebarWidth);
-    $('.Sidebar-container').css('width', intInitialSidebarWidth);
-
-    /* update app with */
-    $('#app').css('grid-template-columns', `${intInitialSidebarWidth}px auto`)
-
-    $('.PageContentContainer').css('padding', '0 139px 0 16px !important')
-
-
-}
 /* XX Sidebar XX */

@@ -3,8 +3,9 @@
     <p class="title">{{title}}</p>
     <p class="price">{{price}}</p>
     <p class="description">{{description}}</p>
-    <p class="see-details" :class="button == 'Create' ? 'hidden' : ''" @click="$emit('show-package-details')">See Details</p>
-    <a :href="buttonroute" class="subscribe" :class="button == 'Create' ? 'create' : ''">{{button}}</a>
+    <button v-if="button != 'Create'" @click="$emit('show-package-details')" class="subscribe">Subscribe</button>
+    <a   v-else :href="buttonroute" class="subscribe" :class="button == 'Create' ? 'create' : ''">{{button}}</a>
+
   </div>
 </template>
 
@@ -50,6 +51,7 @@ $shadow-color: #0000001A;
         color: $light-grey;
         font-size: 14px;
         text-align: center;
+        padding: 0 10px;
     }
     .see-details{
         margin-top: 18px;

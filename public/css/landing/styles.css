@@ -47,6 +47,76 @@ button {
   display: none !important;
 }
 
+.opacity-0 {
+  opacity: 0 !important;
+}
+
+.opacity-1 {
+  opacity: 1 !important;
+}
+
+.rotate-180 {
+  -webkit-animation: rotate-180 1s normal;
+  /* Safari 4+ */
+  /* Fx 5+ */
+  /* Opera 12+ */
+  animation: rotate-180 1s normal;
+  /* IE 10+, Fx 29+ */
+}
+
+.rotate-0 {
+  -webkit-animation: rotate-0 1s normal;
+  /* Safari 4+ */
+  /* Fx 5+ */
+  /* Opera 12+ */
+  animation: rotate-0 1s normal;
+  /* IE 10+, Fx 29+ */
+}
+
+/* animations */
+
+@-webkit-keyframes rotate-180 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes rotate-180 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@-webkit-keyframes rotate-0 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes rotate-0 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+/* XX animations XX */
+
 .blue-text {
   color: #15B2D3;
 }

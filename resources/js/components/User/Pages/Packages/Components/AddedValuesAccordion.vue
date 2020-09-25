@@ -20,20 +20,6 @@
         </div>
     </div>
 
-    <div class="question-container" v-show="isopen">
-        <p class="question">Add Nature friendly garment Freshener ( Only for 1.5s per bag )</p>
-    <div class="answers">
-        <div class="answer">
-            <input class="radio" type="radio"  checked name="add_nature_garment" value="yes" id="">
-            <label class="option-label" for="add_nature_garment">Yes</label>
-        </div>
-        <div class="answer">
-            <input class="radio" type="radio" name="add_nature_garment" value="no" id="">
-            <label class="option-label" for="add_nature_garment">No</label>
-        </div>
-    </div>
-
-    </div>
 
 </div>
 </template>
@@ -103,39 +89,6 @@ $shadow: 0px 0px 10px #0000001A;
         }
     }
 }
-.question-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 520px;
-    margin: 40px 0;
-    .question{
-        font-size: 18px;
-        font-family: 'Lato-Bold';
-        color: $black;
-    }
-    .answers{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: flex-start;
-        .answer{
-            width: 80px;
-            margin-top: 12px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            .option-label{
-                margin-left: 10px;
-            }
-            .radio{
-                width: 24px;
-                height: 24px;
-            }
-        }
-    }
-}
+
 }
 </style>

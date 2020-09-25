@@ -122,3 +122,111 @@ button {
 .hidden {
     display: none !important;
 }
+
+.opacity-0 {
+    opacity: 0 !important;
+}
+
+.opacity-1 {
+    opacity: 1 !important;
+}
+
+.rotate-180 {
+    -webkit-animation: rotate-180 1s normal;
+    /* Safari 4+ */
+    -moz-animation: rotate-180 1s normal;
+    /* Fx 5+ */
+    -o-animation: rotate-180 1s normal;
+    /* Opera 12+ */
+    animation: rotate-180 1s normal;
+    /* IE 10+, Fx 29+ */
+}
+
+.rotate-0 {
+    -webkit-animation: rotate-0 1s normal;
+    /* Safari 4+ */
+    -moz-animation: rotate-0 1s normal;
+    /* Fx 5+ */
+    -o-animation: rotate-0 1s normal;
+    /* Opera 12+ */
+    animation: rotate-0 1s normal;
+    /* IE 10+, Fx 29+ */
+}
+
+
+/* animations */
+
+@-webkit-keyframes rotate-180 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}
+
+@-moz-keyframes rotate-180 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}
+
+@-o-keyframes rotate-180 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}
+
+@keyframes rotate-180 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}
+
+@-webkit-keyframes rotate-0 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}
+
+@-moz-keyframes rotate-0 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}
+
+@-o-keyframes rotate-0 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}
+
+@keyframes rotate-0 {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}
+
+
+/* XX animations XX */

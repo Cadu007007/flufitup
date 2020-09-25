@@ -74,7 +74,110 @@ Route::get('/user', function () {
 
 
 Route::get('/order/edit/{id}', function () {
-    return view('user.home.edit', ['active' => 'home']);
+    $order = collect([]);
+
+    $order->week_one = collect();
+    $order->week_one->pickup_one = collect();
+    $order->week_one->pickup_two = collect();
+
+    $order->week_two = collect();
+    $order->week_two->pickup_one = collect();
+    $order->week_two->pickup_two = collect();
+
+    $order->week_three = collect();
+    $order->week_three->pickup_one = collect();
+    $order->week_three->pickup_two = collect();
+
+    $order->week_four = collect();
+    $order->week_four->pickup_one = collect();
+    $order->week_four->pickup_two = collect();
+
+    $order->week_one->pickup_one->push(['pickup_one_day' => 'Sunday',
+                            'pickup_one_date' => "05/23/2020", 
+                            'pickup_one_time' => "11:00 – 13:00", 
+                            'pickup_one_volume' => "30 Lbs", 
+                            'pickup_one_nubmer_of_bags' => "2", 
+                            'pickup_one_dry_clean_included' => "Yes", 
+                            'pickup_one_state' => "0", 
+    ]);
+
+    
+    $order->week_one->pickup_two->push(['pickup_two_day' => 'Monday',
+                            'pickup_two_date' => "05/23/2020", 
+                            'pickup_two_time' => "11:00 – 13:00", 
+                            'pickup_two_volume' => "30 Lbs", 
+                            'pickup_two_nubmer_of_bags' => "2", 
+                            'pickup_two_dry_clean_included' => "Yes",
+                            'pickup_two_state' => "0", 
+
+    ]);
+
+
+    $order->week_two->pickup_one->push(['pickup_one_day' => 'Tuesday',
+                            'pickup_one_date' => "05/23/2020", 
+                            'pickup_one_time' => "11:00 – 13:00", 
+                            'pickup_one_volume' => "30 Lbs", 
+                            'pickup_one_nubmer_of_bags' => "2", 
+                            'pickup_one_dry_clean_included' => "Yes", 
+                            'pickup_one_state' => "0", 
+
+    ]);
+
+    
+    $order->week_two->pickup_two->push(['pickup_two_day' => 'Wednsday',
+                            'pickup_two_date' => "05/23/2020", 
+                            'pickup_two_time' => "11:00 – 13:00", 
+                            'pickup_two_volume' => "30 Lbs", 
+                            'pickup_two_nubmer_of_bags' => "2", 
+                            'pickup_two_dry_clean_included' => "Yes", 
+                            'pickup_two_state' => "1", 
+
+    ]);
+
+    $order->week_three->pickup_one->push(['pickup_one_day' => 'Thursday',
+                            'pickup_one_date' => "05/23/2020", 
+                            'pickup_one_time' => "11:00 – 13:00", 
+                            'pickup_one_volume' => "30 Lbs", 
+                            'pickup_one_nubmer_of_bags' => "2", 
+                            'pickup_one_dry_clean_included' => "Yes",
+                            'pickup_one_state' => "1", 
+
+    ]);
+
+    
+    $order->week_three->pickup_two->push(['pickup_two_day' => 'Friday',
+                            'pickup_two_date' => "05/23/2020", 
+                            'pickup_two_time' => "11:00 – 13:00", 
+                            'pickup_two_volume' => "30 Lbs", 
+                            'pickup_two_nubmer_of_bags' => "2", 
+                            'pickup_two_dry_clean_included' => "Yes", 
+                            'pickup_two_state' => "1", 
+
+                            ]);
+
+    $order->week_four->pickup_one->push(['pickup_one_day' => 'Thursday',
+                            'pickup_one_date' => "05/23/2020", 
+                            'pickup_one_time' => "11:00 – 13:00", 
+                            'pickup_one_volume' => "30 Lbs", 
+                            'pickup_one_nubmer_of_bags' => "2", 
+                            'pickup_one_dry_clean_included' => "Yes",
+                            'pickup_one_state' => "1", 
+ 
+    ]);
+
+    
+    $order->week_four->pickup_two->push(['pickup_two_day' => 'Friday',
+                            'pickup_two_date' => "05/23/2020", 
+                            'pickup_two_time' => "11:00 – 13:00", 
+                            'pickup_two_volume' => "30 Lbs", 
+                            'pickup_two_nubmer_of_bags' => "2", 
+                            'pickup_two_dry_clean_included' => "Yes", 
+    ]);
+
+    
+
+
+    return view('user.home.edit', ['active' => 'home','order' => $order]);
 })->name('order.edit');
 
 
@@ -141,10 +244,8 @@ Route::get('/packages/create', function () {
     $options->wash->push(['title' => 'Dry Clean Service with Delivery', 'value' => '3']);
     $options->wash->push(['title' => 'Dry Clean Delivery Service Only', 'value' => '4']);
 
-    $options->pickup->push(['title' => 'Value 1', 'value' => '1']);
-    $options->pickup->push(['title' => 'Value 2', 'value' => '2']);
-    $options->pickup->push(['title' => 'Value 3', 'value' => '3']);
-    $options->pickup->push(['title' => 'Value 4', 'value' => '4']);
+    $options->pickup->push(['title' => '1 Pickup', 'value' => '1']);
+    $options->pickup->push(['title' => '2 Pickups', 'value' => '2']);
 
     $options->load_size->push(['title' => 'Value 1', 'value' => '1']);
     $options->load_size->push(['title' => 'Value 2', 'value' => '2']);
@@ -156,10 +257,8 @@ Route::get('/packages/create', function () {
     $options->date->push(['title' => 'Week Three', 'value' => '3']);
     $options->date->push(['title' => 'Week Four', 'value' => '4']);
 
-    $options->return_duration->push(['title' => 'Week One', 'value' => '1']);
-    $options->return_duration->push(['title' => 'Week Two', 'value' => '2']);
-    $options->return_duration->push(['title' => 'Week Three', 'value' => '3']);
-    $options->return_duration->push(['title' => 'Week Four', 'value' => '4']);
+    $options->return_duration->push(['title' => '24 hrs', 'value' => '24']);
+    $options->return_duration->push(['title' => '48 hrs', 'value' => '48']);
 
     $options->added_value->push(['title' => 'Use hungers instead of Folding', 'value' => '1']);
     $options->added_value->push(['title' => 'Individual Garment Wrapping', 'value' => '2']);

@@ -75,7 +75,9 @@ $items-top-margin: 60px;
       height: 50px;
       position: absolute;
       right: -25px;
-      top: 155px
+      top: 155px;
+      z-index: 6;
+      opacity: 0;
     }
     .items{
         margin-top: $items-top-margin;

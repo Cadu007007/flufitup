@@ -2093,6 +2093,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Sidebar',
@@ -2316,6 +2318,124 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PickupInfoItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PickupInfoItem */ "./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['title', 'state', 'day', 'date', 'pickuponetime', 'volume', 'numberofbags', 'drycleanincluded'],
+  components: {
+    PickupInfoItem: _PickupInfoItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['title', 'value']
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PickupDataColumn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PickupDataColumn */ "./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['title', 'activepickups', 'pickuponestate', 'pickuptwostate', 'pickuponeday', 'pickuponedate', 'pickuponetime', 'pickuponevolume', 'pickuponenubmerofbags', 'pickuponedrycleanincluded', 'pickuptwoday', 'pickuptwodate', 'pickuptwotime', 'pickuptwovolume', 'pickuptwonubmerofbags', 'pickuptwodrycleanincluded'],
+  components: {
+    PickupDataColumn: _PickupDataColumn__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WelcomePanner.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/WelcomePanner.vue?vue&type=script&lang=js& ***!
@@ -2353,6 +2473,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Components_WeekPickupsContainer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Components/WeekPickupsContainer */ "./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue");
 //
 //
 //
@@ -2366,13 +2487,126 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       title: 'Edit Order'
     };
   },
-  props: ['date']
+  props: {
+    date: String,
+    weekonepickupone: Array,
+    weekonepickuptwo: Array,
+    weektwopickupone: Array,
+    weektwopickuptwo: Array,
+    weekthreepickupone: Array,
+    weekthreepickuptwo: Array,
+    weekfourpickupone: Array,
+    weekfourpickuptwo: Array
+  },
+  components: {
+    WeekPickupsContainer: _Components_WeekPickupsContainer__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
 });
 
 /***/ }),
@@ -2771,10 +3005,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['title', 'name', 'options', 'isopen'],
+  data: function data() {
+    return {
+      isopen: false
+    };
+  },
+  props: ['title', 'name', 'options', 'openstate', 'hasradio'],
   methods: {
     changeIsOpenState: function changeIsOpenState() {
-      this.isopen = !this.isopen;
+      if (this.openstate) {
+        this.openstate = false;
+        this.isopen = false;
+      } else {
+        this.isopen = !this.isopen;
+      }
     }
   }
 });
@@ -2790,20 +3034,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2850,6 +3080,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -3216,6 +3447,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3224,7 +3478,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       title: 'Package Create',
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-      showaddedvalueschoices: false
+      showaddedvalueschoices: false,
+      selectedServiceName: 'Choose your Wash and Fold Service'
     };
   },
   props: ['date', 'serviceoptions', 'washoptions', 'pickupsoptions', 'loadoptions', 'dateoptions', 'returndurationoptions', 'addedvalueoptions', 'addedvaluechoices', 'formactionroute'],
@@ -3240,6 +3495,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     addedValuesClicked: function addedValuesClicked() {
       alert('Added values');
+    },
+    changeServiceName: function changeServiceName(option) {
+      this.selectedServiceName = 'Choose your ' + option.title + "".concat(option.title.includes('Service') ? '' : ' Service');
     }
   }
 });
@@ -8291,7 +8549,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".Sidebar {\n  position: relative;\n}\n.Sidebar .logo {\n  margin: 20px auto;\n  width: 67px;\n  height: 75px;\n}\n.Sidebar .collapse-sidebar, .Sidebar .expand-sidebar {\n  width: 50px;\n  height: 50px;\n  position: absolute;\n  right: -25px;\n  top: 155px;\n}\n.Sidebar .items {\n  margin-top: 60px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: center;\n  height: calc( 100vh - 75px - 20px - 27px - 20px - 60px );\n}\n.Sidebar .logout {\n  margin-top: 88px;\n  margin-bottom: 48px;\n}", ""]);
+exports.push([module.i, ".Sidebar {\n  position: relative;\n}\n.Sidebar .logo {\n  margin: 20px auto;\n  width: 67px;\n  height: 75px;\n}\n.Sidebar .collapse-sidebar, .Sidebar .expand-sidebar {\n  width: 50px;\n  height: 50px;\n  position: absolute;\n  right: -25px;\n  top: 155px;\n  z-index: 6;\n  opacity: 0;\n}\n.Sidebar .items {\n  margin-top: 60px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: center;\n  height: calc( 100vh - 75px - 20px - 27px - 20px - 60px );\n}\n.Sidebar .logout {\n  margin-top: 88px;\n  margin-bottom: 48px;\n}", ""]);
 
 // exports
 
@@ -8412,6 +8670,63 @@ exports.push([module.i, ".OrderContainer {\n  width: 628px;\n  height: -webkit-f
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=style&index=0&lang=scss&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=style&index=0&lang=scss& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".PickupDataColumn {\n  width: 100%;\n}\n.PickupDataColumn:nth-child(1) {\n  border-right: 1px solid #70707033;\n}\n.PickupDataColumn:nth-child(2) {\n  border-left: 1px solid #70707033;\n}\n.PickupDataColumn .pickup-header {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: #0000004D;\n  height: 40px;\n  color: #FFFFFF;\n}\n.PickupDataColumn .pickup-header.orange {\n  background: #FDBD42 !important;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=style&index=0&lang=scss&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=style&index=0&lang=scss& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".PickupInfoItem {\n  padding: 0 7px;\n  margin: 20px auto;\n}\n.PickupInfoItem .pickup-info {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  margin: 10px 0;\n  font-size: 11px;\n}\n.PickupInfoItem .pickup-info .title {\n  font-family: \"Lato-Bold\";\n  color: #00000066;\n}\n.PickupInfoItem .pickup-info .value {\n  color: #00000066;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".WeekPickupsContainer {\n  width: 100%;\n  min-height: 403px;\n  background: #FFFFFF;\n  border-radius: 20px;\n  box-shadow: 0px 0px 10px #0000001A;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-content: center;\n}\n.WeekPickupsContainer .header {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: #00000080;\n  color: #FFFFFF;\n  text-align: center;\n  height: 40px;\n  border-radius: 20px 20px 0px 0px;\n}\n.WeekPickupsContainer .header.blue {\n  background: #22AEE4 !important;\n}\n.WeekPickupsContainer .pickups-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.WeekPickupsContainer .button-container {\n  margin: 40px auto 20px auto;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.WeekPickupsContainer .button-container .modify-button {\n  width: 168px;\n  height: 40px;\n  border-radius: 20px;\n  background: #22AEE4;\n  color: #FFFFFF;\n  font-size: 14px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WelcomePanner.vue?vue&type=style&index=0&lang=scss&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/WelcomePanner.vue?vue&type=style&index=0&lang=scss& ***!
@@ -8443,7 +8758,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".EditOrder {\n  padding: 0 140px 0 16px;\n}\n.EditOrder .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.EditOrder .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.EditOrder .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}", ""]);
+exports.push([module.i, ".EditOrder {\n  padding: 0 140px 0 16px;\n}\n.EditOrder .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.EditOrder .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.EditOrder .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.EditOrder .page-container {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  justify-content: center;\n  align-items: center;\n}\n.EditOrder .page-container .WeekPickupsContainer {\n  width: 460px;\n  margin: 20px;\n}", ""]);
 
 // exports
 
@@ -8595,7 +8910,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../node_mod
 
 
 // module
-exports.push([module.i, ".ComponentContainer {\n  width: 100%;\n}\n.ComponentContainer .AddedValuesAccordion {\n  width: 100%;\n  box-shadow: 0px 0px 10px #0000001A;\n  border-radius: 10px 10px 0px 0px;\n}\n.ComponentContainer .AddedValuesAccordion .header {\n  height: 60px;\n  background: #F1F3F7;\n  padding: 16px 24px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n.ComponentContainer .AddedValuesAccordion .header .title {\n  font-size: 18px;\n}\n.ComponentContainer .AddedValuesAccordion .options {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  background: #FFFFFF;\n  padding: 24px 48px;\n}\n.ComponentContainer .AddedValuesAccordion .options .option {\n  margin-bottom: 16px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 24px;\n}\n.ComponentContainer .AddedValuesAccordion .options .option .radio {\n  width: 24px;\n  height: 24px;\n  color: #000000;\n}\n.ComponentContainer .AddedValuesAccordion .options .option .option-label {\n  margin-left: 24px;\n  font-size: 14px;\n  color: #000000;\n}\n.ComponentContainer .question-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  width: 520px;\n  margin: 40px 0;\n}\n.ComponentContainer .question-container .question {\n  font-size: 18px;\n  font-family: \"Lato-Bold\";\n  color: #000000;\n}\n.ComponentContainer .question-container .answers {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.ComponentContainer .question-container .answers .answer {\n  width: 80px;\n  margin-top: 12px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.ComponentContainer .question-container .answers .answer .option-label {\n  margin-left: 10px;\n}\n.ComponentContainer .question-container .answers .answer .radio {\n  width: 24px;\n  height: 24px;\n}", ""]);
+exports.push([module.i, ".ComponentContainer {\n  width: 100%;\n}\n.ComponentContainer .AddedValuesAccordion {\n  width: 100%;\n  box-shadow: 0px 0px 10px #0000001A;\n  border-radius: 10px 10px 0px 0px;\n}\n.ComponentContainer .AddedValuesAccordion .header {\n  height: 60px;\n  background: #F1F3F7;\n  padding: 16px 24px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n.ComponentContainer .AddedValuesAccordion .header .title {\n  font-size: 18px;\n}\n.ComponentContainer .AddedValuesAccordion .options {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  background: #FFFFFF;\n  padding: 24px 48px;\n}\n.ComponentContainer .AddedValuesAccordion .options .option {\n  margin-bottom: 16px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 24px;\n}\n.ComponentContainer .AddedValuesAccordion .options .option .radio {\n  width: 24px;\n  height: 24px;\n  color: #000000;\n}\n.ComponentContainer .AddedValuesAccordion .options .option .option-label {\n  margin-left: 24px;\n  font-size: 14px;\n  color: #000000;\n}", ""]);
 
 // exports
 
@@ -8614,7 +8929,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../node_mod
 
 
 // module
-exports.push([module.i, ".PackageContainer {\n  background: #FFFFFF;\n  width: 233px;\n  height: 300px;\n  box-shadow: 0px 0px 3px #0000001A;\n  border-radius: 20px;\n  margin: 20px 20px 20px 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  padding: 20px 0 0 0;\n  position: relative;\n}\n.PackageContainer .title {\n  font-size: 16px;\n}\n.PackageContainer .price {\n  margin-top: 23px;\n  font-size: 36px;\n  color: #00000099;\n}\n.PackageContainer .description {\n  margin-top: 28px;\n  color: #00000080;\n  font-size: 14px;\n  text-align: center;\n}\n.PackageContainer .see-details {\n  margin-top: 18px;\n  font-size: 16px;\n  margin-bottom: 20px;\n  cursor: pointer;\n}\n.PackageContainer .subscribe {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n  width: 148px;\n  height: 31px;\n  border-radius: 20px;\n  background: #FDBD42;\n  font-size: 14px;\n  color: #FFFFFF;\n  position: absolute;\n  bottom: 18px;\n}\n.PackageContainer .subscribe.create {\n  background: #22AEE4;\n}", ""]);
+exports.push([module.i, ".PackageContainer {\n  background: #FFFFFF;\n  width: 233px;\n  height: 300px;\n  box-shadow: 0px 0px 3px #0000001A;\n  border-radius: 20px;\n  margin: 20px 20px 20px 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  padding: 20px 0 0 0;\n  position: relative;\n}\n.PackageContainer .title {\n  font-size: 16px;\n}\n.PackageContainer .price {\n  margin-top: 23px;\n  font-size: 36px;\n  color: #00000099;\n}\n.PackageContainer .description {\n  margin-top: 28px;\n  color: #00000080;\n  font-size: 14px;\n  text-align: center;\n  padding: 0 10px;\n}\n.PackageContainer .see-details {\n  margin-top: 18px;\n  font-size: 16px;\n  margin-bottom: 20px;\n  cursor: pointer;\n}\n.PackageContainer .subscribe {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n  width: 148px;\n  height: 31px;\n  border-radius: 20px;\n  background: #FDBD42;\n  font-size: 14px;\n  color: #FFFFFF;\n  position: absolute;\n  bottom: 18px;\n}\n.PackageContainer .subscribe.create {\n  background: #22AEE4;\n}", ""]);
 
 // exports
 
@@ -8709,7 +9024,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".PackageSummary {\n  padding: 0 140px 0 16px;\n}\n.PackageSummary .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.PackageSummary .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.PackageSummary .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.PackageSummary .page-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  flex-wrap: wrap;\n}\n.PackageSummary .page-container .options-container {\n  width: 444px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex-wrap: wrap;\n}\n.PackageSummary .page-container .options-container .accordion {\n  margin: 12px 0;\n}\n.PackageSummary .page-container .added-values-container {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  flex-wrap: wrap;\n  justify-content: center;\n  align-items: center;\n}\n.PackageSummary .page-container .added-values-container .added-value {\n  height: 40px;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.PackageSummary .page-container .added-values-container .added-value .label {\n  font-size: 12px;\n  margin-left: 12px;\n}\n.PackageSummary .page-container .package-price {\n  margin-left: 10px;\n}", ""]);
+exports.push([module.i, ".PackageSummary {\n  padding: 0 140px 0 16px;\n}\n.PackageSummary .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.PackageSummary .page-header .title {\n  margin: 26px 0;\n  font-size: 12px;\n  font-weight: bold;\n}\n.PackageSummary .page-header .date {\n  font-size: 10px;\n  color: #00000066;\n}\n.PackageSummary .page-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  flex-wrap: wrap;\n}\n.PackageSummary .page-container .options-container {\n  width: 444px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex-wrap: wrap;\n}\n.PackageSummary .page-container .options-container .accordion {\n  margin: 12px 0;\n}\n.PackageSummary .page-container .options-container .question-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  width: 520px;\n  margin: 40px 0;\n}\n.PackageSummary .page-container .options-container .question-container .question {\n  font-size: 18px;\n  font-family: \"Lato-Bold\";\n  color: #000000;\n}\n.PackageSummary .page-container .options-container .question-container .answers {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.PackageSummary .page-container .options-container .question-container .answers .answer {\n  width: 80px;\n  margin-top: 12px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.PackageSummary .page-container .options-container .question-container .answers .answer .option-label {\n  margin-left: 10px;\n}\n.PackageSummary .page-container .options-container .question-container .answers .answer .radio {\n  width: 24px;\n  height: 24px;\n}\n.PackageSummary .page-container .added-values-container {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  flex-wrap: wrap;\n  justify-content: center;\n  align-items: center;\n}\n.PackageSummary .page-container .added-values-container .added-value {\n  height: 40px;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.PackageSummary .page-container .added-values-container .added-value .label {\n  font-size: 12px;\n  margin-left: 12px;\n}\n.PackageSummary .page-container .package-price {\n  position: fixed;\n  right: 140px;\n}", ""]);
 
 // exports
 
@@ -40297,6 +40612,96 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--11-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PickupDataColumn.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=style&index=0&lang=scss&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=style&index=0&lang=scss& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--11-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PickupInfoItem.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--11-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WelcomePanner.vue?vue&type=style&index=0&lang=scss&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/WelcomePanner.vue?vue&type=style&index=0&lang=scss& ***!
@@ -42368,6 +42773,172 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=template&id=2e40fcb9&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=template&id=2e40fcb9& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "PickupDataColumn" },
+    [
+      _c(
+        "div",
+        { staticClass: "pickup-header", class: _vm.state > 0 ? "orange" : "" },
+        [_vm._v("\n        " + _vm._s(_vm.title) + "\n    ")]
+      ),
+      _vm._v(" "),
+      _c("PickupInfoItem", {
+        attrs: { title: "Pickup Day/s", value: _vm.day }
+      }),
+      _vm._v(" "),
+      _c("PickupInfoItem", {
+        attrs: { title: "Pickup Date/s", value: _vm.date }
+      }),
+      _vm._v(" "),
+      _c("PickupInfoItem", {
+        attrs: { title: "Pickup Time", value: _vm.time }
+      }),
+      _vm._v(" "),
+      _c("PickupInfoItem", {
+        attrs: { title: "Volumes per Pickup", value: _vm.volume }
+      }),
+      _vm._v(" "),
+      _c("PickupInfoItem", {
+        attrs: { title: "No. of Bags per pickup", value: _vm.numberofbags }
+      }),
+      _vm._v(" "),
+      _c("PickupInfoItem", {
+        attrs: { title: "Dry Clean Included", value: _vm.drycleanincluded }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=template&id=c042b48c&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=template&id=c042b48c& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "PickupInfoItem" }, [
+    _c("div", { staticClass: "pickup-info" }, [
+      _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "value" }, [_vm._v(_vm._s(_vm.value))])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=template&id=753076db&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=template&id=753076db& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "WeekPickupsContainer" }, [
+    _c(
+      "div",
+      { staticClass: "header", class: _vm.activepickups > 0 ? "blue" : "" },
+      [
+        _c("p", { staticClass: "title" }, [
+          _vm._v("\n       " + _vm._s(_vm.title) + "\n      ")
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "pickups-container" },
+      [
+        _c("PickupDataColumn", {
+          attrs: {
+            title: "Pickup One",
+            state: _vm.pickuponestate,
+            day: _vm.pickuponeday,
+            date: _vm.pickuponedate,
+            time: _vm.pickuponetime,
+            volume: _vm.pickuponevolume,
+            numberofbags: _vm.pickuponenubmerofbags,
+            drycleanincluded: _vm.pickuponedrycleanincluded
+          }
+        }),
+        _vm._v(" "),
+        _c("PickupDataColumn", {
+          attrs: {
+            title: "Pickup Two",
+            state: _vm.pickuptwostate,
+            day: _vm.pickuptwoday,
+            date: _vm.pickuptwodate,
+            time: _vm.pickuptwotime,
+            volume: _vm.pickuptwovolume,
+            numberofbags: _vm.pickuptwonubmerofbags,
+            drycleanincluded: _vm.pickuptwodrycleanincluded
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _vm.pickuponestate || _vm.pickuptwostate
+      ? _c("div", { staticClass: "button-container" }, [
+          _c(
+            "button",
+            { staticClass: "modify-button", attrs: { type: "button" } },
+            [_vm._v("\n          Modify\n      ")]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WelcomePanner.vue?vue&type=template&id=59363db3&":
 /*!*******************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/User/Pages/Home/Components/WelcomePanner.vue?vue&type=template&id=59363db3& ***!
@@ -42422,7 +42993,126 @@ var render = function() {
       _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
       _vm._v(" "),
       _c("p", { staticClass: "date" }, [_vm._v(_vm._s(_vm.date))])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "page-container" },
+      [
+        _c("WeekPickupsContainer", {
+          staticClass: "WeekPickupsContainer",
+          attrs: {
+            title: "Week One",
+            activepickups:
+              _vm.weekonepickupone[0].pickup_one_state +
+              _vm.weekonepickuptwo[0].pickup_two_state,
+            pickuponestate: _vm.weekonepickupone[0].pickup_one_state,
+            pickuptwostate: _vm.weekonepickuptwo[0].pickup_two_state,
+            pickuponeday: _vm.weekonepickupone[0].pickup_one_day,
+            pickuponedate: _vm.weekonepickupone[0].pickup_one_date,
+            pickuponetime: _vm.weekonepickupone[0].pickup_one_time,
+            pickuponevolume: _vm.weekonepickupone[0].pickup_one_volume,
+            pickuponenubmerofbags:
+              _vm.weekonepickupone[0].pickup_one_nubmer_of_bags,
+            pickuponedrycleanincluded:
+              _vm.weekonepickupone[0].pickup_one_dry_clean_included,
+            pickuptwoday: _vm.weekonepickuptwo[0].pickup_two_day,
+            pickuptwodate: _vm.weekonepickuptwo[0].pickup_two_date,
+            pickuptwotime: _vm.weekonepickuptwo[0].pickup_two_time,
+            pickuptwovolume: _vm.weekonepickuptwo[0].pickup_two_volume,
+            pickuptwonubmerofbags:
+              _vm.weekonepickuptwo[0].pickup_two_nubmer_of_bags,
+            pickuptwodrycleanincluded:
+              _vm.weekonepickuptwo[0].pickup_two_dry_clean_included
+          }
+        }),
+        _vm._v(" "),
+        _c("WeekPickupsContainer", {
+          staticClass: "WeekPickupsContainer",
+          attrs: {
+            title: "Week Two",
+            activepickups:
+              _vm.weektwopickupone[0].pickup_one_state +
+              _vm.weektwopickuptwo[0].pickup_two_state,
+            pickuponestate: _vm.weektwopickupone[0].pickup_one_state,
+            pickuptwostate: _vm.weektwopickuptwo[0].pickup_two_state,
+            pickuponeday: _vm.weektwopickupone[0].pickup_one_day,
+            pickuponedate: _vm.weektwopickupone[0].pickup_one_date,
+            pickuponetime: _vm.weektwopickupone[0].pickup_one_time,
+            pickuponevolume: _vm.weektwopickupone[0].pickup_one_volume,
+            pickuponenubmerofbags:
+              _vm.weektwopickupone[0].pickup_one_nubmer_of_bags,
+            pickuponedrycleanincluded:
+              _vm.weektwopickupone[0].pickup_one_dry_clean_included,
+            pickuptwoday: _vm.weektwopickuptwo[0].pickup_two_day,
+            pickuptwodate: _vm.weektwopickuptwo[0].pickup_two_date,
+            pickuptwotime: _vm.weektwopickuptwo[0].pickup_two_time,
+            pickuptwovolume: _vm.weektwopickuptwo[0].pickup_two_volume,
+            pickuptwonubmerofbags:
+              _vm.weektwopickuptwo[0].pickup_two_nubmer_of_bags,
+            pickuptwodrycleanincluded:
+              _vm.weektwopickuptwo[0].pickup_two_dry_clean_included
+          }
+        }),
+        _vm._v(" "),
+        _c("WeekPickupsContainer", {
+          staticClass: "WeekPickupsContainer",
+          attrs: {
+            title: "Week Three",
+            activepickups:
+              _vm.weekthreepickupone[0].pickup_one_state +
+              _vm.weekthreepickuptwo[0].pickup_two_state,
+            pickuponestate: _vm.weekthreepickupone[0].pickup_one_state,
+            pickuptwostate: _vm.weekthreepickuptwo[0].pickup_two_state,
+            pickuponeday: _vm.weekthreepickupone[0].pickup_one_day,
+            pickuponedate: _vm.weekthreepickupone[0].pickup_one_date,
+            pickuponetime: _vm.weekthreepickupone[0].pickup_one_time,
+            pickuponevolume: _vm.weekthreepickupone[0].pickup_one_volume,
+            pickuponenubmerofbags:
+              _vm.weekthreepickupone[0].pickup_one_nubmer_of_bags,
+            pickuponedrycleanincluded:
+              _vm.weekthreepickupone[0].pickup_one_dry_clean_included,
+            pickuptwoday: _vm.weekthreepickuptwo[0].pickup_two_day,
+            pickuptwodate: _vm.weekthreepickuptwo[0].pickup_two_date,
+            pickuptwotime: _vm.weekthreepickuptwo[0].pickup_two_time,
+            pickuptwovolume: _vm.weekthreepickuptwo[0].pickup_two_volume,
+            pickuptwonubmerofbags:
+              _vm.weekthreepickuptwo[0].pickup_two_nubmer_of_bags,
+            pickuptwodrycleanincluded:
+              _vm.weekthreepickuptwo[0].pickup_two_dry_clean_included
+          }
+        }),
+        _vm._v(" "),
+        _c("WeekPickupsContainer", {
+          staticClass: "WeekPickupsContainer",
+          attrs: {
+            title: "Week Four",
+            activepickups:
+              _vm.weekfourpickupone[0].pickup_one_state +
+              _vm.weekfourpickuptwo[0].pickup_two_state,
+            pickuponestate: _vm.weekfourpickupone[0].pickup_one_state,
+            pickuptwostate: _vm.weekfourpickuptwo[0].pickup_two_state,
+            pickuponeday: _vm.weekfourpickupone[0].pickup_one_day,
+            pickuponedate: _vm.weekfourpickupone[0].pickup_one_date,
+            pickuponetime: _vm.weekfourpickupone[0].pickup_one_time,
+            pickuponevolume: _vm.weekfourpickupone[0].pickup_one_volume,
+            pickuponenubmerofbags:
+              _vm.weekfourpickupone[0].pickup_one_nubmer_of_bags,
+            pickuponedrycleanincluded:
+              _vm.weekfourpickupone[0].pickup_one_dry_clean_included,
+            pickuptwoday: _vm.weekfourpickuptwo[0].pickup_two_day,
+            pickuptwodate: _vm.weekfourpickuptwo[0].pickup_two_date,
+            pickuptwotime: _vm.weekfourpickuptwo[0].pickup_two_time,
+            pickuptwovolume: _vm.weekfourpickuptwo[0].pickup_two_volume,
+            pickuptwonubmerofbags:
+              _vm.weekfourpickuptwo[0].pickup_two_nubmer_of_bags,
+            pickuptwodrycleanincluded:
+              _vm.weekfourpickuptwo[0].pickup_two_dry_clean_included
+          }
+        })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -43091,9 +43781,10 @@ var render = function() {
         _vm._v(" "),
         _c("img", {
           attrs: {
-            src: _vm.isopen
-              ? "/images/icons/arrow-up.svg"
-              : "/images/icons/arrow-down.svg",
+            src:
+              _vm.isopen || _vm.openstate
+                ? "/images/icons/arrow-up.svg"
+                : "/images/icons/arrow-down.svg",
             alt: ""
           }
         })
@@ -43107,23 +43798,38 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.isopen,
-            expression: "isopen"
+            value: _vm.isopen || _vm.openstate,
+            expression: "isopen || openstate"
           }
         ],
         staticClass: "options"
       },
       _vm._l(_vm.options, function(option, index) {
         return _c("div", { key: index, staticClass: "option" }, [
-          _c("input", {
-            staticClass: "radio",
-            attrs: { type: "radio", name: _vm.name, id: "" },
-            domProps: { checked: index == 0, value: option.value }
-          }),
+          _vm.hasradio
+            ? _c("input", {
+                staticClass: "radio",
+                attrs: { type: "radio", name: _vm.name, id: "" },
+                domProps: { checked: index == 0, value: option.value },
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("option-selected", option)
+                  }
+                }
+              })
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "label",
-            { staticClass: "option-label", attrs: { for: "filter" } },
+            {
+              staticClass: "option-label",
+              attrs: { for: "filter" },
+              on: {
+                click: function($event) {
+                  return _vm.$emit("label-clicked")
+                }
+              }
+            },
             [_vm._v(_vm._s(option.title))]
           )
         ])
@@ -43238,78 +43944,10 @@ var render = function() {
         ])
       }),
       0
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.isopen,
-            expression: "isopen"
-          }
-        ],
-        staticClass: "question-container"
-      },
-      [
-        _c("p", { staticClass: "question" }, [
-          _vm._v(
-            "Add Nature friendly garment Freshener ( Only for 1.5s per bag )"
-          )
-        ]),
-        _vm._v(" "),
-        _vm._m(0)
-      ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "answers" }, [
-      _c("div", { staticClass: "answer" }, [
-        _c("input", {
-          staticClass: "radio",
-          attrs: {
-            type: "radio",
-            checked: "",
-            name: "add_nature_garment",
-            value: "yes",
-            id: ""
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "option-label", attrs: { for: "add_nature_garment" } },
-          [_vm._v("Yes")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "answer" }, [
-        _c("input", {
-          staticClass: "radio",
-          attrs: {
-            type: "radio",
-            name: "add_nature_garment",
-            value: "no",
-            id: ""
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "option-label", attrs: { for: "add_nature_garment" } },
-          [_vm._v("No")]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -43338,29 +43976,28 @@ var render = function() {
     _vm._v(" "),
     _c("p", { staticClass: "description" }, [_vm._v(_vm._s(_vm.description))]),
     _vm._v(" "),
-    _c(
-      "p",
-      {
-        staticClass: "see-details",
-        class: _vm.button == "Create" ? "hidden" : "",
-        on: {
-          click: function($event) {
-            return _vm.$emit("show-package-details")
-          }
-        }
-      },
-      [_vm._v("See Details")]
-    ),
-    _vm._v(" "),
-    _c(
-      "a",
-      {
-        staticClass: "subscribe",
-        class: _vm.button == "Create" ? "create" : "",
-        attrs: { href: _vm.buttonroute }
-      },
-      [_vm._v(_vm._s(_vm.button))]
-    )
+    _vm.button != "Create"
+      ? _c(
+          "button",
+          {
+            staticClass: "subscribe",
+            on: {
+              click: function($event) {
+                return _vm.$emit("show-package-details")
+              }
+            }
+          },
+          [_vm._v("Subscribe")]
+        )
+      : _c(
+          "a",
+          {
+            staticClass: "subscribe",
+            class: _vm.button == "Create" ? "create" : "",
+            attrs: { href: _vm.buttonroute }
+          },
+          [_vm._v(_vm._s(_vm.button))]
+        )
   ])
 }
 var staticRenderFns = []
@@ -43747,25 +44384,34 @@ var render = function() {
               _c("Accordion", {
                 staticClass: "accordion",
                 attrs: {
-                  isopen: true,
+                  openstate: true,
+                  hasradio: true,
                   title: "Choose your Service",
                   name: "service",
                   options: _vm.serviceoptions
-                }
+                },
+                on: { "option-selected": _vm.changeServiceName }
               }),
               _vm._v(" "),
               _c("Accordion", {
                 staticClass: "accordion",
                 attrs: {
-                  title: "Choose your Wash and Fold Service",
+                  hasradio: true,
+                  title: _vm.selectedServiceName,
                   name: "wash_and_fold_service",
                   options: _vm.washoptions
+                },
+                on: {
+                  "option-selected": function($event) {
+                    return _vm.changeServiceName(_vm.value)
+                  }
                 }
               }),
               _vm._v(" "),
               _c("Accordion", {
                 staticClass: "accordion",
                 attrs: {
+                  hasradio: true,
                   title: "Choose how many pickeups per week",
                   name: "pickups_per_week",
                   options: _vm.pickupsoptions
@@ -43775,6 +44421,7 @@ var render = function() {
               _c("Accordion", {
                 staticClass: "accordion",
                 attrs: {
+                  hasradio: true,
                   title: "Choose your Load Size per Pickup",
                   name: "load_size_per_pickup",
                   options: _vm.loadoptions
@@ -43784,6 +44431,7 @@ var render = function() {
               _c("Accordion", {
                 staticClass: "accordion",
                 attrs: {
+                  hasradio: false,
                   title: "Choose your date",
                   name: "date",
                   options: _vm.dateoptions
@@ -43793,6 +44441,7 @@ var render = function() {
               _c("Accordion", {
                 staticClass: "accordion",
                 attrs: {
+                  hasradio: true,
                   title: "Choose Service return Duration",
                   name: "return_duration",
                   options: _vm.returndurationoptions
@@ -43807,7 +44456,9 @@ var render = function() {
                   options: _vm.addedvalueoptions,
                   addedvaluechoices: _vm.addedvaluechoices
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm._m(0)
             ],
             1
           ),
@@ -43822,7 +44473,65 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "question-container" }, [
+      _c("p", { staticClass: "question" }, [
+        _vm._v(
+          "Add Nature friendly garment Freshener ( Only for 1.5s per bag )"
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "answers" }, [
+        _c("div", { staticClass: "answer" }, [
+          _c("input", {
+            staticClass: "radio",
+            attrs: {
+              type: "radio",
+              name: "add_nature_garment",
+              value: "yes",
+              id: ""
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "option-label",
+              attrs: { for: "add_nature_garment" }
+            },
+            [_vm._v("Yes")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "answer" }, [
+          _c("input", {
+            staticClass: "radio",
+            attrs: {
+              type: "radio",
+              checked: "",
+              name: "add_nature_garment",
+              value: "no",
+              id: ""
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "option-label",
+              attrs: { for: "add_nature_garment" }
+            },
+            [_vm._v("No")]
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -57528,6 +58237,267 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderContainer_vue_vue_type_template_id_08bcc810___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderContainer_vue_vue_type_template_id_08bcc810___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PickupDataColumn_vue_vue_type_template_id_2e40fcb9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PickupDataColumn.vue?vue&type=template&id=2e40fcb9& */ "./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=template&id=2e40fcb9&");
+/* harmony import */ var _PickupDataColumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PickupDataColumn.vue?vue&type=script&lang=js& */ "./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PickupDataColumn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PickupDataColumn.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PickupDataColumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PickupDataColumn_vue_vue_type_template_id_2e40fcb9___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PickupDataColumn_vue_vue_type_template_id_2e40fcb9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PickupDataColumn.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=style&index=0&lang=scss&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=style&index=0&lang=scss& ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/style-loader!../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--11-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PickupDataColumn.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=template&id=2e40fcb9&":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=template&id=2e40fcb9& ***!
+  \****************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_template_id_2e40fcb9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PickupDataColumn.vue?vue&type=template&id=2e40fcb9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupDataColumn.vue?vue&type=template&id=2e40fcb9&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_template_id_2e40fcb9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupDataColumn_vue_vue_type_template_id_2e40fcb9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PickupInfoItem_vue_vue_type_template_id_c042b48c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PickupInfoItem.vue?vue&type=template&id=c042b48c& */ "./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=template&id=c042b48c&");
+/* harmony import */ var _PickupInfoItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PickupInfoItem.vue?vue&type=script&lang=js& */ "./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PickupInfoItem_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PickupInfoItem.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PickupInfoItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PickupInfoItem_vue_vue_type_template_id_c042b48c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PickupInfoItem_vue_vue_type_template_id_c042b48c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PickupInfoItem.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=style&index=0&lang=scss&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=style&index=0&lang=scss& ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/style-loader!../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--11-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PickupInfoItem.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=template&id=c042b48c&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=template&id=c042b48c& ***!
+  \**************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_template_id_c042b48c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PickupInfoItem.vue?vue&type=template&id=c042b48c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/PickupInfoItem.vue?vue&type=template&id=c042b48c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_template_id_c042b48c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PickupInfoItem_vue_vue_type_template_id_c042b48c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _WeekPickupsContainer_vue_vue_type_template_id_753076db___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WeekPickupsContainer.vue?vue&type=template&id=753076db& */ "./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=template&id=753076db&");
+/* harmony import */ var _WeekPickupsContainer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WeekPickupsContainer.vue?vue&type=script&lang=js& */ "./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _WeekPickupsContainer_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _WeekPickupsContainer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _WeekPickupsContainer_vue_vue_type_template_id_753076db___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _WeekPickupsContainer_vue_vue_type_template_id_753076db___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./WeekPickupsContainer.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/style-loader!../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--11-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=template&id=753076db&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=template&id=753076db& ***!
+  \********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_template_id_753076db___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./WeekPickupsContainer.vue?vue&type=template&id=753076db& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/User/Pages/Home/Components/WeekPickupsContainer.vue?vue&type=template&id=753076db&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_template_id_753076db___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WeekPickupsContainer_vue_vue_type_template_id_753076db___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

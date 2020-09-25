@@ -10,22 +10,27 @@
   <div class="page-container">
       <div class="options-container">
           <Accordion
-          :isopen="true"
+          :openstate="true"
+          :hasradio="true"
           class="accordion"
           title="Choose your Service"
           name="service"
+          @option-selected="changeServiceName"
           :options="serviceoptions"
           />
 
           <Accordion
           class="accordion"
-          title="Choose your Wash and Fold Service"
+          :hasradio="true"
+          @option-selected="changeServiceName(value)"
+          :title="selectedServiceName"
           name="wash_and_fold_service"
           :options="washoptions"
           />
 
           <Accordion
           class="accordion"
+          :hasradio="true"
           title="Choose how many pickeups per week"
           name="pickups_per_week"
           :options="pickupsoptions"
@@ -33,6 +38,7 @@
 
           <Accordion
           class="accordion"
+          :hasradio="true"
           title="Choose your Load Size per Pickup"
           name="load_size_per_pickup"
           :options="loadoptions"
@@ -40,6 +46,7 @@
 
           <Accordion
           class="accordion"
+          :hasradio="false"
           title="Choose your date"
           name="date"
           :options="dateoptions"
@@ -47,6 +54,7 @@
 
           <Accordion
           class="accordion"
+          :hasradio="true"
           title="Choose Service return Duration"
           name="return_duration"
           :options="returndurationoptions"
@@ -60,6 +68,21 @@
           :addedvaluechoices="addedvaluechoices"
           />
 
+
+        <div class="question-container">
+            <p class="question">Add Nature friendly garment Freshener ( Only for 1.5s per bag )</p>
+          <div class="answers">
+              <div class="answer">
+                  <input class="radio" type="radio" name="add_nature_garment" value="yes" id="">
+                  <label class="option-label" for="add_nature_garment">Yes</label>
+              </div>
+              <div class="answer">
+                  <input class="radio" type="radio" checked name="add_nature_garment" value="no" id="">
+                  <label class="option-label" for="add_nature_garment">No</label>
+              </div>
+          </div>
+
+        </div>
 
       </div>
 
@@ -87,6 +110,7 @@ export default {
       title: 'Package Create',
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       showaddedvalueschoices: false,
+      selectedServiceName: 'Choose your Wash and Fold Service',
     }
   },
   props: ['date','serviceoptions','washoptions','pickupsoptions','loadoptions','dateoptions',
@@ -103,12 +127,16 @@ export default {
     },
     addedValuesClicked(){
       alert('Added values')
+    },
+    changeServiceName(option){
+      this.selectedServiceName = 'Choose your ' + option.title + `${ option.title.includes('Service') ? '' : ' Service'}`
     }
   },
 }
 </script>
 <style lang="scss">
 $text-grey: #00000066;
+$black: #000000;
 
 
 .PackageSummary{
@@ -146,6 +174,41 @@ $text-grey: #00000066;
       .accordion{
         margin: 12px 0;
       }
+
+      .question-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 520px;
+    margin: 40px 0;
+    .question{
+        font-size: 18px;
+        font-family: 'Lato-Bold';
+        color: $black;
+    }
+    .answers{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .answer{
+            width: 80px;
+            margin-top: 12px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            .option-label{
+                margin-left: 10px;
+            }
+            .radio{
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+}
     }
 
     .added-values-container{
@@ -172,7 +235,8 @@ $text-grey: #00000066;
 
     }
     .package-price{
-      margin-left: 10px;
+      position: fixed;
+      right: 140px;
     }
 }
 
