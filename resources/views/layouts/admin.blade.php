@@ -3,8 +3,12 @@
 <div id="app">
         <div class="AdminNavbar">
             <Admin-Navbar
-            :chatcount="{{ $chat_count }}"
-            :notificationscount="{{ $notifications_count }}"
+            :chatsnotifications="{{ $chat_notifications }}"
+            :chatcount="{{ Count($chat_notifications) }}"
+            :notifications="{{ $notifications }}"
+            :notificationscount="{{ Count($notifications) }}"
+            viewallchatroute="{{ route('admin.dashboard') }}"
+            viewallnotificationsroute="{{ route('admin.dashboard') }}"
             />
         </div>
         <div class="AdminPageContainer">

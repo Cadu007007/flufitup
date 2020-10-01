@@ -9,11 +9,11 @@
         </div>
     </div>
     <div class="right">
-        <div class="chat">
+        <div class="chat" @click="changeChatState">
             <img src="/images/admin/icons/chat.svg" alt="" class="navbar-icon">
             <span class="count">{{chatcount}}</span>
         </div>
-        <div class="notifications">
+        <div class="notifications" @click="changeNotificationsState">
             <img src="/images/admin/icons/notification.svg" alt="" class="navbar-icon">
             <span class="count">{{notificationscount}}</span>
         </div>
@@ -22,12 +22,48 @@
             <img src="/images/icons/arrow-.svg" alt="" class="icon">
         </div>
     </div>
+
+    <Chat-Popup-List
+        v-show="getChatPopupState"
+        :chatsnotifications="chatsnotifications"
+        :viewallroute="viewallchatroute"
+    />
+    
+    <Notifications-Popup-List
+        v-show="getNotificationsPopupState"
+        :notifications="notifications"
+        :viewallroute="viewallnotificationsroute"
+    />
+    
   </div>
 </template>
 
 <script>
+import ChatPopupList from './ChatPopupList'
+import NotificationsPopupList from './NotificationsPopupList'
+
 export default {
-    props: ['chatcount','notificationscount']
+    props: ['chatcount','notificationscount','chatsnotifications','notifications','viewallchatroute','viewallnotificationsroute',],
+    components: {
+        ChatPopupList,
+        NotificationsPopupList
+    },
+    computed: {
+        getChatPopupState(){ 
+            return this.$store.getters.getChatPopupState
+        },
+        getNotificationsPopupState(){ 
+            return this.$store.getters.getNotificationsPopupState
+        }
+      },
+      methods: {
+          changeChatState(){
+            this.$store.dispatch("changeChatPopupState")
+          },
+          changeNotificationsState(){
+            this.$store.dispatch("changeNotificationsPopupState")
+          }
+      },
 
 }
 </script>

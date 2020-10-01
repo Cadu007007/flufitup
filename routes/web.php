@@ -416,32 +416,85 @@ Route::get('/admin/dashboard', function () {
     $state_numbers->users_per_city= 100 ;
     $state_numbers->cancelled_orders= 10 ;
 
-    return view('admin.dashboard.index', ['active' => 'dashboard','chat_count' => 1 , 'notifications_count' => 2, 'state_numbers' => $state_numbers]);
+    $chat_notifications = collect();
+        $chat_notifications->push(['id' => 1 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'message' =>  'Testiing new message testjbjkgkjkjvkjvkjvjkvjkvjkvjkvjkv', 'time' => '12m', 'isread' => false]);
+        $chat_notifications->push(['id' => 2 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'message' =>  'Testiing new message', 'time' => '12m', 'isread' => true]);
+        $chat_notifications->push(['id' => 3 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'message' =>  'Testiing new message', 'time' => '12m', 'isread' => true]);
+    
+    $notifications = collect();
+        $notifications->push(['id' => 1 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'type' =>  'new', 'time' => '12 minutes ago', 'isopened' => false]);
+        $notifications->push(['id' => 2 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'type' =>  'modify', 'time' => '12 minutes ago', 'isopened' => true]);
+        $notifications->push(['id' => 3 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'type' =>  'cancel', 'time' => '12 minutes ago', 'isopened' => true]);
+    
+    return view('admin.dashboard.index', ['active' => 'dashboard','state_numbers' => $state_numbers , 'chat_notifications' => $chat_notifications, 'notifications' => $notifications]);
 })->name('admin.dashboard');
 
 /* Reports */
 Route::get('/admin/reports', function () {
-    return view('admin.reports.index', ['active' => 'reports','chat_count' => 3 , 'notifications_count' => 4]);
+    $chat_notifications = collect();
+    $chat_notifications->push(['id' => 1 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'message' =>  'Testiing new message testjbjkgkjkjvkjvkjvjkvjkvjkvjkvjkv', 'time' => '12m', 'isread' => false]);
+    $chat_notifications->push(['id' => 2 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'message' =>  'Testiing new message', 'time' => '12m', 'isread' => true]);
+    $chat_notifications->push(['id' => 3 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'message' =>  'Testiing new message', 'time' => '12m', 'isread' => true]);
+
+    $notifications = collect();
+    $notifications->push(['id' => 1 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'type' =>  'new', 'time' => '12 minutes ago', 'isopened' => false]);
+    $notifications->push(['id' => 2 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'type' =>  'modify', 'time' => '12 minutes ago', 'isopened' => true]);
+    $notifications->push(['id' => 3 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'type' =>  'cancel', 'time' => '12 minutes ago', 'isopened' => true]);
+
+
+    return view('admin.reports.index', ['active' => 'reports', 'chat_notifications' => $chat_notifications, 'notifications' => $notifications]);
 })->name('admin.reports');
 
 
 
 /* Packages */
 Route::get('/admin/packages', function () {
-    return view('admin.packages.index', ['active' => 'packages','chat_count' => 5 , 'notifications_count' => 6]);
+    $chat_notifications = collect();
+    $chat_notifications->push(['id' => 1 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'message' =>  'Testiing new message testjbjkgkjkjvkjvkjvjkvjkvjkvjkvjkv', 'time' => '12m', 'isread' => false]);
+    $chat_notifications->push(['id' => 2 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'message' =>  'Testiing new message', 'time' => '12m', 'isread' => true]);
+    $chat_notifications->push(['id' => 3 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'message' =>  'Testiing new message', 'time' => '12m', 'isread' => true]);
+
+    $notifications = collect();
+    $notifications->push(['id' => 1 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'type' =>  'new', 'time' => '12 minutes ago', 'isopened' => false]);
+    $notifications->push(['id' => 2 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'type' =>  'modify', 'time' => '12 minutes ago', 'isopened' => true]);
+    $notifications->push(['id' => 3 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'type' =>  'cancel', 'time' => '12 minutes ago', 'isopened' => true]);
+
+
+    return view('admin.packages.index', ['active' => 'packages', 'chat_notifications' => $chat_notifications, 'notifications' => $notifications]);
 })->name('admin.packages');
 
 
 
 /* Users */
 Route::get('/admin/users', function () {
-    return view('admin.users.index', ['active' => 'users','chat_count' => 7 , 'notifications_count' => 8]);
+    $chat_notifications = collect();
+    $chat_notifications->push(['id' => 1 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'message' =>  'Testiing new message testjbjkgkjkjvkjvkjvjkvjkvjkvjkvjkv', 'time' => '12m', 'isread' => false]);
+    $chat_notifications->push(['id' => 2 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'message' =>  'Testiing new message', 'time' => '12m', 'isread' => true]);
+    $chat_notifications->push(['id' => 3 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'message' =>  'Testiing new message', 'time' => '12m', 'isread' => true]);
+
+    $notifications = collect();
+    $notifications->push(['id' => 1 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'type' =>  'new', 'time' => '12 minutes ago', 'isopened' => false]);
+    $notifications->push(['id' => 2 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'type' =>  'modify', 'time' => '12 minutes ago', 'isopened' => true]);
+    $notifications->push(['id' => 3 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'type' =>  'cancel', 'time' => '12 minutes ago', 'isopened' => true]);
+
+    return view('admin.users.index', ['active' => 'users', 'chat_notifications' => $chat_notifications, 'notifications' => $notifications]);
 })->name('admin.users');
 
 
 /* Admins */
 Route::get('/admin/admins', function () {
-    return view('admin.admins.index', ['active' => 'admins','chat_count' => 9 , 'notifications_count' => 10]);
+    $chat_notifications = collect();
+    $chat_notifications->push(['id' => 1 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'message' =>  'Testiing new message testjbjkgkjkjvkjvkjvjkvjkvjkvjkvjkv', 'time' => '12m', 'isread' => false]);
+    $chat_notifications->push(['id' => 2 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'message' =>  'Testiing new message', 'time' => '12m', 'isread' => true]);
+    $chat_notifications->push(['id' => 3 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'message' =>  'Testiing new message', 'time' => '12m', 'isread' => true]);
+
+    $notifications = collect();
+    $notifications->push(['id' => 1 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'type' =>  'new', 'time' => '12 minutes ago', 'isopened' => false]);
+    $notifications->push(['id' => 2 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'type' =>  'modify', 'time' => '12 minutes ago', 'isopened' => true]);
+    $notifications->push(['id' => 3 ,'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'type' =>  'cancel', 'time' => '12 minutes ago', 'isopened' => true]);
+
+
+    return view('admin.admins.index', ['active' => 'admins', 'chat_notifications' => $chat_notifications, 'notifications' => $notifications]);
 })->name('admin.admins');
 
 
