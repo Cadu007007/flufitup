@@ -1,6 +1,7 @@
 <template>
   <div class="AdminNavbar">
     <div class="left">
+        
     </div>
     <div class="center">
         <div class="searchbox">
@@ -17,7 +18,7 @@
             <img src="/images/admin/icons/notification.svg" alt="" class="navbar-icon">
             <span class="count">{{notificationscount}}</span>
         </div>
-        <div class="profile">
+        <div class="profile" @click="changeUserMenuState">
             <img src="/images/icons/profile.svg" alt="" class="profile-image">
             <img src="/images/icons/arrow-.svg" alt="" class="icon">
         </div>
@@ -34,6 +35,17 @@
         :notifications="notifications"
         :viewallroute="viewallnotificationsroute"
     />
+
+    <User-Popup-List
+        v-show="getUserPopupState"
+        :userimage="userimage"
+        username="Mohamed Salah"
+        :showprofileroute="showprofileroute"
+        :settingsroute="settingsroute"
+        :logoutroute="logoutroute"
+    />
+
+
     
   </div>
 </template>
@@ -41,12 +53,16 @@
 <script>
 import ChatPopupList from './ChatPopupList'
 import NotificationsPopupList from './NotificationsPopupList'
+import UserPopupList from './UserPopupList'
 
 export default {
-    props: ['chatcount','notificationscount','chatsnotifications','notifications','viewallchatroute','viewallnotificationsroute',],
+    props: ['chatcount','notificationscount','chatsnotifications',
+            'notifications','viewallchatroute','viewallnotificationsroute',
+             'userimage','showprofileroute','settingsroute','logoutroute'],
     components: {
         ChatPopupList,
-        NotificationsPopupList
+        NotificationsPopupList,
+        UserPopupList,
     },
     computed: {
         getChatPopupState(){ 
@@ -54,6 +70,9 @@ export default {
         },
         getNotificationsPopupState(){ 
             return this.$store.getters.getNotificationsPopupState
+        },
+        getUserPopupState(){ 
+            return this.$store.getters.getUserPopupState
         }
       },
       methods: {
@@ -62,6 +81,9 @@ export default {
           },
           changeNotificationsState(){
             this.$store.dispatch("changeNotificationsPopupState")
+          },
+          changeUserMenuState(){
+            this.$store.dispatch("changeUserPopupState")
           }
       },
 
@@ -80,11 +102,10 @@ $red: #FD5252;
 }
 .AdminNavbar{
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 120px;;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 0 120px;
+    
     .left{
 
     }
@@ -113,7 +134,7 @@ $red: #FD5252;
     .right{
 
         @include flex-row-center;
-        margin: 0 20px;
+        margin: 0 0 0 20px;
         .chat, .notifications {
             position: relative;
             .count{

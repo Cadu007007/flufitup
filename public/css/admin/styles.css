@@ -150,7 +150,10 @@ body {
   background: #F9F9F9;
 }
 
-#app .AdminNavbar {
+#app .Navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 64px;
   width: 100%;
   background: #fff;

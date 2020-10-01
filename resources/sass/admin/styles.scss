@@ -18,7 +18,10 @@ $content-right-margin: 24px;
     justify-content: center;
     align-items: center;
     background: $darker-white;
-    .AdminNavbar {
+    .Navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: $navbar-height;
         width: 100%;
         background: $white;

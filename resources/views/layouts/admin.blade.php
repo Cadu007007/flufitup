@@ -1,7 +1,7 @@
 @include('components.admin.header')
 
 <div id="app">
-        <div class="AdminNavbar">
+        <div class="Navbar">
             <Admin-Navbar
             :chatsnotifications="{{ $chat_notifications }}"
             :chatcount="{{ Count($chat_notifications) }}"
@@ -9,6 +9,10 @@
             :notificationscount="{{ Count($notifications) }}"
             viewallchatroute="{{ route('admin.dashboard') }}"
             viewallnotificationsroute="{{ route('admin.dashboard') }}"
+            showprofileroute=""
+            settingsroute=""
+            logoutroute="{{ route('admin.login') }}"
+            userimage="/images/icons/profile.svg"
             />
         </div>
         <div class="AdminPageContainer">

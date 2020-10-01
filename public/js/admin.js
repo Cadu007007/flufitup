@@ -22,4 +22,7 @@ function ReArrangePopupLists() {
 
     var left = $('.notifications').offset().left - (($('.NotificationsPopupList').width() - 50) / 2);
     $('.NotificationsPopupList').css('left', `${left}px`)
+
+    var left = $('.profile').offset().left - (($('.UserPopupList').width() - 50) / 2);
+    $('.UserPopupList').css('left', `${left}px`)
 }
