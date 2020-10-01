@@ -27,6 +27,17 @@ var OldOrderDetails = require('./components/User/Pages/OldOrders/OldOrderDetails
     /* XX Old Orders XX */
 var Chat = require('./components/User/Pages/Chat/Chat.vue').default
 
+/* **** ADMIN Pages ****** */
+var AdminNavbar = require('./components/Admin/Components/AdminNavbar.vue').default
+var AdminSidebar = require('./components/Admin/Components/AdminSidebar.vue').default
+var Dashboard = require('./components/Admin/Pages/Dashboard/Dashboard.vue').default
+var Reports = require('./components/Admin/Pages/Reports/Reports.vue').default
+var Packages = require('./components/Admin/Pages/Packages/Packages.vue').default
+var Admins = require('./components/Admin/Pages/Admins/Admins.vue').default
+var Users = require('./components/Admin/Pages/Users/Users.vue').default
+
+/* **** XX ADMIN Pages XX ****** */
+
 const app = new Vue({
     el: '#app',
     components: {
@@ -42,6 +53,14 @@ const app = new Vue({
         ProfileEdit,
         OldOrders,
         OldOrderDetails,
-        Chat
+        Chat,
+        /* Admin Pages */
+        AdminNavbar,
+        AdminSidebar,
+        Dashboard,
+        Reports,
+        Packages,
+        Users,
+        Admins,
     }
 });

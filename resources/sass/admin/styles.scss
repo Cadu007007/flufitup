@@ -1,0 +1,132 @@
+@import "../global.scss";
+@import "../admin_global.scss";
+$sidebar-width: 215px;
+$logo-container-height: 75px;
+$light-dark-white: #F9F9F9;
+$input-border-color: #EDEDED;
+
+/* Main Admin pages structure */
+
+$white: #fff;
+$darker-white: #F9F9F9;
+$navbar-height: 64px;
+$content-top-margin: 24px;
+$content-right-margin: 24px;
+#app {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $darker-white;
+    .AdminNavbar {
+        height: $navbar-height;
+        width: 100%;
+        background: $white;
+    }
+    .AdminPageContainer {
+        width: 100%;
+        display: grid;
+        grid-template-columns: $sidebar-width auto;
+        .AdminSidebar {
+            min-height: calc(100vh - #{$navbar-height} - #{$content-top-margin});
+            width: $sidebar-width;
+            position: relative;
+        }
+        /* Vue Page  */
+        .PageContainer {
+            background: $white;
+            min-height: calc(100vh - #{$navbar-height} - #{$content-top-margin});
+            overflow-x: hidden;
+            margin-top: $content-top-margin;
+            width: calc(100% - #{$content-right-margin});
+            padding: 0 24px;
+        }
+    }
+}
+
+
+/* XX Main Admin pages structure XX */
+
+
+/* Login Page */
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+    .logo-container {
+        width: 100%;
+        padding: 0 140px;
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 24px;
+        margin-bottom: 112px;
+    }
+    .login-container {
+        @include grid-1fr-1fr;
+        height: calc(100vh- #{$logo-container-height});
+        padding: 0 140px;
+        .left {
+            @include flex-center-center-column;
+            height: 100%;
+            position: relative;
+            .title {
+                font-family: 'Open-Sans-Bold';
+                font-size: 24px;
+                color: $blue;
+                margin-bottom: 30px;
+            }
+            .form-container {
+                width: 100%;
+                .input-container {
+                    @include flex-center-flex-start;
+                    width: fit-content;
+                    margin: 0 auto;
+                    position: relative;
+                    .form-label {
+                        font-size: 16px;
+                        margin-bottom: 10px;
+                        color: $black;
+                    }
+                    .form-input {
+                        width: 536px;
+                        height: 45px;
+                        background: $light-dark-white;
+                        border-radius: 7px;
+                        padding: 13px 24px;
+                        margin-bottom: 30px;
+                        font-size: 14px;
+                        border: 1px solid $input-border-color;
+                    }
+                    .icon {
+                        position: absolute;
+                        top: 48px;
+                        right: 24px;
+                    }
+                }
+                .button-container {
+                    width: 100%;
+                    @include flex-center-center;
+                    .login-button {
+                        @include large-rounded-button;
+                        background: $orange;
+                        width: 200px;
+                        margin: 48px auto 20px auto;
+                        font-size: 18px;
+                        color: $white;
+                    }
+                }
+            }
+        }
+        .right {
+            .vector {
+                width: 536px;
+                height: 374px;
+            }
+        }
+    }
+}
+
+
+/* XX Login Page XX */

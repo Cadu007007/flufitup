@@ -1,0 +1,291 @@
+/* Resetting */
+
+@font-face {
+  font-weight: bolder;
+  font-family: Lato-Regular;
+  src: url(/fonts/Lato-Regular.ttf?2d36b1a925432bae7f3c53a340868c6e);
+}
+
+@font-face {
+  font-family: Lato-Bold;
+  src: url(/fonts/Lato-Bold.ttf?85d339d916479f729938d2911b85bf1f);
+}
+
+@font-face {
+  font-family: Lato-Medium;
+  src: url(/fonts/Lato-Black.ttf?e631d2735799aa943d93d301abf423d2);
+}
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Lato-Regular" !important;
+}
+
+p {
+  margin: 0;
+}
+
+/* ---------- Global ---------- */
+
+/* Color Variables */
+
+/* Dimensions */
+
+/* Shadows */
+
+/* Mixins */
+
+/* Mixins */
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.opacity-0 {
+  opacity: 0 !important;
+}
+
+.opacity-1 {
+  opacity: 1 !important;
+}
+
+.rotate-180 {
+  -webkit-animation: rotate-180 1s normal;
+  /* Safari 4+ */
+  /* Fx 5+ */
+  /* Opera 12+ */
+  animation: rotate-180 1s normal;
+  /* IE 10+, Fx 29+ */
+}
+
+.rotate-0 {
+  -webkit-animation: rotate-0 1s normal;
+  /* Safari 4+ */
+  /* Fx 5+ */
+  /* Opera 12+ */
+  animation: rotate-0 1s normal;
+  /* IE 10+, Fx 29+ */
+}
+
+/* animations */
+
+@-webkit-keyframes rotate-180 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes rotate-180 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@-webkit-keyframes rotate-0 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes rotate-0 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+/* XX animations XX */
+
+@font-face {
+  font-weight: bolder;
+  font-family: Open-Sans-Regular;
+  src: url(/fonts/OpenSans-Regular.ttf?3ed9575dcc488c3e3a5bd66620bdf5a4);
+}
+
+@font-face {
+  font-family: Open-Sans-SemiBold;
+  src: url(/fonts/OpenSans-SemiBold.ttf?ba5cde21eeea0d57ab7efefc99596cce);
+}
+
+@font-face {
+  font-family: Open-Sans-Bold;
+  src: url(/fonts/OpenSans-Bold.ttf?1025a6e0fb0fa86f17f57cc82a6b9756);
+}
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Open-Sans-Regular" !important;
+}
+
+/* Main Admin pages structure */
+
+#app {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #F9F9F9;
+}
+
+#app .AdminNavbar {
+  height: 64px;
+  width: 100%;
+  background: #fff;
+}
+
+#app .AdminPageContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 215px auto;
+  /* Vue Page  */
+}
+
+#app .AdminPageContainer .AdminSidebar {
+  min-height: calc(100vh - 64px - 24px);
+  width: 215px;
+  position: relative;
+}
+
+#app .AdminPageContainer .PageContainer {
+  background: #fff;
+  min-height: calc(100vh - 64px - 24px);
+  overflow-x: hidden;
+  margin-top: 24px;
+  width: calc(100% - 24px);
+  padding: 0 24px;
+}
+
+/* XX Main Admin pages structure XX */
+
+/* Login Page */
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+.page-container .logo-container {
+  width: 100%;
+  padding: 0 140px;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 24px;
+  margin-bottom: 112px;
+}
+
+.page-container .login-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh- 75px);
+  padding: 0 140px;
+}
+
+.page-container .login-container .left {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.page-container .login-container .left .title {
+  font-family: "Open-Sans-Bold";
+  font-size: 24px;
+  color: #15B2D3;
+  margin-bottom: 30px;
+}
+
+.page-container .login-container .left .form-container {
+  width: 100%;
+}
+
+.page-container .login-container .left .form-container .input-container {
+  display: flex;
+  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  position: relative;
+}
+
+.page-container .login-container .left .form-container .input-container .form-label {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.page-container .login-container .left .form-container .input-container .form-input {
+  width: 536px;
+  height: 45px;
+  background: #F9F9F9;
+  border-radius: 7px;
+  padding: 13px 24px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  border: 1px solid #EDEDED;
+}
+
+.page-container .login-container .left .form-container .input-container .icon {
+  position: absolute;
+  top: 48px;
+  right: 24px;
+}
+
+.page-container .login-container .left .form-container .button-container {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-container .login-container .left .form-container .button-container .login-button {
+  border-radius: 20px;
+  width: 150px;
+  height: 40px;
+  background: #FDBD42;
+  width: 200px;
+  margin: 48px auto 20px auto;
+  font-size: 18px;
+  color: #fff;
+}
+
+.page-container .login-container .right .vector {
+  width: 536px;
+  height: 374px;
+}
+
+/* XX Login Page XX */
+

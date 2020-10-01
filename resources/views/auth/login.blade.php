@@ -16,7 +16,7 @@
                 </div>
                  <div class="input-container">
                     <label for="password" class="form-label">Password</label>
-                    <input namer="password"  type="password" class="form-input" placeholder="Enter Your Password"/>
+                    <input name="password"  type="password" class="form-input" placeholder="Enter Your Password"/>
                 </div>
 
                 <div class="form-footer">

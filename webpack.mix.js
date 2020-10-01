@@ -16,4 +16,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/landing/styles.scss', 'public/css/landing')
     .sass('resources/sass/login/styles.scss', 'public/css/login')
     .sass('resources/sass/register/styles.scss', 'public/css/register')
-    .sass('resources/sass/user/home.scss', 'public/css/user');
+    .sass('resources/sass/user/home.scss', 'public/css/user')
+    .sass('resources/sass/admin/styles.scss', 'public/css/admin');

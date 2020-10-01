@@ -23,9 +23,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-/***************************** 
- *  TESTING ROUTES FOR DESIGN
-/**************************** */
+/******************************************************** 
+ ************  TESTING ROUTES FOR DESIGN   **************
+/********************************************************/
+
+
+/******************************
+ **** Start of USER ROUTES ****
+/******************************/
 
 
 /***************************** 
@@ -375,10 +380,71 @@ Route::get('/password/new', function () {
 
 Route::get('/login', function () {
     return view('auth.login', ['active' => 'logout']);
-})->name('logout');
+})->name('user.login');
 
 
 Route::post('/dummy', function (Request $request) {
     return dd($request);
 })->name('dummy');
 
+
+
+/**************************** 
+ **** End of USER ROUTES ****
+/****************************/
+
+
+
+
+/******************************* 
+ **** Start of ADMIN ROUTES ****
+/*******************************/
+
+/* Login */
+Route::get('/admin/login', function () {
+    return view('admin.login');
+})->name('admin.login');
+
+
+/* Dashboard */
+Route::get('/admin/dashboard', function () {
+    $state_numbers = collect();
+    $state_numbers->total_clients= 3000 ;
+    $state_numbers->new_clients= 120 ;
+    $state_numbers->sales_per_month= 200 ;
+    $state_numbers->sales_per_package= 100 ;
+    $state_numbers->users_per_city= 100 ;
+    $state_numbers->cancelled_orders= 10 ;
+
+    return view('admin.dashboard.index', ['active' => 'dashboard','chat_count' => 1 , 'notifications_count' => 2, 'state_numbers' => $state_numbers]);
+})->name('admin.dashboard');
+
+/* Reports */
+Route::get('/admin/reports', function () {
+    return view('admin.reports.index', ['active' => 'reports','chat_count' => 3 , 'notifications_count' => 4]);
+})->name('admin.reports');
+
+
+
+/* Packages */
+Route::get('/admin/packages', function () {
+    return view('admin.packages.index', ['active' => 'packages','chat_count' => 5 , 'notifications_count' => 6]);
+})->name('admin.packages');
+
+
+
+/* Users */
+Route::get('/admin/users', function () {
+    return view('admin.users.index', ['active' => 'users','chat_count' => 7 , 'notifications_count' => 8]);
+})->name('admin.users');
+
+
+/* Admins */
+Route::get('/admin/admins', function () {
+    return view('admin.admins.index', ['active' => 'admins','chat_count' => 9 , 'notifications_count' => 10]);
+})->name('admin.admins');
+
+
+/***************************** 
+ **** End of ADMIN ROUTES ****
+/*****************************/
