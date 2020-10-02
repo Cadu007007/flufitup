@@ -3,10 +3,6 @@
 <div id="app">
         <div class="Navbar">
             <Admin-Navbar
-            :chatsnotifications="{{ $chat_notifications }}"
-            :chatcount="{{ Count($chat_notifications) }}"
-            :notifications="{{ $notifications }}"
-            :notificationscount="{{ Count($notifications) }}"
             viewallchatroute="{{ route('admin.dashboard') }}"
             viewallnotificationsroute="{{ route('admin.dashboard') }}"
             showprofileroute=""

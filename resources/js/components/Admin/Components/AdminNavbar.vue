@@ -12,11 +12,11 @@
     <div class="right">
         <div class="chat" @click="changeChatState">
             <img src="/images/admin/icons/chat.svg" alt="" class="navbar-icon">
-            <span class="count">{{chatcount}}</span>
+            <span class="count" :class="chatcount ? '' : 'hidden'">{{chatcount}}</span>
         </div>
         <div class="notifications" @click="changeNotificationsState">
             <img src="/images/admin/icons/notification.svg" alt="" class="navbar-icon">
-            <span class="count">{{notificationscount}}</span>
+            <span class="count" :class="notificationscount ? '' : 'hidden'">{{notificationscount}}</span>
         </div>
         <div class="profile" @click="changeUserMenuState">
             <img src="/images/icons/profile.svg" alt="" class="profile-image">
@@ -54,10 +54,17 @@
 import ChatPopupList from './ChatPopupList'
 import NotificationsPopupList from './NotificationsPopupList'
 import UserPopupList from './UserPopupList'
-
+import axios from 'axios'
 export default {
-    props: ['chatcount','notificationscount','chatsnotifications',
-            'notifications','viewallchatroute','viewallnotificationsroute',
+    data() {
+        return {
+            chatsnotifications: [],
+            notifications: [],
+            chatcount: 0,
+            notificationscount: 0,
+        }
+    },
+    props: ['viewallchatroute','viewallnotificationsroute',
              'userimage','showprofileroute','settingsroute','logoutroute'],
     components: {
         ChatPopupList,
@@ -85,6 +92,19 @@ export default {
           changeUserMenuState(){
             this.$store.dispatch("changeUserPopupState")
           }
+      },
+      mounted() {
+          axios.get('/chat_notifications')
+          .then(response => {
+              this.chatsnotifications = response.data 
+              this.chatcount=response.data.length
+              });
+          axios.get('/notifications')
+          .then(response => {
+              this.notifications = response.data
+              this.notificationscount=response.data.length
+            })
+
       },
 
 }

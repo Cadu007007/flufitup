@@ -22,16 +22,6 @@
 import ChatItem from './ChatItem'
 export default {
     props: ['chatsnotifications','viewallroute'],
-    data() {
-        return {
-            chatsnotifications: [
-                {id: 1 ,userimage:"/images/icons/profile.svg", username: 'Mohamed', message: 'Testiing new message', time: '12m',isread: false},
-                {id: 2 ,userimage:"/images/icons/profile.svg", username: 'Ahmed', message: 'Testiing new message', time: '12m',isread: true},
-                {id: 3 ,userimage:"/images/icons/profile.svg", username: 'Ali', message: 'Testiing new message', time: '12m',isread: true},
-            ]
-        }
-    },
-
 components:{
     ChatItem
 }

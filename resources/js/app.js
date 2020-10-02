@@ -45,7 +45,10 @@ var Dashboard = require('./components/Admin/Pages/Dashboard/Dashboard.vue').defa
 var Reports = require('./components/Admin/Pages/Reports/Reports.vue').default
 var Packages = require('./components/Admin/Pages/Packages/Packages.vue').default
 var Admins = require('./components/Admin/Pages/Admins/Admins.vue').default
+    /* Users */
 var Users = require('./components/Admin/Pages/Users/Users.vue').default
+var ShowUser = require('./components/Admin/Pages/Users/ShowUser.vue').default
+    /* XX Users XX */
 
 /* **** XX ADMIN Pages XX ****** */
 
@@ -73,6 +76,7 @@ const app = new Vue({
         Reports,
         Packages,
         Users,
+        ShowUser,
         Admins,
     }
 });
