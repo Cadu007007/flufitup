@@ -25,23 +25,42 @@
     <div class="seperator"></div>
     <div class="info-container">
         <img src="/images/admin/icons/profile-package.svg" alt="" class="icon">
-        <p class="value">{{user[0].package}}</p>
+        <p class="value">{{user[0].package ? user[0].package : 'No Package Subscribed'}}</p>
     </div>
     <div class="info-container">
         <img src="/images/admin/icons/profile-wallet.svg" alt="" class="icon">
-        <p class="value green">{{user[0].wallet}} {{user[0].currency}}</p>
-        <p class="edit-wallet">Edit Wallet</p>
+        <p class="value green" :class="user[0].wallet < 0 ? 'red' : ''">{{user[0].wallet}} {{user[0].currency}}</p>
+        <p class="edit-wallet" @click="modalstate= !modalstate">Edit Wallet</p>
     </div>
+
+    <Wallet-Modal 
+    v-show="modalstate"
+    @hide-modal="hidemodal"
+    />
   </div>  
   </div>
 </template>
 
 <script>
+import WalletModal from './Components/WalletModal'
 export default {
+    data() {
+        return {
+            modalstate: false
+        }
+    },
     props: {
         user: Array ,
         editwalletroute : String
-    }
+    },
+    components:{
+        WalletModal
+    },
+    methods: {
+        hidemodal(){
+            this.modalstate = false
+        }
+    },
 }
 </script>
 
@@ -51,6 +70,7 @@ $light-grey:#EEF2F4;
 $blue: #22AEE4;
 $black: #000;
 $green: #00C319;
+$red: red;
 
 .ShowUser{
     width: 100%;
@@ -92,6 +112,9 @@ $green: #00C319;
                 color: $black;
                 &.green{
                 color: $green;
+                }
+                &.red{
+                color: $red !important;
                 }
             }
             .edit-wallet{

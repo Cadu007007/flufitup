@@ -2461,10 +2461,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/ShowUser.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Users/ShowUser.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2482,6 +2482,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/ShowUser.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Users/ShowUser.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Components_WalletModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Components/WalletModal */ "./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue");
 //
 //
 //
@@ -2508,10 +2522,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      modalstate: false
+    };
+  },
   props: {
     user: Array,
     editwalletroute: String
+  },
+  components: {
+    WalletModal: _Components_WalletModal__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    hidemodal: function hidemodal() {
+      this.modalstate = false;
+    }
   }
 });
 
@@ -9412,6 +9457,25 @@ exports.push([module.i, ".Packages {\n  width: 100%;\n  height: 100%;\n}\n.Packa
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".WalletModal .darker {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  background: rgba(0, 0, 0, 0.4);\n  z-index: 2;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.WalletModal .card {\n  position: absolute;\n  z-index: 3;\n  top: 30%;\n  transform: translateY(-50%);\n  left: 50%;\n  transform: translateX(-50%);\n  width: 536px;\n  height: 258px;\n  background: #E8ECF3;\n  border: 1px solid #F9F9F9;\n  border-radius: 20px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  padding: 24px;\n}\n.WalletModal .card .title {\n  font-size: 16px;\n  color: #22AEE4;\n  font-family: \"Open-Sans-Bold\";\n}\n.WalletModal .card input {\n  width: 352px;\n  height: 100px;\n  background: #F9F9F9;\n  margin: 24px 0;\n  font-size: 14px;\n  font-family: \"Open-Sans-Regular\";\n  text-align: center;\n  color: #ACACAC;\n}\n.WalletModal .card .submit {\n  width: 200px;\n  height: 40px;\n  background: #22AEE4 0% 0% no-repeat padding-box;\n  box-shadow: 2px 2px 4px #00000033;\n  border-radius: 35px;\n  font-size: 18px;\n  color: #F9F9F9;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/ShowUser.vue?vue&type=style&index=0&lang=scss&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Users/ShowUser.vue?vue&type=style&index=0&lang=scss& ***!
@@ -9424,7 +9488,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".ShowUser {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 300px 1fr;\n  justify-content: flex-start;\n  align-content: flex-start;\n}\n.ShowUser .left .userimage {\n  width: 140px;\n  height: 140px;\n  border-radius: 70px;\n  margin-top: 24px;\n}\n.ShowUser .left .username {\n  font-family: \"Open-Sans-Bold\";\n  font-size: 21px;\n  color: #000;\n  margin-top: 16px;\n}\n.ShowUser .right .info-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  margin-top: 40px;\n}\n.ShowUser .right .info-container .icon {\n  width: 30px;\n  height: 30px;\n  margin-right: 24px;\n}\n.ShowUser .right .info-container .value {\n  font-family: \"Open-Sans-Semibold\";\n  font-size: 18px;\n  color: #000;\n}\n.ShowUser .right .info-container .value.green {\n  color: #00C319;\n}\n.ShowUser .right .info-container .edit-wallet {\n  margin-left: 66px;\n  font-size: 14px;\n  color: #22AEE4;\n  cursor: pointer;\n}\n.ShowUser .right .seperator {\n  width: 444px;\n  height: 1px;\n  background: #22AEE4;\n  margin: 39px 0;\n}", ""]);
+exports.push([module.i, ".ShowUser {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 300px 1fr;\n  justify-content: flex-start;\n  align-content: flex-start;\n}\n.ShowUser .left .userimage {\n  width: 140px;\n  height: 140px;\n  border-radius: 70px;\n  margin-top: 24px;\n}\n.ShowUser .left .username {\n  font-family: \"Open-Sans-Bold\";\n  font-size: 21px;\n  color: #000;\n  margin-top: 16px;\n}\n.ShowUser .right .info-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  margin-top: 40px;\n}\n.ShowUser .right .info-container .icon {\n  width: 30px;\n  height: 30px;\n  margin-right: 24px;\n}\n.ShowUser .right .info-container .value {\n  font-family: \"Open-Sans-Semibold\";\n  font-size: 18px;\n  color: #000;\n}\n.ShowUser .right .info-container .value.green {\n  color: #00C319;\n}\n.ShowUser .right .info-container .value.red {\n  color: red !important;\n}\n.ShowUser .right .info-container .edit-wallet {\n  margin-left: 66px;\n  font-size: 14px;\n  color: #22AEE4;\n  cursor: pointer;\n}\n.ShowUser .right .seperator {\n  width: 444px;\n  height: 1px;\n  background: #22AEE4;\n  margin: 39px 0;\n}", ""]);
 
 // exports
 
@@ -41683,6 +41747,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=style&index=0&lang=scss&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=style&index=0&lang=scss& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./WalletModal.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/ShowUser.vue?vue&type=style&index=0&lang=scss&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Users/ShowUser.vue?vue&type=style&index=0&lang=scss& ***!
@@ -44179,6 +44273,57 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=template&id=3103b610&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=template&id=3103b610& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "WalletModal" }, [
+    _c("div", {
+      staticClass: "darker",
+      on: {
+        click: function($event) {
+          return _vm.$emit("hide-modal")
+        }
+      }
+    }),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Username Wallet")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "amount",
+        attrs: { type: "text", placeholder: "Add or Decrease amount" }
+      }),
+      _vm._v(" "),
+      _c("button", { staticClass: "submit" }, [_vm._v("Submit")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/ShowUser.vue?vue&type=template&id=d13211f6&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Users/ShowUser.vue?vue&type=template&id=d13211f6& ***!
@@ -44206,64 +44351,107 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "right" }, [
-      _c("div", { staticClass: "info-container" }, [
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: "/images/admin/icons/profile-email.svg", alt: "" }
-        }),
+    _c(
+      "div",
+      { staticClass: "right" },
+      [
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-email.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [_vm._v(_vm._s(_vm.user[0].email))])
+        ]),
         _vm._v(" "),
-        _c("p", { staticClass: "value" }, [_vm._v(_vm._s(_vm.user[0].email))])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "info-container" }, [
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: "/images/admin/icons/profile-phone.svg", alt: "" }
-        }),
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-phone.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [_vm._v(_vm._s(_vm.user[0].phone))])
+        ]),
         _vm._v(" "),
-        _c("p", { staticClass: "value" }, [_vm._v(_vm._s(_vm.user[0].phone))])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "info-container" }, [
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: "/images/admin/icons/profile-calendar.svg", alt: "" }
-        }),
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-calendar.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [
+            _vm._v(_vm._s(_vm.user[0].birthday))
+          ])
+        ]),
         _vm._v(" "),
-        _c("p", { staticClass: "value" }, [
-          _vm._v(_vm._s(_vm.user[0].birthday))
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "seperator" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "info-container" }, [
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: "/images/admin/icons/profile-package.svg", alt: "" }
-        }),
+        _vm._m(0),
         _vm._v(" "),
-        _c("p", { staticClass: "value" }, [_vm._v(_vm._s(_vm.user[0].package))])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "info-container" }, [
-        _c("img", {
-          staticClass: "icon",
-          attrs: { src: "/images/admin/icons/profile-wallet.svg", alt: "" }
-        }),
+        _c("div", { staticClass: "seperator" }),
         _vm._v(" "),
-        _c("p", { staticClass: "value green" }, [
-          _vm._v(
-            _vm._s(_vm.user[0].wallet) + " " + _vm._s(_vm.user[0].currency)
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-package.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [
+            _vm._v(
+              _vm._s(
+                _vm.user[0].package
+                  ? _vm.user[0].package
+                  : "No Package Subscribed"
+              )
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-wallet.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c(
+            "p",
+            {
+              staticClass: "value green",
+              class: _vm.user[0].wallet < 0 ? "red" : ""
+            },
+            [
+              _vm._v(
+                _vm._s(_vm.user[0].wallet) + " " + _vm._s(_vm.user[0].currency)
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "p",
+            {
+              staticClass: "edit-wallet",
+              on: {
+                click: function($event) {
+                  _vm.modalstate = !_vm.modalstate
+                }
+              }
+            },
+            [_vm._v("Edit Wallet")]
           )
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "edit-wallet" }, [_vm._v("Edit Wallet")])
-      ])
-    ])
+        _c("Wallet-Modal", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.modalstate,
+              expression: "modalstate"
+            }
+          ],
+          on: { "hide-modal": _vm.hidemodal }
+        })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -62265,6 +62453,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Reports_vue_vue_type_template_id_4f3b64e9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Reports_vue_vue_type_template_id_4f3b64e9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _WalletModal_vue_vue_type_template_id_3103b610___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WalletModal.vue?vue&type=template&id=3103b610& */ "./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=template&id=3103b610&");
+/* harmony import */ var _WalletModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WalletModal.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _WalletModal_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WalletModal.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _WalletModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _WalletModal_vue_vue_type_template_id_3103b610___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _WalletModal_vue_vue_type_template_id_3103b610___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Pages/Users/Components/WalletModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./WalletModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/style-loader!../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./WalletModal.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=template&id=3103b610&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=template&id=3103b610& ***!
+  \*************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_template_id_3103b610___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./WalletModal.vue?vue&type=template&id=3103b610& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Users/Components/WalletModal.vue?vue&type=template&id=3103b610&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_template_id_3103b610___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WalletModal_vue_vue_type_template_id_3103b610___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

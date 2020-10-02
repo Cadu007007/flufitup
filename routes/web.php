@@ -454,7 +454,7 @@ Route::get('/admin/users/show/{id}', function () {
              'phone'=> '01286727987',
              'wallet'=> 50,
              'currency' => 'USD',
-             'package'=>'Testing package name']);
+             'package'=>'']);
 
     return view('admin.users.show',['active' => 'users','user'=> $user]);
 })->name('admin.users.show');
