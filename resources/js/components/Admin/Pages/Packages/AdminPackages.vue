@@ -1,5 +1,5 @@
 <template>
-  <div class="Reports">  
+  <div class="AdminPackages">  
     <div class="page-header">
         <p class="title">{{title}}</p>
         <p class="date">{{date}}</p>
@@ -18,7 +18,7 @@ export default {
 <style lang="scss">
 $text-grey: #00000066;
 
-.Reports{
+.AdminPackages{
     width: 100%;
     height: 100%;
     .page-header{

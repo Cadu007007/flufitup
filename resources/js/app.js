@@ -43,7 +43,7 @@ var AdminNavbar = require('./components/Admin/Components/AdminNavbar.vue').defau
 var AdminSidebar = require('./components/Admin/Components/AdminSidebar.vue').default
 var Dashboard = require('./components/Admin/Pages/Dashboard/Dashboard.vue').default
 var Reports = require('./components/Admin/Pages/Reports/Reports.vue').default
-var Packages = require('./components/Admin/Pages/Packages/Packages.vue').default
+var AdminPackages = require('./components/Admin/Pages/Packages/AdminPackages.vue').default
 var Admins = require('./components/Admin/Pages/Admins/Admins.vue').default
     /* Users */
 var Users = require('./components/Admin/Pages/Users/Users.vue').default
@@ -74,7 +74,7 @@ const app = new Vue({
         AdminSidebar,
         Dashboard,
         Reports,
-        Packages,
+        AdminPackages,
         Users,
         ShowUser,
         Admins,

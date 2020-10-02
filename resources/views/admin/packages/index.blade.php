@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<Packages 
+<Admin-Packages
 title="Packages"
 date="Tue, 22 September"
 />

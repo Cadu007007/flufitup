@@ -2,7 +2,7 @@
 @section('content')
 
 <Packages 
-class="PageContentContainer" 
+class="PageContentContainer"
 id="Packages" 
 date="18/09/2020"
 :packagesadhoclist="{{ $packages->adhoc}}"

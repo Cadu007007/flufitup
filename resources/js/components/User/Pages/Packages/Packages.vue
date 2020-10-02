@@ -1,7 +1,7 @@
 <template>
 <div class="Packages">
   <div class="page-header">
-    <p class="title">{{title}}</p>
+    <p class="title">{{ title }}</p>
     <p class="date">{{date}}</p>
   </div>
   <div class="page-title">
@@ -10,7 +10,7 @@
   <p class="packages-title">
   Ad Hoc Packages
   </p>
-
+  
   <div class="packages-container">
     <PackageContainer v-for="(item,index) in packagesadhoclist" :key="index"
     :title="item.title"
@@ -90,7 +90,6 @@ $black: #000000;
   margin: 26px 0;
   font-size: 12px;
   font-weight: bold;
-
   }
     .date{
     font-size: 10px;
@@ -132,14 +131,14 @@ import PackageContainer from './Components/PackageContainer'
 export default {
   data() {
     return {
-      title: 'Packages',
+      title: 'Packages'
     }
   },
   props: {
+        date: String,
         packagesadhoclist: Array,
         packagebiweeklylist: Array,
         packagesmonthlylist: Array,
-        date: String,
         packageshowroute: String,
         packagecreateroute: String
   },
