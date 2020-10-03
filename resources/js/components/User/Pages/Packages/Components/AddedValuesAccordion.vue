@@ -8,7 +8,7 @@
      <div class="options" v-show="isopen">
         <div class="option" v-for="(option,index) in options" :key="index">
             <input class="radio" type="radio" :checked="index == 0" :name="name" :value="option.value" id="">
-            <label class="option-label" for="filter">{{option.title}}</label>
+            <label class="option-label" @click="labelClicked" for="filter">{{option.title}}</label>
         </div> 
      </div>
   </div>
@@ -16,7 +16,7 @@
     <div class="added-values-container" v-show="isopen">
         <div class="added-value" v-for="(choice,index) in addedvaluechoices" :key="index">
             <input class="input" type="checkbox" :name="choice.name">
-            <label class="label" :for="choice.name">{{choice.title}}</label>
+            <label class="label" @click="choiceClicked" :for="choice.name">{{choice.title}}</label>
         </div>
     </div>
 
@@ -31,6 +31,13 @@ export default {
         changeIsOpenState(){
             this.isopen = !this.isopen;
         },
+        labelClicked(event){
+            // check the input
+            event.target.closest('.option').getElementsByClassName('radio')[0].click()
+        },
+        choiceClicked(event){
+            event.target.closest('.added-value').getElementsByClassName('input')[0].click()
+        }
     },
 }
 </script>

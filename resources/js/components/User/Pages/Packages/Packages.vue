@@ -1,5 +1,5 @@
 <template>
-<div class="Packages">
+<div class="UserPackages">
   <div class="page-header">
     <p class="title">{{ title }}</p>
     <p class="date">{{date}}</p>
@@ -80,7 +80,7 @@ $text-grey: #00000066;
 $blue: #22AEE4;
 $black: #000000;
 
-.Packages{
+.UserPackages{
 .page-header{
   display: flex;
   flex-direction: row;
@@ -90,6 +90,7 @@ $black: #000000;
   margin: 26px 0;
   font-size: 12px;
   font-weight: bold;
+    
   }
     .date{
     font-size: 10px;

@@ -6,8 +6,8 @@
     </div>
      <div class="options" v-show="isopen || openstate">
         <div class="option" v-for="(option,index) in options" :key="index">
-            <input class="radio" v-if="hasradio" type="radio" @click="$emit('option-selected', option)" :checked="index == 0" :name="name" :value="option.value" id="">
-            <label class="option-label" @click="$emit('label-clicked')" for="filter">{{option.title}}</label>
+            <input class="radio" v-if="hasradio" type="radio" @click="$emit('option-selected',option)" :checked="index == 0" :name="name" :value="option.value" id="">
+            <label class="option-label" @click="labelClicked" for="filter">{{option.title}}</label>
         </div> 
      </div>
 
@@ -31,6 +31,10 @@ export default {
 
                 this.isopen = !this.isopen;
             }
+        },
+        labelClicked(event){
+            // check the input
+            event.target.closest('.option').getElementsByClassName('radio')[0].click()
         },
     },
 }

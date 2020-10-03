@@ -252,10 +252,10 @@ Route::get('/packages/create', function () {
     $options->pickup->push(['title' => '1 Pickup', 'value' => '1']);
     $options->pickup->push(['title' => '2 Pickups', 'value' => '2']);
 
-    $options->load_size->push(['title' => 'Value 1', 'value' => '1']);
-    $options->load_size->push(['title' => 'Value 2', 'value' => '2']);
-    $options->load_size->push(['title' => 'Value 3', 'value' => '3']);
-    $options->load_size->push(['title' => 'Value 4', 'value' => '4']);
+    $options->load_size->push(['title' => '15 Lbs.', 'value' => '15']);
+    $options->load_size->push(['title' => '30 Lbs.', 'value' => '30']);
+    $options->load_size->push(['title' => '45 Lbs.', 'value' => '45']);
+    $options->load_size->push(['title' => 'Bigger Load (More than 3 Bags)', 'value' => 'more']);
 
     $options->date->push(['title' => 'Week One', 'value' => '1']);
     $options->date->push(['title' => 'Week Two', 'value' => '2']);

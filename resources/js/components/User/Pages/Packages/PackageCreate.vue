@@ -34,6 +34,7 @@
           title="Choose how many pickeups per week"
           name="pickups_per_week"
           :options="pickupsoptions"
+          @option-selected="pickupsSelected"
           />
 
           <Accordion
@@ -42,13 +43,20 @@
           title="Choose your Load Size per Pickup"
           name="load_size_per_pickup"
           :options="loadoptions"
+          @option-selected="loadSizeSelected"
           />
 
-          <Accordion
+          <!-- showbagesinput -->
+          <div class="more-bages" v-if="showbagesinput">
+              <p class="label">Please specify</p>
+              <input class="more-bages-input" type="number" name="more_bages" min="4" max="10" value="4">
+          </div>
+
+          <Accordion-Calendar
+          :pickups="pickups"
           class="accordion"
           :hasradio="false"
           title="Choose your date"
-          name="date"
           :options="dateoptions"
           />
 
@@ -102,6 +110,7 @@
 
 <script>
 import Accordion from './Components/Accordion'
+import AccordionCalendar from './Components/AccordionCalendar'
 import AddedValuesAccordion from './Components/AddedValuesAccordion'
 import PackageCreatePriceCard from './Components/PackageCreatePriceCard'
 export default {
@@ -111,12 +120,15 @@ export default {
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       showaddedvalueschoices: false,
       selectedServiceName: 'Choose your Wash and Fold Service',
+      showbagesinput: false,
+      pickups: 1,
     }
   },
   props: ['date','serviceoptions','washoptions','pickupsoptions','loadoptions','dateoptions',
           'returndurationoptions','addedvalueoptions','addedvaluechoices','formactionroute'],
   components:{
     Accordion,
+    AccordionCalendar,
     AddedValuesAccordion,
     PackageCreatePriceCard
   },
@@ -130,6 +142,22 @@ export default {
     },
     changeServiceName(option){
       this.selectedServiceName = 'Choose your ' + option.title + `${ option.title.includes('Service') ? '' : ' Service'}`
+    },
+    loadSizeSelected(option){
+      if(option.value == 'more'){
+        // show specify hint
+        this.showbagesinput = true;
+      } else {
+        this.showbagesinput = false;
+
+      }
+    },
+    pickupsSelected(option){
+      if(option.value == 2 ){
+        this.pickups = 2 
+      } else {
+        this.pickups = 1 
+      }
     }
   },
 }
@@ -173,6 +201,27 @@ $black: #000000;
       flex-wrap: wrap;
       .accordion{
         margin: 12px 0;
+      }
+
+      .more-bages{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 3px 0 20px 0;
+        .label{
+          margin-left: 24px;
+        }
+        .more-bages-input{
+          margin-left: 30px;
+          height: 40px;
+          text-align: center;
+          font-size: 14px;
+          font-weight: bold;
+          box-shadow: 0px 0px 10px #0000001A;
+          border-radius: 10px;
+        }
       }
 
       .question-container{
@@ -235,8 +284,7 @@ $black: #000000;
 
     }
     .package-price{
-      position: fixed;
-      right: 140px;
+      position: relative;
     }
 }
 
