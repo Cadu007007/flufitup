@@ -4058,6 +4058,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -69609,7 +69613,8 @@ var render = function() {
                       date: _vm.selectedDate5,
                       primaryColor: _vm.primaryColor,
                       wrapperStyles: _vm.wrapperStyles,
-                      limits: _vm.limits4
+                      limits: _vm.limits4,
+                      headerStyles: _vm.headerStyles
                     },
                     on: {
                       dateSelected: function($event) {
@@ -69666,7 +69671,8 @@ var render = function() {
                       date: _vm.selectedDate5,
                       primaryColor: _vm.primaryColor,
                       wrapperStyles: _vm.wrapperStyles,
-                      limits: _vm.limits4
+                      limits: _vm.limits4,
+                      headerStyles: _vm.headerStyles
                     },
                     on: {
                       dateSelected: function($event) {

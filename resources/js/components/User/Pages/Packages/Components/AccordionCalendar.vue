@@ -256,6 +256,8 @@
                     :primaryColor="primaryColor"
                     :wrapperStyles="wrapperStyles"
                     :limits="limits4"
+                    :headerStyles="headerStyles"
+
                 />
 
                 <button
@@ -284,6 +286,8 @@
                     :primaryColor="primaryColor"
                     :wrapperStyles="wrapperStyles"
                     :limits="limits4"
+                    :headerStyles="headerStyles"
+
                 />
                 <button
                     type="button"
