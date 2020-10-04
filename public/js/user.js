@@ -134,3 +134,10 @@ function immediateCollapse() {
 
 
 /* XX Sidebar XX */
+
+
+
+/* CREATE PACKAGE CALENDAR BUTTON FIX */
+$('.cd-body-wrapper header button').prop("type", "button")
+
+/* XX CREATE PACKAGE CALENDAR BUTTON FIX XX */

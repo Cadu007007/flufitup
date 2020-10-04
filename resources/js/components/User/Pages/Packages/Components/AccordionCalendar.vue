@@ -32,7 +32,7 @@
             </div>
 
             <div class="option">
-                <p class="option-label" @click="openCalendar(2)">
+                <p class="option-label" :class="!selectedDate1 ? 'in-active' : '' " @click="selectedDate1 ? openCalendar(2) : ''">
                     Week 2
                     <span class="date"
                         >{{ selectedDate3 }}
@@ -49,7 +49,7 @@
             </div>
 
             <div class="option">
-                <p class="option-label" @click="openCalendar(3)">
+                <p class="option-label"  :class="!selectedDate3 ? 'in-active' : '' " @click="selectedDate3 ? openCalendar(3) : ''">
                     Week 3
                     <span class="date"
                         >{{ selectedDate5 }}
@@ -66,7 +66,7 @@
             </div>
 
             <div class="option">
-                <p class="option-label" @click="openCalendar(4)">
+                <p class="option-label" :class="!selectedDate5 ? 'in-active' : '' " @click="selectedDate5 ? openCalendar(4) : ''">
                     Week 4
                     <span class="date"
                         >{{ selectedDate7 }}
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <div class="calendars-modal" v-if="showmodal">
+        <div class="calendars-modal" id="calendarsModal" v-if="showmodal" @keydown.esc="closeModal"  tabindex="0">
             <!-- First Week -->
             <div class="calendar-container" v-if="showweek1pickup1calendar">
                 <p class="calendar-title">Week 1/ Pickup 1</p>
@@ -325,7 +325,7 @@ export default {
 
             selectedweek: 0,
             selecteddatevalue: "",
-            selectedDate1: moment().format("YYYY-MM-DD"),
+            selectedDate1: '',
             selectedDate2: "",
             selectedDate3: "",
             selectedDate4: "",
@@ -335,10 +335,9 @@ export default {
             selectedDate8: "",
 
             wrapperStyles: { width: "100%" },
-            headerStyles: {  background: "#22AEE4", color: "#fff" },
-            primaryColor: "#0918bc",
+            headerStyles: { width: '350px', margin: '0 auto', background: "#fff", color: "#000" , fontWeight: 'bolder', fontFamiley: 'Lato-Bold' },
+            primaryColor: "#FDBD42",
 
-            disabledDates: [],
 
             limits1: {
                 start: moment().format("YYYY-MM-DD"),
@@ -349,36 +348,34 @@ export default {
             limits1_week: {
                 start: moment(this.selecteddatevalue).format("YYYY-MM-DD"),
                 end: moment(this.selecteddatevalue)
-                    .add(7, "day")
+                    .add(6, "day")
                     .format("YYYY-MM-DD")
             },
             limits2: {
                 start: moment(this.selecteddatevalue)
-                    .add(8, "day")
+                    .add(7, "day")
                     .format("YYYY-MM-DD"),
                 end: moment(this.selecteddatevalue)
-                    .add(15, "day")
+                    .add(13, "day")
                     .format("YYYY-MM-DD")
             },
             limits3: {
                 start: moment(this.selecteddatevalue)
-                    .add(16, "day")
+                    .add(14, "day")
                     .format("YYYY-MM-DD"),
                 end: moment(this.selecteddatevalue)
-                    .add(23, "day")
+                    .add(20, "day")
                     .format("YYYY-MM-DD")
             },
             limits4: {
                 start: moment(this.selecteddatevalue)
-                    .add(24, "day")
+                    .add(26, "day")
                     .format("YYYY-MM-DD"),
                 end: moment(this.selecteddatevalue)
-                    .add(31, "day")
+                    .add(32, "day")
                     .format("YYYY-MM-DD")
             },
 
-            wrapperStyles: { width: "325px" },
-            primaryColor: "#0918bc"
         };
     },
     components: {
@@ -431,6 +428,10 @@ export default {
             }
             // show calendars modal and stop body scrolling
             this.showmodal = true;
+            // set focus to modal to enable escap
+            setTimeout(function(){
+                document.getElementById('calendarsModal').focus()
+            }, 100)
             document.getElementsByTagName("body")[0].style.overflow = "hidden";
         },
         setDate1(date) {
@@ -445,24 +446,24 @@ export default {
                 .format("YYYY-MM-DD");
 
             this.limits2.start = moment(date)
-                .add(8, "day")
+                .add(7, "day")
                 .format("YYYY-MM-DD");
             this.limits2.end = moment(date)
-                .add(14, "day")
+                .add(13, "day")
                 .format("YYYY-MM-DD");
 
             this.limits3.start = moment(date)
-                .add(15, "day")
+                .add(14, "day")
                 .format("YYYY-MM-DD");
             this.limits3.end = moment(date)
-                .add(21, "day")
+                .add(20, "day")
                 .format("YYYY-MM-DD");
 
             this.limits4.start = moment(date)
-                .add(22, "day")
+                .add(21, "day")
                 .format("YYYY-MM-DD");
             this.limits4.end = moment(date)
-                .add(28, "day")
+                .add(27, "day")
                 .format("YYYY-MM-DD");
         },
         setDate2(date) {
@@ -547,6 +548,9 @@ export default {
             // hide modal and enable body scrolling
             this.showmodal = false;
             document.getElementsByTagName("body")[0].style.overflow = "auto";
+        },
+        test(){
+            alert('Escap')
         }
     }
 };
@@ -601,6 +605,10 @@ $shadow: 0px 0px 10px #0000001a;
                 margin-left: 54px;
                 font-size: 14px;
                 color: $black;
+
+                &.in-active{
+                    color: #555;
+                }
                 .date {
                     margin-left: 20px;
                     font-size: 12px;
@@ -622,17 +630,18 @@ $shadow: 0px 0px 10px #0000001a;
     .calendar-container {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         background: $white;
-        width: 450px;
+        width: 600px;
         margin: 100px auto;
         border-radius: 30px;
         .calendar-title {
-            text-align: center;
-            margin: 20px auto;
+            text-align: left;
+            margin: 20px auto 0 auto;
             font-weight: bold;
             color: $blue;
+            width: 90%;
         }
         .calender-button {
             width: 160px;
@@ -642,12 +651,17 @@ $shadow: 0px 0px 10px #0000001a;
             font-family: "Lato-Bold";
             background: $blue;
             border-radius: 35px;
-            margin: 20px auto;
+            margin: 10px auto 25px;
+            
         }
     }
     .cd-body-wrapper {
         margin: 10px auto !important; 
         background: #fff;
+    }
+    .cd-body-wrapper header button  {
+        background: #22aee4;
+        border-radius: 20px;
     }
 }
 </style>

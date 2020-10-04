@@ -3752,8 +3752,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_custom_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-custom-datepicker */ "./node_modules/vue-custom-datepicker/CustomDatepicker.vue");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -4066,9 +4064,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    var _ref;
-
-    return _ref = {
+    return {
       isopen: false,
       showweek1pickup1calendar: false,
       showweek1pickup2calendar: false,
@@ -4081,7 +4077,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       showmodal: false,
       selectedweek: 0,
       selecteddatevalue: "",
-      selectedDate1: moment__WEBPACK_IMPORTED_MODULE_1___default()().format("YYYY-MM-DD"),
+      selectedDate1: '',
       selectedDate2: "",
       selectedDate3: "",
       selectedDate4: "",
@@ -4093,34 +4089,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         width: "100%"
       },
       headerStyles: {
-        background: "#22AEE4",
-        color: "#fff"
+        width: '350px',
+        margin: '0 auto',
+        background: "#fff",
+        color: "#000",
+        fontWeight: 'bolder',
+        fontFamiley: 'Lato-Bold'
       },
-      primaryColor: "#0918bc",
-      disabledDates: [],
+      primaryColor: "#FDBD42",
       limits1: {
         start: moment__WEBPACK_IMPORTED_MODULE_1___default()().format("YYYY-MM-DD"),
         end: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selectedDate1).endOf("year").format("YYYY-MM-DD")
       },
       limits1_week: {
         start: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).format("YYYY-MM-DD"),
-        end: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(7, "day").format("YYYY-MM-DD")
+        end: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(6, "day").format("YYYY-MM-DD")
       },
       limits2: {
-        start: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(8, "day").format("YYYY-MM-DD"),
-        end: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(15, "day").format("YYYY-MM-DD")
+        start: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(7, "day").format("YYYY-MM-DD"),
+        end: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(13, "day").format("YYYY-MM-DD")
       },
       limits3: {
-        start: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(16, "day").format("YYYY-MM-DD"),
-        end: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(23, "day").format("YYYY-MM-DD")
+        start: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(14, "day").format("YYYY-MM-DD"),
+        end: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(20, "day").format("YYYY-MM-DD")
       },
       limits4: {
-        start: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(24, "day").format("YYYY-MM-DD"),
-        end: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(31, "day").format("YYYY-MM-DD")
+        start: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(26, "day").format("YYYY-MM-DD"),
+        end: moment__WEBPACK_IMPORTED_MODULE_1___default()(this.selecteddatevalue).add(32, "day").format("YYYY-MM-DD")
       }
-    }, _defineProperty(_ref, "wrapperStyles", {
-      width: "325px"
-    }), _defineProperty(_ref, "primaryColor", "#0918bc"), _ref;
+    };
   },
   components: {
     "custom-datepicker": vue_custom_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -4173,7 +4170,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       } // show calendars modal and stop body scrolling
 
 
-      this.showmodal = true;
+      this.showmodal = true; // set focus to modal to enable escap
+
+      setTimeout(function () {
+        document.getElementById('calendarsModal').focus();
+      }, 100);
       document.getElementsByTagName("body")[0].style.overflow = "hidden";
     },
     setDate1: function setDate1(date) {
@@ -4181,12 +4182,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.limits1_week.start = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(1, "day").format("YYYY-MM-DD");
       this.limits1_week.end = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(6, "day").format("YYYY-MM-DD");
-      this.limits2.start = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(8, "day").format("YYYY-MM-DD");
-      this.limits2.end = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(14, "day").format("YYYY-MM-DD");
-      this.limits3.start = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(15, "day").format("YYYY-MM-DD");
-      this.limits3.end = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(21, "day").format("YYYY-MM-DD");
-      this.limits4.start = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(22, "day").format("YYYY-MM-DD");
-      this.limits4.end = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(28, "day").format("YYYY-MM-DD");
+      this.limits2.start = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(7, "day").format("YYYY-MM-DD");
+      this.limits2.end = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(13, "day").format("YYYY-MM-DD");
+      this.limits3.start = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(14, "day").format("YYYY-MM-DD");
+      this.limits3.end = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(20, "day").format("YYYY-MM-DD");
+      this.limits4.start = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(21, "day").format("YYYY-MM-DD");
+      this.limits4.end = moment__WEBPACK_IMPORTED_MODULE_1___default()(date).add(27, "day").format("YYYY-MM-DD");
     },
     setDate2: function setDate2(date) {
       this.selectedDate2 = date;
@@ -4273,6 +4274,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // hide modal and enable body scrolling
       this.showmodal = false;
       document.getElementsByTagName("body")[0].style.overflow = "auto";
+    },
+    test: function test() {
+      alert('Escap');
     }
   }
 });
@@ -10522,7 +10526,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../node_mod
 
 
 // module
-exports.push([module.i, ".AccordionCalendar {\n  width: 100%;\n  box-shadow: 0px 0px 10px #0000001a;\n  border-radius: 10px 10px 0px 0px;\n}\n.AccordionCalendar .header {\n  height: 60px;\n  background: #f1f3f7;\n  padding: 16px 24px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n.AccordionCalendar .header .title {\n  font-size: 18px;\n}\n.AccordionCalendar .options {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  background: #ffffff;\n  padding: 24px 48px;\n}\n.AccordionCalendar .options .option {\n  margin-bottom: 16px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 24px;\n}\n.AccordionCalendar .options .option .radio {\n  width: 24px;\n  height: 24px;\n  color: #000000;\n}\n.AccordionCalendar .options .option .option-label {\n  margin-left: 54px;\n  font-size: 14px;\n  color: #000000;\n}\n.AccordionCalendar .options .option .option-label .date {\n  margin-left: 20px;\n  font-size: 12px;\n  color: #22aee4;\n}\n.AccordionCalendar .calendars-modal {\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  z-index: 3;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n}\n.AccordionCalendar .calendar-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  background: #ffffff;\n  width: 450px;\n  margin: 100px auto;\n  border-radius: 30px;\n}\n.AccordionCalendar .calendar-container .calendar-title {\n  text-align: center;\n  margin: 20px auto;\n  font-weight: bold;\n  color: #22aee4;\n}\n.AccordionCalendar .calendar-container .calender-button {\n  width: 160px;\n  height: 31px;\n  color: #ffffff;\n  font-size: 14px;\n  font-family: \"Lato-Bold\";\n  background: #22aee4;\n  border-radius: 35px;\n  margin: 20px auto;\n}\n.AccordionCalendar .cd-body-wrapper {\n  margin: 10px auto !important;\n  background: #fff;\n}", ""]);
+exports.push([module.i, ".AccordionCalendar {\n  width: 100%;\n  box-shadow: 0px 0px 10px #0000001a;\n  border-radius: 10px 10px 0px 0px;\n}\n.AccordionCalendar .header {\n  height: 60px;\n  background: #f1f3f7;\n  padding: 16px 24px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-between;\n}\n.AccordionCalendar .header .title {\n  font-size: 18px;\n}\n.AccordionCalendar .options {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  background: #ffffff;\n  padding: 24px 48px;\n}\n.AccordionCalendar .options .option {\n  margin-bottom: 16px;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 24px;\n}\n.AccordionCalendar .options .option .radio {\n  width: 24px;\n  height: 24px;\n  color: #000000;\n}\n.AccordionCalendar .options .option .option-label {\n  margin-left: 54px;\n  font-size: 14px;\n  color: #000000;\n}\n.AccordionCalendar .options .option .option-label.in-active {\n  color: #555;\n}\n.AccordionCalendar .options .option .option-label .date {\n  margin-left: 20px;\n  font-size: 12px;\n  color: #22aee4;\n}\n.AccordionCalendar .calendars-modal {\n  background: rgba(0, 0, 0, 0.5);\n  position: fixed;\n  z-index: 3;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n}\n.AccordionCalendar .calendar-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  background: #ffffff;\n  width: 600px;\n  margin: 100px auto;\n  border-radius: 30px;\n}\n.AccordionCalendar .calendar-container .calendar-title {\n  text-align: left;\n  margin: 20px auto 0 auto;\n  font-weight: bold;\n  color: #22aee4;\n  width: 90%;\n}\n.AccordionCalendar .calendar-container .calender-button {\n  width: 160px;\n  height: 31px;\n  color: #ffffff;\n  font-size: 14px;\n  font-family: \"Lato-Bold\";\n  background: #22aee4;\n  border-radius: 35px;\n  margin: 10px auto 25px;\n}\n.AccordionCalendar .cd-body-wrapper {\n  margin: 10px auto !important;\n  background: #fff;\n}\n.AccordionCalendar .cd-body-wrapper header button {\n  background: #22aee4;\n  border-radius: 20px;\n}", ""]);
 
 // exports
 
@@ -69186,9 +69190,10 @@ var render = function() {
             "p",
             {
               staticClass: "option-label",
+              class: !_vm.selectedDate1 ? "in-active" : "",
               on: {
                 click: function($event) {
-                  return _vm.openCalendar(2)
+                  _vm.selectedDate1 ? _vm.openCalendar(2) : ""
                 }
               }
             },
@@ -69221,9 +69226,10 @@ var render = function() {
             "p",
             {
               staticClass: "option-label",
+              class: !_vm.selectedDate3 ? "in-active" : "",
               on: {
                 click: function($event) {
-                  return _vm.openCalendar(3)
+                  _vm.selectedDate3 ? _vm.openCalendar(3) : ""
                 }
               }
             },
@@ -69256,9 +69262,10 @@ var render = function() {
             "p",
             {
               staticClass: "option-label",
+              class: !_vm.selectedDate5 ? "in-active" : "",
               on: {
                 click: function($event) {
-                  return _vm.openCalendar(4)
+                  _vm.selectedDate5 ? _vm.openCalendar(4) : ""
                 }
               }
             },
@@ -69289,419 +69296,440 @@ var render = function() {
     ),
     _vm._v(" "),
     _vm.showmodal
-      ? _c("div", { staticClass: "calendars-modal" }, [
-          _vm.showweek1pickup1calendar
-            ? _c(
-                "div",
-                { staticClass: "calendar-container" },
-                [
-                  _c("p", { staticClass: "calendar-title" }, [
-                    _vm._v("Week 1/ Pickup 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("custom-datepicker", {
-                    attrs: {
-                      date: _vm.selectedDate1,
-                      primaryColor: _vm.primaryColor,
-                      wrapperStyles: _vm.wrapperStyles,
-                      headerStyles: _vm.headerStyles,
-                      limits: _vm.limits1
-                    },
-                    on: {
-                      dateSelected: function($event) {
-                        return _vm.setDate1($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.pickups > 1
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "calender-button",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.selectedDate1 ? _vm.handleCalendar(1) : ""
-                            }
-                          }
-                        },
-                        [_vm._v("\n                Next\n            ")]
-                      )
-                    : _c(
-                        "button",
-                        {
-                          staticClass: "calender-button",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.selectedDate1
-                                ? _vm.handleCalendarAndCloseModal(1)
-                                : ""
-                            }
-                          }
-                        },
-                        [_vm._v("\n                Done\n            ")]
-                      )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showweek1pickup2calendar
-            ? _c(
-                "div",
-                { staticClass: "calendar-container" },
-                [
-                  _c("p", { staticClass: "calendar-title" }, [
-                    _vm._v("Week 1/ Pickup 2")
-                  ]),
-                  _vm._v(" "),
-                  _c("custom-datepicker", {
-                    attrs: {
-                      date: _vm.selectedDate1,
-                      primaryColor: _vm.primaryColor,
-                      wrapperStyles: _vm.wrapperStyles,
-                      limits: _vm.limits1_week,
-                      headerStyles: _vm.headerStyles
-                    },
-                    on: {
-                      dateSelected: function($event) {
-                        return _vm.setDate2($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "calender-button",
-                      attrs: { type: "button" },
+      ? _c(
+          "div",
+          {
+            staticClass: "calendars-modal",
+            attrs: { id: "calendarsModal", tabindex: "0" },
+            on: {
+              keydown: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "esc", 27, $event.key, [
+                    "Esc",
+                    "Escape"
+                  ])
+                ) {
+                  return null
+                }
+                return _vm.closeModal($event)
+              }
+            }
+          },
+          [
+            _vm.showweek1pickup1calendar
+              ? _c(
+                  "div",
+                  { staticClass: "calendar-container" },
+                  [
+                    _c("p", { staticClass: "calendar-title" }, [
+                      _vm._v("Week 1/ Pickup 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.selectedDate1,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        headerStyles: _vm.headerStyles,
+                        limits: _vm.limits1
+                      },
                       on: {
-                        click: function($event) {
-                          _vm.selectedDate2 &&
-                          _vm.selectedDate2 != _vm.selectedDate1
-                            ? _vm.handleCalendarAndCloseModal(2)
-                            : ""
+                        dateSelected: function($event) {
+                          return _vm.setDate1($event)
                         }
                       }
-                    },
-                    [_vm._v("\n                Done\n            ")]
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showweek2pickup1calendar
-            ? _c(
-                "div",
-                { staticClass: "calendar-container" },
-                [
-                  _c("p", { staticClass: "calendar-title" }, [
-                    _vm._v("Week 2/ Pickup 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("custom-datepicker", {
-                    attrs: {
-                      date: _vm.selectedDate1,
-                      primaryColor: _vm.primaryColor,
-                      wrapperStyles: _vm.wrapperStyles,
-                      limits: _vm.limits2,
-                      headerStyles: _vm.headerStyles
-                    },
-                    on: {
-                      dateSelected: function($event) {
-                        return _vm.setDate3($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.pickups > 1
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "calender-button",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.selectedDate3 ? _vm.handleCalendar(3) : ""
+                    }),
+                    _vm._v(" "),
+                    _vm.pickups > 1
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "calender-button",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.selectedDate1 ? _vm.handleCalendar(1) : ""
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("\n                Next\n            ")]
-                      )
-                    : _c(
-                        "button",
-                        {
-                          staticClass: "calender-button",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.selectedDate3
-                                ? _vm.handleCalendarAndCloseModal(3)
-                                : ""
+                          },
+                          [_vm._v("\n                Next\n            ")]
+                        )
+                      : _c(
+                          "button",
+                          {
+                            staticClass: "calender-button",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.selectedDate1
+                                  ? _vm.handleCalendarAndCloseModal(1)
+                                  : ""
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("\n                Done\n            ")]
-                      )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showweek2pickup2calendar
-            ? _c(
-                "div",
-                { staticClass: "calendar-container" },
-                [
-                  _c("p", { staticClass: "calendar-title" }, [
-                    _vm._v("Week 2/ Pickup 2")
-                  ]),
-                  _vm._v(" "),
-                  _c("custom-datepicker", {
-                    attrs: {
-                      date: _vm.selectedDate1,
-                      primaryColor: _vm.primaryColor,
-                      wrapperStyles: _vm.wrapperStyles,
-                      limits: _vm.limits2,
-                      headerStyles: _vm.headerStyles
-                    },
-                    on: {
-                      dateSelected: function($event) {
-                        return _vm.setDate4($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "calender-button",
-                      attrs: { type: "button" },
+                          },
+                          [_vm._v("\n                Done\n            ")]
+                        )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showweek1pickup2calendar
+              ? _c(
+                  "div",
+                  { staticClass: "calendar-container" },
+                  [
+                    _c("p", { staticClass: "calendar-title" }, [
+                      _vm._v("Week 1/ Pickup 2")
+                    ]),
+                    _vm._v(" "),
+                    _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.selectedDate1,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        limits: _vm.limits1_week,
+                        headerStyles: _vm.headerStyles
+                      },
                       on: {
-                        click: function($event) {
-                          _vm.selectedDate4 &&
-                          _vm.selectedDate4 != _vm.selectedDate3
-                            ? _vm.handleCalendarAndCloseModal(4)
-                            : ""
+                        dateSelected: function($event) {
+                          return _vm.setDate2($event)
                         }
                       }
-                    },
-                    [_vm._v("\n                Done\n            ")]
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showweek3pickup1calendar
-            ? _c(
-                "div",
-                { staticClass: "calendar-container" },
-                [
-                  _c("p", { staticClass: "calendar-title" }, [
-                    _vm._v("Week 3/ Pickup 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("custom-datepicker", {
-                    attrs: {
-                      date: _vm.selectedDate3,
-                      primaryColor: _vm.primaryColor,
-                      wrapperStyles: _vm.wrapperStyles,
-                      limits: _vm.limits3,
-                      headerStyles: _vm.headerStyles
-                    },
-                    on: {
-                      dateSelected: function($event) {
-                        return _vm.setDate5($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.pickups > 1
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "calender-button",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.selectedDate5 ? _vm.handleCalendar(5) : ""
-                            }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "calender-button",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.selectedDate2 &&
+                            _vm.selectedDate2 != _vm.selectedDate1
+                              ? _vm.handleCalendarAndCloseModal(2)
+                              : ""
                           }
-                        },
-                        [_vm._v("\n                Next\n            ")]
-                      )
-                    : _c(
-                        "button",
-                        {
-                          staticClass: "calender-button",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.selectedDate5
-                                ? _vm.handleCalendarAndCloseModal(5)
-                                : ""
-                            }
-                          }
-                        },
-                        [_vm._v("\n                Done\n            ")]
-                      )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showweek3pickup2calendar
-            ? _c(
-                "div",
-                { staticClass: "calendar-container" },
-                [
-                  _c("p", { staticClass: "calendar-title" }, [
-                    _vm._v("Week 3/ Pickup 2")
-                  ]),
-                  _vm._v(" "),
-                  _c("custom-datepicker", {
-                    attrs: {
-                      date: _vm.selectedDate3,
-                      primaryColor: _vm.primaryColor,
-                      wrapperStyles: _vm.wrapperStyles,
-                      limits: _vm.limits3,
-                      headerStyles: _vm.headerStyles
-                    },
-                    on: {
-                      dateSelected: function($event) {
-                        return _vm.setDate6($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "calender-button",
-                      attrs: { type: "button" },
+                        }
+                      },
+                      [_vm._v("\n                Done\n            ")]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showweek2pickup1calendar
+              ? _c(
+                  "div",
+                  { staticClass: "calendar-container" },
+                  [
+                    _c("p", { staticClass: "calendar-title" }, [
+                      _vm._v("Week 2/ Pickup 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.selectedDate1,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        limits: _vm.limits2,
+                        headerStyles: _vm.headerStyles
+                      },
                       on: {
-                        click: function($event) {
-                          _vm.selectedDate6 &&
-                          _vm.selectedDate6 != _vm.selectedDate5
-                            ? _vm.handleCalendarAndCloseModal(6)
-                            : ""
+                        dateSelected: function($event) {
+                          return _vm.setDate3($event)
                         }
                       }
-                    },
-                    [_vm._v("\n                Done\n            ")]
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showweek4pickup1calendar
-            ? _c(
-                "div",
-                { staticClass: "calendar-container" },
-                [
-                  _c("p", { staticClass: "calendar-title" }, [
-                    _vm._v("Week 4/ Pickup 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("custom-datepicker", {
-                    attrs: {
-                      date: _vm.selectedDate5,
-                      primaryColor: _vm.primaryColor,
-                      wrapperStyles: _vm.wrapperStyles,
-                      limits: _vm.limits4,
-                      headerStyles: _vm.headerStyles
-                    },
-                    on: {
-                      dateSelected: function($event) {
-                        return _vm.setDate7($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.pickups > 1
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "calender-button",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.selectedDate7 ? _vm.handleCalendar(7) : ""
+                    }),
+                    _vm._v(" "),
+                    _vm.pickups > 1
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "calender-button",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.selectedDate3 ? _vm.handleCalendar(3) : ""
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("\n                Next\n            ")]
-                      )
-                    : _c(
-                        "button",
-                        {
-                          staticClass: "calender-button",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.selectedDate7
-                                ? _vm.handleCalendarAndCloseModal(7)
-                                : ""
+                          },
+                          [_vm._v("\n                Next\n            ")]
+                        )
+                      : _c(
+                          "button",
+                          {
+                            staticClass: "calender-button",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.selectedDate3
+                                  ? _vm.handleCalendarAndCloseModal(3)
+                                  : ""
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("\n                Done\n            ")]
-                      )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showweek4pickup2calendar
-            ? _c(
-                "div",
-                { staticClass: "calendar-container" },
-                [
-                  _c("p", { staticClass: "calendar-title" }, [
-                    _vm._v("Week 4/ Pickup 2")
-                  ]),
-                  _vm._v(" "),
-                  _c("custom-datepicker", {
-                    attrs: {
-                      date: _vm.selectedDate5,
-                      primaryColor: _vm.primaryColor,
-                      wrapperStyles: _vm.wrapperStyles,
-                      limits: _vm.limits4,
-                      headerStyles: _vm.headerStyles
-                    },
-                    on: {
-                      dateSelected: function($event) {
-                        return _vm.setDate8($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "calender-button",
-                      attrs: { type: "button" },
+                          },
+                          [_vm._v("\n                Done\n            ")]
+                        )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showweek2pickup2calendar
+              ? _c(
+                  "div",
+                  { staticClass: "calendar-container" },
+                  [
+                    _c("p", { staticClass: "calendar-title" }, [
+                      _vm._v("Week 2/ Pickup 2")
+                    ]),
+                    _vm._v(" "),
+                    _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.selectedDate1,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        limits: _vm.limits2,
+                        headerStyles: _vm.headerStyles
+                      },
                       on: {
-                        click: function($event) {
-                          _vm.selectedDate8 &&
-                          _vm.selectedDate8 != _vm.selectedDate7
-                            ? _vm.handleCalendarAndCloseModal(8)
-                            : ""
+                        dateSelected: function($event) {
+                          return _vm.setDate4($event)
                         }
                       }
-                    },
-                    [_vm._v("\n                Done\n            ")]
-                  )
-                ],
-                1
-              )
-            : _vm._e()
-        ])
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "calender-button",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.selectedDate4 &&
+                            _vm.selectedDate4 != _vm.selectedDate3
+                              ? _vm.handleCalendarAndCloseModal(4)
+                              : ""
+                          }
+                        }
+                      },
+                      [_vm._v("\n                Done\n            ")]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showweek3pickup1calendar
+              ? _c(
+                  "div",
+                  { staticClass: "calendar-container" },
+                  [
+                    _c("p", { staticClass: "calendar-title" }, [
+                      _vm._v("Week 3/ Pickup 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.selectedDate3,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        limits: _vm.limits3,
+                        headerStyles: _vm.headerStyles
+                      },
+                      on: {
+                        dateSelected: function($event) {
+                          return _vm.setDate5($event)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.pickups > 1
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "calender-button",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.selectedDate5 ? _vm.handleCalendar(5) : ""
+                              }
+                            }
+                          },
+                          [_vm._v("\n                Next\n            ")]
+                        )
+                      : _c(
+                          "button",
+                          {
+                            staticClass: "calender-button",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.selectedDate5
+                                  ? _vm.handleCalendarAndCloseModal(5)
+                                  : ""
+                              }
+                            }
+                          },
+                          [_vm._v("\n                Done\n            ")]
+                        )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showweek3pickup2calendar
+              ? _c(
+                  "div",
+                  { staticClass: "calendar-container" },
+                  [
+                    _c("p", { staticClass: "calendar-title" }, [
+                      _vm._v("Week 3/ Pickup 2")
+                    ]),
+                    _vm._v(" "),
+                    _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.selectedDate3,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        limits: _vm.limits3,
+                        headerStyles: _vm.headerStyles
+                      },
+                      on: {
+                        dateSelected: function($event) {
+                          return _vm.setDate6($event)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "calender-button",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.selectedDate6 &&
+                            _vm.selectedDate6 != _vm.selectedDate5
+                              ? _vm.handleCalendarAndCloseModal(6)
+                              : ""
+                          }
+                        }
+                      },
+                      [_vm._v("\n                Done\n            ")]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showweek4pickup1calendar
+              ? _c(
+                  "div",
+                  { staticClass: "calendar-container" },
+                  [
+                    _c("p", { staticClass: "calendar-title" }, [
+                      _vm._v("Week 4/ Pickup 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.selectedDate5,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        limits: _vm.limits4,
+                        headerStyles: _vm.headerStyles
+                      },
+                      on: {
+                        dateSelected: function($event) {
+                          return _vm.setDate7($event)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.pickups > 1
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "calender-button",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.selectedDate7 ? _vm.handleCalendar(7) : ""
+                              }
+                            }
+                          },
+                          [_vm._v("\n                Next\n            ")]
+                        )
+                      : _c(
+                          "button",
+                          {
+                            staticClass: "calender-button",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.selectedDate7
+                                  ? _vm.handleCalendarAndCloseModal(7)
+                                  : ""
+                              }
+                            }
+                          },
+                          [_vm._v("\n                Done\n            ")]
+                        )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showweek4pickup2calendar
+              ? _c(
+                  "div",
+                  { staticClass: "calendar-container" },
+                  [
+                    _c("p", { staticClass: "calendar-title" }, [
+                      _vm._v("Week 4/ Pickup 2")
+                    ]),
+                    _vm._v(" "),
+                    _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.selectedDate5,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        limits: _vm.limits4,
+                        headerStyles: _vm.headerStyles
+                      },
+                      on: {
+                        dateSelected: function($event) {
+                          return _vm.setDate8($event)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "calender-button",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.selectedDate8 &&
+                            _vm.selectedDate8 != _vm.selectedDate7
+                              ? _vm.handleCalendarAndCloseModal(8)
+                              : ""
+                          }
+                        }
+                      },
+                      [_vm._v("\n                Done\n            ")]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e()
+          ]
+        )
       : _vm._e()
   ])
 }
