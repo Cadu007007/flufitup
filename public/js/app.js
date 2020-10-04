@@ -4060,6 +4060,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -69213,10 +69219,9 @@ var render = function() {
           _c("input", {
             attrs: { type: "hidden", name: "week2_pickup_dates" },
             domProps: {
-              value:
-                _vm.selectedDate3 + _vm.selectedDate4
-                  ? ";" + _vm.selectedDate4
-                  : ""
+              value: _vm.selectedDate4
+                ? _vm.selectedDate3 + ";" + _vm.selectedDate4
+                : _vm.selectedDate3
             }
           })
         ]),
@@ -69249,10 +69254,9 @@ var render = function() {
           _c("input", {
             attrs: { type: "hidden", name: "week3_pickup_dates" },
             domProps: {
-              value:
-                _vm.selectedDate5 + _vm.selectedDate6
-                  ? ";" + _vm.selectedDate6
-                  : ""
+              value: _vm.selectedDate6
+                ? _vm.selectedDate5 + ";" + _vm.selectedDate6
+                : _vm.selectedDate5
             }
           })
         ]),
@@ -69285,10 +69289,9 @@ var render = function() {
           _c("input", {
             attrs: { type: "hidden", name: "week4_pickup_dates" },
             domProps: {
-              value:
-                _vm.selectedDate7 + _vm.selectedDate8
-                  ? ";" + _vm.selectedDate8
-                  : ""
+              value: _vm.selectedDate8
+                ? _vm.selectedDate7 + ";" + _vm.selectedDate8
+                : _vm.selectedDate7
             }
           })
         ])

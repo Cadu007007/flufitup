@@ -43,7 +43,9 @@
                     type="hidden"
                     name="week2_pickup_dates"
                     :value="
-                        selectedDate3 + selectedDate4 ? ';' + selectedDate4 : ''
+                        selectedDate4
+                            ? selectedDate3 + ';' + selectedDate4
+                            : selectedDate3
                     "
                 />
             </div>
@@ -60,7 +62,9 @@
                     type="hidden"
                     name="week3_pickup_dates"
                     :value="
-                        selectedDate5 + selectedDate6 ? ';' + selectedDate6 : ''
+                        selectedDate6
+                            ? selectedDate5 + ';' + selectedDate6
+                            : selectedDate5
                     "
                 />
             </div>
@@ -77,7 +81,9 @@
                     type="hidden"
                     name="week4_pickup_dates"
                     :value="
-                        selectedDate7 + selectedDate8 ? ';' + selectedDate8 : ''
+                        selectedDate8
+                            ? selectedDate7 + ';' + selectedDate8
+                            : selectedDate7
                     "
                 />
             </div>
