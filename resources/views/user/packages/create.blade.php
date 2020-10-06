@@ -4,7 +4,7 @@
 <Package-Create
 class="PageContentContainer" 
 id="PackageCreate" 
-date="21/09/2020"
+date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
 :serviceoptions="{{ $options->service }}"
 :washoptions="{{ $options->wash }}"
 :pickupsoptions="{{ $options->pickup }}"

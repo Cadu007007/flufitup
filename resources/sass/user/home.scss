@@ -13,8 +13,7 @@ $sidebar-width: 215px;
     display: grid;
     grid-template-columns: $sidebar-width auto;
     .Sidebar-container {
-        min-height: calc(100vh - #{$header-height});
-        height: 768px;
+        height: calc(100vh - #{$header-height});
         width: $sidebar-width;
         position: relative;
         .Sidebar {

@@ -4,7 +4,7 @@
 <Package-Summary
 class="PageContentContainer" 
 id="PackageSummary" 
-date="21/09/2020"
+date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
 :package="{{ $package }}"
 paymentroute="{{ route('package.payment', 'package_id') }}"
 />

@@ -315,7 +315,9 @@ Route::get('/profile/edit', function () {
 /**************************** */
 
 Route::get('/chat', function () {
-    return view('user.chat.index', ['active' => 'chat']);
+    $user = collect();
+    $user->push(['name'=>'MoSalah' , 'image'=> '/images/logo.png' , 'show_image'=> false ]);
+    return view('user.chat.index', ['active' => 'chat', 'user'=>$user]);
 })->name('chat');
 
 

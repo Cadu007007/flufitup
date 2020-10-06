@@ -1,5 +1,5 @@
 <template>
-<div class="ChatItem">
+<div class="ChatNotificationItem">
     <img :src="userimage" alt="" class="image">
     <div class="chat-info" :class="isread ? 'read' : ''">
         <span class="new-dot"></span>
@@ -23,7 +23,7 @@ $black: #222;
 $grey: #00000080;
 $blue: #22AEE4;
 
-    .ChatItem{
+    .ChatNotificationItem{
         margin-top: 15px;
         display: flex;
         flex-direction: row;

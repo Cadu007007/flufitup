@@ -5,7 +5,7 @@
         <a :href="viewallroute" class="link">View All</a>
     </div>
 
-    <ChatItem
+    <ChatNotificationItem
         v-for="(item,index) in chatsnotifications" :key="item.id"
         class="chat-item"
         :userimage="item.userimage"
@@ -19,11 +19,11 @@
 </template>
 
 <script>
-import ChatItem from './ChatItem'
+import ChatNotificationItem from './ChatNotificationItem'
 export default {
     props: ['chatsnotifications','viewallroute'],
 components:{
-    ChatItem
+    ChatNotificationItem
 }
 }
 </script>

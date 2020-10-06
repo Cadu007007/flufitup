@@ -2,8 +2,9 @@
 
     @include('components.landing.header')
     @include('components.landing.navbar')
+    <div class="landing-container" id="fullpage">
     {{-- Hero Section --}}
-    <div class="hero-container">
+    <div class="hero-container section">
         <div class="left">
             <p class="title">
                 FLUFFIT-UP
@@ -32,8 +33,6 @@
     {{-- City Location --}}
     <div class="city-location" style="background-image: url(/images/city-location-vector.svg)">
         <div class="left">
-    {{--             <img src="/images/city-location-vector.svg" class="city-location-image" alt="">
- --}}
             
             <p class="title">City Search</p>
             <div class="city-location-underline"></div>
@@ -52,7 +51,7 @@
     {{-- XX City Location XX --}}
 
     {{-- Why Choose US --}}
-    <div class="why-choose-us-container" id="whyChooseUs">
+    <div class="why-choose-us-container section" id="whyChooseUs">
         <div class="title-container">
 
             <p class="title">
@@ -125,7 +124,7 @@
     
     
     {{-- Our Services --}}
-    <div class="our-services-container" id="ourService">
+    <div class="our-services-container section" id="ourService">
         <div class="title-container">
 
             <p class="title">
@@ -208,7 +207,7 @@
     {{-- XX Our Services XX --}}
     
     {{-- Download section --}}
-    <div class="download">
+    <div class="download section" >
         <div class="left">
             <p class="download-title">
                 Laundry in our hands
@@ -238,7 +237,7 @@
     
     
     {{-- ------- How it works -------- --}}
-    <div class="how-it-works" id="howItWork">
+    <div class="how-it-works section" id="howItWork">
         <div class="title-container">
 
             <p class="title">
@@ -349,7 +348,7 @@
     {{-- -----XX How it works XX------ --}}
 
     {{-- ------- Contact Us -------- --}}
-    <div class="contact-us" id="contactUs">
+    <div class="contact-us section" id="contactUs">
         <div class="title-container">
 
             <p class="title">
@@ -413,6 +412,8 @@
             Copyright © 2020 Fluffit-Up
         </div>
     </div>
+    </div> {{-- End of  #main --}}
+    
     {{-- --- XX Get in touch XX --- --}}
 
     @include('components.landing.footer')

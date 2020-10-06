@@ -13,6 +13,7 @@
         </style>
         <link rel="stylesheet" href="{{ asset('css/landing/styles.css') }}">
         <link rel="stylesheet" href="{{ asset('css/user/home.css') }}">
+        <link rel="icon" type="image/png" href="{{asset('images/logo.png')}}"/>
 
     </head>
     <body>

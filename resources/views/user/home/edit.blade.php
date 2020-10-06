@@ -5,7 +5,7 @@
 <Edit-Order 
 class="PageContentContainer"
 id="Edit Order" 
-date="18/09/2020"
+date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
 :weekonepickupone="{{ $order->week_one->pickup_one }}"
 :weekonepickuptwo="{{ $order->week_one->pickup_two }}"
 :weektwopickupone="{{ $order->week_two->pickup_one }}"

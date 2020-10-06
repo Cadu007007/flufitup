@@ -13,6 +13,9 @@
         <link rel="stylesheet" href="{{ asset('css/landing/styles.css') }}">
         <link rel="stylesheet" href="{{ asset('css/register/styles.css') }}">
         <link rel="stylesheet" href="{{ asset('css/login/styles.css') }}">
+        <link rel="icon" type="image/png" href="{{asset('images/logo.png')}}"/>
+
+
 
     </head>
     <body>

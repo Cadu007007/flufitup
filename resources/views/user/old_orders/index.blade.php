@@ -4,7 +4,7 @@
 <Old-Orders 
 class="PageContentContainer" 
 id="OldOrders" 
-date="18/09/2020"
+date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
 showorderroute="{{ route('old_orders.show', 'order_id') }}"
 
 :orders="{{ $orders }}"

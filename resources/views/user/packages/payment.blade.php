@@ -6,7 +6,7 @@
 <Online-Payment 
 class="PageContentContainer" 
 id="OnlinePayment" 
-date="18/09/2020"
+date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
 formactionroute="{{ route('dummy') }}"
 />
 

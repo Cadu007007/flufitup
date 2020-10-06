@@ -4,7 +4,7 @@
 <Old-Order-Details
 class="PageContentContainer" 
 id="OldOrderDetails" 
-date="18/09/2020"
+date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
 :order="{{ $order }}"
 feedbackactionroute="{{ route('dummy') }}"
 />
