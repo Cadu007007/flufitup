@@ -1,9 +1,10 @@
 @extends('layouts.admin')
 @section('content')
-<Users 
-title="Users"
+
+<Cancelled-Orders 
+title="Cancelled Orders"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
 showuserroute="{{ route('admin.users.show', 'user_id') }}"
-:users="{{ $users }}"
+:clients="{{ $clients }}"
 />
 @endsection

@@ -1,5 +1,5 @@
 <template>
-  <div class="DashboardItem">
+  <div class="DashboardItem" @click="goToTheRoute">
     <p class="value" :style="{ color: color }">{{ value }} </p>
     <p class="title">{{ title }} </p>
   </div>
@@ -7,7 +7,12 @@
 
 <script>
 export default {
-    props:['value','title','color']
+    props:['value','title','color','gotoroute'],
+    methods: {
+      goToTheRoute(){
+        window.location.href = this.gotoroute
+      }
+    },
 
 }
 </script>
@@ -25,6 +30,7 @@ flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
 padding: 10px 0px;
+cursor: pointer;
 .value{
     font-size: 24px;
     font-family: 'Open-Sans-Bold';

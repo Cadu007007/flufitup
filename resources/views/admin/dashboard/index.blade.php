@@ -3,12 +3,20 @@
 
 <Dashboard 
 title="Dashboard"
-date="Tue, 22 September"
+date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :totalclients="{{ $state_numbers->total_clients }}"
+totalclientsroute="{{ route('admin.dashboard.total_clients') }}"
 :newclients="{{ $state_numbers->new_clients }}"
+newclientsroute="{{ route('admin.dashboard.new_clients') }}"
 :salespermonth="{{ $state_numbers->sales_per_month }}"
+salespermonthroute="{{ route('admin.dashboard.sales_per_month') }}"
 :salesperpackage="{{ $state_numbers->sales_per_package }}"
+salesperpackageroute="{{ route('admin.dashboard.sales_per_package') }}"
 :userspercity="{{ $state_numbers->users_per_city }}"
+userspercityroute="{{ route('admin.dashboard.users_per_city') }}"
 :cancelledorders="{{ $state_numbers->cancelled_orders }}"
+cancelledordersroute="{{ route('admin.dashboard.cancelled_orders') }}"
+:ordersnumber="{{ $state_numbers->orders_number_per_day }}"
+
 />
 @endsection

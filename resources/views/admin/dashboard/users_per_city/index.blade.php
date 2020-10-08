@@ -1,9 +1,11 @@
 @extends('layouts.admin')
 @section('content')
-<Users 
-title="Users"
+
+<Users-Per-City 
+title="Users Per City"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
-showuserroute="{{ route('admin.users.show', 'user_id') }}"
+:cities="{{ $cities }}"
 :users="{{ $users }}"
+showuserroute="{{ route('admin.users.show', 'user_id') }}"
 />
 @endsection

@@ -2,6 +2,6 @@
 @section('content')
 <Reports 
 title="Reports"
-date="Tue, 22 September"
+date="{{Carbon\Carbon::now()->format('D, d F')}}"
 />
 @endsection

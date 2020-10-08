@@ -408,8 +408,14 @@ Route::get('/admin/login', function () {
 })->name('admin.login');
 
 
+
 /* Dashboard */
-Route::get('/admin/dashboard', function () {
+
+/*****************************
+ *  Dashboard Pages
+ ****************************/
+/* Dashboard */
+ Route::get('/admin/dashboard', function () {
     $state_numbers = collect();
     $state_numbers->total_clients= 3000 ;
     $state_numbers->new_clients= 120 ;
@@ -417,8 +423,93 @@ Route::get('/admin/dashboard', function () {
     $state_numbers->sales_per_package= 100 ;
     $state_numbers->users_per_city= 100 ;
     $state_numbers->cancelled_orders= 10 ;
+    $state_numbers->orders_number_per_day= 4 ;
+
     return view('admin.dashboard.index', ['active' => 'dashboard','state_numbers' => $state_numbers ]);
 })->name('admin.dashboard');
+
+/* Total Clients */
+Route::get('/admin/clients/total', function () {
+    $clients = collect();
+
+    $clients->push(['id'=> 1, 'name'=>'Mohamed Salah','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+    $clients->push(['id'=> 2, 'name'=>'Ali Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+    $clients->push(['id'=> 3, 'name'=>'Dooooooby','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+
+    return view('admin.dashboard.total_clients.index', ['active' => 'dashboard', 'clients'=>$clients]);
+})->name('admin.dashboard.total_clients');
+
+/* New Clients */
+Route::get('/admin/clients/new', function () {
+    $clients = collect();
+
+    $clients->push(['id'=> 1, 'name'=>'Ali Ahmed','city' => 'Cairo','day_of_subscribe'=>'12/15/2020','package_name'=> 'Package 2']);
+    $clients->push(['id'=> 2, 'name'=>'Dooooooby','city' => 'Giza','day_of_subscribe'=>'12/16/2020','package_name'=> 'Package 3']);
+    $clients->push(['id'=> 3, 'name'=>'Mohamed Salah','city' => 'Alexandria','day_of_subscribe'=>'12/14/2020','package_name'=> 'Package 1']);
+
+    return view('admin.dashboard.new_clients.index', ['active' => 'dashboard', 'clients'=>$clients]);
+})->name('admin.dashboard.new_clients');
+
+
+/* Sales Per Month */
+Route::get('/admin/sales/month', function () {
+    $orders_dates = collect();
+ 
+    $orders_dates->push(['date'=>'2020/10/1','title'=>'order','orders'=>'5', 'customClass' => 'low']);
+    $orders_dates->push(['date'=>'2020/10/5','title'=>'order','orders'=>'7', 'customClass' => 'high']);
+    $orders_dates->push(['date'=>'2020/10/10','title'=>'order','orders'=>'10', 'customClass' => 'low']); 
+    
+    
+    return view('admin.dashboard.sales_per_month.index', ['active' => 'dashboard', 'orders_dates'=>$orders_dates]);
+})->name('admin.dashboard.sales_per_month');
+
+
+
+/* Sales Per Package */
+Route::get('/admin/sales/package', function () {
+    $clients = collect();
+
+    $clients->push(['id'=> 1, 'name'=>'Mohamed Salah','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+    $clients->push(['id'=> 2, 'name'=>'Ali Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+    $clients->push(['id'=> 3, 'name'=>'Dooooooby','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+
+    return view('admin.dashboard.sales_per_package.index', ['active' => 'dashboard', 'clients'=>$clients]);
+})->name('admin.dashboard.sales_per_package');
+
+
+
+/* Users Per City */
+Route::get('/admin/users/city', function () {
+
+    $cities = collect();
+    $cities->push(['id' => 1 ,'name' => 'Alexandria' ]);
+    $cities->push(['id' => 2 ,'name' => 'Cairo' ]);
+    $cities->push(['id' => 3 ,'name' => 'Giza' ]);
+    
+    $users = collect();
+    $users->push(['id'=> 1, 'name'=> 'Mohamed', 'city_id' => 1]);
+    $users->push(['id'=> 2, 'name'=> 'Amr', 'city_id' => 2]);
+    $users->push(['id'=> 3, 'name'=> 'Doby', 'city_id' => 3]);
+    $users->push(['id'=> 3, 'name'=> 'Doby', 'city_id' => 3]);
+    $users->push(['id'=> 3, 'name'=> 'Doby', 'city_id' => 3]);
+   
+    return view('admin.dashboard.users_per_city.index', ['active' => 'dashboard', 'cities'=>$cities, 'users'=>$users]);
+})->name('admin.dashboard.users_per_city');
+
+
+/* Cancelled Orders */
+Route::get('/admin/orders/cancelled', function () {
+    $clients = collect();
+
+    $clients->push(['id'=> 1, 'name'=>'Mohamed Salah','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+    $clients->push(['id'=> 2, 'name'=>'Ali Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+    $clients->push(['id'=> 3, 'name'=>'Dooooooby','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+
+    return view('admin.dashboard.cancelled_orders.index', ['active' => 'dashboard', 'clients'=>$clients]);
+})->name('admin.dashboard.cancelled_orders');
+
+
+
 
 /* Reports */
 Route::get('/admin/reports', function () {

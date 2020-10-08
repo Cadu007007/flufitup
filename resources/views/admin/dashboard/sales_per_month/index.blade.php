@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 @section('content')
-<Admins 
-title="Admins"
+
+<Sales-Per-Month 
+title="Sales Per Month"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
+:selecteddates="{{ $orders_dates }}"
 />
 @endsection

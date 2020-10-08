@@ -162,13 +162,13 @@ body {
 #app .AdminPageContainer {
   width: 100%;
   display: grid;
-  grid-template-columns: 215px auto;
+  grid-template-columns: 231px auto;
   /* Vue Page  */
 }
 
 #app .AdminPageContainer .AdminSidebar {
   min-height: calc(100vh - 64px - 24px);
-  width: 215px;
+  width: 231px;
   position: relative;
 }
 

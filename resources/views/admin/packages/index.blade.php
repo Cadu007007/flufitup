@@ -2,6 +2,6 @@
 @section('content')
 <Admin-Packages
 title="Packages"
-date="Tue, 22 September"
+date="{{Carbon\Carbon::now()->format('D, d F')}}"
 />
 @endsection

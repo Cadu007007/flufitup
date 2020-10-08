@@ -39,9 +39,24 @@ var OldOrderDetails = require('./components/User/Pages/OldOrders/OldOrderDetails
 var Chat = require('./components/User/Pages/Chat/Chat.vue').default
 
 /* **** ADMIN Pages ****** */
+/* Admin Global Components */
 var AdminNavbar = require('./components/Admin/Components/AdminNavbar.vue').default
 var AdminSidebar = require('./components/Admin/Components/AdminSidebar.vue').default
+
+import 'vue-event-calendar/dist/style.css'
+import vueEventCalendar from 'vue-event-calendar'
+Vue.use(vueEventCalendar, { locale: 'en' })
+    /* XX Admin Global Components XX */
+    /************ Dashboard ********** */
 var Dashboard = require('./components/Admin/Pages/Dashboard/Dashboard.vue').default
+var TotalClients = require('./components/Admin/Pages/Dashboard/TotalClients.vue').default
+var NewClients = require('./components/Admin/Pages/Dashboard/NewClients.vue').default
+var SalesPerMonth = require('./components/Admin/Pages/Dashboard/SalesPerMonth.vue').default
+var SalesPerPackage = require('./components/Admin/Pages/Dashboard/SalesPerPackage.vue').default
+var UsersPerCity = require('./components/Admin/Pages/Dashboard/UsersPerCity.vue').default
+var CancelledOrders = require('./components/Admin/Pages/Dashboard/CancelledOrders.vue').default
+
+/************ XX Dashboard XX ********** */
 var Reports = require('./components/Admin/Pages/Reports/Reports.vue').default
 var AdminPackages = require('./components/Admin/Pages/Packages/AdminPackages.vue').default
 var Admins = require('./components/Admin/Pages/Admins/Admins.vue').default
@@ -72,7 +87,15 @@ const app = new Vue({
         /* Admin Pages */
         AdminNavbar,
         AdminSidebar,
+        /* dashboard pages */
         Dashboard,
+        TotalClients,
+        NewClients,
+        SalesPerMonth,
+        SalesPerPackage,
+        UsersPerCity,
+        CancelledOrders,
+        /* XX dashboard pages XX */
         Reports,
         AdminPackages,
         Users,
