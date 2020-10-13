@@ -37,6 +37,30 @@
   iconActive='/images/admin/icons/users-active.svg'/>
     
 
+<AdminSidebarPlannerMenu
+class="AdminSidebarItem" 
+:class="(active == 'pickup_planner' || active == 'delievery_planner') ? 'menu-active' : '' "
+:active="active"
+:routetoplanner="routetopickupplanner"
+icon='/images/admin/icons/planner-icon.svg' 
+iconActive='/images/admin/icons/planner-icon-active.svg'
+:routetopickupplanner="routetopickupplanner"
+:routetopickdelieveryplanner="routetopickdelieveryplanner"
+/>
+
+<AdminSidebarEmployeesMenu
+class="AdminSidebarItem" 
+:class="(active == 'admins' || active == 'drivers' || active == 'laundery_stuff') ? 'menu-active' : '' "
+:active="active"
+:routetoplanner="routetopickupplanner"
+icon='/images/admin/icons/employees-icon.svg' 
+iconActive='/images/admin/icons/employees-icon-active.svg'
+:routetoadmins="routetoadmins"
+:routetodrivers="routetodrivers"
+:routetolaunderystuff="routetolaunderystuff"
+/>
+
+<!--
   <AdminSidebarItem :class=" active == 'admins' ? 'active' : '' " 
   class="AdminSidebarItem" 
   :href=routetoadmins
@@ -44,17 +68,47 @@
   itemtooltip="Admins"
   icon='/images/admin/icons/admins.svg' 
   iconActive='/images/admin/icons/admins-active.svg'/>
-    
+ -->
+
+
+
+  <AdminSidebarItem :class=" active == 'promocodes' ? 'active' : '' " 
+  class="AdminSidebarItem" 
+  :href=routetopromocodes
+  title="Promocodes"
+  itemtooltip="Promocodes"
+  icon='/images/admin/icons/promocodes-icon.svg' 
+  iconActive='/images/admin/icons/promocodes-icon-active.svg'/>
+   
+
+  <AdminSidebarItem :class=" active == 'zones' ? 'active' : '' " 
+  class="AdminSidebarItem" 
+  :href=routetozones
+  title="Zones"
+  itemtooltip="Zones"
+  icon='/images/admin/icons/zones-icon.svg' 
+  iconActive='/images/admin/icons/zones-icon-active.svg'/>
+   
+
+
   </div>
 </template>
 
 <script>
 import AdminSidebarItem from './AdminSidebarItem'
+import AdminSidebarPlannerMenu from './AdminSidebarPlannerMenu'
+import AdminSidebarEmployeesMenu from './AdminSidebarEmployeesMenu'
 
 export default {
-    props:['active','routetodashboard','routetoreports','routetopackages','routetousers','routetoadmins'],
+    props:['active','routetodashboard','routetoreports','routetopackages','routetousers','routetoadmins',
+            'routetopickupplanner','routetopickdelieveryplanner',
+            'routetoadmins','routetodrivers','routetolaunderystuff',
+            'routetopromocodes','routetozones'
+            ],
     components:{
-        AdminSidebarItem
+        AdminSidebarItem,
+        AdminSidebarPlannerMenu,
+        AdminSidebarEmployeesMenu,
     }
 
 }
@@ -71,7 +125,7 @@ $blue: #687CA4;
     }
 
     .AdminSidebarItem{
-        margin-bottom: 34px;
+        margin-bottom: 20px;
     }
 }
 </style>

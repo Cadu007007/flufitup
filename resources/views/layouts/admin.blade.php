@@ -19,7 +19,14 @@
                 routetoreports="{{ route('admin.reports') }}"
                 routetopackages="{{ route('admin.packages') }}"
                 routetousers="{{ route('admin.users') }}"
-                routetoadmins="{{ route('admin.admins') }}"
+
+                routetopickupplanner="{{ route('admin.planner.pickup') }}"
+                routetopickdelieveryplanner="{{ route('admin.planner.delievery') }}"
+                routetoadmins="{{ route('admin.employees.admins') }}"
+                routetodrivers="{{ route('admin.employees.drivers') }}"
+                routetolaunderystuff="{{ route('admin.employees.laundery_stuff') }}"
+                routetopromocodes="{{ route('admin.promocodes') }}"
+                routetozones="{{ route('admin.zones') }}"
                 />
             </div>
 

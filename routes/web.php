@@ -409,12 +409,11 @@ Route::get('/admin/login', function () {
 
 
 
-/* Dashboard */
+/******************************
+ * Dashboard Start
+ * ************************** */
 
-/*****************************
- *  Dashboard Pages
- ****************************/
-/* Dashboard */
+/* Index */
  Route::get('/admin/dashboard', function () {
     $state_numbers = collect();
     $state_numbers->total_clients= 3000 ;
@@ -498,6 +497,7 @@ Route::get('/admin/users/city', function () {
 
 
 /* Cancelled Orders */
+
 Route::get('/admin/orders/cancelled', function () {
     $clients = collect();
 
@@ -509,23 +509,43 @@ Route::get('/admin/orders/cancelled', function () {
 })->name('admin.dashboard.cancelled_orders');
 
 
+/******************************
+ * Dashboard End
+ * ************************** */
 
 
-/* Reports */
+
+
+/******************************
+ * Reports Start
+ * ************************** */
+
 Route::get('/admin/reports', function () {
     return view('admin.reports.index', ['active' => 'reports']);
 })->name('admin.reports');
 
+/******************************
+ * Reports End
+ * ************************** */
 
 
-/* Packages */
+/******************************
+ * Packages Start
+ * ************************** */
+
 Route::get('/admin/packages', function () {
     return view('admin.packages.index', ['active' => 'packages']);
 })->name('admin.packages');
 
+/******************************
+ * Packages End
+ * ************************** */
 
 
-/* Users */
+/******************************
+ * Users Start
+ * ************************** */
+
 Route::get('/admin/users', function () {
     $users = collect();
 
@@ -535,7 +555,6 @@ Route::get('/admin/users', function () {
 
     return view('admin.users.index', ['active' => 'users', 'users'=>$users]);
 })->name('admin.users');
-
 
 
 Route::get('/admin/users/show/{id}', function () {
@@ -552,14 +571,81 @@ Route::get('/admin/users/show/{id}', function () {
     return view('admin.users.show',['active' => 'users','user'=> $user]);
 })->name('admin.users.show');
 
-
-/* Admins */
-Route::get('/admin/admins', function () {
-    return view('admin.admins.index', ['active' => 'admins']);
-})->name('admin.admins');
+/******************************
+ * Users End
+ * ************************** */
 
 
-/* Create API for navbar data */
+/******************************
+ * Planners Start
+ * ************************** */
+
+ /* Pickup */
+Route::get('/admin/pickup_planner', function () {
+    return view('admin.planners.pickup.index', ['active' => 'pickup_planner']);
+})->name('admin.planner.pickup');
+
+/* Delievery */
+Route::get('/admin/delievery_planner', function () {
+    return view('admin.planners.delievery.index', ['active' => 'delievery_planner']);
+})->name('admin.planner.delievery');
+
+/******************************
+ * Planners End
+ * ************************** */
+
+
+/******************************
+ * Employees Start
+ * ************************** */
+/* admins */
+Route::get('/admin/employees/admins', function () {
+    return view('admin.employees.admins.index', ['active' => 'admins']);
+})->name('admin.employees.admins');
+
+/* drivers */
+Route::get('/admin/employees/drivers', function () {
+    return view('admin.employees.drivers.index', ['active' => 'drivers']);
+})->name('admin.employees.drivers');
+
+/* laundery_stuff */
+Route::get('/admin/employees/laundery_stuff', function () {
+    return view('admin.employees.laundery_stuff.index', ['active' => 'laundery_stuff']);
+})->name('admin.employees.laundery_stuff');
+
+/******************************
+ * Employees End
+ * ************************** */
+
+/******************************
+ * Promocodes Start
+ * ************************** */
+
+Route::get('/admin/promocodes', function () {
+    return view('admin.promocodes.index', ['active' => 'promocodes']);
+})->name('admin.promocodes');
+
+/******************************
+ * Promocodes End
+ * ************************** */
+
+ 
+/******************************
+ * Zones Start
+ * ************************** */
+Route::get('/admin/zones', function () {
+    return view('admin.zones.index', ['active' => 'zones']);
+})->name('admin.zones');
+
+/******************************
+ * Zones End
+ * ************************** */
+
+ 
+
+/******************************
+ * Navbar API Start
+ * ************************** */
 /* Chat */
 Route::get('/chat_notifications', function () {
     $chat_notifications = collect();
@@ -582,6 +668,9 @@ Route::get('/notifications', function () {
     
 })->name('admin.notifications');
 
+/******************************
+ * Navbar API End
+ * ************************** */
 
 
 /***************************** 

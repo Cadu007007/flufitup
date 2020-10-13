@@ -21,7 +21,7 @@ $black: #111;
 .AdminSidebarItem{
     width: 100%;
     display: grid;
-    grid-template-columns: 80px auto;
+    grid-template-columns: 75px auto;
     justify-content: flex-start;
     align-items: center;
     position: relative;

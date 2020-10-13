@@ -2032,6 +2032,54 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AdminSidebarItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminSidebarItem */ "./resources/js/components/Admin/Components/AdminSidebarItem.vue");
+/* harmony import */ var _AdminSidebarPlannerMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminSidebarPlannerMenu */ "./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue");
+/* harmony import */ var _AdminSidebarEmployeesMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AdminSidebarEmployeesMenu */ "./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2083,10 +2131,90 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['active', 'routetodashboard', 'routetoreports', 'routetopackages', 'routetousers', 'routetoadmins'],
+  props: ['active', 'routetodashboard', 'routetoreports', 'routetopackages', 'routetousers', 'routetoadmins', 'routetopickupplanner', 'routetopickdelieveryplanner', 'routetoadmins', 'routetodrivers', 'routetolaunderystuff', 'routetopromocodes', 'routetozones'],
+  components: {
+    AdminSidebarItem: _AdminSidebarItem__WEBPACK_IMPORTED_MODULE_0__["default"],
+    AdminSidebarPlannerMenu: _AdminSidebarPlannerMenu__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AdminSidebarEmployeesMenu: _AdminSidebarEmployeesMenu__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AdminSidebarItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminSidebarItem */ "./resources/js/components/Admin/Components/AdminSidebarItem.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    if (this.active == 'admins' || this.active == 'drivers' || this.active == 'laundery_stuff') {
+      this.showitems = true;
+    }
+  },
+  data: function data() {
+    return {
+      title: 'Employees',
+      showitems: false
+    };
+  },
+  props: ['icon', 'iconActive', 'active', 'routetoadmins', 'routetodrivers', 'routetolaunderystuff'],
   components: {
     AdminSidebarItem: _AdminSidebarItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    showMenuItems: function showMenuItems() {
+      this.showitems = !this.showitems;
+    }
   }
 });
 
@@ -2112,6 +2240,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['title', 'icon', 'iconActive', 'itemtooltip']
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AdminSidebarItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminSidebarItem */ "./resources/js/components/Admin/Components/AdminSidebarItem.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    if (this.active == 'pickup_planner' || this.active == 'delievery_planner') {
+      this.showitems = true;
+    }
+  },
+  data: function data() {
+    return {
+      title: 'Planner',
+      showitems: false
+    };
+  },
+  props: ['icon', 'iconActive', 'active', 'routetopickupplanner', 'routetopickdelieveryplanner'],
+  components: {
+    AdminSidebarItem: _AdminSidebarItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    showMenuItems: function showMenuItems() {
+      this.showitems = !this.showitems;
+    }
+  }
 });
 
 /***/ }),
@@ -10341,7 +10535,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".AdminSidebar .title {\n  font-size: 9px;\n  font-family: \"Open-Sans-Semibold\";\n  color: #687CA4;\n  margin: 24px 36px;\n}\n.AdminSidebar .AdminSidebarItem {\n  margin-bottom: 34px;\n}", ""]);
+exports.push([module.i, ".AdminSidebar .title {\n  font-size: 9px;\n  font-family: \"Open-Sans-Semibold\";\n  color: #687CA4;\n  margin: 24px 36px;\n}\n.AdminSidebar .AdminSidebarItem {\n  margin-bottom: 20px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".AdminSidebarEmployeesMenu {\n  width: 100%;\n  display: grid;\n  grid-template-columns: 75px auto;\n  justify-content: flex-start;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.AdminSidebarEmployeesMenu .menu-icon {\n  width: 16px;\n  height: 16px;\n  margin-left: 40px;\n  display: block;\n}\n.AdminSidebarEmployeesMenu .menu-icon-active {\n  width: 16px;\n  height: 16px;\n  margin-left: 40px;\n  display: none;\n}\n.AdminSidebarEmployeesMenu .item-title {\n  font-size: 12px;\n  font-family: \"Open-Sans-Semibold\";\n  color: #111;\n  margin-top: 1px;\n}\n.AdminSidebarEmployeesMenu .menu-arrow {\n  position: relative;\n  left: 20px;\n  bottom: 2px;\n}\n.AdminSidebarEmployeesMenu .menu-active-dot {\n  position: relative;\n  top: -12px;\n  left: 25px;\n  width: 5px;\n  height: 5px;\n  border-radius: 5px;\n  background: #22AEE4;\n  display: none;\n}\n.AdminSidebarEmployeesMenu .item-active-dot {\n  position: relative;\n  top: -10px;\n  left: 25px;\n  width: 5px;\n  height: 5px;\n  border-radius: 5px;\n  background: #22AEE4;\n  display: none;\n}\n.AdminSidebarEmployeesMenu.menu-active .item-title {\n  color: #031949 !important;\n}\n.AdminSidebarEmployeesMenu.menu-active .menu-icon {\n  display: none !important;\n}\n.AdminSidebarEmployeesMenu.menu-active .menu-icon-active {\n  display: block !important;\n}\n.AdminSidebarEmployeesMenu.menu-active .menu-items {\n  width: 200px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  padding: 10px 0;\n  margin-left: 15px;\n}\n.AdminSidebarEmployeesMenu.menu-active .menu-active-dot {\n  display: block !important;\n}\n.AdminSidebarEmployeesMenu .menu-items {\n  width: 200px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  padding: 10px 0;\n  margin-left: 10px;\n}\n.AdminSidebarEmployeesMenu .menu-items .AdminSidebarSubItem {\n  margin: 15px 20px !important;\n  margin-bottom: 0px !important;\n}\n.AdminSidebarEmployeesMenu .menu-items .AdminSidebarSubItem .icon {\n  display: block;\n}\n.AdminSidebarEmployeesMenu .menu-items .AdminSidebarSubItem .icon-active {\n  display: none;\n}\n.AdminSidebarEmployeesMenu .menu-items .AdminSidebarSubItem.active .item-title {\n  color: #031949 !important;\n}\n.AdminSidebarEmployeesMenu .menu-items .AdminSidebarSubItem.active .icon {\n  display: none !important;\n}\n.AdminSidebarEmployeesMenu .menu-items .AdminSidebarSubItem.active .icon-active {\n  display: block !important;\n}\n.AdminSidebarEmployeesMenu .menu-items .AdminSidebarSubItem.active .active-dot {\n  display: block !important;\n}", ""]);
 
 // exports
 
@@ -10360,7 +10573,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".AdminSidebarItem {\n  width: 100%;\n  display: grid;\n  grid-template-columns: 80px auto;\n  justify-content: flex-start;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.AdminSidebarItem .icon {\n  width: 16px;\n  height: 16px;\n  margin-left: 40px;\n  display: block;\n}\n.AdminSidebarItem .icon-active {\n  width: 16px;\n  height: 16px;\n  margin-left: 40px;\n  display: none;\n}\n.AdminSidebarItem .item-title {\n  font-size: 12px;\n  font-family: \"Open-Sans-Semibold\";\n  color: #111;\n  margin-top: 1px;\n}\n.AdminSidebarItem .active-dot {\n  position: relative;\n  top: -10px;\n  left: 25px;\n  width: 5px;\n  height: 5px;\n  border-radius: 5px;\n  background: #22AEE4;\n  display: none;\n}\n.AdminSidebarItem.active .item-title {\n  color: #031949 !important;\n}\n.AdminSidebarItem.active .icon {\n  display: none !important;\n}\n.AdminSidebarItem.active .icon-active {\n  display: block !important;\n}\n.AdminSidebarItem.active .active-dot {\n  display: block !important;\n}", ""]);
+exports.push([module.i, ".AdminSidebarItem {\n  width: 100%;\n  display: grid;\n  grid-template-columns: 75px auto;\n  justify-content: flex-start;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.AdminSidebarItem .icon {\n  width: 16px;\n  height: 16px;\n  margin-left: 40px;\n  display: block;\n}\n.AdminSidebarItem .icon-active {\n  width: 16px;\n  height: 16px;\n  margin-left: 40px;\n  display: none;\n}\n.AdminSidebarItem .item-title {\n  font-size: 12px;\n  font-family: \"Open-Sans-Semibold\";\n  color: #111;\n  margin-top: 1px;\n}\n.AdminSidebarItem .active-dot {\n  position: relative;\n  top: -10px;\n  left: 25px;\n  width: 5px;\n  height: 5px;\n  border-radius: 5px;\n  background: #22AEE4;\n  display: none;\n}\n.AdminSidebarItem.active .item-title {\n  color: #031949 !important;\n}\n.AdminSidebarItem.active .icon {\n  display: none !important;\n}\n.AdminSidebarItem.active .icon-active {\n  display: block !important;\n}\n.AdminSidebarItem.active .active-dot {\n  display: block !important;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".AdminSidebarPlannerMenu {\n  width: 100%;\n  display: grid;\n  grid-template-columns: 75px auto;\n  justify-content: flex-start;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.AdminSidebarPlannerMenu .menu-icon {\n  width: 16px;\n  height: 16px;\n  margin-left: 40px;\n  display: block;\n}\n.AdminSidebarPlannerMenu .menu-icon-active {\n  width: 16px;\n  height: 16px;\n  margin-left: 40px;\n  display: none;\n}\n.AdminSidebarPlannerMenu .item-title {\n  font-size: 12px;\n  font-family: \"Open-Sans-Semibold\";\n  color: #111;\n  margin-top: 1px;\n}\n.AdminSidebarPlannerMenu .menu-arrow {\n  position: relative;\n  left: 20px;\n  bottom: 2px;\n}\n.AdminSidebarPlannerMenu .menu-active-dot {\n  position: relative;\n  top: -12px;\n  left: 25px;\n  width: 5px;\n  height: 5px;\n  border-radius: 5px;\n  background: #22AEE4;\n  display: none;\n}\n.AdminSidebarPlannerMenu .item-active-dot {\n  position: relative;\n  top: -10px;\n  left: 25px;\n  width: 5px;\n  height: 5px;\n  border-radius: 5px;\n  background: #22AEE4;\n  display: none;\n}\n.AdminSidebarPlannerMenu.menu-active .item-title {\n  color: #031949 !important;\n}\n.AdminSidebarPlannerMenu.menu-active .menu-icon {\n  display: none !important;\n}\n.AdminSidebarPlannerMenu.menu-active .menu-icon-active {\n  display: block !important;\n}\n.AdminSidebarPlannerMenu.menu-active .menu-items {\n  width: 200px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  padding: 10px 0;\n  margin-left: 15px;\n}\n.AdminSidebarPlannerMenu.menu-active .menu-active-dot {\n  display: block !important;\n}\n.AdminSidebarPlannerMenu .menu-items {\n  width: 200px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  padding: 10px 0;\n  margin-left: 10px;\n}\n.AdminSidebarPlannerMenu .menu-items .AdminSidebarSubItem {\n  margin: 15px 20px !important;\n  margin-bottom: 0px !important;\n}\n.AdminSidebarPlannerMenu .menu-items .AdminSidebarSubItem .icon {\n  display: block;\n}\n.AdminSidebarPlannerMenu .menu-items .AdminSidebarSubItem .icon-active {\n  display: none;\n}\n.AdminSidebarPlannerMenu .menu-items .AdminSidebarSubItem.active .item-title {\n  color: #031949 !important;\n}\n.AdminSidebarPlannerMenu .menu-items .AdminSidebarSubItem.active .icon {\n  display: none !important;\n}\n.AdminSidebarPlannerMenu .menu-items .AdminSidebarSubItem.active .icon-active {\n  display: block !important;\n}\n.AdminSidebarPlannerMenu .menu-items .AdminSidebarSubItem.active .active-dot {\n  display: block !important;\n}", ""]);
 
 // exports
 
@@ -64283,6 +64515,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarItem.vue?vue&type=style&index=0&lang=scss&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Components/AdminSidebarItem.vue?vue&type=style&index=0&lang=scss& ***!
@@ -64292,6 +64554,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AdminSidebarItem.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarItem.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -68509,19 +68801,171 @@ var render = function() {
         }
       }),
       _vm._v(" "),
+      _c("AdminSidebarPlannerMenu", {
+        staticClass: "AdminSidebarItem",
+        class:
+          _vm.active == "pickup_planner" || _vm.active == "delievery_planner"
+            ? "menu-active"
+            : "",
+        attrs: {
+          active: _vm.active,
+          routetoplanner: _vm.routetopickupplanner,
+          icon: "/images/admin/icons/planner-icon.svg",
+          iconActive: "/images/admin/icons/planner-icon-active.svg",
+          routetopickupplanner: _vm.routetopickupplanner,
+          routetopickdelieveryplanner: _vm.routetopickdelieveryplanner
+        }
+      }),
+      _vm._v(" "),
+      _c("AdminSidebarEmployeesMenu", {
+        staticClass: "AdminSidebarItem",
+        class:
+          _vm.active == "admins" ||
+          _vm.active == "drivers" ||
+          _vm.active == "laundery_stuff"
+            ? "menu-active"
+            : "",
+        attrs: {
+          active: _vm.active,
+          routetoplanner: _vm.routetopickupplanner,
+          icon: "/images/admin/icons/employees-icon.svg",
+          iconActive: "/images/admin/icons/employees-icon-active.svg",
+          routetoadmins: _vm.routetoadmins,
+          routetodrivers: _vm.routetodrivers,
+          routetolaunderystuff: _vm.routetolaunderystuff
+        }
+      }),
+      _vm._v(" "),
       _c("AdminSidebarItem", {
         staticClass: "AdminSidebarItem",
-        class: _vm.active == "admins" ? "active" : "",
+        class: _vm.active == "promocodes" ? "active" : "",
         attrs: {
-          href: _vm.routetoadmins,
-          title: "Admins",
-          itemtooltip: "Admins",
-          icon: "/images/admin/icons/admins.svg",
-          iconActive: "/images/admin/icons/admins-active.svg"
+          href: _vm.routetopromocodes,
+          title: "Promocodes",
+          itemtooltip: "Promocodes",
+          icon: "/images/admin/icons/promocodes-icon.svg",
+          iconActive: "/images/admin/icons/promocodes-icon-active.svg"
+        }
+      }),
+      _vm._v(" "),
+      _c("AdminSidebarItem", {
+        staticClass: "AdminSidebarItem",
+        class: _vm.active == "zones" ? "active" : "",
+        attrs: {
+          href: _vm.routetozones,
+          title: "Zones",
+          itemtooltip: "Zones",
+          icon: "/images/admin/icons/zones-icon.svg",
+          iconActive: "/images/admin/icons/zones-icon-active.svg"
         }
       })
     ],
     1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=template&id=54c8a529&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=template&id=54c8a529& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "AdminSidebarEmployeesMenu",
+      attrs: { title: "Employees" },
+      on: { click: _vm.showMenuItems }
+    },
+    [
+      _c("img", {
+        staticClass: "menu-icon",
+        attrs: { src: _vm.icon, alt: "" }
+      }),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "menu-icon-active",
+        attrs: { src: _vm.iconActive, alt: "" }
+      }),
+      _vm._v(" "),
+      _c("p", { staticClass: "item-title" }, [
+        _vm._v(_vm._s(_vm.title)),
+        _c("img", {
+          staticClass: "menu-arrow",
+          attrs: { src: "/images/admin/icons/menu-arrow-icon.svg" }
+        })
+      ]),
+      _vm._v(" "),
+      !_vm.showitems ? _c("div", { staticClass: "menu-active-dot" }) : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.showitems,
+              expression: "showitems"
+            }
+          ],
+          staticClass: "menu-items"
+        },
+        [
+          _c("AdminSidebarItem", {
+            staticClass: "AdminSidebarSubItem",
+            class: _vm.active == "admins" ? "active" : "",
+            attrs: {
+              href: _vm.routetoadmins,
+              title: "Admins",
+              itemtooltip: "Admins",
+              icon: "/images/admin/icons/admins-icon.svg",
+              iconActive: "/images/admin/icons/admins-icon-active.svg"
+            }
+          }),
+          _vm._v(" "),
+          _c("AdminSidebarItem", {
+            staticClass: "AdminSidebarSubItem",
+            class: _vm.active == "drivers" ? "active" : "",
+            attrs: {
+              href: _vm.routetodrivers,
+              title: "Drivers",
+              itemtooltip: "Drivers",
+              icon: "/images/admin/icons/drivers-icon.svg",
+              iconActive: "/images/admin/icons/drivers-icon-active.svg"
+            }
+          }),
+          _vm._v(" "),
+          _c("AdminSidebarItem", {
+            staticClass: "AdminSidebarSubItem",
+            class: _vm.active == "laundery_stuff" ? "active" : "",
+            attrs: {
+              href: _vm.routetolaunderystuff,
+              title: "Laundery Stuff",
+              itemtooltip: "Laundery Stuff",
+              icon: "/images/admin/icons/laundery-stuff-icon.svg",
+              iconActive: "/images/admin/icons/laundery-stuff-icon-active.svg"
+            }
+          })
+        ],
+        1
+      )
+    ]
   )
 }
 var staticRenderFns = []
@@ -68560,6 +69004,100 @@ var render = function() {
       _c("p", { staticClass: "item-title" }, [_vm._v(_vm._s(_vm.title))]),
       _vm._v(" "),
       _c("div", { staticClass: "active-dot" })
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=template&id=c903cc94&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=template&id=c903cc94& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "AdminSidebarPlannerMenu",
+      attrs: { title: "Planner" },
+      on: { click: _vm.showMenuItems }
+    },
+    [
+      _c("img", {
+        staticClass: "menu-icon",
+        attrs: { src: _vm.icon, alt: "" }
+      }),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "menu-icon-active",
+        attrs: { src: _vm.iconActive, alt: "" }
+      }),
+      _vm._v(" "),
+      _c("p", { staticClass: "item-title" }, [
+        _vm._v(_vm._s(_vm.title)),
+        _c("img", {
+          staticClass: "menu-arrow",
+          attrs: { src: "/images/admin/icons/menu-arrow-icon.svg" }
+        })
+      ]),
+      _vm._v(" "),
+      !_vm.showitems ? _c("div", { staticClass: "menu-active-dot" }) : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.showitems,
+              expression: "showitems"
+            }
+          ],
+          staticClass: "menu-items"
+        },
+        [
+          _c("AdminSidebarItem", {
+            staticClass: "AdminSidebarSubItem",
+            class: _vm.active == "pickup_planner" ? "active" : "",
+            attrs: {
+              href: _vm.routetopickupplanner,
+              title: "Pickup Planner",
+              itemtooltip: "Pickup Planner",
+              icon: "/images/admin/icons/pickup-planner-icon.svg",
+              iconActive: "/images/admin/icons/pickup-planner-icon-active.svg"
+            }
+          }),
+          _vm._v(" "),
+          _c("AdminSidebarItem", {
+            staticClass: "AdminSidebarSubItem",
+            class: _vm.active == "delievery_planner" ? "active" : "",
+            attrs: {
+              href: _vm.routetopickdelieveryplanner,
+              title: "Delievery Planner",
+              itemtooltip: "Delievery Planner",
+              icon: "/images/admin/icons/delievery-planner-icon.svg",
+              iconActive:
+                "/images/admin/icons/delievery-planner-icon-active.svg"
+            }
+          })
+        ],
+        1
+      )
     ]
   )
 }
@@ -87647,6 +88185,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AdminSidebarEmployeesMenu_vue_vue_type_template_id_54c8a529___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminSidebarEmployeesMenu.vue?vue&type=template&id=54c8a529& */ "./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=template&id=54c8a529&");
+/* harmony import */ var _AdminSidebarEmployeesMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminSidebarEmployeesMenu.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _AdminSidebarEmployeesMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _AdminSidebarEmployeesMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AdminSidebarEmployeesMenu_vue_vue_type_template_id_54c8a529___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AdminSidebarEmployeesMenu_vue_vue_type_template_id_54c8a529___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AdminSidebarEmployeesMenu.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss& ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=template&id=54c8a529&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=template&id=54c8a529& ***!
+  \***************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_template_id_54c8a529___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AdminSidebarEmployeesMenu.vue?vue&type=template&id=54c8a529& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarEmployeesMenu.vue?vue&type=template&id=54c8a529&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_template_id_54c8a529___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarEmployeesMenu_vue_vue_type_template_id_54c8a529___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Admin/Components/AdminSidebarItem.vue":
 /*!***********************************************************************!*\
   !*** ./resources/js/components/Admin/Components/AdminSidebarItem.vue ***!
@@ -87729,6 +88354,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarItem_vue_vue_type_template_id_4e4e537e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarItem_vue_vue_type_template_id_4e4e537e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AdminSidebarPlannerMenu_vue_vue_type_template_id_c903cc94___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminSidebarPlannerMenu.vue?vue&type=template&id=c903cc94& */ "./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=template&id=c903cc94&");
+/* harmony import */ var _AdminSidebarPlannerMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminSidebarPlannerMenu.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _AdminSidebarPlannerMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _AdminSidebarPlannerMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AdminSidebarPlannerMenu_vue_vue_type_template_id_c903cc94___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AdminSidebarPlannerMenu_vue_vue_type_template_id_c903cc94___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AdminSidebarPlannerMenu.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=template&id=c903cc94&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=template&id=c903cc94& ***!
+  \*************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_template_id_c903cc94___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AdminSidebarPlannerMenu.vue?vue&type=template&id=c903cc94& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Components/AdminSidebarPlannerMenu.vue?vue&type=template&id=c903cc94&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_template_id_c903cc94___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminSidebarPlannerMenu_vue_vue_type_template_id_c903cc94___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
