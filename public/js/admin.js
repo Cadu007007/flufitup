@@ -6,6 +6,14 @@ $('#showPassword').click(function() {
     }
 })
 
+$('#showConfirmPassword').click(function() {
+    if ($('#adminConfirmPassword').prop('type') == 'password') {
+        $('#adminConfirmPassword').prop('type', 'text')
+    } else {
+        $('#adminConfirmPassword').prop('type', 'password')
+    }
+})
+
 
 /* Popup lists position */
 $(window).resize(function() {

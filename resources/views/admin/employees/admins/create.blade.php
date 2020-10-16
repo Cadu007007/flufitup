@@ -23,35 +23,33 @@
     <div class="login-container">
         <div class="left">    
             <p class="title">
-                Login
+                New Admin
             </p>
-            <div class="form-container">
+            <form action="{{ route("admin.employees.admins.create") }}" method="POST">
+                @csrf
+                @method('post')
+                <div class="form-container email-container">
                 
-                <form action="/login" method="POST">
                     <div class="input-container">
                         <label for="email" class="form-label">Email</label>
                         <input name="email" type="text" class="form-input" placeholder="Example@gmail.com" value="{{ old('email') }}"/>
                     </div>
-                    <div class="input-container">
-                        <label for="password" class="form-label">Password</label>
-                        <input name="password" id="adminPassword" type="password" class="form-input" placeholder="Password"/>
-                        <img id="showPassword" class="icon" src="{{ asset('images/admin/icons/show.svg') }}" alt="">
-                        </div>
                     
                     <div class="button-container">
                         <button type="submit" class="login-button">
-                            Log In
+                            Next
                         </button>
                     </div>
-                </form>
-            </div>
+                </div>
+                
+            </form>
     </div>
 
         <div class="right">
             <img class="vector" src="{{ asset('images/admin/login-vector.svg') }}" alt="">
         </div>
 
-    </div>
+    </div> {{-- end of create container --}}
 </div>
 
 <script src="{{asset('js/jquery.js')}}"></script>

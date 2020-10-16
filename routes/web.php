@@ -603,6 +603,27 @@ Route::get('/admin/employees/admins', function () {
     return view('admin.employees.admins.index', ['active' => 'admins']);
 })->name('admin.employees.admins');
 
+
+Route::get('/admin/employees/admins/create', function () {
+    return view('admin.employees.admins.create', ['active' => 'admins']);
+})->name('admin.employees.admins.create');
+
+Route::post('/admin/employees/admins/create', function (Request $request) {
+    //dd($request->email);
+    return view('admin.employees.admins.create_password', ['active' => 'admins', 'email' => $request->email]);
+})->name('admin.employees.admins.create');
+
+
+Route::get('/admin/employees/admins/create_password', function () {
+    return view('admin.employees.admins.create_password', ['active' => 'admins',]);
+})->name('admin.employees.admins.create_password');
+
+Route::post('/admin/employees/admins/create_password', function (Request $request) {
+    dd($request);
+    return redirect()->route('admin.login', ['email' => 'login']);
+})->name('admin.employees.admins.create_password');
+
+
 /* drivers */
 Route::get('/admin/employees/drivers', function () {
     return view('admin.employees.drivers.index', ['active' => 'drivers']);

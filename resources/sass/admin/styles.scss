@@ -91,6 +91,7 @@ $content-right-margin: 24px;
                         font-size: 16px;
                         margin-bottom: 10px;
                         color: $black;
+                        font-family: 'Open-Sans-Semibold';
                     }
                     .form-input {
                         width: 536px;
@@ -133,3 +134,26 @@ $content-right-margin: 24px;
 
 
 /* XX Login Page XX */
+
+
+/* New Admin Page */
+
+.password-container {
+    .email {
+        font-family: 'Open-Sans-Bold';
+        font-size: 16px;
+        color: #000;
+        margin-bottom: 20px;
+    }
+    .hint {
+        width: 100%;
+        text-align: center;
+        font-family: 'Open-Sans-Regular';
+        font-size: 14px;
+        color: #393939;
+        margin-bottom: 30px;
+    }
+}
+
+
+/* xx New Admin Page xx */
