@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="users-card" v-if="cityusers.length">
-            <div class="user-container">Username</div>
+            <div class="user-container"><p class="card-title">Username</p></div>
             <div class="user-container" v-for="user in cityusers" :key="user.id"><p class="username" @click="goToShowUser(user.id)">{{user.name}}</p></div>
         </div>
     </div>
@@ -134,7 +134,7 @@ $black: #000;
     }
     .users-card{
         width: 444px;
-        height: 541px;
+        height: fit-content ;
         box-shadow: 0px 0px 6px #0000001A;
         border: 2px solid #E8ECF3;
         margin-left: 200px;
@@ -143,6 +143,8 @@ $black: #000;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        max-height: 450px;
+        overflow-y: auto;
         .user-container{
             width: 100%;
             height: 40px;
@@ -153,12 +155,22 @@ $black: #000;
             font-family: 'Open-Sans-Regular';
             color: $text-grey;
             border-bottom: 1px solid #EEF2F4;
+            .card-title{
+            font-family: 'Open-Sans-Regular';
+            color: $text-grey;
+            height: 30px;
+            padding-bottom: 5px;
+            }
             .username{
                 font-size: 13px;
                 font-family: 'Open-Sans-Bold';
                 color: $blue;
                 cursor: pointer;
-
+                height: 35px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
             }
 
         }

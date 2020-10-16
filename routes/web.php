@@ -466,13 +466,37 @@ Route::get('/admin/sales/month', function () {
 
 /* Sales Per Package */
 Route::get('/admin/sales/package', function () {
-    $clients = collect();
 
-    $clients->push(['id'=> 1, 'name'=>'Mohamed Salah','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
-    $clients->push(['id'=> 2, 'name'=>'Ali Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
-    $clients->push(['id'=> 3, 'name'=>'Dooooooby','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+    $packages = collect();
+    $packages->adhoc = collect();
+    $packages->bi_weekly = collect();
+    $packages->monthly = collect();
+    $packages->tailored = collect();
 
-    return view('admin.dashboard.sales_per_package.index', ['active' => 'dashboard', 'clients'=>$clients]);
+    $packages->adhoc->push(['id' => 1 ,'name' => 'Package 1' ]);
+    $packages->adhoc->push(['id' => 2 ,'name' => 'Package 2' ]);
+    $packages->adhoc->push(['id' => 3 ,'name' => 'Package 3' ]);
+    
+    $packages->bi_weekly->push(['id' => 4 ,'name' => 'Package 4' ]);
+    $packages->bi_weekly->push(['id' => 5 ,'name' => 'Package 5' ]);
+    $packages->bi_weekly->push(['id' => 6 ,'name' => 'Package 6' ]);
+    
+    $packages->monthly->push(['id' => 7 ,'name' => 'Package 4' ]);
+    $packages->monthly->push(['id' => 8 ,'name' => 'Package 5' ]);
+    $packages->monthly->push(['id' => 9 ,'name' => 'Package 6' ]);
+    
+    $packages->tailored->push(['id' => 10 ,'name' => 'Package 4' ]);
+    $packages->tailored->push(['id' => 11,'name' => 'Package 5' ]);
+    $packages->tailored->push(['id' => 12 ,'name' => 'Package 6' ]);
+    
+    $users = collect();
+    $users->push(['id'=> 1, 'name'=> 'Mohamed', 'package_id' => 1]);
+    $users->push(['id'=> 2, 'name'=> 'Amr', 'package_id' => 2]);
+    $users->push(['id'=> 3, 'name'=> 'Doby', 'package_id' => 3]);
+    $users->push(['id'=> 3, 'name'=> 'Ahmed', 'package_id' => 4]);
+    $users->push(['id'=> 3, 'name'=> 'Ali', 'package_id' => 5]);
+    
+    return view('admin.dashboard.sales_per_package.index', ['active' => 'dashboard','users' => $users , 'packages'=>$packages]);
 })->name('admin.dashboard.sales_per_package');
 
 
@@ -489,8 +513,8 @@ Route::get('/admin/users/city', function () {
     $users->push(['id'=> 1, 'name'=> 'Mohamed', 'city_id' => 1]);
     $users->push(['id'=> 2, 'name'=> 'Amr', 'city_id' => 2]);
     $users->push(['id'=> 3, 'name'=> 'Doby', 'city_id' => 3]);
-    $users->push(['id'=> 3, 'name'=> 'Doby', 'city_id' => 3]);
-    $users->push(['id'=> 3, 'name'=> 'Doby', 'city_id' => 3]);
+    $users->push(['id'=> 3, 'name'=> 'Ahmed', 'city_id' => 3]);
+    $users->push(['id'=> 3, 'name'=> 'Ali', 'city_id' => 3]);
    
     return view('admin.dashboard.users_per_city.index', ['active' => 'dashboard', 'cities'=>$cities, 'users'=>$users]);
 })->name('admin.dashboard.users_per_city');
