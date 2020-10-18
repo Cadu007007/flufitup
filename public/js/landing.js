@@ -1,14 +1,3 @@
-/* Why choose us hover effects */
-$('.feature-container').mouseenter(function() {
-    $('.feature-container').removeClass('active');
-    $(this).addClass('active');
-});
-$('.feature-container').mouseleave(function() {
-    $('.feature-container').removeClass('active');
-});
-/* XX Why choose us hover effects XX */
-
-
 /* ----- Verify phone -------- */
 $(".digit-input").change(function() {
     if (this.value.length == this.maxLength) {
@@ -20,10 +9,10 @@ $(".digit-input").focus(function() {
     })
     /* ----- XX Verify phone XX ------ */
 
-    /*  ---- Full Page Scrolling ------- */
-    $(function() {
-          $.scrollify({
-            section : ".section",
-        });
+/*  ---- Full Page Scrolling ------- */
+$(function() {
+    $.scrollify({
+        section: ".section",
     });
-    /*  ---- XX Full Page Scrolling XX ------- */
+});
+/*  ---- XX Full Page Scrolling XX ------- */

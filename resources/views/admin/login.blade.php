@@ -43,6 +43,8 @@
                             Log In
                         </button>
                     </div>
+
+                    <a href="{{ route("admin.employees.admins.create") }}" class="new-admin">New Admin</a>
                 </form>
             </div>
     </div>

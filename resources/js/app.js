@@ -12,6 +12,8 @@ const store = new Vuex.Store(
     storeData
 )
 
+/* Landing page components */
+var LandingPage = require('./components/LandingPage.vue').default
 
 /* user components */
 var Sidebar = require('./components/User/Components/Sidebar.vue').default
@@ -71,6 +73,9 @@ const app = new Vue({
     el: '#app',
     store, //vuex
     components: {
+        /* Landing */
+        LandingPage,
+        /* User */
         Sidebar,
         Home,
         EditOrder,
