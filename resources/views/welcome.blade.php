@@ -1,7 +1,6 @@
 
 
     @include('components.landing.header')
-    @include('components.landing.navbar')
     <div id="app">
         <Landing-Page         
         :packagesadhoclist="{{ $packages->adhoc}}"

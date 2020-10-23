@@ -13,6 +13,7 @@
         "axios": "^0.19.2",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
+        "expose-loader": "^1.0.1",
         "jquery": "^3.5.1",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",
@@ -29,6 +30,7 @@
         "vue-custom-datepicker": "^1.1.6",
         "vue-event-calendar": "^1.5.2",
         "vue-material-datepicker": "^2.0.1",
+        "vue-scroll-snap": "^0.1.9",
         "vuex": "^3.5.1"
     }
 }
