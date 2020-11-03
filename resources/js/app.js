@@ -67,6 +67,12 @@ var Users = require('./components/Admin/Pages/Users/Users.vue').default
 var ShowUser = require('./components/Admin/Pages/Users/ShowUser.vue').default
     /* XX Users XX */
 
+/* *********Zones ************* */
+var Zones = require('./components/Admin/Pages/Zones/Zones.vue').default
+var EditZone = require('./components/Admin/Pages/Zones/EditZone.vue').default
+var AddZone = require('./components/Admin/Pages/Zones/AddZone.vue').default
+    /* ********* XX Zones XX ************* */
+
 /* **** XX ADMIN Pages XX ****** */
 
 const app = new Vue({
@@ -106,5 +112,9 @@ const app = new Vue({
         Users,
         ShowUser,
         Admins,
+        /* Zones */
+        Zones,
+        EditZone,
+        AddZone,
     }
 });
