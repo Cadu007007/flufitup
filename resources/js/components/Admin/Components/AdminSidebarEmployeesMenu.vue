@@ -25,11 +25,11 @@
             iconActive='/images/admin/icons/drivers-icon-active.svg'
             />
 
-            <AdminSidebarItem :class=" active == 'laundery_stuff' ? 'active' : '' " 
+            <AdminSidebarItem :class=" active == 'laundery_staff' ? 'active' : '' " 
             class="AdminSidebarSubItem" 
-            :href=routetolaunderystuff
-            title="Laundery Stuff"
-            itemtooltip="Laundery Stuff"
+            :href=routetolaunderystaff
+            title="Laundery Staff"
+            itemtooltip="Laundery Staff"
             icon='/images/admin/icons/laundery-stuff-icon.svg' 
             iconActive='/images/admin/icons/laundery-stuff-icon-active.svg'
             />
@@ -42,7 +42,7 @@
 import AdminSidebarItem from './AdminSidebarItem'
 export default {
     mounted() {
-        if(this.active == 'admins' || this.active == 'drivers' || this.active == 'laundery_stuff'){
+        if(this.active == 'admins' || this.active == 'drivers' || this.active == 'laundery_staff'){
             this.showitems = true
         }
     },
@@ -53,7 +53,7 @@ export default {
         }
     },
 props: ['icon', 'iconActive','active',
-        'routetoadmins','routetodrivers','routetolaunderystuff'
+        'routetoadmins','routetodrivers','routetolaunderystaff'
         ],
         components:{
             AdminSidebarItem

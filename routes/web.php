@@ -651,10 +651,8 @@ Route::get('/admin/employees/admins/create', function () {
 })->name('admin.employees.admins.create');
 
 Route::post('/admin/employees/admins/create', function (Request $request) {
-    //dd($request->email);
     return view('admin.employees.admins.create_password', ['active' => 'admins', 'email' => $request->email]);
 })->name('admin.employees.admins.create');
-
 
 Route::get('/admin/employees/admins/create_password', function () {
     return view('admin.employees.admins.create_password', ['active' => 'admins',]);
@@ -671,10 +669,30 @@ Route::get('/admin/employees/drivers', function () {
     return view('admin.employees.drivers.index', ['active' => 'drivers']);
 })->name('admin.employees.drivers');
 
-/* laundery_stuff */
-Route::get('/admin/employees/laundery_stuff', function () {
-    return view('admin.employees.laundery_stuff.index', ['active' => 'laundery_stuff']);
-})->name('admin.employees.laundery_stuff');
+/* laundery_staff */
+Route::get('/admin/employees/laundery_staff', function () {
+    $staff = collect();
+    $staff->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'12/14/1995','location'=> 'location']);
+    $staff->push(['id'=> 2 , 'name'=>'Ahmed','email' => 'ahmedsalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'12/14/1995','location'=> 'location']);
+    return view('admin.employees.laundery_staff.index', ['active' => 'laundery_staff', 'staff'=>$staff]);
+})->name('admin.employees.laundery_staff');
+
+Route::get('/admin/employees/laundery_staff/show/{id}', function () {
+    $staff = collect();
+    $staff->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com','address' => 'Address', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','date_of_join'=>'12/14/2018','location'=> 'location']);
+    return view('admin.employees.laundery_staff.show', ['active' => 'laundery_staff', 'staff' => $staff]);
+})->name('admin.employees.laundery_staff.show');
+
+Route::get('/admin/employees/laundery_staff/edit/{id}', function () {
+    $staff = collect();
+    $staff->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com','address' => 'Address', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','date_of_join'=>'12/14/2018','location'=> 'location']);
+    return view('admin.employees.laundery_staff.edit', ['active' => 'laundery_staff', 'staff' => $staff]);
+})->name('admin.employees.laundery_staff.edit');
+
+Route::get('/admin/employees/laundery_staff/create', function () {
+    return view('admin.employees.laundery_staff.create', ['active' => 'laundery_staff']);
+})->name('admin.employees.laundery_staff.create');
+/*XX laundery_staff XX*/
 
 /******************************
  * Employees End

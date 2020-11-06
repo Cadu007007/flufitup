@@ -13,7 +13,7 @@
         </div>
         <div class="AdminPageContainer">
             <div class="AdminSidebar">
-                <Admin-Sidebar 
+                <Admin-Sidebar
                 active="{{ $active }}"
                 routetodashboard="{{ route('admin.dashboard') }}"
                 routetoreports="{{ route('admin.reports') }}"
@@ -24,7 +24,7 @@
                 routetopickdelieveryplanner="{{ route('admin.planner.delievery') }}"
                 routetoadmins="{{ route('admin.employees.admins') }}"
                 routetodrivers="{{ route('admin.employees.drivers') }}"
-                routetolaunderystuff="{{ route('admin.employees.laundery_stuff') }}"
+                routetolaunderystaff="{{ route('admin.employees.laundery_staff') }}"
                 routetopromocodes="{{ route('admin.promocodes') }}"
                 routetozones="{{ route('admin.zones') }}"
                 />

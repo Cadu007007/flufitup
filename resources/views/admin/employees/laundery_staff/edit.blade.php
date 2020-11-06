@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-<Admins 
-title="Laundery Stuff"
+<Edit-Laundery-Staff
+title="Edit Laundery Staff"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
+:staff="{{ $staff }}"
 />
 @endsection

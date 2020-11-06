@@ -61,12 +61,22 @@ var CancelledOrders = require('./components/Admin/Pages/Dashboard/CancelledOrder
 /************ XX Dashboard XX ********** */
 var Reports = require('./components/Admin/Pages/Reports/Reports.vue').default
 var AdminPackages = require('./components/Admin/Pages/Packages/AdminPackages.vue').default
-var Admins = require('./components/Admin/Pages/Admins/Admins.vue').default
     /* Users */
 var Users = require('./components/Admin/Pages/Users/Users.vue').default
 var ShowUser = require('./components/Admin/Pages/Users/ShowUser.vue').default
     /* XX Users XX */
 
+
+/* Employees */
+var Admins = require('./components/Admin/Pages/Employees/Admins/Admins.vue').default
+    /* Launder Staff */
+var LaunderyStaff = require('./components/Admin/Pages/Employees/LaunderyStaff/LaunderyStaff.vue').default
+var ShowLaunderyStaff = require('./components/Admin/Pages/Employees/LaunderyStaff/ShowLaunderyStaff.vue').default
+var EditLaunderyStaff = require('./components/Admin/Pages/Employees/LaunderyStaff/EditLaunderyStaff.vue').default
+var AddLaunderyStaff = require('./components/Admin/Pages/Employees/LaunderyStaff/AddLaunderyStaff.vue').default
+    /* Launder Staff */
+
+/* XX Employees XX */
 
 /* Promocodes */
 var Promocodes = require('./components/Admin/Pages/Promocodes/Promocodes.vue').default
@@ -118,7 +128,14 @@ const app = new Vue({
         AdminPackages,
         Users,
         ShowUser,
+        /* Employees Pages */
         Admins,
+        /* Laundery Staff */
+        LaunderyStaff,
+        ShowLaunderyStaff,
+        EditLaunderyStaff,
+        AddLaunderyStaff,
+        /* Laundery Staff */
         /* Promocodes */
         Promocodes,
         AddPromocode,

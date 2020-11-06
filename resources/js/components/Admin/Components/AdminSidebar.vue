@@ -50,14 +50,14 @@ iconActive='/images/admin/icons/planner-icon-active.svg'
 
 <AdminSidebarEmployeesMenu
 class="AdminSidebarItem" 
-:class="(active == 'admins' || active == 'drivers' || active == 'laundery_stuff') ? 'menu-active' : '' "
+:class="(active == 'admins' || active == 'drivers' || active == 'laundery_staff') ? 'menu-active' : '' "
 :active="active"
 :routetoplanner="routetopickupplanner"
 icon='/images/admin/icons/employees-icon.svg' 
 iconActive='/images/admin/icons/employees-icon-active.svg'
 :routetoadmins="routetoadmins"
 :routetodrivers="routetodrivers"
-:routetolaunderystuff="routetolaunderystuff"
+:routetolaunderystaff="routetolaunderystaff"
 />
 
 <!--
@@ -102,7 +102,7 @@ import AdminSidebarEmployeesMenu from './AdminSidebarEmployeesMenu'
 export default {
     props:['active','routetodashboard','routetoreports','routetopackages','routetousers','routetoadmins',
             'routetopickupplanner','routetopickdelieveryplanner',
-            'routetoadmins','routetodrivers','routetolaunderystuff',
+            'routetoadmins','routetodrivers','routetolaunderystaff',
             'routetopromocodes','routetozones'
             ],
     components:{
