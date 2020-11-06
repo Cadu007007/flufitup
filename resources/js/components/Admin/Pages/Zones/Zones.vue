@@ -42,9 +42,7 @@ export default {
 
 <style lang="scss">
 $text-grey: #00000066;
-.PageContainer{
-    padding: 0 !important;
-}
+
 .Zones{
     width: 100%;
     height: 80vh;
@@ -53,7 +51,6 @@ $text-grey: #00000066;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            padding: 0 24px;
         .title{
             margin: 26px 0;
             font-size: 21px;

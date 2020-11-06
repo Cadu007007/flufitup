@@ -42,7 +42,7 @@ $content-right-margin: 24px;
             overflow-x: hidden;
             margin-top: $content-top-margin;
             width: calc(100% - #{$content-right-margin});
-            padding: 0 24px;
+            padding: 0 24px !important;
         }
     }
 }

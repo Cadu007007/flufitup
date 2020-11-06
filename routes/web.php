@@ -694,6 +694,34 @@ Route::get('/admin/promocodes', function () {
 
  
 /******************************
+ * Promocodes Start
+ * ************************** */
+Route::get('/admin/promocodes', function () {
+    $promocodes = collect();
+    $promocodes->push(['id' => 1 ,'name' => 'Promocode NO 1', 'start_date' => '2020-12-31', 'end_date' => '2020-12-31','status' => 'Status']);
+    $promocodes->push(['id' => 2 ,'name' => 'Promocode NO 2', 'start_date' => '2020-12-31', 'end_date' => '2020-12-31','status' => 'Status']);
+    return view('admin.promocodes.index', ['active' => 'promocodes','promocodes' => $promocodes]);
+})->name('admin.promocodes');
+
+Route::get('/admin/promocodes/add', function () {
+    return view('admin.promocodes.create', ['active' => 'promocodes']);
+})->name('admin.promocodes.add');
+
+Route::get('/admin/promocodes/edit/{id}', function () {
+    $promocode = collect();
+    $promocode->push(['id' => 1 ,'name' => 'Promocode NO 1', 'start_date' => '2020-12-31', 'end_date' => '2020-12-31','status' => 'Status']);
+    return view('admin.promocodes.edit', ['active' => 'promocodes','promocode' => $promocode]);
+})->name('admin.promocodes.edit');
+
+Route::delete('/admin/promocodes/delete/{id}', function () {
+    return view('admin.promocodes.index', ['active' => 'promocodes']);
+})->name('admin.promocodes.delete');
+
+/******************************
+ * Promocodes End
+ * ************************** */
+ 
+/******************************
  * Zones Start
  * ************************** */
 Route::get('/admin/zones', function () {

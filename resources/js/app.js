@@ -67,6 +67,13 @@ var Users = require('./components/Admin/Pages/Users/Users.vue').default
 var ShowUser = require('./components/Admin/Pages/Users/ShowUser.vue').default
     /* XX Users XX */
 
+
+/* Promocodes */
+var Promocodes = require('./components/Admin/Pages/Promocodes/Promocodes.vue').default
+var AddPromocode = require('./components/Admin/Pages/Promocodes/AddPromocode.vue').default
+var EditPromocode = require('./components/Admin/Pages/Promocodes/EditPromocode.vue').default
+    /* XX Promocodes XX */
+
 /* *********Zones ************* */
 var Zones = require('./components/Admin/Pages/Zones/Zones.vue').default
 var EditZone = require('./components/Admin/Pages/Zones/EditZone.vue').default
@@ -112,6 +119,10 @@ const app = new Vue({
         Users,
         ShowUser,
         Admins,
+        /* Promocodes */
+        Promocodes,
+        AddPromocode,
+        EditPromocode,
         /* Zones */
         Zones,
         EditZone,

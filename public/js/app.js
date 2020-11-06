@@ -3208,6 +3208,307 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_custom_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-custom-datepicker */ "./node_modules/vue-custom-datepicker/CustomDatepicker.vue");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['title', 'date'],
+  data: function data() {
+    return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      activeCalendar: 0,
+      startDate: '',
+      endDate: '',
+      wrapperStyles: {
+        width: "100%"
+      },
+      headerStyles: {
+        width: '350px',
+        margin: '0 auto',
+        background: "#fff",
+        color: "#000",
+        fontWeight: 'bolder',
+        fontFamiley: 'Lato-Bold'
+      },
+      primaryColor: "#FDBD42"
+    };
+  },
+  components: {
+    "custom-datepicker": vue_custom_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    setStartDate: function setStartDate(date) {
+      this.startDate = date;
+      this.closeModal();
+    },
+    setEndDate: function setEndDate(date) {
+      this.endDate = date;
+      this.closeModal();
+    },
+    showCalendar: function showCalendar(no) {
+      this.activeCalendar = no;
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    },
+    closeModal: function closeModal() {
+      this.activeCalendar = 0;
+      document.getElementsByTagName("body")[0].style.overflow = "auto";
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_custom_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-custom-datepicker */ "./node_modules/vue-custom-datepicker/CustomDatepicker.vue");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['title', 'date', 'promocode'],
+  data: function data() {
+    return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      activeCalendar: 0,
+      startDate: '',
+      endDate: '',
+      wrapperStyles: {
+        width: "100%"
+      },
+      headerStyles: {
+        width: '350px',
+        margin: '0 auto',
+        background: "#fff",
+        color: "#000",
+        fontWeight: 'bolder',
+        fontFamiley: 'Lato-Bold'
+      },
+      primaryColor: "#FDBD42"
+    };
+  },
+  components: {
+    "custom-datepicker": vue_custom_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    setStartDate: function setStartDate(date) {
+      this.startDate = date;
+      this.closeModal();
+    },
+    setEndDate: function setEndDate(date) {
+      this.endDate = date;
+      this.closeModal();
+    },
+    showCalendar: function showCalendar(no) {
+      this.activeCalendar = no;
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    },
+    closeModal: function closeModal() {
+      this.activeCalendar = 0;
+      document.getElementsByTagName("body")[0].style.overflow = "auto";
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['title', 'date', 'promocodes', 'editpromocoderoute', 'addpromocoderoute'],
+  methods: {
+    goToShowPromocode: function goToShowPromocode(id) {
+      var url = this.editpromocoderoute.replace('promocode_id', id);
+      window.location.href = url;
+    },
+    goToAddPromocode: function goToAddPromocode() {
+      window.location.href = this.addpromocoderoute;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Reports/Reports.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Reports/Reports.vue?vue&type=script&lang=js& ***!
@@ -12042,6 +12343,63 @@ exports.push([module.i, ".AdminPackages {\n  width: 100%;\n  height: 100%;\n}\n.
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".AddPromocode {\n  width: 100%;\n  height: 100%;\n}\n.AddPromocode .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.AddPromocode .page-header .title {\n  margin: 26px 0 10px 0;\n  font-size: 21px;\n  font-family: \"Open-Sans-SemiBold\";\n}\n.AddPromocode .page-header .date {\n  font-size: 12px;\n  color: #00000080;\n  font-family: \"Open-Sans-Regular\";\n}\n.AddPromocode .form-container {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  align-items: center;\n  margin: 20px auto;\n  position: relative;\n}\n.AddPromocode .form-container .input-row {\n  width: 812px;\n  display: grid;\n  grid-template-columns: 160px auto;\n  margin: 5px auto;\n}\n.AddPromocode .form-container .input-row .title {\n  color: #00000080;\n  font-size: 16px;\n  font-family: \"Open-Sans-Semibold\";\n}\n.AddPromocode .form-container .input-row .input {\n  width: auto;\n  max-width: 628px;\n  background: #F9F9F9;\n  border: 2px solid #EDEDED;\n  border-radius: 7px;\n  padding: 12px;\n}\n.AddPromocode .button-container {\n  width: 100%;\n  height: 100px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.AddPromocode .button-container .save-button {\n  width: 200px;\n  height: 40px;\n  font-size: 18px;\n  background: #22AEE4;\n  box-shadow: 2px 2px 4px #00000033;\n  border-radius: 35px;\n  color: #fff;\n}\n.AddPromocode .calendar-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  background: #fff;\n  width: 600px;\n  margin: 100px auto;\n  border-radius: 30px;\n}\n.AddPromocode .calendar-container .calendar-title {\n  text-align: left;\n  margin: 20px auto 0 auto;\n  font-weight: bold;\n  color: #22AEE4;\n  width: 90%;\n}\n.AddPromocode .calendar-container .calender-button {\n  width: 160px;\n  height: 31px;\n  color: #fff;\n  font-size: 14px;\n  font-family: \"Lato-Bold\";\n  background: #22AEE4;\n  border-radius: 35px;\n  margin: 10px auto 25px;\n}\n.AddPromocode .modal {\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.6);\n  position: absolute;\n  top: 0;\n  left: 0;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".EditPromocode {\n  width: 100%;\n  height: 100%;\n}\n.EditPromocode .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.EditPromocode .page-header .title {\n  margin: 26px 0 10px 0;\n  font-size: 21px;\n  font-family: \"Open-Sans-SemiBold\";\n}\n.EditPromocode .page-header .date {\n  font-size: 12px;\n  color: #00000080;\n  font-family: \"Open-Sans-Regular\";\n}\n.EditPromocode .form-container {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  align-items: center;\n  margin: 20px auto;\n  position: relative;\n}\n.EditPromocode .form-container .input-row {\n  width: 812px;\n  display: grid;\n  grid-template-columns: 160px auto;\n  margin: 5px auto;\n}\n.EditPromocode .form-container .input-row .title {\n  color: #00000080;\n  font-size: 16px;\n  font-family: \"Open-Sans-Semibold\";\n}\n.EditPromocode .form-container .input-row .input {\n  width: auto;\n  max-width: 628px;\n  background: #F9F9F9;\n  border: 2px solid #EDEDED;\n  border-radius: 7px;\n  padding: 12px;\n}\n.EditPromocode .form-container .button-container {\n  width: 100%;\n  height: 100px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.EditPromocode .form-container .button-container .save-button {\n  width: 200px;\n  height: 40px;\n  font-size: 18px;\n  background: #22AEE4;\n  box-shadow: 2px 2px 4px #00000033;\n  border-radius: 35px;\n  color: #fff;\n}\n.EditPromocode .calendar-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  background: #fff;\n  width: 600px;\n  margin: 100px auto;\n  border-radius: 30px;\n}\n.EditPromocode .calendar-container .calendar-title {\n  text-align: left;\n  margin: 20px auto 0 auto;\n  font-weight: bold;\n  color: #22AEE4;\n  width: 90%;\n}\n.EditPromocode .calendar-container .calender-button {\n  width: 160px;\n  height: 31px;\n  color: #fff;\n  font-size: 14px;\n  font-family: \"Lato-Bold\";\n  background: #22AEE4;\n  border-radius: 35px;\n  margin: 10px auto 25px;\n}\n.EditPromocode .modal {\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.6);\n  position: absolute;\n  top: 0;\n  left: 0;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=style&index=0&lang=scss&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=style&index=0&lang=scss& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".Promocodes {\n  width: 100%;\n  height: 100%;\n}\n.Promocodes .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Promocodes .page-header .title {\n  margin: 26px 0 10px 0;\n  font-size: 21px;\n  font-family: \"Open-Sans-SemiBold\";\n}\n.Promocodes .page-header .date {\n  font-size: 12px;\n  color: #00000080;\n  font-family: \"Open-Sans-Regular\";\n}\n.Promocodes .promocodes-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.Promocodes .promocodes-table th, .Promocodes .promocodes-table td {\n  margin: 0;\n  border-bottom: 1px solid #EEF2F4;\n  text-align: left;\n  padding: 12px 0;\n}\n.Promocodes .promocodes-table th {\n  color: #00000080;\n  font-size: 16px;\n  font-family: \"Open-Sans-Regular\";\n  font-weight: lighter;\n}\n.Promocodes .promocodes-table td {\n  font-size: 14px;\n}\n.Promocodes .promocodes-table .promocode-head {\n  width: 120px;\n}\n.Promocodes .promocodes-table .promocode-cell {\n  color: #22AEE4;\n  font-family: \"Open-Sans-Semibold\";\n}\n.Promocodes .promocodes-table .promocode-cell .link {\n  cursor: pointer;\n}\n.Promocodes .promocodes-table .start-date-head {\n  width: 120px;\n}\n.Promocodes .promocodes-table .end-date-head {\n  width: 120px;\n}\n.Promocodes .promocodes-table .status-head {\n  width: 50px;\n}\n.Promocodes .promocodes-table .buttons-head {\n  width: 120px;\n}\n.Promocodes .promocodes-table .buttons-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-evenly;\n  align-items: center;\n}\n.Promocodes .promocodes-table .buttons-container .icon {\n  cursor: pointer;\n}\n.Promocodes .add-promocode {\n  position: fixed;\n  bottom: 20px;\n  right: 30px;\n  cursor: pointer;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Reports/Reports.vue?vue&type=style&index=0&lang=scss&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Reports/Reports.vue?vue&type=style&index=0&lang=scss& ***!
@@ -12187,7 +12545,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".PageContainer {\n  padding: 0 !important;\n}\n.Zones {\n  width: 100%;\n  height: 80vh;\n}\n.Zones .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0 24px;\n}\n.Zones .page-header .title {\n  margin: 26px 0;\n  font-size: 21px;\n  font-family: \"Open-Sans-SemiBold\";\n}\n.Zones .page-header .date {\n  font-size: 12px;\n  color: #00000066;\n  font-family: \"Open-Sans-Regular\";\n}\n.Zones .add-zone {\n  position: fixed;\n  bottom: 20px;\n  right: 30px;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, ".Zones {\n  width: 100%;\n  height: 80vh;\n}\n.Zones .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Zones .page-header .title {\n  margin: 26px 0;\n  font-size: 21px;\n  font-family: \"Open-Sans-SemiBold\";\n}\n.Zones .page-header .date {\n  font-size: 12px;\n  color: #00000066;\n  font-family: \"Open-Sans-Regular\";\n}\n.Zones .add-zone {\n  position: fixed;\n  bottom: 20px;\n  right: 30px;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -66379,6 +66737,96 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPromocode.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./EditPromocode.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=style&index=0&lang=scss&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=style&index=0&lang=scss& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Promocodes.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Reports/Reports.vue?vue&type=style&index=0&lang=scss&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Reports/Reports.vue?vue&type=style&index=0&lang=scss& ***!
@@ -71835,6 +72283,515 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=template&id=0c7ffba6&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=template&id=0c7ffba6& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "AddPromocode" }, [
+    _c("div", { staticClass: "page-header" }, [
+      _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "date" }, [_vm._v(_vm._s(_vm.date))])
+    ]),
+    _vm._v(" "),
+    _c("form", { attrs: { action: "/dummy", method: "post" } }, [
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-container" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "input-row" }, [
+          _c("p", { staticClass: "title" }, [_vm._v("Start Date :")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "input",
+            attrs: {
+              type: "text",
+              name: "start_date",
+              placeholder: "MM/DD/YYYY"
+            },
+            domProps: { value: _vm.startDate },
+            on: {
+              click: function($event) {
+                return _vm.showCalendar(1)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "input-row" }, [
+          _c("p", { staticClass: "title" }, [_vm._v("End Date :")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "input",
+            attrs: {
+              type: "text",
+              name: "end_date",
+              placeholder: "MM/DD/YYYY"
+            },
+            domProps: { value: _vm.endDate },
+            on: {
+              click: function($event) {
+                return _vm.showCalendar(2)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2)
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.activeCalendar == 1 || _vm.activeCalendar == 2
+      ? _c(
+          "div",
+          {
+            staticClass: "modal",
+            attrs: { tabindex: "0" },
+            on: {
+              keydown: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "esc", 27, $event.key, [
+                    "Esc",
+                    "Escape"
+                  ])
+                ) {
+                  return null
+                }
+                return _vm.closeModal($event)
+              }
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "calendar-container" },
+              [
+                _vm.activeCalendar == 1
+                  ? _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.startDate,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        headerStyles: _vm.headerStyles
+                      },
+                      on: {
+                        dateSelected: function($event) {
+                          return _vm.setStartDate($event)
+                        }
+                      }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.activeCalendar == 2
+                  ? _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.endDate,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        headerStyles: _vm.headerStyles
+                      },
+                      on: {
+                        dateSelected: function($event) {
+                          return _vm.setEndDate($event)
+                        }
+                      }
+                    })
+                  : _vm._e()
+              ],
+              1
+            )
+          ]
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-row" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Promo Code :")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: { type: "text", name: "name", placeholder: "Promocode" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-row" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Status :")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "input",
+          attrs: { name: "status", placeholder: "Status" }
+        },
+        [_c("option", { attrs: { value: "" } }, [_vm._v("Status")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "button-container" }, [
+      _c("button", { staticClass: "save-button", attrs: { type: "submit" } }, [
+        _vm._v("Save")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=template&id=0c02e430&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=template&id=0c02e430& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "EditPromocode" }, [
+    _c("div", { staticClass: "page-header" }, [
+      _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "date" }, [_vm._v(_vm._s(_vm.date))])
+    ]),
+    _vm._v(" "),
+    _c("form", { attrs: { action: "/dummy", method: "post" } }, [
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-container" }, [
+        _c("div", { staticClass: "input-row" }, [
+          _c("p", { staticClass: "title" }, [_vm._v("Promo Code :")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "input",
+            attrs: { type: "text", name: "name", placeholder: "Promocode" },
+            domProps: { value: _vm.promocode[0].name }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "input-row" }, [
+          _c("p", { staticClass: "title" }, [_vm._v("Start Date :")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "input",
+            attrs: {
+              type: "text",
+              name: "start_date",
+              placeholder: "MM/DD/YYYY"
+            },
+            domProps: {
+              value: _vm.startDate ? _vm.startDate : _vm.promocode[0].start_date
+            },
+            on: {
+              click: function($event) {
+                return _vm.showCalendar(1)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "input-row" }, [
+          _c("p", { staticClass: "title" }, [_vm._v("End Date :")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "input",
+            attrs: {
+              type: "text",
+              name: "end_date",
+              placeholder: "MM/DD/YYYY"
+            },
+            domProps: {
+              value: _vm.endDate ? _vm.endDate : _vm.promocode[0].end_date
+            },
+            on: {
+              click: function($event) {
+                return _vm.showCalendar(2)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.activeCalendar == 1 || _vm.activeCalendar == 2
+      ? _c(
+          "div",
+          {
+            staticClass: "modal",
+            attrs: { tabindex: "0" },
+            on: {
+              keydown: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "esc", 27, $event.key, [
+                    "Esc",
+                    "Escape"
+                  ])
+                ) {
+                  return null
+                }
+                return _vm.closeModal($event)
+              }
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "calendar-container" },
+              [
+                _vm.activeCalendar == 1
+                  ? _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.startDate,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        headerStyles: _vm.headerStyles
+                      },
+                      on: {
+                        dateSelected: function($event) {
+                          return _vm.setStartDate($event)
+                        }
+                      }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.activeCalendar == 2
+                  ? _c("custom-datepicker", {
+                      attrs: {
+                        date: _vm.endDate,
+                        primaryColor: _vm.primaryColor,
+                        wrapperStyles: _vm.wrapperStyles,
+                        headerStyles: _vm.headerStyles
+                      },
+                      on: {
+                        dateSelected: function($event) {
+                          return _vm.setEndDate($event)
+                        }
+                      }
+                    })
+                  : _vm._e()
+              ],
+              1
+            )
+          ]
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-row" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Status :")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "input",
+          attrs: { name: "status", placeholder: "Status" }
+        },
+        [_c("option", { attrs: { value: "" } }, [_vm._v("Status")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "button-container" }, [
+      _c("button", { staticClass: "save-button", attrs: { type: "submit" } }, [
+        _vm._v("Save")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=template&id=7708616e&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=template&id=7708616e& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "Promocodes" }, [
+    _c("div", { staticClass: "page-header" }, [
+      _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "date" }, [_vm._v(_vm._s(_vm.date))])
+    ]),
+    _vm._v(" "),
+    _c("table", { staticClass: "promocodes-table" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.promocodes, function(promocode) {
+          return _c("tr", { key: promocode.id }, [
+            _c("td", { staticClass: "promocode-cell" }, [
+              _c(
+                "p",
+                {
+                  staticClass: "link",
+                  on: {
+                    click: function($event) {
+                      return _vm.goToShowPromocode(promocode.id)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(promocode.name))]
+              )
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "start-date-cell" }, [
+              _vm._v(_vm._s(promocode.start_date))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "end-date-cell" }, [
+              _vm._v(_vm._s(promocode.end_date))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "status-cell" }, [
+              _vm._v(_vm._s(promocode.status))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "buttons-cell" }, [
+              _c("div", { staticClass: "buttons-container" }, [
+                _c(
+                  "span",
+                  {
+                    staticClass: "icon edit",
+                    attrs: { title: "Edit" },
+                    on: {
+                      click: function($event) {
+                        return _vm.goToShowPromocode(promocode.id)
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: { src: "/images/admin/icons/edit-icon.svg" }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass: "icon delete",
+                    attrs: { title: "Delete" },
+                    on: {
+                      click: function($event) {
+                        return _vm.$emit("delete-zone")
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: { src: "/images/admin/icons/delete-icon.svg" }
+                    })
+                  ]
+                )
+              ])
+            ])
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c("img", {
+      staticClass: "add-promocode",
+      attrs: { src: "/images/admin/icons/zones-add-icon.svg", alt: "" },
+      on: { click: _vm.goToAddPromocode }
+    })
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "promocode-head" }, [_vm._v("Promocode")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "start-date-head" }, [_vm._v("Start Date")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "end-date-head" }, [_vm._v("End Date")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "status-head" }, [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "buttons-head" })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -91049,6 +92006,16 @@ var Users = __webpack_require__(/*! ./components/Admin/Pages/Users/Users.vue */ 
 var ShowUser = __webpack_require__(/*! ./components/Admin/Pages/Users/ShowUser.vue */ "./resources/js/components/Admin/Pages/Users/ShowUser.vue")["default"];
 /* XX Users XX */
 
+/* Promocodes */
+
+
+var Promocodes = __webpack_require__(/*! ./components/Admin/Pages/Promocodes/Promocodes.vue */ "./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue")["default"];
+
+var AddPromocode = __webpack_require__(/*! ./components/Admin/Pages/Promocodes/AddPromocode.vue */ "./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue")["default"];
+
+var EditPromocode = __webpack_require__(/*! ./components/Admin/Pages/Promocodes/EditPromocode.vue */ "./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue")["default"];
+/* XX Promocodes XX */
+
 /* *********Zones ************* */
 
 
@@ -91104,6 +92071,11 @@ var app = new Vue({
     Users: Users,
     ShowUser: ShowUser,
     Admins: Admins,
+
+    /* Promocodes */
+    Promocodes: Promocodes,
+    AddPromocode: AddPromocode,
+    EditPromocode: EditPromocode,
 
     /* Zones */
     Zones: Zones,
@@ -93155,6 +94127,267 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPackages_vue_vue_type_template_id_0a195a70___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPackages_vue_vue_type_template_id_0a195a70___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddPromocode_vue_vue_type_template_id_0c7ffba6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddPromocode.vue?vue&type=template&id=0c7ffba6& */ "./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=template&id=0c7ffba6&");
+/* harmony import */ var _AddPromocode_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddPromocode.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _AddPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddPromocode.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _AddPromocode_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddPromocode_vue_vue_type_template_id_0c7ffba6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddPromocode_vue_vue_type_template_id_0c7ffba6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPromocode.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPromocode.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=template&id=0c7ffba6&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=template&id=0c7ffba6& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_template_id_0c7ffba6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPromocode.vue?vue&type=template&id=0c7ffba6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/AddPromocode.vue?vue&type=template&id=0c7ffba6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_template_id_0c7ffba6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPromocode_vue_vue_type_template_id_0c7ffba6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditPromocode_vue_vue_type_template_id_0c02e430___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditPromocode.vue?vue&type=template&id=0c02e430& */ "./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=template&id=0c02e430&");
+/* harmony import */ var _EditPromocode_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditPromocode.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _EditPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditPromocode.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _EditPromocode_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditPromocode_vue_vue_type_template_id_0c02e430___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditPromocode_vue_vue_type_template_id_0c02e430___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./EditPromocode.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./EditPromocode.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=template&id=0c02e430&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=template&id=0c02e430& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_template_id_0c02e430___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./EditPromocode.vue?vue&type=template&id=0c02e430& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/EditPromocode.vue?vue&type=template&id=0c02e430&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_template_id_0c02e430___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPromocode_vue_vue_type_template_id_0c02e430___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Promocodes_vue_vue_type_template_id_7708616e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Promocodes.vue?vue&type=template&id=7708616e& */ "./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=template&id=7708616e&");
+/* harmony import */ var _Promocodes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Promocodes.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Promocodes_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Promocodes.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Promocodes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Promocodes_vue_vue_type_template_id_7708616e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Promocodes_vue_vue_type_template_id_7708616e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Pages/Promocodes/Promocodes.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Promocodes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=style&index=0&lang=scss&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=style&index=0&lang=scss& ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Promocodes.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=template&id=7708616e&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=template&id=7708616e& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_template_id_7708616e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Promocodes.vue?vue&type=template&id=7708616e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Promocodes/Promocodes.vue?vue&type=template&id=7708616e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_template_id_7708616e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Promocodes_vue_vue_type_template_id_7708616e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
