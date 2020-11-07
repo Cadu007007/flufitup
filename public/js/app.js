@@ -3177,8 +3177,98 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['title', 'date']
+  data: function data() {
+    return {
+      showModal: false,
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  },
+  props: ['title', 'date', 'admins', 'superadmin'],
+  methods: {
+    openModal: function openModal() {
+      this.showModal = true;
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    },
+    closeModal: function closeModal() {
+      this.showModal = false;
+      document.getElementsByTagName("body")[0].style.overflow = "auto";
+    }
+  }
 });
 
 /***/ }),
@@ -12925,7 +13015,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../node_mod
 
 
 // module
-exports.push([module.i, ".Admins {\n  width: 100%;\n  height: 100%;\n}\n.Admins .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Admins .page-header .title {\n  margin: 26px 0;\n  font-size: 21px;\n  font-family: \"Open-Sans-SemiBold\";\n}\n.Admins .page-header .date {\n  font-size: 12px;\n  color: #00000066;\n  font-family: \"Open-Sans-Regular\";\n}", ""]);
+exports.push([module.i, ".Admins {\n  width: 100%;\n  height: 100%;\n}\n.Admins .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Admins .page-header .title {\n  margin: 26px 0;\n  font-size: 21px;\n  font-family: \"Open-Sans-SemiBold\";\n}\n.Admins .page-header .date {\n  font-size: 12px;\n  color: #00000080;\n  font-family: \"Open-Sans-Regular\";\n}\n.Admins .container {\n  width: 100%;\n  display: grid;\n  grid-template-columns: 230px 1fr;\n  justify-content: flex-start;\n  align-content: flex-start;\n}\n.Admins .container .left {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.Admins .container .left .userimage {\n  width: 140px;\n  height: 140px;\n  border-radius: 70px;\n}\n.Admins .container .left .username {\n  font-family: \"Open-Sans-Bold\";\n  font-size: 21px;\n  color: #000;\n  margin-top: 16px;\n}\n.Admins .container .right {\n  margin-left: 30px;\n  position: relative;\n}\n.Admins .container .right .info-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  margin: 25px auto;\n}\n.Admins .container .right .info-container .icon {\n  width: 30px;\n  height: 30px;\n  margin-right: 24px;\n}\n.Admins .container .right .info-container .value {\n  font-family: \"Open-Sans-Semibold\";\n  font-size: 18px;\n  color: #000;\n}\n.Admins .container .right .add-admin-button {\n  position: absolute;\n  right: 50px;\n  top: 80px;\n  width: 170px;\n  height: 39px;\n  border: 2px solid #22AEE4;\n  border-radius: 31px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n  background: #fff;\n}\n.Admins .container .right .add-admin-button .icon {\n  margin-right: 16px;\n}\n.Admins .container .right .add-admin-button .text {\n  font-size: 14px;\n  font-family: \"Open-Sans-Bold\";\n  color: #22AEE4;\n}\n.Admins .admins-table {\n  width: 100%;\n  border-collapse: collapse;\n  margin-top: 30px;\n}\n.Admins .admins-table th, .Admins .admins-table td {\n  margin: 0;\n  border-bottom: 1px solid #EEF2F4;\n  text-align: left;\n  padding: 12px 0;\n}\n.Admins .admins-table th {\n  color: #00000080;\n  font-size: 16px;\n  font-family: \"Open-Sans-Regular\";\n  font-weight: lighter;\n}\n.Admins .admins-table td {\n  font-size: 14px;\n}\n.Admins .admins-table .username-head {\n  width: 130px;\n}\n.Admins .admins-table .username-cell {\n  color: #22AEE4;\n  font-family: \"Open-Sans-Semibold\";\n}\n.Admins .admins-table .username-cell .link {\n  cursor: pointer;\n}\n.Admins .admins-table .email-head {\n  width: 150px;\n}\n.Admins .admins-table .phone-head {\n  width: 120px;\n}\n.Admins .admins-table .date-of-join-head {\n  width: 100px;\n}\n.Admins .admins-table .location-head {\n  width: 140px;\n}\n.Admins .add-admin-modal {\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.6);\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.Admins .add-admin-modal .modal-container {\n  padding: 30px 180px;\n  width: 904px;\n  height: 600px;\n  background: #E8ECF3;\n  border: 1px solid #F9F9F9;\n  border-radius: 20px;\n  position: relative;\n}\n.Admins .add-admin-modal .modal-container .title {\n  font-family: \"Open-Sans-Bold\";\n  font-size: 16px;\n  color: #22AEE4;\n  width: 100%;\n  text-align: center;\n}\n.Admins .add-admin-modal .modal-container .input-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  width: 100%;\n  margin: 20px auto;\n}\n.Admins .add-admin-modal .modal-container .input-container .title {\n  text-align: left;\n  font-family: \"Open-Sans-regular\";\n  font-size: 16px;\n  color: #000;\n  margin-bottom: 10px;\n}\n.Admins .add-admin-modal .modal-container .input-container .input {\n  width: 100%;\n  max-width: 628px;\n  background: #F9F9F9;\n  border: 2px solid #EDEDED;\n  border-radius: 7px;\n  padding: 12px;\n}\n.Admins .add-admin-modal .modal-container .button-container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 40px auto;\n}\n.Admins .add-admin-modal .modal-container .button-container .save-button {\n  width: 170px;\n  height: 39px;\n  background: #22AEE4;\n  border: 1px solid #22AEE4;\n  border-radius: 31px;\n  font-size: 14px;\n  font-family: \"Open-Sans-Bold\";\n  color: #fff;\n}\n.Admins .add-admin-modal .close {\n  position: absolute;\n  top: 30px;\n  right: 30px;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -73245,14 +73335,227 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "Admins" }, [
-    _c("div", { staticClass: "page-header" }, [
-      _c("p", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "left" }, [
+        _c("img", {
+          staticClass: "userimage",
+          attrs: { src: "/images/icons/profile.svg", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "username" }, [
+          _vm._v(_vm._s(_vm.superadmin[0].name) + " ")
+        ])
+      ]),
       _vm._v(" "),
-      _c("p", { staticClass: "date" }, [_vm._v(_vm._s(_vm.date))])
+      _c("div", { staticClass: "right" }, [
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-email.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [
+            _vm._v(_vm._s(_vm.superadmin[0].email))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-phone.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [
+            _vm._v(_vm._s(_vm.superadmin[0].phone))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-calendar.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [
+            _vm._v(_vm._s(_vm.superadmin[0].date_of_join))
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "add-admin-button", on: { click: _vm.openModal } },
+          [
+            _c("span", { staticClass: "icon" }, [_vm._v("+")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text" }, [_vm._v("Add Admin")])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("table", { staticClass: "admins-table" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.admins, function(admin) {
+          return _c("tr", { key: admin.id }, [
+            _c("td", { staticClass: "username-cell" }, [
+              _c(
+                "p",
+                {
+                  staticClass: "link",
+                  on: {
+                    click: function($event) {
+                      return _vm.goToShowStaff(admin.id)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(admin.name))]
+              )
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "email-cell" }, [
+              _vm._v(_vm._s(admin.email))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "phone-cell" }, [
+              _vm._v(_vm._s(admin.phone))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "date-of-join-cell" }, [
+              _vm._v(_vm._s(admin.date_of_join))
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "location-cell" }, [
+              _vm._v(_vm._s(admin.location))
+            ])
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c("form", { attrs: { action: "/dummy", method: "post" } }, [
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
+      _vm._v(" "),
+      _vm.showModal
+        ? _c("div", { staticClass: "add-admin-modal" }, [
+            _c("div", { staticClass: "modal-container" }, [
+              _c("p", { staticClass: "title" }, [_vm._v("Add Admin")]),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "close", on: { click: _vm.closeModal } },
+                [_vm._v("X")]
+              )
+            ])
+          ])
+        : _vm._e()
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "username-head" }, [_vm._v("Admin Name")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "email-head" }, [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "phone-head" }, [_vm._v("Phone Number")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "date-of-join-head" }, [
+          _vm._v("Date of Join")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "location-head" }, [_vm._v("Location")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Admin Name")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: { type: "text", name: "name", placeholder: "Admin Name" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: { type: "text", name: "email", placeholder: "Example@gmail.com" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Phone Number")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: { type: "text", name: "phone", placeholder: "(XXX)-XXX-XXXX" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Date of Birth")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: {
+          type: "date",
+          name: "admin_name",
+          placeholder: "MM / DD / YYYY"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "button-container" }, [
+      _c("button", { staticClass: "save-button", attrs: { type: "button" } }, [
+        _vm._v("Save")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

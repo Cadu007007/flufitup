@@ -642,9 +642,16 @@ Route::get('/admin/delievery_planner', function () {
  * ************************** */
 /* admins */
 Route::get('/admin/employees/admins', function () {
-    return view('admin.employees.admins.index', ['active' => 'admins']);
-})->name('admin.employees.admins');
+    $admins = collect();
+    $admins->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'2020-11-11','location'=> 'location']);
+    $admins->push(['id'=> 2 , 'name'=>'Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'2020-11-11','location'=> 'location']);
+    $admins->push(['id'=> 3 , 'name'=>'Amr','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'2020-11-11','location'=> 'location']);
+    
+    $superadmin = collect();
+    $superadmin->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'2020-11-11','location'=> 'location']);
 
+    return view('admin.employees.admins.index', ['active' => 'admins','admins'=>$admins , 'superadmin' => $superadmin]);
+})->name('admin.employees.admins');
 
 Route::get('/admin/employees/admins/create', function () {
     return view('admin.employees.admins.create', ['active' => 'admins']);
@@ -663,6 +670,7 @@ Route::post('/admin/employees/admins/create_password', function (Request $reques
     return redirect()->route('admin.login', ['email' => 'login']);
 })->name('admin.employees.admins.create_password');
 
+/* XX admins XX */
 
 /* laundery_staff */
 Route::get('/admin/employees/laundery_staff', function () {
