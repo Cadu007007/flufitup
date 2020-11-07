@@ -76,6 +76,13 @@ var EditLaunderyStaff = require('./components/Admin/Pages/Employees/LaunderyStaf
 var AddLaunderyStaff = require('./components/Admin/Pages/Employees/LaunderyStaff/AddLaunderyStaff.vue').default
     /* Launder Staff */
 
+/* Drivers */
+var Drivers = require('./components/Admin/Pages/Employees/Drivers/Drivers.vue').default
+var ShowDriver = require('./components/Admin/Pages/Employees/Drivers/ShowDriver.vue').default
+var EditDriver = require('./components/Admin/Pages/Employees/Drivers/EditDriver.vue').default
+var AddDriver = require('./components/Admin/Pages/Employees/Drivers/AddDriver.vue').default
+    /* Drivers */
+
 /* XX Employees XX */
 
 /* Promocodes */
@@ -130,6 +137,12 @@ const app = new Vue({
         ShowUser,
         /* Employees Pages */
         Admins,
+        /* Drivers */
+        Drivers,
+        ShowDriver,
+        EditDriver,
+        AddDriver,
+        /* Drivers */
         /* Laundery Staff */
         LaunderyStaff,
         ShowLaunderyStaff,

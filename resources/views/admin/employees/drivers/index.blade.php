@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 @section('content')
-<Admins 
+<Drivers
 title="Drivers"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
+:drivers= "{{ $drivers }}"
+showdriverroute="{{ route('admin.employees.drivers.show','driver_id') }}" 
+adddriverroute="{{ route('admin.employees.drivers.create') }}" 
 />
 @endsection

@@ -449,9 +449,9 @@ Route::get('/admin/login', function () {
 Route::get('/admin/clients/total', function () {
     $clients = collect();
 
-    $clients->push(['id'=> 1, 'name'=>'Mohamed Salah','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
-    $clients->push(['id'=> 2, 'name'=>'Ali Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
-    $clients->push(['id'=> 3, 'name'=>'Dooooooby','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+    $clients->push(['id'=> 1, 'name'=>'Mohamed Salah','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','numberoforders'=> 5]);
+    $clients->push(['id'=> 2, 'name'=>'Ali Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','numberoforders'=> 5]);
+    $clients->push(['id'=> 3, 'name'=>'Dooooooby','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','numberoforders'=> 5]);
 
     return view('admin.dashboard.total_clients.index', ['active' => 'dashboard', 'clients'=>$clients]);
 })->name('admin.dashboard.total_clients');
@@ -543,9 +543,9 @@ Route::get('/admin/users/city', function () {
 Route::get('/admin/orders/cancelled', function () {
     $clients = collect();
 
-    $clients->push(['id'=> 1, 'name'=>'Mohamed Salah','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
-    $clients->push(['id'=> 2, 'name'=>'Ali Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
-    $clients->push(['id'=> 3, 'name'=>'Dooooooby','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+    $clients->push(['id'=> 1, 'name'=>'Mohamed Salah','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','numberoforders'=> 5]);
+    $clients->push(['id'=> 2, 'name'=>'Ali Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','numberoforders'=> 5]);
+    $clients->push(['id'=> 3, 'name'=>'Dooooooby','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','numberoforders'=> 5]);
 
     return view('admin.dashboard.cancelled_orders.index', ['active' => 'dashboard', 'clients'=>$clients]);
 })->name('admin.dashboard.cancelled_orders');
@@ -591,9 +591,9 @@ Route::get('/admin/packages', function () {
 Route::get('/admin/users', function () {
     $users = collect();
 
-    $users->push(['id'=> 1, 'name'=>'Mohamed Salah','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
-    $users->push(['id'=> 2, 'name'=>'Ali Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
-    $users->push(['id'=> 3, 'name'=>'Dooooooby','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','numberoforders'=> 5]);
+    $users->push(['id'=> 1, 'name'=>'Mohamed Salah','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','numberoforders'=> 5]);
+    $users->push(['id'=> 2, 'name'=>'Ali Ahmed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','numberoforders'=> 5]);
+    $users->push(['id'=> 3, 'name'=>'Dooooooby','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','numberoforders'=> 5]);
 
     return view('admin.users.index', ['active' => 'users', 'users'=>$users]);
 })->name('admin.users');
@@ -604,7 +604,7 @@ Route::get('/admin/users/show/{id}', function () {
     $user->push(['id'=>1,
              'name'=>'Mohamed Salah',
              'email' => 'test@test.com',
-             'birthday'=>'12/14/1995',
+             'birthday'=>'1990-11-11',
              'phone'=> '01286727987',
              'wallet'=> 50,
              'currency' => 'USD',
@@ -664,28 +664,23 @@ Route::post('/admin/employees/admins/create_password', function (Request $reques
 })->name('admin.employees.admins.create_password');
 
 
-/* drivers */
-Route::get('/admin/employees/drivers', function () {
-    return view('admin.employees.drivers.index', ['active' => 'drivers']);
-})->name('admin.employees.drivers');
-
 /* laundery_staff */
 Route::get('/admin/employees/laundery_staff', function () {
     $staff = collect();
-    $staff->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'12/14/1995','location'=> 'location']);
-    $staff->push(['id'=> 2 , 'name'=>'Ahmed','email' => 'ahmedsalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'12/14/1995','location'=> 'location']);
+    $staff->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'1990-11-11','location'=> 'location']);
+    $staff->push(['id'=> 2 , 'name'=>'Ahmed','email' => 'ahmedsalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'1990-11-11','location'=> 'location']);
     return view('admin.employees.laundery_staff.index', ['active' => 'laundery_staff', 'staff'=>$staff]);
 })->name('admin.employees.laundery_staff');
 
 Route::get('/admin/employees/laundery_staff/show/{id}', function () {
     $staff = collect();
-    $staff->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com','address' => 'Address', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','date_of_join'=>'12/14/2018','location'=> 'location']);
+    $staff->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com','address' => 'Address', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','date_of_join'=>'12/14/2018','location'=> 'location']);
     return view('admin.employees.laundery_staff.show', ['active' => 'laundery_staff', 'staff' => $staff]);
 })->name('admin.employees.laundery_staff.show');
 
 Route::get('/admin/employees/laundery_staff/edit/{id}', function () {
     $staff = collect();
-    $staff->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com','address' => 'Address', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'12/14/1995','date_of_join'=>'12/14/2018','location'=> 'location']);
+    $staff->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com','address' => 'Address', 'phone' => '(xxx)-xxx-xxxx','birthday'=>'1990-11-11','date_of_join'=>'12/14/2018','location'=> 'location']);
     return view('admin.employees.laundery_staff.edit', ['active' => 'laundery_staff', 'staff' => $staff]);
 })->name('admin.employees.laundery_staff.edit');
 
@@ -693,6 +688,31 @@ Route::get('/admin/employees/laundery_staff/create', function () {
     return view('admin.employees.laundery_staff.create', ['active' => 'laundery_staff']);
 })->name('admin.employees.laundery_staff.create');
 /*XX laundery_staff XX*/
+
+/* drivers */
+Route::get('/admin/employees/drivers', function () {
+    $drivers = collect();
+    $drivers->push(['id'=> 2 , 'name'=>'Ahmed','city' => 'Alexandria', 'date_of_join'=>'1990-11-11','assigned'=> 'assigned']);
+    $drivers->push(['id'=> 1 , 'name'=>'Mohamed','city' => 'Alexandria', 'date_of_join'=>'1992-12-12','assigned'=> 'assigned']);
+    return view('admin.employees.drivers.index', ['active' => 'drivers', 'drivers'=>$drivers]);
+})->name('admin.employees.drivers');
+
+Route::get('/admin/employees/drivers/show/{id}', function () {
+    $driver = collect();
+    $driver->push(['id'=> 1 , 'name'=>'Mohamed','phone' => '(xxx)-xxx-xxxx','address' => 'Address', 'birthday'=>'1990-11-11', 'license' =>'license','car_type' => 'car type','car_model' => 'car model' , 'car_production_date' => '2020-10-15','car_plate_number' => 'ABC123']);
+    return view('admin.employees.drivers.show', ['active' => 'drivers', 'driver' => $driver]);
+})->name('admin.employees.drivers.show');
+
+Route::get('/admin/employees/drivers/edit/{id}', function () {
+    $driver = collect();
+    $driver->push(['id'=> 1 , 'name'=>'Mohamed','phone' => '(xxx)-xxx-xxxx','address' => 'Address', 'birthday'=>'1990-11-11', 'license' =>'license','car_type' => 'car type','car_model' => 'car model' , 'car_production_date' => '2020-10-15','car_plate_number' => 'ABC123']);
+    return view('admin.employees.drivers.edit', ['active' => 'drivers', 'driver' => $driver]);
+})->name('admin.employees.drivers.edit');
+
+Route::get('/admin/employees/drivers/create', function () {
+    return view('admin.employees.drivers.create', ['active' => 'drivers']);
+})->name('admin.employees.drivers.create');
+/*XX drivers XX*/
 
 /******************************
  * Employees End
