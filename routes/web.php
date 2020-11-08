@@ -606,10 +606,25 @@ Route::get('/admin/employees/admins', function () {
     return view('admin.employees.admins.index', ['active' => 'admins', 'admins' => $admins, 'superadmin' => $superadmin]);
 })->name('admin.employees.admins');
 
+
+Route::get('/admin/employees/admins/show/{id}', function () {
+    $admin = collect();
+    $admin->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'2020-11-11','location'=> 'location']);
+    $is_superadmin = true;
+    return view('admin.employees.admins.show', ['active' => 'admins','admin'=>$admin, 'is_superadmin' => $is_superadmin]);
+})->name('admin.employees.admins.show');
+
+
+Route::get('/admin/employees/admins/edit/{id}', function () {
+    $admin = collect();
+    $admin->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'2020-11-11','location'=> 'location']);
+
+    return view('admin.employees.admins.edit', ['active' => 'admins','admin'=>$admin]);
+})->name('admin.employees.admins.edit');
+
 Route::get('/admin/employees/admins/create', function () {
     return view('admin.employees.admins.create', ['active' => 'admins']);
 })->name('admin.employees.admins.create');
-
 Route::post('/admin/employees/admins/create', function (Request $request) {
     return view('admin.employees.admins.create_password', ['active' => 'admins', 'email' => $request->email]);
 })->name('admin.employees.admins.create');
