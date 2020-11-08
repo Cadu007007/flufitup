@@ -13,8 +13,10 @@
         </p>
         <div class="form-container">
 
-            <form action="/login" method="POST">
+            <form action="{{ route('verify.post') }}" method="POST">
+                @csrf
                 <div class="input-container">
+                    <input type="hidden" name="phone_number" value="{{session('phone_number')}}">
                
                     <input name="digit1" maxlength="1"  type="text" class="digit-input" placeholder=""/>
                     <input name="digit2" maxlength="1"  type="text" class="digit-input" placeholder=""/>
