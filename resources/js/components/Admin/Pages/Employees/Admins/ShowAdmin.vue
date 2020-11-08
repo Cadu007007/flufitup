@@ -3,57 +3,69 @@
 <div class="container">
     <div class="left">
     <img src="/images/icons/profile.svg" alt="" class="userimage">
-    <p class="username">{{ superadmin[0].name }} </p>
+    <p class="username">{{ admin[0].name }} </p>
   </div>  
-
   <div class="right">
     <div class="info-container">
         <img src="/images/admin/icons/profile-email.svg" alt="" class="icon">
-        <p class="value">{{superadmin[0].email}}</p>
+        <p class="value">{{admin[0].email}}</p>
     </div>
     <div class="info-container">
         <img src="/images/admin/icons/profile-phone.svg" alt="" class="icon">
-        <p class="value">{{superadmin[0].phone}}</p>
+        <p class="value">{{admin[0].phone}}</p>
     </div>
     <div class="info-container">
         <img src="/images/admin/icons/profile-calendar.svg" alt="" class="icon">
-        <p class="value">{{superadmin[0].date_of_join}}</p>
+        <p class="value">{{admin[0].date_of_join}}</p>
     </div>
+    <div class="info-container">
+        <img src="/images/admin/icons/profile-location.svg" alt="" class="icon">
+        <p class="value">{{admin[0].location}}</p>
+    </div>
+
+<div class="buttons-container" v-if="superadmin">
+    <button class="edit" @click="openModal">Edit</button>
+    <button class="delete">Delete</button>
+</div>
     
-    <button class="add-admin-button" @click="openModal">
-        <span class="icon">+</span>
-        <p class="text">Add Admin</p>
-    </button>
   </div> 
 </div>
-
-
-    <table class="admins-table">
-        <thead>
-        <tr>
-            <th class="username-head">Admin Name</th>
-            <th class="email-head">Email</th>
-            <th class="phone-head">Phone Number</th>
-            <th class="date-of-join-head">Date of Join</th>
-            <th class="location-head">Location</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="admin in admins" :key="admin.id">
-            <td class="username-cell"><p class="link" @click="goToShowAdmin(admin.id)">{{admin.name}}</p></td>
-            <td class="email-cell">{{admin.email}}</td>
-            <td class="phone-cell">{{admin.phone}}</td>
-            <td class="date-of-join-cell">{{admin.date_of_join}}</td>
-            <td class="location-cell">{{admin.location}}</td>
-        </tr>
-        </tbody>
-    </table>
+<div class="seperator"></div>
+<div class="auth">
+    <p class="title">Given Authorizations</p>
+    <div class="flex-container">
+        <div class="row">
+            <input type="checkbox" name="auth1" v-if="superadmin">
+            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <div class="row">
+            <input type="checkbox" name="auth2" v-if="superadmin">
+            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <div class="row">
+            <input type="checkbox" name="auth3" v-if="superadmin">
+            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <div class="row">
+            <input type="checkbox" name="auth4" v-if="superadmin">
+            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <div class="row">
+            <input type="checkbox" name="auth5" v-if="superadmin">
+            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <div class="row">
+            <input type="checkbox" name="auth6" v-if="superadmin">
+            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+    </div>
+</div>
 
     <form action="/dummy" method="post">
     <input type="hidden" :value="csrf" name="_token"/>
-    <div class="add-admin-modal" v-if="showModal">
+    <div class="edit-admin-modal" v-if="showModal">
         <div class="modal-container">
-            <p class="title">Add Admin</p>
+            <p class="title">Edit Admin</p>
             <div class="input-container">
                 <p class="title">Admin Name</p>
                 <input type="text" class="input" name="name" placeholder="Admin Name">
@@ -94,12 +106,11 @@ export default {
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         }
     },
-    props: ['title','date','admins','superadmin','showadminroute'],
+    props: ['title','date','admins','admin','editadminroute','superadmin'],
     methods: {
-        goToShowAdmin(id){
-            var url = this.showadminroute.replace('admin_id',id)
+        goToEditAdmin(id){
+            var url = this.editadminroute.replace('admin_id',id)
             window.location.href= url
-
         },
         openModal(){
         this.showModal = true;
@@ -120,7 +131,8 @@ $text-grey: #00000080;
 $light-grey:#EEF2F4;
 $blue: #22AEE4;
 $black: #000;
-
+$orange: #FFA800;
+$red: #FF0000;
 .Admins{
     width: 100%;
     height: 100%;
@@ -186,19 +198,35 @@ $black: #000;
                 
             }
         }
-        .add-admin-button{
+        .buttons-container{
             position: absolute;
             right: 50px;
             top: 80px;
-            width: 170px;
-            height: 39px;
-            border: 2px solid $blue;
-            border-radius: 31px;
+            width: 200px;
+            height: 100px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            background: #fff;
+            flex-direction: column;
+            justify-content: space-between;
+            button{
+                width: 170px;
+                height: 39px;
+                background: #fff;
+                border-radius: 31px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                font-size: 14px;
+                font-family: "Open-Sans-Bold";
+                &.edit{
+                    color: $orange ;
+                    border: 2px solid $orange;
+                }
+                &.delete{
+                    color: $red;
+                    border: 2px solid $red;
+                }
+            }
             .icon{
                 margin-right: 16px;
             }
@@ -209,55 +237,43 @@ $black: #000;
             }
 
         }
-        
     }
 
     }
-    .admins-table{
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 30px;
-        th,td {
-            margin: 0 ;
-            border-bottom: 1px solid $light-grey;
-            text-align: left;
-            padding: 12px 0;
-        }
-        th{
-            color: $text-grey;
-            font-size: 16px;
-            font-family: 'Open-Sans-Regular';
-            font-weight: lighter;
-        }
-        td{
-            font-size: 14px;
-        }
-        .username-head{
-            width: 130px;
-        }
-        .username-cell{
-            color: $blue;
-            font-family: 'Open-Sans-Semibold';
-            .link{
-                cursor: pointer;
+
+.seperator{
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+}
+.auth{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .title{
+        margin: 20px 0;
+        font-size: 16px;
+        font-family: 'Open-Sans-Bold';
+        color: #000;
+    }
+    .flex-container{
+        margin-left: 40px;
+        .row{
+            width: 100%;
+            display: flex;
+            flex-direction: row;   
+            margin: 10px 0;
+            .text{
+                margin-left: 10px;
+                width: 100%;
             }
         }
-        .email-head{
-            width: 150px;
-        }
-        .phone-head{
-            width: 120px;
-        }
-        .date-of-join-head{
-            width: 100px;
-        }
-        .location-head{
-            width: 140px;
-        }
-        
     }
+}
 
-    .add-admin-modal{
+    .edit-admin-modal{
             width: 100%;
             height: 100%;
             background: rgba($color: #000000, $alpha: 0.6);

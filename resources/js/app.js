@@ -69,6 +69,7 @@ var ShowUser = require('./components/Admin/Pages/Users/ShowUser.vue').default
 
 /* Employees */
 var Admins = require('./components/Admin/Pages/Employees/Admins/Admins.vue').default
+var ShowAdmin = require('./components/Admin/Pages/Employees/Admins/ShowAdmin.vue').default
     /* Launder Staff */
 var LaunderyStaff = require('./components/Admin/Pages/Employees/LaunderyStaff/LaunderyStaff.vue').default
 var ShowLaunderyStaff = require('./components/Admin/Pages/Employees/LaunderyStaff/ShowLaunderyStaff.vue').default
@@ -137,6 +138,7 @@ const app = new Vue({
         ShowUser,
         /* Employees Pages */
         Admins,
+        ShowAdmin,
         /* Drivers */
         Drivers,
         ShowDriver,

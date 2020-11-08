@@ -3251,6 +3251,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3258,8 +3262,147 @@ __webpack_require__.r(__webpack_exports__);
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
-  props: ['title', 'date', 'admins', 'superadmin'],
+  props: ['title', 'date', 'admins', 'superadmin', 'showadminroute'],
   methods: {
+    goToShowAdmin: function goToShowAdmin(id) {
+      var url = this.showadminroute.replace('admin_id', id);
+      window.location.href = url;
+    },
+    openModal: function openModal() {
+      this.showModal = true;
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    },
+    closeModal: function closeModal() {
+      this.showModal = false;
+      document.getElementsByTagName("body")[0].style.overflow = "auto";
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      showModal: false,
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  },
+  props: ['title', 'date', 'admins', 'admin', 'editadminroute', 'superadmin'],
+  methods: {
+    goToEditAdmin: function goToEditAdmin(id) {
+      var url = this.editadminroute.replace('admin_id', id);
+      window.location.href = url;
+    },
     openModal: function openModal() {
       this.showModal = true;
       document.getElementsByTagName("body")[0].style.overflow = "hidden";
@@ -13015,7 +13158,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../node_mod
 
 
 // module
-exports.push([module.i, ".Admins {\n  width: 100%;\n  height: 100%;\n}\n.Admins .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Admins .page-header .title {\n  margin: 26px 0;\n  font-size: 21px;\n  font-family: \"Open-Sans-SemiBold\";\n}\n.Admins .page-header .date {\n  font-size: 12px;\n  color: #00000080;\n  font-family: \"Open-Sans-Regular\";\n}\n.Admins .container {\n  width: 100%;\n  display: grid;\n  grid-template-columns: 230px 1fr;\n  justify-content: flex-start;\n  align-content: flex-start;\n}\n.Admins .container .left {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.Admins .container .left .userimage {\n  width: 140px;\n  height: 140px;\n  border-radius: 70px;\n}\n.Admins .container .left .username {\n  font-family: \"Open-Sans-Bold\";\n  font-size: 21px;\n  color: #000;\n  margin-top: 16px;\n}\n.Admins .container .right {\n  margin-left: 30px;\n  position: relative;\n}\n.Admins .container .right .info-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  margin: 25px auto;\n}\n.Admins .container .right .info-container .icon {\n  width: 30px;\n  height: 30px;\n  margin-right: 24px;\n}\n.Admins .container .right .info-container .value {\n  font-family: \"Open-Sans-Semibold\";\n  font-size: 18px;\n  color: #000;\n}\n.Admins .container .right .add-admin-button {\n  position: absolute;\n  right: 50px;\n  top: 80px;\n  width: 170px;\n  height: 39px;\n  border: 2px solid #22AEE4;\n  border-radius: 31px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n  background: #fff;\n}\n.Admins .container .right .add-admin-button .icon {\n  margin-right: 16px;\n}\n.Admins .container .right .add-admin-button .text {\n  font-size: 14px;\n  font-family: \"Open-Sans-Bold\";\n  color: #22AEE4;\n}\n.Admins .admins-table {\n  width: 100%;\n  border-collapse: collapse;\n  margin-top: 30px;\n}\n.Admins .admins-table th, .Admins .admins-table td {\n  margin: 0;\n  border-bottom: 1px solid #EEF2F4;\n  text-align: left;\n  padding: 12px 0;\n}\n.Admins .admins-table th {\n  color: #00000080;\n  font-size: 16px;\n  font-family: \"Open-Sans-Regular\";\n  font-weight: lighter;\n}\n.Admins .admins-table td {\n  font-size: 14px;\n}\n.Admins .admins-table .username-head {\n  width: 130px;\n}\n.Admins .admins-table .username-cell {\n  color: #22AEE4;\n  font-family: \"Open-Sans-Semibold\";\n}\n.Admins .admins-table .username-cell .link {\n  cursor: pointer;\n}\n.Admins .admins-table .email-head {\n  width: 150px;\n}\n.Admins .admins-table .phone-head {\n  width: 120px;\n}\n.Admins .admins-table .date-of-join-head {\n  width: 100px;\n}\n.Admins .admins-table .location-head {\n  width: 140px;\n}\n.Admins .add-admin-modal {\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.6);\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.Admins .add-admin-modal .modal-container {\n  padding: 30px 180px;\n  width: 904px;\n  height: 600px;\n  background: #E8ECF3;\n  border: 1px solid #F9F9F9;\n  border-radius: 20px;\n  position: relative;\n}\n.Admins .add-admin-modal .modal-container .title {\n  font-family: \"Open-Sans-Bold\";\n  font-size: 16px;\n  color: #22AEE4;\n  width: 100%;\n  text-align: center;\n}\n.Admins .add-admin-modal .modal-container .input-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  width: 100%;\n  margin: 20px auto;\n}\n.Admins .add-admin-modal .modal-container .input-container .title {\n  text-align: left;\n  font-family: \"Open-Sans-regular\";\n  font-size: 16px;\n  color: #000;\n  margin-bottom: 10px;\n}\n.Admins .add-admin-modal .modal-container .input-container .input {\n  width: 100%;\n  max-width: 628px;\n  background: #F9F9F9;\n  border: 2px solid #EDEDED;\n  border-radius: 7px;\n  padding: 12px;\n}\n.Admins .add-admin-modal .modal-container .button-container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 40px auto;\n}\n.Admins .add-admin-modal .modal-container .button-container .save-button {\n  width: 170px;\n  height: 39px;\n  background: #22AEE4;\n  border: 1px solid #22AEE4;\n  border-radius: 31px;\n  font-size: 14px;\n  font-family: \"Open-Sans-Bold\";\n  color: #fff;\n}\n.Admins .add-admin-modal .close {\n  position: absolute;\n  top: 30px;\n  right: 30px;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, ".Admins {\n  width: 100%;\n  height: 100%;\n}\n.Admins .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Admins .page-header .title {\n  margin: 26px 0;\n  font-size: 21px;\n  font-family: \"Open-Sans-SemiBold\";\n}\n.Admins .page-header .date {\n  font-size: 12px;\n  color: #00000080;\n  font-family: \"Open-Sans-Regular\";\n}\n.Admins .container {\n  width: 100%;\n  display: grid;\n  grid-template-columns: 230px 1fr;\n  justify-content: flex-start;\n  align-content: flex-start;\n}\n.Admins .container .left {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.Admins .container .left .userimage {\n  width: 140px;\n  height: 140px;\n  border-radius: 70px;\n}\n.Admins .container .left .username {\n  font-family: \"Open-Sans-Bold\";\n  font-size: 21px;\n  color: #000;\n  margin-top: 16px;\n}\n.Admins .container .right {\n  margin-left: 30px;\n  position: relative;\n}\n.Admins .container .right .info-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  margin: 25px auto;\n}\n.Admins .container .right .info-container .icon {\n  width: 30px;\n  height: 30px;\n  margin-right: 24px;\n}\n.Admins .container .right .info-container .value {\n  font-family: \"Open-Sans-Semibold\";\n  font-size: 18px;\n  color: #000;\n}\n.Admins .container .right .add-admin-button {\n  position: absolute;\n  right: 50px;\n  top: 80px;\n  width: 170px;\n  height: 39px;\n  border: 2px solid #22AEE4;\n  border-radius: 31px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n  background: #fff;\n}\n.Admins .container .right .add-admin-button .icon {\n  margin-right: 16px;\n}\n.Admins .container .right .add-admin-button .text {\n  font-size: 14px;\n  font-family: \"Open-Sans-Bold\";\n  color: #22AEE4;\n}\n.Admins .admins-table {\n  width: 100%;\n  border-collapse: collapse;\n  margin-top: 30px;\n}\n.Admins .admins-table th, .Admins .admins-table td {\n  margin: 0;\n  border-bottom: 1px solid #EEF2F4;\n  text-align: left;\n  padding: 12px 0;\n}\n.Admins .admins-table th {\n  color: #00000080;\n  font-size: 16px;\n  font-family: \"Open-Sans-Regular\";\n  font-weight: lighter;\n}\n.Admins .admins-table td {\n  font-size: 14px;\n}\n.Admins .admins-table .username-head {\n  width: 130px;\n}\n.Admins .admins-table .username-cell {\n  color: #22AEE4;\n  font-family: \"Open-Sans-Semibold\";\n}\n.Admins .admins-table .username-cell .link {\n  cursor: pointer;\n}\n.Admins .admins-table .email-head {\n  width: 150px;\n}\n.Admins .admins-table .phone-head {\n  width: 120px;\n}\n.Admins .admins-table .date-of-join-head {\n  width: 100px;\n}\n.Admins .admins-table .location-head {\n  width: 140px;\n}\n.Admins .add-admin-modal {\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.6);\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.Admins .add-admin-modal .modal-container {\n  padding: 30px 180px;\n  width: 904px;\n  height: 600px;\n  background: #E8ECF3;\n  border: 1px solid #F9F9F9;\n  border-radius: 20px;\n  position: relative;\n}\n.Admins .add-admin-modal .modal-container .title {\n  font-family: \"Open-Sans-Bold\";\n  font-size: 16px;\n  color: #22AEE4;\n  width: 100%;\n  text-align: center;\n}\n.Admins .add-admin-modal .modal-container .input-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  width: 100%;\n  margin: 10px auto;\n}\n.Admins .add-admin-modal .modal-container .input-container .title {\n  text-align: left;\n  font-family: \"Open-Sans-regular\";\n  font-size: 16px;\n  color: #000;\n  margin-bottom: 10px;\n}\n.Admins .add-admin-modal .modal-container .input-container .input {\n  width: 100%;\n  max-width: 628px;\n  background: #F9F9F9;\n  border: 2px solid #EDEDED;\n  border-radius: 7px;\n  padding: 12px;\n}\n.Admins .add-admin-modal .modal-container .button-container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 40px auto;\n}\n.Admins .add-admin-modal .modal-container .button-container .save-button {\n  width: 170px;\n  height: 39px;\n  background: #22AEE4;\n  border: 1px solid #22AEE4;\n  border-radius: 31px;\n  font-size: 14px;\n  font-family: \"Open-Sans-Bold\";\n  color: #fff;\n}\n.Admins .add-admin-modal .close {\n  position: absolute;\n  top: 30px;\n  right: 30px;\n  cursor: pointer;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".Admins {\n  width: 100%;\n  height: 100%;\n}\n.Admins .page-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Admins .page-header .title {\n  margin: 26px 0;\n  font-size: 21px;\n  font-family: \"Open-Sans-SemiBold\";\n}\n.Admins .page-header .date {\n  font-size: 12px;\n  color: #00000080;\n  font-family: \"Open-Sans-Regular\";\n}\n.Admins .container {\n  width: 100%;\n  display: grid;\n  grid-template-columns: 230px 1fr;\n  justify-content: flex-start;\n  align-content: flex-start;\n}\n.Admins .container .left {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.Admins .container .left .userimage {\n  width: 140px;\n  height: 140px;\n  border-radius: 70px;\n}\n.Admins .container .left .username {\n  font-family: \"Open-Sans-Bold\";\n  font-size: 21px;\n  color: #000;\n  margin-top: 16px;\n}\n.Admins .container .right {\n  margin-left: 30px;\n  position: relative;\n}\n.Admins .container .right .info-container {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  margin: 25px auto;\n}\n.Admins .container .right .info-container .icon {\n  width: 30px;\n  height: 30px;\n  margin-right: 24px;\n}\n.Admins .container .right .info-container .value {\n  font-family: \"Open-Sans-Semibold\";\n  font-size: 18px;\n  color: #000;\n}\n.Admins .container .right .buttons-container {\n  position: absolute;\n  right: 50px;\n  top: 80px;\n  width: 200px;\n  height: 100px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.Admins .container .right .buttons-container button {\n  width: 170px;\n  height: 39px;\n  background: #fff;\n  border-radius: 31px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n  font-size: 14px;\n  font-family: \"Open-Sans-Bold\";\n}\n.Admins .container .right .buttons-container button.edit {\n  color: #FFA800;\n  border: 2px solid #FFA800;\n}\n.Admins .container .right .buttons-container button.delete {\n  color: #FF0000;\n  border: 2px solid #FF0000;\n}\n.Admins .container .right .buttons-container .icon {\n  margin-right: 16px;\n}\n.Admins .container .right .buttons-container .text {\n  font-size: 14px;\n  font-family: \"Open-Sans-Bold\";\n  color: #22AEE4;\n}\n.Admins .seperator {\n  width: 100%;\n  height: 1px;\n  background: #ccc;\n}\n.Admins .auth {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Admins .auth .title {\n  margin: 20px 0;\n  font-size: 16px;\n  font-family: \"Open-Sans-Bold\";\n  color: #000;\n}\n.Admins .auth .flex-container {\n  margin-left: 40px;\n}\n.Admins .auth .flex-container .row {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  margin: 10px 0;\n}\n.Admins .auth .flex-container .row .text {\n  margin-left: 10px;\n  width: 100%;\n}\n.Admins .edit-admin-modal {\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.6);\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.Admins .edit-admin-modal .modal-container {\n  padding: 30px 180px;\n  width: 904px;\n  height: 600px;\n  background: #E8ECF3;\n  border: 1px solid #F9F9F9;\n  border-radius: 20px;\n  position: relative;\n}\n.Admins .edit-admin-modal .modal-container .title {\n  font-family: \"Open-Sans-Bold\";\n  font-size: 16px;\n  color: #22AEE4;\n  width: 100%;\n  text-align: center;\n}\n.Admins .edit-admin-modal .modal-container .input-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  width: 100%;\n  margin: 10px auto;\n}\n.Admins .edit-admin-modal .modal-container .input-container .title {\n  text-align: left;\n  font-family: \"Open-Sans-regular\";\n  font-size: 16px;\n  color: #000;\n  margin-bottom: 10px;\n}\n.Admins .edit-admin-modal .modal-container .input-container .input {\n  width: 100%;\n  max-width: 628px;\n  background: #F9F9F9;\n  border: 2px solid #EDEDED;\n  border-radius: 7px;\n  padding: 12px;\n}\n.Admins .edit-admin-modal .modal-container .button-container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 40px auto;\n}\n.Admins .edit-admin-modal .modal-container .button-container .save-button {\n  width: 170px;\n  height: 39px;\n  background: #22AEE4;\n  border: 1px solid #22AEE4;\n  border-radius: 31px;\n  font-size: 14px;\n  font-family: \"Open-Sans-Bold\";\n  color: #fff;\n}\n.Admins .edit-admin-modal .close {\n  position: absolute;\n  top: 30px;\n  right: 30px;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -67557,6 +67719,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=style&index=0&lang=scss&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=style&index=0&lang=scss& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ShowAdmin.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Employees/Drivers/AddDriver.vue?vue&type=style&index=0&lang=scss&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--12-2!./node_modules/sass-loader/dist/cjs.js??ref--12-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Employees/Drivers/AddDriver.vue?vue&type=style&index=0&lang=scss& ***!
@@ -73407,7 +73599,7 @@ var render = function() {
                   staticClass: "link",
                   on: {
                     click: function($event) {
-                      return _vm.goToShowStaff(admin.id)
+                      return _vm.goToShowAdmin(admin.id)
                     }
                   }
                 },
@@ -73456,6 +73648,8 @@ var render = function() {
               _vm._m(4),
               _vm._v(" "),
               _vm._m(5),
+              _vm._v(" "),
+              _vm._m(6),
               _vm._v(" "),
               _c(
                 "span",
@@ -73542,6 +73736,307 @@ var staticRenderFns = [
           name: "admin_name",
           placeholder: "MM / DD / YYYY"
         }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Location")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: { type: "text", name: "admin_location", placeholder: "Location" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "button-container" }, [
+      _c("button", { staticClass: "save-button", attrs: { type: "button" } }, [
+        _vm._v("Save")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=template&id=05f6caa7&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=template&id=05f6caa7& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "Admins" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "left" }, [
+        _c("img", {
+          staticClass: "userimage",
+          attrs: { src: "/images/icons/profile.svg", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "username" }, [
+          _vm._v(_vm._s(_vm.admin[0].name) + " ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "right" }, [
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-email.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [
+            _vm._v(_vm._s(_vm.admin[0].email))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-phone.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [
+            _vm._v(_vm._s(_vm.admin[0].phone))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-calendar.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [
+            _vm._v(_vm._s(_vm.admin[0].date_of_join))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info-container" }, [
+          _c("img", {
+            staticClass: "icon",
+            attrs: { src: "/images/admin/icons/profile-location.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "value" }, [
+            _vm._v(_vm._s(_vm.admin[0].location))
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.superadmin
+          ? _c("div", { staticClass: "buttons-container" }, [
+              _c(
+                "button",
+                { staticClass: "edit", on: { click: _vm.openModal } },
+                [_vm._v("Edit")]
+              ),
+              _vm._v(" "),
+              _c("button", { staticClass: "delete" }, [_vm._v("Delete")])
+            ])
+          : _vm._e()
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "seperator" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "auth" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Given Authorizations")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex-container" }, [
+        _c("div", { staticClass: "row" }, [
+          _vm.superadmin
+            ? _c("input", { attrs: { type: "checkbox", name: "auth1" } })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("p", { staticClass: "text" }, [
+            _vm._v(
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _vm.superadmin
+            ? _c("input", { attrs: { type: "checkbox", name: "auth2" } })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("p", { staticClass: "text" }, [
+            _vm._v(
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _vm.superadmin
+            ? _c("input", { attrs: { type: "checkbox", name: "auth3" } })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("p", { staticClass: "text" }, [
+            _vm._v(
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _vm.superadmin
+            ? _c("input", { attrs: { type: "checkbox", name: "auth4" } })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("p", { staticClass: "text" }, [
+            _vm._v(
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _vm.superadmin
+            ? _c("input", { attrs: { type: "checkbox", name: "auth5" } })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("p", { staticClass: "text" }, [
+            _vm._v(
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _vm.superadmin
+            ? _c("input", { attrs: { type: "checkbox", name: "auth6" } })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("p", { staticClass: "text" }, [
+            _vm._v(
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("form", { attrs: { action: "/dummy", method: "post" } }, [
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
+      _vm._v(" "),
+      _vm.showModal
+        ? _c("div", { staticClass: "edit-admin-modal" }, [
+            _c("div", { staticClass: "modal-container" }, [
+              _c("p", { staticClass: "title" }, [_vm._v("Edit Admin")]),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "close", on: { click: _vm.closeModal } },
+                [_vm._v("X")]
+              )
+            ])
+          ])
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Admin Name")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: { type: "text", name: "name", placeholder: "Admin Name" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: { type: "text", name: "email", placeholder: "Example@gmail.com" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Phone Number")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: { type: "text", name: "phone", placeholder: "(XXX)-XXX-XXXX" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Date of Birth")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: {
+          type: "date",
+          name: "admin_name",
+          placeholder: "MM / DD / YYYY"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-container" }, [
+      _c("p", { staticClass: "title" }, [_vm._v("Location")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: { type: "text", name: "admin_location", placeholder: "Location" }
       })
     ])
   },
@@ -94406,6 +94901,8 @@ var ShowUser = __webpack_require__(/*! ./components/Admin/Pages/Users/ShowUser.v
 
 
 var Admins = __webpack_require__(/*! ./components/Admin/Pages/Employees/Admins/Admins.vue */ "./resources/js/components/Admin/Pages/Employees/Admins/Admins.vue")["default"];
+
+var ShowAdmin = __webpack_require__(/*! ./components/Admin/Pages/Employees/Admins/ShowAdmin.vue */ "./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue")["default"];
 /* Launder Staff */
 
 
@@ -94499,6 +94996,7 @@ var app = new Vue({
 
     /* Employees Pages */
     Admins: Admins,
+    ShowAdmin: ShowAdmin,
 
     /* Drivers */
     Drivers: Drivers,
@@ -96484,6 +96982,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Admins_vue_vue_type_template_id_626635ff___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Admins_vue_vue_type_template_id_626635ff___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ShowAdmin_vue_vue_type_template_id_05f6caa7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ShowAdmin.vue?vue&type=template&id=05f6caa7& */ "./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=template&id=05f6caa7&");
+/* harmony import */ var _ShowAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShowAdmin.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ShowAdmin_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ShowAdmin.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ShowAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ShowAdmin_vue_vue_type_template_id_05f6caa7___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ShowAdmin_vue_vue_type_template_id_05f6caa7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ShowAdmin.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/style-loader!../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/src??ref--12-2!../../../../../../../node_modules/sass-loader/dist/cjs.js??ref--12-3!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ShowAdmin.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_12_2_node_modules_sass_loader_dist_cjs_js_ref_12_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=template&id=05f6caa7&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=template&id=05f6caa7& ***!
+  \***********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_template_id_05f6caa7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ShowAdmin.vue?vue&type=template&id=05f6caa7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Pages/Employees/Admins/ShowAdmin.vue?vue&type=template&id=05f6caa7&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_template_id_05f6caa7___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowAdmin_vue_vue_type_template_id_05f6caa7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
