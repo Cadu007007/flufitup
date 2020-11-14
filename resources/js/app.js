@@ -66,8 +66,13 @@ var Users = require('./components/Admin/Pages/Users/Users.vue').default
 var ShowUser = require('./components/Admin/Pages/Users/ShowUser.vue').default
     /* XX Users XX */
 
+/* ** Planners ** */
+var PickupPlanner = require('./components/Admin/Pages/Planners/PickupPlanner.vue').default
+var DelieveryPlanner = require('./components/Admin/Pages/Planners/DelieveryPlanner.vue').default
 
-/* Employees */
+
+/* XX Planners XX */
+/* ** Employees ** */
 var Admins = require('./components/Admin/Pages/Employees/Admins/Admins.vue').default
 var ShowAdmin = require('./components/Admin/Pages/Employees/Admins/ShowAdmin.vue').default
     /* Launder Staff */
@@ -136,7 +141,11 @@ const app = new Vue({
         AdminPackages,
         Users,
         ShowUser,
-        /* Employees Pages */
+        /*** Planners ***/
+        PickupPlanner,
+        DelieveryPlanner,
+        /*** XX Planners XX ***/
+        /***  Employees Pages ****/
         Admins,
         ShowAdmin,
         /* Drivers */
@@ -151,6 +160,7 @@ const app = new Vue({
         EditLaunderyStaff,
         AddLaunderyStaff,
         /* Laundery Staff */
+        /***  Employees Pages ****/
         /* Promocodes */
         Promocodes,
         AddPromocode,
