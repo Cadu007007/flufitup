@@ -9,7 +9,8 @@
         </div>
         <div class="form-container">
 
-            <form action="/register" method="POST">
+            <form action="{{ route('register.post') }}" method="POST">
+                @csrf
                 <div class="double-input-container">
 
                     <div class="input-container">
@@ -54,23 +55,27 @@
                     
                     @error('phone')
                     <div class="error-container">
-                        <img src="" alt="" class="icon">
+                        {{-- <img src="" alt="" class="icon"> --}}
+                        <img src="/images/icons/incorrect.svg" alt="" class="icon">
+
                         <p class="error-message">{{$errors->first('phone')}}</p>
                     </div>
                     @enderror
                     
                     @error('password')
                     <div class="error-container">
-                        <img src="" alt="" class="icon">
-                        <p class="error-message">{{$errors->first('passsword')}}</p>
+                        {{-- <img src="" alt="" class="icon"> --}}
+                        <img src="/images/icons/incorrect.svg" alt="" class="icon">
+
+                        <p class="error-message">{{$errors->first('password')}}</p>
                     </div>
                     @enderror
                     
                 </div>
                 
                 <div class="input-container">
-                    <label for="re_password" class="form-label">Re-Enter Password</label>
-                    <input name="re_password"  type="password" class="form-input" placeholder="Re-Enter Your Password"/>
+                    <label for="password_confirmation" class="form-label">Re-Enter Password</label>
+                    <input name="password_confirmation"  type="password" class="form-input" placeholder="Re-Enter Your Password"/>
                 </div>
 
                 <div class="button-container">
