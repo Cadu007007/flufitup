@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -29,6 +31,20 @@ class LoginController extends Controller
     public function username()
     {
         return 'phone';
+    }
+
+    public function login(Request $request)
+    {
+        if (Auth::guard('web')->attempt(['phone' => $request->phone_number, 'password' => $request->password], $request->remember)) {
+            if (auth()->user()->isVerified) {
+                return redirect()->intended(route('home'));
+            } else {
+                $phone_number = auth()->user()->phone;
+                Auth::logout();
+                return redirect()->route('verify_phone')->with('phone_number', $phone_number);
+            }
+        }
+        return back()->with('warning', __('auth.failed'));
     }
     /**
      * Where to redirect users after login.

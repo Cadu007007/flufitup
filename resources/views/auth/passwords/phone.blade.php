@@ -13,7 +13,9 @@
         </p>
         <div class="form-container">
 
-            <form action="/login" method="POST">
+            <form action="{{ route('send.code') }}" method="POST">
+                @csrf
+                
                 <div class="input-container">
                     <label for="phone" class="form-label">Phone Number</label>
                     <input name="phone" type="text" class="form-input" placeholder="(XXX)-XXX-XXXX" value="{{ old('phone') }}"/>
