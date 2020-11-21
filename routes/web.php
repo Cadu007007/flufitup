@@ -587,12 +587,31 @@ Route::get('/admin/users/show/{id}', function () {
 
 /* Pickup */
 Route::get('/admin/pickup_planner', function () {
-    return view('admin.planners.pickup.index', ['active' => 'pickup_planner']);
+    $orders = collect();
+    $orders->push(['id' => 123456 , 'city' => 'Alexandria', 'drop_off_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 2 , 'package_name' => 'Package 1' , 'assigned_to' => 1]);
+    $orders->push(['id' => 234567 , 'city' => 'Cairo', 'drop_off_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 1 , 'package_name' => 'Package 2' , 'assigned_to' => 2]);
+    $orders->push(['id' => 345678 , 'city' => 'Giza', 'drop_off_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 3 , 'package_name' => 'Package 3' , 'assigned_to' => 'Unassigned']);
+    
+    $drivers = collect();
+    $drivers->push(['id' => 1 , 'name' => 'Mohamed', 'image' => '/images/profile.svg']);
+    $drivers->push(['id' => 2 , 'name' => 'Ahmed', 'image' => '/images/profile.svg']);
+    $drivers->push(['id' => 3 , 'name' => 'Amr', 'image' => '/images/profile.svg']);
+    return view('admin.planners.pickup.index', ['active' => 'pickup_planner','orders' => $orders,'drivers' =>$drivers]);
 })->name('admin.planner.pickup');
 
 /* Delievery */
 Route::get('/admin/delievery_planner', function () {
-    return view('admin.planners.delievery.index', ['active' => 'delievery_planner']);
+
+    $orders = collect();
+    $orders->push(['id' => 123456 , 'city' => 'Alexandria','type_of_delievery' => ' Type Of Delievery', 'pick_up_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 2 , 'package_name' => 'Package 1' , 'assigned_to' => 1]);
+    $orders->push(['id' => 234567 , 'city' => 'Cairo','type_of_delievery' => ' Type Of Delievery', 'pick_up_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 1 , 'package_name' => 'Package 2' , 'assigned_to' => 2]);
+    $orders->push(['id' => 345678 , 'city' => 'Giza','type_of_delievery' => ' Type Of Delievery', 'pick_up_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 3 , 'package_name' => 'Package 3' , 'assigned_to' => 'Unassigned']);
+    
+    $drivers = collect();
+    $drivers->push(['id' => 1 , 'name' => 'Mohamed', 'image' => '/images/profile.svg']);
+    $drivers->push(['id' => 2 , 'name' => 'Ahmed', 'image' => '/images/profile.svg']);
+    $drivers->push(['id' => 3 , 'name' => 'Amr', 'image' => '/images/profile.svg']);
+    return view('admin.planners.delievery.index', ['active' => 'delievery_planner','orders' => $orders,'drivers' =>$drivers]);
 })->name('admin.planner.delievery');
 
 /******************************
