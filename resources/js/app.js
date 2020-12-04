@@ -60,8 +60,12 @@ var CancelledOrders = require('./components/Admin/Pages/Dashboard/CancelledOrder
 
 /************ XX Dashboard XX ********** */
 var Reports = require('./components/Admin/Pages/Reports/Reports.vue').default
+    /* Packages */
 var AdminPackages = require('./components/Admin/Pages/Packages/AdminPackages.vue').default
-    /* Users */
+var DryClean = require('./components/Admin/Pages/Packages/DryClean.vue').default
+
+/* XX Packages XX */
+/* Users */
 var Users = require('./components/Admin/Pages/Users/Users.vue').default
 var ShowUser = require('./components/Admin/Pages/Users/ShowUser.vue').default
     /* XX Users XX */
@@ -138,7 +142,10 @@ const app = new Vue({
         CancelledOrders,
         /* XX dashboard pages XX */
         Reports,
+        /* Packages */
         AdminPackages,
+        DryClean,
+        /* XX Packages XX */
         Users,
         ShowUser,
         /*** Planners ***/

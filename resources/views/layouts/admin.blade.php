@@ -17,7 +17,12 @@
                 active="{{ $active }}"
                 routetodashboard="{{ route('admin.dashboard') }}"
                 routetoreports="{{ route('admin.reports') }}"
+                
                 routetopackages="{{ route('admin.packages') }}"
+                routetodryclean="{{ route('admin.packages.dry_clean') }}"
+                routetohouseholditems="{{ route('admin.packages.household_items') }}"
+                routetodetergents="{{ route('admin.packages.detergents') }}"
+
                 routetousers="{{ route('admin.users') }}"
 
                 routetopickupplanner="{{ route('admin.planner.pickup') }}"

@@ -533,8 +533,56 @@ Route::get('/admin/reports', function () {
  * ************************** */
 
 Route::get('/admin/packages', function () {
-    return view('admin.packages.index', ['active' => 'packages']);
+
+    $packages = collect();
+    $packages->adhoc = collect();
+    $packages->bi_weekly = collect();
+    $packages->monthly = collect();
+    $packages->tailored = collect();
+
+    $packages->adhoc->push(['id' => 1, 'name' => 'Ad Hoc', 'users' => 3]);
+    $packages->adhoc->push(['id' => 2, 'name' => 'Ad Hoc - Heavy', 'users' => 2]);
+
+    $packages->bi_weekly->push(['id' => 4, 'name' => 'Bi-Weekly', 'users' => 5]);
+    $packages->bi_weekly->push(['id' => 5, 'name' => 'Bi-Weekly – Big Job', 'users' => 2]);
+
+    $packages->monthly->push(['id' => 7, 'name' => 'Monthly', 'users' => 1]);
+    $packages->monthly->push(['id' => 8, 'name' => 'Monthly - Busy', 'users' => 3]);
+    $packages->monthly->push(['id' => 9, 'name' => 'Monthly - Heavy', 'users' => 2]);
+
+    $packages->tailored->push(['id' => 10, 'name' => 'Tailored Packages', 'users' => 4]);
+
+
+    return view('admin.packages.index', ['active' => 'packages',  'packages' => $packages]);
 })->name('admin.packages');
+
+Route::get('/admin/packages/create', function () {
+    return view('admin.packages.create', ['active' => 'packages']);
+})->name('admin.packages.add');
+
+
+/* Dry Clean */
+Route::get('/admin/packages/dry_clean', function () {
+    $dry_clean_items= collect();
+    $dry_clean_items->push(['id' => 1 ,'label' => 'Item 1' , 'price' => '10$']);
+    $dry_clean_items->push(['id' => 2 ,'label' => 'Item 2' , 'price' => '20$']);
+    return view('admin.packages.dry_clean.index', ['active' => 'dry_clean', 'dry_clean_items' =>$dry_clean_items]);
+})->name('admin.packages.dry_clean');
+/* XX Dry Clean XX */
+
+/* Household items */
+Route::get('/admin/packages/household_items', function () {
+    return view('admin.packages.household_items.index', ['active' => 'household_items']);
+})->name('admin.packages.household_items');
+/* XX Household items XX */
+
+/* Detergents */
+Route::get('/admin/packages/detergents', function () {
+    return view('admin.packages.detergents.index', ['active' => 'detergents']);
+})->name('admin.packages.detergents');
+/* XX Detergents XX */
+
+
 
 /******************************
  * Packages End

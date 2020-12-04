@@ -23,7 +23,7 @@ $light-grey:#EEF2F4;
 .PackageUserscard{
     width: 200px;
     height: 150px;
-    margin: 12px 0;
+    margin: 12px 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

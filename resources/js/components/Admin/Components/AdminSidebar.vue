@@ -19,6 +19,7 @@
   icon='/images/admin/icons/reports.svg' 
   iconActive='/images/admin/icons/reports-active.svg'/>
 
+<!--
   <AdminSidebarItem :class=" active == 'packages' ? 'active' : '' " 
   class="AdminSidebarItem" 
   :href=routetopackages
@@ -26,6 +27,20 @@
   itemtooltip="Packages"
   icon='/images/admin/icons/packages.svg' 
   iconActive='/images/admin/icons/packages-active.svg'/>
+
+-->
+
+<AdminSidebarPackagesMenu
+class="AdminSidebarItem" 
+:class="(active == 'dry_clean' || active == 'household_items' || active == 'detergents') ? 'menu-title-active' : '' "
+:active="active"
+:routetopackages= "routetopackages"
+icon='/images/admin/icons/packages.svg' 
+iconActive='/images/admin/icons/packages-active.svg'
+:routetodryclean="routetodryclean"
+:routetohouseholditems="routetohouseholditems"
+:routetodetergents="routetodetergents"
+/>
 
 
   <AdminSidebarItem :class=" active == 'users' ? 'active' : '' " 
@@ -41,7 +56,6 @@
 class="AdminSidebarItem" 
 :class="(active == 'pickup_planner' || active == 'delievery_planner') ? 'menu-active' : '' "
 :active="active"
-:routetoplanner="routetopickupplanner"
 icon='/images/admin/icons/planner-icon.svg' 
 iconActive='/images/admin/icons/planner-icon-active.svg'
 :routetopickupplanner="routetopickupplanner"
@@ -52,25 +66,12 @@ iconActive='/images/admin/icons/planner-icon-active.svg'
 class="AdminSidebarItem" 
 :class="(active == 'admins' || active == 'drivers' || active == 'laundery_staff') ? 'menu-active' : '' "
 :active="active"
-:routetoplanner="routetopickupplanner"
 icon='/images/admin/icons/employees-icon.svg' 
 iconActive='/images/admin/icons/employees-icon-active.svg'
 :routetoadmins="routetoadmins"
 :routetodrivers="routetodrivers"
 :routetolaunderystaff="routetolaunderystaff"
 />
-
-<!--
-  <AdminSidebarItem :class=" active == 'admins' ? 'active' : '' " 
-  class="AdminSidebarItem" 
-  :href=routetoadmins
-  title="Admins"
-  itemtooltip="Admins"
-  icon='/images/admin/icons/admins.svg' 
-  iconActive='/images/admin/icons/admins-active.svg'/>
- -->
-
-
 
   <AdminSidebarItem :class=" active == 'promocodes' ? 'active' : '' " 
   class="AdminSidebarItem" 
@@ -98,9 +99,12 @@ iconActive='/images/admin/icons/employees-icon-active.svg'
 import AdminSidebarItem from './AdminSidebarItem'
 import AdminSidebarPlannerMenu from './AdminSidebarPlannerMenu'
 import AdminSidebarEmployeesMenu from './AdminSidebarEmployeesMenu'
+import AdminSidebarPackagesMenu from './AdminSidebarPackagesMenu'
 
 export default {
-    props:['active','routetodashboard','routetoreports','routetopackages','routetousers','routetoadmins',
+    props:['active','routetodashboard','routetoreports',
+            'routetopackages','routetodryclean','routetohouseholditems','routetodetergents',
+            'routetousers','routetoadmins',
             'routetopickupplanner','routetopickdelieveryplanner',
             'routetoadmins','routetodrivers','routetolaunderystaff',
             'routetopromocodes','routetozones'
@@ -109,6 +113,7 @@ export default {
         AdminSidebarItem,
         AdminSidebarPlannerMenu,
         AdminSidebarEmployeesMenu,
+        AdminSidebarPackagesMenu
     }
 
 }
