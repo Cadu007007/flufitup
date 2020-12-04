@@ -6,6 +6,7 @@
     </div>
     <div class="items-container">
         <Dashboard-Item
+        :showvalue = true
         class="DashboardItem"
         :value="totalclients"
         title="Total Clients"
@@ -16,11 +17,13 @@
         <Dashboard-Item
         class="DashboardItem"
         :value="newclients"
+        :showvalue = true
         title="New Clients"
         color="#22AEE4"
         :gotoroute="newclientsroute"
         />
         <Dashboard-Item
+        :showvalue = false
         class="DashboardItem"
         :value="salespermonth"
         title="Sales per Month"
@@ -30,6 +33,7 @@
         
         <Dashboard-Item
         class="DashboardItem"
+        :showvalue = false
         :value="salesperpackage"
         title="Sales per Package"
         color="#22AEE4"
@@ -37,6 +41,7 @@
         />
         <Dashboard-Item
         class="DashboardItem"
+        :showvalue = false
         :value="userspercity"
         title="Users per City"
         color="#22AEE4"
@@ -45,6 +50,7 @@
         
         <Dashboard-Item
         class="DashboardItem"
+        :showvalue = true
         :value="cancelledorders"
         title="Cancelled Orders"
         color="#0000004D"
@@ -55,7 +61,7 @@
 
     <div class="flex-row">
         <div class="calendar-container">
-            <p class="calendar-title">Calendar Control</p>
+           <!-- <p class="calendar-title">Calendar Control</p> -->
             <vue-event-calendar :events="selectedDates"></vue-event-calendar>
         </div>
         <NumberOfOrdersCard

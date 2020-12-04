@@ -6,7 +6,7 @@
     </div>
 
     <div class="calendar-container">
-        <p class="calendar-title">Calendar Control</p>
+        <!-- <p class="calendar-title">Calendar Control</p> -->
         <vue-event-calendar :events="selecteddates"></vue-event-calendar>
     </div>
   </div>

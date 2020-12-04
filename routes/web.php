@@ -438,9 +438,9 @@ Route::get('/admin/clients/total', function () {
 Route::get('/admin/clients/new', function () {
     $clients = collect();
 
-    $clients->push(['id' => 1, 'name' => 'Ali Ahmed', 'city' => 'Cairo', 'day_of_subscribe' => '12/15/2020', 'package_name' => 'Package 2']);
-    $clients->push(['id' => 2, 'name' => 'Dooooooby', 'city' => 'Giza', 'day_of_subscribe' => '12/16/2020', 'package_name' => 'Package 3']);
-    $clients->push(['id' => 3, 'name' => 'Mohamed Salah', 'city' => 'Alexandria', 'day_of_subscribe' => '12/14/2020', 'package_name' => 'Package 1']);
+    $clients->push(['id' => 1, 'name' => 'Ali Ahmed', 'city' => 'Cairo', 'day_of_subscribe' => '12/15/2020', 'package_name' => 'Package 2', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
+    $clients->push(['id' => 2, 'name' => 'Dooooooby', 'city' => 'Giza', 'day_of_subscribe' => '12/16/2020', 'package_name' => 'Package 3', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
+    $clients->push(['id' => 3, 'name' => 'Mohamed Salah', 'city' => 'Alexandria', 'day_of_subscribe' => '12/14/2020', 'package_name' => 'Package 1', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
 
     return view('admin.dashboard.new_clients.index', ['active' => 'dashboard', 'clients' => $clients]);
 })->name('admin.dashboard.new_clients');

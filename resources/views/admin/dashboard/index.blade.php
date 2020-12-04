@@ -5,7 +5,7 @@
 title="Dashboard"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :totalclients="{{ $state_numbers->total_clients }}"
-totalclientsroute="{{ route('admin.dashboard.total_clients') }}"
+totalclientsroute="{{ route('admin.users') }}"
 :newclients="{{ $state_numbers->new_clients }}"
 newclientsroute="{{ route('admin.dashboard.new_clients') }}"
 :salespermonth="{{ $state_numbers->sales_per_month }}"

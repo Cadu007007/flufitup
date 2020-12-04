@@ -8,9 +8,11 @@
         <thead>
         <tr>
             <th class="username-head"  data-order="asc"><div class="table-head-flex"><p class="title">Username</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
-            <th class="city-head">City</th>
+            <th class="city-head"><div class="table-head-flex"><p class="title">City</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
             <th class="date-head"><div class="table-head-flex"><p class="title">Day of Subscription</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
-            <th class="package-head">Package Name</th>
+            <th class="package-head"><div class="table-head-flex"><p class="title">Package Name</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <th class="package-head"><div class="table-head-flex"><p class="title">First Delievery</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <th class="package-head"><div class="table-head-flex"><p class="title">Last Delievery</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +21,8 @@
             <td class="city-cell">{{client.city}}</td>
             <td class="date-cell">{{client.day_of_subscribe}}</td>
             <td class="package-cell">{{client.package_name}}</td>
+            <td class="package-cell">{{client.first_delievery}}</td>
+            <td class="package-cell">{{client.last_delievery}}</td>
         </tr>
         </tbody>
     </table>

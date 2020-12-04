@@ -1,13 +1,13 @@
 <template>
   <div class="DashboardItem" @click="goToTheRoute">
-    <p class="value" :style="{ color: color }">{{ value }} </p>
+    <p class="value" :style="{ color: color }" v-if="showvalue == true">{{ value }}</p>
     <p class="title">{{ title }} </p>
   </div>
 </template>
 
 <script>
 export default {
-    props:['value','title','color','gotoroute'],
+    props:['value','title','color','gotoroute','showvalue'],
     methods: {
       goToTheRoute(){
         window.location.href = this.gotoroute
