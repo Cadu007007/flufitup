@@ -13,20 +13,29 @@
         </p>
         <div class="form-container">
 
+            @if(Session::get('forget'))
+
+            <form action="{{ route('forget.change.password') }}" method="POST">
+                @else
             <form action="{{ route('verify.post') }}" method="POST">
+                @endif
                 @csrf
                 <div class="input-container">
-                    <input type="hidden" name="phone_number" value="{{session('phone_number')}}">
+                    {{-- {{ $error }} --}}
+                    <input type="hidden" id="phone_number" name="phone_number" value="{{old('phone_number',session('phone_number'))  }}">
                
-                    <input name="digit1" maxlength="1"  type="text" class="digit-input" placeholder=""/>
-                    <input name="digit2" maxlength="1"  type="text" class="digit-input" placeholder=""/>
-                    <input name="digit3" maxlength="1"  type="text" class="digit-input" placeholder=""/>
-                    <input name="digit4" maxlength="1"  type="text" class="digit-input" placeholder=""/>
-                    <input name="digit5" maxlength="1"  type="text" class="digit-input" placeholder=""/>
-                    <input name="digit6" maxlength="1"  type="text" class="digit-input" placeholder=""/>
+                    <input name="digit[0]" maxlength="1"  type="text" class="digit-input" placeholder=""/>
+                    <input name="digit[1]" maxlength="1"  type="text" class="digit-input" placeholder=""/>
+                    <input name="digit[2]" maxlength="1"  type="text" class="digit-input" placeholder=""/>
+                    <input name="digit[3]" maxlength="1"  type="text" class="digit-input" placeholder=""/>
+                    <input name="digit[4]" maxlength="1"  type="text" class="digit-input" placeholder=""/>
+                    <input name="digit[5]" maxlength="1"  type="text" class="digit-input" placeholder=""/>
                
                 </div>
+                <div class="button-container">
 
+                    <a href="#" onclick="resend()">Resend Code</a>
+                </div>
                 <div class="button-container">
                     <button type="submit" class="login-button">
                         Submit
@@ -38,4 +47,20 @@
 </div>
 
 @include('components.landing.footer')
+<script>
+   function resend()
+   {
+       var phone = $('#phone_number').val();
+       $.ajax({
+        url:"{{ route('resend.code') }}",
+        method:"GET",
+        data:{
+            phone:phone,
+        },success:function(data){
+            
+            console.log(data);
+        },
+       });
+   }
+</script>
 

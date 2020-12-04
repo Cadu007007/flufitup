@@ -9,10 +9,11 @@
         </p>
         <div class="form-container">
 
-            <form action="/login" method="POST">
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
                 <div class="input-container">
                     <label for="phone" class="form-label">Phone Number</label>
-                    <input name="phone" type="text" class="form-input" placeholder="(XXX)-XXX-XXXX" value="{{ old('phone') }}"/>
+                    <input name="phone_number" type="text" class="form-input" placeholder="(XXX)-XXX-XXXX" value="{{ old('phone') }}"/>
                 </div>
                  <div class="input-container">
                     <label for="password" class="form-label">Password</label>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,9 +38,25 @@ Route::get('/', function () {
 
 Route::post('register/post', [AuthController::class, 'create'])->name('register.post');
 Route::post('verify/post', [AuthController::class, 'verify'])->name('verify.post');
+Route::get('/verify/phone', function () {
+    return view('auth.verify_phone', ['active' => 'logout']);
+})->name('verify_phone');
+Route::get('/resend/code', [AuthController::class, 'resend'])->name('resend.code');
+Route::post('/forget/password', [AuthController::class, 'resend'])->name('send.code');
+Route::post('/change/password', [AuthController::class, 'changePassword'])->name('forget.change.password');
+Route::post('/password/update', [AuthController::class, 'updatePassword'])->name('forget.update.password');
+// Route::post('/update/forget/password',[AuthController::class,''])
 Auth::routes();
+Route::post('login', [
+    'as' => 'user.login',
+    'uses' => [LoginController::class, 'login'],
+]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/password/new', function () {
+//     return view('auth.reset_password', ['active' => 'logout']);
+// })->name('reset_password');
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /********************************************************
  ************  TESTING ROUTES FOR DESIGN   **************
@@ -359,25 +376,17 @@ Route::get('/old_orders/show/{id}', function () {
  *  Verify Phone
 /**************************** */
 
-Route::get('/register/verifyphone', function () {
-    return view('auth.verify_phone', ['active' => 'logout']);
-})->name('verify_phone');
-
 /*****************************
  *  Set new Password
 /**************************** */
-
-Route::get('/password/new', function () {
-    return view('auth.reset_password', ['active' => 'logout']);
-})->name('reset_password');
 
 /*****************************
  *  Logout
 /**************************** */
 
-Route::get('/login', function () {
-    return view('auth.login', ['active' => 'logout']);
-})->name('user.login');
+// Route::get('/login', function () {
+//     return view('auth.login', ['active' => 'logout']);
+// })->name('user.login');
 
 Route::post('/dummy', function (Request $request) {
     return dd($request);
@@ -673,20 +682,18 @@ Route::get('/admin/employees/admins', function () {
     return view('admin.employees.admins.index', ['active' => 'admins', 'admins' => $admins, 'superadmin' => $superadmin]);
 })->name('admin.employees.admins');
 
-
 Route::get('/admin/employees/admins/show/{id}', function () {
     $admin = collect();
-    $admin->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'2020-11-11','location'=> 'location']);
+    $admin->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '2020-11-11', 'location' => 'location']);
     $is_superadmin = true;
-    return view('admin.employees.admins.show', ['active' => 'admins','admin'=>$admin, 'is_superadmin' => $is_superadmin]);
+    return view('admin.employees.admins.show', ['active' => 'admins', 'admin' => $admin, 'is_superadmin' => $is_superadmin]);
 })->name('admin.employees.admins.show');
-
 
 Route::get('/admin/employees/admins/edit/{id}', function () {
     $admin = collect();
-    $admin->push(['id'=> 1 , 'name'=>'Mohamed','email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx','date_of_join'=>'2020-11-11','location'=> 'location']);
+    $admin->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '2020-11-11', 'location' => 'location']);
 
-    return view('admin.employees.admins.edit', ['active' => 'admins','admin'=>$admin]);
+    return view('admin.employees.admins.edit', ['active' => 'admins', 'admin' => $admin]);
 })->name('admin.employees.admins.edit');
 
 Route::get('/admin/employees/admins/create', function () {
@@ -694,7 +701,7 @@ Route::get('/admin/employees/admins/create', function () {
 })->name('admin.employees.admins.create');
 Route::post('/admin/employees/admins/create', function (Request $request) {
     return view('admin.employees.admins.create_password', ['active' => 'admins', 'email' => $request->email]);
-})->name('admin.employees.admins.create');
+})->name('admin.employees.admins.create.post');
 
 Route::get('/admin/employees/admins/create_password', function () {
     return view('admin.employees.admins.create_password', ['active' => 'admins']);
@@ -703,7 +710,7 @@ Route::get('/admin/employees/admins/create_password', function () {
 Route::post('/admin/employees/admins/create_password', function (Request $request) {
     dd($request);
     return redirect()->route('admin.login', ['email' => 'login']);
-})->name('admin.employees.admins.create_password');
+})->name('admin.employees.admins.create_password.post');
 
 /* XX admins XX */
 

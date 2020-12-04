@@ -21,6 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Auth::logout();
         return redirect()->route('index');
         // return view('welcome');
     }
