@@ -572,10 +572,10 @@ Route::get('/admin/packages/create', function () {
 
 /* Dry Clean */
 Route::get('/admin/packages/dry_clean', function () {
-    $household_items= collect();
-    $household_items->push(['id' => 1 ,'label' => 'Item 1' , 'price' => '10$']);
-    $household_items->push(['id' => 2 ,'label' => 'Item 2' , 'price' => '20$']);
-    return view('admin.packages.dry_clean.index', ['active' => 'dry_clean', 'household_items' =>$household_items]);
+    $dry_clean_items= collect();
+    $dry_clean_items->push(['id' => 1 ,'label' => 'Item 1' , 'price' => '10$']);
+    $dry_clean_items->push(['id' => 2 ,'label' => 'Item 2' , 'price' => '20$']);
+    return view('admin.packages.dry_clean.index', ['active' => 'dry_clean', 'dry_clean_items' =>$dry_clean_items]);
 })->name('admin.packages.dry_clean');
 /* XX Dry Clean XX */
 
@@ -591,7 +591,17 @@ Route::get('/admin/packages/household_items', function () {
 
 /* Detergents */
 Route::get('/admin/packages/detergents', function () {
-    return view('admin.packages.detergents.index', ['active' => 'detergents']);
+    $detergents_items= collect();
+    $types1 = collect();
+    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types2 = collect();
+    $types2->push(["label" => "test2", "price" => "10$" , "img"=> ""]);
+    $detergents_items->push(['id' => 1 ,'name' => 'Item 1' , 'types' => $types1 ]);
+    $detergents_items->push(['id' => 2 ,'name' => 'Item 2' , 'types' => $types2]);
+
+    
+    return view('admin.packages.detergents.index', ['active' => 'detergents','detergents_items' => $detergents_items]);
 })->name('admin.packages.detergents');
 /* XX Detergents XX */
 

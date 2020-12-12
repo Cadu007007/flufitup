@@ -11,16 +11,16 @@
             :href=routetodryclean
             title="Dry Clean"
             itemtooltip="Dry Clean"  
-            icon='/images/admin/icons/dry-clean-icon.svg' 
-            iconActive='/images/admin/icons/dry-clean-icon-active.svg'
+            icon='/images/admin/icons/dry-clean.svg' 
+            iconActive='/images/admin/icons/dry-clean-active.svg'
             />
             <AdminSidebarItem :class="active == 'household_items' ? 'active' : '' " 
             class="AdminSidebarSubItem" 
             :href=routetohouseholditems
             title="Household Items"
             itemtooltip="Household Items"  
-            icon='/images/admin/icons/household-items-icon.svg' 
-            iconActive='/images/admin/icons/household-items-icon-active.svg'
+            icon='/images/admin/icons/household.svg' 
+            iconActive='/images/admin/icons/household-active.svg'
             />
 
             <AdminSidebarItem :class=" active == 'detergents' ? 'active' : '' " 
@@ -28,8 +28,8 @@
             :href=routetodetergents
             title="Detergents"
             itemtooltip="Detergents"
-            icon='/images/admin/icons/detergents-icon.svg' 
-            iconActive='/images/admin/icons/detergents-icon-active.svg'
+            icon='/images/admin/icons/detergents.svg' 
+            iconActive='/images/admin/icons/detergents-active.svg'
             />
 
         </div>
