@@ -2,7 +2,7 @@
   <div class="DryCleanItem">
     <input class="dry-clean-input" type="text" name="label" id="" placeholder="Label" :value="label">
     <input class="dry-clean-input" type="text" name="price" id="" placeholder="Price" :value="price">
-    <span class="delete" @click="$emit('delete-item')">X</span>
+    <span class="delete" @click="$emit('delete-item')"> <img src="/images/admin/icons/notification-cancel.svg" alt=""> </span>
   </div>
 </template>
 

@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-<Reports
+<House-Hold-Items
 title="Household Items"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
+:items="{{$household_items}}"
 />
 @endsection

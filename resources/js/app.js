@@ -47,7 +47,9 @@ var AdminSidebar = require('./components/Admin/Components/AdminSidebar.vue').def
 
 import 'vue-event-calendar/dist/style.css'
 import vueEventCalendar from 'vue-event-calendar'
-Vue.use(vueEventCalendar, { locale: 'en' })
+Vue.use(vueEventCalendar, {
+        locale: 'en'
+    })
     /* XX Admin Global Components XX */
     /************ Dashboard ********** */
 var Dashboard = require('./components/Admin/Pages/Dashboard/Dashboard.vue').default
@@ -63,6 +65,7 @@ var Reports = require('./components/Admin/Pages/Reports/Reports.vue').default
     /* Packages */
 var AdminPackages = require('./components/Admin/Pages/Packages/AdminPackages.vue').default
 var DryClean = require('./components/Admin/Pages/Packages/DryClean.vue').default
+var HouseHoldItems = require('./components/Admin/Pages/Packages/HouseHoldItems.vue').default
 
 /* XX Packages XX */
 /* Users */
@@ -145,6 +148,7 @@ const app = new Vue({
         /* Packages */
         AdminPackages,
         DryClean,
+        HouseHoldItems,
         /* XX Packages XX */
         Users,
         ShowUser,
