@@ -5,13 +5,13 @@
                 type="text"
                 class="item-title"
                 placeholder="Detergent Name"
-                :value="name"
+                v-model="itemName"
             />
 
-            <p class="types-title" v-if="loadedtypes.length">The Types</p>
+            <p class="types-title" v-if="types.length">The Types</p>
 
             <Detergents-Type-Item
-                v-for="(type, index) in loadedtypes"
+                v-for="(type, index) in types"
                 :key="index"
                 :label="type.label"
                 :price="type.price"
@@ -33,18 +33,18 @@ export default {
     data() {
         return {
             loadedtypes: this.types,
+            itemName: this.name
         };
     },
-
     components: {
         DetergentsTypeItem
     },
     methods: {
         addNewType() {
-            this.loadedtypes.push({ label: "", price: "", img:"" });
+            this.types.push({ label: "", price: "", img:"" });
         },
         deleteItem(index) {
-            this.loadedtypes.splice(index, 1);
+            this.types.splice(index, 1);
         }
     }
 };

@@ -9,8 +9,10 @@ Vue.use(Vuex)
 import storeData from "./store/index"
 
 const store = new Vuex.Store(
-    storeData
-)
+        storeData
+    )
+    /* import jQuery */
+import $ from 'jquery'
 
 /* Landing page components */
 var LandingPage = require('./components/LandingPage.vue').default

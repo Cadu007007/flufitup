@@ -2,7 +2,7 @@
     <div class="DetergentsTypeItem">
         <div class="row">
             <div class="image-container">
-                <img src="" alt="" />
+                <img :src="img" alt="" />
 
                 <div class="cam-button">
                     <img
@@ -42,7 +42,7 @@
 
 <script>
 export default {
-    props: ["label", "price"]
+    props: ["label", "price","img"]
 };
 </script>
 
