@@ -70,6 +70,9 @@ var DryClean = require('./components/Admin/Pages/Packages/DryClean.vue').default
 var HouseHoldItems = require('./components/Admin/Pages/Packages/HouseHoldItems.vue').default
 var Detergents = require('./components/Admin/Pages/Packages/Detergents.vue').default
 
+/* Create New Package */
+var CreatePackage = require('./components/Admin/Pages/Packages/CreatePackage.vue').default
+
 /* XX Packages XX */
 /* Users */
 var Users = require('./components/Admin/Pages/Users/Users.vue').default
@@ -153,6 +156,8 @@ const app = new Vue({
         DryClean,
         HouseHoldItems,
         Detergents,
+        /* create package */
+        CreatePackage,
         /* XX Packages XX */
         Users,
         ShowUser,

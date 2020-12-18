@@ -11,10 +11,11 @@
             <p class="types-title" v-if="types.length">The Types</p>
 
             <Detergents-Type-Item
-                v-for="(type, index) in types"
+                v-for="(type, index) in loadedtypes"
                 :key="index"
                 :label="type.label"
                 :price="type.price"
+                :img="type.img"
                 @delete-item="deleteItem(index)"
             />
 
@@ -41,10 +42,10 @@ export default {
     },
     methods: {
         addNewType() {
-            this.types.push({ label: "", price: "", img:"" });
+            this.loadedtypes.push({ label: "", price: "", img:"" });
         },
         deleteItem(index) {
-            this.types.splice(index, 1);
+            this.loadedtypes.splice(index, 1);
         }
     }
 };

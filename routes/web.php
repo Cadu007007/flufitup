@@ -566,7 +566,13 @@ Route::get('/admin/packages', function () {
 })->name('admin.packages');
 
 Route::get('/admin/packages/create', function () {
-    return view('admin.packages.create', ['active' => 'packages']);
+    $added_values = collect();
+    $added_values->push(['id' => 1 , 'name' => 'added 1']);
+    $added_values->push(['id' => 2 , 'name' => 'added 2']);
+    $added_values->push(['id' => 3 , 'name' => 'added 3']);
+    $added_values->push(['id' => 4 , 'name' => 'added 4']);
+    $added_values->push(['id' => 5 , 'name' => 'added 5']);
+    return view('admin.packages.create', ['active' => 'packages','added_values'=>$added_values]);
 })->name('admin.packages.add');
 
 

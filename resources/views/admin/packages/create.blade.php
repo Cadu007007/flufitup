@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-<Admin-Packages
-title="Packages"
+<Create-Package
+title="Add Package"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
+:addedvalues="{{$added_values}}"
 />
 @endsection
