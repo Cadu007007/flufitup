@@ -35,10 +35,11 @@
                 </div>
                 <!-- Added Value Services -->
                 <AddedValueContainer
-                :values="addedvalues" />
+                :values="addedvalues"
+                :selectedvalues="[]" />
             </div>
             <div class="price-card-container">
-                <PackagePriceCard currency="$" price="50" />
+                <PackagePriceCard currency="$" price="0" />
             </div>
         </div>
 

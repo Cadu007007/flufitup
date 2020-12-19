@@ -564,7 +564,7 @@ Route::get('/admin/packages', function () {
 
     return view('admin.packages.index', ['active' => 'packages',  'packages' => $packages]);
 })->name('admin.packages');
-
+/* Create Package */
 Route::get('/admin/packages/create', function () {
     $added_values = collect();
     $added_values->push(['id' => 1 , 'name' => 'added 1']);
@@ -574,6 +574,24 @@ Route::get('/admin/packages/create', function () {
     $added_values->push(['id' => 5 , 'name' => 'added 5']);
     return view('admin.packages.create', ['active' => 'packages','added_values'=>$added_values]);
 })->name('admin.packages.add');
+
+/* Create Package */
+Route::get('/admin/packages/edit/{id}', function () {
+    $added_values = collect();
+    $added_values->push(['id' => 1 , 'name' => 'added 1']);
+    $added_values->push(['id' => 2 , 'name' => 'added 2']);
+    $added_values->push(['id' => 3 , 'name' => 'added 3']);
+    $added_values->push(['id' => 4 , 'name' => 'added 4']);
+    $added_values->push(['id' => 5 , 'name' => 'added 5']);
+
+    $package = collect();
+    $features = collect();
+    $features->push(['label' => 'Dry clean' , 'data' => 'Included free in this package']);
+    $features->push(['label' => 'Washing with modern washer' , 'data' => 'Yes']);
+    
+    $package->push(['name'=> 'Package 1','price'=>'60', 'features' => $features]);
+    return view('admin.packages.edit', ['active' => 'packages', 'package' => $package,'added_values'=>$added_values]);
+})->name('admin.packages.edit');
 
 
 /* Dry Clean */

@@ -1,4 +1,5 @@
 <template>
+<a :href="editpackageroute.replace('package_id',id)">
     <div class="PackageUserscard" :id="id" @click="$emit('show-package-users' , id)">
         <p class="package-name">{{ name}}</p>
         <div class="packages-users-container">
@@ -6,11 +7,12 @@
             <p class="subscribers">Subscribers</p>
         </div>
     </div>
+</a>
 </template>
 
 <script>
 export default {
-    props: ['id','name','count'],
+    props: ['id','name','count','editpackageroute'],
 
 }
 </script>

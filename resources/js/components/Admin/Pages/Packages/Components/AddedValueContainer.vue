@@ -16,7 +16,7 @@
         </div>
         <div class="added-values">
             <div class="added-value" v-for="(value,index) in addedvalues" :key="index">
-                <input type="checkbox" class="checkbox">
+                <input type="checkbox" class="checkbox" :checked="isSelected(value.id)">
                 <p class="name">{{value.name}}</p>
             </div>
         </div>
@@ -25,11 +25,12 @@
 
 <script>
 export default {
-    props: ['values'],
+    props: ['values','selectedvalues'],
      data(){
         return{
             newAddedName: '',
-            addedvalues: this.values
+            addedvalues: this.values,
+            selected: this.selectedvalues
         }
     },
     methods:{
@@ -52,9 +53,16 @@ export default {
                 
             } 
         },
+        isSelected(id){
+            let selectedArray  = this.selected
+            for (let index=0; index < selectedArray.length; index++){
+                if (id == selectedArray[index]) return true
+            }
+        },
         hideHint(){
+            this.showSelected()
             $('.hint').attr('hidden',true)
-        }
+        },
     }
 };
 </script>
