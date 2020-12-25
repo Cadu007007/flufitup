@@ -9,5 +9,7 @@ date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :tailoredpackages="{{ $packages->tailored }}"
 addpackageroute= "{{ route('admin.packages.add') }}"
 showpackageroute="{{route('admin.packages.show','package_id')}}"
+addtailoredpackageroute= "{{ route('admin.packages.tailored.create') }}"
+edittailoredpackageroute= "{{ route('admin.packages.tailored.edit', 'package_id') }}"
 />
 @endsection

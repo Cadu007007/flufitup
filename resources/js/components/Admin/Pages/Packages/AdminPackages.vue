@@ -58,9 +58,13 @@
                             :id="aPackage.id"
                             :name="aPackage.name"
                             :count="aPackage.users"
-                            :showpackageroute="showpackageroute"
+                            :showpackageroute="edittailoredpackageroute"
 
                         />
+                        <!-- Add new tailored package -->
+                        <div class="add-new-tailored" @click="goToCreateTailoredPackage()">
+                            Add New
+                        </div>
                     </div>
                 </div>
         </div>
@@ -84,7 +88,9 @@ export default {
         "monthlypackages",
         "tailoredpackages",
         "addpackageroute",
-        "showpackageroute"
+        "showpackageroute",
+        "addtailoredpackageroute",
+        "edittailoredpackageroute"
     ],
     data() {
         return {
@@ -96,6 +102,9 @@ export default {
         goToAddPackage(){
             window.location.href = this.addpackageroute
         },
+        goToCreateTailoredPackage(){
+            window.location.href= this.addtailoredpackageroute
+        }
     }
 };
 </script>
@@ -210,5 +219,27 @@ $black: #000;
         right: 30px;
         cursor: pointer;
     }
+    /* Add new tailored package card */
+    .add-new-tailored{
+    width: 200px;
+    height: 150px;
+    margin: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    color: $black;
+    box-shadow: 0px 0px 3px #0000001A;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    color: orange;
+    font-weight: bold;
+    &.active-card{
+    color: $blue !important;
+    border: 1px solid $blue;
+    }
+    
+}
 }
 </style>

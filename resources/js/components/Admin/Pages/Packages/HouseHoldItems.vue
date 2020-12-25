@@ -16,6 +16,10 @@
 
     <p class="add-new-item" @click="addNewItemContainer()">Add Another Household Item</p>
     
+    <div class="button-container">
+        <button class="save-button">Save</button>
+    </div>
+
   </div>
 </template>
 
@@ -46,6 +50,8 @@ export default {
 <style lang="scss">
 $text-grey: #00000066;
 $orange: #FFA800;
+$blue: #22aee4;
+
 
 .Household{
     width: 100%;
@@ -74,6 +80,22 @@ $orange: #FFA800;
         color: $orange;
         font-family: 'Open-Sans-Bold';
         font-size: 14px;
+    }
+    .button-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 30px auto;
+        .save-button{
+            margin: 30px auto;
+            padding: 10px 40px;
+            height: 45px;
+            border-radius: 25px;
+            background: $blue;
+            color: #fff;
+            font-size: 18px;
+        }
     }
 }
 </style>

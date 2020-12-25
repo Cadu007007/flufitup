@@ -39,18 +39,20 @@
                 :selectedvalues="[]" />
             </div>
             <div class="price-card-container">
-                <PackagePriceCard currency="$" price="0" />
+                <CreatePackagePriceCard currency="$" price="0" />
             </div>
         </div>
 
         <p class="add-new-item" @click="addNewItemContainer()">
             Add Another Feature
         </p>
+
     </div>
 </template>
 <style lang="scss">
 $text-grey: #00000066;
 $orange: #ffa800;
+$blue: #22aee4;
 
 .AddPackage {
     width: 100%;
@@ -112,11 +114,13 @@ $orange: #ffa800;
         font-family: "Open-Sans-Bold";
         font-size: 14px;
     }
+
+    
 }
 </style>
 <script>
 import AddPackageItem from "./Components/AddPackageItem";
-import PackagePriceCard from "./Components/PackagePriceCard";
+import CreatePackagePriceCard from "./Components/CreatePackagePriceCard";
 import AddedValueContainer from "./Components/AddedValueContainer";
 
 export default {
@@ -129,7 +133,7 @@ export default {
     },
     components: {
         AddPackageItem,
-        PackagePriceCard,
+        CreatePackagePriceCard,
         AddedValueContainer
     },
     methods: {

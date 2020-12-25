@@ -651,6 +651,29 @@ Route::get('/admin/packages/detergents', function () {
 /* XX Detergents XX */
 
 
+/* Tailored Package */
+/* Create */
+Route::get('/admin/packages/tailored/create', function () {
+    return view('admin.packages.tailored.create', ['active' => 'packages']);
+})->name('admin.packages.tailored.create');
+/* XX Create XX */
+/* EDIT */
+Route::get('/admin/packages/tailored/edit/{id}', function () {
+    $questions= collect();
+    $choices1 = collect();
+    $choices1->push(["text" => "choice 1"]);
+    $choices1->push(["text" => "choice 2"]);
+    $choices2 = collect();
+    $choices2->push(["text" => "choice 2"]);
+    $questions->push(['id' => 1 ,'question' => 'Question 1 ?' , 'choices' => $choices1 ]);
+    $questions->push(['id' => 2 ,'question' => 'Question 2 ?' , 'choices' => $choices2]);
+
+    return view('admin.packages.tailored.edit', ['active' => 'packages','questions' => $questions]);
+})->name('admin.packages.tailored.edit');
+/* XX EDIT XX */
+
+/* XX Tailored Package XX */
+
 
 /******************************
  * Packages End

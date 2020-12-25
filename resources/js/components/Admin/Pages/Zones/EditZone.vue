@@ -34,6 +34,11 @@
             </div>
         </div>
     </div>
+
+    <div class="button-container">
+        <button class="save-button">Save</button>
+    </div>
+
   </div>
 </template>
 
@@ -58,6 +63,7 @@ export default {
 <style lang="scss">
 $text-grey: #00000080;
 $orange: #FFA800;
+$blue: #22aee4;
 
 .PageContainer{
     padding: 0 !important;
@@ -176,6 +182,23 @@ $orange: #FFA800;
                 padding: 12px;
         }
             }
+        }
+    }
+
+.button-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 30px auto;
+        .save-button{
+            margin: 30px auto;
+            padding: 10px 40px;
+            height: 45px;
+            border-radius: 25px;
+            background: $blue;
+            color: #fff;
+            font-size: 18px;
         }
     }
 

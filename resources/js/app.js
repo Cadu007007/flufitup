@@ -72,12 +72,14 @@ var Detergents = require('./components/Admin/Pages/Packages/Detergents.vue').def
 
 /* Create New Package */
 var CreatePackage = require('./components/Admin/Pages/Packages/CreatePackage.vue').default
-
-/* show Package */
+    /* show Package */
 var ShowPackage = require('./components/Admin/Pages/Packages/ShowPackage.vue').default
-
-/* edit Package */
+    /* edit Package */
 var EditPackage = require('./components/Admin/Pages/Packages/EditPackage.vue').default
+
+/* Tailored */
+var CreateTailoredPackage = require('./components/Admin/Pages/Packages/CreateTailoredPackage.vue').default
+var EditTailoredPackage = require('./components/Admin/Pages/Packages/EditTailoredPackage.vue').default
 
 /* XX Packages XX */
 /* Users */
@@ -168,6 +170,11 @@ const app = new Vue({
         ShowPackage,
         /* edit Package */
         EditPackage,
+        /* Tailored Package */
+        /* Create */
+        CreateTailoredPackage,
+        /* edit */
+        EditTailoredPackage,
         /* XX Packages XX */
         Users,
         ShowUser,

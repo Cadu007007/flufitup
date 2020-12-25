@@ -39,7 +39,7 @@
                 :selectedvalues="[1,2,3]" />
             </div>
             <div class="price-card-container">
-                <PackagePriceCard :currency="currency" :price="price" />
+                <CreatePackagePriceCard :currency="currency" :price="price" />
             </div>
         </div>
 
@@ -116,7 +116,7 @@ $orange: #ffa800;
 </style>
 <script>
 import AddPackageItem from "./Components/AddPackageItem";
-import PackagePriceCard from "./Components/PackagePriceCard";
+import CreatePackagePriceCard from "./Components/CreatePackagePriceCard";
 import AddedValueContainer from "./Components/AddedValueContainer";
 
 export default {
@@ -131,7 +131,7 @@ export default {
     },
     components: {
         AddPackageItem,
-        PackagePriceCard,
+        CreatePackagePriceCard,
         AddedValueContainer
     },
     methods: {
