@@ -73,6 +73,9 @@ var Detergents = require('./components/Admin/Pages/Packages/Detergents.vue').def
 /* Create New Package */
 var CreatePackage = require('./components/Admin/Pages/Packages/CreatePackage.vue').default
 
+/* show Package */
+var ShowPackage = require('./components/Admin/Pages/Packages/ShowPackage.vue').default
+
 /* edit Package */
 var EditPackage = require('./components/Admin/Pages/Packages/EditPackage.vue').default
 
@@ -161,6 +164,8 @@ const app = new Vue({
         Detergents,
         /* create package */
         CreatePackage,
+        /* show package */
+        ShowPackage,
         /* edit Package */
         EditPackage,
         /* XX Packages XX */

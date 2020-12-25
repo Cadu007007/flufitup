@@ -16,7 +16,7 @@
                             :id="aPackage.id"
                             :name="aPackage.name"
                             :count="aPackage.users"
-                            :editpackageroute="editpackageroute"
+                            :showpackageroute="showpackageroute"
                         />
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                             :id="aPackage.id"
                             :name="aPackage.name"
                             :count="aPackage.users"
-                            :editpackageroute="editpackageroute"
+                            :showpackageroute="showpackageroute"
 
                         />
                     </div>
@@ -45,8 +45,7 @@
                         :id="aPackage.id"
                         :name="aPackage.name"
                         :count="aPackage.users"
-                        :editpackageroute="editpackageroute"
-
+                        :showpackageroute="showpackageroute"
                     />
                 </div>
             </div>
@@ -59,7 +58,7 @@
                             :id="aPackage.id"
                             :name="aPackage.name"
                             :count="aPackage.users"
-                            :editpackageroute="editpackageroute"
+                            :showpackageroute="showpackageroute"
 
                         />
                     </div>
@@ -85,7 +84,7 @@ export default {
         "monthlypackages",
         "tailoredpackages",
         "addpackageroute",
-        "editpackageroute"
+        "showpackageroute"
     ],
     data() {
         return {

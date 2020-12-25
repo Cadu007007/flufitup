@@ -575,6 +575,27 @@ Route::get('/admin/packages/create', function () {
     return view('admin.packages.create', ['active' => 'packages','added_values'=>$added_values]);
 })->name('admin.packages.add');
 
+/* Show Package */
+
+Route::get('/admin/packages/show/{id}', function () {
+    $package = collect();
+    $package->push(['id' => 1111111111,
+        'package_duration' => '1 Day',
+        'no_of_pickups' => '1 Pickup',
+        'no_of_bags' => '2 Bags',
+        'max_weight' => "30 Pounds",
+        'return_duration' => "24 Hours",
+        'dry_clean_credit' => "12 Points",
+        'added_value_service_credit' => "10 Points",
+        'reward_points' => "3.75 Points",
+        'price_of_extra_pound' => "1.96/Lbs",
+        'advance_notice' => "2 Days",
+        'price' => '50',
+        'currency' => '$',
+    ]);
+    return view('admin.packages.show', ['active' => 'packages', 'package' => $package]);
+})->name('admin.packages.show');
+
 /* Create Package */
 Route::get('/admin/packages/edit/{id}', function () {
     $added_values = collect();

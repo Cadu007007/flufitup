@@ -4,7 +4,7 @@
     <input class="package-price" type="text" placeholder="Package Price" v-model="formatedPrice">
 
     <div class="button-container">
-        <button class="done">Done</button>
+        <button class="edit-button" @click="$emit('go-to-edit-package')">Edit Package</button>
     </div>
 
   </div>
@@ -48,12 +48,13 @@ $blue: #22AEE4;
     }
 
     .package-price{
-        width: 90%;
+        width: 280px;
         height: 40px;
         background: #F9F9F9;
         padding: 13px 24px;
         border: 1px solid #EDEDED;
         border-radius: 7px;
+        margin: 0 auto;
     }
     .price{
         font-size: 30px;
@@ -68,7 +69,7 @@ $blue: #22AEE4;
         justify-content: center;
         align-items: center;
         margin-bottom: 10px;
-            .done{
+            .edit-button{
                 width: 168px;
                 height: 40px;
                 background: $blue;

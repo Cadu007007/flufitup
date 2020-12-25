@@ -8,6 +8,6 @@ date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :monthlypackages="{{ $packages->monthly }}"
 :tailoredpackages="{{ $packages->tailored }}"
 addpackageroute= "{{ route('admin.packages.add') }}"
-editpackageroute="{{route('admin.packages.edit','package_id')}}"
+showpackageroute="{{route('admin.packages.show','package_id')}}"
 />
 @endsection
