@@ -15,7 +15,6 @@
                             :key="aPackage.id"
                             :id="aPackage.id"
                             :name="aPackage.name"
-                            :count="aPackage.users"
                             :showpackageroute="showpackageroute"
                         />
                     </div>
@@ -29,7 +28,6 @@
                             :key="aPackage.id"
                             :id="aPackage.id"
                             :name="aPackage.name"
-                            :count="aPackage.users"
                             :showpackageroute="showpackageroute"
 
                         />
@@ -44,7 +42,6 @@
                         :key="aPackage.id"
                         :id="aPackage.id"
                         :name="aPackage.name"
-                        :count="aPackage.users"
                         :showpackageroute="showpackageroute"
                     />
                 </div>
@@ -57,7 +54,6 @@
                             :key="aPackage.id"
                             :id="aPackage.id"
                             :name="aPackage.name"
-                            :count="aPackage.users"
                             :showpackageroute="edittailoredpackageroute"
 
                         />
@@ -75,7 +71,7 @@
 </template>
 
 <script>
-import PackageUsersCard from "../../Components/PackageUsersCard";
+import PackageUsersCard from "./Components/PackageUsersCard";
 export default {
     components: {
         PackageUsersCard
@@ -231,7 +227,7 @@ $black: #000;
     color: $black;
     box-shadow: 0px 0px 3px #0000001A;
     border-radius: 20px;
-    border: 1px solid transparent;
+    border: 1px solid #ddd;
     cursor: pointer;
     color: orange;
     font-weight: bold;

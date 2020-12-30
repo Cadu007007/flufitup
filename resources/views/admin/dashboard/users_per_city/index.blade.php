@@ -2,7 +2,7 @@
 @section('content')
 
 <Users-Per-City 
-title="Users Per City"
+title="Sales Per City"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :cities="{{ $cities }}"
 :users="{{ $users }}"
