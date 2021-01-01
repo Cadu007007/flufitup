@@ -661,6 +661,23 @@ Route::get('/admin/packages/detergents', function () {
 })->name('admin.packages.detergents');
 /* XX Detergents XX */
 
+/* FABRIC */
+Route::get('/admin/packages/fabric', function () {
+    return view('admin.packages.fabric.index', ['active' => 'fabric']);
+})->name('admin.packages.fabric');
+/* XX FABRIC XX */
+
+/* DRYER */
+Route::get('/admin/packages/dryer', function () {
+    return view('admin.packages.dryer.index', ['active' => 'dryer']);
+})->name('admin.packages.dryer');
+/* XX DRYER XX */
+
+/* Scent Booster */
+Route::get('/admin/packages/scent', function () {
+    return view('admin.packages.scent.index', ['active' => 'scent']);
+})->name('admin.packages.scent');
+/* XX Scent Booster XX */
 
 /* Tailored Package */
 /* Create */

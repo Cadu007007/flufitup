@@ -33,10 +33,7 @@
                         @delete-item="deleteItem(index)"
                     />
                 </div>
-                <!-- Added Value Services -->
-                <AddedValueContainer
-                :values="addedvalues"
-                :selectedvalues="[1,2,3]" />
+                
             </div>
             <div class="price-card-container">
                 <CreatePackagePriceCard :currency="currency" :price="price" />

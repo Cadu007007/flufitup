@@ -4,6 +4,16 @@
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
         </div>
+        <div class="package-title-div flex-row" style="margin-bottom: 20px">
+            <p class="title">Package Category</p>
+            <select class="category-select" name="category_id" id="">
+                <option selected>Choose a category</option>
+                <option value="1">Ad Hoc</option>
+                <option value="2">Bi‐Weekly</option>
+                <option value="3">Monthly</option>
+            </select>
+        </div>
+
         <div class="flex-row">
             <div class="flex-column">
                 <div class="package-title-div">
@@ -33,10 +43,6 @@
                         @delete-item="deleteItem(index)"
                     />
                 </div>
-                <!-- Added Value Services -->
-                <AddedValueContainer
-                :values="addedvalues"
-                :selectedvalues="[]" />
             </div>
             <div class="price-card-container">
                 <CreatePackagePriceCard currency="$" price="0" />
@@ -46,7 +52,6 @@
         <p class="add-new-item" @click="addNewItemContainer()">
             Add Another Feature
         </p>
-
     </div>
 </template>
 <style lang="scss">
@@ -73,17 +78,24 @@ $blue: #22aee4;
             font-family: "Open-Sans-Regular";
         }
     }
-    .flex-row{
+    .flex-row {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
         align-items: flex-start;
     }
-    .price-card-container{
+    .price-card-container {
         margin-left: 100px;
     }
     .package-title-div {
         position: relative;
+        .category-select {
+            padding: 10px;
+            border-radius: 10px;
+            margin: 0 20px;
+            font-size: 14px;
+            width: 300px;
+        }
         .title {
             font-size: 16px;
             font-family: "Open-Sans-Semibold";
@@ -114,8 +126,6 @@ $blue: #22aee4;
         font-family: "Open-Sans-Bold";
         font-size: 14px;
     }
-
-    
 }
 </style>
 <script>
@@ -124,7 +134,7 @@ import CreatePackagePriceCard from "./Components/CreatePackagePriceCard";
 import AddedValueContainer from "./Components/AddedValueContainer";
 
 export default {
-    props: ["title", "date",'addedvalues'],
+    props: ["title", "date", "addedvalues"],
     data() {
         return {
             name: "",

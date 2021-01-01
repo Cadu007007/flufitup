@@ -32,7 +32,8 @@
 
 <AdminSidebarPackagesMenu
 class="AdminSidebarItem" 
-:class="(active == 'dry_clean' || active == 'household_items' || active == 'detergents') ? 'menu-title-active' : '' "
+:class="(active == 'dry_clean' || active == 'household_items' || active == 'detergents' 
+|| active == 'fabric') ? 'menu-title-active' : '' "
 :active="active"
 :routetopackages= "routetopackages"
 icon='/images/admin/icons/packages.svg' 
@@ -40,6 +41,9 @@ iconActive='/images/admin/icons/packages-active.svg'
 :routetodryclean="routetodryclean"
 :routetohouseholditems="routetohouseholditems"
 :routetodetergents="routetodetergents"
+:routetofabricsoftener="routetofabricsoftener"
+:routetodryersheets="routetodryersheets"
+:routetoscentbooster="routetoscentbooster"
 />
 
 
@@ -104,6 +108,7 @@ import AdminSidebarPackagesMenu from './AdminSidebarPackagesMenu'
 export default {
     props:['active','routetodashboard','routetoreports',
             'routetopackages','routetodryclean','routetohouseholditems','routetodetergents',
+            'routetofabricsoftener','routetodryersheets','routetoscentbooster',
             'routetousers','routetoadmins',
             'routetopickupplanner','routetopickdelieveryplanner',
             'routetoadmins','routetodrivers','routetolaunderystaff',

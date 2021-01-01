@@ -69,6 +69,9 @@ var AdminPackages = require('./components/Admin/Pages/Packages/AdminPackages.vue
 var DryClean = require('./components/Admin/Pages/Packages/DryClean.vue').default
 var HouseHoldItems = require('./components/Admin/Pages/Packages/HouseHoldItems.vue').default
 var Detergents = require('./components/Admin/Pages/Packages/Detergents.vue').default
+var FabricSoftener = require('./components/Admin/Pages/Packages/FabricSoftener.vue').default
+var DryerSheets = require('./components/Admin/Pages/Packages/DryerSheets.vue').default
+var ScentBooster = require('./components/Admin/Pages/Packages/ScentBooster.vue').default
 
 /* Create New Package */
 var CreatePackage = require('./components/Admin/Pages/Packages/CreatePackage.vue').default
@@ -164,6 +167,9 @@ const app = new Vue({
         DryClean,
         HouseHoldItems,
         Detergents,
+        FabricSoftener,
+        DryerSheets,
+        ScentBooster,
         /* create package */
         CreatePackage,
         /* show package */

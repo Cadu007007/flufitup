@@ -31,6 +31,31 @@
             icon='/images/admin/icons/detergents.svg' 
             iconActive='/images/admin/icons/detergents-active.svg'
             />
+            <!-- Fabric, Dryer & Scent -->
+            <AdminSidebarItem :class=" active == 'fabric' ? 'active' : '' " 
+            class="AdminSidebarSubItem" 
+            :href=routetofabricsoftener
+            title="Fabric Softener"
+            itemtooltip="Fabric Softener"
+            icon='/images/admin/icons/detergents.svg' 
+            iconActive='/images/admin/icons/detergents-active.svg'
+            />
+            <AdminSidebarItem :class=" active == 'dryer' ? 'active' : '' " 
+            class="AdminSidebarSubItem" 
+            :href=routetodryersheets
+            title="Dryer Sheets"
+            itemtooltip="Dryer Sheet"
+            icon='/images/admin/icons/detergents.svg' 
+            iconActive='/images/admin/icons/detergents-active.svg'
+            />
+            <AdminSidebarItem :class=" active == 'scent' ? 'active' : '' " 
+            class="AdminSidebarSubItem" 
+            :href=routetoscentbooster
+            title="Scent Booster"
+            itemtooltip="Scent Booster"
+            icon='/images/admin/icons/detergents.svg' 
+            iconActive='/images/admin/icons/detergents-active.svg'
+            />
 
         </div>
   </div>
@@ -40,7 +65,10 @@
 import AdminSidebarItem from './AdminSidebarItem'
 export default {
     mounted() {
-        if(this.active == 'packages' || this.active == 'dry_clean' || this.active == 'household_items' || this.active == 'detergents'){
+        if(this.active == 'packages' || this.active == 'dry_clean'
+          || this.active == 'household_items' || this.active == 'detergents'
+          || this.active == 'fabric' || this.active == 'dryer' || this.active == 'scent' 
+         ){
             this.showitems = true
             // show packages active icon
         }
@@ -53,7 +81,8 @@ export default {
     },
 props: ['icon', 'iconActive','active',
         'routetopackages',
-        'routetodryclean','routetohouseholditems','routetodetergents'
+        'routetodryclean','routetohouseholditems','routetodetergents',
+        'routetofabricsoftener', 'routetodryersheets','routetoscentbooster',
         ],
         components:{
             AdminSidebarItem
