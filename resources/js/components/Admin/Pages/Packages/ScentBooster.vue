@@ -1,18 +1,46 @@
 <template>
-  <div class="DryerSheets">  
+  <div class="ScentBooster">  
     <div class="page-header">
         <p class="title">{{title}}</p>
         <p class="date">{{date}}</p>
     </div>
+
+
+    <div class="flex-column">
+        <Detergents-Item v-for="(item,index) in loadedItems" :key="index"
+        :name="item.name"
+        :types="item.types"
+        />
+    </div>
+
+    <p class="add-new-item" @click="addNewItemContainer()">Add Another Scent Booster Item</p>
+    
+    <div class="button-container">
+        <button class="save-button">Save</button>
+    </div>
+
   </div>
 </template>
 
 <script>
+import DetergentsItem from './Components/DetergentsItem'
 export default {
-    props: ['title','date'],
+    data() {
+        return {
+            loadedItems: this.items,
+        }
+    },
+    props: ['title','date','items'],
+    components:{
+        DetergentsItem
+    },
+    methods: {
+        addNewItemContainer(){
+            this.loadedItems.push({name: '', types:[{}]})
+        },
+    }    
 
 }
-
 </script>
 
 <style lang="scss">
@@ -20,7 +48,7 @@ $text-grey: #00000066;
 $orange: #FFA800;
 $blue: #22aee4;
 
-.DryerSheets{
+.ScentBooster{
     width: 100%;
     height: 100%;
     .page-header{
@@ -39,6 +67,30 @@ $blue: #22aee4;
             font-family: 'Open-Sans-Regular';
         }
 
+    }
+    .add-new-item{
+        width: fit-content;
+        margin: 30px auto;
+        text-align: center;
+        color: $orange;
+        font-family: 'Open-Sans-Bold';
+        font-size: 14px;
+    }
+    .button-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 30px auto;
+        .save-button{
+            margin: 30px auto;
+            padding: 10px 40px;
+            height: 45px;
+            border-radius: 25px;
+            background: $blue;
+            color: #fff;
+            font-size: 18px;
+        }
     }
 }
 </style>

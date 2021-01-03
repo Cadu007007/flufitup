@@ -663,19 +663,46 @@ Route::get('/admin/packages/detergents', function () {
 
 /* FABRIC */
 Route::get('/admin/packages/fabric', function () {
-    return view('admin.packages.fabric.index', ['active' => 'fabric']);
+    $fabric_items= collect();
+    $types1 = collect();
+    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types2 = collect();
+    $types2->push(["label" => "test2", "price" => "10$" , "img"=> ""]);
+    $fabric_items->push(['id' => 1 ,'name' => 'Item 1' , 'types' => $types1 ]);
+    $fabric_items->push(['id' => 2 ,'name' => 'Item 2' , 'types' => $types2]);
+
+    return view('admin.packages.fabric.index', ['active' => 'fabric','fabric_items' => $fabric_items]);
 })->name('admin.packages.fabric');
 /* XX FABRIC XX */
 
 /* DRYER */
 Route::get('/admin/packages/dryer', function () {
-    return view('admin.packages.dryer.index', ['active' => 'dryer']);
+    $dryer_items= collect();
+    $types1 = collect();
+    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types2 = collect();
+    $types2->push(["label" => "test2", "price" => "10$" , "img"=> ""]);
+    $dryer_items->push(['id' => 1 ,'name' => 'Item 1' , 'types' => $types1 ]);
+    $dryer_items->push(['id' => 2 ,'name' => 'Item 2' , 'types' => $types2]);
+
+    return view('admin.packages.dryer.index', ['active' => 'dryer','dryer_items' => $dryer_items]);
 })->name('admin.packages.dryer');
 /* XX DRYER XX */
 
 /* Scent Booster */
 Route::get('/admin/packages/scent', function () {
-    return view('admin.packages.scent.index', ['active' => 'scent']);
+    $scent_items= collect();
+    $types1 = collect();
+    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types2 = collect();
+    $types2->push(["label" => "test2", "price" => "10$" , "img"=> ""]);
+    $scent_items->push(['id' => 1 ,'name' => 'Item 1' , 'types' => $types1 ]);
+    $scent_items->push(['id' => 2 ,'name' => 'Item 2' , 'types' => $types2]);
+
+    return view('admin.packages.scent.index', ['active' => 'scent','scent_items' => $scent_items]);
 })->name('admin.packages.scent');
 /* XX Scent Booster XX */
 
