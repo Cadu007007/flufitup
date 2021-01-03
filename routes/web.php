@@ -417,7 +417,7 @@ Route::get('/admin/dashboard', function () {
     $state_numbers->sales_per_month = 200;
     $state_numbers->sales_per_package = 100;
     $state_numbers->users_per_city = 100;
-    $state_numbers->cancelled_orders = 10;
+    $state_numbers->cancellation_requests = 10;
     $state_numbers->orders_number_per_day = 4;
 
     return view('admin.dashboard.index', ['active' => 'dashboard', 'state_numbers' => $state_numbers]);
@@ -522,15 +522,15 @@ Route::get('/admin/users/city', function () {
 
 /* Cancelled Orders */
 
-Route::get('/admin/orders/cancelled', function () {
+Route::get('/admin/cancellation_requests', function () {
     $clients = collect();
 
-    $clients->push(['id' => 1, 'name' => 'Mohamed Salah', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'numberoforders' => 5]);
-    $clients->push(['id' => 2, 'name' => 'Ali Ahmed', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'numberoforders' => 5]);
-    $clients->push(['id' => 3, 'name' => 'Dooooooby', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'numberoforders' => 5]);
+    $clients->push(['id' => 1, 'name' => 'Mohamed Salah', 'phone' => '(xxx)-xxx-xxxx', 'request_date' => '2020-11-1', 'package_name' => 'Package 1', 'service_status' => 'In Progress', 'request_status' => 'Pending']);
+    $clients->push(['id' => 2, 'name' => 'Ali Ahmed', 'phone' => '(xxx)-xxx-xxxx', 'request_date' => '2020-11-11', 'package_name' => 'Package 2', 'service_status' => 'Not Started', 'request_status' => 'Rejected']);
+    $clients->push(['id' => 3, 'name' => 'Dooooooby', 'phone' => '(xxx)-xxx-xxxx', 'request_date' => '2020-12-11', 'package_name' => 'Package 3', 'service_status' => 'Completed', 'request_status' => 'Terminated']);
 
-    return view('admin.dashboard.cancelled_orders.index', ['active' => 'dashboard', 'clients' => $clients]);
-})->name('admin.dashboard.cancelled_orders');
+    return view('admin.dashboard.cancellation_requests.index', ['active' => 'dashboard', 'clients' => $clients]);
+})->name('admin.dashboard.cancellation_requests');
 
 /******************************
  * Dashboard End

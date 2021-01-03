@@ -12,10 +12,10 @@ newclientsroute="{{ route('admin.dashboard.new_clients') }}"
 salespermonthroute="{{ route('admin.dashboard.sales_per_month') }}"
 :salesperpackage="{{ $state_numbers->sales_per_package }}"
 salesperpackageroute="{{ route('admin.dashboard.sales_per_package') }}"
-:userspercity="{{ $state_numbers->users_per_city }}"
+:salespercity="{{ $state_numbers->users_per_city }}"
 userspercityroute="{{ route('admin.dashboard.users_per_city') }}"
-:cancelledorders="{{ $state_numbers->cancelled_orders }}"
-cancelledordersroute="{{ route('admin.dashboard.cancelled_orders') }}"
+:cancellationrequests="{{ $state_numbers->cancellation_requests }}"
+cancellationrequestsroute="{{ route('admin.dashboard.cancellation_requests') }}"
 :ordersnumber="{{ $state_numbers->orders_number_per_day }}"
 
 />

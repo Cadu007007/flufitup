@@ -42,8 +42,8 @@
         <Dashboard-Item
         class="DashboardItem"
         :showvalue = false
-        :value="userspercity"
-        title="Users per City"
+        :value="salespercity"
+        title="Sales per City"
         color="#22AEE4"
         :gotoroute="userspercityroute"
         />
@@ -51,10 +51,10 @@
         <Dashboard-Item
         class="DashboardItem"
         :showvalue = true
-        :value="cancelledorders"
-        title="Cancelled Orders"
+        :value="cancellationrequests"
+        title="Cancellation Requests"
         color="#0000004D"
-        :gotoroute="cancelledordersroute"
+        :gotoroute="cancellationrequestsroute"
 
         />
     </div>
@@ -90,14 +90,14 @@ export default {
     'newclients',
     'salespermonth',
     'salesperpackage',
-    'userspercity',
-    'cancelledorders',
+    'salespercity',
+    'cancellationrequests',
     'totalclientsroute',
     'newclientsroute',
     'salespermonthroute',
     'salesperpackageroute',
     'userspercityroute',
-    'cancelledordersroute',
+    'cancellationrequestsroute',
     'ordersnumber'
     ],
     components: {

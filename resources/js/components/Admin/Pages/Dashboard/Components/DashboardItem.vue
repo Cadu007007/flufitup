@@ -39,6 +39,7 @@ cursor: pointer;
     font-size: 14px;
     font-family: 'Open-Sans-Semibold';
     color: #111;
+    text-align: center;
 }
 }
 
