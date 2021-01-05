@@ -532,6 +532,23 @@ Route::get('/admin/cancellation_requests', function () {
     return view('admin.dashboard.cancellation_requests.index', ['active' => 'dashboard', 'clients' => $clients]);
 })->name('admin.dashboard.cancellation_requests');
 
+/* Show Cancellation request */
+
+Route::get('/admin/cancellation_requests/show/{id}', function () {
+    $user = collect();
+    $user->push(['id' => 1,
+        'name' => 'Mohamed Salah',
+        'email' => 'test@test.com',
+        'birthday' => '1990-11-11',
+        'phone' => '01286727987',
+        'wallet' => 50,
+        'currency' => 'USD',
+        'package' => '']);
+
+    return view('admin.dashboard.cancellation_requests.show', ['active' => 'dashboard', 'user' => $user]);
+})->name('admin.cancellation_requests.show');
+
+
 /******************************
  * Dashboard End
  * ************************** */

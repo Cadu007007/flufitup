@@ -61,6 +61,7 @@ var SalesPerMonth = require('./components/Admin/Pages/Dashboard/SalesPerMonth.vu
 var SalesPerPackage = require('./components/Admin/Pages/Dashboard/SalesPerPackage.vue').default
 var UsersPerCity = require('./components/Admin/Pages/Dashboard/UsersPerCity.vue').default
 var CancellationRequests = require('./components/Admin/Pages/Dashboard/CancellationRequests.vue').default
+var ShowCancellationRequest = require('./components/Admin/Pages/Dashboard/ShowCancellationRequest.vue').default
 
 /************ XX Dashboard XX ********** */
 var Reports = require('./components/Admin/Pages/Reports/Reports.vue').default
@@ -160,6 +161,7 @@ const app = new Vue({
         SalesPerPackage,
         UsersPerCity,
         CancellationRequests,
+        ShowCancellationRequest,
         /* XX dashboard pages XX */
         Reports,
         /* Packages */
