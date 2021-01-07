@@ -1,149 +1,171 @@
 <template>
     <div class="ShowCancellationRequest">
-        <p class="title">Request for Cancellation</p>
-        <div class="container">
-            <div class="left">
-                <img src="/images/icons/profile.svg" alt="" class="userimage" />
-                <p class="username">{{ user[0].name }}</p>
-            </div>
-
-            <div class="right">
-                <div class="info-container">
+        <form action="">
+            <p class="title">Request for Cancellation</p>
+            <div class="container">
+                <div class="left">
                     <img
-                        src="/images/admin/icons/profile-email.svg"
+                        src="/images/icons/profile.svg"
                         alt=""
-                        class="icon"
+                        class="userimage"
                     />
-                    <p class="value">{{ user[0].email }}</p>
-                    <p class="state red">Not Verified</p>
-                </div>
-                <div class="info-container">
-                    <img
-                        src="/images/admin/icons/profile-phone.svg"
-                        alt=""
-                        class="icon"
-                    />
-                    <p class="value">{{ user[0].phone }}</p>
-                    <p class="state green">Verified</p>
-                </div>
-                <div class="info-container">
-                    <img
-                        src="/images/admin/icons/profile-calendar.svg"
-                        alt=""
-                        class="icon"
-                    />
-                    <p class="value">{{ user[0].birthday }}</p>
-                </div>
-                <div class="info-container">
-                    <img
-                        src="/images/admin/icons/profile-location.svg"
-                        alt=""
-                        class="icon"
-                    />
-                    <p class="value">Pickup Location</p>
-                    <p class="state">Residential</p>
-                </div>
-                <div class="info-container">
-                    <img
-                        src="/images/admin/icons/profile-location.svg"
-                        alt=""
-                        class="icon"
-                    />
-                    <p class="value">Drop off Location</p>
-                    <p class="state">Residential</p>
-                </div>
-                <div class="info-container">
-                    <img
-                        src="/images/admin/icons/profile-package.svg"
-                        alt=""
-                        class="icon"
-                    />
-                    <p class="value">
-                        {{
-                            user[0].package
-                                ? user[0].package
-                                : "No Package Subscribed"
-                        }}
-                    </p>
+                    <p class="username">{{ user[0].name }}</p>
                 </div>
 
-                <div class="buttons">
+                <div class="right">
+                    <div class="info-container">
+                        <img
+                            src="/images/admin/icons/profile-email.svg"
+                            alt=""
+                            class="icon"
+                        />
+                        <p class="value">{{ user[0].email }}</p>
+                        <p class="state red">Not Verified</p>
+                    </div>
+                    <div class="info-container">
+                        <img
+                            src="/images/admin/icons/profile-phone.svg"
+                            alt=""
+                            class="icon"
+                        />
+                        <p class="value">{{ user[0].phone }}</p>
+                        <p class="state green">Verified</p>
+                    </div>
+                    <div class="info-container">
+                        <img
+                            src="/images/admin/icons/profile-calendar.svg"
+                            alt=""
+                            class="icon"
+                        />
+                        <p class="value">{{ user[0].birthday }}</p>
+                    </div>
+                    <div class="info-container">
+                        <img
+                            src="/images/admin/icons/profile-location.svg"
+                            alt=""
+                            class="icon"
+                        />
+                        <p class="value">Pickup Location</p>
+                        <p class="state">Residential</p>
+                    </div>
+                    <div class="info-container">
+                        <img
+                            src="/images/admin/icons/profile-location.svg"
+                            alt=""
+                            class="icon"
+                        />
+                        <p class="value">Drop off Location</p>
+                        <p class="state">Residential</p>
+                    </div>
+                    <div class="info-container">
+                        <img
+                            src="/images/admin/icons/profile-package.svg"
+                            alt=""
+                            class="icon"
+                        />
+                        <p class="value">
+                            {{
+                                user[0].package
+                                    ? user[0].package
+                                    : "No Package Subscribed"
+                            }}
+                        </p>
+                    </div>
+
+                    <div class="buttons">
+                        <div class="seperator"></div>
+
+                        <button class="btn red">Chat</button>
+                        <button class="btn orange">Previous Orders</button>
+                        <button class="btn red">Current Orders</button>
+                    </div>
                     <div class="seperator"></div>
+                    <div class="cancellation-reason">
+                        <p class="title">
+                            Reason for Cancellation (Entered by the customer)
+                        </p>
+                        <textarea
+                            readonly
+                            class="textarea"
+                            name=""
+                            id=""
+                            cols="30"
+                            rows="4"
+                        ></textarea>
+                    </div>
 
-                    <button class="btn red">Chat</button>
-                    <button class="btn orange">Previous Orders</button>
-                    <button class="btn red">Current Orders</button>
-                </div>
-                <div class="seperator"></div>
-                <div class="cancellation-reason">
-                    <p class="title">
-                        Reason for Cancellation (Entered by the customer)
-                    </p>
-                    <textarea
-                        class="textarea"
-                        name=""
-                        id=""
-                        cols="30"
-                        rows="4"
-                    ></textarea>
-                </div>
+                    <div class="seperator"></div>
+                    <div class="cancellation-action">
+                        <p class="title">Action</p>
+                        <div class="flex-column">
+                            <div
+                                class="action"
+                                v-for="action in actions"
+                                :key="action.id"
+                            >
+                                <input
+                                    class="action-radio"
+                                    type="radio"
+                                    name="city"
+                                    :value="action.id"
+                                    :id="action.id"
+                                />
+                                <p
+                                    class="action-name"
+                                    style="margin-left: 20px"
+                                    @click="selectAction(action.id)"
+                                >
+                                    {{ action.name }}
+                                </p>
+                            </div>
+                        </div>
 
-                <div class="seperator"></div>
-                <div class="cancellation-action">
-                    <p class="title">Action</p>
-                    <div class="flex-column">
-                        <div class="action" v-for="action in actions" :key="action.id">
-                            <input
-                                class="action-radio"
-                                type="radio"
-                                name="city"
-                                :value="action.id"
+                        <div class="info-container">
+                            <img
+                                src="/images/admin/icons/profile-wallet.svg"
+                                alt=""
+                                class="icon"
                             />
-                            <p class="action-name" style="margin-left: 20px">
-                                {{ action.name }}
+                            <p
+                                class="value green"
+                                :class="user[0].wallet < 0 ? 'red' : ''"
+                            >
+                                {{ user[0].wallet }} {{ user[0].currency }}
+                            </p>
+                            <p
+                                class="edit-wallet"
+                                @click="modalstate = !modalstate"
+                            >
+                                Edit Wallet
                             </p>
                         </div>
                     </div>
 
-                    <div class="info-container">
-                        <img
-                            src="/images/admin/icons/profile-wallet.svg"
-                            alt=""
-                            class="icon"
-                        />
-                        <p
-                            class="value green"
-                            :class="user[0].wallet < 0 ? 'red' : ''"
-                        >
-                            {{ user[0].wallet }} {{ user[0].currency }}
+                    <div class="seperator"></div>
+
+                    <div class="cancellation-reason">
+                        <p class="title">
+                            Comments (Entered by Authorized Admin)
                         </p>
-                        <p
-                            class="edit-wallet"
-                            @click="modalstate = !modalstate"
-                        >
-                            Edit Wallet
-                        </p>
+                        <textarea
+                            class="textarea"
+                            name=""
+                            id=""
+                            cols="30"
+                            rows="4"
+                        ></textarea>
+                    </div>
+
+                    <Wallet-Modal v-show="modalstate" @hide-modal="hidemodal" />
+
+                    <!-- Save Button -->
+
+                    <div class="button-container">
+                        <button class="save-button">Save</button>
                     </div>
                 </div>
-
-                <div class="seperator"></div>
-
-                <div class="cancellation-reason">
-                    <p class="title">
-                        Comments (Entered by Authorized Admin)
-                    </p>
-                    <textarea
-                        class="textarea"
-                        name=""
-                        id=""
-                        cols="30"
-                        rows="4"
-                    ></textarea>
-                </div>
-
-                <Wallet-Modal v-show="modalstate" @hide-modal="hidemodal" />
             </div>
-        </div>
+        </form>
     </div>
 </template>
 
@@ -154,14 +176,14 @@ export default {
         return {
             modalstate: false,
             actions: [
-                {id: '1', name: 'Pending'},
-                {id: '2', name: 'Approve & Refund'},
-                {id: '3', name: 'Approved with E‐Wallet Credit'},
-                {id: '4', name: 'Approved with No Refund'},
-                {id: '5', name: 'Reject & terminate subscription'},
-                {id: '6', name: 'Reject & continue subscription'},
-                {id: '7', name: 'Service Modified'},
-                ]
+                { id: "1", name: "Pending" },
+                { id: "2", name: "Approve & Refund" },
+                { id: "3", name: "Approved with E‐Wallet Credit" },
+                { id: "4", name: "Approved with No Refund" },
+                { id: "5", name: "Reject & terminate subscription" },
+                { id: "6", name: "Reject & continue subscription" },
+                { id: "7", name: "Service Modified" }
+            ]
         };
     },
     props: {
@@ -172,6 +194,12 @@ export default {
         WalletModal
     },
     methods: {
+        selectAction(actionId) {
+            let selectedActions = $(".action .action-radio");
+            selectedActions.each(function(index, action) {
+                if (action.id == actionId) $(action).trigger("click");
+            });
+        },
         hidemodal() {
             this.modalstate = false;
         }
@@ -323,6 +351,22 @@ $orange: #ffa800;
                             font-size: 16px;
                         }
                     }
+                }
+            }
+            .button-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin: 30px auto;
+                .save-button {
+                    margin: 30px auto;
+                    padding: 10px 40px;
+                    height: 45px;
+                    border-radius: 25px;
+                    background: $blue;
+                    color: #fff;
+                    font-size: 18px;
                 }
             }
         }

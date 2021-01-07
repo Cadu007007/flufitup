@@ -68,6 +68,7 @@
         class="number-of-orders-card"
         :value="ordersnumber"
         @open-orders-number-modal="showModal"
+        @date-changed="effectiveDateSelected"
         />
     </div>
 
@@ -129,6 +130,14 @@ export default {
       hideModal(){
           this.modalstate = false
       },
+      effectiveDateSelected(dateValue){
+          let year= dateValue.substr(0,4)
+          let month= dateValue.substr(5,2)
+          let day= dateValue.substr(8,2)
+          let formatedDate = `${year+'/'+month+'/'+day}`
+          
+          this.selectedDates.push({date: formatedDate ,title: 'Effective Date',customClass: 'effective-date highlight'})
+      }
   },
 
 }
@@ -183,7 +192,7 @@ $blue: #22AEE4;
 /* Handle Calendar */
 .calendar-container{
     width: 550px;
-    height: 400px;
+    height: 440px;
     box-shadow: 0px 0px 10px #00000033;
     border-radius: 30px;
     padding: 24px;
@@ -219,6 +228,16 @@ $blue: #22AEE4;
         }
         .is-event{
             background: orange !important;
+            border: none !important;
+        }
+
+    }
+    .effective-date {
+        .date-num{
+            color: #fff !important;
+        }
+        .is-event{
+            background: #aaa !important;
             border: none !important;
         }
 

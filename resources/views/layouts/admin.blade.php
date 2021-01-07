@@ -5,7 +5,7 @@
             <Admin-Navbar
             viewallchatroute="{{ route('admin.dashboard') }}"
             viewallnotificationsroute="{{ route('admin.dashboard') }}"
-            showprofileroute=""
+            showprofileroute="{{ route('admin.users.show','user_id') }}"
             settingsroute=""
             logoutroute="{{ route('admin.login') }}"
             userimage="/images/icons/profile.svg"

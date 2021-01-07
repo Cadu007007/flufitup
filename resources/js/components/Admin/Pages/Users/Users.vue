@@ -5,27 +5,30 @@
         <p class="date">{{date}}</p>
     </div>
 
-    <table class="users-table">
+
+    <table class="users-table" id="newClientsTable">
         <thead>
         <tr>
-            <th class="username-head">Username</th>
-            <th class="email-head">Email</th>
-            <th class="phone-head">Phone Number</th>
-            <th class="birthday-head">Date of Birth</th>
-            <th class="orders-head">Number of Orders</th>
+            <th class="username-head"  data-order="asc"><div class="table-head-flex"><p class="title">Username</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <th class="city-head"><div class="table-head-flex"><p class="title">City</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <th class="date-head"><div class="table-head-flex"><p class="title">Day of Subscription</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <th class="package-head"><div class="table-head-flex"><p class="title">Package Name</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <th class="package-head"><div class="table-head-flex"><p class="title">First Delievery</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <th class="package-head"><div class="table-head-flex"><p class="title">Last Delievery</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="user in users" :key="user.id">
             <td class="username-cell"><p class="link" @click="goToShowUser(user.id)">{{user.name}}</p></td>
-            <td class="email-cell">{{user.email}}</td>
-            <td class="phone-cell">{{user.phone}}</td>
-            <td class="birthday-cell">{{user.birthday}}</td>
-            <td class="orders-cell">{{user.numberoforders}}</td>
+            <td class="city-cell">{{user.city}}</td>
+            <td class="date-cell">{{user.day_of_subscribe}}</td>
+            <td class="package-cell">{{user.package_name}}</td>
+            <td class="package-cell">{{user.first_delievery}}</td>
+            <td class="package-cell">{{user.last_delievery}}</td>
         </tr>
         </tbody>
     </table>
-    
+
   </div>
 </template>
 
@@ -85,8 +88,21 @@ $blue: #22AEE4;
         td{
             font-size: 14px;
         }
+
+        .table-head-flex{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+
+            .table-head-icon{
+                margin-left: 10px;
+            }
+        }
         .username-head{
-            width: 130px;
+            width: 150px;
+            position: relative;
+            
         }
         .username-cell{
             color: $blue;
@@ -95,19 +111,18 @@ $blue: #22AEE4;
                 cursor: pointer;
             }
         }
-        .email-head{
-            width: 150px;
-        }
-        .phone-head{
+        .city-head{
             width: 120px;
         }
-        .birthday-head{
+        .date-head{
+            width: 150px;
+        }
+        .package-head{
             width: 100px;
         }
         .orders-head{
-            width: 140px;
+            width: 100px;
         }
-        
     }
 }
 </style>

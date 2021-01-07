@@ -6,29 +6,35 @@
         </div>
 
         <div class="flex-container">
+            <input
+                type="text"
+                class="city-search"
+                v-model="searchCityName"
+                @input="searchForCity"
+                placeholder="Search"
+                tabindex="0"
+            />
             <div class="flex-column">
+                <p class="search-not-found" v-if="loadedCities.length == 0">
+                    No cities found
+                </p>
                 <div
                     class="city-user"
                     :id="city.id"
                     :class="activecityid == city.id ? 'active' : ''"
-                    v-for="city in cities"
+                    v-for="city in loadedCities"
                     :key="city.id"
                     @click="loadActiveCityUsers(city.id)"
                 >
-                    <input
-                        class="city-radio"
-                        type="radio"
-                        name="city"
-                    />
+                    <input class="city-radio" type="radio" name="city" />
                     <p class="city-name" style="margin-left: 20px">
                         {{ city.name }}
                     </p>
                 </div>
             </div>
-
             <div class="packages-users-card" v-if="cityusers.length">
                 <!-- Users table -->
-                <p class="table-title">Sales Per {{selectedCity}}</p>
+                <p class="table-title">Sales Per {{ selectedCity }}</p>
                 <div class="date-users-table" v-if="cityusers.length">
                     <table class="new-clients-table" id="newClientsTable">
                         <thead>
@@ -117,28 +123,23 @@ export default {
     props: ["title", "date", "cities", "users", "showuserroute"],
     data() {
         return {
+            loadedCities: this.cities,
             activecityid: 0,
             cityusers: [],
-            selectedCity: '',
+            selectedCity: "",
+            searchCityName: "", // for searching
+            searchCities: []
         };
     },
+    mounted() {
+        $(".city-search").focus();
+    },
     methods: {
-        mounted: function() {
-            alert("Mounted");
-            $(document).ready(function() {
-                $(".city-name").click(function() {
-                    $(this)
-                        .parent()
-                        .find(".city-radio")
-                        .click();
-                });
-            });
-        },
         getCityUsersCount(cityId) {
-            var cities = this.cities;
-            var users = this.users;
-            var count = 0;
-            for (var index = 0; index < cities.length; index++) {
+            let cities = this.loadedCities;
+            let users = this.users;
+            let count = 0;
+            for (let index = 0; index < cities.length; index++) {
                 users.forEach(function(user, index) {
                     if (user.city_id == cityId) {
                         count++;
@@ -149,12 +150,11 @@ export default {
         },
         loadActiveCityUsers(clickedCityId) {
             this.activecityid = clickedCityId;
-
-            var cities = this.cities;
-            var users = this.users;
-            var cityUsersArray = [];
+            let cities = this.loadedCities;
+            let users = this.users;
+            let cityUsersArray = [];
             // get users of the city
-            for (var index = 0; index < cities.length; index++) {
+            for (let index = 0; index < cities.length; index++) {
                 users.forEach(function(user, index) {
                     if (user.city_id == clickedCityId) {
                         if (cityUsersArray.indexOf(user) == -1) {
@@ -163,15 +163,35 @@ export default {
                     }
                 });
             }
-
             this.cityusers = cityUsersArray;
-            $(`#${clickedCityId}`).find('.city-radio').attr('checked', true)
-            let selectedCityName = $(`#${clickedCityId}`).find('.city-name').text()
-            this.selectedCity = selectedCityName
-},
+            $(`#${clickedCityId}`)
+                .find(".city-radio")
+                .trigger("click");
+            let selectedCityName = $(`#${clickedCityId}`)
+                .find(".city-name")
+                .text();
+            this.selectedCity = selectedCityName;
+        },
         goToShowUser(id) {
-            var url = this.showuserroute.replace("user_id", id);
+            let url = this.showuserroute.replace("user_id", id);
             window.location.href = url;
+        },
+        searchForCity() {
+            let cityName = this.searchCityName.toLowerCase();
+            let allCities = this.loadedCities;
+            this.searchCities = [];
+            if (cityName.length > 0) {
+                allCities.forEach((city, index) => {
+                    let currentCityName = city.name.toLowerCase();
+                    if (currentCityName.search(cityName) >= 0) {
+                        this.searchCities.push(city);
+                    }
+                });
+                this.loadedCities = this.searchCities;
+            } else {
+                /* load all cities */
+                this.loadedCities = this.cities;
+            }
         }
     }
 };
@@ -207,15 +227,34 @@ $black: #000;
         width: 100%;
         margin: 10px auto;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         justify-content: flex-start;
         align-items: flex-start;
+        .city-search {
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-bottom: 12px;
+            width: 250px;
+        }
         .flex-column {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
+            height: 400px;
+            width: 250px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            position: relative;
+            .search-not-found {
+                text-align: center;
+                color: #aaa;
+                width: 100%;
+                margin: 10px auto;
+            }
+
             .city-user {
                 margin: 8px 0;
                 display: flex;
@@ -281,7 +320,7 @@ $black: #000;
     }
 
     .packages-users-card {
-        width: calc(100% - 580px);
+        width: calc(100% - 570px);
         height: fit-content;
         box-shadow: 0px 0px 6px #0000001a;
         border: 2px solid #e8ecf3;
@@ -292,11 +331,11 @@ $black: #000;
         align-items: flex-start;
         max-height: 450px;
         overflow-y: auto;
-        margin-left: 250px;
+        margin-left: 260px;
         position: fixed;
         /* right: 150px; */
 
-        .table-title{
+        .table-title {
             margin: 20px 0 10px 0;
             font-size: 18px;
             font-family: "Open-Sans-SemiBold";

@@ -504,17 +504,33 @@ Route::get('/admin/sales/package', function () {
 Route::get('/admin/users/city', function () {
 
     $cities = collect();
-    $cities->push(['id' => 1, 'name' => 'Alexandria']);
-    $cities->push(['id' => 2, 'name' => 'Cairo']);
-    $cities->push(['id' => 3, 'name' => 'Giza']);
+    $cities->push(['id' => 1, 'name' => 'Irvine']);
+    $cities->push(['id' => 2, 'name' => 'Lake Forest']);
+    $cities->push(['id' => 3, 'name' => 'Mission Viejo']);
+    $cities->push(['id' => 4, 'name' => 'Tustin']);
+    $cities->push(['id' => 5, 'name' => 'Westminster']);
+    $cities->push(['id' => 6, 'name' => 'Anaheim']);
+    $cities->push(['id' => 7, 'name' => 'Santa Ana']);
+    $cities->push(['id' => 8, 'name' => 'Villa Park']);
+    $cities->push(['id' => 9, 'name' => 'Stanton']);
+    $cities->push(['id' => 10, 'name' => 'Placentia']);
+    $cities->push(['id' => 11, 'name' => 'Lake Forest']);
+    $cities->push(['id' => 12, 'name' => 'Garden Grove']);
 
     $users = collect();
 
     $users->push(['id' => 1, 'name' => 'Mohamed', 'city_id' => 1, 'zipcode' => 92620, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
     $users->push(['id' => 2, 'name' => 'Amr', 'city_id' => 2, 'zipcode' => 92623, 'phone'=> '01286727987' , 'service_status'=> 'Not Started', 'completion_date'=> '-' ]);
     $users->push(['id' => 3, 'name' => 'Doby', 'city_id' => 3,'zipcode' => 92627, 'phone'=> '01286727987' , 'service_status'=> 'Completed', 'completion_date'=> '10/4/2020' ]);
-    $users->push(['id' => 4, 'name' => 'Ahmed', 'city_id' => 3, 'zipcode' => 92629,  'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-']);
-    $users->push(['id' => 5, 'name' => 'Ali', 'city_id' => 3, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 4, 'name' => 'Ahmed', 'city_id' => 4, 'zipcode' => 92629,  'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-']);
+    $users->push(['id' => 5, 'name' => 'Ali', 'city_id' => 5, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 6, 'name' => 'Mahmoud', 'city_id' => 6, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 7, 'name' => 'Omar', 'city_id' => 7, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 8, 'name' => 'Gaber', 'city_id' => 8, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 9, 'name' => 'Karim', 'city_id' => 9, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 10, 'name' => 'Osama', 'city_id' => 10, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 11, 'name' => 'Yaser', 'city_id' => 11, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 12, 'name' => 'Sayed', 'city_id' => 12, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
 
 
     return view('admin.dashboard.users_per_city.index', ['active' => 'dashboard', 'cities' => $cities, 'users' => $users]);
@@ -756,11 +772,12 @@ Route::get('/admin/packages/tailored/edit/{id}', function () {
  * ************************** */
 
 Route::get('/admin/users', function () {
+
     $users = collect();
 
-    $users->push(['id' => 1, 'name' => 'Mohamed Salah', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'numberoforders' => 5]);
-    $users->push(['id' => 2, 'name' => 'Ali Ahmed', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'numberoforders' => 5]);
-    $users->push(['id' => 3, 'name' => 'Dooooooby', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'numberoforders' => 5]);
+    $users->push(['id' => 1, 'name' => 'Ali Ahmed', 'city' => 'Cairo', 'day_of_subscribe' => '12/15/2020', 'package_name' => 'Package 2', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
+    $users->push(['id' => 2, 'name' => 'Dooooooby', 'city' => 'Giza', 'day_of_subscribe' => '12/16/2020', 'package_name' => 'Package 3', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
+    $users->push(['id' => 3, 'name' => 'Mohamed Salah', 'city' => 'Alexandria', 'day_of_subscribe' => '12/14/2020', 'package_name' => 'Package 1', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
 
     return view('admin.users.index', ['active' => 'users', 'users' => $users]);
 })->name('admin.users');
@@ -994,9 +1011,9 @@ Route::delete('/admin/zones/delete/{id}', function () {
 /* Chat */
 Route::get('/chat_notifications', function () {
     $chat_notifications = collect();
-    $chat_notifications->push(['id' => 1, 'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'message' => 'Testiing new message testjbjkgkjkjvkjvkjvjkvjkvjkvjkvjkv', 'time' => '12m', 'isread' => false]);
-    $chat_notifications->push(['id' => 2, 'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'message' => 'Testiing new message', 'time' => '12m', 'isread' => true]);
-    $chat_notifications->push(['id' => 3, 'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'message' => 'Testiing new message', 'time' => '12m', 'isread' => true]);
+    $chat_notifications->push(['id' => 1, 'user_id' => 1, 'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'message' => 'Testiing new message testjbjkgkjkjvkjvkjvjkvjkvjkvjkvjkv', 'time' => '12m', 'isread' => false]);
+    $chat_notifications->push(['id' => 2, 'user_id' => 2, 'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'message' => 'Testiing new message', 'time' => '12m', 'isread' => true]);
+    $chat_notifications->push(['id' => 3, 'user_id' => 3, 'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'message' => 'Testiing new message', 'time' => '12m', 'isread' => true]);
 
     return json_encode($chat_notifications);
 
@@ -1004,9 +1021,9 @@ Route::get('/chat_notifications', function () {
 
 Route::get('/notifications', function () {
     $notifications = collect();
-    $notifications->push(['id' => 1, 'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'type' => 'new', 'time' => '12 minutes ago', 'isopened' => false]);
-    $notifications->push(['id' => 2, 'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'type' => 'modify', 'time' => '12 minutes ago', 'isopened' => true]);
-    $notifications->push(['id' => 3, 'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'type' => 'cancel', 'time' => '12 minutes ago', 'isopened' => true]);
+    $notifications->push(['id' => 1, 'user_id' => 1, 'userimage' => "/images/icons/profile.svg", 'username' => 'Mohamed Salah', 'type' => 'new', 'time' => '12 minutes ago', 'isopened' => false]);
+    $notifications->push(['id' => 2, 'user_id' => 2, 'userimage' => "/images/icons/profile.svg", 'username' => 'Ahmed', 'type' => 'modify', 'time' => '12 minutes ago', 'isopened' => true]);
+    $notifications->push(['id' => 3, 'user_id' => 3, 'userimage' => "/images/icons/profile.svg", 'username' => 'Ali', 'type' => 'cancel', 'time' => '12 minutes ago', 'isopened' => true]);
 
     return json_encode($notifications);
 

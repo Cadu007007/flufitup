@@ -3,13 +3,18 @@
   <p class="title">Number Of Orders Per Day</p>
   <p class="value">{{ value }}</p>
   <p class="edit" @click="$emit('open-orders-number-modal')">Edit</p>
-    
+    <input class="date-input" type="date" v-model="effectiveDate" name="effective_date" @change="$emit('date-changed',effectiveDate)">
   </div>
 </template>
 
 <script>
 export default {
-    props:['value']
+    props:['value'],
+    data(){
+        return{
+            effectiveDate:''
+        }
+    }
 
 }
 </script>
@@ -48,6 +53,14 @@ $orange: #FFA800;
         font-family: 'Open-Sans-Semibold';
         font-size: 12px;
         cursor: pointer;
+    }
+    .date-input{
+        border: 1px solid #ccc;
+        padding: 5px;
+        width: 150px;
+        text-align: center;
+        margin-top: 10px;
+        border-radius: 10px;
     }
     
 }

@@ -3,7 +3,7 @@
     <img :src="userimage" alt="" class="image">
     <div class="chat-info" :class="isread ? 'read' : ''">
         <span class="new-dot"></span>
-        <p class="username">{{username}}</p>
+        <p class="username" @click="goToUserProfile(userid)">{{username}}</p>
         <p class="message">{{ message }}</p>
         <p class="time">{{ time }}</p>
     </div>
@@ -12,7 +12,13 @@
 
 <script>
 export default {
-    props: ['userimage','username','message','time','isread']
+    props: ['userimage','username','message','time','isread','userid',"showprofileroute"],
+    methods:{
+        goToUserProfile(userId){
+            let url = this.showprofileroute.replace('user_id', userId)
+            window.location.href = url
+        }
+    }
 }
 </script>
 
@@ -62,11 +68,11 @@ $blue: #22AEE4;
                 font-family: 'Open-Sans-Semibold';
                 color: $black;
                 margin-bottom: 6px;
-
                 text-overflow: ellipsis;
                 width: 140px;
                 white-space: nowrap;
                 overflow: hidden;
+                cursor: pointer;
 
             }
             .message{

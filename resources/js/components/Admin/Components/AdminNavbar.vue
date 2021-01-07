@@ -28,6 +28,7 @@
         v-show="getChatPopupState"
         :chatsnotifications="chatsnotifications"
         :viewallroute="viewallchatroute"
+        :showprofileroute="showprofileroute"
     />
     
     <Notifications-Popup-List
