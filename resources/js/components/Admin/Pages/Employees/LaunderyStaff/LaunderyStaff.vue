@@ -9,19 +9,23 @@
         <thead>
         <tr>
             <th class="username-head">Laundery Staff</th>
-            <th class="email-head">Email</th>
             <th class="phone-head">Phone Number</th>
-            <th class="date-of-join-head">Date of Join</th>
+            <th class="email-head">Assigned Jobs</th>
             <th class="location-head">Location</th>
+            <th class="date-of-join-head">Status</th>
+            <th class="date-of-join-head">Shift</th>
+            <th class="date-of-join-head">Admin</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="person in staff" :key="person.id">
             <td class="username-cell"><p class="link" @click="goToShowStaff(person.id)">{{person.name}}</p></td>
-            <td class="email-cell">{{person.email}}</td>
             <td class="phone-cell">{{person.phone}}</td>
-            <td class="date-of-join-cell">{{person.date_of_join}}</td>
+            <td class="email-cell">{{person.assigned_jobs}}</td>
             <td class="location-cell">{{person.location}}</td>
+            <td class="date-of-join-cell">{{person.status}}</td>
+            <td class="date-of-join-cell">{{person.shift}}</td>
+            <td class="date-of-join-cell">{{person.admin}}</td>
         </tr>
         </tbody>
     </table>

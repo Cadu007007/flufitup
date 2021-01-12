@@ -70,6 +70,50 @@
         </div>  
     </div>
     </div>
+
+    <div class="seperator"></div>
+    <div class="car-details-container">
+        <p class="title">Assignments</p>
+
+
+        <div class="container">
+            <div class="left"></div>  
+
+            <div class="right">
+                <div class="info-container">
+                <p class="title">Zones</p>
+                <select class="select2" style="width: 400px" name="zones" multiple="multiple">
+                    <option value="1" selected>Zone A</option>
+                    <option value="2">Zone B</option>
+                </select>
+                </div>
+                <div class="info-container">
+                <p class="title">Cities</p>
+                <select class="select2" style="width: 400px" name="zones" multiple="multiple">
+                    <option value="1" selected>Irvine</option>
+                    <option value="2">Tustin</option>
+                </select>
+                </div>
+                <div class="info-container">
+                <p class="title">Assignment Date</p>
+                    <input type="date" class="input" name="assignment_date" id="" :value="driver[0].assignment_date">
+                </div>
+                <div class="info-container">
+                <p class="title">Shift</p>
+                    <select class="select2" style="width: 400px" name="zones" multiple="multiple">
+                    <option value="1">Morning</option>
+                    <option value="2">Noon</option>
+                    <option value="3" selected>Night</option>
+                </select>
+                </div>
+                <div class="info-container">
+                <p class="title">Notes</p>
+                <input type="text" class="input" name="notes" placeholder="Lorem Ipsum is simply dummy" :value="driver[0].notes">
+                </div>  
+            </div>  
+        </div>
+    </div>
+
     <div class="buttons-container">
         <button class="button save">Save</button>
     </div>

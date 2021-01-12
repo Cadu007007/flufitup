@@ -13,7 +13,6 @@
         </style>
         <link rel="stylesheet" href="{{ asset('css/admin/styles.css') }}">
         <link rel="icon" type="image/png" href="{{asset('images/logo.png')}}"/>
-
     </head>
     <body>
 

@@ -9,18 +9,21 @@
         <thead>
         <tr>
             <th class="username-head"  data-order="asc"><div class="table-head-flex"><p class="title">Driver Name</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
-            <th class="city-head">City Name</th>
-            <th class="date-of-join-head"  data-order="asc"><div class="table-head-flex"><p class="title">Date of Joining</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
-
-            <th class="assigned-head">Assigned</th>
+            <th class="city-head">Phone Number</th>
+            <th class="assigned-head">Assigned Zone</th>
+            <th class="assigned-head">Assigned City</th>
+            <th class="assigned-head">Status</th>
+            <th class="assigned-head">Shift</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="driver in drivers" :key="driver.id">
             <td class="username-cell"><p class="link" @click="goToShowDriver(driver.id)">{{driver.name}}</p></td>
-            <td class="city-cell">{{driver.city}}</td>
-            <td class="date-of-join-cell">{{driver.date_of_join}}</td>
-            <td class="assigned-cell">{{driver.assigned}}</td>
+            <td class="city-cell">{{driver.phone}}</td>
+            <td class="date-of-join-cell">{{driver.zones}}</td>
+            <td class="date-of-join-cell">{{driver.city}}</td>
+            <td class="assigned-cell">{{driver.status}}</td>
+            <td class="assigned-cell">{{driver.shift}}</td>
         </tr>
         </tbody>
     </table>

@@ -27,6 +27,7 @@
     "dependencies": {
         "fullpage.js": "^3.0.9",
         "moment": "^2.29.0",
+        "select2": "^4.0.13",
         "vue-custom-datepicker": "^1.1.6",
         "vue-event-calendar": "^1.5.2",
         "vue-material-datepicker": "^2.0.1",

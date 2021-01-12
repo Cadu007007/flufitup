@@ -31,35 +31,18 @@
   </div> 
 </div>
 <div class="seperator"></div>
-<div class="auth">
-    <p class="title">Given Authorizations</p>
-    <div class="flex-container">
-        <div class="row">
-            <input type="checkbox" name="auth1" v-if="superadmin">
-            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        </div>
-        <div class="row">
-            <input type="checkbox" name="auth2" v-if="superadmin">
-            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        </div>
-        <div class="row">
-            <input type="checkbox" name="auth3" v-if="superadmin">
-            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        </div>
-        <div class="row">
-            <input type="checkbox" name="auth4" v-if="superadmin">
-            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        </div>
-        <div class="row">
-            <input type="checkbox" name="auth5" v-if="superadmin">
-            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        </div>
-        <div class="row">
-            <input type="checkbox" name="auth6" v-if="superadmin">
-            <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        </div>
-    </div>
-</div>
+
+<AdminAuthorizations 
+:superadmin="superadmin"
+:readonly="true"
+/>
+
+
+
+<Financials 
+:tips="50"
+:bonus="60"
+/>
 
     <form action="/dummy" method="post">
     <input type="hidden" :value="csrf" name="_token"/>
@@ -86,8 +69,15 @@
                 <p class="title">Location</p>
                 <input type="text" class="input" name="admin_location" placeholder="Location">
             </div>
+
+        <AdminAuthorizations 
+        :superadmin="superadmin"
+        :readonly="false"
+        />
+
+            
             <div class="button-container">
-                <button class="save-button" type="button">Save</button>
+                <button class="save-button" type="submit">Save</button>
             </div>
             <span class="close" @click="closeModal">X</span>
 
@@ -99,12 +89,18 @@
 </template>
 
 <script>
+    import AdminAuthorizations from '../Components/AdminAuthorizations'
+    import Financials from '../../../Components/Financials'
 export default {
     data() {
         return {
             showModal: false,
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         }
+    },
+    components:{
+        AdminAuthorizations,
+        Financials
     },
     props: ['title','date','admins','admin','editadminroute','superadmin'],
     methods: {
@@ -246,32 +242,6 @@ $red: #FF0000;
     height: 1px;
     background: #ccc;
 }
-.auth{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    .title{
-        margin: 20px 0;
-        font-size: 16px;
-        font-family: 'Open-Sans-Bold';
-        color: #000;
-    }
-    .flex-container{
-        margin-left: 40px;
-        .row{
-            width: 100%;
-            display: flex;
-            flex-direction: row;   
-            margin: 10px 0;
-            .text{
-                margin-left: 10px;
-                width: 100%;
-            }
-        }
-    }
-}
 
     .edit-admin-modal{
             width: 100%;
@@ -292,6 +262,7 @@ $red: #FF0000;
                 border: 1px solid #F9F9F9;
                 border-radius: 20px;
                 position: relative;
+                overflow-y: auto ;
                 .title{
                     font-family: 'Open-Sans-Bold';
                     font-size: 16px;

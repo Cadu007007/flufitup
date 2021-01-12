@@ -843,9 +843,9 @@ Route::get('/admin/delievery_planner', function () {
 /* admins */
 Route::get('/admin/employees/admins', function () {
     $admins = collect();
-    $admins->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '2020-11-11', 'location' => 'location']);
-    $admins->push(['id' => 2, 'name' => 'Ahmed', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '2020-11-11', 'location' => 'location']);
-    $admins->push(['id' => 3, 'name' => 'Amr', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '2020-11-11', 'location' => 'location']);
+    $admins->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '2020-11-11', 'location' => 'location', 'status' => 'Active']);
+    $admins->push(['id' => 2, 'name' => 'Ahmed', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '2020-11-11', 'location' => 'location', 'status' => 'Pending Activation']);
+    $admins->push(['id' => 3, 'name' => 'Amr', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '2020-11-11', 'location' => 'location', 'status' => 'Active']);
 
     $superadmin = collect();
     $superadmin->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '2020-11-11', 'location' => 'location']);
@@ -888,14 +888,19 @@ Route::post('/admin/employees/admins/create_password', function (Request $reques
 /* laundery_staff */
 Route::get('/admin/employees/laundery_staff', function () {
     $staff = collect();
-    $staff->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '1990-11-11', 'location' => 'location']);
-    $staff->push(['id' => 2, 'name' => 'Ahmed', 'email' => 'ahmedsalah2020@test.com', 'phone' => '(xxx)-xxx-xxxx', 'date_of_join' => '1990-11-11', 'location' => 'location']);
+    $staff->push(['id' => 1, 'name' => 'Mohamed', 'phone' => '(xxx)-xxx-xxxx',
+     'assigned_jobs' => 'Sorting,Folding',
+     'location' => 'Costa Mesa','status' => 'Assigned', 'shift' => 'Night', 'admin'=>'Yes']);
+    $staff->push(['id' => 2, 'name' => 'Ahmed', 'phone' => '(xxx)-xxx-xxxx', 'assigned_jobs' => 'Washing',
+     'location' => 'Irvine','status' => 'Assigned', 'shift' => 'Night', 'admin'=>'No']);
     return view('admin.employees.laundery_staff.index', ['active' => 'laundery_staff', 'staff' => $staff]);
 })->name('admin.employees.laundery_staff');
 
 Route::get('/admin/employees/laundery_staff/show/{id}', function () {
     $staff = collect();
-    $staff->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com', 'address' => 'Address', 'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'date_of_join' => '12/14/2018', 'location' => 'location']);
+    $staff->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com', 'address' => 'Address',
+     'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'date_of_join' => '12/14/2018', 'location' => 'location',
+     'job' =>'Sorting, Washing', 'shift' => 'Morning', 'assignment_date' => '2020-10-15', 'admin' => 'yes' ]);
     return view('admin.employees.laundery_staff.show', ['active' => 'laundery_staff', 'staff' => $staff]);
 })->name('admin.employees.laundery_staff.show');
 
@@ -913,20 +918,38 @@ Route::get('/admin/employees/laundery_staff/create', function () {
 /* drivers */
 Route::get('/admin/employees/drivers', function () {
     $drivers = collect();
-    $drivers->push(['id' => 2, 'name' => 'Ahmed', 'city' => 'Alexandria', 'date_of_join' => '1990-11-11', 'assigned' => 'assigned']);
-    $drivers->push(['id' => 1, 'name' => 'Mohamed', 'city' => 'Alexandria', 'date_of_join' => '1992-12-12', 'assigned' => 'assigned']);
+
+    $drivers->push(['id' => 2, 'name' => 'Ahmed','phone' => '(xxx)-xxx-xxxx', 'city' => '-', 'zones'=> 'Zone A, Zone B', 'status' => 'Assigned', 'shift' => 'Morning']);
+    $drivers->push(['id' => 1, 'name' => 'Mohamed','phone' => '(xxx)-xxx-xxxx', 'city' => 'Tustin,Irvine', 'zones'=> '-', 'status' => 'Pending Activation', 'shift' => 'Noon']);
     return view('admin.employees.drivers.index', ['active' => 'drivers', 'drivers' => $drivers]);
 })->name('admin.employees.drivers');
 
 Route::get('/admin/employees/drivers/show/{id}', function () {
     $driver = collect();
-    $driver->push(['id' => 1, 'name' => 'Mohamed', 'phone' => '(xxx)-xxx-xxxx', 'address' => 'Address', 'birthday' => '1990-11-11', 'license' => 'license', 'car_type' => 'car type', 'car_model' => 'car model', 'car_production_date' => '2020-10-15', 'car_plate_number' => 'ABC123']);
+    $driver->push(['id' => 1, 'name' => 'Mohamed',
+     'phone' => '(xxx)-xxx-xxxx', 'address' => 'Address',
+      'birthday' => '1990-11-11',
+      'license' => 'license', 'car_type' => 'car type', 'car_model' => 'car model', 'car_production_date' => '2020-10-15', 'car_plate_number' => 'ABC123',
+      'zones' => 'Zone A, Zone B',
+      'cities' => 'Irvine,Tustin',
+      'assignment_date' => '2020-1-11',
+      'shift'=>'Night'
+       ]);
     return view('admin.employees.drivers.show', ['active' => 'drivers', 'driver' => $driver]);
 })->name('admin.employees.drivers.show');
 
 Route::get('/admin/employees/drivers/edit/{id}', function () {
     $driver = collect();
-    $driver->push(['id' => 1, 'name' => 'Mohamed', 'phone' => '(xxx)-xxx-xxxx', 'address' => 'Address', 'birthday' => '1990-11-11', 'license' => 'license', 'car_type' => 'car type', 'car_model' => 'car model', 'car_production_date' => '2020-10-15', 'car_plate_number' => 'ABC123']);
+    $driver->push(['id' => 1, 'name' => 'Mohamed',
+     'phone' => '(xxx)-xxx-xxxx', 'address' => 'Address',
+      'birthday' => '1990-11-11',
+      'license' => 'license', 'car_type' => 'car type', 'car_model' => 'car model', 'car_production_date' => '2020-10-15', 'car_plate_number' => 'ABC123',
+      'zones' => 'Zone A, Zone B',
+      'cities' => 'Irvine,Tustin',
+      'assignment_date' => '2020-01-11',
+      'shift'=>'Night',
+      'notes'=> 'Notes'
+       ]);    
     return view('admin.employees.drivers.edit', ['active' => 'drivers', 'driver' => $driver]);
 })->name('admin.employees.drivers.edit');
 

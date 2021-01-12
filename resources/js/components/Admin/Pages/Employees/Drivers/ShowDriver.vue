@@ -63,8 +63,42 @@
         </div>
     </div>
     <div class="seperator"></div>
+    <div class="car-details-container">
+        <p class="title">Assignments</p>
 
 
+        <div class="container">
+            <div class="left"></div>  
+
+            <div class="right">
+                <div class="info-container">
+                <p class="title">Zones</p>
+                    <p class="value">{{driver[0].zones}}</p>
+                </div>
+                <div class="info-container">
+                <p class="title">Cities</p>
+                    <p class="value">{{driver[0].cities}}</p>
+                </div>
+                <div class="info-container">
+                <p class="title">Assignment Date</p>
+                    <p class="value">{{driver[0].assignment_date}}</p>
+                </div>
+                <div class="info-container">
+                <p class="title">Shift</p>
+                    <p class="value">{{driver[0].shift}}</p>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div class="seperator"></div>
+
+<!-- Financials -->
+<Financials
+:tips="20"
+:bonus="20"
+/>
+
+    <div class="seperator"></div>
 
     <div class="buttons-container">
         <button class="button edit" @click="goToEditStaff(driver[0].id )">Edit</button>
@@ -74,8 +108,13 @@
 </template>
 
 <script>
+    import Financials from '../../../Components/Financials'
+
 export default {
     props: ['title','date','driver','editdriverroute'],
+    components:{
+        Financials
+    },
     methods: {
         goToEditStaff(id){
             var url = this.editdriverroute.replace('driver_id',id)
@@ -206,6 +245,10 @@ $red: red;
 
             }
         }
+    }
+    .Financials .title{
+        color: $blue !important;
+
     }
     
 }

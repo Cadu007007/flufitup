@@ -100,6 +100,7 @@ var DelieveryPlanner = require('./components/Admin/Pages/Planners/DelieveryPlann
 /* ** Employees ** */
 var Admins = require('./components/Admin/Pages/Employees/Admins/Admins.vue').default
 var ShowAdmin = require('./components/Admin/Pages/Employees/Admins/ShowAdmin.vue').default
+var Financials = require('./components/Admin/Components/Financials.vue').default
     /* Launder Staff */
 var LaunderyStaff = require('./components/Admin/Pages/Employees/LaunderyStaff/LaunderyStaff.vue').default
 var ShowLaunderyStaff = require('./components/Admin/Pages/Employees/LaunderyStaff/ShowLaunderyStaff.vue').default
@@ -193,6 +194,7 @@ const app = new Vue({
         /***  Employees Pages ****/
         Admins,
         ShowAdmin,
+        Financials,
         /* Drivers */
         Drivers,
         ShowDriver,
