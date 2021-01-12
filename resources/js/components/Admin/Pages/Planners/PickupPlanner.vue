@@ -19,27 +19,44 @@
     <table class="pickup-planner-table" id="PickupPlannerTable">
         <thead>
         <tr>
-            <th class="order-number-head">Order Number</th>
+            <th class="order-number-head">Client</th>
+            <th class="order-number-head">Order #</th>
+            <th class="order-number-head">Zone</th>
             <th class="city-head"  data-order="asc"><div class="table-head-flex"><p class="title">City</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <th class="order-number-head">Zip Code</th>
 
-            <th class="drop-off-address-head">Drop off Address</th>
-            <th class="number-of-bags-head">Number of Bags</th>
+            <th class="drop-off-address-head">Pickup Address</th>
             <th class="package-name-head">Package Name</th>
-            <th class="assigned-to-head">Assigned To</th>
+            <th class="number-of-bags-head">Bags</th>
+            <th class="number-of-bags-head">Dry Clean</th>
+            <th class="number-of-bags-head">AVS</th>
+            <th class="assigned-to-head">Driver</th>
+            <th class="number-of-bags-head">Print</th>
         </tr>
         </thead>
         <tbody>
         
         <tr v-for="(order,index) in orders" :key="order.id">
-            <td class="order-number-cell"><p class="link" @click="goToShowUser(order.id)">{{order.id}}</p></td>
+            <td class="order-number-cell"><p class="link" @click="goToShowUser(order.id)">{{order.client}}</p></td>
+            <td class="order-number-cell">{{order.id}}</td>
+            <td class="order-number-cell">{{order.zone}}</td>
             <td class="city-cell">{{order.city}}</td>
+            <td class="city-cell">{{order.zip_code}}</td>
             <td class="drop-off-address-cell">{{order.drop_off_address}}</td>
-            <td class="number-of-bags-cell">{{order.no_of_bags}}</td>
             <td class="package-name-cell">{{order.package_name}}</td>
+            <td class="number-of-bags-cell">{{order.no_of_bags}}</td>
+            <td class="number-of-bags-cell">{{order.dry_clean}}</td>
+            <td class="number-of-bags-cell">{{order.avs}}</td>
             <td class="assigned-to-cell" @click="showDriverModal(index)">{{ order.assigned_to > 0 ? getDriverName(order.assigned_to) : 'Unassigned'}}</td>
+            <td class="number-of-bags-cell"><input class="print" type="checkbox"></td>
         </tr>
         </tbody>
     </table>
+
+    <div class="flex-row">
+        <button class="footer-button">Print Pickup Sheet</button>
+        <button class="footer-button">Print Pickup Orders</button>
+    </div>
     
 <div class="modal" v-if="calendarModalState" @keydown.esc="closeCalendarModal"  tabindex="0">
     <div class="calendar-container">
@@ -229,7 +246,7 @@ $white: #fff;
             }
         }
         .order-number-head{
-            width: 130px;
+            width: 90px;
         }
         .order-number-cell{
             color: $blue;
@@ -239,13 +256,13 @@ $white: #fff;
             }
         }
         .city-head{
-            width: 100px;
+            width: 80px;
         }
         .drop-off-address-head{
             width: 150px;
         }
         .number-of-bags-head{
-            width: 150px;
+            width: 80px;
         }
         .package-name-head{
             width: 140px;
@@ -342,6 +359,22 @@ $white: #fff;
                 top: 30px;
                 right: 30px;
                 cursor: pointer;
+            }
+        }
+
+        .flex-row{
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: row;
+            .footer-button{
+                width: 220px;
+                padding: 6px 20px;
+                margin-top: 30px;
+                font-size: 16px;
+                color: #000;
+                background-color: #fff;
+                border: 1px solid rgb(212, 80, 80);
+            border-radius: 10px;
             }
         }
 }
