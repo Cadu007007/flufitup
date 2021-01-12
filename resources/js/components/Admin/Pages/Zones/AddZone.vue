@@ -13,16 +13,32 @@
                     name="zone_name"
                     placeholder="Zone Name"
                 />
+                <p class="center-title">Proccessing Center</p>
+                <p class="center-title">Washing Center</p>
             </div>
             <div class="zone-cities-container">
                 <div class="zone-city">
                     <div class="first-row">
                         <p class="title">Zone Cities:</p>
                         <div class="city-row">
-                            <select class="zone-name-input" name="city[]">
+                            <select
+                                class="zone-name-input select2"
+                                style="width: 430px"
+                                name="city[]"
+                            >
                                 <option>City Name</option>
                             </select>
                             <span class="delete-city">X</span>
+                            <input
+                                type="checkbox"
+                                name="processing_center"
+                                class="checkbox1"
+                            />
+                            <input
+                                type="checkbox"
+                                name="washing_center"
+                                class="checkbox2"
+                            />
                         </div>
                     </div>
                     <div class="cities">
@@ -31,15 +47,30 @@
                             v-for="(input, index) in inputs"
                             :key="index"
                         >
-                            <select class="zone-name-input" name="city[]">
-                                <option>City Name</option>
+                            <select
+                                class="select2 zone-name-input"
+                                style="width: 430px"
+                                name="zones"
+                            >
+                                <option value="1" selected>Zone A</option>
+                                <option value="2">Zone B</option>
                             </select>
                             <span class="delete-city" @click="removeCityRow"
                                 >X</span
                             >
+                            <input
+                                type="checkbox"
+                                name="processing_center"
+                                class="checkbox1"
+                            />
+                            <input
+                                type="checkbox"
+                                name="washing_center"
+                                class="checkbox2"
+                            />
                         </div>
 
-                        <p class="add-another-city" @click="inputs++">
+                        <p class="add-another-city" @click="addButtonPressed()">
                             Add Another City
                         </p>
                     </div>
@@ -64,7 +95,13 @@ export default {
     methods: {
         removeCityRow(event) {
             event.target.parentNode.remove();
-        }
+        },
+        addButtonPressed() {
+            this.inputs++;
+            setTimeout(() => {
+                $(".select2").select2();
+            }, 300);
+        },
     }
 };
 </script>
@@ -106,18 +143,26 @@ $blue: #22aee4;
             width: 812px;
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: flex-start;
             align-items: center;
             margin: 0 auto;
             .title {
                 color: $text-grey;
                 font-size: 16px;
+                width: 92px !important;
+            }
+            .center-title {
+                position: relative;
+                left: 70px;
+                text-align: center;
             }
             .zone-name-input {
-                width: 628px;
+                width: 428px;
                 background: #f9f9f9;
                 border: 2px solid #ededed;
                 border-radius: 7px;
+                margin: 0 0 0 40px;
+
                 padding: 12px;
             }
         }
@@ -131,7 +176,7 @@ $blue: #22aee4;
                 width: 812px;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: flex-start;
                 align-items: center;
                 margin: 0 auto;
                 position: relative;
@@ -139,7 +184,7 @@ $blue: #22aee4;
                     width: 812px;
                     display: flex;
                     flex-direction: row;
-                    justify-content: space-around;
+                    justify-content: flex-start;
                     align-items: center;
                     margin: 0 auto;
                 }
@@ -151,25 +196,37 @@ $blue: #22aee4;
 
                 .city-row {
                     position: relative;
+                    margin: 0 0 0 40px;
                     .delete-city {
                         position: absolute;
-                        top: 10px;
+                        top: 2px;
                         right: -25px;
+                    }
+                    .checkbox1 {
+                        position: absolute;
+                        top: 2px;
+                        right: -150px;
+                    }
+                    .checkbox2 {
+                        position: absolute;
+                        top: 2px;
+                        right: -270px;
                     }
                 }
 
                 .cities {
                     display: flex;
                     flex-direction: column;
-                    justify-content: center;
+                    justify-content: flex-start;
                     width: 100%;
-                    align-items: flex-end;
+                    align-items: flex-start;
                     margin-right: 50px;
+                    margin-left: 225px;
                     .city-row {
                         margin-top: 10px;
                         .delete-city {
                             position: absolute;
-                            top: 10px;
+                            top: 2px;
                             right: -25px;
                         }
                     }

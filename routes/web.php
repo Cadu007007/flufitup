@@ -807,9 +807,27 @@ Route::get('/admin/users/show/{id}', function () {
 /* Pickup */
 Route::get('/admin/pickup_planner', function () {
     $orders = collect();
-    $orders->push(['id' => 123456 , 'city' => 'Alexandria', 'drop_off_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 2 , 'package_name' => 'Package 1' , 'assigned_to' => 1]);
-    $orders->push(['id' => 234567 , 'city' => 'Cairo', 'drop_off_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 1 , 'package_name' => 'Package 2' , 'assigned_to' => 2]);
-    $orders->push(['id' => 345678 , 'city' => 'Giza', 'drop_off_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 3 , 'package_name' => 'Package 3' , 'assigned_to' => 'Unassigned']);
+    $orders->push(['id' => 123456 , 'city' => 'Alexandria', 'client' => 'Mohamed',
+     'drop_off_address' => 'adress adress adress adress adress adress', 
+     'no_of_bags' => 2 , 'package_name' => 'Package 1' ,
+     'zone' => 'A', 'zip_code' => '92620',
+     'dry_clean' => 'Yes',
+     'avs' => 'No',
+     'assigned_to' => 1]);
+    $orders->push(['id' => 234567 , 'city' => 'Cairo', 'client' => 'Mohamed',
+     'drop_off_address' => 'adress adress adress adress adress adress', 
+     'no_of_bags' => 1 , 'package_name' => 'Package 2' ,
+     'zone' => 'A', 'zip_code' => '92620',
+     'dry_clean' => 'Yes',
+     'avs' => 'No',
+     'assigned_to' => 2]);
+    $orders->push(['id' => 345678 , 'city' => 'Giza',  'client' => 'Mohamed',
+    'drop_off_address' => 'adress adress adress adress adress adress', 
+    'no_of_bags' => 3 , 'package_name' => 'Package 3' ,
+    'zone' => 'A', 'zip_code' => '92620',
+    'dry_clean' => 'Yes',
+    'avs' => 'No',
+    'assigned_to' => 'Unassigned']);
     
     $drivers = collect();
     $drivers->push(['id' => 1 , 'name' => 'Mohamed', 'image' => '/images/profile.svg']);
@@ -820,11 +838,28 @@ Route::get('/admin/pickup_planner', function () {
 
 /* Delievery */
 Route::get('/admin/delievery_planner', function () {
-
     $orders = collect();
-    $orders->push(['id' => 123456 , 'city' => 'Alexandria','type_of_delievery' => ' Type Of Delievery', 'pick_up_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 2 , 'package_name' => 'Package 1' , 'assigned_to' => 1]);
-    $orders->push(['id' => 234567 , 'city' => 'Cairo','type_of_delievery' => ' Type Of Delievery', 'pick_up_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 1 , 'package_name' => 'Package 2' , 'assigned_to' => 2]);
-    $orders->push(['id' => 345678 , 'city' => 'Giza','type_of_delievery' => ' Type Of Delievery', 'pick_up_address' => 'adress adress adress adress adress adress', 'no_of_bags' => 3 , 'package_name' => 'Package 3' , 'assigned_to' => 'Unassigned']);
+    $orders->push(['id' => 123456 , 'city' => 'Alexandria', 'client' => 'Mohamed',
+     'drop_off_address' => 'adress adress adress adress adress adress', 
+     'no_of_bags' => 2 , 'package_name' => 'Package 1' ,
+     'zone' => 'A', 'zip_code' => '92620',
+     'dry_clean' => 'Yes',
+     'avs' => 'No',
+     'assigned_to' => 1]);
+    $orders->push(['id' => 234567 , 'city' => 'Cairo', 'client' => 'Mohamed',
+     'drop_off_address' => 'adress adress adress adress adress adress', 
+     'no_of_bags' => 1 , 'package_name' => 'Package 2' ,
+     'zone' => 'A', 'zip_code' => '92620',
+     'dry_clean' => 'Yes',
+     'avs' => 'No',
+     'assigned_to' => 2]);
+    $orders->push(['id' => 345678 , 'city' => 'Giza',  'client' => 'Mohamed',
+    'drop_off_address' => 'adress adress adress adress adress adress', 
+    'no_of_bags' => 3 , 'package_name' => 'Package 3' ,
+    'zone' => 'A', 'zip_code' => '92620',
+    'dry_clean' => 'Yes',
+    'avs' => 'No',
+    'assigned_to' => 'Unassigned']);
     
     $drivers = collect();
     $drivers->push(['id' => 1 , 'name' => 'Mohamed', 'image' => '/images/profile.svg']);
@@ -906,7 +941,12 @@ Route::get('/admin/employees/laundery_staff/show/{id}', function () {
 
 Route::get('/admin/employees/laundery_staff/edit/{id}', function () {
     $staff = collect();
-    $staff->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com', 'address' => 'Address', 'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'date_of_join' => '12/14/2018', 'location' => 'location']);
+    $staff->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com',
+     'address' => 'Address', 'phone' => '(xxx)-xxx-xxxx',
+     'city' => 'Alexandria',
+     'state' => 'Alex',
+     'zip_code' => '123AB',
+      'birthday' => '1990-11-11', 'date_of_join' => '12/14/2018', 'location' => 'location']);
     return view('admin.employees.laundery_staff.edit', ['active' => 'laundery_staff', 'staff' => $staff]);
 })->name('admin.employees.laundery_staff.edit');
 
