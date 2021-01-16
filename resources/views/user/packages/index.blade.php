@@ -4,7 +4,7 @@
 <Packages 
 class="PageContentContainer"
 id="Packages" 
-date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
+date="{{Carbon\Carbon::now()->format('m-d-Y')}}"
 :packagesadhoclist="{{ $packages->adhoc}}"
 :packagebiweeklylist="{{ $packages->bi_weekly}}"
 :packagesmonthlylist="{{ $packages->monthly}}"

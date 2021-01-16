@@ -5,8 +5,26 @@
     <p class="date">{{date}}</p>
   </div>
   <div class="page-title">
-    <p class="title">Choose from our service offers</p>
+    <p class="title">Customize your package or choose from our most selling packages</p>
   </div>
+
+
+    
+<p class="packages-title">
+Create Your Package
+  </p>
+ 
+  <div class="packages-container">
+    <PackageContainer
+    title="Create your package"
+    description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+    button="Create"
+    :buttonroute="packagecreateroute"
+    />
+    
+  </div>
+
+
   <p class="packages-title">
   Ad Hoc Packages
   </p>
@@ -48,21 +66,6 @@ Monthly Packages
     :description="item.description"
     :button="item.button"
     @show-package-details="goToPackageDetails(item.id)"
-    />
-    
-  </div>
-
-    
-<p class="packages-title">
-Create Your Package
-  </p>
- 
-  <div class="packages-container">
-    <PackageContainer
-    title="Create your package"
-    description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-    button="Create"
-    :buttonroute="packagecreateroute"
     />
     
   </div>

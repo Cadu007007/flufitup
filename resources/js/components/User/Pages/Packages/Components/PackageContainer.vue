@@ -3,7 +3,7 @@
     <p class="title">{{title}}</p>
     <p class="price">{{price}}</p>
     <p class="description">{{description}}</p>
-    <button v-if="button != 'Create'" @click="$emit('show-package-details')" class="subscribe">Subscribe</button>
+    <button v-if="button != 'Create'" @click="$emit('show-package-details')" class="subscribe">See Details</button>
     <a   v-else :href="buttonroute" class="subscribe" :class="button == 'Create' ? 'create' : ''">{{button}}</a>
 
   </div>

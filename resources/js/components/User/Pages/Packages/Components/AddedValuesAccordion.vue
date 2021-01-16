@@ -13,8 +13,8 @@
      </div>
   </div>
 
-    <div class="added-values-container" v-show="isopen">
-        <div class="added-value" v-for="(choice,index) in addedvaluechoices" :key="index">
+    <div class="d-flex flex-row flex-wrap" v-show="isopen">
+        <div class="col-lg-4 my-1 mt-2" v-for="(choice,index) in addedvaluechoices" :key="index">
             <input class="input" type="checkbox" :name="choice.name">
             <label class="label" @click="choiceClicked" :for="choice.name">{{choice.title}}</label>
         </div>

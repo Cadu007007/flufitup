@@ -1,8 +1,9 @@
 <template>
   <div class="OrderDetailsModal" v-if="showOrderDetailsModal">
-    <div class="darker" @click="$emit('hide-modal')">
-        <div class="order-details-card">
+    <div class="darker">
+        <div class="order-details-card position-relative">
             <p class="title">Order Details</p>
+            <span class="close position-absolute" style="right:21px; top:24px"  @click="$emit('hide-modal')">X</span>
             <OrderDetail name="Order Number" :value="orderNumber"/>
             <OrderDetail name="Start Date" :value="startDate"/>
             <OrderDetail name="Finish Date" :value="finishDate"/>
@@ -18,6 +19,9 @@
             <OrderDetail name="Pickup address" :value="pickupAddress"/>
             <OrderDetail name="Drop off address" :value="dropOffAddress"/>
             <OrderDetail name="Added Notes" :value="addedNotes"/>
+            <div class="d-flex flex-row mt-2 mb-3 justify-content-center">
+              <button class="btn btn-primary px-4" style="border-radius: 30px">Edit</button>
+            </div>
         </div>
     </div>
   </div>
@@ -83,7 +87,7 @@ $blue: #22AEE4;
     .order-details-card{
         @include flex-start-center;
       width: 700px;
-      height: 646px;
+      min-height: 646px;
       background: $white;
       border-radius: 40px;
       padding: 24px;

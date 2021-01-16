@@ -218,15 +218,15 @@ Route::get('/packages', function () {
     $packages->bi_weekly = collect();
     $packages->monthly = collect();
 
-    $packages->adhoc->push(['id' => 1, 'title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
-    $packages->adhoc->push(['id' => 2, 'title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
+    $packages->adhoc->push(['id' => 1, 'title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->adhoc->push(['id' => 2, 'title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
 
-    $packages->bi_weekly->push(['id' => 3, 'title' => 'Bi-Weekly', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
-    $packages->bi_weekly->push(['id' => 4, 'title' => 'Bi-Weekly – Big Job', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
+    $packages->bi_weekly->push(['id' => 3, 'title' => 'Bi-Weekly', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->bi_weekly->push(['id' => 4, 'title' => 'Bi-Weekly – Big Job', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
 
-    $packages->monthly->push(['id' => 5, 'title' => 'Monthly', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
-    $packages->monthly->push(['id' => 6, 'title' => 'Monthly - Busy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
-    $packages->monthly->push(['id' => 7, 'title' => 'Monthly - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
+    $packages->monthly->push(['id' => 5, 'title' => 'Monthly', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->monthly->push(['id' => 6, 'title' => 'Monthly - Busy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->monthly->push(['id' => 7, 'title' => 'Monthly - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
 
     return view('user.packages.index', ['active' => 'packages', 'packages' => $packages]);
 })->name('packages');
@@ -247,7 +247,49 @@ Route::get('/packages/show/{id}', function () {
         'price' => '50',
         'currency' => '$',
     ]);
-    return view('user.packages.show', ['active' => 'packages', 'package' => $packages]);
+    $dry_clean_items = collect();
+    $dry_clean_items->push(['id' => 1, 'title' => 'Item 1', 'price' => 30, 'name' => 'item1']);
+    $dry_clean_items->push(['id' => 2, 'title' => 'Item 2', 'price' => 40, 'name' => 'item2']);
+    $dry_clean_items->push(['id' => 3, 'title' => 'Item 3', 'price' => 50, 'name' => 'item3']);
+    $dry_clean_items->push(['id' => 4, 'title' => 'Item 4', 'price' => 60, 'name' => 'item4']);
+    $dry_clean_items->push(['id' => 5, 'title' => 'Item 5', 'price' => 70, 'name' => 'item5']);
+    $dry_clean_items->push(['id' => 6, 'title' => 'Item 6', 'price' => 70, 'name' => 'item6']);
+    
+    $household_items = collect();
+    $household_items->push(['id' => 1, 'title' => 'Item 7', 'price' => 10, 'name' => 'item1']);
+    $household_items->push(['id' => 2, 'title' => 'Item 8', 'price' => 20, 'name' => 'item2']);
+    $household_items->push(['id' => 3, 'title' => 'Item 9', 'price' => 30, 'name' => 'item3']);
+    $household_items->push(['id' => 4, 'title' => 'Item 10', 'price' => 40, 'name' => 'item4']);
+    $household_items->push(['id' => 5, 'title' => 'Item 11', 'price' => 50, 'name' => 'item5']);
+    $household_items->push(['id' => 6, 'title' => 'Item 12', 'price' => 60, 'name' => 'item6']);
+    
+    
+    $options = collect();
+    $options->added_value = collect();
+    $options->added_value_choices = collect();
+
+    $options->added_value->push(['title' => 'Use hungers instead of Folding', 'value' => '1']);
+    $options->added_value->push(['title' => 'Individual Garment Wrapping', 'value' => '2']);
+
+    $options->added_value_choices->push(['title' => 'T‐Shirts', 'name' => 't-shirt']);
+    $options->added_value_choices->push(['title' => 'Trousers', 'name' => 'trousers']);
+    $options->added_value_choices->push(['title' => 'V‐Neck', 'name' => 'v_neck']);
+    $options->added_value_choices->push(['title' => 'Blouses', 'name' => 'blouses']);
+    $options->added_value_choices->push(['title' => 'Hoodies', 'name' => 'hoodies']);
+    $options->added_value_choices->push(['title' => 'Sleep-Wear', 'name' => 'sleep_wear']);
+    $options->added_value_choices->push(['title' => 'Shirts', 'name' => 'shirts']);
+    $options->added_value_choices->push(['title' => 'Polo Shirts', 'name' => 'polo_shirts']);
+    $options->added_value_choices->push(['title' => 'Skirts', 'name' => 'skirts']);
+    $options->added_value_choices->push(['title' => 'Sweat Shirts', 'name' => 'sweat_shirts']);
+    $options->added_value_choices->push(['title' => 'Dresses', 'name' => 'dresses']);
+    $options->added_value_choices->push(['title' => 'Jeans', 'name' => 'jeans']);
+    $options->added_value_choices->push(['title' => 'Bra ( Up to 4 )', 'name' => 'bra']);
+    $options->added_value_choices->push(['title' => 'Shorts', 'name' => 'shorts']);
+    $options->added_value_choices->push(['title' => 'Overalls', 'name' => 'overalls']);
+
+
+    return view('user.packages.show', ['active' => 'packages', 'package' => $packages,
+     'dry_clean_items' => $dry_clean_items,'household_items'=> $household_items ,'options' => $options]);
 })->name('package.show');
 
 Route::get('/packages/create', function () {
