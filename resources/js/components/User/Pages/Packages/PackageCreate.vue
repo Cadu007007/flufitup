@@ -92,6 +92,39 @@
 
         </div>
 
+
+        <div class="row" style="width: 730px">
+        <!-- dry clean items -->
+          <div class="col-lg-12 mx-auto my-4">
+              <ItemsList title="Dry Clean" :items="drycleanitems" />
+          </div>
+        <!-- household items -->
+
+            <div class="col-lg-12 mx-auto my-4">
+                <ItemsList title="Household Items" :items="householditems" />
+            </div>
+        </div>
+
+        <!-- detergents items -->
+            <div class="slider-container" style="width: 500px">
+                <div class="title font-weight-bold my-4 text-center text-primary">Detergents</div>
+                <Slider :perpage ="2" :types="detergentstypes" :typesitems="detergentstypesitems" />
+            </div>
+        <!-- fabric items -->
+            <div class="slider-container" style="width: 500px">
+                <div class="title font-weight-bold my-4 text-center text-primary">Fabric Softener</div>
+                <Slider :perpage ="2" :types="fabrictypes" :typesitems="fabrictypesitems" />
+            </div>
+        <!-- dryer items -->
+            <div class="slider-container" style="width: 500px">
+                <div class="title font-weight-bold my-4 text-center text-primary">Dryer Sheet</div>
+                <Slider :perpage ="2" :types="dryertypes" :typesitems="dryertypesitems" />
+            </div>
+        <!-- booster items -->
+            <div class="slider-container" style="width: 500px">
+                <div class="title font-weight-bold my-4 text-center text-primary">Scent Booster</div>
+                <Slider :perpage ="2" :types="boostertypes" :typesitems="boostertypesitems" />
+            </div>
       </div>
 
 
@@ -99,6 +132,8 @@
       class="package-price"
       price="50"
       currency="$"
+      style="width: 300px !important; position: fixed; left: 900px"
+
      />
 
   </div>
@@ -113,6 +148,10 @@ import Accordion from './Components/Accordion'
 import AccordionCalendar from './Components/AccordionCalendar'
 import AddedValuesAccordion from './Components/AddedValuesAccordion'
 import PackageCreatePriceCard from './Components/PackageCreatePriceCard'
+import Slider from "./Components/Slider";
+import ItemsList from "./Components/ItemsList";
+
+
 export default {
   data() {
     return {
@@ -125,12 +164,24 @@ export default {
     }
   },
   props: ['date','serviceoptions','washoptions','pickupsoptions','loadoptions','dateoptions',
-          'returndurationoptions','addedvalueoptions','addedvaluechoices','formactionroute'],
+          'returndurationoptions','addedvalueoptions','addedvaluechoices','formactionroute',
+          "drycleanitems",
+          "householditems",
+        "detergentstypes",
+        "detergentstypesitems",
+        "fabrictypes",
+        "fabrictypesitems",
+        "dryertypes",
+        "dryertypesitems",
+        "boostertypes",
+        "boostertypesitems",],
   components:{
     Accordion,
     AccordionCalendar,
     AddedValuesAccordion,
-    PackageCreatePriceCard
+    PackageCreatePriceCard,
+    Slider,
+    ItemsList
   },
   methods: {
     showAddedValues(){

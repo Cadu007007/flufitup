@@ -5,6 +5,7 @@ window.Vue = require('vue');
 //support vuex
 import Vuex from 'vuex'
 Vue.use(Vuex)
+Vue.use(VueCarousel);
 
 import storeData from "./store/index"
 
@@ -14,6 +15,7 @@ const store = new Vuex.Store(
     /* import jQuery */
 import $ from 'jquery'
 
+import VueCarousel from 'vue-carousel';
 /* Landing page components */
 var LandingPage = require('./components/LandingPage.vue').default
 
@@ -135,6 +137,7 @@ const app = new Vue({
     el: '#app',
     store, //vuex
     components: {
+        VueCarousel,
         /* Landing */
         LandingPage,
         /* User */

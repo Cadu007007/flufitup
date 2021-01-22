@@ -26,12 +26,17 @@
     },
     "dependencies": {
         "fullpage.js": "^3.0.9",
+        "hooper": "^0.3.4",
         "moment": "^2.29.0",
+        "owl.carousel": "^2.3.4",
         "select2": "^4.0.13",
+        "vue-carousel": "^0.18.0",
         "vue-custom-datepicker": "^1.1.6",
         "vue-event-calendar": "^1.5.2",
         "vue-material-datepicker": "^2.0.1",
         "vue-scroll-snap": "^0.1.9",
+        "vue-slick-carousel": "^1.0.6",
+        "vue3-carousel": "^0.1.11",
         "vuex": "^3.5.1"
     }
 }
