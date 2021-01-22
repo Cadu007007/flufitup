@@ -9,12 +9,14 @@
 <div class="change-password-form-container">
   <input type="hidden" :value="csrf" name="_token"/>
 
+<br>
     <Smart-Input-Container 
     title="Old Password"
     name="old_password"
     placeholder="Old Password"
     type="password"
     />
+<br>
     
      <Smart-Input-Container 
     title="New Password"
@@ -22,6 +24,7 @@
     placeholder="New Password"
     type="password"
     />
+<br>
     <Smart-Input-Container 
     title="Re-enter New Password"
     name="confirm_new_password"
