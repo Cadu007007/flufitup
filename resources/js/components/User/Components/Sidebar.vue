@@ -40,8 +40,8 @@
   <SidebarItem :class=" active == 'old_orders' ? 'active' : '' " 
   class="OldOrdersSidebarItem" 
   :href=routetooldorders
-  title="Old Orders" 
-  itemtooltip="Old Orders"
+  title="Previous Orders" 
+  itemtooltip="Previous Orders"
   icon='/images/icons/old-order-grey.svg' 
   iconActive='/images/icons/old-order.svg'/>
 

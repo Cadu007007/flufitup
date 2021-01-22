@@ -5,9 +5,6 @@
         <img :src=profileimage alt="" class="image">
         <p class="name">Mohamed Samir</p>
     
-        <a :href="editprofileroute">
-            <img src="/images/icons/edit-button.svg" alt="" class="edit-icon">
-        </a>
     </div>
     <div class="details">
 
@@ -35,6 +32,10 @@
     <div class="change-password-container">
         <a class="change-password" :href="changepasswordroute">Change Password</a>
     </div>
+
+    <div class="my-4 d-flex flex-row justify-content-cent">
+        <button class="btn btn-primary px-4" @click="goToEditProfile">Edit</button>
+    </div>
   </div>
 </template>
 
@@ -46,7 +47,13 @@ export default {
 components:{
     ProfileInfoContainer,
 },
-props:['profileimage','email','emailstatus','phone','phonestatus','address','birthday','editprofileroute','changepasswordroute']
+props:['profileimage','email','emailstatus','phone','phonestatus','address',
+'birthday','editprofileroute','changepasswordroute'],
+methods:{
+    goToEditProfile(){
+        window.location.href= this.editprofileroute
+    }
+}
 }
 </script>
 
@@ -59,7 +66,7 @@ $red: #FF0000CC;
 $green: #007C09;
 $blue: #22AEE4;
 .ProfileCard{
-    height: 485px;
+    min-height: 485px;
     width: 100%;
     background: $white;
     border-radius: 20px;

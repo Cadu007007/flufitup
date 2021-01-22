@@ -1,7 +1,9 @@
 <template>
   <div class="SmartInputContainer">
     <label  class="label" :for="name" > {{ title }}</label>
-    <input class="input" :name="name" :maxlength="maxlength" :placeholder="placeholder" :type="type" v-model="inputval" 
+    <input class="input" :class="disabled ? 'text-muted' : ''" :name="name" :maxlength="maxlength" :placeholder="placeholder" 
+    :type="type" v-model="inputtext"
+    :disabled="disabled"
     @keyup="$emit('input-keyup')" :id="inputid"
     @keydown="$emit('input-keydown')"
     >
@@ -12,10 +14,10 @@
 export default {
   data() {
     return {
-      inputval: '',
+      inputtext: this.inputval,
     }
   },
-props:['title','name','placeholder','type','maxlength','inputid']
+props:['title','name','placeholder','type','maxlength','inputid','inputval','disabled']
 }
 </script>
 

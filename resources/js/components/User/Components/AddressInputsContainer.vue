@@ -1,6 +1,6 @@
 <template>
   <div class="AddressInputsContainer">
-    <p  class="title"> {{ title }} Address</p>
+    <p  class="title mb-4"> {{ title }} Address</p>
 
 
      <div class="filter-options">

@@ -9,19 +9,64 @@
 <div class="edit-profile-form-container">
   <div class="form-input-container">
     <input type="hidden" :value="csrf" name="_token"/>
+    
+    <div class="my-4"></div>
+    <div class="d-flex flex-row flex-wrap justify-content-between align-items-center">
+
     <Smart-Input-Container
     title="Email"
     name="email"
     placeholder="Enter Your Email"
     type="text"
+    inputval="email@example.com"
+    disabled="true"
     />
-    
+    <button class="btn btn-primary" type="button" style="height: 40px" 
+    @click="changeemail = true">Change Email</button>
+    </div>
+    <div class="" v-if="changeemail">
+
+    <Smart-Input-Container
+    title="New Email"
+    name="email"
+    placeholder="Enter New Email"
+    type="text"
+    />
+      <Smart-Input-Container
+    title="Confirm New Email"
+    name="email"
+    placeholder="Confirm New Email"
+    type="text"
+    />
+    </div>
+        
+        <br>
+      
+      
+    <div class="d-flex flex-row flex-wrap justify-content-between align-items-center">
+
      <Smart-Input-Container 
     title="Phone Number"
     name="phone"
     placeholder="( XXX ) - XXX - XXXX"
     type="text"
+
+    inputval="+111 111 111"
+    disabled="true"
     />
+        <button class="btn btn-primary" type="button" style="height: 40px" 
+        @click="changephone = true">Change Phone</button>
+
+    </div>
+
+      <div class="" v-if="changephone">
+     <Smart-Input-Container 
+    title="New Phone Number"
+    name="phone"
+    placeholder="( XXX ) - XXX - XXXX"
+    type="text"
+    />
+        </div>
 
   </div>
   
@@ -65,7 +110,12 @@
     placeholder="MM / DD / YYYY"
     type="date"
     />
+  <div class="d-flex flex-row justify-content-start">
+    <input type="checkbox" name="above_age">
+    <p class="above-age mx-3">I confirm I’m above 18</p>
   </div>
+  </div>
+
 
   </div>
   <div class="button-container">
@@ -86,7 +136,9 @@ export default {
     return {
       title: 'Edit Profile',
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-      showdDropOffAddress: false
+      showdDropOffAddress: false,
+      changeemail: false,
+      changephone: false,
     }
   },
   props: ['date','formactionroute'],

@@ -17,7 +17,7 @@ props: ['title','icon', 'iconActive','itemtooltip']
 .SidebarItem{
     width: 100%;
     display: grid;
-    grid-template-columns: 80px auto;
+    grid-template-columns: 70px auto;
     justify-content: flex-start;
     align-items: center;
 /*     margin: 10px auto;
