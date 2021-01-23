@@ -9,22 +9,29 @@
     <table class="users-table" id="newClientsTable">
         <thead>
         <tr>
-            <th class="username-head"  data-order="asc"><div class="table-head-flex"><p class="title">Username</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <th class="username-head"  data-order="asc"><div class="table-head-flex"><p class="title">Customer name</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
             <th class="city-head"><div class="table-head-flex"><p class="title">City</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
-            <th class="date-head"><div class="table-head-flex"><p class="title">Day of Subscription</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
-            <th class="package-head"><div class="table-head-flex"><p class="title">Package Name</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
-            <th class="package-head"><div class="table-head-flex"><p class="title">First Delievery</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <th class="username-head"  data-order="asc"><div class="table-head-flex"><p class="title">Phone Number</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+<!--             <th class="date-head"><div class="table-head-flex"><p class="title">Day of Subscription</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+ -->            <th class="package-head"><div class="table-head-flex"><p class="title">Package Name</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+            <!-- <th class="package-head"><div class="table-head-flex"><p class="title">First Delievery</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
             <th class="package-head"><div class="table-head-flex"><p class="title">Last Delievery</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+             -->
+             <th class="package-head"><div class="table-head-flex"><p class="title">Service Status</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
+             <th class="package-head"><div class="table-head-flex"><p class="title">Completion Date</p><img src="/images/admin/icons/reports.svg" alt="" class="table-head-icon"></div></th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="user in users" :key="user.id">
             <td class="username-cell"><p class="link" @click="goToShowUser(user.id)">{{user.name}}</p></td>
             <td class="city-cell">{{user.city}}</td>
-            <td class="date-cell">{{user.day_of_subscribe}}</td>
+            <td class="city-cell">{{user.phone}}</td>
+            <!-- <td class="date-cell">{{user.day_of_subscribe}}</td> -->
             <td class="package-cell">{{user.package_name}}</td>
-            <td class="package-cell">{{user.first_delievery}}</td>
-            <td class="package-cell">{{user.last_delievery}}</td>
+            <!-- <td class="package-cell">{{user.first_delievery}}</td>
+            <td class="package-cell">{{user.last_delievery}}</td> -->
+            <td class="package-cell">{{user.service_status}}</td>
+            <td class="package-cell">{{user.completion_date}}</td>
         </tr>
         </tbody>
     </table>
@@ -97,6 +104,7 @@ $blue: #22AEE4;
 
             .table-head-icon{
                 margin-left: 10px;
+                margin-top: 15px;
             }
         }
         .username-head{

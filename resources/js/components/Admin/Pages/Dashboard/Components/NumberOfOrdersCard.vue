@@ -27,7 +27,7 @@ $orange: #FFA800;
 .NumberOfOrdersCard{
     background: $white;
     width: 260px;
-    height: 153px;
+    height: 195px;
     box-shadow: 0px 0px 10px #00000033;
     border-radius: 20px;
     border: 2px solid #F9F9F9;

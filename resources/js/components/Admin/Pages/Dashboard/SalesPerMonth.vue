@@ -18,7 +18,10 @@
 
 
 <div class="date-users-table" v-if="showDayOrders">
-        <p class="date-title">Monday October 5, 2020 <span class="date-sales-count">5</span></p>
+    <div style="display: flex;justify-content: space-between; width: 58%">
+        <p class="date-title">New Clients</p>
+        <p class="date-title">{{selectedDate}}<!-- <span class="date-sales-count">5</span> --></p>
+    </div>
 
         <table class="new-clients-table" id="newClientsTable">
         <thead>
@@ -53,14 +56,17 @@ export default {
         this.monthChanged();
         $('.date-num').click((e)=>{
             let currentMonthDate = $(".cal-wrapper .cal-header .title").text()
-            let day = $(e.target).text()
+            let day = $(e.target).text() // need to be 2 digits
             let month = Number(currentMonthDate.split("/")[0])
             let year = Number(currentMonthDate.split("/")[1])
             let selectedDate = `${day}-${month}-${year}`
             /* call ajax to get list of clients that order that day */
-
+            let monthNumberString = currentMonthDate.split("/")[0]
+            // need to get the js date format to get the day name
+            console.log(new Date(`${year}-${day}-${monthNumberString}`)); 
             /* Show Day Orders */
             this.showDayOrders = true
+            this.selectedDate = `${this.selectedMonth} ${day}, ${year}`
 })
     },
     data() {
@@ -68,6 +74,7 @@ export default {
             modalstate: false,
             selectedMonth: "",
             selectedMonthSales: '',
+            selectedDate: '',
             showDayOrders: false,
             clients: [
                 {id: 1, name: 'Mohamed Salah', city: 'Alexandria' ,phone: '01286727987' , package_name : 'Package 1', service_status: 'In Progress', completion_date: '-' }
@@ -311,6 +318,7 @@ $color5: #ff0000;
 
             .table-head-icon{
                 margin-left: 10px;
+                margin-top: 15px;
             }
         }
         .username-head{

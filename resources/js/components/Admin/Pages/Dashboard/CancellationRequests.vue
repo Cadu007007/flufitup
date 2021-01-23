@@ -153,6 +153,7 @@ $blue: #22aee4;
 
             .table-head-icon {
                 margin-left: 10px;
+                margin-top: 15px;
             }
         }
         .username-head {
