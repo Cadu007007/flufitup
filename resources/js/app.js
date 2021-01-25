@@ -131,6 +131,11 @@ var EditZone = require('./components/Admin/Pages/Zones/EditZone.vue').default
 var AddZone = require('./components/Admin/Pages/Zones/AddZone.vue').default
     /* ********* XX Zones XX ************* */
 
+/* ********* Cities ************* */
+var Cities = require('./components/Admin/Pages/Cities/Cities.vue').default
+    /* ********* XX Cities XX************* */
+
+
 /* **** XX ADMIN Pages XX ****** */
 
 const app = new Vue({
@@ -219,5 +224,7 @@ const app = new Vue({
         Zones,
         EditZone,
         AddZone,
+        /* Cities */
+        Cities
     }
 });

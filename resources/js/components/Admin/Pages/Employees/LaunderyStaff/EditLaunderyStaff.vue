@@ -93,6 +93,26 @@
                     </div>
 
                     <div class="info-container">
+                        <p class="title">ID Type</p>
+                        <select name="id_type" id="" class="select2" style="width: 300px">
+                            <option value="driver" :selected="staff[0].id_type == 'driver'">Driver’s licenses</option>
+                            <option value="employment" :selected="staff[0].id_type == 'employment'">Employment Authorization Card</option>
+                            <option value="passport" :selected="staff[0].id_type == 'passport'">Passport</option>
+                            <option value="green_card" :selected="staff[0].id_type == 'green_card'">Green Card</option>
+                        </select>
+                    </div>
+                    <div class="info-container">
+                        <p class="title">ID Number</p>
+                        <input
+                            type="text"
+                            class="input"
+                            name="id_number"
+                            placeholder="ID Number"
+                            :value="staff[0].id_number"
+                        />
+                    </div>
+
+                    <div class="info-container">
                         <p class="title">Email:</p>
                         <input
                             type="text"

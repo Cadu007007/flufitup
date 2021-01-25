@@ -33,7 +33,7 @@ export default {
             window.location.href = url
         },
         showDeleteModal(id){
-            alert('Are you sure want to delete Zone: ' + id)
+            confirm('Are you sure want to delete Zone: ' + id +'?')
         },
     },
 

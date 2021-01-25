@@ -27,6 +27,7 @@ body {
 
 p {
   margin-bottom: 0 !important;
+  margin-top: 0;
 }
 
 a:hover {

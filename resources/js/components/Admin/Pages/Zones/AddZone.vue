@@ -26,7 +26,10 @@
                                 style="width: 430px"
                                 name="city[]"
                             >
-                                <option>City Name</option>
+                                <option disabled selected>City Name</option>
+                                <option v-for="city in cities" :key="city.id"
+                                   :value="city.id" >{{city.name}}</option
+                                >
                             </select>
                             <span class="delete-city">X</span>
                             <input
@@ -50,10 +53,12 @@
                             <select
                                 class="select2 zone-name-input"
                                 style="width: 430px"
-                                name="zones"
+                                name="city[]"
                             >
-                                <option value="1" selected>Zone A</option>
-                                <option value="2">Zone B</option>
+                            <option disabled selected>City Name</option>
+                                <option v-for="city in cities" :key="city.id"
+                                   :value="city.id" >{{city.name}}</option
+                                >
                             </select>
                             <span class="delete-city" @click="removeCityRow"
                                 >X</span
@@ -89,7 +94,12 @@ export default {
     props: ["title", "date"],
     data() {
         return {
-            inputs: 0
+            inputs: 0,
+            cities: [
+                { id: 1, name: "Alexandria" },
+                { id: 2, name: "Cairo" },
+                { id: 3, name: "Giza" }
+            ]
         };
     },
     methods: {
@@ -101,7 +111,7 @@ export default {
             setTimeout(() => {
                 $(".select2").select2();
             }, 300);
-        },
+        }
     }
 };
 </script>
@@ -201,6 +211,7 @@ $blue: #22aee4;
                         position: absolute;
                         top: 2px;
                         right: -25px;
+                        cursor: pointer;
                     }
                     .checkbox1 {
                         position: absolute;
@@ -228,6 +239,7 @@ $blue: #22aee4;
                             position: absolute;
                             top: 2px;
                             right: -25px;
+                            cursor: pointer;
                         }
                     }
                     .add-another-city {

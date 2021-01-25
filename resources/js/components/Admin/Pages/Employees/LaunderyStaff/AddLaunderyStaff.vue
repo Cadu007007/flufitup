@@ -84,7 +84,24 @@
                             placeholder="Zip Code"
                         />
                     </div>
-
+                    <div class="info-container">
+                        <p class="title">ID Type</p>
+                        <select name="id_type" id="" class="select2" style="width: 300px">
+                            <option value="driver">Driver’s licenses</option>
+                            <option value="employment">Employment Authorization Card</option>
+                            <option value="passport">Passport</option>
+                            <option value="green_card">Green Card</option>
+                        </select>
+                    </div>
+                    <div class="info-container">
+                        <p class="title">ID Number</p>
+                        <input
+                            type="text"
+                            class="input"
+                            name="id_number"
+                            placeholder="ID Number"
+                        />
+                    </div>
                     <div class="info-container">
                         <p class="title">Email:</p>
                         <input

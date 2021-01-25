@@ -95,6 +95,15 @@ iconActive='/images/admin/icons/employees-icon-active.svg'
   iconActive='/images/admin/icons/zones-icon-active.svg'/>
    
 
+  <AdminSidebarItem :class=" active == 'cities' ? 'active' : '' " 
+  class="AdminSidebarItem" 
+  :href=routetocities
+  title="Cities"
+  itemtooltip="Cities"
+  icon='/images/admin/icons/zones-icon.svg' 
+  iconActive='/images/admin/icons/zones-icon-active.svg'/>
+   
+
 
   </div>
 </template>
@@ -112,7 +121,7 @@ export default {
             'routetousers','routetoadmins',
             'routetopickupplanner','routetopickdelieveryplanner',
             'routetoadmins','routetodrivers','routetolaunderystaff',
-            'routetopromocodes','routetozones'
+            'routetopromocodes','routetozones','routetocities'
             ],
     components:{
         AdminSidebarItem,

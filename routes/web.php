@@ -1109,7 +1109,8 @@ Route::get('/admin/employees/laundery_staff', function () {
 
 Route::get('/admin/employees/laundery_staff/show/{id}', function () {
     $staff = collect();
-    $staff->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com', 'address' => 'Address',
+    $staff->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com',
+     'address' => 'Address','id_type' => 'driver', 'id_number' => 'Y962456',
      'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'date_of_join' => '12/14/2018', 'location' => 'location',
      'job' =>'Sorting, Washing', 'shift' => 'Morning', 'assignment_date' => '2020-10-15', 'admin' => 'yes' ]);
     return view('admin.employees.laundery_staff.show', ['active' => 'laundery_staff', 'staff' => $staff]);
@@ -1122,6 +1123,8 @@ Route::get('/admin/employees/laundery_staff/edit/{id}', function () {
      'city' => 'Alexandria',
      'state' => 'Alex',
      'zip_code' => '123AB',
+     'id_type' => 'driver',
+     'id_number' => 'Y962456',
       'birthday' => '1990-11-11', 'date_of_join' => '12/14/2018', 'location' => 'location']);
     return view('admin.employees.laundery_staff.edit', ['active' => 'laundery_staff', 'staff' => $staff]);
 })->name('admin.employees.laundery_staff.edit');
@@ -1239,6 +1242,21 @@ Route::get('/admin/zones/edit/{id}', function () {
 Route::delete('/admin/zones/delete/{id}', function () {
     return view('admin.zones.index', ['active' => 'zones']);
 })->name('admin.zones.delete');
+
+/******************************
+ * Zones End
+ * ************************** */
+
+/******************************
+ * Zones Start
+ * ************************** */
+Route::get('/admin/cities', function () {
+    $cities = collect();
+    $cities->push(['id' => 1, 'name' => 'Alexandria']);
+    $cities->push(['id' => 2, 'name' => 'Cairo']);
+    return view('admin.cities.index', ['active' => 'cities', 'cities' => $cities]);
+})->name('admin.cities');
+
 
 /******************************
  * Zones End

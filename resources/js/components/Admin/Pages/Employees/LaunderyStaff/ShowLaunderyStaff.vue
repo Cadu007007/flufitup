@@ -29,6 +29,42 @@
                     <p class="value">{{ staff[0].address }}</p>
                 </div>
                 <div class="info-container">
+                    <p class="title">ID Type</p>
+                    <select
+                        name="id_type"
+                        id=""
+                        class="select2"
+                        disabled
+                        style="width: 300px"
+                    >
+                        <option
+                            value="driver"
+                            :selected="staff[0].id_type == 'driver'"
+                            >Driver’s licenses</option
+                        >
+                        <option
+                            value="employment"
+                            :selected="staff[0].id_type == 'employment'"
+                            >Employment Authorization Card</option
+                        >
+                        <option
+                            value="passport"
+                            :selected="staff[0].id_type == 'passport'"
+                            >Passport</option
+                        >
+                        <option
+                            value="green_card"
+                            :selected="staff[0].id_type == 'green_card'"
+                            >Green Card</option
+                        >
+                    </select>
+                </div>
+                <div class="info-container">
+                    <p class="title">ID Number</p>
+                    <p class="value">{{ staff[0].id_number }}</p>
+                </div>
+
+                <div class="info-container">
                     <p class="title">Date of joining:</p>
                     <p class="value">{{ staff[0].date_of_join }}</p>
                 </div>
@@ -58,8 +94,7 @@
                 </div>
             </div>
         </div>
-                <div class="seperator"></div>
-
+        <div class="seperator"></div>
 
         <!-- Financials -->
         <Financials :tips="20" :bonus="20" />
