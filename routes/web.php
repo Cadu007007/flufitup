@@ -989,6 +989,7 @@ Route::get('/admin/pickup_planner', function () {
      'zone' => 'A', 'zip_code' => '92620',
      'dry_clean' => 'Yes',
      'avs' => 'No',
+     'order_date' => '2021-01-08',
      'assigned_to' => 1]);
     $orders->push(['id' => 234567 , 'city' => 'Cairo', 'client' => 'Mohamed',
      'drop_off_address' => 'adress adress adress adress adress adress', 
@@ -996,6 +997,7 @@ Route::get('/admin/pickup_planner', function () {
      'zone' => 'A', 'zip_code' => '92620',
      'dry_clean' => 'Yes',
      'avs' => 'No',
+     'order_date' => '2021-01-08',
      'assigned_to' => 2]);
     $orders->push(['id' => 345678 , 'city' => 'Giza',  'client' => 'Mohamed',
     'drop_off_address' => 'adress adress adress adress adress adress', 
@@ -1003,13 +1005,31 @@ Route::get('/admin/pickup_planner', function () {
     'zone' => 'A', 'zip_code' => '92620',
     'dry_clean' => 'Yes',
     'avs' => 'No',
+    'order_date' => '2021-01-08',
     'assigned_to' => 'Unassigned']);
     
+    $orders_dates = collect();
+
+    $orders_dates->push(['date' => '2020/12/1', 'title' => 'order', 'orders' => '5', 'customClass' => 'color1']);
+    $orders_dates->push(['date' => '2020/12/4', 'title' => 'order', 'orders' => '7', 'customClass' => 'color2']);
+    $orders_dates->push(['date' => '2020/12/8', 'title' => 'order', 'orders' => '10', 'customClass' => 'color3']);
+    $orders_dates->push(['date' => '2020/12/14', 'title' => 'order', 'orders' => '15', 'customClass' => 'color4']);
+    $orders_dates->push(['date' => '2020/12/18', 'title' => 'order', 'orders' => '20', 'customClass' => 'color5']);
+    $orders_dates->push(['date' => '2021/1/4', 'title' => 'order', 'orders' => '6', 'customClass' => 'color1']);
+    $orders_dates->push(['date' => '2021/1/8', 'title' => 'order', 'orders' => '12', 'customClass' => 'color2']);
+    $orders_dates->push(['date' => '2021/1/19', 'title' => 'order', 'orders' => '15', 'customClass' => 'color3']);
+
+
+    $total_sales = collect();
+    $total_sales->push(['month' => 12, 'total_sales' => 16]);
+    $total_sales->push(['month' => 1, 'total_sales' => 6]);
+
     $drivers = collect();
     $drivers->push(['id' => 1 , 'name' => 'Mohamed', 'image' => '/images/profile.svg']);
     $drivers->push(['id' => 2 , 'name' => 'Ahmed', 'image' => '/images/profile.svg']);
     $drivers->push(['id' => 3 , 'name' => 'Amr', 'image' => '/images/profile.svg']);
-    return view('admin.planners.pickup.index', ['active' => 'pickup_planner','orders' => $orders,'drivers' =>$drivers]);
+    return view('admin.planners.pickup.index', ['active' => 'pickup_planner',
+    'orders' => $orders,'drivers' =>$drivers, 'orders_dates' => $orders_dates, 'total_sales' => $total_sales]);
 })->name('admin.planner.pickup');
 
 /* Delievery */
@@ -1021,6 +1041,7 @@ Route::get('/admin/delievery_planner', function () {
      'zone' => 'A', 'zip_code' => '92620',
      'dry_clean' => 'Yes',
      'avs' => 'No',
+     'order_date' => '2021-01-08',
      'assigned_to' => 1]);
     $orders->push(['id' => 234567 , 'city' => 'Cairo', 'client' => 'Mohamed',
      'drop_off_address' => 'adress adress adress adress adress adress', 
@@ -1028,6 +1049,7 @@ Route::get('/admin/delievery_planner', function () {
      'zone' => 'A', 'zip_code' => '92620',
      'dry_clean' => 'Yes',
      'avs' => 'No',
+     'order_date' => '2021-01-08',
      'assigned_to' => 2]);
     $orders->push(['id' => 345678 , 'city' => 'Giza',  'client' => 'Mohamed',
     'drop_off_address' => 'adress adress adress adress adress adress', 
@@ -1035,13 +1057,33 @@ Route::get('/admin/delievery_planner', function () {
     'zone' => 'A', 'zip_code' => '92620',
     'dry_clean' => 'Yes',
     'avs' => 'No',
+    'order_date' => '2021-01-08',
     'assigned_to' => 'Unassigned']);
     
+        
+    $orders_dates = collect();
+
+    $orders_dates->push(['date' => '2020/12/1', 'title' => 'order', 'orders' => '5', 'customClass' => 'color1']);
+    $orders_dates->push(['date' => '2020/12/4', 'title' => 'order', 'orders' => '7', 'customClass' => 'color2']);
+    $orders_dates->push(['date' => '2020/12/8', 'title' => 'order', 'orders' => '10', 'customClass' => 'color3']);
+    $orders_dates->push(['date' => '2020/12/14', 'title' => 'order', 'orders' => '15', 'customClass' => 'color4']);
+    $orders_dates->push(['date' => '2020/12/18', 'title' => 'order', 'orders' => '20', 'customClass' => 'color5']);
+    $orders_dates->push(['date' => '2021/1/4', 'title' => 'order', 'orders' => '6', 'customClass' => 'color1']);
+    $orders_dates->push(['date' => '2021/1/8', 'title' => 'order', 'orders' => '12', 'customClass' => 'color2']);
+    $orders_dates->push(['date' => '2021/1/19', 'title' => 'order', 'orders' => '15', 'customClass' => 'color3']);
+
+
+    $total_sales = collect();
+    $total_sales->push(['month' => 12, 'total_sales' => 16]);
+    $total_sales->push(['month' => 1, 'total_sales' => 6]);
+
+
     $drivers = collect();
     $drivers->push(['id' => 1 , 'name' => 'Mohamed', 'image' => '/images/profile.svg']);
     $drivers->push(['id' => 2 , 'name' => 'Ahmed', 'image' => '/images/profile.svg']);
     $drivers->push(['id' => 3 , 'name' => 'Amr', 'image' => '/images/profile.svg']);
-    return view('admin.planners.delievery.index', ['active' => 'delievery_planner','orders' => $orders,'drivers' =>$drivers]);
+    return view('admin.planners.delievery.index', ['active' => 'delievery_planner','orders' => $orders,
+    'drivers' =>$drivers, 'orders_dates' => $orders_dates, 'total_sales' => $total_sales]);
 })->name('admin.planner.delievery');
 
 /******************************
