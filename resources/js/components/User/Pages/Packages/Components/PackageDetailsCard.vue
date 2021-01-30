@@ -2,14 +2,14 @@
   <div class="PackageDetailsCard">
        <p class="title">Package Details</p>
 
-        <PackageDetail class="detail-container" name="Package Duration :" :value="package[0].package_duration"/>
-        <PackageDetail class="detail-container" name="No. of Pickups :" :value="package[0].no_of_pickups"/>
-        <PackageDetail class="detail-container" name="No. of Bags :" :value="package[0].no_of_bags"/>
-        <PackageDetail class="detail-container" name="Maximum Weight :" :value="package[0].max_weight"/>
-        <PackageDetail class="detail-container" name="Return Duration :" :value="package[0].return_duration"/>
-        <PackageDetail class="detail-container" name="Dry Clean Credit :" :value="package[0].dry_clean_credit"/>
-        <PackageDetail class="detail-container" name="Added Value Services Credit :" :value="package[0].added_value_service_credit"/>
-        <PackageDetail class="detail-container" name="Reward Points :" :value="package[0].reward_points"/>
+        <PackageDetail class="detail-container" name="Package Duration" :value="package[0].package_duration"/>
+        <PackageDetail class="detail-container" name="No. of Pickups" :value="package[0].no_of_pickups"/>
+        <PackageDetail class="detail-container" name="No. of Bags" :value="package[0].no_of_bags"/>
+        <PackageDetail class="detail-container" name="Maximum Weight" :value="package[0].max_weight"/>
+        <PackageDetail class="detail-container" name="Return Duration" :value="package[0].return_duration"/>
+        <PackageDetail class="detail-container" name="Dry Clean Credit" :value="package[0].dry_clean_credit"/>
+        <PackageDetail class="detail-container" name="Added Value Services Credit" :value="package[0].added_value_service_credit"/>
+        <PackageDetail class="detail-container" name="Reward Points" :value="package[0].reward_points"/>
         <PackageDetail class="detail-container" name="Price of Extra Pound" :value="package[0].price_of_extra_pound"/>
         <PackageDetail class="detail-container" name="Advance Notice" :value="package[0].advance_notice"/>
   </div>

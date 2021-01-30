@@ -68,8 +68,8 @@
 
         <div class="d-flex flex-row justify-content-center">
             <button class="btn btn-primary px-4 py-2 mb-4" 
-            style="border-radius: 20px" @click="goToPayment">
-                Go to payment page
+            style="border-radius: 20px" @click="goToSummary">
+                Go to Summary page
             </button>
         </div>
         </div>
@@ -98,6 +98,7 @@ export default {
         "date",
         "package",
         "paymentroute",
+        "summaryroute",
         "drycleanitems",
         "householditems",
         "addedvalueoptions",
@@ -120,6 +121,13 @@ export default {
         Slider
     },
     methods: {
+        goToSummary() {
+            var url = this.summaryroute.replace(
+                "package_id",
+                this.package[0].id
+            );
+            window.location.href = url;
+        },
         goToPayment() {
             var url = this.paymentroute.replace(
                 "package_id",

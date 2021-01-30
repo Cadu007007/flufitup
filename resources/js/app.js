@@ -31,7 +31,9 @@ var Packages = require('./components/User/Pages/Packages/Packages.vue').default
 var PackageSummary = require('./components/User/Pages/Packages/PackageSummary.vue').default
 var PackageCreate = require('./components/User/Pages/Packages/PackageCreate.vue').default
 var OnlinePayment = require('./components/User/Pages/Packages/OnlinePayment.vue').default
-    /* XX Packages XX */
+var PackageOrderSummary = require('./components/User/Pages/Packages/PackageOrderSummary.vue').default
+
+/* XX Packages XX */
 
 /* Profile  */
 var Profile = require('./components/User/Pages/Profile/Profile.vue').default
@@ -151,6 +153,7 @@ const app = new Vue({
         EditOrder,
         Packages,
         PackageSummary,
+        PackageOrderSummary,
         PackageCreate,
         OnlinePayment,
         Profile,

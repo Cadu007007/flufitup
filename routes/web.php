@@ -347,6 +347,85 @@ Route::get('/packages/show/{id}', function () {
      ]);
 })->name('package.show');
 
+Route::get('/packages/summary/{id}', function () {
+    $packages = collect();
+
+    $dry_clean_items = collect();
+    $dry_clean_items->push(['id' => 1, 'title' => 'Item 1', 'price' => 30, 'name' => 'item1']);
+    $dry_clean_items->push(['id' => 2, 'title' => 'Item 2', 'price' => 40, 'name' => 'item2']);
+    
+    $added_value = collect();
+    $added_value->push(['title' => 'Use hungers instead of Folding', 'value' => '1']);
+
+    $added_value_choices = collect();
+    $added_value_choices->push(['title' => 'T‐Shirts', 'name' => 't-shirt']);
+    $added_value_choices->push(['title' => ' Trousers', 'name' => ' trousers']);
+    
+    $household_items = collect();
+    $household_items->push(['id' => 1, 'title' => 'Item 7', 'price' => 10, 'name' => 'item1']);
+    $household_items->push(['id' => 2, 'title' => 'Item 8', 'price' => 20, 'name' => 'item2']);
+    $household_items->push(['id' => 3, 'title' => 'Item 9', 'price' => 30, 'name' => 'item3']);
+    
+
+    $detergents_type = collect();
+    $detergents_type->push(['id' => 1, 'title' => "Brand 1" ]);
+    $detergents_item= collect();
+    $detergents_item->push(['id' => 5, 'title' => 'Item 5', 'price' => 20]);
+
+    $fabric_type = collect();
+    $fabric_type->push(['id' => 1, 'title' => "Fabric Brand 1", ]);
+    $fabric_type_item = collect();
+    $fabric_type_item->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+    
+    $dryer_sheet_type = collect();
+    $dryer_sheet_type->push(['id' => 1, 'title' => "Dryer Brand 1", ]);
+    $dryer_sheet_item = collect();
+    $dryer_sheet_item->push(['id' => 1, 'src'=> "", 'title' => "Item 2", 'price' => 60, 'type_id' => 1]);
+    
+    $booster_type = collect();
+    $booster_type->push(['id' => 1, 'title' => "Booster Brand 1", ]);
+    $booster_item = collect();
+    $booster_item->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+    
+
+    $packages->push(['id' => 1111111111,
+        'package_duration' => '1 Day',
+        'no_of_pickups' => '1',
+        'no_of_bags' => '2 Bags',
+        'max_weight' => "30 Pounds",
+        'return_duration' => "24 Hours",
+        'dry_clean_credit' => "12 Points",
+        'added_value_service_credit' => "10 Points",
+        'reward_points' => "3.75 Points",
+        'price_of_extra_pound' => "1.96/Lbs",
+        'advance_notice' => "2 Days",
+        'price' => '50$',
+        /* customizations */
+        'week1_pickup_date' => '2021-01-30',
+        'week2_pickup_date' => '2021-02-5',
+        'week3_pickup_date' => '2021-02-12',
+        'week4_pickup_date' => '2021-02-18',
+        /* dry clean */
+        'dry_clean_items' => $dry_clean_items,
+        'added_value' => $added_value,
+        'added_value_choices' => $added_value_choices,
+        'household_items'=> $household_items,
+        'detergents_type' => $detergents_type,
+        'detergents_item' => $detergents_item,
+        'fabric_type' => $fabric_type,
+        'fabric_type_item' => $fabric_type_item,
+        'dryer_sheet_type' => $dryer_sheet_type,
+        'dryer_sheet_item' => $dryer_sheet_item,
+        'booster_type' => $booster_type,
+        'booster_item' => $booster_item,
+        'total' => '230'
+    ]);
+   
+
+    return view('user.packages.summary', ['active' => 'packages', 'package' => $packages,
+     ]);
+})->name('package.summary');
+
 Route::get('/packages/create', function () {
     $options = collect();
     $options->service = collect();

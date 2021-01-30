@@ -41,6 +41,12 @@ a:hover {
   border-color: #15B2D3 !important;
 }
 
+.btn-warning {
+  background: #ffa800 !important;
+  border-color: #ffa800 !important;
+  color: #fff !important;
+}
+
 .text-primary {
   color: #15B2D3 !important;
 }
