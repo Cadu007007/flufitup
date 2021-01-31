@@ -1,9 +1,10 @@
 <template>
-  <div class="NumberOfOrdersCard">
-  <p class="title">Number Of Pickups Per Day</p>
+  <div class="PickupsRange">
+  <p class="title">Specific Pickups Range</p>
   <p class="value">{{ value }}</p>
-  <p class="edit" @click="$emit('open-orders-number-modal')">Edit</p>
-    <input class="date-input" type="date" v-model="effectiveDate" name="effective_date" @change="$emit('date-changed',effectiveDate)">
+  <p class="edit" @click="$emit('open-pickups-range-modal')">Edit</p>
+    <input class="date-input" type="date" v-model="firstEffectiveDate" name="first_effective_date" @change="$emit('first-date-changed',firstEffectiveDate)">
+    <input class="date-input" type="date" v-model="secondEffectiveDate" name="second_effective_date" @change="$emit('second-date-changed',secondEffectiveDate)">
   </div>
 </template>
 
@@ -12,7 +13,8 @@ export default {
     props:['value'],
     data(){
         return{
-            effectiveDate:''
+            firstEffectiveDate:'',
+            secondEffectiveDate:'',
         }
     }
 
@@ -24,7 +26,7 @@ $white: #fff;
 $grey: #00000080;
 $black: #000;
 $orange: #FFA800;
-.NumberOfOrdersCard{
+.PickupsRange{
     background: $white;
     width: 260px;
     height: 195px;

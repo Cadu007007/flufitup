@@ -667,6 +667,7 @@ Route::get('/admin/dashboard', function () {
     $state_numbers->users_per_city = 100;
     $state_numbers->cancellation_requests = 10;
     $state_numbers->orders_number_per_day = 4;
+    $state_numbers->pickups_range = 8;
 
     return view('admin.dashboard.index', ['active' => 'dashboard', 'state_numbers' => $state_numbers]);
 })->name('admin.dashboard');
@@ -701,18 +702,18 @@ Route::get('/admin/clients/new', function () {
 Route::get('/admin/sales/month', function () {
     $orders_dates = collect();
 
-    $orders_dates->push(['date' => '2020/12/1', 'title' => 'order', 'orders' => '5', 'customClass' => 'color1']);
-    $orders_dates->push(['date' => '2020/12/4', 'title' => 'order', 'orders' => '7', 'customClass' => 'color2']);
-    $orders_dates->push(['date' => '2020/12/8', 'title' => 'order', 'orders' => '10', 'customClass' => 'color3']);
+    $orders_dates->push(['date' => '2020/12/01', 'title' => 'order', 'orders' => '5', 'customClass' => 'color1']);
+    $orders_dates->push(['date' => '2020/12/04', 'title' => 'order', 'orders' => '7', 'customClass' => 'color2']);
+    $orders_dates->push(['date' => '2020/12/08', 'title' => 'order', 'orders' => '10', 'customClass' => 'color3']);
     $orders_dates->push(['date' => '2020/12/14', 'title' => 'order', 'orders' => '15', 'customClass' => 'color4']);
     $orders_dates->push(['date' => '2020/12/18', 'title' => 'order', 'orders' => '20', 'customClass' => 'color5']);
-    $orders_dates->push(['date' => '2021/1/4', 'title' => 'order', 'orders' => '6', 'customClass' => 'color1']);
-    $orders_dates->push(['date' => '2021/1/8', 'title' => 'order', 'orders' => '12', 'customClass' => 'color2']);
-    $orders_dates->push(['date' => '2021/1/19', 'title' => 'order', 'orders' => '15', 'customClass' => 'color3']);
+    $orders_dates->push(['date' => '2021/01/04', 'title' => 'order', 'orders' => '6', 'customClass' => 'color1']);
+    $orders_dates->push(['date' => '2021/01/08', 'title' => 'order', 'orders' => '12', 'customClass' => 'color2']);
+    $orders_dates->push(['date' => '2021/01/19', 'title' => 'order', 'orders' => '15', 'customClass' => 'color3']);
 
     $total_sales = collect();
     $total_sales->push(['month' => 12, 'total_sales' => 16]);
-    $total_sales->push(['month' => 1, 'total_sales' => 6]);
+    $total_sales->push(['month' => 1, 'total_sales' => 33]);
     return view('admin.dashboard.sales_per_month.index', ['active' => 'dashboard', 'orders_dates' => $orders_dates, 'total_sales'=> $total_sales]);
 })->name('admin.dashboard.sales_per_month');
 
@@ -753,36 +754,36 @@ Route::get('/admin/sales/package', function () {
 })->name('admin.dashboard.sales_per_package');
 
 /* Users Per City */
-Route::get('/admin/users/city', function () {
+Route::get('/admin/sales/city', function () {
 
     $cities = collect();
-    $cities->push(['id' => 1, 'name' => 'Irvine']);
-    $cities->push(['id' => 2, 'name' => 'Lake Forest']);
-    $cities->push(['id' => 3, 'name' => 'Mission Viejo']);
-    $cities->push(['id' => 4, 'name' => 'Tustin']);
-    $cities->push(['id' => 5, 'name' => 'Westminster']);
-    $cities->push(['id' => 6, 'name' => 'Anaheim']);
-    $cities->push(['id' => 7, 'name' => 'Santa Ana']);
-    $cities->push(['id' => 8, 'name' => 'Villa Park']);
-    $cities->push(['id' => 9, 'name' => 'Stanton']);
-    $cities->push(['id' => 10, 'name' => 'Placentia']);
-    $cities->push(['id' => 11, 'name' => 'Lake Forest']);
-    $cities->push(['id' => 12, 'name' => 'Garden Grove']);
+    $cities->push(['id' => 1, 'name' => 'Irvine', 'sales' => 5]);
+    $cities->push(['id' => 2, 'name' => 'Lake Forest', 'sales' => 6]);
+    $cities->push(['id' => 3, 'name' => 'Mission Viejo', 'sales' => 7]);
+    $cities->push(['id' => 4, 'name' => 'Tustin', 'sales' => 8]);
+    $cities->push(['id' => 5, 'name' => 'Westminster', 'sales' => 9]);
+    $cities->push(['id' => 6, 'name' => 'Anaheim', 'sales' => 10]);
+    $cities->push(['id' => 7, 'name' => 'Santa Ana', 'sales' => 1]);
+    $cities->push(['id' => 8, 'name' => 'Villa Park', 'sales' => 10]);
+    $cities->push(['id' => 9, 'name' => 'Stanton', 'sales' => 4]);
+    $cities->push(['id' => 10, 'name' => 'Placentia', 'sales' => 3]);
+    $cities->push(['id' => 11, 'name' => 'Lake Forest', 'sales' => 2]);
+    $cities->push(['id' => 12, 'name' => 'Garden Grove', 'sales' => 9]);
 
     $users = collect();
 
-    $users->push(['id' => 1, 'name' => 'Mohamed', 'city_id' => 1, 'zipcode' => 92620, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 2, 'name' => 'Amr', 'city_id' => 2, 'zipcode' => 92623, 'phone'=> '01286727987' , 'service_status'=> 'Not Started', 'completion_date'=> '-' ]);
-    $users->push(['id' => 3, 'name' => 'Doby', 'city_id' => 3,'zipcode' => 92627, 'phone'=> '01286727987' , 'service_status'=> 'Completed', 'completion_date'=> '10/4/2020' ]);
-    $users->push(['id' => 4, 'name' => 'Ahmed', 'city_id' => 4, 'zipcode' => 92629,  'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-']);
-    $users->push(['id' => 5, 'name' => 'Ali', 'city_id' => 5, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 6, 'name' => 'Mahmoud', 'city_id' => 6, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 7, 'name' => 'Omar', 'city_id' => 7, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 8, 'name' => 'Gaber', 'city_id' => 8, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 9, 'name' => 'Karim', 'city_id' => 9, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 10, 'name' => 'Osama', 'city_id' => 10, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 11, 'name' => 'Yaser', 'city_id' => 11, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 12, 'name' => 'Sayed', 'city_id' => 12, 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 1, 'name' => 'Mohamed', 'city_id' => 1, 'subscription_date' => '1/16/2019', 'zipcode' => 92620, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 2, 'name' => 'Amr', 'city_id' => 2, 'subscription_date' => '1/16/2019', 'zipcode' => 92623, 'phone'=> '01286727987' , 'service_status'=> 'Not Started', 'completion_date'=> '-' ]);
+    $users->push(['id' => 3, 'name' => 'Doby', 'city_id' => 3, 'subscription_date' => '1/16/2019','zipcode' => 92627, 'phone'=> '01286727987' , 'service_status'=> 'Completed', 'completion_date'=> '10/4/2020' ]);
+    $users->push(['id' => 4, 'name' => 'Ahmed', 'city_id' => 4, 'subscription_date' => '1/16/2019', 'zipcode' => 92629,  'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-']);
+    $users->push(['id' => 5, 'name' => 'Ali', 'city_id' => 5, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 6, 'name' => 'Mahmoud', 'city_id' => 6,  'subscription_date' => '1/16/2019','zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 7, 'name' => 'Omar', 'city_id' => 7, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 8, 'name' => 'Gaber', 'city_id' => 8,  'subscription_date' => '1/16/2019','zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 9, 'name' => 'Karim', 'city_id' => 9, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 10, 'name' => 'Osama', 'city_id' => 10, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 11, 'name' => 'Yaser', 'city_id' => 11, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+    $users->push(['id' => 12, 'name' => 'Sayed', 'city_id' => 12,  'subscription_date' => '1/16/2019','zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
 
 
     return view('admin.dashboard.users_per_city.index', ['active' => 'dashboard', 'cities' => $cities, 'users' => $users]);

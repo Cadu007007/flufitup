@@ -19,8 +19,7 @@
 
 <div class="date-users-table" v-if="showDayOrders">
     <div style="display: flex;justify-content: space-between; width: 58%">
-        <p class="date-title">New Clients</p>
-        <p class="date-title">{{selectedDate}}<!-- <span class="date-sales-count">5</span> --></p>
+        <p class="date-title">{{selectedDate}}<span class="date-sales-count">Total: {{selectedDateOrders}}</span></p>
     </div>
 
         <table class="new-clients-table" id="newClientsTable">
@@ -56,17 +55,33 @@ export default {
         this.monthChanged();
         $('.date-num').click((e)=>{
             let currentMonthDate = $(".cal-wrapper .cal-header .title").text()
-            let day = $(e.target).text() // need to be 2 digits
-            let month = Number(currentMonthDate.split("/")[0])
+            let day = $(e.target)
+                .text()
+                .trim(); // need to be 2 digits
+            var formattedDay = ("0" + Number(day)).slice(-2);
+
+            
+            let month = Number(currentMonthDate.split("/")[0]);
+            var formattedMonth = ("0" + month).slice(-2);
+            
             let year = Number(currentMonthDate.split("/")[1])
-            let selectedDate = `${day}-${month}-${year}`
             /* call ajax to get list of clients that order that day */
             let monthNumberString = currentMonthDate.split("/")[0]
             // need to get the js date format to get the day name
-            console.log(new Date(`${year}-${day}-${monthNumberString}`)); 
+            //console.log(new Date(`${year}-${day}-${monthNumberString}`)); 
             /* Show Day Orders */
             this.showDayOrders = true
             this.selectedDate = `${this.selectedMonth} ${day}, ${year}`
+
+
+            let selectedDateFormated = `${year}/${formattedMonth}/${formattedDay}`;
+            /* get the orders per that date .. 2020/12/1 */
+            let selectedOrders = this.ordersDates.find(x=>x.date == selectedDateFormated)
+            if (selectedOrders != undefined) {
+                this.selectedDateOrders = selectedOrders.orders
+            } else {
+                this.selectedDateOrders = 0
+            }
 })
     },
     data() {
@@ -76,6 +91,9 @@ export default {
             selectedMonthSales: '',
             selectedDate: '',
             showDayOrders: false,
+            ordersDates : this.selecteddates,
+            selectedDateOrders: 0,
+            selecedDateFormated: '',
             clients: [
                 {id: 1, name: 'Mohamed Salah', city: 'Alexandria' ,phone: '01286727987' , package_name : 'Package 1', service_status: 'In Progress', completion_date: '-' }
             ]

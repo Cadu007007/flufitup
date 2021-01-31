@@ -34,7 +34,11 @@
             </div>
             <div class="packages-users-card" v-if="cityusers.length">
                 <!-- Users table -->
-                <p class="table-title">Sales Per {{ selectedCity }}</p>
+                <div style="display: flex; flex-direction: row;">
+                    <p class="table-title" style="width: 230px">Sales Per {{ selectedCity }}</p>
+                    <p class="table-title" style="margin-left: 100px">Total: {{selectedCitySales}}</p>
+                </div>
+
                 <div class="date-users-table" v-if="cityusers.length">
                     <table class="new-clients-table" id="newClientsTable">
                         <thead>
@@ -49,6 +53,16 @@
                                         />
                                     </div>
                                 </th>
+                                <th class="package-head">
+                                    <div class="table-head-flex">
+                                        <p class="title">Subscription Date</p>
+                                        <!-- <img
+                                            src="/images/admin/icons/reports.svg"
+                                            alt=""
+                                            class="table-head-icon"
+                                        /> -->
+                                    </div>
+                                </th>
                                 <th class="zipcode-head">
                                     <div class="table-head-flex">
                                         <p class="title">Zip Code</p>
@@ -59,6 +73,7 @@
                                         />
                                     </div>
                                 </th>
+                                
                                 <th class="phone-head">
                                     <div class="table-head-flex">
                                         <p class="title">Phone</p>
@@ -101,6 +116,7 @@
                                         {{ user.name }}
                                     </p>
                                 </td>
+                                <td class="city-cell">{{ user.subscription_date }}</td>
                                 <td class="city-cell">{{ user.zipcode }}</td>
                                 <td class="phone-cell">{{ user.phone }}</td>
                                 <td class="package-cell">
@@ -128,7 +144,8 @@ export default {
             cityusers: [],
             selectedCity: "",
             searchCityName: "", // for searching
-            searchCities: []
+            searchCities: [],
+            selectedCitySales: 0
         };
     },
     mounted() {
@@ -171,6 +188,14 @@ export default {
                 .find(".city-name")
                 .text();
             this.selectedCity = selectedCityName;
+            /* show total of sales */
+            let citySales = cities.find(x=>x.id == this.activecityid).sales
+            if (citySales > 0) {
+                this.selectedCitySales = citySales
+            } else {
+                
+                this.selectedCitySales = 0
+            }
         },
         goToShowUser(id) {
             let url = this.showuserroute.replace("user_id", id);

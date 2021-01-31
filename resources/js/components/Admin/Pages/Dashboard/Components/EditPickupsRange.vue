@@ -2,7 +2,7 @@
   <div class="EditNumberOfOrdersWallet">
       <div class="darker" @click="$emit('hide-modal')"></div>
         <div class="card">
-            <p class="title">Change Number of Pickups Per Day</p>
+            <p class="title">Change Pickups Number</p>
             <input type="number" min="1" class="amount" placeholder="Type the Number of Orders" v-model="loadedvalue">
             <button class="submit" @click="submitValue">Change</button>
         </div>
