@@ -42,7 +42,7 @@
   :pickupAddress="orders[selectedOrderIndex].pickup_address"
   :dropOffAddress="orders[selectedOrderIndex].drop_off_address"
   :addedNotes="orders[selectedOrderIndex].added_notes"
-
+  @go-to-edit="goToEditOrder(orders[selectedOrderIndex].id)"
   />
 
 

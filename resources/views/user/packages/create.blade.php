@@ -24,6 +24,7 @@ formactionroute="{{ route('dummy') }}"
 :boostertypesitems="{{ $booster_types_items }}"
 :fabrictypes="{{ $fabric_types }}"
 :fabrictypesitems="{{ $fabric_types_items }}"
+summaryroute="{{ route('package.summary') }}"
 />
 
 @endsection

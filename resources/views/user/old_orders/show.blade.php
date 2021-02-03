@@ -7,6 +7,8 @@ id="OldOrderDetails"
 date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
 :order="{{ $order }}"
 feedbackactionroute="{{ route('dummy') }}"
+summaryroute="{{ route('package.summary', 'package_id') }}"
+
 />
 
 @endsection

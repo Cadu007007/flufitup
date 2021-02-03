@@ -13,6 +13,14 @@
         <OrderDetail class="detail-container" name="Pickup address" :value="oldOrder[0].pickup_address"/>
         <OrderDetail class="detail-container" name="Drop off address" :value="oldOrder[0].drop_off_address"/>
         <OrderDetail class="detail-container" name="Added Notes" :value="oldOrder[0].added_notes"/>
+    
+
+        <div class="d-flex flex-row justify-content-center mt-4">
+            <button class="btn btn-primary px-4 py-2 " 
+            style="border-radius: 20px" @click="$emit('go-to-summary')">
+                Re-Order
+            </button>
+        </div>
     </div>
 </template>
 
@@ -22,7 +30,7 @@ export default {
     props: ['oldOrder'],
 components:{
     OrderDetail
-}
+},
 }
 </script>
 
@@ -39,7 +47,7 @@ $shadow: 0px 0px 10px #0000001A;
         justify-content: flex-start;
         align-items: center;      width: 700px;
         width: 520px;
-        height: 561px;
+        min-height: 561px;
         background: $white;
         border-radius: 40px;
         padding: 24px;

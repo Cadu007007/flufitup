@@ -347,7 +347,7 @@ Route::get('/packages/show/{id}', function () {
      ]);
 })->name('package.show');
 
-Route::get('/packages/summary/{id}', function () {
+Route::get('/packages/summary/{id?}', function () {
     $packages = collect();
 
     $dry_clean_items = collect();

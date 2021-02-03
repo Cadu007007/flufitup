@@ -4,7 +4,7 @@
     <div class="price">{{price}} {{ currency }}</div>
 
     <div class="button-container">
-        <button class="place-order">Done</button>
+        <button type="button" class="place-order" @click="$emit('card-button-clicked')">Done</button>
     </div>
 
   </div>

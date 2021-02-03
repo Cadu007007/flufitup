@@ -10,6 +10,7 @@ date="{{Carbon\Carbon::now()->format('m-d-Y')}}"
 :packagesmonthlylist="{{ $packages->monthly}}"
 packageshowroute="{{ route('package.show', 'package_id') }}"
 packagecreateroute="{{ route('package.create') }}"
+oldordersroute="{{ route('old_orders') }}"
 />
 
 @endsection

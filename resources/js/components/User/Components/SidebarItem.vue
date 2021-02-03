@@ -2,7 +2,7 @@
   <a class="SidebarItem" :title="itemtooltip">
     <img class="icon" :src=icon alt="">
     <img class="icon-active" :src=iconActive alt="">
-    <p class="item-title">{{ title }}</p>
+    <p class="sidebar-item-title">{{ title }}</p>
     <span class="active-column"></span>
   </a>
 </template>
@@ -36,13 +36,13 @@ props: ['title','icon', 'iconActive','itemtooltip']
         margin-left: 40px;
         display: none;
     }
-    .item-title{
+    .sidebar-item-title{
         font-size: 16px;
         color: #888;   
         margin-left: 20px;;
     }
     &.active{
-        .item-title{                        
+        .sidebar-item-title{                        
             color: #222 !important;
         }
         .active-column{

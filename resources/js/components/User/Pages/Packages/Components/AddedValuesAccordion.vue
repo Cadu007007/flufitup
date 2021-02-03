@@ -3,17 +3,18 @@
   <div class="AddedValuesAccordion">
     <div class="header"   @click="changeIsOpenState()">
         <p class="title">{{title}}</p>
-        <img :src=" isopen ? '/images/icons/arrow-up.svg' : '/images/icons/arrow-down.svg' " alt="">
+        <img :src=" openState ? '/images/icons/arrow-up.svg' : '/images/icons/arrow-down.svg' " alt="">
     </div>
-     <div class="options" v-show="isopen">
+    <!--  :checked="index == 0" -->
+     <div class="options" v-show="openState">
         <div class="option" v-for="(option,index) in options" :key="index">
-            <input class="radio" type="radio" :checked="index == 0" :name="name" :value="option.value" id="">
+            <input class="radio" type="radio" @click="labelClicked" :name="name" :value="option.value" id="">
             <label class="option-label" @click="labelClicked" for="filter">{{option.title}}</label>
         </div> 
      </div>
   </div>
 
-    <div class="d-flex flex-row flex-wrap" v-show="isopen">
+    <div class="flex-row flex-wrap" :class="openChoices && showChoices ? 'd-flex ' : 'd-none'">
         <div class="col-lg-4 my-1 mt-2" v-for="(choice,index) in addedvaluechoices" :key="index">
             <input class="input" type="checkbox" :name="choice.name">
             <label class="label" @click="choiceClicked" :for="choice.name">{{choice.title}}</label>
@@ -26,14 +27,23 @@
 
 <script>
 export default {
+    data(){
+        return {
+            openState: this.isopen,
+            openChoices: false,
+            showChoices: false,
+        }
+    },
     props: ['title','name','options','isopen','addedvaluechoices'],
     methods: {
         changeIsOpenState(){
-            this.isopen = !this.isopen;
+            this.openState = !this.openState;
+            this.openChoices = this.openState
         },
         labelClicked(event){
             // check the input
             event.target.closest('.option').getElementsByClassName('radio')[0].click()
+            this.showChoices = true
         },
         choiceClicked(event){
             event.target.closest('.added-value').getElementsByClassName('input')[0].click()

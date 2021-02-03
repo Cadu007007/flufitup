@@ -133,7 +133,7 @@
       price="50"
       currency="$"
       style="width: 300px !important; position: fixed; left: 900px"
-
+      @card-button-clicked="goToSummary"
      />
 
   </div>
@@ -174,7 +174,8 @@ export default {
         "dryertypes",
         "dryertypesitems",
         "boostertypes",
-        "boostertypesitems",],
+        "boostertypesitems",
+        "summaryroute",],
   components:{
     Accordion,
     AccordionCalendar,
@@ -209,7 +210,15 @@ export default {
       } else {
         this.pickups = 1 
       }
-    }
+    },
+    goToSummary() {
+        // var url = this.summaryroute.replace(
+        //     "package_id",
+        //     this.package[0].id
+        // );
+        var url = this.summaryroute
+        window.location.href = url;
+    },
   },
 }
 </script>

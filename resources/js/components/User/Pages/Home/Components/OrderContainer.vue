@@ -36,10 +36,12 @@
             </div>
         </div>
         <div class="button-container">
-            <button class="order-detailsbutton" @click="$emit('show-modal')">Order Details</button>
+            <button class="order-detailsbutton mx-2" @click="$emit('show-modal')">Order Details</button>
+            <button class="order-detailsbutton mx-2 btn-warning px-2" style="width: 200px" @click="$emit('go-to-edit-order')">View Pickup Schedule</button>
+            <button class="order-detailsbutton mx-2">View Order Status</button>
         </div>
     </div>
-    <p class="view-order-schedule" @click="$emit('go-to-edit-order')">View Pickup Schedule</p>
+    <!-- <p class="view-order-schedule" @click="$emit('go-to-edit-order')">View Pickup Schedule</p> -->
 
   </div>
 </template>
@@ -109,7 +111,7 @@ $orange: #FDBD42;
             margin-bottom: 36px;
 
         .order-detailsbutton{
-            width: 168px;
+            min-width: 168px;
             height: 40px;
             background: $blue;
             border-radius: 35px;

@@ -20,7 +20,7 @@
             <OrderDetail name="Drop off address" :value="dropOffAddress"/>
             <OrderDetail name="Added Notes" :value="addedNotes"/>
             <div class="d-flex flex-row mt-2 mb-3 justify-content-center">
-              <button class="btn btn-primary px-4" style="border-radius: 30px">Edit</button>
+              <button class="btn btn-primary px-4" @click="$emit('go-to-edit')"  style="border-radius: 30px">Edit</button>
             </div>
         </div>
     </div>

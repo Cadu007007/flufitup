@@ -193,7 +193,7 @@
 
         <div class="d-flex flex-row justify-content-center mt-4 mb-2 py-4">
             <button
-                class="btn btn-warning px-4 py-2 mb-4"
+                class="btn btn-primary px-4 py-2 mb-4 text-capitalize"
                 style="border-radius: 20px"
                 @click="goToPayment"
             >
