@@ -194,6 +194,25 @@ export default {
         "totalsales"
     ],
     methods: {
+        loadDatesFunction(){
+            $(".date-num").click(e => {
+            let currentMonthDate = $(".cal-wrapper .cal-header .title").text();
+            let day = $(e.target)
+                .text()
+                .trim(); // need to be 2 digits
+            var formattedDay = ("0" + Number(day)).slice(-2);
+
+            let month = Number(currentMonthDate.split("/")[0]);
+            var formattedMonth = ("0" + month).slice(-2);
+            let year = Number(currentMonthDate.split("/")[1]);
+            let selectedDate = `${year}-${formattedMonth}-${formattedDay}`;
+            /* call ajax to get list of clients that order that day */
+            /* Show Day Orders */
+            this.showDayOrders = true;
+            this.selectedDate = selectedDate;
+            this.showMonthOrders();
+        });
+        },
         showCalendarModal() {
             this.calendarModalState = true;
             document.getElementsByTagName("body")[0].style.overflow = "hidden";
@@ -238,6 +257,8 @@ export default {
         monthChanged() {
             setTimeout(() => {
                 this.getMonthSales(this.getCurrentMonthNumber());
+            this.loadDatesFunction()
+
             }, 10);
             /* hide date orders */
             this.showDayOrders = false;
