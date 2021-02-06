@@ -669,7 +669,19 @@ Route::get('/admin/dashboard', function () {
     $state_numbers->orders_number_per_day = 4;
     $state_numbers->pickups_range = 8;
 
-    return view('admin.dashboard.index', ['active' => 'dashboard', 'state_numbers' => $state_numbers]);
+    $pickups_number = collect();
+    $pickups_number->push(['date' => '2020/12/1', 'title' => 'pickup', 'pickups' => '5']);
+    $pickups_number->push(['date' => '2020/12/4', 'title' => 'pickup', 'pickups' => '7']);
+    $pickups_number->push(['date' => '2020/12/8', 'title' => 'pickup', 'pickups' => '10']);
+    $pickups_number->push(['date' => '2020/12/14', 'title' => 'pickup', 'pickups' => '15']);
+    $pickups_number->push(['date' => '2020/12/18', 'title' => 'pickup', 'pickups' => '20']);
+    $pickups_number->push(['date' => '2021/1/4', 'title' => 'pickup', 'pickups' => '6']);
+    $pickups_number->push(['date' => '2021/1/8', 'title' => 'pickup', 'pickups' => '12']);
+    $pickups_number->push(['date' => '2021/1/19', 'title' => 'pickup', 'pickups' => '15']);
+
+
+    return view('admin.dashboard.index', ['active' => 'dashboard',
+     'state_numbers' => $state_numbers, 'pickups_number' => $pickups_number]);
 })->name('admin.dashboard');
 
 /* Total Clients */

@@ -43,6 +43,7 @@ $black: #111;
         font-family: 'Open-Sans-Semibold';
         color: $black;      
         margin-top: 1px;
+        width: 120px;
     }
 
     .active-dot{

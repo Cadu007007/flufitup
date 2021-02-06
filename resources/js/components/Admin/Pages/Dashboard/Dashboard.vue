@@ -59,10 +59,12 @@
         </div>
 
         <div class="flex-row">
-            <div class="calendar-container">
+            <div class="calendar-container" style="margin-bottom: 30px;">
                 <!-- <p class="calendar-title">Calendar Control</p> -->
                 <vue-event-calendar
                     :events="selectedDates"
+                    @month-changed="monthChanged()"
+
                 ></vue-event-calendar>
             </div>
             <NumberOfOrdersCard
@@ -119,7 +121,8 @@ export default {
         "userspercityroute",
         "cancellationrequestsroute",
         "ordersnumber",
-        "pickupsrange"
+        "pickupsrange",
+        "pickups"
     ],
     components: {
         DashboardItem,
@@ -127,6 +130,34 @@ export default {
         EditNumberOfOrdersCard,
         PickupsRange,
         EditPickupsRange
+    },
+    
+     mounted() {
+          $(".date-num").mouseenter(e => {
+            let currentMonthDate = $(".cal-wrapper .cal-header .title").text();
+            let day = $(e.target)
+                .text()
+                .trim(); // need to be 2 digits
+            var formattedDay = ("0" + Number(day)).slice(-2);
+
+            let month = Number(currentMonthDate.split("/")[0]);
+            var formattedMonth = ("0" + month).slice(-2);
+            let year = Number(currentMonthDate.split("/")[1]);
+            let selectedDateFormated = `${year}-${formattedMonth}-${formattedDay}`;
+            let selectedDate = `${year+"/"+month+"/"+day}`
+            
+            
+            
+            /* get pickups of that day */
+            let allPickups = this.pickups
+            
+            let selectedDay = allPickups.find(x=>x.date == selectedDate)
+            let datePickups=0;
+            if (selectedDay != undefined){
+                datePickups = selectedDay.pickups
+            }
+            $(e.target).attr("title", datePickups + " Pickups")
+        });
     },
     data() {
         return {
@@ -140,6 +171,38 @@ export default {
         };
     },
     methods: {
+        monthChanged(){
+            setTimeout(() => {
+                this.loadDatesFuntion()
+            }, 200);
+        },
+        loadDatesFuntion(){
+            $(".date-num").mouseenter(e => {
+            let currentMonthDate = $(".cal-wrapper .cal-header .title").text();
+            let day = $(e.target)
+                .text()
+                .trim(); // need to be 2 digits
+            var formattedDay = ("0" + Number(day)).slice(-2);
+
+            let month = Number(currentMonthDate.split("/")[0]);
+            var formattedMonth = ("0" + month).slice(-2);
+            let year = Number(currentMonthDate.split("/")[1]);
+            let selectedDateFormated = `${year}-${formattedMonth}-${formattedDay}`;
+            let selectedDate = `${year+"/"+month+"/"+day}`
+            
+            
+            
+            /* get pickups of that day */
+            let allPickups = this.pickups
+            
+            let selectedDay = allPickups.find(x=>x.date == selectedDate)
+            let datePickups=0;
+            if (selectedDay != undefined){
+                datePickups = selectedDay.pickups
+            }
+            $(e.target).attr("title", datePickups + " Pickups")
+        });
+        },
         showOrderModal() {
             this.ordermodalstate = true;
         },
@@ -239,6 +302,7 @@ $blue: #22aee4;
         justify-content: flex-start;
         align-items: flex-start;
         margin: 30px auto 20px 24px;
+        flex-wrap: wrap;
     }
     /* Handle Calendar */
     .calendar-container {

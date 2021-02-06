@@ -18,6 +18,6 @@ userspercityroute="{{ route('admin.dashboard.users_per_city') }}"
 cancellationrequestsroute="{{ route('admin.dashboard.cancellation_requests') }}"
 :ordersnumber="{{ $state_numbers->orders_number_per_day }}"
 :pickupsrange="{{ $state_numbers->pickups_range }}"
-
+:pickups="{{ $pickups_number }}"
 />
 @endsection
