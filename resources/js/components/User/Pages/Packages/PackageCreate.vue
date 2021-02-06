@@ -92,18 +92,21 @@
 
         </div>
 
+        <DryCleanAccordion
+          class="accordion"
+          title="Add Dry Clean Items"
+          name="dry_clean"
+          :items="drycleanitems"
+          />
 
-        <div class="row" style="width: 730px">
-        <!-- dry clean items -->
-          <div class="col-lg-12 mx-auto my-4">
-              <ItemsList title="Dry Clean" :items="drycleanitems" />
-          </div>
-        <!-- household items -->
 
-            <div class="col-lg-12 mx-auto my-4">
-                <ItemsList title="Household Items" :items="householditems" />
-            </div>
-        </div>
+        <HouseholdAccordion
+          class="accordion"
+          title="Add Household Items"
+          name="household"
+          :items="householditems"
+          />
+
 
         <!-- detergents items -->
             <div class="slider-container" style="width: 500px">
@@ -147,6 +150,8 @@
 import Accordion from './Components/Accordion'
 import AccordionCalendar from './Components/AccordionCalendar'
 import AddedValuesAccordion from './Components/AddedValuesAccordion'
+import DryCleanAccordion from './Components/DryCleanAccordion'
+import HouseholdAccordion from './Components/HouseholdAccordion'
 import PackageCreatePriceCard from './Components/PackageCreatePriceCard'
 import Slider from "./Components/Slider";
 import ItemsList from "./Components/ItemsList";
@@ -180,6 +185,8 @@ export default {
     Accordion,
     AccordionCalendar,
     AddedValuesAccordion,
+    DryCleanAccordion,
+    HouseholdAccordion,
     PackageCreatePriceCard,
     Slider,
     ItemsList
