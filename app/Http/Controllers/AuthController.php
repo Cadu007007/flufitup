@@ -63,6 +63,18 @@ class AuthController extends Controller
         }
         return back()->with(['phone_number' => $data['phone_number'], 'error' => 'Invalid verification code entered!']);
     }
+
+    public function verifyPhone(Request $request)
+    {
+        // dd($request);
+        // dd(Session::get('forget'));
+        $user = User::where('phone', $request->phone_number)->first();
+        if (!$user->isVerified || Session::get('forget') == true) {
+            return view('auth.verify_phone', ['active' => 'logout', 'phone_number' => $request->phone_number ?? null]);
+        }
+        abort(403, 'You Trying To Verify Phone Number Already Verified');
+
+    }
     protected function resend(Request $request)
     {
         if ($request->ajax()) {
@@ -77,6 +89,7 @@ class AuthController extends Controller
             return response(['success' => 'success']);
         } else {
 
+            // dd($request);
             if (User::where('phone', $request->phone)->exists()) {
                 // dd('d');
                 $token = getenv("TWILIO_AUTH_TOKEN");
@@ -88,7 +101,7 @@ class AuthController extends Controller
                     ->create($request->phone, "sms");
                 // $this->verification($request->phone);
                 Session::put('forget', true);
-                return redirect()->route('verify_phone')->with(['phone_number' => $request->phone]);
+                return redirect()->route('verify_phone', ['phone_number' => $request->phone])->with(['phone_number' => $request->phone]);
             } else {
                 return back()->withErrors(['phone' => 'Invalid phone number']);
             }
@@ -114,6 +127,8 @@ class AuthController extends Controller
             ->create($data['verification_code'], array('to' => $data['phone_number']));
 
         if ($verification->valid) {
+            // session('phone_number', $data['phone_number']);
+            Session::put('phone_number', $data['phone_number']);
             return view('auth.reset_password')->with(['phone_number' => $data['phone_number']]);
             // return redirect()->route('reset_password')->with(['phone_number' => $data['phone_number']]);
         }
@@ -122,11 +137,13 @@ class AuthController extends Controller
 
     protected function updatePassword(Request $request)
     {
+        dd($request);
         // with receive phone number and two passwords
         $data = $request->validate([
             'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/[a-z]/', 'regex:/[A-Z]/'],
             'phone_number' => ['required', 'exists:users,phone'],
         ]);
+        dd($data);
         User::where('phone', $data['phone_number'])->update(['password', Hash::make($request->password)]);
         return redirect()->route('user.login');
         //after validation will update password

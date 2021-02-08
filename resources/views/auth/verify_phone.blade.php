@@ -22,7 +22,7 @@
                 @csrf
                 <div class="input-container">
                     {{-- {{ $error }} --}}
-                    <input type="hidden" id="phone_number" name="phone_number" value="{{old('phone_number',session('phone_number'))  }}">
+                    <input type="hidden" id="phone_number" name="phone_number" value="{{old('phone_number',request()->get('phone_number'))  }}">
                
                     <input name="digit[0]" maxlength="1"  type="text" class="digit-input" placeholder=""/>
                     <input name="digit[1]" maxlength="1"  type="text" class="digit-input" placeholder=""/>

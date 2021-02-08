@@ -35,13 +35,14 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        // dd($request);
         if (Auth::guard('web')->attempt(['phone' => $request->phone_number, 'password' => $request->password], $request->remember)) {
             if (auth()->user()->isVerified) {
                 return redirect()->intended(route('home'));
             } else {
                 $phone_number = auth()->user()->phone;
                 Auth::logout();
-                return redirect()->route('verify_phone')->with('phone_number', $phone_number);
+                return redirect()->route('verify_phone', ['phone_number' => $phone_number])->with('phone_number', $phone_number);
             }
         }
         return back()->with('warning', __('auth.failed'));

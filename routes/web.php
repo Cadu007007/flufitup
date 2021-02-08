@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +16,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
+    // dd(auth()->user());
     $packages = collect();
     $packages->adhoc = collect();
     $packages->bi_weekly = collect();
@@ -36,21 +36,19 @@ Route::get('/', function () {
 
 })->name('index');
 
+Route::get('/password/update/user/{phone}', [AuthController::class, 'updatePassword'])->name('user.update.password');
 Route::post('register/post', [AuthController::class, 'create'])->name('register.post');
 Route::post('verify/post', [AuthController::class, 'verify'])->name('verify.post');
-Route::get('/verify/phone', function () {
-    return view('auth.verify_phone', ['active' => 'logout']);
-})->name('verify_phone');
+Route::get('/verify/phone', [AuthController::class, 'verifyPhone'])->name('verify_phone');
 Route::get('/resend/code', [AuthController::class, 'resend'])->name('resend.code');
 Route::post('/forget/password', [AuthController::class, 'resend'])->name('send.code');
 Route::post('/change/password', [AuthController::class, 'changePassword'])->name('forget.change.password');
-Route::post('/password/update', [AuthController::class, 'updatePassword'])->name('forget.update.password');
 // Route::post('/update/forget/password',[AuthController::class,''])
 Auth::routes();
-Route::post('login', [
-    'as' => 'user.login',
-    'uses' => [LoginController::class, 'login'],
-]);
+// Route::post('login', [
+//     'as' => 'user.login',
+//     'uses' => [LoginController::class, 'login'],
+// ]);
 
 // Route::get('/password/new', function () {
 //     return view('auth.reset_password', ['active' => 'logout']);
@@ -254,7 +252,7 @@ Route::get('/packages/show/{id}', function () {
     $dry_clean_items->push(['id' => 4, 'title' => 'Item 4', 'price' => 60, 'name' => 'item4']);
     $dry_clean_items->push(['id' => 5, 'title' => 'Item 5', 'price' => 70, 'name' => 'item5']);
     $dry_clean_items->push(['id' => 6, 'title' => 'Item 6', 'price' => 70, 'name' => 'item6']);
-    
+
     $household_items = collect();
     $household_items->push(['id' => 1, 'title' => 'Item 7', 'price' => 10, 'name' => 'item1']);
     $household_items->push(['id' => 2, 'title' => 'Item 8', 'price' => 20, 'name' => 'item2']);
@@ -262,8 +260,7 @@ Route::get('/packages/show/{id}', function () {
     $household_items->push(['id' => 4, 'title' => 'Item 10', 'price' => 40, 'name' => 'item4']);
     $household_items->push(['id' => 5, 'title' => 'Item 11', 'price' => 50, 'name' => 'item5']);
     $household_items->push(['id' => 6, 'title' => 'Item 12', 'price' => 60, 'name' => 'item6']);
-    
-    
+
     $options = collect();
     $options->added_value = collect();
     $options->added_value_choices = collect();
@@ -288,63 +285,58 @@ Route::get('/packages/show/{id}', function () {
     $options->added_value_choices->push(['title' => 'Overalls', 'name' => 'overalls']);
 
     $detergents_types = collect();
-    $detergents_types->push(['id' => 1, 'title' => "Brand 1", ]);
-    $detergents_types->push(['id' => 2, 'title' => "Brand 2", ]);
-    $detergents_types->push(['id' => 3, 'title' => "Brand 3", ]);
-    
+    $detergents_types->push(['id' => 1, 'title' => "Brand 1"]);
+    $detergents_types->push(['id' => 2, 'title' => "Brand 2"]);
+    $detergents_types->push(['id' => 3, 'title' => "Brand 3"]);
+
     $detergents_types_items = collect();
-    $detergents_types_items->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $detergents_types_items->push(['id' => 2, 'src'=> "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $detergents_types_items->push(['id' => 3, 'src'=> "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
-
-
+    $detergents_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+    $detergents_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+    $detergents_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
     $dryer_sheet_types = collect();
-    $dryer_sheet_types->push(['id' => 1, 'title' => "Dryer Brand 1", ]);
-    $dryer_sheet_types->push(['id' => 2, 'title' => "Dryer Brand 2", ]);
-    $dryer_sheet_types->push(['id' => 3, 'title' => "Dryer Brand 3", ]);
-    
-    $dryer_sheet_types_items = collect();
-    $dryer_sheet_types_items->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $dryer_sheet_types_items->push(['id' => 2, 'src'=> "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $dryer_sheet_types_items->push(['id' => 3, 'src'=> "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
+    $dryer_sheet_types->push(['id' => 1, 'title' => "Dryer Brand 1"]);
+    $dryer_sheet_types->push(['id' => 2, 'title' => "Dryer Brand 2"]);
+    $dryer_sheet_types->push(['id' => 3, 'title' => "Dryer Brand 3"]);
 
+    $dryer_sheet_types_items = collect();
+    $dryer_sheet_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+    $dryer_sheet_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+    $dryer_sheet_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
     $booster_types = collect();
-    $booster_types->push(['id' => 1, 'title' => "Booster Brand 1", ]);
-    $booster_types->push(['id' => 2, 'title' => "Booster Brand 2", ]);
-    $booster_types->push(['id' => 3, 'title' => "Booster Brand 3", ]);
-    
+    $booster_types->push(['id' => 1, 'title' => "Booster Brand 1"]);
+    $booster_types->push(['id' => 2, 'title' => "Booster Brand 2"]);
+    $booster_types->push(['id' => 3, 'title' => "Booster Brand 3"]);
+
     $booster_types_items = collect();
-    $booster_types_items->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $booster_types_items->push(['id' => 2, 'src'=> "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $booster_types_items->push(['id' => 3, 'src'=> "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
+    $booster_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+    $booster_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+    $booster_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
     $fabric_types = collect();
-    $fabric_types->push(['id' => 1, 'title' => "Fabric Brand 1", ]);
-    $fabric_types->push(['id' => 2, 'title' => "Fabric Brand 2", ]);
-    $fabric_types->push(['id' => 3, 'title' => "Fabric Brand 3", ]);
-    
+    $fabric_types->push(['id' => 1, 'title' => "Fabric Brand 1"]);
+    $fabric_types->push(['id' => 2, 'title' => "Fabric Brand 2"]);
+    $fabric_types->push(['id' => 3, 'title' => "Fabric Brand 3"]);
+
     $fabric_types_items = collect();
-    $fabric_types_items->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $fabric_types_items->push(['id' => 2, 'src'=> "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $fabric_types_items->push(['id' => 3, 'src'=> "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
-
-
+    $fabric_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+    $fabric_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+    $fabric_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
     return view('user.packages.show', ['active' => 'packages', 'package' => $packages,
-     'dry_clean_items' => $dry_clean_items,
-     'household_items'=> $household_items ,
-     'options' => $options,
-     'detergents_types' => $detergents_types,
-     'detergents_types_items' => $detergents_types_items,
-     'dryer_sheet_types' => $dryer_sheet_types,
-     'dryer_sheet_types_items' => $dryer_sheet_types_items,
-     'booster_types' => $booster_types,
-     'booster_types_items' => $booster_types_items,
-     'fabric_types' => $fabric_types,
-     'fabric_types_items' => $fabric_types_items,
-     ]);
+        'dry_clean_items' => $dry_clean_items,
+        'household_items' => $household_items,
+        'options' => $options,
+        'detergents_types' => $detergents_types,
+        'detergents_types_items' => $detergents_types_items,
+        'dryer_sheet_types' => $dryer_sheet_types,
+        'dryer_sheet_types_items' => $dryer_sheet_types_items,
+        'booster_types' => $booster_types,
+        'booster_types_items' => $booster_types_items,
+        'fabric_types' => $fabric_types,
+        'fabric_types_items' => $fabric_types_items,
+    ]);
 })->name('package.show');
 
 Route::get('/packages/summary/{id?}', function () {
@@ -353,40 +345,38 @@ Route::get('/packages/summary/{id?}', function () {
     $dry_clean_items = collect();
     $dry_clean_items->push(['id' => 1, 'title' => 'Item 1', 'price' => 30, 'name' => 'item1']);
     $dry_clean_items->push(['id' => 2, 'title' => 'Item 2', 'price' => 40, 'name' => 'item2']);
-    
+
     $added_value = collect();
     $added_value->push(['title' => 'Use hungers instead of Folding', 'value' => '1']);
 
     $added_value_choices = collect();
     $added_value_choices->push(['title' => 'T‐Shirts', 'name' => 't-shirt']);
     $added_value_choices->push(['title' => ' Trousers', 'name' => ' trousers']);
-    
+
     $household_items = collect();
     $household_items->push(['id' => 1, 'title' => 'Item 7', 'price' => 10, 'name' => 'item1']);
     $household_items->push(['id' => 2, 'title' => 'Item 8', 'price' => 20, 'name' => 'item2']);
     $household_items->push(['id' => 3, 'title' => 'Item 9', 'price' => 30, 'name' => 'item3']);
-    
 
     $detergents_type = collect();
-    $detergents_type->push(['id' => 1, 'title' => "Brand 1" ]);
-    $detergents_item= collect();
+    $detergents_type->push(['id' => 1, 'title' => "Brand 1"]);
+    $detergents_item = collect();
     $detergents_item->push(['id' => 5, 'title' => 'Item 5', 'price' => 20]);
 
     $fabric_type = collect();
-    $fabric_type->push(['id' => 1, 'title' => "Fabric Brand 1", ]);
+    $fabric_type->push(['id' => 1, 'title' => "Fabric Brand 1"]);
     $fabric_type_item = collect();
-    $fabric_type_item->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    
+    $fabric_type_item->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+
     $dryer_sheet_type = collect();
-    $dryer_sheet_type->push(['id' => 1, 'title' => "Dryer Brand 1", ]);
+    $dryer_sheet_type->push(['id' => 1, 'title' => "Dryer Brand 1"]);
     $dryer_sheet_item = collect();
-    $dryer_sheet_item->push(['id' => 1, 'src'=> "", 'title' => "Item 2", 'price' => 60, 'type_id' => 1]);
-    
+    $dryer_sheet_item->push(['id' => 1, 'src' => "", 'title' => "Item 2", 'price' => 60, 'type_id' => 1]);
+
     $booster_type = collect();
-    $booster_type->push(['id' => 1, 'title' => "Booster Brand 1", ]);
+    $booster_type->push(['id' => 1, 'title' => "Booster Brand 1"]);
     $booster_item = collect();
-    $booster_item->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    
+    $booster_item->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
 
     $packages->push(['id' => 1111111111,
         'package_duration' => '1 Day',
@@ -409,7 +399,7 @@ Route::get('/packages/summary/{id?}', function () {
         'dry_clean_items' => $dry_clean_items,
         'added_value' => $added_value,
         'added_value_choices' => $added_value_choices,
-        'household_items'=> $household_items,
+        'household_items' => $household_items,
         'detergents_type' => $detergents_type,
         'detergents_item' => $detergents_item,
         'fabric_type' => $fabric_type,
@@ -418,12 +408,11 @@ Route::get('/packages/summary/{id?}', function () {
         'dryer_sheet_item' => $dryer_sheet_item,
         'booster_type' => $booster_type,
         'booster_item' => $booster_item,
-        'total' => '230'
+        'total' => '230',
     ]);
-   
 
     return view('user.packages.summary', ['active' => 'packages', 'package' => $packages,
-     ]);
+    ]);
 })->name('package.summary');
 
 Route::get('/packages/create', function () {
@@ -484,47 +473,44 @@ Route::get('/packages/create', function () {
     $options->added_value_choices->push(['title' => 'Overalls', 'name' => 'overalls']);
 
     $detergents_types = collect();
-    $detergents_types->push(['id' => 1, 'title' => "Brand 1", ]);
-    $detergents_types->push(['id' => 2, 'title' => "Brand 2", ]);
-    $detergents_types->push(['id' => 3, 'title' => "Brand 3", ]);
-    
+    $detergents_types->push(['id' => 1, 'title' => "Brand 1"]);
+    $detergents_types->push(['id' => 2, 'title' => "Brand 2"]);
+    $detergents_types->push(['id' => 3, 'title' => "Brand 3"]);
+
     $detergents_types_items = collect();
-    $detergents_types_items->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $detergents_types_items->push(['id' => 2, 'src'=> "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $detergents_types_items->push(['id' => 3, 'src'=> "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
-
-
+    $detergents_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+    $detergents_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+    $detergents_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
     $dryer_sheet_types = collect();
-    $dryer_sheet_types->push(['id' => 1, 'title' => "Dryer Brand 1", ]);
-    $dryer_sheet_types->push(['id' => 2, 'title' => "Dryer Brand 2", ]);
-    $dryer_sheet_types->push(['id' => 3, 'title' => "Dryer Brand 3", ]);
-    
-    $dryer_sheet_types_items = collect();
-    $dryer_sheet_types_items->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $dryer_sheet_types_items->push(['id' => 2, 'src'=> "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $dryer_sheet_types_items->push(['id' => 3, 'src'=> "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
+    $dryer_sheet_types->push(['id' => 1, 'title' => "Dryer Brand 1"]);
+    $dryer_sheet_types->push(['id' => 2, 'title' => "Dryer Brand 2"]);
+    $dryer_sheet_types->push(['id' => 3, 'title' => "Dryer Brand 3"]);
 
+    $dryer_sheet_types_items = collect();
+    $dryer_sheet_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+    $dryer_sheet_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+    $dryer_sheet_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
     $booster_types = collect();
-    $booster_types->push(['id' => 1, 'title' => "Booster Brand 1", ]);
-    $booster_types->push(['id' => 2, 'title' => "Booster Brand 2", ]);
-    $booster_types->push(['id' => 3, 'title' => "Booster Brand 3", ]);
-    
+    $booster_types->push(['id' => 1, 'title' => "Booster Brand 1"]);
+    $booster_types->push(['id' => 2, 'title' => "Booster Brand 2"]);
+    $booster_types->push(['id' => 3, 'title' => "Booster Brand 3"]);
+
     $booster_types_items = collect();
-    $booster_types_items->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $booster_types_items->push(['id' => 2, 'src'=> "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $booster_types_items->push(['id' => 3, 'src'=> "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
+    $booster_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+    $booster_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+    $booster_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
     $fabric_types = collect();
-    $fabric_types->push(['id' => 1, 'title' => "Fabric Brand 1", ]);
-    $fabric_types->push(['id' => 2, 'title' => "Fabric Brand 2", ]);
-    $fabric_types->push(['id' => 3, 'title' => "Fabric Brand 3", ]);
-    
+    $fabric_types->push(['id' => 1, 'title' => "Fabric Brand 1"]);
+    $fabric_types->push(['id' => 2, 'title' => "Fabric Brand 2"]);
+    $fabric_types->push(['id' => 3, 'title' => "Fabric Brand 3"]);
+
     $fabric_types_items = collect();
-    $fabric_types_items->push(['id' => 1, 'src'=> "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $fabric_types_items->push(['id' => 2, 'src'=> "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $fabric_types_items->push(['id' => 3, 'src'=> "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
+    $fabric_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+    $fabric_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+    $fabric_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
     $dry_clean_items = collect();
     $dry_clean_items->push(['id' => 1, 'title' => 'Item 1', 'price' => 30, 'name' => 'item1']);
@@ -533,7 +519,7 @@ Route::get('/packages/create', function () {
     $dry_clean_items->push(['id' => 4, 'title' => 'Item 4', 'price' => 60, 'name' => 'item4']);
     $dry_clean_items->push(['id' => 5, 'title' => 'Item 5', 'price' => 70, 'name' => 'item5']);
     $dry_clean_items->push(['id' => 6, 'title' => 'Item 6', 'price' => 70, 'name' => 'item6']);
-    
+
     $household_items = collect();
     $household_items->push(['id' => 1, 'title' => 'Item 7', 'price' => 10, 'name' => 'item1']);
     $household_items->push(['id' => 2, 'title' => 'Item 8', 'price' => 20, 'name' => 'item2']);
@@ -541,20 +527,19 @@ Route::get('/packages/create', function () {
     $household_items->push(['id' => 4, 'title' => 'Item 10', 'price' => 40, 'name' => 'item4']);
     $household_items->push(['id' => 5, 'title' => 'Item 11', 'price' => 50, 'name' => 'item5']);
     $household_items->push(['id' => 6, 'title' => 'Item 12', 'price' => 60, 'name' => 'item6']);
-    
 
     return view('user.packages.create', ['active' => 'packages', 'options' => $options,
-    'detergents_types' => $detergents_types,
-     'detergents_types_items' => $detergents_types_items,
-     'dryer_sheet_types' => $dryer_sheet_types,
-     'dryer_sheet_types_items' => $dryer_sheet_types_items,
-     'booster_types' => $booster_types,
-     'booster_types_items' => $booster_types_items,
-     'fabric_types' => $fabric_types,
-     'fabric_types_items' => $fabric_types_items,
-     'dry_clean_items'=>$dry_clean_items,
-     'household_items'=>$household_items,
-     ]);
+        'detergents_types' => $detergents_types,
+        'detergents_types_items' => $detergents_types_items,
+        'dryer_sheet_types' => $dryer_sheet_types,
+        'dryer_sheet_types_items' => $dryer_sheet_types_items,
+        'booster_types' => $booster_types,
+        'booster_types_items' => $booster_types_items,
+        'fabric_types' => $fabric_types,
+        'fabric_types_items' => $fabric_types_items,
+        'dry_clean_items' => $dry_clean_items,
+        'household_items' => $household_items,
+    ]);
 })->name('package.create');
 
 Route::get('/packages/payment', function () {
@@ -679,9 +664,8 @@ Route::get('/admin/dashboard', function () {
     $pickups_number->push(['date' => '2021/1/8', 'title' => 'pickup', 'pickups' => '12']);
     $pickups_number->push(['date' => '2021/1/19', 'title' => 'pickup', 'pickups' => '15']);
 
-
     return view('admin.dashboard.index', ['active' => 'dashboard',
-     'state_numbers' => $state_numbers, 'pickups_number' => $pickups_number]);
+        'state_numbers' => $state_numbers, 'pickups_number' => $pickups_number]);
 })->name('admin.dashboard');
 
 /* Total Clients */
@@ -700,12 +684,11 @@ Route::get('/admin/clients/new', function () {
     $clients = collect();
 
     $clients->push(['id' => 1, 'name' => 'Ali Ahmed', 'city' => 'Cairo', 'day_of_subscribe' => '12/15/2020', 'package_name' => 'Package 2',
-    'phone'=>'+1 111 111111','service_status' => 'Not Started', 'completion_date'=> '-', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
+        'phone' => '+1 111 111111', 'service_status' => 'Not Started', 'completion_date' => '-', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
     $clients->push(['id' => 2, 'name' => 'Dooooooby', 'city' => 'Giza', 'day_of_subscribe' => '12/16/2020', 'package_name' => 'Package 3',
-    'phone'=>'+1 111 111111','service_status' => 'Inprogress', 'completion_date'=> '-', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
+        'phone' => '+1 111 111111', 'service_status' => 'Inprogress', 'completion_date' => '-', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
     $clients->push(['id' => 3, 'name' => 'Mohamed Salah', 'city' => 'Alexandria', 'day_of_subscribe' => '12/14/2020', 'package_name' => 'Package 1',
-    'phone'=>'+1 111 111111','service_status' => 'Completed', 'completion_date'=> '10/4/2020', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
-
+        'phone' => '+1 111 111111', 'service_status' => 'Completed', 'completion_date' => '10/4/2020', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
 
     return view('admin.dashboard.new_clients.index', ['active' => 'dashboard', 'clients' => $clients]);
 })->name('admin.dashboard.new_clients');
@@ -726,7 +709,7 @@ Route::get('/admin/sales/month', function () {
     $total_sales = collect();
     $total_sales->push(['month' => 12, 'total_sales' => 16]);
     $total_sales->push(['month' => 1, 'total_sales' => 33]);
-    return view('admin.dashboard.sales_per_month.index', ['active' => 'dashboard', 'orders_dates' => $orders_dates, 'total_sales'=> $total_sales]);
+    return view('admin.dashboard.sales_per_month.index', ['active' => 'dashboard', 'orders_dates' => $orders_dates, 'total_sales' => $total_sales]);
 })->name('admin.dashboard.sales_per_month');
 
 /* Sales Per Package */
@@ -755,12 +738,12 @@ Route::get('/admin/sales/package', function () {
     $packages->tailored->push(['id' => 12, 'name' => 'Package 6']);
 
     $users = collect();
-    
-    $users->push(['id' => 1, 'name' => 'Mohamed', 'city' => 'Alexandria', 'package_id' => 1, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 2, 'name' => 'Amr', 'city' => 'Alexandria', 'package_id' => 2, 'phone'=> '01286727987' , 'service_status'=> 'Not Started', 'completion_date'=> '-' ]);
-    $users->push(['id' => 3, 'name' => 'Doby', 'city' => 'Alexandria','package_id' => 3, 'phone'=> '01286727987' , 'service_status'=> 'Completed', 'completion_date'=> '10/4/2020' ]);
-    $users->push(['id' => 3, 'name' => 'Ahmed',  'city' => 'Alexandria', 'package_id' => 4,  'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-']);
-    $users->push(['id' => 3, 'name' => 'Ali', 'city' => 'Alexandria', 'package_id' => 5, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
+
+    $users->push(['id' => 1, 'name' => 'Mohamed', 'city' => 'Alexandria', 'package_id' => 1, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 2, 'name' => 'Amr', 'city' => 'Alexandria', 'package_id' => 2, 'phone' => '01286727987', 'service_status' => 'Not Started', 'completion_date' => '-']);
+    $users->push(['id' => 3, 'name' => 'Doby', 'city' => 'Alexandria', 'package_id' => 3, 'phone' => '01286727987', 'service_status' => 'Completed', 'completion_date' => '10/4/2020']);
+    $users->push(['id' => 3, 'name' => 'Ahmed', 'city' => 'Alexandria', 'package_id' => 4, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 3, 'name' => 'Ali', 'city' => 'Alexandria', 'package_id' => 5, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
 
     return view('admin.dashboard.sales_per_package.index', ['active' => 'dashboard', 'users' => $users, 'packages' => $packages]);
 })->name('admin.dashboard.sales_per_package');
@@ -784,19 +767,18 @@ Route::get('/admin/sales/city', function () {
 
     $users = collect();
 
-    $users->push(['id' => 1, 'name' => 'Mohamed', 'city_id' => 1, 'subscription_date' => '1/16/2019', 'zipcode' => 92620, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 2, 'name' => 'Amr', 'city_id' => 2, 'subscription_date' => '1/16/2019', 'zipcode' => 92623, 'phone'=> '01286727987' , 'service_status'=> 'Not Started', 'completion_date'=> '-' ]);
-    $users->push(['id' => 3, 'name' => 'Doby', 'city_id' => 3, 'subscription_date' => '1/16/2019','zipcode' => 92627, 'phone'=> '01286727987' , 'service_status'=> 'Completed', 'completion_date'=> '10/4/2020' ]);
-    $users->push(['id' => 4, 'name' => 'Ahmed', 'city_id' => 4, 'subscription_date' => '1/16/2019', 'zipcode' => 92629,  'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-']);
-    $users->push(['id' => 5, 'name' => 'Ali', 'city_id' => 5, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 6, 'name' => 'Mahmoud', 'city_id' => 6,  'subscription_date' => '1/16/2019','zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 7, 'name' => 'Omar', 'city_id' => 7, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 8, 'name' => 'Gaber', 'city_id' => 8,  'subscription_date' => '1/16/2019','zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 9, 'name' => 'Karim', 'city_id' => 9, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 10, 'name' => 'Osama', 'city_id' => 10, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 11, 'name' => 'Yaser', 'city_id' => 11, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-    $users->push(['id' => 12, 'name' => 'Sayed', 'city_id' => 12,  'subscription_date' => '1/16/2019','zipcode' => 92616, 'phone'=> '01286727987' , 'service_status'=> 'In Progress', 'completion_date'=> '-' ]);
-
+    $users->push(['id' => 1, 'name' => 'Mohamed', 'city_id' => 1, 'subscription_date' => '1/16/2019', 'zipcode' => 92620, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 2, 'name' => 'Amr', 'city_id' => 2, 'subscription_date' => '1/16/2019', 'zipcode' => 92623, 'phone' => '01286727987', 'service_status' => 'Not Started', 'completion_date' => '-']);
+    $users->push(['id' => 3, 'name' => 'Doby', 'city_id' => 3, 'subscription_date' => '1/16/2019', 'zipcode' => 92627, 'phone' => '01286727987', 'service_status' => 'Completed', 'completion_date' => '10/4/2020']);
+    $users->push(['id' => 4, 'name' => 'Ahmed', 'city_id' => 4, 'subscription_date' => '1/16/2019', 'zipcode' => 92629, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 5, 'name' => 'Ali', 'city_id' => 5, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 6, 'name' => 'Mahmoud', 'city_id' => 6, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 7, 'name' => 'Omar', 'city_id' => 7, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 8, 'name' => 'Gaber', 'city_id' => 8, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 9, 'name' => 'Karim', 'city_id' => 9, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 10, 'name' => 'Osama', 'city_id' => 10, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 11, 'name' => 'Yaser', 'city_id' => 11, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
+    $users->push(['id' => 12, 'name' => 'Sayed', 'city_id' => 12, 'subscription_date' => '1/16/2019', 'zipcode' => 92616, 'phone' => '01286727987', 'service_status' => 'In Progress', 'completion_date' => '-']);
 
     return view('admin.dashboard.users_per_city.index', ['active' => 'dashboard', 'cities' => $cities, 'users' => $users]);
 })->name('admin.dashboard.users_per_city');
@@ -828,7 +810,6 @@ Route::get('/admin/cancellation_requests/show/{id}', function () {
 
     return view('admin.dashboard.cancellation_requests.show', ['active' => 'dashboard', 'user' => $user]);
 })->name('admin.cancellation_requests.show');
-
 
 /******************************
  * Dashboard End
@@ -870,18 +851,17 @@ Route::get('/admin/packages', function () {
 
     $packages->tailored->push(['id' => 10, 'name' => 'Tailored Packages', 'users' => 4]);
 
-
-    return view('admin.packages.index', ['active' => 'packages',  'packages' => $packages]);
+    return view('admin.packages.index', ['active' => 'packages', 'packages' => $packages]);
 })->name('admin.packages');
 /* Create Package */
 Route::get('/admin/packages/create', function () {
     $added_values = collect();
-    $added_values->push(['id' => 1 , 'name' => 'added 1']);
-    $added_values->push(['id' => 2 , 'name' => 'added 2']);
-    $added_values->push(['id' => 3 , 'name' => 'added 3']);
-    $added_values->push(['id' => 4 , 'name' => 'added 4']);
-    $added_values->push(['id' => 5 , 'name' => 'added 5']);
-    return view('admin.packages.create', ['active' => 'packages','added_values'=>$added_values]);
+    $added_values->push(['id' => 1, 'name' => 'added 1']);
+    $added_values->push(['id' => 2, 'name' => 'added 2']);
+    $added_values->push(['id' => 3, 'name' => 'added 3']);
+    $added_values->push(['id' => 4, 'name' => 'added 4']);
+    $added_values->push(['id' => 5, 'name' => 'added 5']);
+    return view('admin.packages.create', ['active' => 'packages', 'added_values' => $added_values]);
 })->name('admin.packages.add');
 
 /* Show Package */
@@ -908,99 +888,97 @@ Route::get('/admin/packages/show/{id}', function () {
 /* Create Package */
 Route::get('/admin/packages/edit/{id}', function () {
     $added_values = collect();
-    $added_values->push(['id' => 1 , 'name' => 'added 1']);
-    $added_values->push(['id' => 2 , 'name' => 'added 2']);
-    $added_values->push(['id' => 3 , 'name' => 'added 3']);
-    $added_values->push(['id' => 4 , 'name' => 'added 4']);
-    $added_values->push(['id' => 5 , 'name' => 'added 5']);
+    $added_values->push(['id' => 1, 'name' => 'added 1']);
+    $added_values->push(['id' => 2, 'name' => 'added 2']);
+    $added_values->push(['id' => 3, 'name' => 'added 3']);
+    $added_values->push(['id' => 4, 'name' => 'added 4']);
+    $added_values->push(['id' => 5, 'name' => 'added 5']);
 
     $package = collect();
     $features = collect();
-    $features->push(['label' => 'Dry clean' , 'data' => 'Included free in this package']);
-    $features->push(['label' => 'Washing with modern washer' , 'data' => 'Yes']);
-    
-    $package->push(['name'=> 'Package 1','price'=>'60', 'features' => $features]);
-    return view('admin.packages.edit', ['active' => 'packages', 'package' => $package,'added_values'=>$added_values]);
-})->name('admin.packages.edit');
+    $features->push(['label' => 'Dry clean', 'data' => 'Included free in this package']);
+    $features->push(['label' => 'Washing with modern washer', 'data' => 'Yes']);
 
+    $package->push(['name' => 'Package 1', 'price' => '60', 'features' => $features]);
+    return view('admin.packages.edit', ['active' => 'packages', 'package' => $package, 'added_values' => $added_values]);
+})->name('admin.packages.edit');
 
 /* Dry Clean */
 Route::get('/admin/packages/dry_clean', function () {
-    $dry_clean_items= collect();
-    $dry_clean_items->push(['id' => 1 ,'label' => 'Item 1' , 'price' => '10$']);
-    $dry_clean_items->push(['id' => 2 ,'label' => 'Item 2' , 'price' => '20$']);
-    return view('admin.packages.dry_clean.index', ['active' => 'dry_clean', 'dry_clean_items' =>$dry_clean_items]);
+    $dry_clean_items = collect();
+    $dry_clean_items->push(['id' => 1, 'label' => 'Item 1', 'price' => '10$']);
+    $dry_clean_items->push(['id' => 2, 'label' => 'Item 2', 'price' => '20$']);
+    return view('admin.packages.dry_clean.index', ['active' => 'dry_clean', 'dry_clean_items' => $dry_clean_items]);
 })->name('admin.packages.dry_clean');
 /* XX Dry Clean XX */
 
 /* Household items */
 Route::get('/admin/packages/household_items', function () {
-    $household_items= collect();
-    $household_items->push(['id' => 1 ,'label' => 'Item 1' , 'price' => '10$']);
-    $household_items->push(['id' => 2 ,'label' => 'Item 2' , 'price' => '20$']);
+    $household_items = collect();
+    $household_items->push(['id' => 1, 'label' => 'Item 1', 'price' => '10$']);
+    $household_items->push(['id' => 2, 'label' => 'Item 2', 'price' => '20$']);
 
-    return view('admin.packages.household_items.index', ['active' => 'household_items', 'household_items' =>$household_items]);
+    return view('admin.packages.household_items.index', ['active' => 'household_items', 'household_items' => $household_items]);
 })->name('admin.packages.household_items');
 /* XX Household items XX */
 
 /* Detergents */
 Route::get('/admin/packages/detergents', function () {
-    $detergents_items= collect();
+    $detergents_items = collect();
     $types1 = collect();
-    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
-    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
+    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
     $types2 = collect();
-    $types2->push(["label" => "test2", "price" => "10$" , "img"=> ""]);
-    $detergents_items->push(['id' => 1 ,'name' => 'Item 1' , 'types' => $types1 ]);
-    $detergents_items->push(['id' => 2 ,'name' => 'Item 2' , 'types' => $types2]);
+    $types2->push(["label" => "test2", "price" => "10$", "img" => ""]);
+    $detergents_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
+    $detergents_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
-    
-    return view('admin.packages.detergents.index', ['active' => 'detergents','detergents_items' => $detergents_items]);
+    return view('admin.packages.detergents.index', ['active' => 'detergents', 'detergents_items' => $detergents_items]);
 })->name('admin.packages.detergents');
 /* XX Detergents XX */
 
 /* FABRIC */
 Route::get('/admin/packages/fabric', function () {
-    $fabric_items= collect();
+    $fabric_items = collect();
     $types1 = collect();
-    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
-    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
+    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
     $types2 = collect();
-    $types2->push(["label" => "test2", "price" => "10$" , "img"=> ""]);
-    $fabric_items->push(['id' => 1 ,'name' => 'Item 1' , 'types' => $types1 ]);
-    $fabric_items->push(['id' => 2 ,'name' => 'Item 2' , 'types' => $types2]);
+    $types2->push(["label" => "test2", "price" => "10$", "img" => ""]);
+    $fabric_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
+    $fabric_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
-    return view('admin.packages.fabric.index', ['active' => 'fabric','fabric_items' => $fabric_items]);
+    return view('admin.packages.fabric.index', ['active' => 'fabric', 'fabric_items' => $fabric_items]);
 })->name('admin.packages.fabric');
 /* XX FABRIC XX */
 
 /* DRYER */
 Route::get('/admin/packages/dryer', function () {
-    $dryer_items= collect();
+    $dryer_items = collect();
     $types1 = collect();
-    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
-    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
+    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
     $types2 = collect();
-    $types2->push(["label" => "test2", "price" => "10$" , "img"=> ""]);
-    $dryer_items->push(['id' => 1 ,'name' => 'Item 1' , 'types' => $types1 ]);
-    $dryer_items->push(['id' => 2 ,'name' => 'Item 2' , 'types' => $types2]);
+    $types2->push(["label" => "test2", "price" => "10$", "img" => ""]);
+    $dryer_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
+    $dryer_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
-    return view('admin.packages.dryer.index', ['active' => 'dryer','dryer_items' => $dryer_items]);
+    return view('admin.packages.dryer.index', ['active' => 'dryer', 'dryer_items' => $dryer_items]);
 })->name('admin.packages.dryer');
 /* XX DRYER XX */
 
 /* Scent Booster */
 Route::get('/admin/packages/scent', function () {
-    $scent_items= collect();
+    $scent_items = collect();
     $types1 = collect();
-    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
-    $types1->push(["label" => "test1", "price" => "10$" , "img"=> ""]);
+    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
+    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
     $types2 = collect();
-    $types2->push(["label" => "test2", "price" => "10$" , "img"=> ""]);
-    $scent_items->push(['id' => 1 ,'name' => 'Item 1' , 'types' => $types1 ]);
-    $scent_items->push(['id' => 2 ,'name' => 'Item 2' , 'types' => $types2]);
+    $types2->push(["label" => "test2", "price" => "10$", "img" => ""]);
+    $scent_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
+    $scent_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
-    return view('admin.packages.scent.index', ['active' => 'scent','scent_items' => $scent_items]);
+    return view('admin.packages.scent.index', ['active' => 'scent', 'scent_items' => $scent_items]);
 })->name('admin.packages.scent');
 /* XX Scent Booster XX */
 
@@ -1012,21 +990,20 @@ Route::get('/admin/packages/tailored/create', function () {
 /* XX Create XX */
 /* EDIT */
 Route::get('/admin/packages/tailored/edit/{id}', function () {
-    $questions= collect();
+    $questions = collect();
     $choices1 = collect();
     $choices1->push(["text" => "choice 1"]);
     $choices1->push(["text" => "choice 2"]);
     $choices2 = collect();
     $choices2->push(["text" => "choice 2"]);
-    $questions->push(['id' => 1 ,'question' => 'Question 1 ?' , 'choices' => $choices1 ]);
-    $questions->push(['id' => 2 ,'question' => 'Question 2 ?' , 'choices' => $choices2]);
+    $questions->push(['id' => 1, 'question' => 'Question 1 ?', 'choices' => $choices1]);
+    $questions->push(['id' => 2, 'question' => 'Question 2 ?', 'choices' => $choices2]);
 
-    return view('admin.packages.tailored.edit', ['active' => 'packages','questions' => $questions]);
+    return view('admin.packages.tailored.edit', ['active' => 'packages', 'questions' => $questions]);
 })->name('admin.packages.tailored.edit');
 /* XX EDIT XX */
 
 /* XX Tailored Package XX */
-
 
 /******************************
  * Packages End
@@ -1041,11 +1018,11 @@ Route::get('/admin/users', function () {
     $users = collect();
 
     $users->push(['id' => 1, 'name' => 'Ali Ahmed', 'city' => 'Cairo', 'day_of_subscribe' => '12/15/2020', 'package_name' => 'Package 2',
-    'phone'=>'+1 111 111111','service_status' => 'Not Started', 'completion_date'=> '-', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
+        'phone' => '+1 111 111111', 'service_status' => 'Not Started', 'completion_date' => '-', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
     $users->push(['id' => 2, 'name' => 'Dooooooby', 'city' => 'Giza', 'day_of_subscribe' => '12/16/2020', 'package_name' => 'Package 3',
-    'phone'=>'+1 111 111111','service_status' => 'Inprogress', 'completion_date'=> '-', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
+        'phone' => '+1 111 111111', 'service_status' => 'Inprogress', 'completion_date' => '-', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
     $users->push(['id' => 3, 'name' => 'Mohamed Salah', 'city' => 'Alexandria', 'day_of_subscribe' => '12/14/2020', 'package_name' => 'Package 1',
-    'phone'=>'+1 111 111111','service_status' => 'Completed', 'completion_date'=> '10/4/2020', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
+        'phone' => '+1 111 111111', 'service_status' => 'Completed', 'completion_date' => '10/4/2020', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
 
     return view('admin.users.index', ['active' => 'users', 'users' => $users]);
 })->name('admin.users');
@@ -1075,31 +1052,31 @@ Route::get('/admin/users/show/{id}', function () {
 /* Pickup */
 Route::get('/admin/pickup_planner', function () {
     $orders = collect();
-    $orders->push(['id' => 123456 , 'city' => 'Alexandria', 'client' => 'Mohamed',
-     'drop_off_address' => 'adress adress adress adress adress adress', 
-     'no_of_bags' => 2 , 'package_name' => 'Package 1' ,
-     'zone' => 'A', 'zip_code' => '92620',
-     'dry_clean' => 'Yes',
-     'avs' => 'No',
-     'order_date' => '2021-01-08',
-     'assigned_to' => 1]);
-    $orders->push(['id' => 234567 , 'city' => 'Cairo', 'client' => 'Mohamed',
-     'drop_off_address' => 'adress adress adress adress adress adress', 
-     'no_of_bags' => 1 , 'package_name' => 'Package 2' ,
-     'zone' => 'A', 'zip_code' => '92620',
-     'dry_clean' => 'Yes',
-     'avs' => 'No',
-     'order_date' => '2021-01-08',
-     'assigned_to' => 2]);
-    $orders->push(['id' => 345678 , 'city' => 'Giza',  'client' => 'Mohamed',
-    'drop_off_address' => 'adress adress adress adress adress adress', 
-    'no_of_bags' => 3 , 'package_name' => 'Package 3' ,
-    'zone' => 'A', 'zip_code' => '92620',
-    'dry_clean' => 'Yes',
-    'avs' => 'No',
-    'order_date' => '2021-01-08',
-    'assigned_to' => 'Unassigned']);
-    
+    $orders->push(['id' => 123456, 'city' => 'Alexandria', 'client' => 'Mohamed',
+        'drop_off_address' => 'adress adress adress adress adress adress',
+        'no_of_bags' => 2, 'package_name' => 'Package 1',
+        'zone' => 'A', 'zip_code' => '92620',
+        'dry_clean' => 'Yes',
+        'avs' => 'No',
+        'order_date' => '2021-01-08',
+        'assigned_to' => 1]);
+    $orders->push(['id' => 234567, 'city' => 'Cairo', 'client' => 'Mohamed',
+        'drop_off_address' => 'adress adress adress adress adress adress',
+        'no_of_bags' => 1, 'package_name' => 'Package 2',
+        'zone' => 'A', 'zip_code' => '92620',
+        'dry_clean' => 'Yes',
+        'avs' => 'No',
+        'order_date' => '2021-01-08',
+        'assigned_to' => 2]);
+    $orders->push(['id' => 345678, 'city' => 'Giza', 'client' => 'Mohamed',
+        'drop_off_address' => 'adress adress adress adress adress adress',
+        'no_of_bags' => 3, 'package_name' => 'Package 3',
+        'zone' => 'A', 'zip_code' => '92620',
+        'dry_clean' => 'Yes',
+        'avs' => 'No',
+        'order_date' => '2021-01-08',
+        'assigned_to' => 'Unassigned']);
+
     $orders_dates = collect();
 
     $orders_dates->push(['date' => '2020/12/1', 'title' => 'order', 'orders' => '5', 'customClass' => 'color1']);
@@ -1111,48 +1088,46 @@ Route::get('/admin/pickup_planner', function () {
     $orders_dates->push(['date' => '2021/1/8', 'title' => 'order', 'orders' => '12', 'customClass' => 'color2']);
     $orders_dates->push(['date' => '2021/1/19', 'title' => 'order', 'orders' => '15', 'customClass' => 'color3']);
 
-
     $total_sales = collect();
     $total_sales->push(['month' => 12, 'total_sales' => 16]);
     $total_sales->push(['month' => 1, 'total_sales' => 6]);
 
     $drivers = collect();
-    $drivers->push(['id' => 1 , 'name' => 'Mohamed', 'image' => '/images/profile.svg']);
-    $drivers->push(['id' => 2 , 'name' => 'Ahmed', 'image' => '/images/profile.svg']);
-    $drivers->push(['id' => 3 , 'name' => 'Amr', 'image' => '/images/profile.svg']);
+    $drivers->push(['id' => 1, 'name' => 'Mohamed', 'image' => '/images/profile.svg']);
+    $drivers->push(['id' => 2, 'name' => 'Ahmed', 'image' => '/images/profile.svg']);
+    $drivers->push(['id' => 3, 'name' => 'Amr', 'image' => '/images/profile.svg']);
     return view('admin.planners.pickup.index', ['active' => 'pickup_planner',
-    'orders' => $orders,'drivers' =>$drivers, 'orders_dates' => $orders_dates, 'total_sales' => $total_sales]);
+        'orders' => $orders, 'drivers' => $drivers, 'orders_dates' => $orders_dates, 'total_sales' => $total_sales]);
 })->name('admin.planner.pickup');
 
 /* Delievery */
 Route::get('/admin/delievery_planner', function () {
     $orders = collect();
-    $orders->push(['id' => 123456 , 'city' => 'Alexandria', 'client' => 'Mohamed',
-     'drop_off_address' => 'adress adress adress adress adress adress', 
-     'no_of_bags' => 2 , 'package_name' => 'Package 1' ,
-     'zone' => 'A', 'zip_code' => '92620',
-     'dry_clean' => 'Yes',
-     'avs' => 'No',
-     'order_date' => '2021-01-08',
-     'assigned_to' => 1]);
-    $orders->push(['id' => 234567 , 'city' => 'Cairo', 'client' => 'Mohamed',
-     'drop_off_address' => 'adress adress adress adress adress adress', 
-     'no_of_bags' => 1 , 'package_name' => 'Package 2' ,
-     'zone' => 'A', 'zip_code' => '92620',
-     'dry_clean' => 'Yes',
-     'avs' => 'No',
-     'order_date' => '2021-01-08',
-     'assigned_to' => 2]);
-    $orders->push(['id' => 345678 , 'city' => 'Giza',  'client' => 'Mohamed',
-    'drop_off_address' => 'adress adress adress adress adress adress', 
-    'no_of_bags' => 3 , 'package_name' => 'Package 3' ,
-    'zone' => 'A', 'zip_code' => '92620',
-    'dry_clean' => 'Yes',
-    'avs' => 'No',
-    'order_date' => '2021-01-08',
-    'assigned_to' => 'Unassigned']);
-    
-        
+    $orders->push(['id' => 123456, 'city' => 'Alexandria', 'client' => 'Mohamed',
+        'drop_off_address' => 'adress adress adress adress adress adress',
+        'no_of_bags' => 2, 'package_name' => 'Package 1',
+        'zone' => 'A', 'zip_code' => '92620',
+        'dry_clean' => 'Yes',
+        'avs' => 'No',
+        'order_date' => '2021-01-08',
+        'assigned_to' => 1]);
+    $orders->push(['id' => 234567, 'city' => 'Cairo', 'client' => 'Mohamed',
+        'drop_off_address' => 'adress adress adress adress adress adress',
+        'no_of_bags' => 1, 'package_name' => 'Package 2',
+        'zone' => 'A', 'zip_code' => '92620',
+        'dry_clean' => 'Yes',
+        'avs' => 'No',
+        'order_date' => '2021-01-08',
+        'assigned_to' => 2]);
+    $orders->push(['id' => 345678, 'city' => 'Giza', 'client' => 'Mohamed',
+        'drop_off_address' => 'adress adress adress adress adress adress',
+        'no_of_bags' => 3, 'package_name' => 'Package 3',
+        'zone' => 'A', 'zip_code' => '92620',
+        'dry_clean' => 'Yes',
+        'avs' => 'No',
+        'order_date' => '2021-01-08',
+        'assigned_to' => 'Unassigned']);
+
     $orders_dates = collect();
 
     $orders_dates->push(['date' => '2020/12/1', 'title' => 'order', 'orders' => '5', 'customClass' => 'color1']);
@@ -1164,18 +1139,16 @@ Route::get('/admin/delievery_planner', function () {
     $orders_dates->push(['date' => '2021/1/8', 'title' => 'order', 'orders' => '12', 'customClass' => 'color2']);
     $orders_dates->push(['date' => '2021/1/19', 'title' => 'order', 'orders' => '15', 'customClass' => 'color3']);
 
-
     $total_sales = collect();
     $total_sales->push(['month' => 12, 'total_sales' => 16]);
     $total_sales->push(['month' => 1, 'total_sales' => 6]);
 
-
     $drivers = collect();
-    $drivers->push(['id' => 1 , 'name' => 'Mohamed', 'image' => '/images/profile.svg']);
-    $drivers->push(['id' => 2 , 'name' => 'Ahmed', 'image' => '/images/profile.svg']);
-    $drivers->push(['id' => 3 , 'name' => 'Amr', 'image' => '/images/profile.svg']);
-    return view('admin.planners.delievery.index', ['active' => 'delievery_planner','orders' => $orders,
-    'drivers' =>$drivers, 'orders_dates' => $orders_dates, 'total_sales' => $total_sales]);
+    $drivers->push(['id' => 1, 'name' => 'Mohamed', 'image' => '/images/profile.svg']);
+    $drivers->push(['id' => 2, 'name' => 'Ahmed', 'image' => '/images/profile.svg']);
+    $drivers->push(['id' => 3, 'name' => 'Amr', 'image' => '/images/profile.svg']);
+    return view('admin.planners.delievery.index', ['active' => 'delievery_planner', 'orders' => $orders,
+        'drivers' => $drivers, 'orders_dates' => $orders_dates, 'total_sales' => $total_sales]);
 })->name('admin.planner.delievery');
 
 /******************************
@@ -1234,32 +1207,32 @@ Route::post('/admin/employees/admins/create_password', function (Request $reques
 Route::get('/admin/employees/laundery_staff', function () {
     $staff = collect();
     $staff->push(['id' => 1, 'name' => 'Mohamed', 'phone' => '(xxx)-xxx-xxxx',
-     'assigned_jobs' => 'Sorting,Folding',
-     'location' => 'Costa Mesa','status' => 'Assigned', 'shift' => 'Night', 'admin'=>'Yes']);
+        'assigned_jobs' => 'Sorting,Folding',
+        'location' => 'Costa Mesa', 'status' => 'Assigned', 'shift' => 'Night', 'admin' => 'Yes']);
     $staff->push(['id' => 2, 'name' => 'Ahmed', 'phone' => '(xxx)-xxx-xxxx', 'assigned_jobs' => 'Washing',
-     'location' => 'Irvine','status' => 'Assigned', 'shift' => 'Night', 'admin'=>'No']);
+        'location' => 'Irvine', 'status' => 'Assigned', 'shift' => 'Night', 'admin' => 'No']);
     return view('admin.employees.laundery_staff.index', ['active' => 'laundery_staff', 'staff' => $staff]);
 })->name('admin.employees.laundery_staff');
 
 Route::get('/admin/employees/laundery_staff/show/{id}', function () {
     $staff = collect();
     $staff->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com',
-     'address' => 'Address','id_type' => 'driver', 'id_number' => 'Y962456',
-     'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'date_of_join' => '12/14/2018', 'location' => 'location',
-     'job' =>'Sorting, Washing', 'shift' => 'Morning', 'assignment_date' => '2020-10-15', 'admin' => 'yes' ]);
+        'address' => 'Address', 'id_type' => 'driver', 'id_number' => 'Y962456',
+        'phone' => '(xxx)-xxx-xxxx', 'birthday' => '1990-11-11', 'date_of_join' => '12/14/2018', 'location' => 'location',
+        'job' => 'Sorting, Washing', 'shift' => 'Morning', 'assignment_date' => '2020-10-15', 'admin' => 'yes']);
     return view('admin.employees.laundery_staff.show', ['active' => 'laundery_staff', 'staff' => $staff]);
 })->name('admin.employees.laundery_staff.show');
 
 Route::get('/admin/employees/laundery_staff/edit/{id}', function () {
     $staff = collect();
     $staff->push(['id' => 1, 'name' => 'Mohamed', 'email' => 'momosalah2020@test.com',
-     'address' => 'Address', 'phone' => '(xxx)-xxx-xxxx',
-     'city' => 'Alexandria',
-     'state' => 'Alex',
-     'zip_code' => '123AB',
-     'id_type' => 'driver',
-     'id_number' => 'Y962456',
-      'birthday' => '1990-11-11', 'date_of_join' => '12/14/2018', 'location' => 'location']);
+        'address' => 'Address', 'phone' => '(xxx)-xxx-xxxx',
+        'city' => 'Alexandria',
+        'state' => 'Alex',
+        'zip_code' => '123AB',
+        'id_type' => 'driver',
+        'id_number' => 'Y962456',
+        'birthday' => '1990-11-11', 'date_of_join' => '12/14/2018', 'location' => 'location']);
     return view('admin.employees.laundery_staff.edit', ['active' => 'laundery_staff', 'staff' => $staff]);
 })->name('admin.employees.laundery_staff.edit');
 
@@ -1272,37 +1245,37 @@ Route::get('/admin/employees/laundery_staff/create', function () {
 Route::get('/admin/employees/drivers', function () {
     $drivers = collect();
 
-    $drivers->push(['id' => 2, 'name' => 'Ahmed','phone' => '(xxx)-xxx-xxxx', 'city' => '-', 'zones'=> 'Zone A, Zone B', 'status' => 'Assigned', 'shift' => 'Morning']);
-    $drivers->push(['id' => 1, 'name' => 'Mohamed','phone' => '(xxx)-xxx-xxxx', 'city' => 'Tustin,Irvine', 'zones'=> '-', 'status' => 'Pending Activation', 'shift' => 'Noon']);
+    $drivers->push(['id' => 2, 'name' => 'Ahmed', 'phone' => '(xxx)-xxx-xxxx', 'city' => '-', 'zones' => 'Zone A, Zone B', 'status' => 'Assigned', 'shift' => 'Morning']);
+    $drivers->push(['id' => 1, 'name' => 'Mohamed', 'phone' => '(xxx)-xxx-xxxx', 'city' => 'Tustin,Irvine', 'zones' => '-', 'status' => 'Pending Activation', 'shift' => 'Noon']);
     return view('admin.employees.drivers.index', ['active' => 'drivers', 'drivers' => $drivers]);
 })->name('admin.employees.drivers');
 
 Route::get('/admin/employees/drivers/show/{id}', function () {
     $driver = collect();
     $driver->push(['id' => 1, 'name' => 'Mohamed',
-     'phone' => '(xxx)-xxx-xxxx', 'address' => 'Address',
-      'birthday' => '1990-11-11',
-      'license' => 'license', 'car_type' => 'car type', 'car_model' => 'car model', 'car_production_date' => '2020-10-15', 'car_plate_number' => 'ABC123',
-      'zones' => 'Zone A, Zone B',
-      'cities' => 'Irvine,Tustin',
-      'assignment_date' => '2020-1-11',
-      'shift'=>'Night'
-       ]);
+        'phone' => '(xxx)-xxx-xxxx', 'address' => 'Address',
+        'birthday' => '1990-11-11',
+        'license' => 'license', 'car_type' => 'car type', 'car_model' => 'car model', 'car_production_date' => '2020-10-15', 'car_plate_number' => 'ABC123',
+        'zones' => 'Zone A, Zone B',
+        'cities' => 'Irvine,Tustin',
+        'assignment_date' => '2020-1-11',
+        'shift' => 'Night',
+    ]);
     return view('admin.employees.drivers.show', ['active' => 'drivers', 'driver' => $driver]);
 })->name('admin.employees.drivers.show');
 
 Route::get('/admin/employees/drivers/edit/{id}', function () {
     $driver = collect();
     $driver->push(['id' => 1, 'name' => 'Mohamed',
-     'phone' => '(xxx)-xxx-xxxx', 'address' => 'Address',
-      'birthday' => '1990-11-11',
-      'license' => 'license', 'car_type' => 'car type', 'car_model' => 'car model', 'car_production_date' => '2020-10-15', 'car_plate_number' => 'ABC123',
-      'zones' => 'Zone A, Zone B',
-      'cities' => 'Irvine,Tustin',
-      'assignment_date' => '2020-01-11',
-      'shift'=>'Night',
-      'notes'=> 'Notes'
-       ]);    
+        'phone' => '(xxx)-xxx-xxxx', 'address' => 'Address',
+        'birthday' => '1990-11-11',
+        'license' => 'license', 'car_type' => 'car type', 'car_model' => 'car model', 'car_production_date' => '2020-10-15', 'car_plate_number' => 'ABC123',
+        'zones' => 'Zone A, Zone B',
+        'cities' => 'Irvine,Tustin',
+        'assignment_date' => '2020-01-11',
+        'shift' => 'Night',
+        'notes' => 'Notes',
+    ]);
     return view('admin.employees.drivers.edit', ['active' => 'drivers', 'driver' => $driver]);
 })->name('admin.employees.drivers.edit');
 
@@ -1390,7 +1363,6 @@ Route::get('/admin/cities', function () {
     $cities->push(['id' => 2, 'name' => 'Cairo']);
     return view('admin.cities.index', ['active' => 'cities', 'cities' => $cities]);
 })->name('admin.cities');
-
 
 /******************************
  * Zones End

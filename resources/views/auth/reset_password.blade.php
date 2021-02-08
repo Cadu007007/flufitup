@@ -9,10 +9,13 @@
         </p>
         <p class="subtitle">
             Enter your New Password
+           
         </p>
         <div class="form-container">
 
-            <form action="{{ route('forget.update.password') }}" method="POST">
+
+                {{-- <form action="{{ route('user.update.password',old('phone_number',session('phone_number'))) }}" method="POST">
+
                 @csrf
                 <div class="input-container">
                     <input type="hidden" name="phone_number" value="{{ old('phone_number',session('phone_number')) }}">
@@ -21,7 +24,7 @@
                 </div>
                  <div class="input-container">
                     <label for="confirm_password" class="form-label">Re-enter New Password</label>
-                    <input namer="confirm_password"  type="password" class="form-input" placeholder="Enter Your New Password"/>
+                    <input name="confirm_password"  type="password" class="form-input" placeholder="Enter Your New Password"/>
                 </div>
 
                 
@@ -31,6 +34,13 @@
                         Reset
                     </button>
                 </div>
+            </form> --}}
+            <form method="GET" action="{{ route('user.update.password','+201258221228') }}">
+                @csrf
+                <input type="hidden" name="phone_number" value="{{ old('phone_number',session('phone_number')) }}">
+                <button type="submit" class="login-button">
+                    Reset
+                </button>
             </form>
         </div>
     </div>
