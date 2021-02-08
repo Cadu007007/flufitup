@@ -14,7 +14,7 @@
         <div class="form-container">
 
 
-                {{-- <form action="{{ route('user.update.password',old('phone_number',session('phone_number'))) }}" method="POST">
+                <form action="{{ route('user.update.password') }}" method="POST">
 
                 @csrf
                 <div class="input-container">
@@ -34,13 +34,6 @@
                         Reset
                     </button>
                 </div>
-            </form> --}}
-            <form method="GET" action="{{ route('user.update.password','+201258221228') }}">
-                @csrf
-                <input type="hidden" name="phone_number" value="{{ old('phone_number',session('phone_number')) }}">
-                <button type="submit" class="login-button">
-                    Reset
-                </button>
             </form>
         </div>
     </div>

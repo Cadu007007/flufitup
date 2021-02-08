@@ -36,7 +36,7 @@ Route::get('/', function () {
 
 })->name('index');
 
-Route::get('/password/update/user/{phone}', [AuthController::class, 'updatePassword'])->name('user.update.password');
+Route::post('/password/update/user/', [AuthController::class, 'updatePassword'])->name('user.update.password');
 Route::post('register/post', [AuthController::class, 'create'])->name('register.post');
 Route::post('verify/post', [AuthController::class, 'verify'])->name('verify.post');
 Route::get('/verify/phone', [AuthController::class, 'verifyPhone'])->name('verify_phone');
