@@ -56,9 +56,9 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/test/t', function () {
-//     return view('auth.reset_password', ['active' => 'logout']);
-// })->name('test');
+Route::get('/test', function () {
+    return view('auth.verify_phone', ['active' => 'logout']);
+})->name('test');
 
 
 /********************************************************
