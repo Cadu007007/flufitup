@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Twilio\Rest\Client;
 
 class AuthController extends Controller
@@ -137,14 +138,22 @@ class AuthController extends Controller
 
     protected function updatePassword(Request $request)
     {
-        dd($request);
+        // dd($request);
         // with receive phone number and two passwords
-        $data = $request->validate([
-            'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/[a-z]/', 'regex:/[A-Z]/'],
+        // $request->validate([
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        //     'phone_number' => ['required', 'exists:users,phone'],
+        // ]);
+        $validated = Validator::make($request->all(), [
+            'password' => ['required', 'min:8', 'confirmed'],
             'phone_number' => ['required', 'exists:users,phone'],
         ]);
-        dd($data);
-        User::where('phone', $data['phone_number'])->update(['password', Hash::make($request->password)]);
+        if ($validated->fails()) {
+            dd($validated->errors());
+            return back()->withErrors($validated->errors())->withInput(['phone_number' => $request->phone_number]);
+        }
+
+        User::where('phone', $request->phone_number)->first()->update(['password', Hash::make($request->password)]);
         return redirect()->route('user.login');
         //after validation will update password
 

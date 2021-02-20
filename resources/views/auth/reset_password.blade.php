@@ -14,7 +14,7 @@
         <div class="form-container">
 
 
-                <form action="" method="POST">
+                <form action="{{ route('user.update.password') }}" method="POST">
 
                 @csrf
                 <div class="input-container">
@@ -24,7 +24,7 @@
                 </div>
                  <div class="input-container">
                     <label for="confirm_password" class="form-label">Re-enter New Password</label>
-                    <input name="confirm_password"  type="password" class="form-input" placeholder="Enter Your New Password"/>
+                    <input name="password_confirmation"  type="password" class="form-input" placeholder="Enter Your New Password"/>
                 </div>
 
                 

@@ -38,6 +38,7 @@ class LoginController extends Controller
         // dd($request);
         if (Auth::guard('web')->attempt(['phone' => $request->phone_number, 'password' => $request->password], $request->remember)) {
             if (auth()->user()->isVerified) {
+                // dd('dd');
                 return redirect()->intended(route('home'));
             } else {
                 $phone_number = auth()->user()->phone;

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    // dd(auth()->user());
+    // dd(App\Models\User::all());
     $packages = collect();
     $packages->adhoc = collect();
     $packages->bi_weekly = collect();
@@ -42,10 +42,14 @@ Route::post('verify/post', [AuthController::class, 'verify'])->name('verify.post
 Route::get('/verify/phone', [AuthController::class, 'verifyPhone'])->name('verify_phone');
 Route::get('/resend/code', [AuthController::class, 'resend'])->name('resend.code');
 Route::post('/forget/password', [AuthController::class, 'resend'])->name('send.code');
-Route::post('/change/password', [AuthController::class, 'changePassword'])->name('forget.change.password');
+Route::post('/user/change_password', [AuthController::class, 'changePassword'])->name('forget.change.password');
 // Route::post('/update/forget/password',[AuthController::class,''])
 Auth::routes();
 // Route::post('login', [
+//     'as' => 'user.login',
+//     'uses' => [LoginController::class, 'login'],
+// ]);
+// Route::get('login', [
 //     'as' => 'user.login',
 //     'uses' => [LoginController::class, 'login'],
 // ]);
