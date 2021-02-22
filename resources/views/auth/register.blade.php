@@ -37,7 +37,7 @@
                 <div class="errors-container">
 
                     {{-- For design testing only --}}
-                    <div class="error-container">
+                    {{-- <div class="error-container">
                         <img src="/images/icons/correct.svg" alt="" class="icon">
                         <p class="error-message">Contains Lower case ( a-z ) and Upper case ( A-Z ) Letters.</p>
                     </div>
@@ -50,7 +50,7 @@
                     <div class="error-container">
                         <img src="/images/icons/incorrect.svg" alt="" class="icon">
                         <p class="error-message">Contains Symbols ( !, @, #, $, & and * )</p>
-                    </div>
+                    </div> --}}
                     {{-- XX For design testing only XX --}}
                     
                     @error('phone')

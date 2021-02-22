@@ -1,10 +1,10 @@
 <template>
   <div class="CreatePackagePriceCard">
     <div class="title">Package Price</div>
-    <input class="package-price" type="text" placeholder="Package Price" v-model="formatedPrice">
+    <input class="package-price" :name="pricename" type="text" placeholder="Package Price" v-model="formatedPrice">
 
     <div class="button-container">
-        <button class="done">Done</button>
+        <button class="done" type="submit">Done</button>
     </div>
 
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    props:['price','currency'],
+    props:['price','currency','pricename'],
     data(){
         return{
             formatedPrice : this.currency+this.price 

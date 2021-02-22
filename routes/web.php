@@ -60,6 +60,11 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/test', function () {
+    return view('auth.verify_phone', ['active' => 'logout']);
+})->name('test');
+
+
 /********************************************************
  ************  TESTING ROUTES FOR DESIGN   **************
 /********************************************************/
