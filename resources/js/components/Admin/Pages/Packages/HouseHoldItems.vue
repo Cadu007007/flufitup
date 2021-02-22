@@ -7,18 +7,33 @@
 
     <div class="flex-column">
         <House-Hold-Item 
-        v-for="(item,index) in loadedItems" :key="index"
+        v-for="(item,index) in loadedItems" :key="item.id"
             :label="item.label"
             :price="item.price"
             @delete-item="deleteItem(index)"
+            :isdisabled="true"
+            :formroute="editformroute"
+            :hiddenvalue="JSON.stringify(item)"
+        />
+        
+        <p v-if="newItems.length > 0">New Items</p>
+
+        <House-Hold-Item 
+        v-for="(item,index) in newItems" :key="index"
+            :label="item.label"
+            :price="item.price"
+            @delete-item="deleteNewItem(index)"
+            :isdisabled="false"
+            :formroute="editformroute"
+            :hiddenvalue="item"
         />
     </div>
 
     <p class="add-new-item" @click="addNewItemContainer()">Add Another Household Item</p>
-    
+<!--     
     <div class="button-container">
         <button class="save-button">Save</button>
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -28,19 +43,23 @@ import HouseHoldItem from './Components/HouseHoldItem'
 export default {
     data() {
         return {
-            loadedItems: this.items
+            loadedItems: this.items,
+            newItems: []
         }
     },
-    props: ['title','date','items'],
+    props: ['title','date','items','editformroute'],
     components:{
         HouseHoldItem
     },
     methods: {
         addNewItemContainer(){
-            this.loadedItems.push({label: '', price:''})
+            this.newItems.push({label: '', price:''})
         },
         deleteItem(index){
             this.loadedItems.splice(index,1)
+        },
+        deleteNewItem(index){
+            this.newItems.splice(index,1)
         }
     }    
 
