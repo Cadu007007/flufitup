@@ -7,18 +7,32 @@
 
     <div class="flex-column">
         <Dry-Clean-Item 
-        v-for="(item,index) in loadedItems" :key="index"
+        v-for="(item,index) in loadedItems" :key="item.id"
             :label="item.label"
             :price="item.price"
             @delete-item="deleteItem(index)"
+            :isdisabled="true"
+            :formroute="editformroute"
+            :hiddenvalue="JSON.stringify(item)"
+        />
+        
+        <p v-if="newItems.length > 0">New Items</p>
+
+        <Dry-Clean-Item 
+        v-for="(item,index) in newItems" :key="index"
+            :label="item.label"
+            :price="item.price"
+            @delete-item="deleteNewItem(index)"
+            :isdisabled="false"
+            :formroute="editformroute"
         />
     </div>
 
     <p class="add-new-item" @click="addNewItemContainer()">Add Another Dry Clean Item</p>
-    
+<!--     
     <div class="button-container">
         <button class="save-button">Save</button>
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -28,19 +42,23 @@ import DryCleanItem from './Components/DryCleanItem'
 export default {
     data() {
         return {
-            loadedItems: this.items
+            loadedItems: this.items,
+            newItems: []
         }
     },
-    props: ['title','date','items'],
+    props: ['title','date','items','editformroute'],
     components:{
         DryCleanItem
     },
     methods: {
         addNewItemContainer(){
-            this.loadedItems.push({label: '', price:''})
+            this.newItems.push({label: '', price:''})
         },
         deleteItem(index){
             this.loadedItems.splice(index,1)
+        },
+        deleteNewItem(index){
+            this.newItems.splice(index,1)
         }
     }    
 

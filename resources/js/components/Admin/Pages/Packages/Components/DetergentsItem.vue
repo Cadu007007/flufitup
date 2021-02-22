@@ -6,6 +6,7 @@
                 class="item-title"
                 placeholder="Detergent Name"
                 v-model="itemName"
+                disabled
             />
 
             <p class="types-title" v-if="types.length">The Types</p>
