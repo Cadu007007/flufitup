@@ -1,6 +1,16 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryDetergentController;
+use App\Http\Controllers\CategoryDryerController;
+use App\Http\Controllers\CategoryFabricController;
+use App\Http\Controllers\CategoryScentController;
+use App\Http\Controllers\DetergentController;
+use App\Http\Controllers\DryCleanController;
+use App\Http\Controllers\DryerController;
+use App\Http\Controllers\FabricController;
+use App\Http\Controllers\HouseholdController;
+use App\Http\Controllers\ScentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +24,81 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+// Route::get('test/repo', [DryCleanController::class, 'index']);
 
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+
+    Route::group(['prefix' => 'dry/clean', 'as' => 'dry.clean.'], function () {
+        Route::get('all', [DryCleanController::class, 'index'])->name('index');
+        Route::post('store', [DryCleanController::class, 'store'])->name('store');
+        Route::put('update/{dryClean}', [DryCleanController::class, 'update'])->name('update');
+        Route::delete('delete/{dryClean}', [DryCleanController::class, 'delete'])->name('delete');
+
+    });
+    Route::group(['prefix' => 'household', 'as' => 'household.'], function () {
+        Route::get('all', [HouseholdController::class, 'index'])->name('index');
+        Route::post('store', [HouseholdController::class, 'store'])->name('store');
+        Route::put('update/{household}', [HouseholdController::class, 'update'])->name('update');
+        Route::delete('delete/{household}', [HouseholdController::class, 'delete'])->name('delete');
+
+    });
+    Route::group(['prefix' => 'category/detergent', 'as' => 'category.detergent.'], function () {
+        Route::get('all', [CategoryDetergentController::class, 'index'])->name('index');
+        Route::post('store', [CategoryDetergentController::class, 'store'])->name('store');
+        Route::put('update/{categoryDetergent}', [CategoryDetergentController::class, 'update'])->name('update');
+        Route::delete('delete/{categoryDetergent}', [CategoryDetergentController::class, 'delete'])->name('delete');
+
+    });
+    Route::group(['prefix' => 'category/fabric', 'as' => 'category.fabric.'], function () {
+        Route::get('all', [CategoryFabricController::class, 'index'])->name('index');
+        Route::post('store', [CategoryFabricController::class, 'store'])->name('store');
+        Route::put('update/{categoryFabric}', [CategoryFabricController::class, 'update'])->name('update');
+        Route::delete('delete/{categoryFabric}', [CategoryFabricController::class, 'delete'])->name('delete');
+
+    });
+    Route::group(['prefix' => 'category/dryer', 'as' => 'category.dryer.'], function () {
+        Route::get('all', [CategoryDryerController::class, 'index'])->name('index');
+        Route::post('store', [CategoryDryerController::class, 'store'])->name('store');
+        Route::put('update/{categoryDryer}', [CategoryDryerController::class, 'update'])->name('update');
+        Route::delete('delete/{categoryDryer}', [CategoryDryerController::class, 'delete'])->name('delete');
+
+    });
+    Route::group(['prefix' => 'category/scent', 'as' => 'category.scent.'], function () {
+        Route::get('all', [CategoryScentController::class, 'index'])->name('index');
+        Route::post('store', [CategoryScentController::class, 'store'])->name('store');
+        Route::put('update/{categoryScent}', [CategoryScentController::class, 'update'])->name('update');
+        Route::delete('delete/{categoryScent}', [CategoryScentController::class, 'delete'])->name('delete');
+
+    });
+    Route::group(['prefix' => 'detergent', 'as' => 'detergent.'], function () {
+        Route::get('all', [DetergentController::class, 'index'])->name('index');
+        Route::post('store', [DetergentController::class, 'store'])->name('store');
+        Route::put('update/{detergent}', [DetergentController::class, 'update'])->name('update');
+        Route::delete('delete/{detergent}', [DetergentController::class, 'delete'])->name('delete');
+
+    });
+    Route::group(['prefix' => 'fabric', 'as' => 'fabric.'], function () {
+        Route::get('all', [FabricController::class, 'index'])->name('index');
+        Route::post('store', [FabricController::class, 'store'])->name('store');
+        Route::put('update/{fabric}', [FabricController::class, 'update'])->name('update');
+        Route::delete('delete/{fabric}', [FabricController::class, 'delete'])->name('delete');
+
+    });
+    Route::group(['prefix' => 'dryer', 'as' => 'dryer.'], function () {
+        Route::get('all', [DryerController::class, 'index'])->name('index');
+        Route::post('store', [DryerController::class, 'store'])->name('store');
+        Route::put('update/{dryer}', [DryerController::class, 'update'])->name('update');
+        Route::delete('delete/{dryer}', [DryerController::class, 'delete'])->name('delete');
+
+    });
+    Route::group(['prefix' => 'scent', 'as' => 'scent.'], function () {
+        Route::get('all', [ScentController::class, 'index'])->name('index');
+        Route::post('store', [ScentController::class, 'store'])->name('store');
+        Route::put('update/{scent}', [ScentController::class, 'update'])->name('update');
+        Route::delete('delete/{scent}', [ScentController::class, 'delete'])->name('delete');
+
+    });
+});
 Route::get('/', function () {
     // dd(App\Models\User::all());
     $packages = collect();
@@ -63,7 +147,6 @@ Auth::routes();
 Route::get('/test', function () {
     return view('auth.verify_phone', ['active' => 'logout']);
 })->name('test');
-
 
 /********************************************************
  ************  TESTING ROUTES FOR DESIGN   **************
