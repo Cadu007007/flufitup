@@ -22,7 +22,7 @@ class CategoryScentController extends Controller
             return response()->json(['errors' => $validate->errors()]);
         }
         CategoryScent::create(['name' => $request->name]);
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => CategoryScent::all()]);
 
     }
     public function update(Request $request, CategoryScent $categoryScent)
@@ -35,11 +35,11 @@ class CategoryScentController extends Controller
 
         }
         $categoryScent->update(['name' => $request->name]);
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => CategoryScent::all()]);
     }
     public function delete(CategoryScent $categoryScent)
     {
         $categoryScent->delete();
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => CategoryScent::all()]);
     }
 }

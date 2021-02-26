@@ -18,7 +18,7 @@ class FabricController extends Controller
         $data = $request->validated();
         $data['image'] = $request->file('image')->store('images', ['disk' => 'public']);
         Fabric::create($data);
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => Fabric::all()]);
 
     }
     public function update(FabricRequest $request, Fabric $fabric)
@@ -29,12 +29,12 @@ class FabricController extends Controller
             $data['image'] = $request->file('image')->store('images', ['disk' => 'public']);
         }
         $fabric->update($data);
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => Fabric::all()]);
     }
     public function delete(Fabric $fabric)
     {
         Storage::disk('public')->delete(($fabric->image));
         $fabric->delete();
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => Fabric::all()]);
     }
 }

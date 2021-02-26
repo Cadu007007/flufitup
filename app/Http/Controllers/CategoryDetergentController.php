@@ -22,7 +22,7 @@ class CategoryDetergentController extends Controller
             return response()->json(['errors' => $validate->errors()]);
         }
         CategoryDetergent::create(['name' => $request->name]);
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => CategoryDetergent::all()]);
 
     }
     public function update(Request $request, CategoryDetergent $categoryDetergent)
@@ -35,11 +35,11 @@ class CategoryDetergentController extends Controller
 
         }
         $categoryDetergent->update(['name' => $request->name]);
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => CategoryDetergent::all()]);
     }
     public function delete(CategoryDetergent $categoryDetergent)
     {
         $categoryDetergent->delete();
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => CategoryDetergent::all()]);
     }
 }

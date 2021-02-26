@@ -46,7 +46,7 @@ class HouseholdController extends Controller
     public function store(HouseholdRequest $request)
     {
         $this->repo->store($request->validated());
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, $this->repo->index()]);
     }
     /**
      * calling repo update
@@ -64,7 +64,7 @@ class HouseholdController extends Controller
 
         $this->repo->update($request->validated(), $household);
         // return $this->repo->update($request->validated(), $household);
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, $this->repo->index()]);
     }
     /**
      * calling repo delete method
@@ -79,6 +79,6 @@ class HouseholdController extends Controller
     public function delete(Household $household)
     {
         $this->repo->delete($household);
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, $this->repo->index()]);
     }
 }
