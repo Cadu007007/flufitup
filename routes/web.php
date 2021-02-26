@@ -945,6 +945,14 @@ Route::get('/admin/packages', function () {
 
     return view('admin.packages.index', ['active' => 'packages', 'packages' => $packages]);
 })->name('admin.packages');
+
+
+/* Packages Categories */
+Route::get('/admin/packages/categories', function () {
+    $categories = collect();
+    $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    return view('admin.packages.categories.index', ['active' => 'packages', 'categories' => $categories]);
+})->name('admin.packages.categories');
 /* Create Package */
 Route::get('/admin/packages/create', function () {
     $added_values = collect();

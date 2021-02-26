@@ -32,6 +32,7 @@ var PackageSummary = require('./components/User/Pages/Packages/PackageSummary.vu
 var PackageCreate = require('./components/User/Pages/Packages/PackageCreate.vue').default
 var OnlinePayment = require('./components/User/Pages/Packages/OnlinePayment.vue').default
 var PackageOrderSummary = require('./components/User/Pages/Packages/PackageOrderSummary.vue').default
+var Categories = require('./components/User/Pages/Packages/Categories.vue').default
 
 /* XX Packages XX */
 
@@ -152,6 +153,7 @@ const app = new Vue({
         Home,
         EditOrder,
         Packages,
+        Categories,
         PackageSummary,
         PackageOrderSummary,
         PackageCreate,
