@@ -106,15 +106,15 @@ Route::get('/', function () {
     $packages->bi_weekly = collect();
     $packages->monthly = collect();
 
-    $packages->adhoc->push(['id' => 1, 'title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
-    $packages->adhoc->push(['id' => 2, 'title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
+    $packages->adhoc->push(['id' => 1, 'title' => 'Ad Hoc - Heavy', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
+    $packages->adhoc->push(['id' => 2, 'title' => 'Ad Hoc - Heavy', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
 
-    $packages->bi_weekly->push(['id' => 3, 'title' => 'Bi-Weekly', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
-    $packages->bi_weekly->push(['id' => 4, 'title' => 'Bi-Weekly – Big Job', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
+    $packages->bi_weekly->push(['id' => 3, 'title' => 'Bi-Weekly', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
+    $packages->bi_weekly->push(['id' => 4, 'title' => 'Bi-Weekly – Big Job', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
 
-    $packages->monthly->push(['id' => 5, 'title' => 'Monthly', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
-    $packages->monthly->push(['id' => 6, 'title' => 'Monthly - Busy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
-    $packages->monthly->push(['id' => 7, 'title' => 'Monthly - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
+    $packages->monthly->push(['id' => 5, 'title' => 'Monthly', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
+    $packages->monthly->push(['id' => 6, 'title' => 'Monthly - Busy', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
+    $packages->monthly->push(['id' => 7, 'title' => 'Monthly - Heavy', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'button' => 'Subscribe']);
 
     return view('welcome', ['active' => 'packages', 'packages' => $packages]);
 
@@ -165,7 +165,7 @@ Route::get('/user', function () {
     $orders->push(['id' => 1111111111,
         'service' => 'Washing clothes',
         'start_date' => '20/09/2020',
-        'price' => '50 $',
+        'price' => '50 ',
         'finish_date' => "25/09/2020",
         'status' => "Test",
         'service_return_duration' => "Test",
@@ -182,7 +182,7 @@ Route::get('/user', function () {
     $orders->push(['id' => 2222222222,
         'service' => 'Washing clothes',
         'start_date' => '20/09/2020',
-        'price' => '120 $',
+        'price' => '120 ',
         'finish_date' => "Test",
         'status' => "Test",
         'service_return_duration' => "Test",
@@ -308,15 +308,15 @@ Route::get('/packages', function () {
     $packages->bi_weekly = collect();
     $packages->monthly = collect();
 
-    $packages->adhoc->push(['id' => 1, 'title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
-    $packages->adhoc->push(['id' => 2, 'title' => 'Ad Hoc - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->adhoc->push(['id' => 1, 'title' => 'Ad Hoc - Heavy', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->adhoc->push(['id' => 2, 'title' => 'Ad Hoc - Heavy', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
 
-    $packages->bi_weekly->push(['id' => 3, 'title' => 'Bi-Weekly', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
-    $packages->bi_weekly->push(['id' => 4, 'title' => 'Bi-Weekly – Big Job', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->bi_weekly->push(['id' => 3, 'title' => 'Bi-Weekly', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->bi_weekly->push(['id' => 4, 'title' => 'Bi-Weekly – Big Job', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
 
-    $packages->monthly->push(['id' => 5, 'title' => 'Monthly', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
-    $packages->monthly->push(['id' => 6, 'title' => 'Monthly - Busy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
-    $packages->monthly->push(['id' => 7, 'title' => 'Monthly - Heavy', 'price' => '75 $', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->monthly->push(['id' => 5, 'title' => 'Monthly', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->monthly->push(['id' => 6, 'title' => 'Monthly - Busy', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
+    $packages->monthly->push(['id' => 7, 'title' => 'Monthly - Heavy', 'price' => '75 ', 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry']);
 
     return view('user.packages.index', ['active' => 'packages', 'packages' => $packages]);
 })->name('packages');
@@ -335,7 +335,7 @@ Route::get('/packages/show/{id}', function () {
         'price_of_extra_pound' => "1.96/Lbs",
         'advance_notice' => "2 Days",
         'price' => '50',
-        'currency' => '$',
+        'currency' => '',
     ]);
     $dry_clean_items = collect();
     $dry_clean_items->push(['id' => 1, 'title' => 'Item 1', 'price' => 30, 'name' => 'item1']);
@@ -481,7 +481,7 @@ Route::get('/packages/summary/{id?}', function () {
         'reward_points' => "3.75 Points",
         'price_of_extra_pound' => "1.96/Lbs",
         'advance_notice' => "2 Days",
-        'price' => '50$',
+        'price' => '50',
         /* customizations */
         'week1_pickup_date' => '2021-01-30',
         'week2_pickup_date' => '2021-02-5',
@@ -684,7 +684,7 @@ Route::get('/old_orders/show/{id}', function () {
     $order->push(['id' => 1111111111,
         'service' => 'Wash and Fold',
         'start_date' => '20/09/2020',
-        'price' => '80 $',
+        'price' => '80 ',
         'finish_date' => "25/09/2020",
         'status' => "Delivered",
         'service_return_duration' => "Standard : Within 48 Hours",
@@ -980,7 +980,7 @@ Route::get('/admin/packages/show/{id}', function () {
         'price_of_extra_pound' => "1.96/Lbs",
         'advance_notice' => "2 Days",
         'price' => '50',
-        'currency' => '$',
+        'currency' => '',
     ]);
     return view('admin.packages.show', ['active' => 'packages', 'package' => $package]);
 })->name('admin.packages.show');
@@ -1006,8 +1006,8 @@ Route::get('/admin/packages/edit/{id}', function () {
 /* Dry Clean */
 Route::get('/admin/packages/dry_clean', function () {
     $dry_clean_items = collect();
-    $dry_clean_items->push(['id' => 1, 'label' => 'Item 1', 'price' => '10$']);
-    $dry_clean_items->push(['id' => 2, 'label' => 'Item 2', 'price' => '20$']);
+    $dry_clean_items->push(['id' => 1, 'label' => 'Item 1', 'price' => '10']);
+    $dry_clean_items->push(['id' => 2, 'label' => 'Item 2', 'price' => '20']);
     return view('admin.packages.dry_clean.index', ['active' => 'dry_clean', 'dry_clean_items' => $dry_clean_items]);
 })->name('admin.packages.dry_clean');
 /* XX Dry Clean XX */
@@ -1015,8 +1015,8 @@ Route::get('/admin/packages/dry_clean', function () {
 /* Household items */
 Route::get('/admin/packages/household_items', function () {
     $household_items = collect();
-    $household_items->push(['id' => 1, 'label' => 'Item 1', 'price' => '10$']);
-    $household_items->push(['id' => 2, 'label' => 'Item 2', 'price' => '20$']);
+    $household_items->push(['id' => 1, 'label' => 'Item 1', 'price' => '10']);
+    $household_items->push(['id' => 2, 'label' => 'Item 2', 'price' => '20']);
 
     return view('admin.packages.household_items.index', ['active' => 'household_items', 'household_items' => $household_items]);
 })->name('admin.packages.household_items');
@@ -1026,10 +1026,10 @@ Route::get('/admin/packages/household_items', function () {
 Route::get('/admin/packages/detergents', function () {
     $detergents_items = collect();
     $types1 = collect();
-    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
-    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
+    $types1->push(['id' => 1,"label" => "test1", "price" => "10", "img" => ""]);
+    $types1->push(['id' => 2,"label" => "test1", "price" => "10", "img" => ""]);
     $types2 = collect();
-    $types2->push(["label" => "test2", "price" => "10$", "img" => ""]);
+    $types2->push(['id' => 3,"label" => "test2", "price" => "10", "img" => ""]);
     $detergents_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
     $detergents_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
@@ -1041,10 +1041,10 @@ Route::get('/admin/packages/detergents', function () {
 Route::get('/admin/packages/fabric', function () {
     $fabric_items = collect();
     $types1 = collect();
-    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
-    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
+    $types1->push(["label" => "test1", "price" => "10", "img" => ""]);
+    $types1->push(["label" => "test1", "price" => "10", "img" => ""]);
     $types2 = collect();
-    $types2->push(["label" => "test2", "price" => "10$", "img" => ""]);
+    $types2->push(["label" => "test2", "price" => "10", "img" => ""]);
     $fabric_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
     $fabric_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
@@ -1056,10 +1056,10 @@ Route::get('/admin/packages/fabric', function () {
 Route::get('/admin/packages/dryer', function () {
     $dryer_items = collect();
     $types1 = collect();
-    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
-    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
+    $types1->push(["label" => "test1", "price" => "10", "img" => ""]);
+    $types1->push(["label" => "test1", "price" => "10", "img" => ""]);
     $types2 = collect();
-    $types2->push(["label" => "test2", "price" => "10$", "img" => ""]);
+    $types2->push(["label" => "test2", "price" => "10", "img" => ""]);
     $dryer_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
     $dryer_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
@@ -1071,10 +1071,10 @@ Route::get('/admin/packages/dryer', function () {
 Route::get('/admin/packages/scent', function () {
     $scent_items = collect();
     $types1 = collect();
-    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
-    $types1->push(["label" => "test1", "price" => "10$", "img" => ""]);
+    $types1->push(["label" => "test1", "price" => "10", "img" => ""]);
+    $types1->push(["label" => "test1", "price" => "10", "img" => ""]);
     $types2 = collect();
-    $types2->push(["label" => "test2", "price" => "10$", "img" => ""]);
+    $types2->push(["label" => "test2", "price" => "10", "img" => ""]);
     $scent_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
     $scent_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 

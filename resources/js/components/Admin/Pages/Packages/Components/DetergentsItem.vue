@@ -1,13 +1,17 @@
 <template>
     <div class="DetergentsItem">
-        <div class="flex-column-center">
-            <input
-                type="text"
-                class="item-title"
-                placeholder="Detergent Name"
-                v-model="itemName"
+        
+        <div class="flex-column-start">
+            <select
+                name="category_id"
+                id=""
+                class="select2"
                 disabled
-            />
+                style="width: 400px"
+            >
+                <option value="1">Category 1</option>
+                <option value="2">Category 2</option>
+            </select>
 
             <p class="types-title" v-if="types.length">The Types</p>
 
@@ -17,12 +21,14 @@
                 :label="type.label"
                 :price="type.price"
                 :img="type.img"
+                :isdisabled="true"
+                :deleteid="type.id"
                 @delete-item="deleteItem(index)"
             />
 
-            <p class="add-more-type" @click="addNewType">Add more types</p>
+            <!-- <p class="add-more-type" @click="addNewType">Add more types</p> -->
 
-        <div class="seperator"></div>
+            <div class="seperator"></div>
         </div>
     </div>
 </template>
@@ -30,7 +36,7 @@
 <script>
 import DetergentsTypeItem from "./DetergentsTypeItem";
 export default {
-        props: ['title','date','name','types'],
+    props: ["title", "date", "name", "types"],
 
     data() {
         return {
@@ -43,7 +49,7 @@ export default {
     },
     methods: {
         addNewType() {
-            this.loadedtypes.push({ label: "", price: "", img:"" });
+            this.loadedtypes.push({ label: "", price: "", img: "" });
         },
         deleteItem(index) {
             this.loadedtypes.splice(index, 1);
@@ -55,11 +61,11 @@ export default {
 <style lang="scss">
 .DetergentsItem {
     margin-top: 20px;
-    .flex-column-center {
+    .flex-column-start {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         .item-title {
             width: 812px;
             height: 45px;
@@ -71,17 +77,19 @@ export default {
         }
         .types-title {
             margin-bottom: 10px;
+            margin-top: 20px;
         }
-        .add-more-type{
-            color: #22AEE4;
+        .add-more-type {
+            color: #22aee4;
             margin-bottom: 20px;
         }
-        .seperator{
+        .seperator {
             width: 100%;
             height: 1px;
             background: #ccc;
             margin: 20px 0;
         }
     }
+
 }
 </style>
