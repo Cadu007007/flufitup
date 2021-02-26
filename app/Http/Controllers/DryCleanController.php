@@ -45,7 +45,7 @@ class DryCleanController extends Controller
     public function store(DryCleanRequest $request)
     {
         $this->repo->store($request->validated());
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => $this->repo->index()]);
     }
     /**
      * calling repo update
@@ -61,7 +61,7 @@ class DryCleanController extends Controller
     public function update(DryCleanRequest $request, DryClean $dryClean)
     {
         $this->repo->update($request->validated(), $dryClean);
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => $this->repo->index()]);
     }
     /**
      * calling repo delete method
@@ -76,6 +76,6 @@ class DryCleanController extends Controller
     public function delete(DryClean $dryClean)
     {
         $this->repo->delete($dryClean);
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'data' => $this->repo->index()]);
     }
 }
