@@ -1,5 +1,5 @@
 <template>
-    <div class="FabricSoftener">
+    <div class="Detergents">
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
@@ -23,8 +23,12 @@
                     class="select2"
                     style="width: 400px"
                 >
-                    <option value="1">Category 1</option>
-                    <option value="2">Category 2</option>
+                    <option
+                        :value="category.id"
+                        v-for="category in categories"
+                        :key="category.id"
+                        >{{ category.name }}</option
+                    >
                 </select>
 
                 <p class="types-title" style="margin-top: 20px;">The Types</p>
@@ -98,8 +102,12 @@
             <Detergents-Item
                 v-for="(item, index) in loadedItems"
                 :key="index"
+                :categories="categories"
                 :name="item.name"
                 :types="item.types"
+                :itemid="item.id"
+                :editformroute="editformroute"
+                :deleteformroute="deleteformroute"
             />
         </div>
 
@@ -124,7 +132,15 @@ export default {
                 .getAttribute("content")
         };
     },
-    props: ["title", "date", "items", "addformroute"],
+    props: [
+        "title",
+        "date",
+        "items",
+        "categories",
+        "addformroute",
+        "editformroute",
+        "deleteformroute"
+    ],
     components: {
         DetergentsItem,
         DetergentsTypeItem
@@ -189,7 +205,7 @@ $text-grey: #00000066;
 $orange: #ffa800;
 $blue: #22aee4;
 
-.FabricSoftener {
+.Detergents {
     width: 100%;
     height: 100%;
     .page-header {

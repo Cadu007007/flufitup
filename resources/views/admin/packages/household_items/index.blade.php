@@ -5,5 +5,8 @@ title="Household Items"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :items="{{$household_items}}"
 editformroute="{{ route('dummy') }}"
+addformroute="/dummy"
+deleteformroute="{{ route('dummy') }}"
+
 />
 @endsection

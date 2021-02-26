@@ -1,8 +1,8 @@
 <template>
-<div class="AdminSidebarPackagesMenu" :class="active == 'packages' ? 'menu-title-active' : ''" title="Packages" @click="showMenuItems">
-    <img class="menu-icon" :src=icon alt="">
-    <img class="menu-icon-active" :src=iconActive alt="">
-    <p class="item-title menu-title">{{ title }}<img class="menu-arrow" src="/images/admin/icons/menu-arrow-icon.svg"></p>
+<div class="AdminSidebarPackagesMenu" :class="active == 'packages' ? 'menu-title-active' : ''" title="Packages">
+    <img class="menu-icon" :src=icon alt=""  @click="showMenuItems">
+    <img class="menu-icon-active" :src=iconActive alt=""  @click="showMenuItems">
+    <p class="item-title menu-title"  @click="showMenuItems">{{ title }}<img class="menu-arrow" src="/images/admin/icons/menu-arrow-icon.svg"></p>
     
     <div class="menu-active-dot" v-if="!showitems"></div>
         <div class="menu-items" v-show="showitems">

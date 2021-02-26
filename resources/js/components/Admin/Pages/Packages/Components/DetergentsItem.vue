@@ -1,6 +1,5 @@
 <template>
     <div class="DetergentsItem">
-        
         <div class="flex-column-start">
             <select
                 name="category_id"
@@ -9,8 +8,13 @@
                 disabled
                 style="width: 400px"
             >
-                <option value="1">Category 1</option>
-                <option value="2">Category 2</option>
+                <option
+                    :value="category.id"
+                    v-for="category in categories"
+                    :key="category.id"
+                    :selected="itemid == category.id ? 'selected' : ''"
+                    >{{ category.name }}</option
+                >
             </select>
 
             <p class="types-title" v-if="types.length">The Types</p>
@@ -24,6 +28,8 @@
                 :isdisabled="true"
                 :deleteid="type.id"
                 @delete-item="deleteItem(index)"
+                :editformroute="editformroute"
+                :deleteformroute="deleteformroute"
             />
 
             <!-- <p class="add-more-type" @click="addNewType">Add more types</p> -->
@@ -36,7 +42,16 @@
 <script>
 import DetergentsTypeItem from "./DetergentsTypeItem";
 export default {
-    props: ["title", "date", "name", "types"],
+    props: [
+        "title",
+        "date",
+        "name",
+        "categories",
+        "types",
+        "editformroute",
+        "deleteformroute",
+        "itemid"
+    ],
 
     data() {
         return {
@@ -90,6 +105,5 @@ export default {
             margin: 20px 0;
         }
     }
-
 }
 </style>

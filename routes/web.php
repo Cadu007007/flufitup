@@ -1034,7 +1034,11 @@ Route::get('/admin/packages/detergents', function () {
     $detergents_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
     $detergents_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
-    return view('admin.packages.detergents.index', ['active' => 'detergents', 'detergents_items' => $detergents_items]);
+    $categories = collect();
+    $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' =>2,'name' => 'Category 2', 'type' => 'detergents']);
+
+    return view('admin.packages.detergents.index', ['active' => 'detergents', 'detergents_items' => $detergents_items,'categories'=> $categories]);
 })->name('admin.packages.detergents');
 /* XX Detergents XX */
 
@@ -1049,7 +1053,11 @@ Route::get('/admin/packages/fabric', function () {
     $fabric_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
     $fabric_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
-    return view('admin.packages.fabric.index', ['active' => 'fabric', 'fabric_items' => $fabric_items]);
+    $categories = collect();
+    $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' =>2,'name' => 'Category 2', 'type' => 'detergents']);
+
+    return view('admin.packages.fabric.index', ['active' => 'fabric', 'fabric_items' => $fabric_items, 'categories' => $categories]);
 })->name('admin.packages.fabric');
 /* XX FABRIC XX */
 
@@ -1064,7 +1072,12 @@ Route::get('/admin/packages/dryer', function () {
     $dryer_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
     $dryer_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
-    return view('admin.packages.dryer.index', ['active' => 'dryer', 'dryer_items' => $dryer_items]);
+    $categories = collect();
+    $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' =>2,'name' => 'Category 2', 'type' => 'detergents']);
+
+
+    return view('admin.packages.dryer.index', ['active' => 'dryer', 'dryer_items' => $dryer_items,'categories' => $categories]);
 })->name('admin.packages.dryer');
 /* XX DRYER XX */
 
@@ -1079,7 +1092,11 @@ Route::get('/admin/packages/scent', function () {
     $scent_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
     $scent_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
-    return view('admin.packages.scent.index', ['active' => 'scent', 'scent_items' => $scent_items]);
+    $categories = collect();
+    $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' =>2,'name' => 'Category 2', 'type' => 'detergents']);
+
+    return view('admin.packages.scent.index', ['active' => 'scent', 'scent_items' => $scent_items,'categories' => $categories]);
 })->name('admin.packages.scent');
 /* XX Scent Booster XX */
 
