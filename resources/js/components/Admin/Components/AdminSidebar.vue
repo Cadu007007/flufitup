@@ -1,25 +1,38 @@
 <template>
-  <div class="AdminSidebar">
-    <p class="title">MENU</p>
+    <div class="AdminSidebar">
+        <p class="title">MENU</p>
 
-  <AdminSidebarItem :class=" active == 'dashboard' ? 'active' : '' " 
-  class="AdminSidebarItem" 
-  :href=routetodashboard
-  title="Dashboard"
-  itemtooltip="Dashboard"
-  icon='/images/admin/icons/dashboard.svg' 
-  iconActive='/images/admin/icons/dashboard-active.svg'/>
+        <AdminSidebarItem
+            :class="active == 'dashboard' ? 'active' : ''"
+            class="AdminSidebarItem"
+            :href="routetodashboard"
+            title="Dashboard"
+            itemtooltip="Dashboard"
+            icon="/images/admin/icons/dashboard.svg"
+            iconActive="/images/admin/icons/dashboard-active.svg"
+        />
 
+        <AdminSidebarItem
+            :class="active == 'reports' ? 'active' : ''"
+            class="AdminSidebarItem"
+            :href="routetoreports"
+            title="Reports"
+            itemtooltip="Reports"
+            icon="/images/admin/icons/reports.svg"
+            iconActive="/images/admin/icons/reports-active.svg"
+        />
 
-  <AdminSidebarItem :class=" active == 'reports' ? 'active' : '' " 
-  class="AdminSidebarItem" 
-  :href=routetoreports
-  title="Reports"
-  itemtooltip="Reports"
-  icon='/images/admin/icons/reports.svg' 
-  iconActive='/images/admin/icons/reports-active.svg'/>
+        <AdminSidebarItem
+            :class="active == 'categories' ? 'active' : ''"
+            class="AdminSidebarItem"
+            :href="routetocategories"
+            title="Categories"
+            itemtooltip="Categories"
+            icon="/images/admin/icons/packages.svg"
+            iconActive="/images/admin/icons/packages-active.svg"
+        />
 
-<!--
+        <!--
   <AdminSidebarItem :class=" active == 'packages' ? 'active' : '' " 
   class="AdminSidebarItem" 
   :href=routetopackages
@@ -30,120 +43,151 @@
 
 -->
 
-<AdminSidebarPackagesMenu
-class="AdminSidebarItem" 
-:class="(active == 'dry_clean' || active == 'household_items' || active == 'detergents' 
-|| active == 'fabric') ? 'menu-title-active' : '' "
-:active="active"
-:routetopackages= "routetopackages"
-icon='/images/admin/icons/packages.svg' 
-iconActive='/images/admin/icons/packages-active.svg'
-:routetodryclean="routetodryclean"
-:routetohouseholditems="routetohouseholditems"
-:routetodetergents="routetodetergents"
-:routetofabricsoftener="routetofabricsoftener"
-:routetodryersheets="routetodryersheets"
-:routetoscentbooster="routetoscentbooster"
-/>
+        <AdminSidebarPackagesMenu
+            class="AdminSidebarItem"
+            :class="
+                active == 'dry_clean' ||
+                active == 'household_items' ||
+                active == 'detergents' ||
+                active == 'fabric'
+                    ? 'menu-title-active'
+                    : ''
+            "
+            :active="active"
+            :routetopackages="routetopackages"
+            icon="/images/admin/icons/packages.svg"
+            iconActive="/images/admin/icons/packages-active.svg"
+            :routetodryclean="routetodryclean"
+            :routetohouseholditems="routetohouseholditems"
+            :routetodetergents="routetodetergents"
+            :routetofabricsoftener="routetofabricsoftener"
+            :routetodryersheets="routetodryersheets"
+            :routetoscentbooster="routetoscentbooster"
+        />
 
+        <AdminSidebarItem
+            :class="active == 'users' ? 'active' : ''"
+            class="AdminSidebarItem"
+            :href="routetousers"
+            title="Users"
+            itemtooltip="Users"
+            icon="/images/admin/icons/users.svg"
+            iconActive="/images/admin/icons/users-active.svg"
+        />
 
-  <AdminSidebarItem :class=" active == 'users' ? 'active' : '' " 
-  class="AdminSidebarItem" 
-  :href=routetousers
-  title="Users"
-  itemtooltip="Users"
-  icon='/images/admin/icons/users.svg' 
-  iconActive='/images/admin/icons/users-active.svg'/>
-    
+        <AdminSidebarPlannerMenu
+            class="AdminSidebarItem"
+            :class="
+                active == 'pickup_planner' || active == 'delievery_planner'
+                    ? 'menu-active'
+                    : ''
+            "
+            :active="active"
+            icon="/images/admin/icons/planner-icon.svg"
+            iconActive="/images/admin/icons/planner-icon-active.svg"
+            :routetopickupplanner="routetopickupplanner"
+            :routetopickdelieveryplanner="routetopickdelieveryplanner"
+        />
 
-<AdminSidebarPlannerMenu
-class="AdminSidebarItem" 
-:class="(active == 'pickup_planner' || active == 'delievery_planner') ? 'menu-active' : '' "
-:active="active"
-icon='/images/admin/icons/planner-icon.svg' 
-iconActive='/images/admin/icons/planner-icon-active.svg'
-:routetopickupplanner="routetopickupplanner"
-:routetopickdelieveryplanner="routetopickdelieveryplanner"
-/>
+        <AdminSidebarEmployeesMenu
+            class="AdminSidebarItem"
+            :class="
+                active == 'admins' ||
+                active == 'drivers' ||
+                active == 'laundery_staff'
+                    ? 'menu-active'
+                    : ''
+            "
+            :active="active"
+            icon="/images/admin/icons/employees-icon.svg"
+            iconActive="/images/admin/icons/employees-icon-active.svg"
+            :routetoadmins="routetoadmins"
+            :routetodrivers="routetodrivers"
+            :routetolaunderystaff="routetolaunderystaff"
+        />
 
-<AdminSidebarEmployeesMenu
-class="AdminSidebarItem" 
-:class="(active == 'admins' || active == 'drivers' || active == 'laundery_staff') ? 'menu-active' : '' "
-:active="active"
-icon='/images/admin/icons/employees-icon.svg' 
-iconActive='/images/admin/icons/employees-icon-active.svg'
-:routetoadmins="routetoadmins"
-:routetodrivers="routetodrivers"
-:routetolaunderystaff="routetolaunderystaff"
-/>
+        <AdminSidebarItem
+            :class="active == 'promocodes' ? 'active' : ''"
+            class="AdminSidebarItem"
+            :href="routetopromocodes"
+            title="Promocodes"
+            itemtooltip="Promocodes"
+            icon="/images/admin/icons/promocodes-icon.svg"
+            iconActive="/images/admin/icons/promocodes-icon-active.svg"
+        />
 
-  <AdminSidebarItem :class=" active == 'promocodes' ? 'active' : '' " 
-  class="AdminSidebarItem" 
-  :href=routetopromocodes
-  title="Promocodes"
-  itemtooltip="Promocodes"
-  icon='/images/admin/icons/promocodes-icon.svg' 
-  iconActive='/images/admin/icons/promocodes-icon-active.svg'/>
-   
+        <AdminSidebarItem
+            :class="active == 'zones' ? 'active' : ''"
+            class="AdminSidebarItem"
+            :href="routetozones"
+            title="Zones"
+            itemtooltip="Zones"
+            icon="/images/admin/icons/zones-icon.svg"
+            iconActive="/images/admin/icons/zones-icon-active.svg"
+        />
 
-  <AdminSidebarItem :class=" active == 'zones' ? 'active' : '' " 
-  class="AdminSidebarItem" 
-  :href=routetozones
-  title="Zones"
-  itemtooltip="Zones"
-  icon='/images/admin/icons/zones-icon.svg' 
-  iconActive='/images/admin/icons/zones-icon-active.svg'/>
-   
-
-  <AdminSidebarItem :class=" active == 'cities' ? 'active' : '' " 
-  class="AdminSidebarItem" 
-  :href=routetocities
-  title="Cities"
-  itemtooltip="Cities"
-  icon='/images/admin/icons/zones-icon.svg' 
-  iconActive='/images/admin/icons/zones-icon-active.svg'/>
-   
-
-
-  </div>
+        <AdminSidebarItem
+            :class="active == 'cities' ? 'active' : ''"
+            class="AdminSidebarItem"
+            :href="routetocities"
+            title="Cities"
+            itemtooltip="Cities"
+            icon="/images/admin/icons/zones-icon.svg"
+            iconActive="/images/admin/icons/zones-icon-active.svg"
+        />
+    </div>
 </template>
 
 <script>
-import AdminSidebarItem from './AdminSidebarItem'
-import AdminSidebarPlannerMenu from './AdminSidebarPlannerMenu'
-import AdminSidebarEmployeesMenu from './AdminSidebarEmployeesMenu'
-import AdminSidebarPackagesMenu from './AdminSidebarPackagesMenu'
+import AdminSidebarItem from "./AdminSidebarItem";
+import AdminSidebarPlannerMenu from "./AdminSidebarPlannerMenu";
+import AdminSidebarEmployeesMenu from "./AdminSidebarEmployeesMenu";
+import AdminSidebarPackagesMenu from "./AdminSidebarPackagesMenu";
 
 export default {
-    props:['active','routetodashboard','routetoreports',
-            'routetopackages','routetodryclean','routetohouseholditems','routetodetergents',
-            'routetofabricsoftener','routetodryersheets','routetoscentbooster',
-            'routetousers','routetoadmins',
-            'routetopickupplanner','routetopickdelieveryplanner',
-            'routetoadmins','routetodrivers','routetolaunderystaff',
-            'routetopromocodes','routetozones','routetocities'
-            ],
-    components:{
+    props: [
+        "active",
+        "routetodashboard",
+        "routetoreports",
+        "routetopackages",
+        "routetodryclean",
+        "routetohouseholditems",
+        "routetodetergents",
+        "routetofabricsoftener",
+        "routetodryersheets",
+        "routetoscentbooster",
+        "routetousers",
+        "routetoadmins",
+        "routetopickupplanner",
+        "routetopickdelieveryplanner",
+        "routetoadmins",
+        "routetodrivers",
+        "routetolaunderystaff",
+        "routetopromocodes",
+        "routetozones",
+        "routetocities",
+        "routetocategories"
+    ],
+    components: {
         AdminSidebarItem,
         AdminSidebarPlannerMenu,
         AdminSidebarEmployeesMenu,
         AdminSidebarPackagesMenu
     }
-
-}
+};
 </script>
 
 <style lang="scss">
-$blue: #687CA4;
-.AdminSidebar{
-    .title{
+$blue: #687ca4;
+.AdminSidebar {
+    .title {
         font-size: 9px;
-        font-family: 'Open-Sans-Semibold';
+        font-family: "Open-Sans-Semibold";
         color: $blue;
         margin: 24px 36px;
     }
 
-    .AdminSidebarItem{
+    .AdminSidebarItem {
         margin-bottom: 20px;
     }
 }

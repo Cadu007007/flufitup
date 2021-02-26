@@ -5,85 +5,115 @@
             <p class="date">{{ date }}</p>
         </div>
         <div class="column">
-            <div class="column" v-if="editCategoryId == 0">
-                <div class="row">
-                    <div class="category-name">
-                        <p class="title">Category Name:</p>
-                        <input
-                            type="text"
-                            class="category-name-input"
-                            name="category_name"
-                            placeholder="Category Name"
-                        />
-                    </div>
+            <form
+                class="add-form"
+                action=""
+                method="POST"
+                @submit="submitAddForm"
+            >
+                <input type="hidden" :value="csrf" name="_token" />
 
-                    <div class="category-type">
-                        <p class="title">Category For:</p>
+                <div class="column" v-if="editCategoryId == 0">
+                    <div class="row">
+                        <div class="category-name">
+                            <p class="title">Category Name:</p>
+                            <input
+                                type="text"
+                                class="category-name-input"
+                                name="category_name"
+                                placeholder="Category Name"
+                                required
+                            />
+                        </div>
 
-                        <select
-                            name="type"
-                            id=""
-                            class="select2"
-                            style="width: 400px"
-                        >
-                            <option>Choose a type</option>
-                            <option value="detergents">Detergents</option>
-                            <option value="fabric_softener"
-                                >Fabric Softener</option
+                        <div class="category-type">
+                            <p class="title">Category For:</p>
+
+                            <select
+                                name="type"
+                                id=""
+                                class="select2"
+                                style="width: 400px"
+                                required
                             >
-                            <option value="dryer_sheet">Dryer Sheet</option>
-                            <option value="scent_booster">Scent Booster</option>
-                        </select>
+                                <option :value="null">Choose a type</option>
+                                <option value="detergents">Detergents</option>
+                                <option value="fabric_softener"
+                                    >Fabric Softener</option
+                                >
+                                <option value="dryer_sheet">Dryer Sheet</option>
+                                <option value="scent_booster"
+                                    >Scent Booster</option
+                                >
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="save-button" type="submit">
+                            Add Category
+                        </button>
                     </div>
                 </div>
+            </form>
 
-                <div class="button-container">
-                    <button class="save-button">Add Category</button>
-                </div>
-            </div>
-            <div class="column" v-else>
-                <div class="row">
-                    <div class="category-name">
-                        <p class="title">Category Name:</p>
-                        <input
-                            type="text"
-                            class="category-name-input"
-                            name="category_name"
-                            placeholder="Category Name"
-                            v-model="editCategoryName"
-                        />
-                        <input
-                            type="hidden"
-                            name="category_id"
-                            v-model="editCategoryId"
-                        />
-                    </div>
-                    <div class="category-type">
-                        <p class="title">Category For:</p>
+            <form
+                class="edit-form"
+                action=""
+                method="POST"
+                @submit="submitEditForm"
+            >
+                <input type="hidden" :value="csrf" name="_token" />
 
-                        <select
-                            name="category_type"
-                            id=""
-                            class="select2 edit-select2"
-                            style="width: 400px"
-                        >
-                            <option value="detergents">Detergents</option>
-                            <option value="fabric_softener"
-                                >Fabric Softener</option
+                <div class="column" v-if="editCategoryId > 0">
+                    <div class="row">
+                        <div class="category-name">
+                            <p class="title">Category Name:</p>
+                            <input
+                                type="text"
+                                class="category-name-input"
+                                name="category_name"
+                                placeholder="Category Name"
+                                v-model="editCategoryName"
+                            />
+                            <input
+                                type="hidden"
+                                name="category_id"
+                                v-model="editCategoryId"
+                            />
+                        </div>
+                        <div class="category-type">
+                            <p class="title">Category For:</p>
+
+                            <select
+                                name="category_type"
+                                id=""
+                                class="select2 edit-select2"
+                                style="width: 400px"
                             >
-                            <option value="dryer_sheet">Dryer Sheet</option>
-                            <option value="scent_booster">Scent Booster</option>
-                        </select>
+                                <option value="detergents">Detergents</option>
+                                <option value="fabric_softener"
+                                    >Fabric Softener</option
+                                >
+                                <option value="dryer_sheet">Dryer Sheet</option>
+                                <option value="scent_booster"
+                                    >Scent Booster</option
+                                >
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="button-container" style="width: 40%">
+                        <button class="save-button" type="submit">Save</button>
+                        <button
+                            class="cancel-button"
+                            @click="editCategoryId = 0"
+                        >
+                            Cancel
+                        </button>
                     </div>
                 </div>
-
-                <div class="button-container" style="width: 40%">
-                    <button class="save-button">Save</button>
-                    <button class="cancel-button" @click="editCategoryId = 0">
-                        Cancel
-                    </button>
-                </div>
-            </div>
+            </form>
 
             <div class="seperator"></div>
 
@@ -113,12 +143,25 @@
                         >
                             Edit
                         </button>
-                        <button
-                            class="button delete"
-                            @click="deleteCategory(category.id)"
+                        <form
+                            action=""
+                            class="delete-form column"
+                            method="POST"
                         >
-                            Delete
-                        </button>
+                            <input type="hidden" :value="csrf" name="_token" />
+                            <input
+                                type="hidden"
+                                name="id"
+                                :value="category.id"
+                            />
+                            <button
+                                class="button delete"
+                                type="button"
+                                @click="deleteItem($event)"
+                            >
+                                Delete
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -132,11 +175,21 @@ export default {
         return {
             editCategoryName: "",
             editCategoryId: 0,
-            editCategoryType: ""
+            editCategoryType: "",
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content")
         };
     },
     components: {},
-    props: ["title", "date", "categories"],
+    props: [
+        "title",
+        "date",
+        "categories",
+        "addformroute",
+        "editformroute",
+        "deleteformroute"
+    ],
     methods: {
         editCategory(CategoryId) {
             let selectedCategory = this.categories.find(
@@ -153,8 +206,51 @@ export default {
                     .change();
             }, 100);
         },
-        format(typeName){
-            return typeName.replace('_', ' ')
+        format(typeName) {
+            return typeName.replace("_", " ");
+        },
+        submitAddForm(event) {
+            event.preventDefault();
+            var formValues = $(".add-form").serialize();
+            console.log("formValues: ", formValues);
+            $.ajax({
+                url: this.addformroute,
+                type: "POST",
+                data: formValues,
+                success: function(data) {
+                    console.log("data: ", data);
+                }
+            });
+        },
+        submitEditForm(event) {
+            event.preventDefault();
+            var formValues = $(event.target).serialize();
+            console.log("formValues: ", formValues);
+            $.ajax({
+                url: this.editformroute,
+                type: "PUT",
+                data: formValues,
+                success: function(data) {
+                    console.log("data: ", data);
+                }
+            });
+        },
+        deleteItem(event) {
+            let deleteForm = $(event.target).parent();
+            console.log("deleteForm: ", deleteForm);
+            if (confirm("Are You Sure ?")) {
+                var formValues = $(deleteForm).serialize();
+                console.log("formValues: ", formValues);
+
+                $.ajax({
+                    url: this.deleteformroute,
+                    type: "DELETE",
+                    data: formValues,
+                    success: function(data) {
+                        console.log("data: ", data);
+                    }
+                });
+            }
         }
     }
 };

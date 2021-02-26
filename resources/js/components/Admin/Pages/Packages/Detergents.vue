@@ -65,7 +65,7 @@
                             name="label"
                             id=""
                             placeholder="Label"
-                            :value="label"
+                            value=""
                             required
                         />
                         <input
@@ -75,7 +75,7 @@
                             name="price"
                             id=""
                             placeholder="Price"
-                            :value="price"
+                            value=""
                             required
                         />
 
@@ -171,10 +171,13 @@ export default {
             var formValues = $(".add-form").serialize();
             console.log("formValues: ", formValues);
 
-            $.post(this.addformroute, formValues, function(data) {
-                // Display the returned data in browser
-
-                console.log("data: ", data);
+            $.ajax({
+                url: this.addformroute,
+                type: "POST",
+                data: formValues,
+                success: function(data) {
+                    console.log("data: ", data);
+                }
             });
         }
     }

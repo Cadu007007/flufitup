@@ -951,7 +951,8 @@ Route::get('/admin/packages', function () {
 Route::get('/admin/packages/categories', function () {
     $categories = collect();
     $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
-    return view('admin.packages.categories.index', ['active' => 'packages', 'categories' => $categories]);
+    $categories->push(['id' =>2,'name' => 'Category 2', 'type' => 'detergents']);
+    return view('admin.packages.categories.index', ['active' => 'categories', 'categories' => $categories]);
 })->name('admin.packages.categories');
 /* Create Package */
 Route::get('/admin/packages/create', function () {

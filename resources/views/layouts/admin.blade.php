@@ -18,6 +18,8 @@
                 routetodashboard="{{ route('admin.dashboard') }}"
                 routetoreports="{{ route('admin.reports') }}"
                 
+                routetocategories="{{ route('admin.packages.categories') }}"
+
                 routetopackages="{{ route('admin.packages') }}"
                 routetodryclean="{{ route('admin.packages.dry_clean') }}"
                 routetohouseholditems="{{ route('admin.packages.household_items') }}"

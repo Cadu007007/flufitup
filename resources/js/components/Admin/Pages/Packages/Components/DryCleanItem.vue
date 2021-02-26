@@ -15,21 +15,34 @@
             <input
                 :disabled="disablestate"
                 class="dry-clean-input"
-                type="text"
+                type="number"
                 name="price"
+                min="0"
                 id=""
                 placeholder="Price"
                 :value="price"
             />
-            <span class="delete" @click="$emit('delete-item')">
-                <img src="/images/admin/icons/notification-cancel.svg" alt="" />
+            <span class="delete">
+                <form action="" class="delete-form" method="POST">
+                    <input type="hidden" name="id" :value="itemid" />
+                    <input type="hidden" :value="csrf" name="_token" />
+                    <img
+                        src="/images/admin/icons/notification-cancel.svg"
+                        alt=""
+                        @click="deleteItem($event)"
+                    />
+                </form>
             </span>
             <span v-if="disablestate" class="edit" @click="editPressed">
                 <img src="/images/admin/icons/notification-edit.svg" alt="" />
             </span>
             <div class="" v-else>
                 <button class="save" type="submit">Save</button>
-                <button class="cancel" type="button" @click="disablestate = true">
+                <button
+                    class="cancel"
+                    type="button"
+                    @click="disablestate = true"
+                >
                     Cancel
                 </button>
             </div>
@@ -45,13 +58,53 @@ export default {
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute("content"),
-                disablestate: this.isdisabled
+            disablestate: this.isdisabled
         };
     },
-    props: ["label", "price", "isdisabled", "hiddenvalue", "formroute"],
+    props: [
+        "label",
+        "price",
+        "isdisabled",
+        "hiddenvalue",
+        "formroute",
+        "itemid",
+        "deleteformroute"
+    ],
     methods: {
         editPressed() {
             this.disablestate = false;
+        },
+        submitEditForm(event) {
+            event.preventDefault();
+            console.log("event.target ", $(event.target));
+            var formValues = $(event.target).serialize();
+            console.log("formValues: ", formValues);
+            $.ajax({
+                url: this.editformroute,
+                type: "PUT",
+                data: formValues,
+                success: function(data) {
+                    console.log("data: ", data);
+                }
+            });
+        },
+        deleteItem(event) {
+            let deleteForm = $(event.target).parent();
+            console.log("deleteForm: ", deleteForm);
+            if (confirm("Are You Sure ?")) {
+                var formValues = $(deleteForm).serialize();
+
+                console.log("formValues: ", formValues);
+
+                $.ajax({
+                    url: this.deleteformroute,
+                    type: "DELETE",
+                    data: formValues,
+                    success: function(data) {
+                        console.log("data: ", data);
+                    }
+                });
+            }
         }
     }
 };

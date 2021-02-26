@@ -1,8 +1,13 @@
 <template>
-    <form :action="formroute" method="POST">
+    <form
+        method="POST"
+        class="edit-form"
+        @submit="submitEditForm($event)"
+    >
         <input type="hidden" :value="csrf" name="_token" />
         <input type="hidden" name="old" :value="hiddenvalue" />
 
+        <!-- <input type="hidden" name="id" :value="itemid" /> -->
         <div class="HouseholdItem">
             <input
                 :disabled="disablestate"
@@ -12,18 +17,28 @@
                 id=""
                 placeholder="Label"
                 :value="label"
+                required
             />
             <input
                 :disabled="disablestate"
                 class="household-input"
-                type="text"
-                name="price"
+                type="number"
+                name="price" min="0"
                 id=""
                 placeholder="Price"
                 :value="price"
+                required
             />
-            <span class="delete" @click="$emit('delete-item')">
-                <img src="/images/admin/icons/notification-cancel.svg" alt="" />
+            <span class="delete">
+                <form action="" class="delete-form" method="POST">
+                    <input type="hidden" name="id" :value="itemid" />
+                    <input type="hidden" :value="csrf" name="_token" />
+                    <img
+                        src="/images/admin/icons/notification-cancel.svg"
+                        alt=""
+                        @click="deleteItem($event)"
+                    />
+                </form>
             </span>
             <span v-if="disablestate" class="edit" @click="editPressed">
                 <img src="/images/admin/icons/notification-edit.svg" alt="" />
@@ -53,10 +68,50 @@ export default {
             disablestate: this.isdisabled
         };
     },
-    props: ["label", "price", "isdisabled", "hiddenvalue", "formroute"],
+    props: [
+        "label",
+        "price",
+        "isdisabled",
+        "hiddenvalue",
+        "formroute",
+        "itemid",
+        "deleteformroute",
+    ],
     methods: {
         editPressed() {
             this.disablestate = false;
+        },
+        submitEditForm(event) {
+            event.preventDefault();
+            console.log("event.target ", $(event.target));
+            var formValues = $(event.target).serialize();
+            console.log("formValues: ", formValues);
+            $.ajax({
+                url: this.editformroute,
+                type: "PUT",
+                data: formValues,
+                success: function(data) {
+                    console.log("data: ", data);
+                }
+            });
+        },
+        deleteItem(event) {
+            let deleteForm = $(event.target).parent();
+            console.log("deleteForm: ", deleteForm);
+            if (confirm("Are You Sure ?")) {
+                var formValues = $(deleteForm).serialize();
+
+                console.log("formValues: ", formValues);
+
+                $.ajax({
+                    url: this.deleteformroute,
+                    type: "DELETE",
+                    data: formValues,
+                    success: function(data) {
+                        console.log("data: ", data);
+                    }
+                });
+            }
         }
     }
 };

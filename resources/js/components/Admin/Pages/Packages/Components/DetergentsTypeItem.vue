@@ -159,24 +159,32 @@ export default {
         },
         submitEditForm(event) {
             event.preventDefault();
-            var formValues = $(".edit-form").serialize();
+            var formValues = $(event.target).serialize();
             console.log("formValues: ", formValues);
-
-            $.post(this.editformroute, formValues, function(data) {
-                // Display the returned data in browser
-                console.log("data: ", data);
+            $.ajax({
+                url: this.editformroute,
+                type: "PUT",
+                data: formValues,
+                success: function(data) {
+                    console.log("data: ", data);
+                }
             });
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
             console.log("deleteForm: ", deleteForm);
             if (confirm("Are You Sure ?")) {
-                var formValues = $(".delete-form").serialize();
+                var formValues = $(deleteForm).serialize();
+
                 console.log("formValues: ", formValues);
 
-                $.post(this.deleteformroute, formValues, function(data) {
-                    // Display the returned data in browser
-                    console.log("data: ", data);
+                $.ajax({
+                    url: this.deleteformroute,
+                    type: "DELETE",
+                    data: formValues,
+                    success: function(data) {
+                        console.log("data: ", data);
+                    }
                 });
             }
         }
