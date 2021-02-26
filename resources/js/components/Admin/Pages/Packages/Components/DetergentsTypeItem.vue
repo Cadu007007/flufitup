@@ -49,7 +49,7 @@
                         :disabled="disablestate"
                         class="dry-clean-input"
                         type="text"
-                        name="label"
+                        name="name"
                         id=""
                         placeholder="Label"
                         :value="label"
@@ -117,7 +117,8 @@ export default {
         "hiddenvalue",
         "editformroute",
         "deleteformroute",
-        "deleteid"
+        "deleteid",
+        "itemid"
     ],
     methods: {
         editPressed() {
@@ -161,8 +162,10 @@ export default {
             event.preventDefault();
             var formValues = $(event.target).serialize();
             console.log("formValues: ", formValues);
+
+            let editRoute = this.editformroute.replace("item_id", this.itemid);
             $.ajax({
-                url: this.editformroute,
+                url: editRoute,
                 type: "PUT",
                 data: formValues,
                 success: function(data) {
@@ -175,11 +178,15 @@ export default {
             console.log("deleteForm: ", deleteForm);
             if (confirm("Are You Sure ?")) {
                 var formValues = $(deleteForm).serialize();
+                let deleteRout = this.deleteformroute.replace(
+                    "item_id",
+                    this.itemid
+                );
 
-                console.log("formValues: ", formValues);
+                console.log("deleteRout: ", deleteRout);
 
                 $.ajax({
-                    url: this.deleteformroute,
+                    url: deleteRout,
                     type: "DELETE",
                     data: formValues,
                     success: function(data) {

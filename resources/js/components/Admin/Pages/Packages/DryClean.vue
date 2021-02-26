@@ -17,7 +17,7 @@
             <input
                 class="dry-clean-input"
                 type="text"
-                name="label"
+                name="name"
                 id=""
                 placeholder="Label"
                 value=""
@@ -51,6 +51,8 @@
                 :price="item.price"
                 :itemid="item.id"
                 :isdisabled="true"
+                :editformroute="editformroute"
+                :deleteformroute="deleteformroute"
                 :hiddenvalue="JSON.stringify(item)"
             />
         </div>
@@ -74,7 +76,7 @@ export default {
             newItems: []
         };
     },
-    props: ["title", "date", "items", "editformroute"],
+    props: ["title", "date", "items", "editformroute","deleteformroute"],
     components: {
         DryCleanItem
     },

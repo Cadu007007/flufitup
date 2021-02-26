@@ -27,6 +27,7 @@
                 :img="type.img"
                 :isdisabled="true"
                 :deleteid="type.id"
+                :itemid="type.id"
                 @delete-item="deleteItem(index)"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"

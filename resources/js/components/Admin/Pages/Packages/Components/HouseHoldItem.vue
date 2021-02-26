@@ -1,9 +1,5 @@
 <template>
-    <form
-        method="POST"
-        class="edit-form"
-        @submit="submitEditForm($event)"
-    >
+    <form method="POST" class="edit-form" @submit="submitEditForm($event)">
         <input type="hidden" :value="csrf" name="_token" />
         <input type="hidden" name="old" :value="hiddenvalue" />
 
@@ -13,7 +9,7 @@
                 :disabled="disablestate"
                 class="household-input"
                 type="text"
-                name="label"
+                name="name"
                 id=""
                 placeholder="Label"
                 :value="label"
@@ -23,7 +19,8 @@
                 :disabled="disablestate"
                 class="household-input"
                 type="number"
-                name="price" min="0"
+                name="price"
+                min="0"
                 id=""
                 placeholder="Price"
                 :value="price"
@@ -76,6 +73,7 @@ export default {
         "formroute",
         "itemid",
         "deleteformroute",
+        "editformroute"
     ],
     methods: {
         editPressed() {
@@ -86,8 +84,10 @@ export default {
             console.log("event.target ", $(event.target));
             var formValues = $(event.target).serialize();
             console.log("formValues: ", formValues);
+            let editRoute = this.editformroute.replace("item_id", this.itemid);
+
             $.ajax({
-                url: this.editformroute,
+                url: editRoute,
                 type: "PUT",
                 data: formValues,
                 success: function(data) {
@@ -102,9 +102,13 @@ export default {
                 var formValues = $(deleteForm).serialize();
 
                 console.log("formValues: ", formValues);
+                let deleteRout = this.deleteformroute.replace(
+                    "item_id",
+                    this.itemid
+                );
 
                 $.ajax({
-                    url: this.deleteformroute,
+                    url: deleteRout,
                     type: "DELETE",
                     data: formValues,
                     success: function(data) {

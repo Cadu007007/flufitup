@@ -1,6 +1,6 @@
 <template>
   <div class="AddPackageItem">
-    <input class="add-package-input" type="text" name="label" id="" placeholder="Label" :value="label">
+    <input class="add-package-input" type="text" name="name" id="" placeholder="Label" :value="label">
     <input class="add-package-input" type="text" name="data" id="" placeholder="Data" :value="data">
     <span class="delete" @click="$emit('delete-item')"> <img src="/images/admin/icons/notification-cancel.svg" alt=""> </span>
   </div>

@@ -899,7 +899,6 @@ Route::get('/admin/cancellation_requests/show/{id}', function () {
         'wallet' => 50,
         'currency' => 'USD',
         'package' => '']);
-
     return view('admin.dashboard.cancellation_requests.show', ['active' => 'dashboard', 'user' => $user]);
 })->name('admin.cancellation_requests.show');
 
@@ -1132,16 +1131,13 @@ Route::get('/admin/packages/tailored/edit/{id}', function () {
  * ************************** */
 
 Route::get('/admin/users', function () {
-
     $users = collect();
-
     $users->push(['id' => 1, 'name' => 'Ali Ahmed', 'city' => 'Cairo', 'day_of_subscribe' => '12/15/2020', 'package_name' => 'Package 2',
         'phone' => '+1 111 111111', 'service_status' => 'Not Started', 'completion_date' => '-', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
     $users->push(['id' => 2, 'name' => 'Dooooooby', 'city' => 'Giza', 'day_of_subscribe' => '12/16/2020', 'package_name' => 'Package 3',
         'phone' => '+1 111 111111', 'service_status' => 'Inprogress', 'completion_date' => '-', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
     $users->push(['id' => 3, 'name' => 'Mohamed Salah', 'city' => 'Alexandria', 'day_of_subscribe' => '12/14/2020', 'package_name' => 'Package 1',
         'phone' => '+1 111 111111', 'service_status' => 'Completed', 'completion_date' => '10/4/2020', 'first_delievery' => '11/30/2020', 'last_delievery' => '11/30/2020']);
-
     return view('admin.users.index', ['active' => 'users', 'users' => $users]);
 })->name('admin.users');
 

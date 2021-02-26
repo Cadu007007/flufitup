@@ -66,7 +66,7 @@
                         <input
                             class="dry-clean-input"
                             type="text"
-                            name="label"
+                            name="name"
                             id=""
                             placeholder="Label"
                             value=""

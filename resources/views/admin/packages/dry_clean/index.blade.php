@@ -4,8 +4,8 @@
 title="Dry Clean"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :items="{{$dry_clean_items}}"
-addformroute="/dummy"
-editformroute="/dummy"
-deleteformroute="{{ route('dummy') }}"
+addformroute="{{ route('admin.dry.clean.store') }}"
+editformroute="{{ route('admin.dry.clean.update', 'item_id') }}"
+deleteformroute="{{ route('admin.dry.clean.delete', 'item_id') }}"
 />
 @endsection

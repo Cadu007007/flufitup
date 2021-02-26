@@ -17,7 +17,7 @@
             <input
                 class="household-input"
                 type="text"
-                name="label"
+                name="name"
                 id=""
                 placeholder="Label"
                 value=""
@@ -49,6 +49,8 @@
                 :label="item.label"
                 :price="item.price"
                 :itemid="item.id"
+                :editformroute="editformroute"
+                :deleteformroute="deleteformroute"
                 :isdisabled="true"
                 :hiddenvalue="JSON.stringify(item)"
             />
@@ -71,7 +73,7 @@ export default {
             newItems: []
         };
     },
-    props: ["title", "date", "items",'addformroute', "editformroute"],
+    props: ["title", "date", "items",'addformroute', "editformroute","deleteformroute"],
     components: {
         HouseHoldItem
     },
