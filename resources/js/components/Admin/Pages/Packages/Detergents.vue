@@ -97,7 +97,7 @@
         </form>
         <div class="seperator"></div>
 
-        <p class="title" style="margin-top: 10px; font-weight: bold">
+        <p class="title" style="margin-top: 10px; font-weight: bold" v-if="loadedItems.length > 0">
             Added Types
         </p>
 

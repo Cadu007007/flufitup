@@ -8,18 +8,21 @@
         <p class="title" style="margin-top: 10px; font-weight: bold">
             Add New Type
         </p>
+        <!-- @submit="submitAddForm($event)" -->
         <form
-            action=""
             method="POST"
             class="add-form"
+            :action="addformroute"
+            enctype="multipart/form-data"
             @submit="submitAddForm($event)"
+            id="addForm"
         >
             <input type="hidden" :value="csrf" name="_token" />
 
             <div class="flex-column-start" style="margin-top: 10px;">
                 <select
-                    name="category_id"
-                    id=""
+                    :name="categoryid"
+                    id="categoryId"
                     class="select2"
                     style="width: 400px"
                 >
@@ -69,7 +72,7 @@
                             name="name"
                             id=""
                             placeholder="Label"
-                            value=""
+                            v-model="itemName"
                             required
                         />
                         <input
@@ -79,7 +82,7 @@
                             name="price"
                             id=""
                             placeholder="Price"
-                            value=""
+                            v-model="itemPrice"
                             required
                         />
 
@@ -94,17 +97,17 @@
         </form>
         <div class="seperator"></div>
 
-        <p class="title" style="margin-top: 10px; font-weight: bold">
+        <p class="title" style="margin-top: 10px; font-weight: bold" v-if="loadedItems.length > 0">
             Added Types
         </p>
 
         <div class="flex-column">
             <Detergents-Item
-                v-for="(item, index) in loadedItems"
-                :key="index"
+                v-for="item in loadedItems"
+                :key="item.id"
                 :categories="categories"
                 :name="item.name"
-                :types="item.types"
+                :types="item.detergents"
                 :itemid="item.id"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
@@ -130,7 +133,9 @@ export default {
             loadedItems: this.items,
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
-                .getAttribute("content")
+                .getAttribute("content"),
+            itemName: "",
+            itemPrice: ""
         };
     },
     props: [
@@ -140,7 +145,8 @@ export default {
         "categories",
         "addformroute",
         "editformroute",
-        "deleteformroute"
+        "deleteformroute",
+        "categoryid"
     ],
     components: {
         DetergentsItem,
@@ -155,7 +161,6 @@ export default {
             console.log("input: ", input);
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-
                 reader.onload = function(e) {
                     let imageContainer = $(input)
                         .parent()
@@ -187,15 +192,39 @@ export default {
             event.preventDefault();
             var formValues = $(".add-form").serialize();
             console.log("formValues: ", formValues);
-
-            $.ajax({
+            let uploadedImage = $(".image-file")[0].files[0];
+            var formDateObject = new FormData(event.target);
+            formDateObject.append("_token", this.csrf);
+            formDateObject.append("name", this.itemName);
+            formDateObject.append("price", this.itemPrice);
+            formDateObject.append(
+                "category_detergents_id",
+                $("#categoryId").val()
+            );
+            formDateObject.append("image", uploadedImage);
+            let loadedItems = this.loadedItems;
+            axios({
                 url: this.addformroute,
-                type: "POST",
-                data: formValues,
-                success: function(data) {
-                    console.log("data: ", data);
-                }
+                method: "POST",
+                data: formDateObject,
+                enctype: "multipart/form-data"
+                // processData: false, // Important!
+            }).then(function(response) {
+                let returnedObject = response.data.data;
+                console.log("returnedObject: ", returnedObject);
+                /* push data in the array */
+                /* get the selected category id */
+                let selectedCategory = $("#categoryId").val();
+                loadedItems
+                    .find(x => (x.id = selectedCategory))
+                    .detergents.push({
+                        id: returnedObject.id,
+                        name: returnedObject.name,
+                        price: returnedObject.price,
+                        img: returnedObject.image
+                    });
             });
+
         }
     }
 };

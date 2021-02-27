@@ -1,5 +1,5 @@
 <template>
-    <div class="DetergentsItem">
+    <div class="DetergentsItem"  v-if="loadedtypes">
         <div class="flex-column-start">
             <select
                 :name="categoryid"
@@ -17,9 +17,10 @@
                 >
             </select>
 
-            <p class="types-title" v-if="types.length">The Types</p>
+            <p class="types-title">The Types</p>
 
             <Detergents-Type-Item
+        
                 v-for="type in loadedtypes"
                 :key="type.id"
                 :label="type.name"
