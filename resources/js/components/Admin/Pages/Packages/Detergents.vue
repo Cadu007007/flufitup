@@ -8,18 +8,21 @@
         <p class="title" style="margin-top: 10px; font-weight: bold">
             Add New Type
         </p>
+        <!-- @submit="submitAddForm($event)" -->
         <form
-            action=""
             method="POST"
             class="add-form"
+            :action="addformroute"
+            enctype="multipart/form-data"
             @submit="submitAddForm($event)"
+            id="addForm"
         >
             <input type="hidden" :value="csrf" name="_token" />
 
             <div class="flex-column-start" style="margin-top: 10px;">
                 <select
-                    name="category_id"
-                    id=""
+                    :name="categoryid"
+                    id="categoryId"
                     class="select2"
                     style="width: 400px"
                 >
@@ -45,7 +48,6 @@
                             style="width: 102px;height: 102px;border: none"
                             src=""
                             alt=""
-                            name="image"
                         />
 
                         <div class="cam-button">
@@ -54,6 +56,7 @@
                                 class="image-file"
                                 type="file"
                                 style="position: absolute; opacity: 0"
+                                name="image"
                             />
                             <img
                                 class="cam-icon"
@@ -108,6 +111,7 @@
                 :itemid="item.id"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
+                :categoryid="categoryid"
             />
         </div>
 
@@ -139,7 +143,8 @@ export default {
         "categories",
         "addformroute",
         "editformroute",
-        "deleteformroute"
+        "deleteformroute",
+        "categoryid"
     ],
     components: {
         DetergentsItem,
@@ -186,11 +191,33 @@ export default {
             event.preventDefault();
             var formValues = $(".add-form").serialize();
             console.log("formValues: ", formValues);
+            let uploadedImage = $(".image-file")[0].files[0];
+
+            var formDateObject = new FormData(event.target);
+            formDateObject.append("_token", this.csrf);
+            formDateObject.append("name", "test");
+            formDateObject.append("price", "123");
+            formDateObject.append("category_detergents_id", 1);
+            formDateObject.append("image", uploadedImage);
+            // var formData = {
+            //     _token: this.csrf,
+            //     name: "test",
+            //     price: "531",
+            //     category_detergents_id: "1",
+            //     image: uploadedImage
+            // };
+
+            // var formData = new FormData();
+            // formData.append('_token', this.csrf)
+            // console.log("formData: ", formData);
 
             $.ajax({
                 url: this.addformroute,
                 type: "POST",
-                data: formValues,
+                data: formDateObject,
+
+                enctype: "multipart/form-data",
+                // processData: false, // Important!
                 success: function(data) {
                     console.log("data: ", data);
                 }

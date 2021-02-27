@@ -2,7 +2,7 @@
     <div class="DetergentsItem">
         <div class="flex-column-start">
             <select
-                name="category_id"
+                :name="categoryid"
                 id=""
                 class="select2"
                 disabled
@@ -51,7 +51,8 @@ export default {
         "types",
         "editformroute",
         "deleteformroute",
-        "itemid"
+        "itemid",
+        "categoryid"
     ],
 
     data() {

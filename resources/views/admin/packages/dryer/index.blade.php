@@ -5,8 +5,9 @@ title="Dryer Sheets"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :items="{{ $dryer_items }}"
 :categories="{{ $categories }}"
-addformroute="{{ route('admin.dryer.store') }}"
-editformroute="{{ route('admin.dryer.update', 'item_id') }}"
-deleteformroute="{{ route('admin.dryer.delete', 'item_id') }}"
+categoryid="category_dryer_id"
+addformroute="{{ route('admin.packages.dryer.store') }}"
+editformroute="{{ route('admin.packages.dryer.update', 'item_id') }}"
+deleteformroute="{{ route('admin.packages.dryer.delete', 'item_id') }}"
 />
 @endsection
