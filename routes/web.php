@@ -28,76 +28,89 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
-    Route::group(['prefix' => 'dry/clean', 'as' => 'dry.clean.'], function () {
-        Route::get('all', [DryCleanController::class, 'index'])->name('index');
-        Route::post('store', [DryCleanController::class, 'store'])->name('store');
-        Route::put('update/{dryClean}', [DryCleanController::class, 'update'])->name('update');
-        Route::delete('delete/{dryClean}', [DryCleanController::class, 'delete'])->name('delete');
+    // Route::post('store', [DetergentController::class, 'store'])->name('detergent.store');
+    // Route::post('update', [DetergentController::class, 'update'])->name('detergent.update');
+    // Route::post('delete', [DetergentController::class, 'delete'])->name('detergent.delete');
 
-    });
-    Route::group(['prefix' => 'household', 'as' => 'household.'], function () {
-        Route::get('all', [HouseholdController::class, 'index'])->name('index');
-        Route::post('store', [HouseholdController::class, 'store'])->name('store');
-        Route::put('update/{household}', [HouseholdController::class, 'update'])->name('update');
-        Route::delete('delete/{household}', [HouseholdController::class, 'delete'])->name('delete');
+    Route::group(['prefix' => 'packages', 'as' => 'packages.'], function () {
+        // Route::post('delete', [DetergentController::class, 'delete'])->name('detergents');
 
-    });
-    Route::group(['prefix' => 'category/detergent', 'as' => 'category.detergent.'], function () {
-        Route::get('all', [CategoryDetergentController::class, 'index'])->name('index');
-        Route::post('store', [CategoryDetergentController::class, 'store'])->name('store');
-        Route::put('update/{categoryDetergent}', [CategoryDetergentController::class, 'update'])->name('update');
-        Route::delete('delete/{categoryDetergent}', [CategoryDetergentController::class, 'delete'])->name('delete');
+        Route::group(['prefix' => 'dry/clean', 'as' => 'dry.clean.'], function () {
+            Route::get('all', [DryCleanController::class, 'index'])->name('index');
+            Route::post('store', [DryCleanController::class, 'store'])->name('store');
+            Route::put('update/{dryClean}', [DryCleanController::class, 'update'])->name('update');
+            Route::delete('delete/{dryClean}', [DryCleanController::class, 'delete'])->name('delete');
 
-    });
-    Route::group(['prefix' => 'category/fabric', 'as' => 'category.fabric.'], function () {
-        Route::get('all', [CategoryFabricController::class, 'index'])->name('index');
-        Route::post('store', [CategoryFabricController::class, 'store'])->name('store');
-        Route::put('update/{categoryFabric}', [CategoryFabricController::class, 'update'])->name('update');
-        Route::delete('delete/{categoryFabric}', [CategoryFabricController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'household', 'as' => 'household.'], function () {
+            Route::get('all', [HouseholdController::class, 'index'])->name('index');
+            Route::post('store', [HouseholdController::class, 'store'])->name('store');
+            Route::put('update/{household}', [HouseholdController::class, 'update'])->name('update');
+            Route::delete('delete/{household}', [HouseholdController::class, 'delete'])->name('delete');
 
-    });
-    Route::group(['prefix' => 'category/dryer', 'as' => 'category.dryer.'], function () {
-        Route::get('all', [CategoryDryerController::class, 'index'])->name('index');
-        Route::post('store', [CategoryDryerController::class, 'store'])->name('store');
-        Route::put('update/{categoryDryer}', [CategoryDryerController::class, 'update'])->name('update');
-        Route::delete('delete/{categoryDryer}', [CategoryDryerController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'category/detergent', 'as' => 'category.detergent.'], function () {
+            Route::get('all', [CategoryDetergentController::class, 'index'])->name('index');
+            Route::post('store', [CategoryDetergentController::class, 'store'])->name('store');
+            Route::put('update/{categoryDetergent}', [CategoryDetergentController::class, 'update'])->name('update');
+            Route::delete('delete/{categoryDetergent}', [CategoryDetergentController::class, 'delete'])->name('delete');
 
-    });
-    Route::group(['prefix' => 'category/scent', 'as' => 'category.scent.'], function () {
-        Route::get('all', [CategoryScentController::class, 'index'])->name('index');
-        Route::post('store', [CategoryScentController::class, 'store'])->name('store');
-        Route::put('update/{categoryScent}', [CategoryScentController::class, 'update'])->name('update');
-        Route::delete('delete/{categoryScent}', [CategoryScentController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'category/fabric', 'as' => 'category.fabric.'], function () {
+            Route::get('all', [CategoryFabricController::class, 'index'])->name('index');
+            Route::post('store', [CategoryFabricController::class, 'store'])->name('store');
+            Route::put('update/{categoryFabric}', [CategoryFabricController::class, 'update'])->name('update');
+            Route::delete('delete/{categoryFabric}', [CategoryFabricController::class, 'delete'])->name('delete');
 
-    });
-    Route::group(['prefix' => 'detergent', 'as' => 'detergent.'], function () {
-        Route::get('all', [DetergentController::class, 'index'])->name('index');
-        Route::post('store', [DetergentController::class, 'store'])->name('store');
-        Route::put('update/{detergent}', [DetergentController::class, 'update'])->name('update');
-        Route::delete('delete/{detergent}', [DetergentController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'category/dryer', 'as' => 'category.dryer.'], function () {
+            Route::get('all', [CategoryDryerController::class, 'index'])->name('index');
+            Route::post('store', [CategoryDryerController::class, 'store'])->name('store');
+            Route::put('update/{categoryDryer}', [CategoryDryerController::class, 'update'])->name('update');
+            Route::delete('delete/{categoryDryer}', [CategoryDryerController::class, 'delete'])->name('delete');
 
-    });
-    Route::group(['prefix' => 'fabric', 'as' => 'fabric.'], function () {
-        Route::get('all', [FabricController::class, 'index'])->name('index');
-        Route::post('store', [FabricController::class, 'store'])->name('store');
-        Route::put('update/{fabric}', [FabricController::class, 'update'])->name('update');
-        Route::delete('delete/{fabric}', [FabricController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'category/scent', 'as' => 'category.scent.'], function () {
+            Route::get('all', [CategoryScentController::class, 'index'])->name('index');
+            Route::post('store', [CategoryScentController::class, 'store'])->name('store');
+            Route::put('update/{categoryScent}', [CategoryScentController::class, 'update'])->name('update');
+            Route::delete('delete/{categoryScent}', [CategoryScentController::class, 'delete'])->name('delete');
 
-    });
-    Route::group(['prefix' => 'dryer', 'as' => 'dryer.'], function () {
-        Route::get('all', [DryerController::class, 'index'])->name('index');
-        Route::post('store', [DryerController::class, 'store'])->name('store');
-        Route::put('update/{dryer}', [DryerController::class, 'update'])->name('update');
-        Route::delete('delete/{dryer}', [DryerController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'detergents', 'as' => 'detergents.'], function () {
+            Route::get('/', [DetergentController::class, 'index'])->name('index');
+            Route::post('store', [DetergentController::class, 'store'])->name('store');
+            Route::put('update/{detergent}', [DetergentController::class, 'update'])->name('update');
+            Route::delete('delete/{detergent}', [DetergentController::class, 'delete'])->name('delete');
 
-    });
-    Route::group(['prefix' => 'scent', 'as' => 'scent.'], function () {
-        Route::get('all', [ScentController::class, 'index'])->name('index');
-        Route::post('store', [ScentController::class, 'store'])->name('store');
-        Route::put('update/{scent}', [ScentController::class, 'update'])->name('update');
-        Route::delete('delete/{scent}', [ScentController::class, 'delete'])->name('delete');
+            /* Detergents */
+            // Route::get('/admin/packages/detergents', function () {
 
+            // })->name('admin.packages.detergents');
+        });
+        Route::group(['prefix' => 'fabric', 'as' => 'fabric.'], function () {
+            Route::get('all', [FabricController::class, 'index'])->name('index');
+            Route::post('store', [FabricController::class, 'store'])->name('store');
+            Route::put('update/{fabric}', [FabricController::class, 'update'])->name('update');
+            Route::delete('delete/{fabric}', [FabricController::class, 'delete'])->name('delete');
+
+        });
+        Route::group(['prefix' => 'dryer', 'as' => 'dryer.'], function () {
+            Route::get('all', [DryerController::class, 'index'])->name('index');
+            Route::post('store', [DryerController::class, 'store'])->name('store');
+            Route::put('update/{dryer}', [DryerController::class, 'update'])->name('update');
+            Route::delete('delete/{dryer}', [DryerController::class, 'delete'])->name('delete');
+
+        });
+        Route::group(['prefix' => 'scent', 'as' => 'scent.'], function () {
+            Route::get('all', [ScentController::class, 'index'])->name('index');
+            Route::post('store', [ScentController::class, 'store'])->name('store');
+            Route::put('update/{scent}', [ScentController::class, 'update'])->name('update');
+            Route::delete('delete/{scent}', [ScentController::class, 'delete'])->name('delete');
+
+        });
     });
+
 });
 Route::get('/', function () {
     // dd(App\Models\User::all());
@@ -945,12 +958,11 @@ Route::get('/admin/packages', function () {
     return view('admin.packages.index', ['active' => 'packages', 'packages' => $packages]);
 })->name('admin.packages');
 
-
 /* Packages Categories */
 Route::get('/admin/packages/categories', function () {
     $categories = collect();
-    $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
-    $categories->push(['id' =>2,'name' => 'Category 2', 'type' => 'detergents']);
+    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' => 2, 'name' => 'Category 2', 'type' => 'detergents']);
     return view('admin.packages.categories.index', ['active' => 'categories', 'categories' => $categories]);
 })->name('admin.packages.categories');
 /* Create Package */
@@ -1022,23 +1034,6 @@ Route::get('/admin/packages/household_items', function () {
 })->name('admin.packages.household_items');
 /* XX Household items XX */
 
-/* Detergents */
-Route::get('/admin/packages/detergents', function () {
-    $detergents_items = collect();
-    $types1 = collect();
-    $types1->push(['id' => 1,"label" => "test1", "price" => "10", "img" => ""]);
-    $types1->push(['id' => 2,"label" => "test1", "price" => "10", "img" => ""]);
-    $types2 = collect();
-    $types2->push(['id' => 3,"label" => "test2", "price" => "10", "img" => ""]);
-    $detergents_items->push(['id' => 1, 'name' => 'Item 1', 'types' => $types1]);
-    $detergents_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
-
-    $categories = collect();
-    $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
-    $categories->push(['id' =>2,'name' => 'Category 2', 'type' => 'detergents']);
-
-    return view('admin.packages.detergents.index', ['active' => 'detergents', 'detergents_items' => $detergents_items,'categories'=> $categories]);
-})->name('admin.packages.detergents');
 /* XX Detergents XX */
 
 /* FABRIC */
@@ -1053,8 +1048,8 @@ Route::get('/admin/packages/fabric', function () {
     $fabric_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
     $categories = collect();
-    $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
-    $categories->push(['id' =>2,'name' => 'Category 2', 'type' => 'detergents']);
+    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' => 2, 'name' => 'Category 2', 'type' => 'detergents']);
 
     return view('admin.packages.fabric.index', ['active' => 'fabric', 'fabric_items' => $fabric_items, 'categories' => $categories]);
 })->name('admin.packages.fabric');
@@ -1072,11 +1067,10 @@ Route::get('/admin/packages/dryer', function () {
     $dryer_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
     $categories = collect();
-    $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
-    $categories->push(['id' =>2,'name' => 'Category 2', 'type' => 'detergents']);
+    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' => 2, 'name' => 'Category 2', 'type' => 'detergents']);
 
-
-    return view('admin.packages.dryer.index', ['active' => 'dryer', 'dryer_items' => $dryer_items,'categories' => $categories]);
+    return view('admin.packages.dryer.index', ['active' => 'dryer', 'dryer_items' => $dryer_items, 'categories' => $categories]);
 })->name('admin.packages.dryer');
 /* XX DRYER XX */
 
@@ -1092,10 +1086,10 @@ Route::get('/admin/packages/scent', function () {
     $scent_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
     $categories = collect();
-    $categories->push(['id' =>1,'name' => 'Category 1', 'type' => 'dryer_sheet']);
-    $categories->push(['id' =>2,'name' => 'Category 2', 'type' => 'detergents']);
+    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' => 2, 'name' => 'Category 2', 'type' => 'detergents']);
 
-    return view('admin.packages.scent.index', ['active' => 'scent', 'scent_items' => $scent_items,'categories' => $categories]);
+    return view('admin.packages.scent.index', ['active' => 'scent', 'scent_items' => $scent_items, 'categories' => $categories]);
 })->name('admin.packages.scent');
 /* XX Scent Booster XX */
 
