@@ -1,5 +1,5 @@
 <template>
-    <div class="DetergentsItem"  v-if="loadedtypes">
+    <div class="DetergentsItem" v-if="loadedtypes">
         <div class="flex-column-start">
             <select
                 :name="categoryid"
@@ -20,14 +20,13 @@
             <p class="types-title">The Types</p>
 
             <Detergents-Type-Item
-        
                 v-for="type in loadedtypes"
                 :key="type.id"
                 :label="type.name"
                 :price="type.price"
                 :categoryid="categoryid"
                 :categoryidvalue="getCategoryIdValue(type)"
-                :img="type.img"
+                :img="type.image"
                 :isdisabled="true"
                 :deleteid="type.id"
                 :itemid="type.id"
@@ -60,9 +59,13 @@ export default {
 
     data() {
         return {
-            loadedtypes: this.types,
-            itemName: this.name,
+            itemName: this.name
         };
+    },
+    computed: {
+        loadedtypes() {
+            return this.types;
+        }
     },
     components: {
         DetergentsTypeItem
@@ -74,9 +77,11 @@ export default {
         deleteItem(index) {
             this.loadedtypes.splice(index, 1);
         },
-        getCategoryIdValue(type){
-            if (type.category_detergents_id > 0) return type.category_detergents_id
-            else if (type.category_fabric_id > 0) return type.category_fabric_id
+        getCategoryIdValue(type) {
+            if (type.category_detergents_id > 0)
+                return type.category_detergents_id;
+            else if (type.category_fabric_id > 0)
+                return type.category_fabric_id;
         }
     }
 };

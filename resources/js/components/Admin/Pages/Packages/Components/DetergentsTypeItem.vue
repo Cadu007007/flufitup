@@ -11,6 +11,7 @@
             <div class="row">
                 <div class="image-container">
                     <span
+                        v-if="img"
                         class="remove-image"
                         :style="
                             disablestate
@@ -24,7 +25,7 @@
                     <img
                         class="uploaded-image"
                         style="width: 102px;height: 102px;border: none"
-                        :src="img"
+                        :src="'/storage/' + img"
                         alt=""
                     />
 
@@ -109,8 +110,14 @@ export default {
             disablestate: this.isdisabled,
             loadedLabel: this.label,
             loadedPrice: this.price,
-            oldName: this.label
+            oldName: this.label,
+            dataImage: ""
         };
+    },
+    computed: {
+        loadedImage() {
+            return "/storage/" + this.img;
+        }
     },
     props: [
         "label",
@@ -172,6 +179,7 @@ export default {
             console.log("event target: ", event.target);
             let editRoute = this.editformroute.replace("item_id", this.itemid);
             let uploadedImage = $(event.target).find(".image-file")[0].files[0];
+            console.log("uploadedImage: ", uploadedImage);
             let csrf = this.csrf;
             let itemid = this.itemid;
             let loadedLabel = this.loadedLabel;
@@ -190,7 +198,7 @@ export default {
                     category_dryers_id: categoryidvalue,
                     category_fabrics_id: categoryidvalue,
                     category_scents_id: categoryidvalue,
-                    image: uploadedImage
+                    image: $(event.target).find(".image-file")[0].files[0]
                 },
                 enctype: "multipart/form-data"
                 // processData: false, // Important!
