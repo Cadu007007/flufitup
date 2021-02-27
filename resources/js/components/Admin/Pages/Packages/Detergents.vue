@@ -72,7 +72,7 @@
                             name="name"
                             id=""
                             placeholder="Label"
-                            value=""
+                            v-model="itemName"
                             required
                         />
                         <input
@@ -82,7 +82,7 @@
                             name="price"
                             id=""
                             placeholder="Price"
-                            value=""
+                            v-model="itemPrice"
                             required
                         />
 
@@ -103,11 +103,11 @@
 
         <div class="flex-column">
             <Detergents-Item
-                v-for="(item, index) in loadedItems"
-                :key="index"
+                v-for="item in loadedItems"
+                :key="item.id"
                 :categories="categories"
                 :name="item.name"
-                :types="item.types"
+                :types="item.detergents"
                 :itemid="item.id"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
@@ -133,7 +133,9 @@ export default {
             loadedItems: this.items,
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
-                .getAttribute("content")
+                .getAttribute("content"),
+            itemName: "",
+            itemPrice: ""
         };
     },
     props: [
@@ -159,7 +161,6 @@ export default {
             console.log("input: ", input);
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-
                 reader.onload = function(e) {
                     let imageContainer = $(input)
                         .parent()
@@ -192,35 +193,35 @@ export default {
             var formValues = $(".add-form").serialize();
             console.log("formValues: ", formValues);
             let uploadedImage = $(".image-file")[0].files[0];
-
             var formDateObject = new FormData(event.target);
             formDateObject.append("_token", this.csrf);
-            formDateObject.append("name", "test");
-            formDateObject.append("price", "123");
-            formDateObject.append("category_detergents_id", 1);
+            formDateObject.append("name", this.itemName);
+            formDateObject.append("price", this.itemPrice);
+            formDateObject.append(
+                "category_detergents_id",
+                $("#categoryId").val()
+            );
             formDateObject.append("image", uploadedImage);
-            // var formData = {
-            //     _token: this.csrf,
-            //     name: "test",
-            //     price: "531",
-            //     category_detergents_id: "1",
-            //     image: uploadedImage
-            // };
 
-            // var formData = new FormData();
-            // formData.append('_token', this.csrf)
-            // console.log("formData: ", formData);
-
-            $.ajax({
+            let loadedItems = this.loadedItems;
+            axios({
                 url: this.addformroute,
-                type: "POST",
+                method: "POST",
                 data: formDateObject,
-
-                enctype: "multipart/form-data",
+                enctype: "multipart/form-data"
                 // processData: false, // Important!
-                success: function(data) {
-                    console.log("data: ", data);
-                }
+            }).then(function(response) {
+                console.log("data: ", response.data);
+
+
+                /* push data in the array */
+                /* get the selected category id */
+                let selectedCategory = $("#categoryId").val();
+                let categoryTypes = loadedItems.find(
+                    x => (x.id = selectedCategory)
+                ).detergents;
+                
+                categoryTypes.push({})
             });
         }
     }

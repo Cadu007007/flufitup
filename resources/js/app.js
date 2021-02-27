@@ -7,6 +7,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 Vue.use(VueCarousel);
 
+import axios from 'axios'
+
 import storeData from "./store/index"
 
 const store = new Vuex.Store(

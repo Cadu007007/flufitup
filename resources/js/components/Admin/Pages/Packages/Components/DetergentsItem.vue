@@ -22,7 +22,7 @@
             <Detergents-Type-Item
                 v-for="(type, index) in loadedtypes"
                 :key="index"
-                :label="type.label"
+                :label="type.name"
                 :price="type.price"
                 :img="type.img"
                 :isdisabled="true"
