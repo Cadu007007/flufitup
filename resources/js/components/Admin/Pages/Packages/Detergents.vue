@@ -202,7 +202,6 @@ export default {
                 $("#categoryId").val()
             );
             formDateObject.append("image", uploadedImage);
-
             let loadedItems = this.loadedItems;
             axios({
                 url: this.addformroute,
@@ -211,18 +210,21 @@ export default {
                 enctype: "multipart/form-data"
                 // processData: false, // Important!
             }).then(function(response) {
-                console.log("data: ", response.data);
-
-
+                let returnedObject = response.data.data;
+                console.log("returnedObject: ", returnedObject);
                 /* push data in the array */
                 /* get the selected category id */
                 let selectedCategory = $("#categoryId").val();
-                let categoryTypes = loadedItems.find(
-                    x => (x.id = selectedCategory)
-                ).detergents;
-                
-                categoryTypes.push({})
+                loadedItems
+                    .find(x => (x.id = selectedCategory))
+                    .detergents.push({
+                        id: returnedObject.id,
+                        name: returnedObject.name,
+                        price: returnedObject.price,
+                        img: returnedObject.image
+                    });
             });
+
         }
     }
 };

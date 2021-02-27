@@ -20,10 +20,12 @@
             <p class="types-title" v-if="types.length">The Types</p>
 
             <Detergents-Type-Item
-                v-for="(type, index) in loadedtypes"
-                :key="index"
+                v-for="type in loadedtypes"
+                :key="type.id"
                 :label="type.name"
                 :price="type.price"
+                :categoryid="categoryid"
+                :categoryidvalue="getCategoryIdValue(type)"
                 :img="type.img"
                 :isdisabled="true"
                 :deleteid="type.id"
@@ -58,7 +60,7 @@ export default {
     data() {
         return {
             loadedtypes: this.types,
-            itemName: this.name
+            itemName: this.name,
         };
     },
     components: {
@@ -70,6 +72,10 @@ export default {
         },
         deleteItem(index) {
             this.loadedtypes.splice(index, 1);
+        },
+        getCategoryIdValue(type){
+            if (type.category_detergents_id > 0) return type.category_detergents_id
+            else if (type.category_fabric_id > 0) return type.category_fabric_id
         }
     }
 };

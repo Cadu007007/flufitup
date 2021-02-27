@@ -1,10 +1,10 @@
 <template>
     <div class="DetergentsTypeItem">
         <form
-            action=""
             class="edit-form"
             method="POST"
             @submit="submitEditForm($event)"
+            id="editForm"
         >
             <input type="hidden" :value="csrf" name="_token" />
 
@@ -26,7 +26,6 @@
                         style="width: 102px;height: 102px;border: none"
                         :src="img"
                         alt=""
-                        
                     />
 
                     <div class="cam-button">
@@ -42,7 +41,6 @@
                             class="cam-icon"
                             src="/images/admin/icons/camera-icon.svg"
                             alt=""
-                            
                         />
                     </div>
                 </div>
@@ -54,7 +52,7 @@
                         name="name"
                         id=""
                         placeholder="Label"
-                        :value="label"
+                        v-model="loadedLabel"
                     />
                     <input
                         :disabled="disablestate"
@@ -64,7 +62,7 @@
                         name="price"
                         id=""
                         placeholder="Price"
-                        :value="price"
+                        v-model="loadedPrice"
                     />
 
                     <span class="delete">
@@ -90,7 +88,7 @@
                         <button
                             class="cancel"
                             type="button"
-                            @click="disablestate = true"
+                            @click="cancelPressed"
                         >
                             Cancel
                         </button>
@@ -108,7 +106,10 @@ export default {
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute("content"),
-            disablestate: this.isdisabled
+            disablestate: this.isdisabled,
+            loadedLabel: this.label,
+            loadedPrice: this.price,
+            oldName: this.label
         };
     },
     props: [
@@ -120,11 +121,17 @@ export default {
         "editformroute",
         "deleteformroute",
         "deleteid",
-        "itemid"
+        "itemid",
+        "categoryid",
+        "categoryidvalue"
     ],
     methods: {
         editPressed() {
             this.disablestate = false;
+        },
+        cancelPressed() {
+            this.disablestate = true;
+            this.loadedLabel = this.oldName;
         },
         readURL(event) {
             let input = event.target;
@@ -162,18 +169,42 @@ export default {
         },
         submitEditForm(event) {
             event.preventDefault();
-            var formValues = $(event.target).serialize();
-            console.log("formValues: ", formValues);
-
+            console.log("event target: ", event.target);
             let editRoute = this.editformroute.replace("item_id", this.itemid);
-            $.ajax({
+            let uploadedImage = $(event.target).find(".image-file")[0].files[0];
+            let csrf = this.csrf;
+            let itemid = this.itemid;
+            let loadedLabel = this.loadedLabel;
+            let loadedPrice = this.loadedPrice;
+            let categoryidvalue = this.categoryidvalue;
+            let disableState;
+            axios({
                 url: editRoute,
-                type: "PUT",
-                data: formValues,
-                success: function(data) {
-                    console.log("data: ", data);
+                method: "PUT",
+                data: {
+                    _token: csrf,
+                    id: itemid,
+                    name: loadedLabel,
+                    price: loadedPrice,
+                    category_detergents_id: categoryidvalue,
+                    category_dryers_id: categoryidvalue,
+                    category_fabrics_id: categoryidvalue,
+                    category_scents_id: categoryidvalue,
+                    image: uploadedImage
+                },
+                enctype: "multipart/form-data"
+                // processData: false, // Important!
+            }).then(function(response) {
+                let returnedObject = response.data.data;
+                console.log("returnedObject: ", returnedObject);
+                if (response.data.success == true) {
+                    disableState = true;
+                    console.log("disableState: ", disableState);
                 }
             });
+            setTimeout(() => {
+                this.disablestate = disableState;
+            }, 500);
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
@@ -187,12 +218,16 @@ export default {
 
                 console.log("deleteRout: ", deleteRout);
 
-                $.ajax({
+                axios({
                     url: deleteRout,
-                    type: "DELETE",
-                    data: formValues,
-                    success: function(data) {
-                        console.log("data: ", data);
+                    method: "DELETE",
+                    data: formValues
+                }).then(function(response) {
+                    if (response.data.success) {
+                        $(event.target)
+                            .parent()
+                            .closest(".DetergentsTypeItem")
+                            .remove();
                     }
                 });
             }
