@@ -23,7 +23,7 @@
                 routetopackages="{{ route('admin.packages') }}"
                 routetodryclean="{{ route('admin.packages.dry_clean') }}"
                 routetohouseholditems="{{ route('admin.packages.household_items') }}"
-                routetodetergents="{{ route('admin.packages.detergents') }}"
+                routetodetergents="{{ route('admin.packages.detergents.index') }}"
                 routetofabricsoftener="{{ route('admin.packages.fabric') }}"
                 routetodryersheets="{{ route('admin.packages.dryer') }}"
                 routetoscentbooster="{{ route('admin.packages.scent') }}"

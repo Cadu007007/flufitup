@@ -26,7 +26,7 @@
                         style="width: 102px;height: 102px;border: none"
                         :src="img"
                         alt=""
-                        name="image"
+                        
                     />
 
                     <div class="cam-button">
@@ -36,11 +36,13 @@
                             type="file"
                             style="position: absolute; opacity: 0"
                             :disabled="disablestate"
+                            name="image"
                         />
                         <img
                             class="cam-icon"
                             src="/images/admin/icons/camera-icon.svg"
                             alt=""
+                            
                         />
                     </div>
                 </div>

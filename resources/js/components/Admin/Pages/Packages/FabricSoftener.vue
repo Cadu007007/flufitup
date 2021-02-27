@@ -18,7 +18,7 @@
 
             <div class="flex-column-start" style="margin-top: 10px;">
                 <select
-                    name="category_id"
+                    :name="categoryid"
                     id=""
                     class="select2"
                     style="width: 400px"
@@ -45,7 +45,6 @@
                             style="width: 102px;height: 102px;border: none"
                             src=""
                             alt=""
-                            name="image"
                         />
 
                         <div class="cam-button">
@@ -54,6 +53,7 @@
                                 class="image-file"
                                 type="file"
                                 style="position: absolute; opacity: 0"
+                                name="image"
                             />
                             <img
                                 class="cam-icon"
@@ -108,6 +108,7 @@
                 :itemid="item.id"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
+                :categoryid="categoryid"
             />
         </div>
 
@@ -139,7 +140,8 @@ export default {
         "categories",
         "addformroute",
         "editformroute",
-        "deleteformroute"
+        "deleteformroute",
+        "categoryid"
     ],
     components: {
         DetergentsItem,
