@@ -20,7 +20,7 @@
                             <input
                                 type="text"
                                 class="category-name-input"
-                                name="category_name"
+                                name="name"
                                 placeholder="Category Name"
                                 required
                             />
@@ -32,19 +32,15 @@
                             <select
                                 name="type"
                                 id=""
-                                class="select2"
+                                class="select2 addCategoryType"
                                 style="width: 400px"
                                 required
                             >
                                 <option :value="null">Choose a type</option>
                                 <option value="detergents">Detergents</option>
-                                <option value="fabric_softener"
-                                    >Fabric Softener</option
-                                >
-                                <option value="dryer_sheet">Dryer Sheet</option>
-                                <option value="scent_booster"
-                                    >Scent Booster</option
-                                >
+                                <option value="fabric">Fabric Softener</option>
+                                <option value="dryer">Dryer Sheet</option>
+                                <option value="scent">Scent Booster</option>
                             </select>
                         </div>
                     </div>
@@ -72,7 +68,7 @@
                             <input
                                 type="text"
                                 class="category-name-input"
-                                name="category_name"
+                                name="name"
                                 placeholder="Category Name"
                                 v-model="editCategoryName"
                             />
@@ -86,19 +82,15 @@
                             <p class="title">Category For:</p>
 
                             <select
-                                name="category_type"
+                                name="type"
                                 id=""
-                                class="select2 edit-select2"
+                                class="select2 edit-select2 editCategoryType"
                                 style="width: 400px"
                             >
                                 <option value="detergents">Detergents</option>
-                                <option value="fabric_softener"
-                                    >Fabric Softener</option
-                                >
-                                <option value="dryer_sheet">Dryer Sheet</option>
-                                <option value="scent_booster"
-                                    >Scent Booster</option
-                                >
+                                <option value="fabric">Fabric Softener</option>
+                                <option value="dryer">Dryer Sheet</option>
+                                <option value="scent">Scent Booster</option>
                             </select>
                         </div>
                     </div>
@@ -118,13 +110,13 @@
             <div class="seperator"></div>
 
             <div class="page-header">
-                <p class="title" style="margin: 5px 0">Added Categories</p>
+                <p class="title" style="margin: 5px 0" v-if="loadedCategories.length >0">Added Categories</p>
             </div>
 
             <div class="categories-container">
                 <div
                     class="category-container"
-                    v-for="category in categories"
+                    v-for="category in loadedCategories"
                     :key="category.id"
                 >
                     <p class="category-title">
@@ -152,7 +144,14 @@
                             <input
                                 type="hidden"
                                 name="id"
+                                class="categoryId"
                                 :value="category.id"
+                            />
+                            <input
+                                type="hidden"
+                                name="type"
+                                class="categoryType"
+                                :value="category.type"
                             />
                             <button
                                 class="button delete"
@@ -171,11 +170,23 @@
 
 <script>
 export default {
+    mounted() {
+        setTimeout(() => {
+            $(".addCategoryType").change(function(event) {
+                this.selectedType = $(event.target)
+                    .val()
+                    .trim();
+                //console.log("selectedType: ", this.selectedType);
+            });
+        }, 1000);
+    },
     data() {
         return {
             editCategoryName: "",
             editCategoryId: 0,
             editCategoryType: "",
+            selectedType: "",
+            loadedCategories: this.categories,
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute("content")
@@ -186,13 +197,22 @@ export default {
         "title",
         "date",
         "categories",
-        "addformroute",
-        "editformroute",
-        "deleteformroute"
+        "addformroutedetergents",
+        "editformroutedetergents",
+        "deleteformroutedetergents",
+        "addformroutefabric",
+        "editformroutefabric",
+        "deleteformroutefabric",
+        "addformroutedryer",
+        "editformroutedryer",
+        "deleteformroutedryer",
+        "addformroutescent",
+        "editformroutescent",
+        "deleteformroutescent"
     ],
     methods: {
         editCategory(CategoryId) {
-            let selectedCategory = this.categories.find(
+            let selectedCategory = this.loadedCategories.find(
                 x => x.id == CategoryId
             );
             this.editCategoryName = selectedCategory.name;
@@ -212,42 +232,171 @@ export default {
         submitAddForm(event) {
             event.preventDefault();
             var formValues = $(".add-form").serialize();
-            console.log("formValues: ", formValues);
-            $.ajax({
-                url: this.addformroute,
-                type: "POST",
-                data: formValues,
-                success: function(data) {
-                    console.log("data: ", data);
+            // //console.log("formValues: ", formValues);
+            let selectedURL;
+            let detergentsURL = this.addformroutedetergents;
+            let fabricURL = this.addformroutefabric;
+            let dryerURL = this.addformroutedryer;
+            let scentURL = this.addformroutescent;
+
+            let selectedType = $(".addCategoryType").val();
+            if (selectedType == "detergents") {
+                selectedURL = detergentsURL;
+                //console.log("detergents");
+            } else if (selectedType == "fabric") {
+                selectedURL = fabricURL;
+                //console.log("fabric");
+            } else if (selectedType == "dryer") {
+                selectedURL = dryerURL;
+                //console.log("dryer");
+            } else if (selectedType == "scent") {
+                selectedURL = scentURL;
+                //console.log("scent");
+            } else {
+                //console.log("Not In IF");
+                //console.log(selectedType);
+            }
+            //console.log("selectedURL: ", selectedURL);
+
+            axios({
+                url: selectedURL,
+                method: "POST",
+                data: formValues
+            }).then(response => {
+                //console.log("data: ", response.data);
+                if (response.data.success) {
+                    this.loadedCategories.push({
+                        id: response.data.data[0].id,
+                        name: response.data.data[0].name,
+                        type: selectedType
+                    });
+                    //console.log("categories: ", this.loadedCategories);
                 }
             });
         },
         submitEditForm(event) {
             event.preventDefault();
             var formValues = $(event.target).serialize();
-            console.log("formValues: ", formValues);
-            $.ajax({
-                url: this.editformroute,
-                type: "PUT",
-                data: formValues,
-                success: function(data) {
-                    console.log("data: ", data);
+            //console.log("formValues: ", formValues);
+            let selectedURL;
+            let detergentsURL = this.editformroutedetergents.replace(
+                "category_id",
+                this.editCategoryId
+            );
+            let fabricURL = this.editformroutefabric.replace(
+                "category_id",
+                this.editCategoryId
+            );
+            let dryerURL = this.editformroutedryer.replace(
+                "category_id",
+                this.editCategoryId
+            );
+            let scentURL = this.editformroutescent.replace(
+                "category_id",
+                this.editCategoryId
+            );
+
+            let selectedType = $(event.target)
+                .find(".editCategoryType")
+                .val();
+            if (selectedType == "detergents") {
+                selectedURL = detergentsURL;
+                //console.log("detergents");
+            } else if (selectedType == "fabric") {
+                selectedURL = fabricURL;
+                //console.log("fabric");
+            } else if (selectedType == "dryer") {
+                selectedURL = dryerURL;
+                //console.log("dryer");
+            } else if (selectedType == "scent") {
+                selectedURL = scentURL;
+                //console.log("scent");
+            } else {
+                //console.log("Not In IF");
+                //console.log(selectedType);
+            }
+            //console.log("selectedURL: ", selectedURL);
+
+            axios({
+                url: selectedURL,
+                method: "PUT",
+                data: formValues
+            }).then(response => {
+                //console.log("data: ", response.data);
+                if (response.data.success) {
+                    //console.log("EDIT SUCCESS");
+                    this.loadedCategories.find(
+                        x => x.id == response.data.data[0].id
+                    ).name = response.data.data[0].name;
+                    this.loadedCategories.find(
+                        x => x.id == response.data.data[0].id
+                    ).type = selectedType;
+
+                    //console.log("categories: ", this.loadedCategories);
                 }
             });
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
-            console.log("deleteForm: ", deleteForm);
+            //console.log("deleteForm: ", deleteForm);
+
+            let categoryId = $(deleteForm)
+                .find(".categoryId")
+                .val();
             if (confirm("Are You Sure ?")) {
                 var formValues = $(deleteForm).serialize();
-                console.log("formValues: ", formValues);
+                //console.log("formValues: ", formValues);
+                let selectedURL;
+                let detergentsURL = this.deleteformroutedetergents.replace(
+                    "category_id",
+                    categoryId
+                );
+                let fabricURL = this.deleteformroutefabric.replace(
+                    "category_id",
+                    categoryId
+                );
+                let dryerURL = this.deleteformroutedryer.replace(
+                    "category_id",
+                    categoryId
+                );
+                let scentURL = this.deleteformroutescent.replace(
+                    "category_id",
+                    categoryId
+                );
 
-                $.ajax({
-                    url: this.deleteformroute,
-                    type: "DELETE",
-                    data: formValues,
-                    success: function(data) {
-                        console.log("data: ", data);
+                let selectedType = $(deleteForm)
+                    .find(".categoryType")
+                    .val();
+                if (selectedType == "detergents") {
+                    selectedURL = detergentsURL;
+                    //console.log("detergents");
+                } else if (selectedType == "fabric") {
+                    selectedURL = fabricURL;
+                    //console.log("fabric");
+                } else if (selectedType == "dryer") {
+                    selectedURL = dryerURL;
+                    //console.log("dryer");
+                } else if (selectedType == "scent") {
+                    selectedURL = scentURL;
+                    //console.log("scent");
+                } else {
+                    //console.log("Not In IF");
+                    //console.log(selectedType);
+                }
+                //console.log("selectedURL: ", selectedURL);
+
+                axios({
+                    url: selectedURL,
+                    method: "DELETE",
+                    data: formValues
+                }).then(response => {
+                    //console.log("data: ", response.data);
+                    if (response.data.success) {
+                        //console.log("DELETE SUCCESS");
+                    //console.log("List: ", this.loadedCategories);
+                        let filteredCategories = this.loadedCategories.filter(x => x.id != categoryId);
+                    //console.log("filteredCategories: ", filteredCategories);
+                    this.loadedCategories= filteredCategories
                     }
                 });
             }

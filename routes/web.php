@@ -961,8 +961,6 @@ Route::get('/admin/packages', function () {
 /* Packages Categories */
 Route::get('/admin/packages/categories', function () {
     $categories = collect();
-    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer_sheet']);
-    $categories->push(['id' => 2, 'name' => 'Category 2', 'type' => 'detergents']);
     return view('admin.packages.categories.index', ['active' => 'categories', 'categories' => $categories]);
 })->name('admin.packages.categories');
 /* Create Package */
@@ -1048,7 +1046,7 @@ Route::get('/admin/packages/fabric', function () {
     $fabric_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
     $categories = collect();
-    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer']);
     $categories->push(['id' => 2, 'name' => 'Category 2', 'type' => 'detergents']);
 
     return view('admin.packages.fabric.index', ['active' => 'fabric', 'fabric_items' => $fabric_items, 'categories' => $categories]);
@@ -1067,7 +1065,7 @@ Route::get('/admin/packages/dryer', function () {
     $dryer_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
     $categories = collect();
-    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer']);
     $categories->push(['id' => 2, 'name' => 'Category 2', 'type' => 'detergents']);
 
     return view('admin.packages.dryer.index', ['active' => 'dryer', 'dryer_items' => $dryer_items, 'categories' => $categories]);
@@ -1086,7 +1084,7 @@ Route::get('/admin/packages/scent', function () {
     $scent_items->push(['id' => 2, 'name' => 'Item 2', 'types' => $types2]);
 
     $categories = collect();
-    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer_sheet']);
+    $categories->push(['id' => 1, 'name' => 'Category 1', 'type' => 'dryer']);
     $categories->push(['id' => 2, 'name' => 'Category 2', 'type' => 'detergents']);
 
     return view('admin.packages.scent.index', ['active' => 'scent', 'scent_items' => $scent_items, 'categories' => $categories]);
