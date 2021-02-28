@@ -21,8 +21,8 @@ class CategoryDetergentController extends Controller
         if ($validate->fails()) {
             return response()->json(['errors' => $validate->errors()]);
         }
-        CategoryDetergent::create(['name' => $request->name]);
-        return response()->json(['success' => true, 'data' => CategoryDetergent::all()]);
+        $category = CategoryDetergent::create(['name' => $request->name]);
+        return response()->json(['success' => true, 'data' => category]);
 
     }
     public function update(Request $request, CategoryDetergent $categoryDetergent)
@@ -35,11 +35,11 @@ class CategoryDetergentController extends Controller
 
         }
         $categoryDetergent->update(['name' => $request->name]);
-        return response()->json(['success' => true, 'data' => CategoryDetergent::all()]);
+        return response()->json(['success' => true, 'data' => $categoryDetergent]);
     }
     public function delete(CategoryDetergent $categoryDetergent)
     {
         $categoryDetergent->delete();
-        return response()->json(['success' => true, 'data' => CategoryDetergent::all()]);
+        return response()->json(['success' => true, 'data' => $categoryDetergent]);
     }
 }

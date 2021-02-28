@@ -21,8 +21,8 @@ class CategoryDryerController extends Controller
         if ($validate->fails()) {
             return response()->json(['errors' => $validate->errors()]);
         }
-        CategoryDryer::create(['name' => $request->name]);
-        return response()->json(['success' => true, 'data' => CategoryDryer::all()]);
+        $categoryDryer = CategoryDryer::create(['name' => $request->name]);
+        return response()->json(['success' => true, 'data' => $categoryDryer]);
 
     }
     public function update(Request $request, CategoryDryer $categoryDryer)
@@ -35,11 +35,11 @@ class CategoryDryerController extends Controller
 
         }
         $categoryDryer->update(['name' => $request->name]);
-        return response()->json(['success' => true, 'data' => CategoryDryer::all()]);
+        return response()->json(['success' => true, 'data' => $categoryDryer]);
     }
     public function delete(CategoryDryer $categoryDryer)
     {
         $categoryDryer->delete();
-        return response()->json(['success' => true, 'data' => CategoryDryer::all()]);
+        return response()->json(['success' => true]);
     }
 }

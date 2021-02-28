@@ -31,7 +31,8 @@ class HouseholdController extends Controller
      **/
     public function index()
     {
-        return response()->json(['data' => $this->repo->index()]);
+        return view('admin.packages.household_items.index', ['active' => 'household_items', 'household_items' => $this->repo->index()]);
+        // return response()->json(['data' => $this->repo->index()]);
     }
     /**
      * calling repo interface on store method
@@ -45,8 +46,8 @@ class HouseholdController extends Controller
      **/
     public function store(HouseholdRequest $request)
     {
-        $this->repo->store($request->validated());
-        return response()->json(['success' => true, $this->repo->index()]);
+        $household = $this->repo->store($request->validated());
+        return response()->json(['success' => true, 'data' => $household]);
     }
     /**
      * calling repo update
@@ -64,7 +65,7 @@ class HouseholdController extends Controller
 
         $this->repo->update($request->validated(), $household);
         // return $this->repo->update($request->validated(), $household);
-        return response()->json(['success' => true, $this->repo->index()]);
+        return response()->json(['success' => true, 'data' => $household]);
     }
     /**
      * calling repo delete method
@@ -79,6 +80,6 @@ class HouseholdController extends Controller
     public function delete(Household $household)
     {
         $this->repo->delete($household);
-        return response()->json(['success' => true, $this->repo->index()]);
+        return response()->json(['success' => true]);
     }
 }

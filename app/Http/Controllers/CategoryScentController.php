@@ -21,8 +21,8 @@ class CategoryScentController extends Controller
         if ($validate->fails()) {
             return response()->json(['errors' => $validate->errors()]);
         }
-        CategoryScent::create(['name' => $request->name]);
-        return response()->json(['success' => true, 'data' => CategoryScent::all()]);
+        $categoryScent = CategoryScent::create(['name' => $request->name]);
+        return response()->json(['success' => true, 'data' => $categoryScent]);
 
     }
     public function update(Request $request, CategoryScent $categoryScent)
@@ -35,11 +35,11 @@ class CategoryScentController extends Controller
 
         }
         $categoryScent->update(['name' => $request->name]);
-        return response()->json(['success' => true, 'data' => CategoryScent::all()]);
+        return response()->json(['success' => true, 'data' => $categoryScent]);
     }
     public function delete(CategoryScent $categoryScent)
     {
         $categoryScent->delete();
-        return response()->json(['success' => true, 'data' => CategoryScent::all()]);
+        return response()->json(['success' => true]);
     }
 }

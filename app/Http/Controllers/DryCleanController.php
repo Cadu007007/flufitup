@@ -30,7 +30,9 @@ class DryCleanController extends Controller
      **/
     public function index()
     {
-        return response()->json(['data' => $this->repo->index()]);
+
+        return view('admin.packages.dry_clean.index', ['active' => 'dry_clean', 'dry_clean_items' => $this->repo->index()]);
+        // return response()->json(['data' => $this->repo->index()]);
     }
     /**
      * calling repo interface on store method
@@ -44,8 +46,8 @@ class DryCleanController extends Controller
      **/
     public function store(DryCleanRequest $request)
     {
-        $this->repo->store($request->validated());
-        return response()->json(['success' => true, 'data' => $this->repo->index()]);
+        $dryClean = $this->repo->store($request->validated());
+        return response()->json(['success' => true, 'data' => $dryClean]);
     }
     /**
      * calling repo update
@@ -61,7 +63,7 @@ class DryCleanController extends Controller
     public function update(DryCleanRequest $request, DryClean $dryClean)
     {
         $this->repo->update($request->validated(), $dryClean);
-        return response()->json(['success' => true, 'data' => $this->repo->index()]);
+        return response()->json(['success' => true, 'data' => $dryClean]);
     }
     /**
      * calling repo delete method
