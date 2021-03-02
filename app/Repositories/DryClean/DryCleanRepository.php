@@ -36,7 +36,8 @@ class DryCleanRepository implements DryCleanRepositoryInterface
      **/
     public function update(array $data, DryClean $dryClean)
     {
-        return $dryClean->update($data);
+        $dryClean->update($data);
+        return $dryClean;
     }
     /**
      * store new dry clean
@@ -50,7 +51,8 @@ class DryCleanRepository implements DryCleanRepositoryInterface
      **/
     public function store(array $data)
     {
-        return DryClean::insert($data);
+        $dryClean = DryClean::create($data);
+        return $dryClean;
     }
     /**
      * delete dry clean record
