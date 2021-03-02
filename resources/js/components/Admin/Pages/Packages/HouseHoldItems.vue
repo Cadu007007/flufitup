@@ -14,6 +14,8 @@
             class="HouseholdItem add-form"
             @submit="submitAddForm($event)"
         >
+            <input type="hidden" :value="csrf" name="_token" />
+
             <input
                 class="household-input"
                 type="text"
@@ -70,10 +72,20 @@ export default {
     data() {
         return {
             loadedItems: this.items,
-            newItems: []
+            newItems: [],
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content")
         };
     },
-    props: ["title", "date", "items",'addformroute', "editformroute","deleteformroute"],
+    props: [
+        "title",
+        "date",
+        "items",
+        "addformroute",
+        "editformroute",
+        "deleteformroute"
+    ],
     components: {
         HouseHoldItem
     },
