@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => ''], function () {
             Route::get('/categories', [PackageController::class, 'allPackages'])->name('categories');
+            Route::get('/create', [PackageController::class, 'create'])->name('add');
             Route::post('store', [PackageController::class, 'store'])->name('store');
             Route::get('', [PackageController::class, 'index'])->name('index');
             Route::get('show/{id}', [PackageController::class, 'show'])->name('show');
@@ -971,15 +972,16 @@ Route::get('/admin/reports', function () {
 //     return view('admin.packages.categories.index', ['active' => 'categories', 'categories' => $categories]);
 // })->name('admin.packages.categories');
 /* Create Package */
-Route::get('/admin/packages/create', function () {
-    $added_values = collect();
-    $added_values->push(['id' => 1, 'name' => 'added 1']);
-    $added_values->push(['id' => 2, 'name' => 'added 2']);
-    $added_values->push(['id' => 3, 'name' => 'added 3']);
-    $added_values->push(['id' => 4, 'name' => 'added 4']);
-    $added_values->push(['id' => 5, 'name' => 'added 5']);
-    return view('admin.packages.create', ['active' => 'packages', 'added_values' => $added_values]);
-})->name('admin.packages.add');
+// Route::get('/admin/packages/create', function () {
+//     // dd('dd');
+//     $added_values = collect();
+//     // $added_values->push(['id' => 1, 'name' => 'added 1']);
+//     // $added_values->push(['id' => 2, 'name' => 'added 2']);
+//     // $added_values->push(['id' => 3, 'name' => 'added 3']);
+//     // $added_values->push(['id' => 4, 'name' => 'added 4']);
+//     // $added_values->push(['id' => 5, 'name' => 'added 5']);
+//     return view('admin.packages.create', ['active' => 'packages', 'added_values' => $added_values]);
+// })->name('admin.packages.add');
 
 /* Show Package */
 
