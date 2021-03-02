@@ -78,6 +78,6 @@ class DryCleanController extends Controller
     public function delete(DryClean $dryClean)
     {
         $this->repo->delete($dryClean);
-        return response()->json(['success' => true, 'data' => $this->repo->index()]);
+        return response()->json(['success' => true]);
     }
 }
