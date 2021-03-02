@@ -10,6 +10,7 @@ use App\Http\Controllers\DryCleanController;
 use App\Http\Controllers\DryerController;
 use App\Http\Controllers\FabricController;
 use App\Http\Controllers\HouseholdController;
+use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ScentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::group(['prefix' => 'packages', 'as' => 'packages.'], function () {
         // Route::post('delete', [DetergentController::class, 'delete'])->name('detergents');
 
+        Route::group(['prefix' => ''], function () {
+            Route::get('/categories', [PackageController::class, 'allPackages'])->name('categories');
+        });
         Route::group(['prefix' => 'dry/cleans', 'as' => 'dry.cleans.'], function () {
             Route::get('', [DryCleanController::class, 'index'])->name('index');
             Route::post('store', [DryCleanController::class, 'store'])->name('store');
@@ -959,10 +963,10 @@ Route::get('/admin/packages', function () {
 })->name('admin.packages');
 
 /* Packages Categories */
-Route::get('/admin/packages/categories', function () {
-    $categories = collect();
-    return view('admin.packages.categories.index', ['active' => 'categories', 'categories' => $categories]);
-})->name('admin.packages.categories');
+// Route::get('/admin/packages/categories', function () {
+//     $categories = collect();
+//     return view('admin.packages.categories.index', ['active' => 'categories', 'categories' => $categories]);
+// })->name('admin.packages.categories');
 /* Create Package */
 Route::get('/admin/packages/create', function () {
     $added_values = collect();
