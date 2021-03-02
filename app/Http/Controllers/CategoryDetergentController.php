@@ -22,7 +22,7 @@ class CategoryDetergentController extends Controller
             return response()->json(['errors' => $validate->errors()]);
         }
         $category = CategoryDetergent::create(['name' => $request->name]);
-        return response()->json(['success' => true, 'data' => category]);
+        return response()->json(['success' => true, 'data' => $category]);
 
     }
     public function update(Request $request, CategoryDetergent $categoryDetergent)
