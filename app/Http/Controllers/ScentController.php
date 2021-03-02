@@ -11,6 +11,10 @@ class ScentController extends Controller
 {
     public function index()
     {
+
+        $scents = CategoryScent::with('scents')->get()->each(function ($fab) {
+            $fab->scents = $fab->scents;
+        });
         return view('admin.packages.scent.index', ['active' => 'scent', 'scent_items' => $scents, 'categories' => CategoryScent::all()]);
         return response()->json(['data' => Scent::all()]);
     }
@@ -19,7 +23,7 @@ class ScentController extends Controller
     {
         $data = $request->validated();
         $data['image'] = $request->file('image')->store('images', ['disk' => 'public']);
-        Scent::create($data);
+        $scent = Scent::create($data);
         return response()->json(['success' => true, 'data' => $scent]);
 
     }
