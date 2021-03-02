@@ -38,6 +38,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => ''], function () {
             Route::get('/categories', [PackageController::class, 'allPackages'])->name('categories');
+            Route::post('store', [PackageController::class, 'store'])->name('store');
+            Route::get('', [PackageController::class, 'index'])->name('index');
+            Route::get('show/{id}', [PackageController::class, 'show'])->name('show');
         });
         Route::group(['prefix' => 'dry/cleans', 'as' => 'dry.cleans.'], function () {
             Route::get('', [DryCleanController::class, 'index'])->name('index');
@@ -730,9 +733,9 @@ Route::get('/old_orders/show/{id}', function () {
 //     return view('auth.login', ['active' => 'logout']);
 // })->name('user.login');
 
-Route::post('/dummy', function (Request $request) {
-    return dd($request);
-})->name('dummy');
+// Route::post('/dummy', function (Request $request) {
+//     return dd($request);
+// })->name('dummy');
 
 /****************************
  **** End of USER ROUTES ****
@@ -939,28 +942,28 @@ Route::get('/admin/reports', function () {
  * Packages Start
  * ************************** */
 
-Route::get('/admin/packages', function () {
+// Route::get('/admin/packages', function () {
 
-    $packages = collect();
-    $packages->adhoc = collect();
-    $packages->bi_weekly = collect();
-    $packages->monthly = collect();
-    $packages->tailored = collect();
+//     $packages = collect();
+//     $packages->adhoc = collect();
+//     $packages->bi_weekly = collect();
+//     $packages->monthly = collect();
+//     $packages->tailored = collect();
 
-    $packages->adhoc->push(['id' => 1, 'name' => 'Ad Hoc', 'users' => 3]);
-    $packages->adhoc->push(['id' => 2, 'name' => 'Ad Hoc - Heavy', 'users' => 2]);
+//     $packages->adhoc->push(['id' => 1, 'name' => 'Ad Hoc', 'users' => 3]);
+//     $packages->adhoc->push(['id' => 2, 'name' => 'Ad Hoc - Heavy', 'users' => 2]);
 
-    $packages->bi_weekly->push(['id' => 4, 'name' => 'Bi-Weekly', 'users' => 5]);
-    $packages->bi_weekly->push(['id' => 5, 'name' => 'Bi-Weekly – Big Job', 'users' => 2]);
+//     $packages->bi_weekly->push(['id' => 4, 'name' => 'Bi-Weekly', 'users' => 5]);
+//     $packages->bi_weekly->push(['id' => 5, 'name' => 'Bi-Weekly – Big Job', 'users' => 2]);
 
-    $packages->monthly->push(['id' => 7, 'name' => 'Monthly', 'users' => 1]);
-    $packages->monthly->push(['id' => 8, 'name' => 'Monthly - Busy', 'users' => 3]);
-    $packages->monthly->push(['id' => 9, 'name' => 'Monthly - Heavy', 'users' => 2]);
+//     $packages->monthly->push(['id' => 7, 'name' => 'Monthly', 'users' => 1]);
+//     $packages->monthly->push(['id' => 8, 'name' => 'Monthly - Busy', 'users' => 3]);
+//     $packages->monthly->push(['id' => 9, 'name' => 'Monthly - Heavy', 'users' => 2]);
 
-    $packages->tailored->push(['id' => 10, 'name' => 'Tailored Packages', 'users' => 4]);
+//     $packages->tailored->push(['id' => 10, 'name' => 'Tailored Packages', 'users' => 4]);
 
-    return view('admin.packages.index', ['active' => 'packages', 'packages' => $packages]);
-})->name('admin.packages');
+//     return view('admin.packages.index', ['active' => 'packages', 'packages' => $packages]);
+// })->name('admin.packages');
 
 /* Packages Categories */
 // Route::get('/admin/packages/categories', function () {
