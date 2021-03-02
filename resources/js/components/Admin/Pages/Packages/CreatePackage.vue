@@ -5,8 +5,7 @@
             <p class="date">{{ date }}</p>
         </div>
         <br />
-        <form action="/dummy" method="post">
-
+        <form method="post" class="add-form" @submit="addFormSubmit($event)">
             <input type="hidden" :value="csrf" name="_token" />
 
             <div
@@ -48,7 +47,7 @@
                             />
                         </span>
                     </div>
-<!-- 
+                    <!-- 
                     <div class="package-features">
                         <AddPackageItem
                             v-for="(item, index) in items"
@@ -148,7 +147,7 @@
                             Drying Options
                         </p>
                         <select
-                            name="dry_clean_id"
+                            name="dryer_option"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
@@ -245,6 +244,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">None</option>
                             <option value="2">1 Sheet</option>
@@ -337,6 +337,56 @@
         </p> -->
     </div>
 </template>
+
+<script>
+import AddPackageItem from "./Components/AddPackageItem";
+import CreatePackagePriceCard from "./Components/CreatePackagePriceCard";
+import AddedValueContainer from "./Components/AddedValueContainer";
+
+export default {
+    props: ["title", "date", "addedvalues", "storepackageroute"],
+    data() {
+        return {
+            name: "",
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content")
+        };
+    },
+    components: {
+        AddPackageItem,
+        CreatePackagePriceCard,
+        AddedValueContainer
+    },
+    methods: {
+        clearPackageName() {
+            this.name = "";
+        },
+        addNewItemContainer() {
+            this.items.push({ label: "", data: "" });
+        },
+        deleteItem(index) {
+            this.items.splice(index, 1);
+        },
+        addFormSubmit(event) {
+            event.preventDefault();
+            var formValues = $(".add-form").serialize();
+
+            let selectedURL = this.storepackageroute;
+            console.log("selectedURL: ", selectedURL);
+            let addStatus;
+            axios({
+                url: selectedURL,
+                method: "POST",
+                data: formValues
+            }).then(response => {
+                console.log("data: ", response.data);
+            });
+        }
+    }
+};
+</script>
+
 <style lang="scss">
 $text-grey: #00000066;
 $orange: #ffa800;
@@ -421,36 +471,3 @@ $blue: #22aee4;
     }
 }
 </style>
-<script>
-import AddPackageItem from "./Components/AddPackageItem";
-import CreatePackagePriceCard from "./Components/CreatePackagePriceCard";
-import AddedValueContainer from "./Components/AddedValueContainer";
-
-export default {
-    props: ["title", "date", "addedvalues"],
-    data() {
-        return {
-            name: "",
-            csrf: document
-                .querySelector('meta[name="csrf-token"]')
-                .getAttribute("content")
-        };
-    },
-    components: {
-        AddPackageItem,
-        CreatePackagePriceCard,
-        AddedValueContainer
-    },
-    methods: {
-        clearPackageName() {
-            this.name = "";
-        },
-        addNewItemContainer() {
-            this.items.push({ label: "", data: "" });
-        },
-        deleteItem(index) {
-            this.items.splice(index, 1);
-        }
-    }
-};
-</script>
