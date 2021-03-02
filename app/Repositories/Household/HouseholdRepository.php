@@ -37,7 +37,8 @@ class HouseholdRepository implements HouseholdRepositoryInterface
     public function update(array $data, Household $household)
     {
 
-        return $household->update($data);
+        $household->update($data);
+        return $household;
     }
     /**
      * store new dry clean
@@ -51,7 +52,8 @@ class HouseholdRepository implements HouseholdRepositoryInterface
      **/
     public function store(array $data)
     {
-        return Household::insert($data);
+        $household = Household::create($data);
+        return $household;
     }
     /**
      * delete dry clean record
