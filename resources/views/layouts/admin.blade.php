@@ -21,12 +21,12 @@
                 routetocategories="{{ route('admin.packages.categories') }}"
 
                 routetopackages="{{ route('admin.packages') }}"
-                routetodryclean="{{ route('admin.packages.dry_clean') }}"
-                routetohouseholditems="{{ route('admin.packages.household_items') }}"
+                routetodryclean="{{ route('admin.packages.dry.cleans.index') }}"
+                routetohouseholditems="{{ route('admin.packages.households.index') }}"
                 routetodetergents="{{ route('admin.packages.detergents.index') }}"
-                routetofabricsoftener="{{ route('admin.packages.fabric') }}"
-                routetodryersheets="{{ route('admin.packages.dryer') }}"
-                routetoscentbooster="{{ route('admin.packages.scent') }}"
+                routetofabricsoftener="{{ route('admin.packages.fabrics.index') }}"
+                routetodryersheets="{{ route('admin.packages.dryers.index') }}"
+                routetoscentbooster="{{ route('admin.packages.scents.index') }}"
 
                 routetousers="{{ route('admin.users') }}"
 

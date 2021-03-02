@@ -263,11 +263,11 @@ export default {
                 method: "POST",
                 data: formValues
             }).then(response => {
-                //console.log("data: ", response.data);
+                console.log("data: ", response.data);
                 if (response.data.success) {
                     this.loadedCategories.push({
-                        id: response.data.data[0].id,
-                        name: response.data.data[0].name,
+                        id: response.data[0].id,
+                        name: response.data[0].name,
                         type: selectedType
                     });
                     //console.log("categories: ", this.loadedCategories);
@@ -326,10 +326,10 @@ export default {
                 if (response.data.success) {
                     //console.log("EDIT SUCCESS");
                     this.loadedCategories.find(
-                        x => x.id == response.data.data[0].id
-                    ).name = response.data.data[0].name;
+                        x => x.id == response.data[0].id
+                    ).name = response.data[0].name;
                     this.loadedCategories.find(
-                        x => x.id == response.data.data[0].id
+                        x => x.id == response.data[0].id
                     ).type = selectedType;
 
                     //console.log("categories: ", this.loadedCategories);
