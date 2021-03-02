@@ -14,6 +14,8 @@
             class="HouseholdItem add-form"
             @submit="submitAddForm($event)"
         >
+            <input type="hidden" :value="csrf" name="_token" />
+
             <input
                 class="household-input"
                 type="text"
@@ -46,7 +48,7 @@
             <House-Hold-Item
                 v-for="item in loadedItems"
                 :key="item.id"
-                :label="item.label"
+                :label="item.name"
                 :price="item.price"
                 :itemid="item.id"
                 :editformroute="editformroute"
@@ -70,10 +72,20 @@ export default {
     data() {
         return {
             loadedItems: this.items,
-            newItems: []
+            newItems: [],
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content")
         };
     },
-    props: ["title", "date", "items",'addformroute', "editformroute","deleteformroute"],
+    props: [
+        "title",
+        "date",
+        "items",
+        "addformroute",
+        "editformroute",
+        "deleteformroute"
+    ],
     components: {
         HouseHoldItem
     },
@@ -91,15 +103,21 @@ export default {
             event.preventDefault();
             var formValues = $(".add-form").serialize();
             console.log("formValues: ", formValues);
-
+            let loadedItems = this.loadedItems;
             $.ajax({
                 url: this.addformroute,
                 type: "POST",
                 data: formValues,
                 success: function(data) {
-                    console.log("data: ", data);
+                    let returnObject = data.data;
+                    loadedItems.push({
+                        id: returnObject.id,
+                        name: returnObject.name,
+                        price: returnObject.price
+                    });
                 }
             });
+            this.loadedItems = loadedItems;
         }
     }
 };

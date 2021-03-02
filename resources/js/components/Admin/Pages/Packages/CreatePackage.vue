@@ -16,11 +16,12 @@
                 <p class="title">Package Category</p>
                 <select
                     class="select2"
-                    name="category_id"
+                    name="category"
                     id=""
                     style="width: 300px"
+                    required
                 >
-                    <option selected>Choose a category</option>
+                    <option selected :value="null">Choose a category</option>
                     <option value="1">Ad Hoc</option>
                     <option value="2">Bi‐Weekly</option>
                     <option value="3">Monthly</option>
@@ -38,6 +39,7 @@
                             id=""
                             placeholder="Package Name"
                             v-model="name"
+                            required
                         />
                         <span class="delete" @click="clearPackageName">
                             <img
@@ -46,7 +48,7 @@
                             />
                         </span>
                     </div>
-
+<!-- 
                     <div class="package-features">
                         <AddPackageItem
                             v-for="(item, index) in items"
@@ -55,17 +57,18 @@
                             :data="item.data"
                             @delete-item="deleteItem(index)"
                         />
-                    </div>
+                    </div> -->
 
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             No. of Pickups Per Week
                         </p>
                         <select
-                            name="number_of_pickups"
+                            name="no_pickups"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">1 Pickup</option>
                             <option value="2">2 Pickup</option>
@@ -82,6 +85,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">1 Day</option>
                             <option value="2">2 Days</option>
@@ -93,10 +97,11 @@
                             Allowed Bags per Pickup
                         </p>
                         <select
-                            name="allowed_bags_per_pickup"
+                            name="bags_per_pickup"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">1 Bag</option>
                             <option value="2">2 Bags</option>
@@ -114,6 +119,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">12 Hours</option>
                             <option value="2">24 Hours</option>
@@ -130,6 +136,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">Machine Wash</option>
                             <option value="2">Hand Wash</option>
@@ -141,17 +148,18 @@
                             Drying Options
                         </p>
                         <select
-                            name="drying_option"
+                            name="dry_clean_id"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">Tumble Dry</option>
                             <option value="2">Air Dry</option>
                             <option value="3">Air Dry - Flat</option>
                         </select>
                     </div>
-                    <div class="" style="margin-bottom: 20px">
+                    <!-- <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             Folding Options
                         </p>
@@ -165,16 +173,17 @@
                             <option value="2">Hanger Per Bag</option>
                             <option value="3">Hanger Per Piece</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             Laundry Detergent
                         </p>
                         <select
-                            name="laundry_detergent"
+                            name="detergent_id"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">Standard Line</option>
                             <option value="2">Special LineBag</option>
@@ -190,6 +199,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">Standard Line</option>
                             <option value="2">Special LineBag</option>
@@ -200,7 +210,7 @@
                             Scent Booster
                         </p>
                         <select
-                            name="scent_booster"
+                            name="scent_id"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
@@ -216,7 +226,7 @@
                             Fabric Fresheners
                         </p>
                         <select
-                            name="fabric_fresheners"
+                            name="fabric_id"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
@@ -231,7 +241,7 @@
                             Dryer Sheets
                         </p>
                         <select
-                            name="dryer_sheet"
+                            name="dryer_id"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
@@ -252,6 +262,7 @@
                             placeholder="Dry Clean Credit"
                             type="number"
                             min="0"
+                            required
                         />
                     </div>
 
@@ -265,6 +276,7 @@
                             placeholder="House Hold Credit"
                             type="number"
                             min="0"
+                            required
                         />
                     </div>
 
@@ -273,11 +285,12 @@
                             Added Value Services Credit
                         </p>
                         <input
-                            name="added_value_services_credit"
+                            name="added_value_service"
                             class="add-package-value"
                             placeholder="Added Value Services Credit"
                             type="number"
                             min="0"
+                            required
                         />
                     </div>
                     <div class="" style="margin-bottom: 20px">
@@ -290,6 +303,7 @@
                             placeholder="Rewards Points"
                             type="number"
                             min="0"
+                            required
                         />
                     </div>
                     <div class="" style="margin-bottom: 20px">
@@ -297,11 +311,12 @@
                             Price of Extra Pound
                         </p>
                         <input
-                            name="price_for_extra_pound"
+                            name="price_of_extra_pound"
                             class="add-package-value"
                             placeholder="Price of Extra Pound"
                             type="number"
                             min="0"
+                            required
                         />
                     </div>
                 </div>
@@ -310,7 +325,8 @@
                     <CreatePackagePriceCard
                         currency="$"
                         price="0"
-                        pricename="package_price"
+                        pricename="price"
+                        :isrequired="true"
                     />
                 </div>
             </div>

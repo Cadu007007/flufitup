@@ -14,13 +14,15 @@
             class="DryCleanItem add-form"
             @submit="submitAddForm($event)"
         >
+            <input type="hidden" :value="csrf" name="_token" />
+
             <input
                 class="dry-clean-input"
                 type="text"
                 name="name"
                 id=""
                 placeholder="Label"
-                value=""
+                :value="itemname"
                 required
             />
             <input
@@ -30,7 +32,7 @@
                 min="0"
                 id=""
                 placeholder="Price"
-                value=""
+                :value="itemprice"
                 required
             />
 
@@ -73,10 +75,15 @@ export default {
     data() {
         return {
             loadedItems: this.items,
-            newItems: []
+            newItems: [],
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content"),
+            itemname: "",
+            itemprice: ""
         };
     },
-    props: ["title", "date", "items", "editformroute","deleteformroute"],
+    props: ["title", "date", "items", "editformroute", "deleteformroute"],
     components: {
         DryCleanItem
     },
@@ -100,7 +107,8 @@ export default {
                 type: "POST",
                 data: formValues,
                 success: function(data) {
-                    console.log("data: ", data);
+                    if (data.success) {
+                    }
                 }
             });
         }
