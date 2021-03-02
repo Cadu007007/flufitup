@@ -13,13 +13,13 @@
             >
                 <input type="hidden" :value="csrf" name="_token" />
 
-                <div class="column" v-if="editCategoryId == 0">
+                <div class="column" v-show="editCategoryId == 0">
                     <div class="row">
                         <div class="category-name">
                             <p class="title">Category Name:</p>
                             <input
                                 type="text"
-                                class="category-name-input"
+                                class="category-name-input addCategoryName"
                                 name="name"
                                 placeholder="Category Name"
                                 required
@@ -61,13 +61,13 @@
             >
                 <input type="hidden" :value="csrf" name="_token" />
 
-                <div class="column" v-if="editCategoryId > 0">
+                <div class="column" v-show="editCategoryId > 0">
                     <div class="row">
                         <div class="category-name">
                             <p class="title">Category Name:</p>
                             <input
                                 type="text"
-                                class="category-name-input"
+                                class="category-name-input editCategoryName"
                                 name="name"
                                 placeholder="Category Name"
                                 v-model="editCategoryName"
@@ -110,7 +110,13 @@
             <div class="seperator"></div>
 
             <div class="page-header">
-                <p class="title" style="margin: 5px 0" v-if="loadedCategories.length >0">Added Categories</p>
+                <p
+                    class="title"
+                    style="margin: 5px 0"
+                    v-if="loadedCategories.length > 0"
+                >
+                    Added Categories
+                </p>
             </div>
 
             <div class="categories-container">
@@ -172,6 +178,13 @@
 export default {
     mounted() {
         setTimeout(() => {
+            $(".category-name-input").change(function(event) {
+                if (event.target.value.length == 0) {
+                    $(event.target).removeAttr("required");
+                } else {
+                    $(event.target).attr("required", true);
+                }
+            });
             $(".addCategoryType").change(function(event) {
                 this.selectedType = $(event.target)
                     .val()
@@ -229,6 +242,22 @@ export default {
         format(typeName) {
             return typeName.replace("_", " ");
         },
+        clearAddInputs() {
+            $(".addCategoryName")
+                .val("")
+                .change();
+            $(".addCategoryType")
+                .val(null)
+                .change();
+        },
+        clearEditInputs() {
+            $(".editCategoryName")
+                .val("")
+                .change();
+            $(".editCategoryType")
+                .val(null)
+                .change();
+        },
         submitAddForm(event) {
             event.preventDefault();
             var formValues = $(".add-form").serialize();
@@ -257,22 +286,30 @@ export default {
                 //console.log(selectedType);
             }
             //console.log("selectedURL: ", selectedURL);
-
+            let addStatus;
             axios({
                 url: selectedURL,
                 method: "POST",
                 data: formValues
-            }).then(response => {
-                //console.log("data: ", response.data);
-                if (response.data.success) {
-                    this.loadedCategories.push({
-                        id: response.data.data[0].id,
-                        name: response.data.data[0].name,
-                        type: selectedType
-                    });
-                    //console.log("categories: ", this.loadedCategories);
-                }
-            });
+            })
+                .then(response => {
+                    console.log("data: ", response.data);
+                    if (response.data.success) {
+                        addStatus = true;
+                        this.loadedCategories.push({
+                            id: response.data.data.id,
+                            name: response.data.data.name,
+                            type: selectedType
+                        });
+                        //console.log("categories: ", this.loadedCategories);
+                    }
+                })
+                .then(() => {
+                    console.log("addStatus: ", addStatus);
+                    if (addStatus) {
+                        this.clearAddInputs();
+                    }
+                });
         },
         submitEditForm(event) {
             event.preventDefault();
@@ -316,25 +353,35 @@ export default {
                 //console.log(selectedType);
             }
             //console.log("selectedURL: ", selectedURL);
+            let editStatus;
 
             axios({
                 url: selectedURL,
                 method: "PUT",
                 data: formValues
-            }).then(response => {
-                //console.log("data: ", response.data);
-                if (response.data.success) {
-                    //console.log("EDIT SUCCESS");
-                    this.loadedCategories.find(
-                        x => x.id == response.data.data[0].id
-                    ).name = response.data.data[0].name;
-                    this.loadedCategories.find(
-                        x => x.id == response.data.data[0].id
-                    ).type = selectedType;
+            })
+                .then(response => {
+                    //console.log("data: ", response.data);
+                    if (response.data.success) {
+                        editStatus = true;
 
-                    //console.log("categories: ", this.loadedCategories);
-                }
-            });
+                        //console.log("EDIT SUCCESS");
+                        this.loadedCategories.find(
+                            x => x.id == response.data.data.id
+                        ).name = response.data.data.name;
+                        this.loadedCategories.find(
+                            x => x.id == response.data.data.id
+                        ).type = selectedType;
+
+                        //console.log("categories: ", this.loadedCategories);
+                    }
+                })
+                .then(() => {
+                    console.log("editStatus: ", editStatus);
+                    if (editStatus) {
+                        this.editCategoryId = 0;
+                    }
+                });
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
@@ -393,10 +440,12 @@ export default {
                     //console.log("data: ", response.data);
                     if (response.data.success) {
                         //console.log("DELETE SUCCESS");
-                    //console.log("List: ", this.loadedCategories);
-                        let filteredCategories = this.loadedCategories.filter(x => x.id != categoryId);
-                    //console.log("filteredCategories: ", filteredCategories);
-                    this.loadedCategories= filteredCategories
+                        //console.log("List: ", this.loadedCategories);
+                        let filteredCategories = this.loadedCategories.filter(
+                            x => x.id != categoryId
+                        );
+                        //console.log("filteredCategories: ", filteredCategories);
+                        this.loadedCategories = filteredCategories;
                     }
                 });
             }
