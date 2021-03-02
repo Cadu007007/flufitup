@@ -37,16 +37,12 @@
                     />
                 </form>
             </span>
-            <span v-if="disablestate" class="edit" @click="editPressed">
+            <span v-show="disablestate" class="edit" @click="editPressed">
                 <img src="/images/admin/icons/notification-edit.svg" alt="" />
             </span>
-            <div class="" v-else>
+            <div class="" v-show="!disablestate" >
                 <button class="save" type="submit">Save</button>
-                <button
-                    class="cancel"
-                    type="button"
-                    @click="disablestate = true"
-                >
+                <button class="cancel" type="button" @click="cancelClicked()">
                     Cancel
                 </button>
             </div>
@@ -86,14 +82,29 @@ export default {
             console.log("formValues: ", formValues);
             let editRoute = this.editformroute.replace("item_id", this.itemid);
 
+            let updatedLabel = this.label;
+            let updatedPrice = this.price;
             $.ajax({
                 url: editRoute,
                 type: "PUT",
                 data: formValues,
                 success: function(data) {
-                    console.log("data: ", data);
+                    if (data.success) {
+                        let returnedObject = data.data;
+                        console.log(
+                            "Value of ~ file: HouseHoldItem.vue ~ line 98 ~ submitEditForm ~ returnedObject",
+                            returnedObject
+                        );
+                        let selectedId = returnedObject.id;
+                        console.log("selectedId: ", selectedId);
+                        updatedLabel = returnedObject.name;
+                        console.log("updatedLabel: ", updatedLabel);
+                        updatedPrice = returnedObject.price;
+                    }
                 }
             });
+            this.label = updatedLabel;
+            this.price = updatedPrice;
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
@@ -113,9 +124,18 @@ export default {
                     data: formValues,
                     success: function(data) {
                         console.log("data: ", data);
+                        if (data.success) {
+                            let itemContainer = $(deleteForm).parents(
+                                ".edit-form"
+                            );
+                            $(itemContainer).remove();
+                        }
                     }
                 });
             }
+        },
+        cancelClicked(){
+            this.disablestate = true
         }
     }
 };

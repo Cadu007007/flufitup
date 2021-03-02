@@ -48,7 +48,7 @@
             <House-Hold-Item
                 v-for="item in loadedItems"
                 :key="item.id"
-                :label="item.label"
+                :label="item.name"
                 :price="item.price"
                 :itemid="item.id"
                 :editformroute="editformroute"
@@ -103,15 +103,21 @@ export default {
             event.preventDefault();
             var formValues = $(".add-form").serialize();
             console.log("formValues: ", formValues);
-
+            let loadedItems = this.loadedItems;
             $.ajax({
                 url: this.addformroute,
                 type: "POST",
                 data: formValues,
                 success: function(data) {
-                    console.log("data: ", data);
+                    let returnObject = data.data;
+                    loadedItems.push({
+                        id: returnObject.id,
+                        name: returnObject.name,
+                        price: returnObject.price
+                    });
                 }
             });
+            this.loadedItems = loadedItems;
         }
     }
 };

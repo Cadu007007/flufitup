@@ -10,8 +10,8 @@
             </p>
         </div>
 
-        <div class="d-flex flex-ro">
-            <div class="">
+        <div class="d-flex flex-row">
+            <!-- <div class="">
                 <p class="packages-title">
                     Create Your Package
                 </p>
@@ -24,7 +24,7 @@
                         :buttonroute="packagecreateroute"
                     />
                 </div>
-            </div>
+            </div> -->
             <div class="">
                 <p class="packages-title">
                     Re‐Order a Previous Order
