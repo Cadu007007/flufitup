@@ -20,7 +20,7 @@
                 
                 routetocategories="{{ route('admin.packages.categories') }}"
 
-                routetopackages="{{ route('admin.packages') }}"
+                routetopackages="{{ route('admin.packages.index') }}"
                 routetodryclean="{{ route('admin.packages.dry.cleans.index') }}"
                 routetohouseholditems="{{ route('admin.packages.households.index') }}"
                 routetodetergents="{{ route('admin.packages.detergents.index') }}"
