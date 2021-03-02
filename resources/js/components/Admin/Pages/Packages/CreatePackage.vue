@@ -19,6 +19,7 @@
                     name="category"
                     id=""
                     style="width: 300px"
+                    required
                 >
                     <option selected :value="null">Choose a category</option>
                     <option value="1">Ad Hoc</option>
@@ -38,6 +39,7 @@
                             id=""
                             placeholder="Package Name"
                             v-model="name"
+                            required
                         />
                         <span class="delete" @click="clearPackageName">
                             <img
@@ -66,6 +68,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">1 Pickup</option>
                             <option value="2">2 Pickup</option>
@@ -82,6 +85,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">1 Day</option>
                             <option value="2">2 Days</option>
@@ -97,6 +101,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">1 Bag</option>
                             <option value="2">2 Bags</option>
@@ -114,6 +119,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">12 Hours</option>
                             <option value="2">24 Hours</option>
@@ -130,6 +136,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">Machine Wash</option>
                             <option value="2">Hand Wash</option>
@@ -141,10 +148,11 @@
                             Drying Options
                         </p>
                         <select
-                            name="dry_cleans_id"
+                            name="dry_clean_id"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">Tumble Dry</option>
                             <option value="2">Air Dry</option>
@@ -175,6 +183,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">Standard Line</option>
                             <option value="2">Special LineBag</option>
@@ -190,6 +199,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">Standard Line</option>
                             <option value="2">Special LineBag</option>
@@ -252,6 +262,7 @@
                             placeholder="Dry Clean Credit"
                             type="number"
                             min="0"
+                            required
                         />
                     </div>
 
@@ -265,6 +276,7 @@
                             placeholder="House Hold Credit"
                             type="number"
                             min="0"
+                            required
                         />
                     </div>
 
@@ -278,6 +290,7 @@
                             placeholder="Added Value Services Credit"
                             type="number"
                             min="0"
+                            required
                         />
                     </div>
                     <div class="" style="margin-bottom: 20px">
@@ -290,6 +303,7 @@
                             placeholder="Rewards Points"
                             type="number"
                             min="0"
+                            required
                         />
                     </div>
                     <div class="" style="margin-bottom: 20px">
@@ -302,6 +316,7 @@
                             placeholder="Price of Extra Pound"
                             type="number"
                             min="0"
+                            required
                         />
                     </div>
                 </div>
@@ -311,6 +326,7 @@
                         currency="$"
                         price="0"
                         pricename="price"
+                        :isrequired="true"
                     />
                 </div>
             </div>

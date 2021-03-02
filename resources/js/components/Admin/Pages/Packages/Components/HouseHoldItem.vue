@@ -6,7 +6,7 @@
         <!-- <input type="hidden" name="id" :value="itemid" /> -->
         <div class="HouseholdItem">
             <input
-                :disabled="disablestate"
+                :disabled="disablestate || updatedDone"
                 class="household-input"
                 type="text"
                 name="name"
@@ -16,7 +16,7 @@
                 required
             />
             <input
-                :disabled="disablestate"
+                :disabled="disablestate || updatedDone"
                 class="household-input"
                 type="number"
                 name="price"
@@ -42,7 +42,7 @@
             </span>
             <div class="" v-show="!disablestate" >
                 <button class="save" type="submit">Save</button>
-                <button class="cancel" type="button" @click="cancelClicked()">
+                <button class="cancel" type="button" @click="cancelClicked($event)">
                     Cancel
                 </button>
             </div>
@@ -134,7 +134,7 @@ export default {
                 });
             }
         },
-        cancelClicked(){
+        cancelClicked(event){
             this.disablestate = true
         }
     }
