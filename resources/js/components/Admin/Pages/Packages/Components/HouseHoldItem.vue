@@ -12,7 +12,7 @@
                 name="name"
                 id=""
                 placeholder="Label"
-                :value="label"
+                :value="updatedlabel"
                 required
             />
             <input
@@ -23,7 +23,7 @@
                 min="0"
                 id=""
                 placeholder="Price"
-                :value="price"
+                :value="updatedprice"
                 required
             />
             <span class="delete">
@@ -40,9 +40,13 @@
             <span v-show="disablestate" class="edit" @click="editPressed">
                 <img src="/images/admin/icons/notification-edit.svg" alt="" />
             </span>
-            <div class="" v-show="!disablestate" >
+            <div class="" v-show="!disablestate">
                 <button class="save" type="submit">Save</button>
-                <button class="cancel" type="button" @click="cancelClicked($event)">
+                <button
+                    class="cancel"
+                    type="button"
+                    @click="cancelClicked()"
+                >
                     Cancel
                 </button>
             </div>
@@ -58,7 +62,10 @@ export default {
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute("content"),
-            disablestate: this.isdisabled
+            disablestate: this.isdisabled,
+            updatedDone: false,
+            updatedlabel: this.label,
+            updatedprice: this.price
         };
     },
     props: [
@@ -74,6 +81,7 @@ export default {
     methods: {
         editPressed() {
             this.disablestate = false;
+            this.updatedDone = false;
         },
         submitEditForm(event) {
             event.preventDefault();
@@ -84,6 +92,9 @@ export default {
 
             let updatedLabel = this.label;
             let updatedPrice = this.price;
+
+            let updateDoneState = this.updatedDone;
+
             $.ajax({
                 url: editRoute,
                 type: "PUT",
@@ -100,11 +111,19 @@ export default {
                         updatedLabel = returnedObject.name;
                         console.log("updatedLabel: ", updatedLabel);
                         updatedPrice = returnedObject.price;
+                        updateDoneState = true;
                     }
                 }
             });
-            this.label = updatedLabel;
-            this.price = updatedPrice;
+
+            setTimeout(() => {
+                this.updatedlabel = updatedLabel;
+                this.updatedprice = updatedPrice;
+                this.updatedDone = updateDoneState;
+
+                console.log("this.updatedDone: ", this.updatedDone);
+                this.cancelClicked()
+            }, 500);
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
@@ -134,9 +153,9 @@ export default {
                 });
             }
         },
-        cancelClicked(event){
-            this.disablestate = true
-        }
+        cancelClicked() {
+            this.disablestate = true;
+        },
     }
 };
 </script>

@@ -22,9 +22,9 @@
                     required
                 >
                     <option selected :value="null">Choose a category</option>
-                    <option value="1">Ad Hoc</option>
-                    <option value="2">Bi‐Weekly</option>
-                    <option value="3">Monthly</option>
+                    <option value="adhoc">Ad Hoc</option>
+                    <option value="bi_weekly">Bi‐Weekly</option>
+                    <option value="monthly">Monthly</option>
                 </select>
             </div>
 
@@ -121,9 +121,9 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">12 Hours</option>
-                            <option value="2">24 Hours</option>
-                            <option value="3">48 Hours</option>
+                            <option value="12">12 Hours</option>
+                            <option value="24">24 Hours</option>
+                            <option value="48">48 Hours</option>
                         </select>
                     </div>
 
@@ -138,8 +138,8 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">Machine Wash</option>
-                            <option value="2">Hand Wash</option>
+                            <option value="machine_wash">Machine Wash</option>
+                            <option value="hand_wash">Hand Wash</option>
                         </select>
                     </div>
 
@@ -154,9 +154,9 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">Tumble Dry</option>
-                            <option value="2">Air Dry</option>
-                            <option value="3">Air Dry - Flat</option>
+                            <option value="tumble_dry">Tumble Dry</option>
+                            <option value="air_dry">Air Dry</option>
+                            <option value="air_dry_flat">Air Dry - Flat</option>
                         </select>
                     </div>
                     <!-- <div class="" style="margin-bottom: 20px">
