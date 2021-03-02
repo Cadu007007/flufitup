@@ -50,28 +50,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         });
         Route::group(['prefix' => 'category/detergent', 'as' => 'category.detergent.'], function () {
-            Route::get('all', [CategoryDetergentController::class, 'index'])->name('index');
+            Route::get('', [CategoryDetergentController::class, 'index'])->name('index');
             Route::post('store', [CategoryDetergentController::class, 'store'])->name('store');
             Route::put('update/{categoryDetergent}', [CategoryDetergentController::class, 'update'])->name('update');
             Route::delete('delete/{categoryDetergent}', [CategoryDetergentController::class, 'delete'])->name('delete');
 
         });
         Route::group(['prefix' => 'category/fabric', 'as' => 'category.fabric.'], function () {
-            Route::get('all', [CategoryFabricController::class, 'index'])->name('index');
+            Route::get('', [CategoryFabricController::class, 'index'])->name('index');
             Route::post('store', [CategoryFabricController::class, 'store'])->name('store');
             Route::put('update/{categoryFabric}', [CategoryFabricController::class, 'update'])->name('update');
             Route::delete('delete/{categoryFabric}', [CategoryFabricController::class, 'delete'])->name('delete');
 
         });
         Route::group(['prefix' => 'category/dryer', 'as' => 'category.dryer.'], function () {
-            Route::get('all', [CategoryDryerController::class, 'index'])->name('index');
+            Route::get('', [CategoryDryerController::class, 'index'])->name('index');
             Route::post('store', [CategoryDryerController::class, 'store'])->name('store');
             Route::put('update/{categoryDryer}', [CategoryDryerController::class, 'update'])->name('update');
             Route::delete('delete/{categoryDryer}', [CategoryDryerController::class, 'delete'])->name('delete');
 
         });
         Route::group(['prefix' => 'category/scent', 'as' => 'category.scent.'], function () {
-            Route::get('all', [CategoryScentController::class, 'index'])->name('index');
+            Route::get('', [CategoryScentController::class, 'index'])->name('index');
             Route::post('store', [CategoryScentController::class, 'store'])->name('store');
             Route::put('update/{categoryScent}', [CategoryScentController::class, 'update'])->name('update');
             Route::delete('delete/{categoryScent}', [CategoryScentController::class, 'delete'])->name('delete');

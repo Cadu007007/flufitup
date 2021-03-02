@@ -6,8 +6,8 @@ date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :items="{{ $dryer_items }}"
 :categories="{{ $categories }}"
 categoryid="category_dryer_id"
-addformroute="{{ route('admin.packages.dryer.store') }}"
-editformroute="{{ route('admin.packages.dryer.update', 'item_id') }}"
-deleteformroute="{{ route('admin.packages.dryer.delete', 'item_id') }}"
+addformroute="{{ route('admin.packages.dryers.store') }}"
+editformroute="{{ route('admin.packages.dryers.update', 'item_id') }}"
+deleteformroute="{{ route('admin.packages.dryers.delete', 'item_id') }}"
 />
 @endsection
