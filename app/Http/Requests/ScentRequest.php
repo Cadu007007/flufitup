@@ -13,7 +13,7 @@ class ScentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,17 @@ class ScentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'price' => 'required',
+            'image' => 'required',
+            'category_scents_id' => 'required',
         ];
+        if (request()->method() == 'POST') {
+
+            $rules += ['name' => 'required|unique:scents,name'];
+        } else {
+
+            $rules += ['name' => 'required|unique:scents,name,' . $this->scent->id];
+        }
     }
 }

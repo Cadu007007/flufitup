@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryDetergentController;
 use App\Http\Controllers\CategoryDryerController;
 use App\Http\Controllers\CategoryFabricController;
 use App\Http\Controllers\CategoryScentController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\DetergentController;
 use App\Http\Controllers\DryCleanController;
 use App\Http\Controllers\DryerController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\FabricController;
 use App\Http\Controllers\HouseholdController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ScentController;
+use App\Http\Controllers\ZoneController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -119,6 +121,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::delete('delete/{scent}', [ScentController::class, 'delete'])->name('delete');
 
         });
+    });
+
+    Route::group(['prefix' => 'cities', 'as' => 'cities.'], function () {
+        Route::get('/', [CityController::class, 'index'])->name('index');
+        Route::post('store', [CityController::class, 'store'])->name('store');
+        Route::put('update/{id}', [CityController::class, 'update'])->name('update');
+        Route::delete('delete/{id}', [CityController::class, 'delete'])->name('delete');
+    });
+    Route::group(['prefix' => 'zones', 'as' => 'zones.'], function () {
+        Route::get('/', [ZoneController::class, 'index'])->name('index');
+        Route::post('store', [ZoneController::class, 'store'])->name('store');
     });
 
 });
@@ -1474,12 +1487,12 @@ Route::delete('/admin/zones/delete/{id}', function () {
 /******************************
  * Zones Start
  * ************************** */
-Route::get('/admin/cities', function () {
-    $cities = collect();
-    $cities->push(['id' => 1, 'name' => 'Alexandria']);
-    $cities->push(['id' => 2, 'name' => 'Cairo']);
-    return view('admin.cities.index', ['active' => 'cities', 'cities' => $cities]);
-})->name('admin.cities');
+// Route::get('/admin/cities', function () {
+//     $cities = collect();
+//     $cities->push(['id' => 1, 'name' => 'Alexandria']);
+//     $cities->push(['id' => 2, 'name' => 'Cairo']);
+//     return view('admin.cities.index', ['active' => 'cities', 'cities' => $cities]);
+// })->name('admin.cities');
 
 /******************************
  * Zones End
