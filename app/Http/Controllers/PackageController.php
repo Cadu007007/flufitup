@@ -52,6 +52,17 @@ class PackageController extends Controller
         $package = Package::create($request->validated());
         return response()->json(['success' => true, 'data' => $package]);
     }
+    public function edit($id)
+    {
+        $package = Package::find($id);
+        $fabrics = Fabric::all();
+        $detergents = Detergent::all();
+        $scents = Scent::all();
+        $dryers = Dryer::all();
+        return view('admin.packages.edit', ['active' => 'packages', 'package' => $package, 'fabrics' => $fabrics,
+            'detergents' => $detergents, 'scents' => $scents, 'dryers' => $dryers]);
+
+    }
     public function update(PackageRequest $request, $id)
     {
         $package = Package::find($id)->update($request->validated());

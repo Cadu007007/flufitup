@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/create', [PackageController::class, 'create'])->name('add');
             Route::post('store', [PackageController::class, 'store'])->name('store');
             Route::put('update/{id}', [PackageController::class, 'update'])->name('update');
+            Route::get('edit/{id}', [PackageController::class, 'edit'])->name('edit');
             Route::get('', [PackageController::class, 'index'])->name('index');
             Route::get('show/{id}', [PackageController::class, 'show'])->name('show');
         });
