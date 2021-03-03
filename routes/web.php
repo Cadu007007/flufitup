@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/create', [PackageController::class, 'create'])->name('add');
             Route::post('store', [PackageController::class, 'store'])->name('store');
             Route::put('update/{id}', [PackageController::class, 'update'])->name('update');
+            Route::get('edit/{id}', [PackageController::class, 'edit'])->name('edit');
             Route::get('', [PackageController::class, 'index'])->name('index');
             Route::get('show/{id}', [PackageController::class, 'show'])->name('show');
         });
@@ -1006,22 +1007,22 @@ Route::get('/admin/reports', function () {
 // })->name('admin.packages.show');
 
 /* Create Package */
-Route::get('/admin/packages/edit/{id}', function () {
-    $added_values = collect();
-    $added_values->push(['id' => 1, 'name' => 'added 1']);
-    $added_values->push(['id' => 2, 'name' => 'added 2']);
-    $added_values->push(['id' => 3, 'name' => 'added 3']);
-    $added_values->push(['id' => 4, 'name' => 'added 4']);
-    $added_values->push(['id' => 5, 'name' => 'added 5']);
+// Route::get('/admin/packages/edit/{id}', function () {
+//     $added_values = collect();
+//     $added_values->push(['id' => 1, 'name' => 'added 1']);
+//     $added_values->push(['id' => 2, 'name' => 'added 2']);
+//     $added_values->push(['id' => 3, 'name' => 'added 3']);
+//     $added_values->push(['id' => 4, 'name' => 'added 4']);
+//     $added_values->push(['id' => 5, 'name' => 'added 5']);
 
-    $package = collect();
-    $features = collect();
-    $features->push(['label' => 'Dry clean', 'data' => 'Included free in this package']);
-    $features->push(['label' => 'Washing with modern washer', 'data' => 'Yes']);
+//     $package = collect();
+//     $features = collect();
+//     $features->push(['label' => 'Dry clean', 'data' => 'Included free in this package']);
+//     $features->push(['label' => 'Washing with modern washer', 'data' => 'Yes']);
 
-    $package->push(['name' => 'Package 1', 'price' => '60', 'features' => $features]);
-    return view('admin.packages.edit', ['active' => 'packages', 'package' => $package, 'added_values' => $added_values]);
-})->name('admin.packages.edit');
+//     $package->push(['name' => 'Package 1', 'price' => '60', 'features' => $features]);
+//     return view('admin.packages.edit', ['active' => 'packages', 'package' => $package, 'added_values' => $added_values]);
+// })->name('admin.packages.edit');
 
 /* Dry Clean */
 // Route::get('/admin/packages/dry_clean', function () {
