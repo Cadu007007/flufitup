@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PackageRequest;
+use App\Http\Requests\PackageUpdateRequest;
 use App\Models\CategoryDetergent;
 use App\Models\CategoryDryer;
 use App\Models\CategoryFabric;
@@ -63,9 +64,11 @@ class PackageController extends Controller
             'detergents' => $detergents, 'scents' => $scents, 'dryers' => $dryers]);
 
     }
-    public function update(PackageRequest $request, $id)
+    public function update(PackageUpdateRequest $request, $package)
     {
-        $package = Package::find($id)->update($request->validated());
+
+        $package = Package::find($package);
+        $package->update($request->validated());
         return response()->json(['success' => true, 'data' => $package]);
     }
     public function index()

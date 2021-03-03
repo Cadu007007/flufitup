@@ -37,12 +37,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // Route::post('delete', [DetergentController::class, 'delete'])->name('detergents');
 
         Route::group(['prefix' => ''], function () {
+            Route::get('/', [PackageController::class, 'index'])->name('index');
             Route::get('/categories', [PackageController::class, 'allPackages'])->name('categories');
             Route::get('/create', [PackageController::class, 'create'])->name('add');
             Route::post('store', [PackageController::class, 'store'])->name('store');
-            Route::put('update/{id}', [PackageController::class, 'update'])->name('update');
             Route::get('edit/{id}', [PackageController::class, 'edit'])->name('edit');
-            Route::get('', [PackageController::class, 'index'])->name('index');
+            Route::put('update/{id}', [PackageController::class, 'update'])->name('update');
             Route::get('show/{id}', [PackageController::class, 'show'])->name('show');
         });
         Route::group(['prefix' => 'dry/cleans', 'as' => 'dry.cleans.'], function () {
