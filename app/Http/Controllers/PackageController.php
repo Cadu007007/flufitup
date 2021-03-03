@@ -52,6 +52,11 @@ class PackageController extends Controller
         $package = Package::create($request->validated());
         return response()->json(['success' => true, 'data' => $package]);
     }
+    public function update(PackageRequest $request, $id)
+    {
+        $package = Package::find($id)->update($request->validated());
+        return response()->json(['success' => true, 'data' => $package]);
+    }
     public function index()
     {
         // dd(Package::all());
