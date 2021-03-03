@@ -49,12 +49,13 @@ class PackageController extends Controller
     }
     public function store(PackageRequest $request)
     {
-        $package = Package::created($request->validated());
+        $package = Package::create($request->validated());
         return response()->json(['success' => true, 'data' => $package]);
     }
     public function index()
     {
         $packages = Package::all()->groupBy('category');
+        dd($packages);
         return view('admin.packages.index', ['active' => 'packages', 'packages' => $packages]);
 
         return response()->json(['data' => Package::all()]);
