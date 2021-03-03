@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PackageRequest extends FormRequest
+class PackageUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,10 @@ class PackageRequest extends FormRequest
      */
     public function rules()
     {
+        // dd($this->id);
         return [
-            'name' => ['required', 'unique:packages,name'],
+
+            'name' => 'required|unique:packages,name,' . $this->id,
             'price' => ['required', 'numeric'],
             'category' => ['required'],
             'no_pickups' => ['required', 'numeric'],
@@ -48,7 +50,6 @@ class PackageRequest extends FormRequest
 
         ];
     }
-
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
