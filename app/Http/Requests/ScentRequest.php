@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ScentRequest extends FormRequest
 {
@@ -35,5 +37,16 @@ class ScentRequest extends FormRequest
 
             $rules += ['name' => 'required|unique:scents,name,' . $this->scent->id];
         }
+        return $rules;
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'status' => false,
+                'messages' => $validator->errors()->all(),
+            ], 200)
+        );
     }
 }

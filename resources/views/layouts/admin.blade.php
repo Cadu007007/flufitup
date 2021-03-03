@@ -36,7 +36,7 @@
                 routetodrivers="{{ route('admin.employees.drivers') }}"
                 routetolaunderystaff="{{ route('admin.employees.laundery_staff') }}"
                 routetopromocodes="{{ route('admin.promocodes') }}"
-                routetozones="{{ route('admin.zones') }}"
+                routetozones="{{ route('admin.zones.index') }}"
                 routetocities="{{ route('admin.cities.index') }}"
                 />
             </div>
