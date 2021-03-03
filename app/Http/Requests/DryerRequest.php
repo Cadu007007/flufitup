@@ -30,7 +30,7 @@ class DryerRequest extends FormRequest
             $rules += ['name' => ['required', 'unique:dryers,name']];
             $rules += ['image' => ['required', 'image']];
         } else {
-            $rules += ['name' => ['required', 'unique:dryers,name,' . $this->fabric->id]];
+            $rules += ['name' => ['required', 'unique:dryers,name,' . $this->dryer->id]];
             $rules += ['image' => ['sometimes', 'image']];
 
         }

@@ -132,6 +132,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::group(['prefix' => 'zones', 'as' => 'zones.'], function () {
         Route::get('/', [ZoneController::class, 'index'])->name('index');
         Route::post('store', [ZoneController::class, 'store'])->name('store');
+        Route::get('create', [ZoneController::class, 'create'])->name('add');
+        Route::get('edit/{id}', [ZoneController::class, 'edit'])->name('edit');
+        Route::delete('delete/{id}', [ZoneController::class, 'delete'])->name('delete');
+        // Route::get('/admin/zones/add', function () {
+        // })->name('admin.zones.add');
+
+        // Route::get('/admin/zones/edit/{id}', function () {
+        //     return view('admin.zones.edit', ['active' => 'zones']);
+        // })->name('admin.zones.edit');
+
+        // Route::delete('/admin/zones/delete/{id}', function () {
+        //     return view('admin.zones.index', ['active' => 'zones']);
+        // })->name('admin.zones.delete');
     });
 
 });
@@ -1461,24 +1474,24 @@ Route::delete('/admin/promocodes/delete/{id}', function () {
 /******************************
  * Zones Start
  * ************************** */
-Route::get('/admin/zones', function () {
-    $zones = collect();
-    $zones->push(['id' => 1, 'name' => 'Zone NO 1', 'cities' => 'Alexandria, Cairo, Giza']);
-    $zones->push(['id' => 2, 'name' => 'Zone NO 2', 'cities' => 'Qena, Aswan, Sohag']);
-    return view('admin.zones.index', ['active' => 'zones', 'zones' => $zones]);
-})->name('admin.zones');
+// Route::get('/admin/zones', function () {
+//     $zones = collect();
+//     $zones->push(['id' => 1, 'name' => 'Zone NO 1', 'cities' => 'Alexandria, Cairo, Giza']);
+//     $zones->push(['id' => 2, 'name' => 'Zone NO 2', 'cities' => 'Qena, Aswan, Sohag']);
+//     return view('admin.zones.index', ['active' => 'zones', 'zones' => $zones]);
+// })->name('admin.zones');
 
-Route::get('/admin/zones/add', function () {
-    return view('admin.zones.create', ['active' => 'zones']);
-})->name('admin.zones.add');
+// Route::get('/admin/zones/add', function () {
+//     return view('admin.zones.create', ['active' => 'zones']);
+// })->name('admin.zones.add');
 
-Route::get('/admin/zones/edit/{id}', function () {
-    return view('admin.zones.edit', ['active' => 'zones']);
-})->name('admin.zones.edit');
+// Route::get('/admin/zones/edit/{id}', function () {
+//     return view('admin.zones.edit', ['active' => 'zones']);
+// })->name('admin.zones.edit');
 
-Route::delete('/admin/zones/delete/{id}', function () {
-    return view('admin.zones.index', ['active' => 'zones']);
-})->name('admin.zones.delete');
+// Route::delete('/admin/zones/delete/{id}', function () {
+//     return view('admin.zones.index', ['active' => 'zones']);
+// })->name('admin.zones.delete');
 
 /******************************
  * Zones End
