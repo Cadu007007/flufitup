@@ -21,9 +21,21 @@
                     required
                 >
                     <option selected :value="null">Choose a category</option>
-                    <option value="adhoc">Ad Hoc</option>
-                    <option value="bi_weekly">Bi‐Weekly</option>
-                    <option value="monthly">Monthly</option>
+                    <option
+                        value="adhoc"
+                        :selected="package.category == 'adhoc'"
+                        >Ad Hoc</option
+                    >
+                    <option
+                        value="bi_weekly"
+                        :selected="package.category == 'bi_weekly'"
+                        >Bi‐Weekly</option
+                    >
+                    <option
+                        value="monthly"
+                        :selected="package.category == 'monthly'"
+                        >Monthly</option
+                    >
                 </select>
             </div>
 
@@ -37,7 +49,7 @@
                             name="name"
                             id=""
                             placeholder="Package Name"
-                            v-model="name"
+                            :value="package.name"
                             required
                         />
                         <span class="delete" @click="clearPackageName">
@@ -69,9 +81,21 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">1 Pickup</option>
-                            <option value="2">2 Pickup</option>
-                            <option value="3">3 Pickup</option>
+                            <option
+                                value="1"
+                                :selected="package.no_pickups == 1"
+                                >1 Pickup</option
+                            >
+                            <option
+                                value="2"
+                                :selected="package.no_pickups == 2"
+                                >2 Pickup</option
+                            >
+                            <option
+                                value="3"
+                                :selected="package.no_pickups == 3"
+                                >3 Pickup</option
+                            >
                         </select>
                     </div>
 
@@ -86,8 +110,16 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">1 Day</option>
-                            <option value="2">2 Days</option>
+                            <option
+                                value="1"
+                                :selected="package.advance_notice == 1"
+                                >1 Day</option
+                            >
+                            <option
+                                value="2"
+                                :selected="package.advance_notice == 2"
+                                >2 Days</option
+                            >
                         </select>
                     </div>
 
@@ -102,10 +134,26 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">1 Bag</option>
-                            <option value="2">2 Bags</option>
-                            <option value="3">3 Bags</option>
-                            <option value="4">4 Bags</option>
+                            <option
+                                value="1"
+                                :selected="package.bags_per_pickup == 1"
+                                >1 Bag</option
+                            >
+                            <option
+                                value="2"
+                                :selected="package.bags_per_pickup == 2"
+                                >2 Bags</option
+                            >
+                            <option
+                                value="3"
+                                :selected="package.bags_per_pickup == 3"
+                                >3 Bags</option
+                            >
+                            <option
+                                value="4"
+                                :selected="package.bags_per_pickup == 4"
+                                >4 Bags</option
+                            >
                         </select>
                     </div>
 
@@ -120,9 +168,21 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="12">12 Hours</option>
-                            <option value="24">24 Hours</option>
-                            <option value="48">48 Hours</option>
+                            <option
+                                value="12"
+                                :selected="package.return_service == 12"
+                                >12 Hours</option
+                            >
+                            <option
+                                value="24"
+                                :selected="package.return_service == 24"
+                                >24 Hours</option
+                            >
+                            <option
+                                value="48"
+                                :selected="package.return_service == 48"
+                                >48 Hours</option
+                            >
                         </select>
                     </div>
 
@@ -137,8 +197,20 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="machine_wash">Machine Wash</option>
-                            <option value="hand_wash">Hand Wash</option>
+                            <option
+                                value="machine_wash"
+                                :selected="
+                                    package.washing_option == 'machine_wash'
+                                "
+                                >Machine Wash</option
+                            >
+                            <option
+                                value="hand_wash"
+                                :selected="
+                                    package.washing_option == 'hand_wash'
+                                "
+                                >Hand Wash</option
+                            >
                         </select>
                     </div>
 
@@ -153,9 +225,23 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="tumble_dry">Tumble Dry</option>
-                            <option value="air_dry">Air Dry</option>
-                            <option value="air_dry_flat">Air Dry - Flat</option>
+                            <option
+                                value="tumble_dry"
+                                :selected="package.dryer_option == 'tumble_dry'"
+                                >Tumble Dry</option
+                            >
+                            <option
+                                value="air_dry"
+                                :selected="package.dryer_option == 'air_dry'"
+                                >Air Dry</option
+                            >
+                            <option
+                                value="air_dry_flat"
+                                :selected="
+                                    package.dryer_option == 'air_dry_flat'
+                                "
+                                >Air Dry - Flat</option
+                            >
                         </select>
                     </div>
                     <!-- <div class="" style="margin-bottom: 20px">
@@ -184,8 +270,16 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">Standard Line</option>
-                            <option value="2">Special LineBag</option>
+                            <option
+                                value="1"
+                                :selected="package.detergent_id == 1"
+                                >Standard Line</option
+                            >
+                            <option
+                                value="2"
+                                :selected="package.detergent_id == 2"
+                                >Special LineBag</option
+                            >
                         </select>
                     </div>
 
@@ -200,8 +294,16 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">Standard Line</option>
-                            <option value="2">Special LineBag</option>
+                            <option
+                                value="1"
+                                :selected="package.laundry_softener == 1"
+                                >Standard Line</option
+                            >
+                            <option
+                                value="2"
+                                :selected="package.laundry_softener == 2"
+                                >Special LineBag</option
+                            >
                         </select>
                     </div>
                     <div class="" style="margin-bottom: 20px">
@@ -214,9 +316,15 @@
                             class="select2"
                             style="width:300px; margin-top: 20px"
                         >
-                            <option value="1">None</option>
-                            <option value="2">Standard Line</option>
-                            <option value="3">Special LineBag</option>
+                            <option value="1" :selected="package.scent_id == 1"
+                                >None</option
+                            >
+                            <option value="2" :selected="package.scent_id == 2"
+                                >Standard Line</option
+                            >
+                            <option value="3" :selected="package.scent_id == 2"
+                                >Special LineBag</option
+                            >
                         </select>
                     </div>
 
@@ -230,9 +338,15 @@
                             class="select2"
                             style="width:300px; margin-top: 20px"
                         >
-                            <option value="1">None</option>
-                            <option value="2">Standard Line</option>
-                            <option value="3">Special LineBag</option>
+                            <option value="1" :selected="package.fabric_id == 1"
+                                >None</option
+                            >
+                            <option value="2" :selected="package.fabric_id == 2"
+                                >Standard Line</option
+                            >
+                            <option value="3" :selected="package.fabric_id == 2"
+                                >Special LineBag</option
+                            >
                         </select>
                     </div>
                     <div class="" style="margin-bottom: 20px">
@@ -246,9 +360,15 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">None</option>
-                            <option value="2">1 Sheet</option>
-                            <option value="3">Multiple Per Bag</option>
+                            <option value="1" :selected="package.dryer_id == 1"
+                                >None</option
+                            >
+                            <option value="2" :selected="package.dryer_id == 2"
+                                >1 Sheet</option
+                            >
+                            <option value="3" :selected="package.dryer_id == 2"
+                                >Multiple Per Bag</option
+                            >
                         </select>
                     </div>
 
@@ -262,6 +382,7 @@
                             placeholder="Dry Clean Credit"
                             type="number"
                             min="0"
+                            :value="package.dry_clean_credit"
                             required
                         />
                     </div>
@@ -276,6 +397,7 @@
                             placeholder="House Hold Credit"
                             type="number"
                             min="0"
+                            :value="package.house_hold_credit"
                             required
                         />
                     </div>
@@ -290,6 +412,7 @@
                             placeholder="Added Value Services Credit"
                             type="number"
                             min="0"
+                            :value="package.added_value_service"
                             required
                         />
                     </div>
@@ -303,6 +426,7 @@
                             placeholder="Rewards Points"
                             type="number"
                             min="0"
+                            :value="package.reward_points"
                             required
                         />
                     </div>
@@ -316,6 +440,7 @@
                             placeholder="Price of Extra Pound"
                             type="number"
                             min="0"
+                            :value="package.price_of_extra_pound"
                             required
                         />
                     </div>
@@ -324,7 +449,7 @@
                 <div class="price-card-container">
                     <CreatePackagePriceCard
                         currency="$"
-                        price="0"
+                        :price="package.price"
                         pricename="price"
                         :isrequired="true"
                     />
