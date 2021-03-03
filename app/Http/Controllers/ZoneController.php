@@ -39,12 +39,18 @@ class ZoneController extends Controller
     public function update(ZoneRequest $request, $id)
     {
         $zone = Zone::find($id);
+        ZoneCity::where('zone_id', $id)->delete();
+        foreach ($request->cities as $city) {
+
+            ZoneCity::create(['zone_id' => $id, 'city_id' => $city]);
+        }
         $zone->update($request->except(['cities']));
 
     }
     public function delete($id)
     {
         Zone::find($id)->delete();
+        ZoneCity::where('zone_id', $id)->delete();
         return response()->json(['success' => true]);
     }
 }
