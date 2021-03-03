@@ -221,7 +221,7 @@ export default {
                         id: returnedObject.id,
                         name: returnedObject.name,
                         price: returnedObject.price,
-                        img: returnedObject.image
+                        img: "/storage/"+returnedObject.image
                     });
             });
 
