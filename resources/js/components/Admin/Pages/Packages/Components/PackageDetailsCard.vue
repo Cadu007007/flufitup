@@ -1,7 +1,7 @@
 <template>
   <div class="PackageDetailsCard">
        <p class="title">Package Details</p>
-        <AdminPackageDetail class="detail-container" name="Package Category :" :value="package.category"/>
+        <AdminPackageDetail class="detail-container" name="Package Category :" :value="package.category.replace('_', ' ')"/>
         <AdminPackageDetail class="detail-container" name="Return Duration :" :value="package.return_service"/>
         <AdminPackageDetail class="detail-container" name="No. of Pickups :" :value="package.no_pickups"/>
         <AdminPackageDetail class="detail-container" name="No. of Bags :" :value="package.bags_per_pickup"/>
