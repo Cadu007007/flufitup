@@ -135,10 +135,12 @@ export default {
     methods: {
         editPressed() {
             this.disablestate = false;
+            this.$emit('edit-pressed')
         },
         cancelPressed() {
             this.disablestate = true;
             this.loadedLabel = this.oldName;
+            this.$emit('cancel-pressed')
         },
         readURL(event) {
             let input = event.target;
@@ -184,7 +186,10 @@ export default {
             let itemid = this.itemid;
             let loadedLabel = this.loadedLabel;
             let loadedPrice = this.loadedPrice;
-            let categoryidvalue = this.categoryidvalue;
+            let categoryidvalue = $(event.target).parent().parent().find(".select2").val();
+           
+           console.log(" $(event.target).parent().parent(): ",  $(event.target).parent().parent().attr("class"));
+           console.log("categoryidvalue: ", categoryidvalue);
             let disableState;
             axios({
                 url: editRoute,
@@ -211,7 +216,10 @@ export default {
                 }
             });
             setTimeout(() => {
-                this.disablestate = disableState;
+                if (disableState){
+                    this.disablestate = disableState;
+                    this.$emit('save-pressed')
+                }
             }, 500);
         },
         deleteItem(event) {

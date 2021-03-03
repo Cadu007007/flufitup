@@ -4,9 +4,13 @@
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
         </div>
-        <br />
+        <div class="alert alert-success mt-3 text-center d-none successMessage">
+            Package Updated Successfully
+        </div>
+
         <form method="post" class="edit-form" @submit="editFormSubmit($event)">
             <input type="hidden" :value="csrf" name="_token" />
+            <input type="hidden" name="id" id="" :value="package.id" />
 
             <div
                 class="package-title-div flex-column"
@@ -52,12 +56,12 @@
                             :value="package.name"
                             required
                         />
-                        <span class="delete" @click="clearPackageName">
+                        <!-- <span class="delete" @click="clearPackageName">
                             <img
                                 src="/images/admin/icons/notification-cancel.svg"
                                 alt=""
                             />
-                        </span>
+                        </span> -->
                     </div>
                     <!-- 
                     <div class="package-features">
@@ -502,14 +506,26 @@ export default {
                 this.package.id
             );
             console.log("selectedURL: ", selectedURL);
-            let addStatus;
+            let updateStatus;
+           
             axios({
                 url: selectedURL,
                 method: "PUT",
                 data: formValues
             }).then(response => {
                 console.log("data: ", response.data);
+                updateStatus = true
             });
+
+            if(updateStatus){
+                this.showSuccessMessage()
+            }
+        },
+        showSuccessMessage(){
+            // $(".successMessage").removeClass("d-none")
+            // setTimeout(() => {
+            //     $(".successMessage").addClass("d-none")
+            // }, 3000);
         }
     }
 };

@@ -4,7 +4,10 @@
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
         </div>
-        <br />
+        
+        <div class="alert alert-success mt-3 text-center d-none successMessage">
+            Package Created Successfully
+        </div>
         <form method="post" class="add-form" @submit="addFormSubmit($event)">
             <input type="hidden" :value="csrf" name="_token" />
 
@@ -40,12 +43,12 @@
                             v-model="name"
                             required
                         />
-                        <span class="delete" @click="clearPackageName">
+                        <!-- <span class="delete" @click="clearPackageName">
                             <img
                                 src="/images/admin/icons/notification-cancel.svg"
                                 alt=""
                             />
-                        </span>
+                        </span> -->
                     </div>
                     <!-- 
                     <div class="package-features">
@@ -381,7 +384,18 @@ export default {
                 data: formValues
             }).then(response => {
                 console.log("data: ", response.data);
+                addStatus = response.data.success
             });
+
+            if(addStatus){
+                this.showSuccessMessage()
+            }
+        },
+        showSuccessMessage(){
+            // $(".successMessage").removeClass("d-none")
+            // setTimeout(() => {
+            //     $(".successMessage").addClass("d-none")
+            // }, 3000);
         }
     }
 };

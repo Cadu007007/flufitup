@@ -107,7 +107,7 @@
                 :key="item.id"
                 :categories="categories"
                 :name="item.name"
-                :types="item.detergents"
+                :types="item.fabrics"
                 :itemid="item.id"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
@@ -198,7 +198,7 @@ export default {
             formDateObject.append("name", this.itemName);
             formDateObject.append("price", this.itemPrice);
             formDateObject.append(
-                "category_detergents_id",
+                "category_fabrics_id",
                 $("#categoryId").val()
             );
             formDateObject.append("image", uploadedImage);
@@ -217,11 +217,11 @@ export default {
                 let selectedCategory = $("#categoryId").val();
                 loadedItems
                     .find(x => (x.id = selectedCategory))
-                    .detergents.push({
+                    .fabrics.push({
                         id: returnedObject.id,
                         name: returnedObject.name,
                         price: returnedObject.price,
-                        img: returnedObject.image
+                        img: "/storage/"+returnedObject.image
                     });
             });
 
