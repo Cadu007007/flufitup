@@ -1,7 +1,7 @@
 <template>
   <div class="PackagePriceCard">
     <div class="title">Package Price</div>
-    <input class="package-price" type="text" placeholder="Package Price" v-model="formatedPrice">
+    <input class="package-price" type="text" placeholder="Package Price" v-model="price">
 
     <div class="button-container">
         <button class="edit-button" @click="$emit('go-to-edit-package')">Edit Package</button>

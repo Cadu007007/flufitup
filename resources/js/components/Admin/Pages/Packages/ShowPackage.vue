@@ -10,8 +10,7 @@
 
             <PackagePriceCard
                 class="package-price-card-container"
-                :price="package[0].price"
-                :currency="package[0].currency"
+                :price="package.price"
                 @go-to-edit-package="goToEditPackage"
             />
         </div>
@@ -37,7 +36,7 @@ export default {
         goToEditPackage() {
             var url = this.editpackageroute.replace(
                 "package_id",
-                this.package[0].id
+                this.package.id
             );
             window.location.href = url;
         }

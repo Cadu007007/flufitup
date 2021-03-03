@@ -4,6 +4,7 @@
 title="Edit Package"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :addedvalues="{{$added_values}}"
-:thepackage="{{$package}}"
+:package="{{$package}}"
+{{-- updatepackageroute="{{ route('admin.packages.update', 'package_id') }}" --}}
 />
 @endsection

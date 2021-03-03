@@ -1,11 +1,12 @@
 @extends('layouts.admin')
 @section('content')
+{{-- {{ dd($packages)}} --}}
 <Admin-Packages
 title="Packages"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
-:adhocpackages="{{ @$packages }}"
-:biweeklypackages="{{ @$packages }}"
-:monthlypackages="{{ @$packages }}"
+:adhocpackages="{{ @$packages ['adhoc']}}"
+:biweeklypackages="{{ @$packages['bi_weekly'] }}"
+:monthlypackages="{{ @$packages['monthly'] }}"
 :tailoredpackages="{{ @$packages }}"
 addpackageroute= "{{ route('admin.packages.add') }}"
 showpackageroute="{{route('admin.packages.show','package_id')}}"

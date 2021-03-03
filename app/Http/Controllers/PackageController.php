@@ -54,9 +54,9 @@ class PackageController extends Controller
     }
     public function index()
     {
-        dd(Package::all());
+        // dd(Package::all());
         $packages = Package::all()->groupBy('category');
-        dd($packages);
+        // dd($packages);
         return view('admin.packages.index', ['active' => 'packages', 'packages' => $packages]);
 
         return response()->json(['data' => Package::all()]);
@@ -64,6 +64,9 @@ class PackageController extends Controller
     }
     public function show($id)
     {
+        $package = Package::find($id);
+        return view('admin.packages.show', ['active' => 'packages', 'package' => $package]);
+
         return response()->json(['data' => Package::find($id)]);
     }
 }

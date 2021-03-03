@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+{{-- {{ dd($package) }} --}}
 <Show-Package
 title="Show Package"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"

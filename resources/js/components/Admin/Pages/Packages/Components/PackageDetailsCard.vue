@@ -1,16 +1,18 @@
 <template>
   <div class="PackageDetailsCard">
        <p class="title">Package Details</p>
-        <AdminPackageDetail class="detail-container" name="Package Duration :" :value="package[0].package_duration"/>
-        <AdminPackageDetail class="detail-container" name="No. of Pickups :" :value="package[0].no_of_pickups"/>
-        <AdminPackageDetail class="detail-container" name="No. of Bags :" :value="package[0].no_of_bags"/>
-        <AdminPackageDetail class="detail-container" name="Maximum Weight :" :value="package[0].max_weight"/>
-        <AdminPackageDetail class="detail-container" name="Return Duration :" :value="package[0].return_duration"/>
-        <AdminPackageDetail class="detail-container" name="Dry Clean Credit :" :value="package[0].dry_clean_credit"/>
-        <AdminPackageDetail class="detail-container" name="Added Value Services Credit :" :value="package[0].added_value_service_credit"/>
-        <AdminPackageDetail class="detail-container" name="Reward Points :" :value="package[0].reward_points"/>
-        <AdminPackageDetail class="detail-container" name="Price of Extra Pound" :value="package[0].price_of_extra_pound"/>
-        <AdminPackageDetail class="detail-container" name="Advance Notice" :value="package[0].advance_notice"/>
+        <AdminPackageDetail class="detail-container" name="Package Category :" :value="package.category"/>
+        <AdminPackageDetail class="detail-container" name="Return Duration :" :value="package.return_service"/>
+        <AdminPackageDetail class="detail-container" name="No. of Pickups :" :value="package.no_pickups"/>
+        <AdminPackageDetail class="detail-container" name="No. of Bags :" :value="package.bags_per_pickup"/>
+        <!-- <AdminPackageDetail class="detail-container" name="Maximum Weight :" :value="package.max_weight"/> -->
+        <AdminPackageDetail class="detail-container" name="Dry Clean Credit :" :value="package.dry_clean_credit"/>
+        <AdminPackageDetail class="detail-container" name="Added Value Services Credit :" :value="package.added_value_service"/>
+        <AdminPackageDetail class="detail-container" name="Reward Points :" :value="package.reward_points"/>
+        <AdminPackageDetail class="detail-container" name="Price of Extra Pound" :value="package.price_of_extra_pound"/>
+        <AdminPackageDetail class="detail-container" name="Advance Notice" :value="package.advance_notice"/>
+        <AdminPackageDetail class="detail-container" name="Washing Option" :value="package.washing_option.replace('_', ' ')"/>
+        <AdminPackageDetail class="detail-container" name="Dryer Option" :value="package.dryer_option.replace('_', ' ') "/>
   </div>
 </template>
 
