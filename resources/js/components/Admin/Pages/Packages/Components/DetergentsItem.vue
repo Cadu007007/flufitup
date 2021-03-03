@@ -5,7 +5,7 @@
                 :name="categoryid"
                 id=""
                 class="select2"
-                disabled
+                :disabled="disableState"
                 style="width: 400px"
             >
                 <option
@@ -31,6 +31,9 @@
                 :deleteid="type.id"
                 :itemid="type.id"
                 @delete-item="deleteItem(index)"
+                @edit-pressed="changeIsDisabled"
+                @save-pressed="changeIsDisabled"
+                @cancel-pressed="disableState = true"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
             />
@@ -59,7 +62,8 @@ export default {
 
     data() {
         return {
-            itemName: this.name
+            itemName: this.name,
+            disableState: true
         };
     },
     computed: {
@@ -82,6 +86,9 @@ export default {
                 return type.category_detergents_id;
             else if (type.category_fabric_id > 0)
                 return type.category_fabric_id;
+        },
+        changeIsDisabled() {
+            this.disableState = !this.disableState;
         }
     }
 };

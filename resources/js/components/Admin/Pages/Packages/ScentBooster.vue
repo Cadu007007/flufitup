@@ -97,17 +97,17 @@
         </form>
         <div class="seperator"></div>
 
-
         <p class="title" style="margin-top: 10px; font-weight: bold" v-if="loadedItems.length > 0">
             Added Types
         </p>
+
         <div class="flex-column">
             <Detergents-Item
                 v-for="item in loadedItems"
                 :key="item.id"
                 :categories="categories"
                 :name="item.name"
-                :types="item.detergents"
+                :types="item.scents"
                 :itemid="item.id"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
@@ -198,7 +198,7 @@ export default {
             formDateObject.append("name", this.itemName);
             formDateObject.append("price", this.itemPrice);
             formDateObject.append(
-                "category_detergents_id",
+                "category_scents_id",
                 $("#categoryId").val()
             );
             formDateObject.append("image", uploadedImage);
@@ -217,11 +217,11 @@ export default {
                 let selectedCategory = $("#categoryId").val();
                 loadedItems
                     .find(x => (x.id = selectedCategory))
-                    .detergents.push({
+                    .scents.push({
                         id: returnedObject.id,
                         name: returnedObject.name,
                         price: returnedObject.price,
-                        img: returnedObject.image
+                        img: "/storage/"+returnedObject.image
                     });
             });
 
