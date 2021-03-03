@@ -3,6 +3,6 @@
 <Create-Package
 title="Add Package"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
-:addedvalues="{{$added_values}}"
+storepackageroute= "{{ route('admin.packages.store') }}"
 />
 @endsection

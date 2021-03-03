@@ -1,5 +1,5 @@
 <template>
-    <div class="DryClean">
+    <div class="Household">
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
@@ -11,28 +11,28 @@
         <form
             action=""
             method="POST"
-            class="DryCleanItem add-form"
+            class="HouseholdItem add-form"
             @submit="submitAddForm($event)"
         >
             <input type="hidden" :value="csrf" name="_token" />
 
             <input
-                class="dry-clean-input"
+                class="household-input itemNameInput"
                 type="text"
                 name="name"
                 id=""
                 placeholder="Label"
-                :value="itemname"
+                value=""
                 required
             />
             <input
-                class="dry-clean-input"
+                class="household-input itemPriceInput"
                 type="number"
                 name="price"
                 min="0"
                 id=""
                 placeholder="Price"
-                :value="itemprice"
+                value=""
                 required
             />
 
@@ -44,24 +44,21 @@
         <p class="title" style="margin-top: 10px; font-weight: bold">
             Added Items
         </p>
-
         <div class="flex-column">
-            <Dry-Clean-Item
+            <House-Hold-Item
                 v-for="item in loadedItems"
                 :key="item.id"
-                :label="item.label"
+                :label="item.name"
                 :price="item.price"
                 :itemid="item.id"
-                :isdisabled="true"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
+                :isdisabled="true"
                 :hiddenvalue="JSON.stringify(item)"
             />
         </div>
 
-        <!-- <p class="add-new-item" @click="addNewItemContainer()">
-            Add Another Dry Clean Item
-        </p> -->
+        <!-- <p class="add-new-item" @click="addNewItemContainer()">Add Another Household Item</p> -->
         <!--     
     <div class="button-container">
         <button class="save-button">Save</button>
@@ -70,22 +67,45 @@
 </template>
 
 <script>
-import DryCleanItem from "./Components/DryCleanItem";
+import HouseHoldItem from "./Components/HouseHoldItem";
 export default {
+    mounted() {
+        setTimeout(() => {
+            $(".itemNameInput").change(function(event) {
+                if (event.target.value.length == 0) {
+                    $(event.target).removeAttr("required");
+                } else {
+                    $(event.target).attr("required", true);
+                }
+            });
+            $(".itemPriceInput").change(function(event) {
+                if (event.target.value.length == 0) {
+                    $(event.target).removeAttr("required");
+                } else {
+                    $(event.target).attr("required", true);
+                }
+            });
+        }, 1000);
+    },
     data() {
         return {
             loadedItems: this.items,
             newItems: [],
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
-                .getAttribute("content"),
-            itemname: "",
-            itemprice: ""
+                .getAttribute("content")
         };
     },
-    props: ["title", "date", "items", "editformroute", "deleteformroute"],
+    props: [
+        "title",
+        "date",
+        "items",
+        "addformroute",
+        "editformroute",
+        "deleteformroute"
+    ],
     components: {
-        DryCleanItem
+        HouseHoldItem
     },
     methods: {
         addNewItemContainer() {
@@ -101,27 +121,46 @@ export default {
             event.preventDefault();
             var formValues = $(".add-form").serialize();
             console.log("formValues: ", formValues);
-
+            let loadedItems = this.loadedItems;
             $.ajax({
                 url: this.addformroute,
                 type: "POST",
                 data: formValues,
                 success: function(data) {
-                    if (data.success) {
-                    }
+                    let returnObject = data.data;
+                    loadedItems.push({
+                        id: returnObject.id,
+                        name: returnObject.name,
+                        price: returnObject.price
+                    });
                 }
             });
+            setTimeout(() => {
+                this.loadedItems = loadedItems;
+                this.clearAddInputs();
+            }, 500);
+        },
+
+        clearAddInputs() {
+            $(".itemNameInput").val("").change();
+            $(".itemPriceInput").val("").change();
         }
     }
 };
 </script>
 
 <style lang="scss">
+$text-grey: #00000080;
+$light-grey: #eef2f4;
+$blue: #22aee4;
+$black: #000;
+$red: rgb(214, 60, 60);
+
 $text-grey: #00000066;
 $orange: #ffa800;
 $blue: #22aee4;
 
-.DryClean {
+.Household {
     width: 100%;
     height: 100%;
     .page-header {
@@ -162,6 +201,52 @@ $blue: #22aee4;
             background: $blue;
             color: #fff;
             font-size: 18px;
+        }
+    }
+
+    .HouseholdItem {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        position: relative;
+        margin-bottom: 10px;
+        .household-input {
+            width: 512px;
+            height: 45px;
+            background: #f9f9f9;
+            padding: 13px 24px;
+            border: 1px solid #ededed;
+            border-radius: 7px;
+            margin: 6px 0;
+        }
+        .delete {
+            position: absolute;
+            top: 47px;
+            left: 525px;
+        }
+        .edit {
+            position: absolute;
+            top: 47px;
+            left: 565px;
+        }
+        .save {
+            position: absolute;
+            top: 40px;
+            left: 565px;
+            background: $blue;
+            color: #fff;
+            padding: 5px 30px;
+            border-radius: 15px;
+        }
+        .cancel {
+            position: absolute;
+            top: 40px;
+            left: 670px;
+            background: $red;
+            color: #fff;
+            padding: 5px 30px;
+            border-radius: 15px;
         }
     }
 }

@@ -17,7 +17,7 @@
             <input type="hidden" :value="csrf" name="_token" />
 
             <input
-                class="household-input"
+                class="household-input itemNameInput"
                 type="text"
                 name="name"
                 id=""
@@ -26,7 +26,7 @@
                 required
             />
             <input
-                class="household-input"
+                class="household-input itemPriceInput"
                 type="number"
                 name="price"
                 min="0"
@@ -69,6 +69,24 @@
 <script>
 import HouseHoldItem from "./Components/HouseHoldItem";
 export default {
+    mounted() {
+        setTimeout(() => {
+            $(".itemNameInput").change(function(event) {
+                if (event.target.value.length == 0) {
+                    $(event.target).removeAttr("required");
+                } else {
+                    $(event.target).attr("required", true);
+                }
+            });
+            $(".itemPriceInput").change(function(event) {
+                if (event.target.value.length == 0) {
+                    $(event.target).removeAttr("required");
+                } else {
+                    $(event.target).attr("required", true);
+                }
+            });
+        }, 1000);
+    },
     data() {
         return {
             loadedItems: this.items,
@@ -117,7 +135,15 @@ export default {
                     });
                 }
             });
-            this.loadedItems = loadedItems;
+            setTimeout(() => {
+                this.loadedItems = loadedItems;
+                this.clearAddInputs();
+            }, 500);
+        },
+
+        clearAddInputs() {
+            $(".itemNameInput").val("").change();
+            $(".itemPriceInput").val("").change();
         }
     }
 };

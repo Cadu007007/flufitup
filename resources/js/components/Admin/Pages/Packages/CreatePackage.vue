@@ -5,8 +5,7 @@
             <p class="date">{{ date }}</p>
         </div>
         <br />
-        <form action="/dummy" method="post">
-
+        <form method="post" class="add-form" @submit="addFormSubmit($event)">
             <input type="hidden" :value="csrf" name="_token" />
 
             <div
@@ -22,9 +21,9 @@
                     required
                 >
                     <option selected :value="null">Choose a category</option>
-                    <option value="1">Ad Hoc</option>
-                    <option value="2">Bi‐Weekly</option>
-                    <option value="3">Monthly</option>
+                    <option value="adhoc">Ad Hoc</option>
+                    <option value="bi_weekly">Bi‐Weekly</option>
+                    <option value="monthly">Monthly</option>
                 </select>
             </div>
 
@@ -48,7 +47,7 @@
                             />
                         </span>
                     </div>
-<!-- 
+                    <!-- 
                     <div class="package-features">
                         <AddPackageItem
                             v-for="(item, index) in items"
@@ -121,9 +120,9 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">12 Hours</option>
-                            <option value="2">24 Hours</option>
-                            <option value="3">48 Hours</option>
+                            <option value="12">12 Hours</option>
+                            <option value="24">24 Hours</option>
+                            <option value="48">48 Hours</option>
                         </select>
                     </div>
 
@@ -138,8 +137,8 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">Machine Wash</option>
-                            <option value="2">Hand Wash</option>
+                            <option value="machine_wash">Machine Wash</option>
+                            <option value="hand_wash">Hand Wash</option>
                         </select>
                     </div>
 
@@ -148,15 +147,15 @@
                             Drying Options
                         </p>
                         <select
-                            name="dry_clean_id"
+                            name="dryer_option"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
                             required
                         >
-                            <option value="1">Tumble Dry</option>
-                            <option value="2">Air Dry</option>
-                            <option value="3">Air Dry - Flat</option>
+                            <option value="tumble_dry">Tumble Dry</option>
+                            <option value="air_dry">Air Dry</option>
+                            <option value="air_dry_flat">Air Dry - Flat</option>
                         </select>
                     </div>
                     <!-- <div class="" style="margin-bottom: 20px">
@@ -245,6 +244,7 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
+                            required
                         >
                             <option value="1">None</option>
                             <option value="2">1 Sheet</option>
@@ -337,6 +337,56 @@
         </p> -->
     </div>
 </template>
+
+<script>
+import AddPackageItem from "./Components/AddPackageItem";
+import CreatePackagePriceCard from "./Components/CreatePackagePriceCard";
+import AddedValueContainer from "./Components/AddedValueContainer";
+
+export default {
+    props: ["title", "date", "addedvalues", "storepackageroute"],
+    data() {
+        return {
+            name: "",
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content")
+        };
+    },
+    components: {
+        AddPackageItem,
+        CreatePackagePriceCard,
+        AddedValueContainer
+    },
+    methods: {
+        clearPackageName() {
+            this.name = "";
+        },
+        addNewItemContainer() {
+            this.items.push({ label: "", data: "" });
+        },
+        deleteItem(index) {
+            this.items.splice(index, 1);
+        },
+        addFormSubmit(event) {
+            event.preventDefault();
+            var formValues = $(".add-form").serialize();
+
+            let selectedURL = this.storepackageroute;
+            console.log("selectedURL: ", selectedURL);
+            let addStatus;
+            axios({
+                url: selectedURL,
+                method: "POST",
+                data: formValues
+            }).then(response => {
+                console.log("data: ", response.data);
+            });
+        }
+    }
+};
+</script>
+
 <style lang="scss">
 $text-grey: #00000066;
 $orange: #ffa800;
@@ -421,36 +471,3 @@ $blue: #22aee4;
     }
 }
 </style>
-<script>
-import AddPackageItem from "./Components/AddPackageItem";
-import CreatePackagePriceCard from "./Components/CreatePackagePriceCard";
-import AddedValueContainer from "./Components/AddedValueContainer";
-
-export default {
-    props: ["title", "date", "addedvalues"],
-    data() {
-        return {
-            name: "",
-            csrf: document
-                .querySelector('meta[name="csrf-token"]')
-                .getAttribute("content")
-        };
-    },
-    components: {
-        AddPackageItem,
-        CreatePackagePriceCard,
-        AddedValueContainer
-    },
-    methods: {
-        clearPackageName() {
-            this.name = "";
-        },
-        addNewItemContainer() {
-            this.items.push({ label: "", data: "" });
-        },
-        deleteItem(index) {
-            this.items.splice(index, 1);
-        }
-    }
-};
-</script>

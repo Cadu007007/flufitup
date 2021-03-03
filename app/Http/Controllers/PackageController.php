@@ -54,6 +54,7 @@ class PackageController extends Controller
     }
     public function index()
     {
+        dd(Package::all());
         $packages = Package::all()->groupBy('category');
         dd($packages);
         return view('admin.packages.index', ['active' => 'packages', 'packages' => $packages]);
