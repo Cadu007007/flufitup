@@ -24,8 +24,7 @@ class PackageRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => ['required', 'unique:packages,name'],
+        $rules = [
             'price' => ['required', 'numeric'],
             'category' => ['required'],
             'no_pickups' => ['required', 'numeric'],
@@ -46,6 +45,13 @@ class PackageRequest extends FormRequest
             'price_of_extra_pound' => ['sometimes'],
 
         ];
+        if (request()->method() == 'POST') {
+
+            $rules += ['name' => ['required', 'unique:packages,name']];
+        } else {
+            $rules += ['name' => ['required', 'unique:packages,name,' . $this->id]];
+
+        }
     }
 
     public function response(array $errors)
