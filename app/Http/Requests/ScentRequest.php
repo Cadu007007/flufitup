@@ -27,14 +27,14 @@ class ScentRequest extends FormRequest
     {
         $rules = [
             'price' => 'required',
-            'image' => 'required',
             'category_scents_id' => 'required',
         ];
         if (request()->method() == 'POST') {
-
+            $rules += ['image' => 'required'];
             $rules += ['name' => 'required|unique:scents,name'];
         } else {
 
+            $rules += ['image' => 'sometimes'];
             $rules += ['name' => 'required|unique:scents,name,' . $this->scent->id];
         }
         return $rules;
