@@ -4,7 +4,7 @@
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
         </div>
-        
+
         <div class="alert alert-success mt-3 text-center d-none successMessage">
             Package Created Successfully
         </div>
@@ -384,18 +384,19 @@ export default {
                 data: formValues
             }).then(response => {
                 console.log("data: ", response.data);
-                addStatus = response.data.success
+                addStatus = response.data.success;
             });
-
-            if(addStatus){
-                this.showSuccessMessage()
-            }
+            setTimeout(() => {
+                if (addStatus) {
+                    this.showSuccessMessage();
+                }
+            }, 600);
         },
-        showSuccessMessage(){
-            // $(".successMessage").removeClass("d-none")
-            // setTimeout(() => {
-            //     $(".successMessage").addClass("d-none")
-            // }, 3000);
+        showSuccessMessage() {
+            $(".successMessage").removeClass("d-none");
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
         }
     }
 };

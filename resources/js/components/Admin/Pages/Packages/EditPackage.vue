@@ -507,25 +507,26 @@ export default {
             );
             console.log("selectedURL: ", selectedURL);
             let updateStatus;
-           
+
             axios({
                 url: selectedURL,
                 method: "PUT",
                 data: formValues
             }).then(response => {
                 console.log("data: ", response.data);
-                updateStatus = true
+                updateStatus = true;
             });
-
-            if(updateStatus){
-                this.showSuccessMessage()
-            }
+            setTimeout(() => {
+                if (updateStatus) {
+                    this.showSuccessMessage();
+                }
+            }, 600);
         },
-        showSuccessMessage(){
-            // $(".successMessage").removeClass("d-none")
-            // setTimeout(() => {
-            //     $(".successMessage").addClass("d-none")
-            // }, 3000);
+        showSuccessMessage() {
+            $(".successMessage").removeClass("d-none");
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
         }
     }
 };
