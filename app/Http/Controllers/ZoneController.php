@@ -27,6 +27,7 @@ class ZoneController extends Controller
 
             ZoneCity::create(['zone_id' => $zone->id, 'city_id' => $city]);
         }
+        return response()->json(['success' => true, 'data' => $zone]);
         return ($request);
     }
     public function edit($id)
@@ -39,12 +40,13 @@ class ZoneController extends Controller
     public function update(ZoneRequest $request, $id)
     {
         $zone = Zone::find($id);
+        $zone->update($request->except(['cities']));
         ZoneCity::where('zone_id', $id)->delete();
         foreach ($request->cities as $city) {
 
             ZoneCity::create(['zone_id' => $id, 'city_id' => $city]);
         }
-        $zone->update($request->except(['cities']));
+        return response()->json(['success' => true, 'data' => $zone]);
 
     }
     public function delete($id)
