@@ -18,10 +18,9 @@
                             <p class="title">City Name:</p>
                             <input
                                 type="text"
-                                class="city-name-input"
+                                class="city-name-input addCityName"
                                 name="name"
                                 placeholder="City Name"
-                                v-model="cityname"
                                 required
                             />
                         </div>
@@ -105,6 +104,17 @@
 
 <script>
 export default {
+    mounted() {
+        setTimeout(() => {
+            $(".addCityName").change(function(event) {
+                if ($(event.target).val() == "") {
+                    $(event.target).removeAttr("required");
+                } else {
+                    $(event.target).attr("required", true);
+                }
+            });
+        }, 500);
+    },
     data() {
         return {
             editCityName: "",
@@ -142,6 +152,7 @@ export default {
                     id: returnedObject.id,
                     name: returnedObject.name
                 });
+                this.clearAddInputs();
             });
         },
         editCity(cityId) {
@@ -167,7 +178,10 @@ export default {
             }).then(response => {
                 let returnedObject = response.data.data;
                 console.log("returnedObject: ", returnedObject);
+                this.loadedcities.find(x => x.id == this.editCityId).name =
+                    returnedObject.name;
                 /* push data in the array */
+                this.editCityId = 0;
             });
         },
         deleteCity(id) {
@@ -178,11 +192,19 @@ export default {
                     method: "DELETE",
                     data: id
                 }).then(response => {
-                    let returnedObject = response.data.data;
-                    console.log("returnedObject: ", returnedObject);
+                    if (response.data.success) {
+                        this.loadedcities = this.loadedcities.filter(
+                            x => x.id != id
+                        );
+                    }
                     /* push data in the array */
                 });
             }
+        },
+        clearAddInputs() {
+            $(".addCityName")
+                .val("")
+                .change();
         }
     }
 };
