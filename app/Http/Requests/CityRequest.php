@@ -34,7 +34,7 @@ class CityRequest extends FormRequest
         } else {
 
             return [
-                'name' => 'required|unique:cities,name,' . $this->city->id,
+                'name' => 'required|unique:cities,name,' . $this->id,
 
             ];
         }
