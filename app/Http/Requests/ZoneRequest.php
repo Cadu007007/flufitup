@@ -38,6 +38,7 @@ class ZoneRequest extends FormRequest
 
             $rules += ['name' => 'required|unique:zones,name,' . $this->id];
         }
+        return $rules;
     }
     protected function failedValidation(Validator $validator)
     {
