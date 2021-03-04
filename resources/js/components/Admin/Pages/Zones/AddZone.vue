@@ -1,8 +1,19 @@
 <template>
+            <form
+                method="POST"
+                class="add-form"
+                @submit="addSubmit($event)"
+            >
+                <input type="hidden" :value="csrf" name="_token" />
+
     <div class="AddZone">
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
+        </div>
+
+        <div class="alert alert-success mt-3 text-center d-none successMessage">
+            Zone Created Successfully
         </div>
         <div class="zone-cities-container">
             <div class="zone-name">
@@ -10,7 +21,7 @@
                 <input
                     type="text"
                     class="zone-name-input"
-                    name="zone_name"
+                    name="name"
                     placeholder="Zone Name"
                 />
                 <p class="center-title">Proccessing Center</p>
@@ -21,27 +32,7 @@
                     <div class="first-row">
                         <p class="title">Zone Cities:</p>
                         <div class="city-row">
-                            <select
-                                class="zone-name-input select2"
-                                style="width: 430px"
-                                name="city[]"
-                            >
-                                <option disabled selected>City Name</option>
-                                <option v-for="city in cities" :key="city.id"
-                                   :value="city.id" >{{city.name}}</option
-                                >
-                            </select>
-                            <span class="delete-city">X</span>
-                            <input
-                                type="checkbox"
-                                name="processing_center"
-                                class="checkbox1"
-                            />
-                            <input
-                                type="checkbox"
-                                name="washing_center"
-                                class="checkbox2"
-                            />
+                            <p class="text-center">Choose Zone Zities</p>
                         </div>
                     </div>
                     <div class="cities">
@@ -51,9 +42,9 @@
                             :key="index"
                         >
                             <select
-                                class="select2 zone-name-input"
+                                class="select2 zone-name-input zoneCityDropdown"
                                 style="width: 430px"
-                                name="city[]"
+                                name="cities[]"
                             >
                             <option disabled selected>City Name</option>
                                 <option v-for="city in cities" :key="city.id"
@@ -84,22 +75,22 @@
         </div>
 
         <div class="button-container">
-            <button class="save-button">Save</button>
+            <button class="save-button" type="submit">Save</button>
         </div>
     </div>
+</form>
+
 </template>
 
 <script>
 export default {
-    props: ["title", "date"],
+    props: ["title", "date","addzoneroute","cities"],
     data() {
         return {
-            inputs: 0,
-            cities: [
-                { id: 1, name: "Alexandria" },
-                { id: 2, name: "Cairo" },
-                { id: 3, name: "Giza" }
-            ]
+            inputs: 1,
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content")
         };
     },
     methods: {
@@ -111,6 +102,33 @@ export default {
             setTimeout(() => {
                 $(".select2").select2();
             }, 300);
+        },
+        addSubmit(event) {
+            event.preventDefault();
+            var formValues = $(".add-form").serialize();
+            console.log("formValues: ", formValues);
+            axios({
+                url: this.addzoneroute,
+                method: "POST",
+                data: formValues
+            }).then(response => {
+                console.log(response.data);
+                if(response.data.success){
+                    this.showSuccessMessage()
+                    this.clearInputs()
+                }
+                
+            });
+        },
+        showSuccessMessage() {
+            $(".successMessage").removeClass("d-none");
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
+        },
+        clearInputs(){
+            $(".zone-name-input").val("").change()
+            $(".zoneCityDropdown").val(null).change()
         }
     }
 };

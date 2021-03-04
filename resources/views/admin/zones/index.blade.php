@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+{{-- {{ dd($zones) }} --}}
 <Zones 
 title="Zones"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"

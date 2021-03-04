@@ -23,13 +23,17 @@
                         <p class="title">Zone Cities:</p>
                         <div class="city-row">
                             <select
+                                v-for="city in cities"
+                                :key="city.id"
                                 class="zone-name-input select2"
                                 style="width: 430px"
-                                name="city[]"
+                                name="cities[]"
                             >
-                                <option disabled selected>City Name</option>
-                                <option v-for="city in cities" :key="city.id"
-                                   :value="city.id" >{{city.name}}</option
+                                <option
+                                    v-for="city in cities"
+                                    :key="city.id"
+                                    :value="city.id"
+                                    >{{ city.name }}</option
                                 >
                             </select>
                             <span class="delete-city">X</span>
@@ -54,11 +58,14 @@
                             <select
                                 class="select2 zone-name-input"
                                 style="width: 430px"
-                                name="city[]"
+                                name="cities[]"
                             >
-                            <option disabled selected>City Name</option>
-                                <option v-for="city in cities" :key="city.id"
-                                   :value="city.id" >{{city.name}}</option
+                                <option disabled selected>City Name</option>
+                                <option
+                                    v-for="city in cities"
+                                    :key="city.id"
+                                    :value="city.id"
+                                    >{{ city.name }}</option
                                 >
                             </select>
                             <span class="delete-city" @click="removeCityRow"
