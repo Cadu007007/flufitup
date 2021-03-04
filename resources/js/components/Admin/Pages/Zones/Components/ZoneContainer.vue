@@ -11,7 +11,8 @@
             </p>
         </div>
         <p class="zone-title">Zone Cities:</p>
-        <p class="zone-city">{{ getNames(cities) }}</p>
+        <p class="zone-city" v-if="cities.length > 0">{{ getNames(cities) }}</p>
+        <p class="text-muted ml-4" v-else>Ther is no cities for that zone</p>
     </div>
 </template>
 
@@ -26,6 +27,9 @@ export default {
                     names += ", ";
                 }
                 names += cities[index].name;
+            }
+            if (names.length == 0) {
+                return "Not cities for this zone"
             }
             return names;
         }
@@ -42,9 +46,9 @@ $black: #000000;
     display: grid;
     grid-template-columns: 100px auto 250px;
     align-items: flex-start;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: 40px 1fr;
     padding: 20px 30px 10px 90px;
-    height: 100px;
+    min-height: 100px;
     border-bottom: 1px solid #00000033;
     .buttons-container {
         display: flex;

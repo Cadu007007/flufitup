@@ -1,98 +1,109 @@
 <template>
-   <form
-                method="POST"
-                class="edit-form"
-                @submit="editSubmit($event)"
+    <form method="POST" class="edit-form" @submit="editSubmit($event)">
+        <input type="hidden" :value="csrf" name="_token" />
+        <input type="hidden" :value="zone.id" name="id" />
+
+        <div class="EditZone">
+            <div class="page-header">
+                <p class="title">{{ title }}</p>
+                <p class="date">{{ date }}</p>
+            </div>
+
+            <div
+                class="alert alert-success mt-3 text-center d-none successMessage"
             >
-                <input type="hidden" :value="csrf" name="_token" />
-                <input type="hidden" :value="zone.id" name="id" />
-
-    <div class="EditZone">
-        <div class="page-header">
-            <p class="title">{{ title }}</p>
-            <p class="date">{{ date }}</p>
-        </div>
-
-
-        <div class="alert alert-success mt-3 text-center d-none successMessage">
-            Zone Updated Successfully
-        </div>
-        <div class="zone-cities-container">
-            <div class="zone-name">
-                <p class="title">Zone Name:</p>
-                <input
-                    type="text"
-                    class="zone-name-input"
-                    name="name"
-                    placeholder="Zone Name"
-                />
-
-                <p class="center-title">Proccessing Center</p>
-                <p class="center-title">Washing Center</p>
+                Zone Updated Successfully
             </div>
             <div class="zone-cities-container">
-                <div class="zone-city">
-                    <div class="first-row">
-                        <p class="title">Zone Cities:</p>
-                        <div class="city-row">
-                            <p class="text-center">Choose Zone Zities</p>
-                        </div>
-                    </div>
-                    <div class="cities">
-                        <div
-                            class="city-row"
-                            v-for="(input, index) in inputs"
-                            :key="index"
-                        >
-                            <select
-                                class="select2 zone-name-input"
-                                style="width: 430px"
-                                name="cities[]"
-                                v-for="selectedcity in zone.cities"
-                                :key="selectedcity.id"
-                            >
-                                <option
-                                    v-for="city in cities"
-                                    :key="city.id"
-                                    :value="city.id"
-                                    :selected="selectedcity.id == city.id">{{ city.name }}</option
-                                >
-                            </select>
-                            <span class="delete-city" @click="removeCityRow"
-                                >X</span>
-                            <input
-                                type="checkbox"
-                                name="processing_center"
-                                class="checkbox1"
-                            />
-                            <input
-                                type="checkbox"
-                                name="washing_center"
-                                class="checkbox2"
-                            />
-                        </div>
+                <div class="zone-name">
+                    <p class="title">Zone Name:</p>
+                    <input
+                        type="text"
+                        class="zone-name-input"
+                        name="name"
+                        placeholder="Zone Name"
+                        :value="zone.name"
+                    />
 
-                        <p class="add-another-city" @click="addButtonPressed()">
-                            Add Another City
-                        </p>
+                    <p class="center-title">Proccessing Center</p>
+                    <p class="center-title">Washing Center</p>
+                </div>
+                <div class="zone-cities-container">
+                    <div class="zone-city">
+                        <div class="first-row">
+                            <p class="title">Zone Cities:</p>
+                            <div class="city-row">
+                                <p class="text-center">Choose Zone Zities</p>
+                            </div>
+                        </div>
+                        <div class="cities">
+                            <div class="city-row">
+                                <div
+                                    class="my-4"
+                                    v-for="selectedcity in loadedCities"
+                                    :key="selectedcity.id"
+                                >
+                                    <select
+                                        class="select2 "
+                                        style="width: 430px;margin: 10px 0"
+                                        name="cities[]"
+                                    >
+                                        <option
+                                            v-for="city in cities"
+                                            :key="city.id"
+                                            :value="city.id"
+                                            :selected="
+                                                selectedcity.id == city.id
+                                            "
+                                            >{{ city.name }}</option
+                                        >
+                                    </select>
+
+                                    <span class="" @click="removeCityRow"
+                                        >X</span
+                                    >
+                                    <div class="d-flex flex-row">
+                                        <input
+                                            type="checkbox"
+                                            name="processing_center"
+                                            class="checkbox1"
+                                        />
+                                        <input
+                                            type="checkbox"
+                                            name="washing_center"
+                                            class="checkbox2"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p
+                                class="add-another-city"
+                                @click="addButtonPressed()"
+                            >
+                                Add Another City
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="button-container">
-            <button class="save-button">Save</button>
+            <div class="button-container">
+                <button class="save-button" type="submit">Save</button>
+            </div>
         </div>
-    </div>
-   </form>
+    </form>
 </template>
 
 <script>
 export default {
-    props: ["title", "date","zone", "updatezoneroute", "cities"],
+    props: ["title", "date", "zone", "updatezoneroute", "cities"],
     data() {
         return {
-            inputs: 0
+            loadedCities: this.zone.cities,
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content")
         };
     },
     methods: {
@@ -100,7 +111,7 @@ export default {
             event.target.parentNode.remove();
         },
         addButtonPressed() {
-            this.inputs++;
+            this.loadedCities.push({});
             setTimeout(() => {
                 $(".select2").select2();
             }, 300);
@@ -109,17 +120,18 @@ export default {
             event.preventDefault();
             var formValues = $(".edit-form").serialize();
             console.log("formValues: ", formValues);
+            let selectedURL = this.updatezoneroute
+            console.log("selectedURL: ", selectedURL);
             axios({
-                url: this.updatezoneroute,
+                url: selectedURL,
                 method: "PUT",
                 data: formValues
             }).then(response => {
                 console.log(response.data);
-                if(response.data.success){
-                    this.showSuccessMessage()
-                    this.clearInputs()
+                if (response.data.success) {
+                    this.showSuccessMessage();
+                    this.clearInputs();
                 }
-                
             });
         },
         showSuccessMessage() {
@@ -128,9 +140,13 @@ export default {
                 $(".successMessage").addClass("d-none");
             }, 3000);
         },
-        clearInputs(){
-            $(".zone-name-input").val("").change()
-            $(".zoneCityDropdown").val(null).change()
+        clearInputs() {
+            $(".zone-name-input")
+                .val("")
+                .change();
+            $(".zoneCityDropdown")
+                .val(null)
+                .change();
         }
     }
 };
@@ -234,14 +250,15 @@ $blue: #22aee4;
                         cursor: pointer;
                     }
                     .checkbox1 {
-                        position: absolute;
-                        top: 2px;
-                        right: -150px;
+                        position: relative;
+                        left: 560px;
+                        top: -24px;
                     }
                     .checkbox2 {
-                        position: absolute;
-                        top: 2px;
-                        right: -270px;
+                        
+                        position: relative;
+                        left: 660px;
+                        top: -26px;
                     }
                 }
 

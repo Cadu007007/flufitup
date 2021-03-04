@@ -6,7 +6,7 @@
 title="Edit Zone"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :zone="{{ $zone }}"
-{{-- updatezoneroute="{{ route('admin.zones.update',$zone->id ) }}" --}}
+updatezoneroute="{{ route('admin.zones.update',$zone->id ) }}"
 :cities="{{ $cities }}"
 />
 @endsection
