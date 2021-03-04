@@ -134,6 +134,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('store', [ZoneController::class, 'store'])->name('store');
         Route::get('create', [ZoneController::class, 'create'])->name('add');
         Route::get('edit/{id}', [ZoneController::class, 'edit'])->name('edit');
+        Route::put('update/{id}', [ZoneController::class, 'update'])->name('update');
         Route::delete('delete/{id}', [ZoneController::class, 'delete'])->name('delete');
         // Route::get('/admin/zones/add', function () {
         // })->name('admin.zones.add');

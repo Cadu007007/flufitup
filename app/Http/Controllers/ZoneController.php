@@ -34,9 +34,8 @@ class ZoneController extends Controller
     }
     public function edit($id)
     {
-        $zone = Zone::find($id)->each(function ($zone) {
-            $zone->cities = $zone->cities;
-        });
+        $zone = Zone::find($id);
+        $zone->cities = $zone->cities;
         $cities = City::all();
         return view('admin.zones.edit', ['active' => 'zones', 'zone' => $zone, 'cities' => $cities]);
 

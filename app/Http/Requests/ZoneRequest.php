@@ -25,14 +25,19 @@ class ZoneRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'cities' => 'required',
             'cities.*' => 'required',
-            'name' => 'required|unique:zones,name',
             'processing' => 'sometimes',
             'washing' => 'sometimes',
         ];
+        if (request()->method() == 'POST') {
 
+            $rules += ['name' => 'required|unique:zones,name'];
+        } else {
+
+            $rules += ['name' => 'required|unique:zones,name,' . $this->id];
+        }
     }
     protected function failedValidation(Validator $validator)
     {
