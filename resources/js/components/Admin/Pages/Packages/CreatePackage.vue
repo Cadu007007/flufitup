@@ -390,7 +390,7 @@ export default {
                 if (addStatus) {
                     this.showSuccessMessage();
                 }
-            }, 600);
+            }, 800);
         },
         showSuccessMessage() {
             $(".successMessage").removeClass("d-none");

@@ -9,9 +9,10 @@
             <div class="packages-type adhoc-packages">
                 <div class="">
                     <p class="packages-type-title">Ad Hoc Packages</p>
-                    <div class="flex-row">
+                    <div class="flex-row" v-if="addhoc">
                         <PackageUsersCard
-                            v-for="aPackage in adhocpackages"
+                        
+                            v-for="aPackage in addhoc"
                             :key="aPackage.id"
                             :id="aPackage.id"
                             :name="aPackage.name"
@@ -24,7 +25,7 @@
                 <p class="packages-type-title">Biweekly Packages</p>
                     <div class="flex-row">
                         <PackageUsersCard
-                            v-for="aPackage in biweeklypackages"
+                            v-for="aPackage in biweekly"
                             :key="aPackage.id"
                             :id="aPackage.id"
                             :name="aPackage.name"
@@ -38,7 +39,7 @@
                 <div class="flex-row">
 
                     <PackageUsersCard
-                        v-for="aPackage in monthlypackages"
+                        v-for="aPackage in monthly"
                         :key="aPackage.id"
                         :id="aPackage.id"
                         :name="aPackage.name"
@@ -91,7 +92,10 @@ export default {
     data() {
         return {
             activepackageid: 0,
-            packageusers: []
+            packageusers: [],
+            addhoc: this.adhocpackages || [' '],
+            biweekly: this.biweeklypackages || [' '],
+            monthly: this.monthlypackages || [' '],
         };
     },
     methods: {
