@@ -520,7 +520,7 @@ export default {
                 if (updateStatus) {
                     this.showSuccessMessage();
                 }
-            }, 600);
+            }, 800);
         },
         showSuccessMessage() {
             $(".successMessage").removeClass("d-none");

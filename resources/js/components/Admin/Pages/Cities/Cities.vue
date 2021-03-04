@@ -5,58 +5,79 @@
             <p class="date">{{ date }}</p>
         </div>
         <div class="column">
-            <div class="column" v-if="editCityId == 0">
-                <div class="row">
-                    <div class="city-name">
-                        <p class="title">City Name:</p>
-                        <input
-                            type="text"
-                            class="city-name-input"
-                            name="city_name"
-                            placeholder="City Name"
-                        />
+            <form
+                method="POST"
+                class="add-form"
+                @submit="addCitySubmit($event)"
+            >
+                <input type="hidden" :value="csrf" name="_token" />
+
+                <div class="column" v-if="editCityId == 0">
+                    <div class="row">
+                        <div class="city-name">
+                            <p class="title">City Name:</p>
+                            <input
+                                type="text"
+                                class="city-name-input"
+                                name="name"
+                                placeholder="City Name"
+                                v-model="cityname"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="save-button" type="submit">
+                            Add City
+                        </button>
                     </div>
                 </div>
+            </form>
 
-                <div class="button-container">
-                    <button class="save-button">Add City</button>
-                </div>
-            </div>
-            <div class="column"  v-if="editCityId > 0">
-                <div class="row">
-                    <div class="city-name">
-                        <p class="title">City Name:</p>
-                        <input
-                            type="text"
-                            class="city-name-input"
-                            name="city_name"
-                            placeholder="City Name"
-                            v-model="editCityName"
-                        />
-                        <input
-                            type="hidden"
-                            name="city_id"
-                            v-model="editCityId"
-                        />
+            <form action="" @submit="updateCitySubmit($event)">
+                <input type="hidden" :value="csrf" name="_token" />
+
+                <div class="column" v-if="editCityId > 0">
+                    <div class="row">
+                        <div class="city-name">
+                            <p class="title">City Name:</p>
+                            <input
+                                type="text"
+                                class="city-name-input"
+                                name="name"
+                                placeholder="City Name"
+                                v-model="editCityName"
+                            />
+                            <input
+                                type="hidden"
+                                name="id"
+                                v-model="editCityId"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="button-container" style="width: 40%">
+                        <button class="save-button" type="submit">Save</button>
+                        <button class="cancel-button" @click="editCityId = 0">
+                            Cancel
+                        </button>
                     </div>
                 </div>
-
-                <div class="button-container" style="width: 40%">
-                    <button class="save-button">Save</button>
-                    <button class="cancel-button" @click="editCityId=0">Cancel</button>
-                </div>
-            </div>
+            </form>
 
             <div class="seperator"></div>
 
             <div class="page-header">
-                <p class="title" style="margin: 5px 0">Added Cities</p>
+                <p class="title" style="margin: 5px 0" v-if="loadedcities">
+                    Added Cities
+                </p>
             </div>
 
             <div class="cities-container">
                 <div
                     class="city-container"
-                    v-for="city in cities"
+                    v-for="city in loadedcities"
                     :key="city.id"
                 >
                     <p class="city-title">
@@ -66,8 +87,9 @@
                         class="column"
                         style="width: 100%; margin-bottom: 10px"
                     >
-                        <button class="button edit"
-                        @click="editCity(city.id)">Edit</button>
+                        <button class="button edit" @click="editCity(city.id)">
+                            Edit
+                        </button>
                         <button
                             class="button delete"
                             @click="deleteCity(city.id)"
@@ -83,19 +105,84 @@
 
 <script>
 export default {
-    data(){
-        return{
-            editCityName: '',
-            editCityId: 0
-        }
+    data() {
+        return {
+            editCityName: "",
+            editCityId: 0,
+            cityname: "",
+            loadedcities: this.cities,
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content")
+        };
     },
     components: {},
-    props: ["title", "date", "cities"],
+    props: [
+        "title",
+        "date",
+        "cities",
+        "addcityroute",
+        "editcityroute",
+        "deletecityroute"
+    ],
     methods: {
-        editCity(cityId){
-            let selectedCity = this.cities.find(x=> x.id == cityId)
-            this.editCityName = selectedCity.name
-            this.editCityId = selectedCity.id
+        addCitySubmit(event) {
+            event.preventDefault();
+            var formValues = $(".add-form").serialize();
+            console.log("formValues: ", formValues);
+            axios({
+                url: this.addcityroute,
+                method: "POST",
+                data: formValues
+            }).then(response => {
+                let returnedObject = response.data.data;
+                console.log("returnedObject: ", returnedObject);
+                /* push data in the array */
+                this.loadedcities.push({
+                    id: returnedObject.id,
+                    name: returnedObject.name
+                });
+            });
+        },
+        editCity(cityId) {
+            let selectedCity = this.loadedcities.find(x => x.id == cityId);
+            console.log("selectedCity: ", selectedCity);
+            this.editCityName = selectedCity.name;
+            this.editCityId = selectedCity.id;
+        },
+
+        updateCitySubmit(event) {
+            event.preventDefault();
+            var formValues = $(event.target).serialize();
+            console.log("formValues: ", formValues);
+            let selectedURL = this.editcityroute.replace(
+                "city_id",
+                this.editCityId
+            );
+            console.log("selectedURL: ", selectedURL);
+            axios({
+                url: selectedURL,
+                method: "PUT",
+                data: formValues
+            }).then(response => {
+                let returnedObject = response.data.data;
+                console.log("returnedObject: ", returnedObject);
+                /* push data in the array */
+            });
+        },
+        deleteCity(id) {
+            let selectedURL = this.deletecityroute.replace("city_id", id);
+            if (confirm("Are You Sure ?")) {
+                axios({
+                    url: selectedURL,
+                    method: "DELETE",
+                    data: id
+                }).then(response => {
+                    let returnedObject = response.data.data;
+                    console.log("returnedObject: ", returnedObject);
+                    /* push data in the array */
+                });
+            }
         }
     }
 };
@@ -146,7 +233,7 @@ $red: rgb(207, 42, 42);
             color: #fff;
             font-size: 18px;
         }
-        .cancel-button{
+        .cancel-button {
             margin: 30px auto;
             padding: 10px 40px;
             height: 45px;
