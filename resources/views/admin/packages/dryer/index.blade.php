@@ -9,5 +9,7 @@ categoryid="category_dryer_id"
 addformroute="{{ route('admin.packages.dryers.store') }}"
 editformroute="{{ route('admin.packages.dryers.update', 'item_id') }}"
 deleteformroute="{{ route('admin.packages.dryers.delete', 'item_id') }}"
+imageasset="{{ asset("storage/image_path") }}"
+
 />
 @endsection

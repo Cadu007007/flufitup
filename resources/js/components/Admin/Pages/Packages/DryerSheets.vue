@@ -97,7 +97,11 @@
         </form>
         <div class="seperator"></div>
 
-        <p class="title" style="margin-top: 10px; font-weight: bold" v-if="loadedItems.length > 0">
+        <p
+            class="title"
+            style="margin-top: 10px; font-weight: bold"
+            v-if="loadedItems.length > 0"
+        >
             Added Types
         </p>
 
@@ -112,6 +116,7 @@
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
                 :categoryid="categoryid"
+                :imageasset="imageasset"
             />
         </div>
 
@@ -146,7 +151,8 @@ export default {
         "addformroute",
         "editformroute",
         "deleteformroute",
-        "categoryid"
+        "categoryid",
+        "imageasset"
     ],
     components: {
         DetergentsItem,
@@ -197,10 +203,7 @@ export default {
             formDateObject.append("_token", this.csrf);
             formDateObject.append("name", this.itemName);
             formDateObject.append("price", this.itemPrice);
-            formDateObject.append(
-                "category_dryers_id",
-                $("#categoryId").val()
-            );
+            formDateObject.append("category_dryers_id", $("#categoryId").val());
             formDateObject.append("image", uploadedImage);
             let loadedItems = this.loadedItems;
             axios({
@@ -209,7 +212,7 @@ export default {
                 data: formDateObject,
                 enctype: "multipart/form-data"
                 // processData: false, // Important!
-            }).then(function(response) {
+            }).then((response) => {
                 let returnedObject = response.data.data;
                 console.log("returnedObject: ", returnedObject);
                 /* push data in the array */
@@ -221,10 +224,21 @@ export default {
                         id: returnedObject.id,
                         name: returnedObject.name,
                         price: returnedObject.price,
-                        img: "/storage/"+returnedObject.image
-                    });
-            });
 
+                        img: returnedObject.image
+                    });
+                /* update the last added image */
+                let newImagePath = this.imageasset.replace(
+                    "image_path",
+                    returnedObject.image
+                );
+                // console.log("newImagePath: ", newImagePath);
+                setTimeout(() => {
+                    $(".DetergentsTypeItem:last")
+                        .find(".uploaded-image")
+                        .attr("src", newImagePath);
+                }, 600);
+            });
         }
     }
 };

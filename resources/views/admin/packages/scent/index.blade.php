@@ -9,5 +9,7 @@ categoryid="category_scents_id"
 addformroute="{{ route('admin.packages.scents.store') }}"
 editformroute="{{ route('admin.packages.scents.update', 'item_id') }}"
 deleteformroute="{{ route('admin.packages.scents.delete', 'item_id') }}"
+imageasset="{{ asset("storage/image_path") }}"
+
 />
 @endsection

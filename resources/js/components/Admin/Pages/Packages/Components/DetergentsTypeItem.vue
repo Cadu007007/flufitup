@@ -25,7 +25,7 @@
                     <img
                         class="uploaded-image"
                         style="width: 102px;height: 102px;border: none"
-                        :src="'/storage/' + img"
+                        :src="loadedImage"
                         alt=""
                     />
 
@@ -116,7 +116,7 @@ export default {
     },
     computed: {
         loadedImage() {
-            return "/storage/" + this.img;
+            return this.imageasset.replace("image_path", this.img);
         }
     },
     props: [
@@ -130,17 +130,18 @@ export default {
         "deleteid",
         "itemid",
         "categoryid",
-        "categoryidvalue"
+        "categoryidvalue",
+        "imageasset"
     ],
     methods: {
         editPressed() {
             this.disablestate = false;
-            this.$emit('edit-pressed')
+            this.$emit("edit-pressed");
         },
         cancelPressed() {
             this.disablestate = true;
             this.loadedLabel = this.oldName;
-            this.$emit('cancel-pressed')
+            this.$emit("cancel-pressed");
         },
         readURL(event) {
             let input = event.target;
@@ -186,10 +187,20 @@ export default {
             let itemid = this.itemid;
             let loadedLabel = this.loadedLabel;
             let loadedPrice = this.loadedPrice;
-            let categoryidvalue = $(event.target).parent().parent().find(".select2").val();
-           
-           console.log(" $(event.target).parent().parent(): ",  $(event.target).parent().parent().attr("class"));
-           console.log("categoryidvalue: ", categoryidvalue);
+            let categoryidvalue = $(event.target)
+                .parent()
+                .parent()
+                .find(".select2")
+                .val();
+
+            console.log(
+                " $(event.target).parent().parent(): ",
+                $(event.target)
+                    .parent()
+                    .parent()
+                    .attr("class")
+            );
+            console.log("categoryidvalue: ", categoryidvalue);
             let disableState;
             axios({
                 url: editRoute,
@@ -216,9 +227,9 @@ export default {
                 }
             });
             setTimeout(() => {
-                if (disableState){
+                if (disableState) {
                     this.disablestate = disableState;
-                    this.$emit('save-pressed')
+                    this.$emit("save-pressed");
                 }
             }, 500);
         },
@@ -248,7 +259,7 @@ export default {
                 });
             }
         }
-    }
+    },
 };
 </script>
 

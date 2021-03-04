@@ -36,6 +36,7 @@
                 @cancel-pressed="disableState = true"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
+                :imageasset="imageasset"
             />
 
             <!-- <p class="add-more-type" @click="addNewType">Add more types</p> -->
@@ -57,7 +58,8 @@ export default {
         "editformroute",
         "deleteformroute",
         "itemid",
-        "categoryid"
+        "categoryid",
+        "imageasset"
     ],
 
     data() {

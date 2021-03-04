@@ -9,5 +9,7 @@ categoryid="category_fabric_id"
 addformroute="{{ route('admin.packages.fabrics.store') }}"
 editformroute="{{ route('admin.packages.fabrics.update', 'item_id') }}"
 deleteformroute="{{ route('admin.packages.fabrics.delete', 'item_id') }}"
+imageasset="{{ asset("storage/image_path") }}"
+
 />
 @endsection

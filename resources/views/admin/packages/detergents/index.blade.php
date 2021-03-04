@@ -10,5 +10,6 @@ categoryid="category_detergents_id"
 addformroute="{{ route('admin.packages.detergents.store') }}"
 editformroute="{{ route('admin.packages.detergents.update', 'item_id') }}"
 deleteformroute="{{ route('admin.packages.detergents.delete', 'item_id') }}"
+imageasset="{{ asset("storage/image_path") }}"
 />
 @endsection
