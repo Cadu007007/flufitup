@@ -11,7 +11,9 @@ class ZoneController extends Controller
 {
     public function index()
     {
-        $zones = Zone::with('cities')->get();
+        $zones = Zone::with('cities')->get()->each(function ($zone) {
+            $zone->cities = $zone->cities;
+        });
         return view('admin.zones.index', ['active' => 'zones', 'zones' => $zones]);
     }
     public function create()
