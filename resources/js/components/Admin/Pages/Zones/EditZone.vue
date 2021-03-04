@@ -1,8 +1,21 @@
 <template>
+   <form
+                method="POST"
+                class="edit-form"
+                @submit="editSubmit($event)"
+            >
+                <input type="hidden" :value="csrf" name="_token" />
+                <input type="hidden" :value="zone.id" name="id" />
+
     <div class="EditZone">
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
+        </div>
+
+
+        <div class="alert alert-success mt-3 text-center d-none successMessage">
+            Zone Updated Successfully
         </div>
         <div class="zone-cities-container">
             <div class="zone-name">
@@ -10,7 +23,7 @@
                 <input
                     type="text"
                     class="zone-name-input"
-                    name="zone_name"
+                    name="name"
                     placeholder="Zone Name"
                 />
 
@@ -42,12 +55,11 @@
                                     v-for="city in cities"
                                     :key="city.id"
                                     :value="city.id"
-                                    >{{ city.name }}</option
+                                    :selected="selectedcity.id == city.id">{{ city.name }}</option
                                 >
                             </select>
                             <span class="delete-city" @click="removeCityRow"
-                                >X</span
-                            >
+                                >X</span>
                             <input
                                 type="checkbox"
                                 name="processing_center"
@@ -72,6 +84,7 @@
             <button class="save-button">Save</button>
         </div>
     </div>
+   </form>
 </template>
 
 <script>
@@ -91,6 +104,33 @@ export default {
             setTimeout(() => {
                 $(".select2").select2();
             }, 300);
+        },
+        editSubmit(event) {
+            event.preventDefault();
+            var formValues = $(".edit-form").serialize();
+            console.log("formValues: ", formValues);
+            axios({
+                url: this.updatezoneroute,
+                method: "PUT",
+                data: formValues
+            }).then(response => {
+                console.log(response.data);
+                if(response.data.success){
+                    this.showSuccessMessage()
+                    this.clearInputs()
+                }
+                
+            });
+        },
+        showSuccessMessage() {
+            $(".successMessage").removeClass("d-none");
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
+        },
+        clearInputs(){
+            $(".zone-name-input").val("").change()
+            $(".zoneCityDropdown").val(null).change()
         }
     }
 };
