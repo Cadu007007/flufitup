@@ -130,7 +130,6 @@ export default {
                 console.log(response.data);
                 if (response.data.success) {
                     this.showSuccessMessage();
-                    this.clearInputs();
                 }
             });
         },
@@ -140,14 +139,6 @@ export default {
                 $(".successMessage").addClass("d-none");
             }, 3000);
         },
-        clearInputs() {
-            $(".zone-name-input")
-                .val("")
-                .change();
-            $(".zoneCityDropdown")
-                .val(null)
-                .change();
-        }
     }
 };
 </script>
