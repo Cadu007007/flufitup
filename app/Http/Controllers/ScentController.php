@@ -22,7 +22,7 @@ class ScentController extends Controller
     public function store(ScentRequest $request)
     {
         $data = $request->validated();
-        $data['image'] = $request->file('image')->store('scents', ['disk' => 'public']);
+        $data['image'] = $request->file('image')->store('images', ['disk' => 'public']);
         $scent = Scent::create($data);
         return response()->json(['success' => true, 'data' => $scent]);
 
