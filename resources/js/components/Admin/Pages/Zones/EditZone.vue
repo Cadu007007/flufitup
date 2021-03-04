@@ -22,31 +22,7 @@
                     <div class="first-row">
                         <p class="title">Zone Cities:</p>
                         <div class="city-row">
-                            <select
-                                v-for="city in cities"
-                                :key="city.id"
-                                class="zone-name-input select2"
-                                style="width: 430px"
-                                name="cities[]"
-                            >
-                                <option
-                                    v-for="city in cities"
-                                    :key="city.id"
-                                    :value="city.id"
-                                    >{{ city.name }}</option
-                                >
-                            </select>
-                            <span class="delete-city">X</span>
-                            <input
-                                type="checkbox"
-                                name="processing_center"
-                                class="checkbox1"
-                            />
-                            <input
-                                type="checkbox"
-                                name="washing_center"
-                                class="checkbox2"
-                            />
+                            <p class="text-center">Choose Zone Zities</p>
                         </div>
                     </div>
                     <div class="cities">
@@ -59,8 +35,9 @@
                                 class="select2 zone-name-input"
                                 style="width: 430px"
                                 name="cities[]"
+                                v-for="selectedcity in zone.cities"
+                                :key="selectedcity.id"
                             >
-                                <option disabled selected>City Name</option>
                                 <option
                                     v-for="city in cities"
                                     :key="city.id"
@@ -99,15 +76,10 @@
 
 <script>
 export default {
-    props: ["title", "date"],
+    props: ["title", "date","zone", "updatezoneroute", "cities"],
     data() {
         return {
-            inputs: 0,
-            cities: [
-                { id: 1, name: "Alexandria" },
-                { id: 2, name: "Cairo" },
-                { id: 3, name: "Giza" }
-            ]
+            inputs: 0
         };
     },
     methods: {
