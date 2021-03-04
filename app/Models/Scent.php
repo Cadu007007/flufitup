@@ -17,4 +17,9 @@ class Scent extends Model
     {
         return $this->belongsTo(CategoryScent::class, 'category_scents_id');
     }
+
+    // public function getImageAttribute()
+    // {
+
+    // }
 }
