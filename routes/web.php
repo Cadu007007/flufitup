@@ -151,6 +151,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 });
 Route::get('/', function () {
     // dd(App\Models\User::all());
+    Auth::logout();
     $packages = collect();
     $packages->adhoc = collect();
     $packages->bi_weekly = collect();
@@ -178,6 +179,9 @@ Route::get('/resend/code', [AuthController::class, 'resend'])->name('resend.code
 Route::post('/forget/password', [AuthController::class, 'resend'])->name('send.code');
 Route::post('/user/change_password', [AuthController::class, 'changePassword'])->name('forget.change.password');
 // Route::post('/update/forget/password',[AuthController::class,''])
+Route::group(['prefix' => 'profile'], function () {
+    Route::get('/', [AuthController::class, 'profile'])->name('profile');
+});
 Auth::routes();
 // Route::post('login', [
 //     'as' => 'user.login',
@@ -691,10 +695,6 @@ Route::get('/packages/payment', function () {
 /*****************************
  *  Profile
 /**************************** */
-
-Route::get('/profile', function () {
-    return view('user.profile.index', ['active' => 'profile']);
-})->name('profile');
 
 Route::get('/profile/change_password', function () {
     return view('user.profile.change_password', ['active' => 'profile']);

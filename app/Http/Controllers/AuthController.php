@@ -160,11 +160,10 @@ class AuthController extends Controller
         // if validation fails return back with phone number and errors
     }
 
-    protected function verifyCode($data)
+    public function profile()
     {
-        // dd($data['phone_number']);
 
-        return $twilio;
+        return view('user.profile.index', ['active' => 'profile']);
     }
 
     protected function verification($phone)
