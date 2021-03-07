@@ -1,9 +1,9 @@
 @extends('layouts.user')
 @section('content')
-
 <Profile 
 class="PageContentContainer" 
 id="Profile" 
+name="{{ 'Salah' }}"
 lastlogin="Last Login : 08 / 25 / 2020, 09:35:21 PM"
 profileimage="{{ asset('images/icons/profile.svg') }}"
 email="{{  $test="MohamedSamir@gmail.com" }}"
