@@ -6,6 +6,7 @@
   </div>
 
   <ProfileCard :profileimage="profileimage" 
+      :name=name
       :email="email"
       :emailstatus="emailstatus"
       :phone="phone"
@@ -37,7 +38,7 @@ export default {
       title: 'Profile'
     }
   },
-  props: ['lastlogin','profileimage','email','emailstatus','phone','phonestatus','address','birthday',
+  props: ['lastlogin','profileimage','name','email','emailstatus','phone','phonestatus','address','birthday',
             'editprofileroute',
             'changepasswordroute',
             'walletvalue',

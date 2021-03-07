@@ -3,7 +3,7 @@
   <div class="ProfileCard">
     <div class="image-name-div">
         <img :src=profileimage alt="" class="image">
-        <p class="name">Mohamed Samir</p>
+        <p class="name">{{name}}</p>
     
     </div>
     <div class="details">
@@ -47,7 +47,7 @@ export default {
 components:{
     ProfileInfoContainer,
 },
-props:['profileimage','email','emailstatus','phone','phonestatus','address',
+props:[ 'name','profileimage','email','emailstatus','phone','phonestatus','address',
 'birthday','editprofileroute','changepasswordroute'],
 methods:{
     goToEditProfile(){
