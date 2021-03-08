@@ -20,11 +20,12 @@ class UserController extends Controller
 
     public function edit()
     {
-        return view('user.profile.edit', ['active' => 'profile']);
+        return view('user.profile.edit', ['active' => 'profile', 'user' => auth()->user()]);
     }
     public function update(UpdateProfileRequest $request)
     {
         // getting user from auth session
+        UserAddress::insert($request->address);
         dd($request);
         $user = auth()->user();
 

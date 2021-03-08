@@ -19,4 +19,8 @@ class UserAddress extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function setUserIdAttribute()
+    {
+        $this->attributes['user_id'] = auth()->id();
+    }
 }

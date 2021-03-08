@@ -25,7 +25,7 @@ class UpdateProfileRequest extends FormRequest
      */
     public function rules()
     {
-        dd($this);
+
         return [
             'email' => ['sometimes', 'email', 'unique:users,email,' . auth()->id()],
             'avatar' => ['sometimes', 'mimes:png,jpg'],
