@@ -98,7 +98,7 @@
                 </div>
 
                 <!-- Pickup -->
-                <input type="hidden" name="address_type" value="pickup" />
+                <input type="hidden" name="address[0][address_type]" value="pickup" />
                 <AddressInputsContainer
                     title="Pickup"
                     buildingTypeName="address[0][building_type]"
@@ -134,7 +134,7 @@
                 </div>
 
                 <div class="" v-if="showdDropOffAddress">
-                    <input type="hidden" name="address_type" value="drop" />
+                <input type="hidden" name="address[1][address_type]" value="drop" />
 
                     <AddressInputsContainer
                         title="Drop off"
