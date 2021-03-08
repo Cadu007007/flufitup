@@ -4,6 +4,7 @@ immediateCollapse();
 
 $(document).ready(function() {
     if (localStorage.getItem('collapsed_sidebar') == null) {
+        console.log("Set Item");
         localStorage.setItem('collapsed_sidebar', '0')
     } else {
         if (localStorage.getItem('collapsed_sidebar') == '1') {
@@ -28,6 +29,7 @@ $('.collapse-sidebar').click(function() {
     collapseSidebar();
     /* change value is local storage */
     localStorage.setItem('collapsed_sidebar', '1')
+
 });
 
 /* Expand */
@@ -40,6 +42,7 @@ $('.expand-sidebar').click(function() {
 
 
 function collapseSidebar() {
+    console.log("collapseSidebar");
 
     $(".Sidebar").animate({
         width: `${intSmallWidth}px`,
@@ -59,7 +62,7 @@ function collapseSidebar() {
     setTimeout(() => {
 
         /* hide sidebar text */
-        $('.Sidebar .item-title').addClass('hidden');
+        $('.Sidebar .item-title').addClass('d-none');
 
         /* update app with */
         $('#app').css('grid-template-columns', `${intSmallWidth}px auto`)
