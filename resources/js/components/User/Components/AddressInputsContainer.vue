@@ -1,41 +1,109 @@
 <template>
-  <div class="AddressInputsContainer">
-    <p  class="title mb-4"> {{ title }} Address</p>
+    <div class="AddressInputsContainer">
+        <p class="title mb-4">{{ title }} Address</p>
 
+        <div class="filter-options">
+            <div class="filter">
+                <input
+                    class="radio"
+                    type="radio"
+                    checked
+                    @click="showResidentialOptions"
+                    :name="addressTypeName"
+                    value="residential"
+                    id=""
+                />
+                <label class="filter-label" :for="addressTypeName"
+                    >Residential</label
+                >
+            </div>
+            <div class="filter">
+                <input
+                    class="radio"
+                    type="radio"
+                    @click="hideResidentialOptions"
+                    :name="addressTypeName"
+                    value="business"
+                    id=""
+                />
+                <label class="filter-label" :for="addressTypeName"
+                    >Business</label
+                >
+            </div>
+        </div>
 
-     <div class="filter-options">
-        <div class="filter">
-            <input class="radio" type="radio" checked @click="showResidentialOptions" :name="addressTypeName" value="residential" id="">
-            <label class="filter-label" :for="addressTypeName">Residential</label>
-        </div> 
-        <div class="filter">
-            <input class="radio" type="radio"  @click="hideResidentialOptions" :name="addressTypeName" value="business" id="">
-            <label class="filter-label" :for="addressTypeName">Business</label>
+        <div class="filter-options" v-if="isResidential">
+            <div class="filter">
+                <input
+                    class="radio"
+                    type="radio"
+                    :name="residentialTypeName"
+                    value="appartment"
+                    id=""
+                />
+                <label class="filter-label" :for="residentialTypeName"
+                    >Appartment</label
+                >
+            </div>
+            <div class="filter">
+                <input
+                    class="radio"
+                    type="radio"
+                    :name="residentialTypeName"
+                    value="house"
+                    id=""
+                />
+                <label class="filter-label" :for="residentialTypeName"
+                    >House</label
+                >
+            </div>
         </div>
-     </div>
-     
-     <div class="filter-options" v-if="isResidential">
-        <div class="filter">
-            <input class="radio" type="radio" :name="residentialTypeName" value="appartment" id="">
-            <label class="filter-label" :for="residentialTypeName">Appartment</label>
+
+        <div class="inputs-container">
+            <input
+                class="input"
+                :name="streetAddressName"
+                :value="streetAddressVal"
+                placeholder="Street Address"
+            />
+            <input
+                class="input"
+                :name="cityName"
+                :value="cityVal"
+                placeholder="City"
+            />
+            <input
+                class="input"
+                :name="stateName"
+                :value="stateVal"
+                placeholder="State"
+            />
+            <input
+                class="input"
+                :name="zipCodeName"
+                :value="zipCodeVal"
+                placeholder="ZIP Code"
+            />
+            <input
+                class="input"
+                :name="unitNumberName"
+                :value="unitNumberVal"
+                placeholder="Unit Number"
+            />
+            <input
+                class="input"
+                :name="buildingNumberName"
+                :value="buildingNumberVal"
+                placeholder="Building Name ( Optional )"
+            />
+            <input
+                class="input"
+                :name="gateCodeName"
+                :value="gateCodeVal"
+                placeholder="Gate Code ( Optional )"
+            />
         </div>
-        <div class="filter">
-            <input class="radio" type="radio" :name="residentialTypeName" value="house" id="">
-            <label class="filter-label" :for="residentialTypeName">House</label>
-        </div>    
-     </div>
-     
-    
-  <div class="inputs-container">
-    <input class="input" :name="streetAddressName" placeholder="Street Address" />
-    <input class="input" :name="cityName" placeholder="City"/>
-    <input class="input" :name="stateName" placeholder="State"/>
-    <input class="input" :name="zipCodeName" placeholder="ZIP Code"/>
-    <input class="input" :name="unitNumberName" placeholder="Unit Number" />
-    <input class="input" :name="buildingNumberName" placeholder="Building Name ( Optional )" />
-    <input class="input" :name="gateCodeName" placeholder="Gate Code ( Optional )"/>
-  </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -43,37 +111,54 @@ export default {
     data() {
         return {
             isResidential: true
-        }
+        };
     },
-props: ['title','streetAddressName','cityName','stateName','zipCodeName','unitNumberName',
-        'buildingNumberName','gateCodeName','addressTypeName','residentialTypeName'],
-        methods: {
-            hideResidentialOptions(){
-                this.isResidential = false
-            },
-            showResidentialOptions(){
-                this.isResidential = true
-            }
+    props: [
+        "title",
+        "streetAddressName",
+        "cityName",
+        "stateName",
+        "zipCodeName",
+        "unitNumberName",
+        "buildingNumberName",
+        "gateCodeName",
+        "addressTypeName",
+        "residentialTypeName",
+        "streetAddressVal",
+        "cityVal",
+        "stateVal",
+        "zipCodeVal",
+        "unitNumberVal",
+        "buildingNumberVal",
+        "gateCodeVal"
+    ],
+    methods: {
+        hideResidentialOptions() {
+            this.isResidential = false;
         },
-}
+        showResidentialOptions() {
+            this.isResidential = true;
+        }
+    }
+};
 </script>
 
 <style lang="scss">
-$blue: #22AEE4;
+$blue: #22aee4;
 $white: #ffffff;
 $black: #000000;
 $text-grey: #00000066;
 
-.AddressInputsContainer{
+.AddressInputsContainer {
     width: 100%;
-    .title{
+    .title {
         font-size: 16px;
-        font-family: 'Lato-Bold';
-        margin-bottom: 18px;;
+        font-family: "Lato-Bold";
+        margin-bottom: 18px;
         color: $black;
     }
 
-.filter-options{
+    .filter-options {
         width: 100%;
         height: 24px;
         display: flex;
@@ -81,18 +166,18 @@ $text-grey: #00000066;
         justify-content: flex-start;
         align-items: center;
         margin-bottom: 15px;
-        .filter{
+        .filter {
             margin: 0 20px;
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            .radio{
+            .radio {
                 width: 24px;
                 height: 24px;
                 color: $black;
             }
-            .filter-label{
+            .filter-label {
                 margin-left: 24px;
                 font-size: 14px;
                 width: 70px;
@@ -100,27 +185,26 @@ $text-grey: #00000066;
             }
         }
     }
-    
-    .inputs-container{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
 
-    margin-bottom: 36px;
-    .input{
-        color: $black;
-        height: 45px;
-        background: $white;
-        padding: 14px 24px;
-        border-radius: 23px;
-        font-size: 14px;
-        margin: 12px 8px;
-        width: 300px;
+    .inputs-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin-bottom: 36px;
+        .input {
+            color: $black;
+            height: 45px;
+            background: $white;
+            padding: 14px 24px;
+            border-radius: 23px;
+            font-size: 14px;
+            margin: 12px 8px;
+            width: 300px;
+        }
     }
 }
-    }
-
 </style>

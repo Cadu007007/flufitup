@@ -46,12 +46,23 @@
   iconActive='/images/icons/old-order.svg'/>
 
 </div>
+<!-- 
   <SidebarItem class="logout" 
   title="Logout"
   itemtooltip="Logout"
   :href=routetologout
   icon='/images/icons/logout.svg' 
-  iconActive='/images/icons/logout.svg'/>
+  iconActive='/images/icons/logout.svg'/> -->
+<form :action="routetologout" method="post">
+  <input type="hidden" name="_token" :value="csrf">
+<button class="SidebarItem logout border-0 bg-transparent" title="Logout">
+    <img class="icon" src="/images/icons/logout.svg" alt="">
+    <img class="icon-active" src="/images/icons/logout.svg" alt="">
+    <p class="sidebar-item-title">Logout</p>
+    <span class="active-column"></span>
+  </button>
+</form>
+  
 
 </div>
 </template>
@@ -106,6 +117,9 @@ components:{
 data() {
   return {
     logo: '/images/logo.png',
+    csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content")
     }
   },
 }
