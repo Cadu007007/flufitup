@@ -693,6 +693,17 @@ Route::get('/profile/change_password', function () {
     return view('user.profile.change_password', ['active' => 'profile']);
 })->name('profile.change_password');
 
+Route::get('/profile/edit', function () {
+
+    $address = collect();
+    $address->push(['street' => '1', 'city' => '2', 'state' => '3', 'zip_code' => '4', 'unit' => '5', 'building' => '6', 'gate' => '7']);
+
+    $user = collect();
+    $user->push(['name' => 'Mohamed Salah', 'email' => 'Salah@gmail.com', 'phone' => '+20 01111111111', 'birthday' => '1990-01-01', 'address' => $address]);
+
+    return view('user.profile.edit', ['active' => 'profile', 'user' => $user]);
+})->name('profile.edit');
+
 /*****************************
  *  Chat
 /**************************** */
@@ -752,9 +763,9 @@ Route::get('/old_orders/show/{id}', function () {
 //     return view('auth.login', ['active' => 'logout']);
 // })->name('user.login');
 
-// Route::post('/dummy', function (Request $request) {
-//     return dd($request);
-// })->name('dummy');
+Route::post('/dummy', function (Request $request) {
+    return dd($request);
+})->name('dummy');
 
 /****************************
  **** End of USER ROUTES ****
