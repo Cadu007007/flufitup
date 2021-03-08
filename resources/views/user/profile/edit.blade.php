@@ -5,7 +5,7 @@
 class="PageContentContainer" 
 id="ProfileEdit" 
 date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
-formactionroute="{{ route('profile') }}"
+formactionroute="{{ route('profile.index') }}"
 />
 
 @endsection

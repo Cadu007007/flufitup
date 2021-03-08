@@ -138,12 +138,7 @@ class AuthController extends Controller
 
     protected function updatePassword(Request $request)
     {
-        // dd($request);
-        // with receive phone number and two passwords
-        // $request->validate([
-        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
-        //     'phone_number' => ['required', 'exists:users,phone'],
-        // ]);
+
         $validated = Validator::make($request->all(), [
             'password' => ['required', 'min:8', 'confirmed'],
             'phone_number' => ['required', 'exists:users,phone'],
@@ -158,12 +153,6 @@ class AuthController extends Controller
         //after validation will update password
 
         // if validation fails return back with phone number and errors
-    }
-
-    public function profile()
-    {
-
-        return view('user.profile.index', ['active' => 'profile']);
     }
 
     protected function verification($phone)

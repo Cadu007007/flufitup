@@ -6,7 +6,7 @@
         <Sidebar active={{ $active }} 
         routetohome={{ route('home') }}
         routetopackages={{ route('packages') }}
-        routetoprofile={{ route('profile') }}
+        routetoprofile={{ route('profile.index') }}
         routetochat={{ route('chat') }}
         routetooldorders={{ route('old_orders') }}
         routetologout="#"{{-- {{ route('user.login') }} --}}

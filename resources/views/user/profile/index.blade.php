@@ -3,7 +3,7 @@
 <Profile 
 class="PageContentContainer" 
 id="Profile" 
-name="{{ 'Salah' }}"
+name="{{ auth()->user()->first_name . ' '.auth()->user()->last_name }}"
 lastlogin="Last Login : 08 / 25 / 2020, 09:35:21 PM"
 profileimage="{{ asset('images/icons/profile.svg') }}"
 email="{{ auth()->user()->email }}"

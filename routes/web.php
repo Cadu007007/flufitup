@@ -13,6 +13,7 @@ use App\Http\Controllers\FabricController;
 use App\Http\Controllers\HouseholdController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ScentController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\ZoneController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -136,16 +137,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('edit/{id}', [ZoneController::class, 'edit'])->name('edit');
         Route::put('update/{id}', [ZoneController::class, 'update'])->name('update');
         Route::delete('delete/{id}', [ZoneController::class, 'delete'])->name('delete');
-        // Route::get('/admin/zones/add', function () {
-        // })->name('admin.zones.add');
 
-        // Route::get('/admin/zones/edit/{id}', function () {
-        //     return view('admin.zones.edit', ['active' => 'zones']);
-        // })->name('admin.zones.edit');
-
-        // Route::delete('/admin/zones/delete/{id}', function () {
-        //     return view('admin.zones.index', ['active' => 'zones']);
-        // })->name('admin.zones.delete');
     });
 
 });
@@ -179,8 +171,9 @@ Route::get('/resend/code', [AuthController::class, 'resend'])->name('resend.code
 Route::post('/forget/password', [AuthController::class, 'resend'])->name('send.code');
 Route::post('/user/change_password', [AuthController::class, 'changePassword'])->name('forget.change.password');
 // Route::post('/update/forget/password',[AuthController::class,''])
-Route::group(['prefix' => 'profile'], function () {
-    Route::get('/', [AuthController::class, 'profile'])->name('profile');
+Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => 'auth'], function () {
+    Route::get('/', [UserController::class, 'profile'])->name('index');
+    Route::get('edit', [UserController::class, 'edit'])->name('edit');
 });
 Auth::routes();
 // Route::post('login', [
@@ -699,10 +692,6 @@ Route::get('/packages/payment', function () {
 Route::get('/profile/change_password', function () {
     return view('user.profile.change_password', ['active' => 'profile']);
 })->name('profile.change_password');
-
-Route::get('/profile/edit', function () {
-    return view('user.profile.edit', ['active' => 'profile']);
-})->name('profile.edit');
 
 /*****************************
  *  Chat
