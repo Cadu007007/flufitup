@@ -26,24 +26,22 @@
                     <div
                         class="d-flex flex-row flex-wrap justify-content-between align-items-center"
                     >
-                        <Smart-Input-Container
-                            title="Email"
-                            inputName="email"
-                            placeholder="Enter Your Email"
-                            type="text"
-                            :inputval="user[0].email"
-                            disabled="true"
-                        />
+                        
+                        <div class="SmartInputContainer">
+                          <label  class="label" for="email">Email</label>
+                          <input type="email" placeholder="Enter yout email"
+                          :value="user[0].email"  name="email" class="input emailInput" :disabled="emaildisabled">
+                        </div>
                         <button
                             class="btn btn-primary"
                             type="button"
                             style="height: 40px"
-                            @click="changeemail = true"
+                            @click="enableEmail"
                         >
                             Change Email
                         </button>
                     </div>
-                    <div class="" v-if="changeemail">
+                    <!-- <div class="" v-if="changeemail">
                         <Smart-Input-Container
                             title="New Email"
                             inputName="new_email"
@@ -56,39 +54,36 @@
                             placeholder="Confirm New Email"
                             type="text"
                         />
-                    </div>
+                    </div> -->
 
                     <br />
 
                     <div
                         class="d-flex flex-row flex-wrap justify-content-between align-items-center"
                     >
-                        <Smart-Input-Container
-                            title="Phone Number"
-                            inputName="phone"
-                            placeholder="( XXX ) - XXX - XXXX"
-                            type="text"
-                            :inputval="user[0].phone"
-                            disabled="true"
-                        />
+                        <div class="SmartInputContainer">
+                          <label  class="label" for="phone">Phone</label>
+                          <input type="phone" placeholder="Enter your phone"
+                          :value="user[0].phone"  name="phone" class="input phoneInput" :disabled="phonedisabled">
+                        </div>
                         <button
                             class="btn btn-primary"
                             type="button"
                             style="height: 40px"
-                            @click="changephone = true"
+                            @click="enablePhone"
                         >
                             Change Phone
                         </button>
                     </div>
 
-                    <div class="" v-if="changephone">
+                    <!-- <div class="" v-if="changephone">
                         <Smart-Input-Container
                             title="New Phone Number"
                             inputName="new_phone"
                             placeholder="( XXX ) - XXX - XXXX"
                             type="text"
                         />
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Pickup -->
@@ -183,7 +178,9 @@ export default {
                 .getAttribute("content"),
             showdDropOffAddress: false,
             changeemail: false,
-            changephone: false
+            changephone: false,
+            emaildisabled: true,
+            phonedisabled: true,
         };
     },
     props: ["date", "formactionroute", "profileimage", "user"],
@@ -214,6 +211,20 @@ export default {
         removeImage() {
             $(".image").attr("src", "");
             $(".image-file").val(null);
+        },
+        enableEmail(){
+          this.emaildisabled = false
+          setTimeout(() => {
+            $(".emailInput").focus()
+            
+          }, 300);
+        },
+        enablePhone(){
+          this.phonedisabled = false
+          setTimeout(() => {
+            $(".phoneInput").focus()
+            
+          }, 300);
         }
     }
 };
