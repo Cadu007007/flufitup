@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UpdateProfileRequest extends FormRequest
 {
@@ -23,11 +25,12 @@ class UpdateProfileRequest extends FormRequest
      */
     public function rules()
     {
+        dd($this);
         return [
-            'email' => ['required', 'email', 'unique:users,email,' . auth()->id()],
+            'email' => ['sometimes', 'email', 'unique:users,email,' . auth()->id()],
             'avatar' => ['sometimes', 'mimes:png,jpg'],
-            'phone' => ['required', 'unique:users,phone,' . auth()->id()],
-            'birth_date' => ['required', 'date'],
+            'phone' => ['sometimes', 'unique:users,phone,' . auth()->id()],
+            'birth_date' => ['sometimes', 'date'],
             'address.*.address_type' => ['required', 'in:pickup,drop'],
             'address.*.building_type' => ['required', 'in:residential, business'],
             'address.*.residential_type' => ['required_if:building_type,residential', 'in:apartment,house'],
@@ -39,5 +42,15 @@ class UpdateProfileRequest extends FormRequest
             'address.*.building_name' => ['sometimes'],
             'address.*.gate_code' => ['sometimes'],
         ];
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        dd($validator->errors()->all());
+        throw new HttpResponseException(
+            response()->json([
+                'status' => false,
+                'messages' => $validator->errors()->all(),
+            ], 200)
+        );
     }
 }

@@ -174,6 +174,7 @@ Route::post('/user/change_password', [AuthController::class, 'changePassword'])-
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => 'auth'], function () {
     Route::get('/', [UserController::class, 'profile'])->name('index');
     Route::get('edit', [UserController::class, 'edit'])->name('edit');
+    Route::post('update', [UserController::class, 'update'])->name('update');
 });
 Auth::routes();
 // Route::post('login', [

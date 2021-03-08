@@ -4,7 +4,7 @@
 class="PageContentContainer" 
 id="ProfileEdit" 
 date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
-formactionroute="{{ route('dummy') }}"
+formactionroute="{{ route('profile.update') }}"
 profileimage="{{ asset('images/icons/profile.svg') }}"
 :user="{{ $user }}"
 

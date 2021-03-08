@@ -26,11 +26,16 @@
                     <div
                         class="d-flex flex-row flex-wrap justify-content-between align-items-center"
                     >
-                        
                         <div class="SmartInputContainer">
-                          <label  class="label" for="email">Email</label>
-                          <input type="email" placeholder="Enter yout email"
-                          :value="user[0].email"  name="email" class="input emailInput" :disabled="emaildisabled">
+                            <label class="label" for="email">Email</label>
+                            <input
+                                type="email"
+                                placeholder="Enter yout email"
+                                :value="user[0].email"
+                                name="email"
+                                class="input emailInput"
+                                :disabled="emaildisabled"
+                            />
                         </div>
                         <button
                             class="btn btn-primary"
@@ -62,9 +67,15 @@
                         class="d-flex flex-row flex-wrap justify-content-between align-items-center"
                     >
                         <div class="SmartInputContainer">
-                          <label  class="label" for="phone">Phone</label>
-                          <input type="phone" placeholder="Enter your phone"
-                          :value="user[0].phone"  name="phone" class="input phoneInput" :disabled="phonedisabled">
+                            <label class="label" for="phone">Phone</label>
+                            <input
+                                type="phone"
+                                placeholder="Enter your phone"
+                                :value="user[0].phone"
+                                name="phone"
+                                class="input phoneInput"
+                                :disabled="phonedisabled"
+                            />
                         </div>
                         <button
                             class="btn btn-primary"
@@ -87,14 +98,15 @@
                 </div>
 
                 <!-- Pickup -->
+                <input type="hidden" name="address_type" value="pickup" />
                 <AddressInputsContainer
                     title="Pickup"
-                    addressTypeName="address[0][address_type]"
+                    buildingTypeName="address[0][building_type]"
                     residentialTypeName="address[0][residential_type]"
                     streetAddressName="address[0][street]"
                     cityName="address[0][city]"
                     stateName="address[0][state]"
-                    zipCodeName="address[0][zip_code]"
+                    zipCodeName="address[0][zip]"
                     unitNumberName="address[0][unit_number]"
                     buildingNumberName="address[0][building_number]"
                     gateCodeName="address[0][gate_code]"
@@ -121,28 +133,31 @@
                     </p>
                 </div>
 
-                <AddressInputsContainer
-                    v-if="showdDropOffAddress"
-                    title="Drop off"
-                    addressTypeName="address[1][address_type]"
-                    residentialTypeName="address[1][residential_type]"
-                    streetAddressName="address[1][street]"
-                    cityName="address[1][city]"
-                    stateName="address[1][state]"
-                    zipCodeName="address[1][zip_code]"
-                    unitNumberName="address[1][unit_number]"
-                    buildingNumberName="address[1][building_number]"
-                    gateCodeName="address[1][gate_code]"
-                    :addressTypeVal="user[0].address[0].unit"
-                    :residentialTypeVal="user[0].address[0].unit"
-                    :streetAddressVal="user[0].address[0].unit"
-                    :cityVal="user[0].address[0].unit"
-                    :stateVal="user[0].address[0].unit"
-                    :zipCodeVal="user[0].address[0].unit"
-                    :unitNumberVal="user[0].address[0].unit"
-                    :buildingNumberVal="user[0].address[0].unit"
-                    :gateCodeVal="user[0].address[0].unit"
-                />
+                <div class="" v-if="showdDropOffAddress">
+                    <input type="hidden" name="address_type" value="drop" />
+
+                    <AddressInputsContainer
+                        title="Drop off"
+                        buildingTypeName="address[1][building_type]"
+                        residentialTypeName="address[1][residential_type]"
+                        streetAddressName="address[1][street]"
+                        cityName="address[1][city]"
+                        stateName="address[1][state]"
+                        zipCodeName="address[1][zip]"
+                        unitNumberName="address[1][unit_number]"
+                        buildingNumberName="address[1][building_number]"
+                        gateCodeName="address[1][gate_code]"
+                        :addressTypeVal="user[0].address[0].unit"
+                        :residentialTypeVal="user[0].address[0].unit"
+                        :streetAddressVal="user[0].address[0].unit"
+                        :cityVal="user[0].address[0].unit"
+                        :stateVal="user[0].address[0].unit"
+                        :zipCodeVal="user[0].address[0].unit"
+                        :unitNumberVal="user[0].address[0].unit"
+                        :buildingNumberVal="user[0].address[0].unit"
+                        :gateCodeVal="user[0].address[0].unit"
+                    />
+                </div>
 
                 <div class="form-input-container">
                     <Smart-Input-Container
@@ -180,7 +195,7 @@ export default {
             changeemail: false,
             changephone: false,
             emaildisabled: true,
-            phonedisabled: true,
+            phonedisabled: true
         };
     },
     props: ["date", "formactionroute", "profileimage", "user"],
@@ -212,19 +227,17 @@ export default {
             $(".image").attr("src", "");
             $(".image-file").val(null);
         },
-        enableEmail(){
-          this.emaildisabled = false
-          setTimeout(() => {
-            $(".emailInput").focus()
-            
-          }, 300);
+        enableEmail() {
+            this.emaildisabled = false;
+            setTimeout(() => {
+                $(".emailInput").focus();
+            }, 300);
         },
-        enablePhone(){
-          this.phonedisabled = false
-          setTimeout(() => {
-            $(".phoneInput").focus()
-            
-          }, 300);
+        enablePhone() {
+            this.phonedisabled = false;
+            setTimeout(() => {
+                $(".phoneInput").focus();
+            }, 300);
         }
     }
 };
@@ -348,7 +361,6 @@ $black: #000000;
             color: #222;
             top: -50px;
             left: 120px;
-            
         }
     }
 }
