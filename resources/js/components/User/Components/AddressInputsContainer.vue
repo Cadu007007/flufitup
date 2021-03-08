@@ -9,11 +9,11 @@
                     type="radio"
                     checked
                     @click="showResidentialOptions"
-                    :name="addressTypeName"
+                    :name="buildingTypeName"
                     value="residential"
                     id=""
                 />
-                <label class="filter-label" :for="addressTypeName"
+                <label class="filter-label" :for="buildingTypeName"
                     >Residential</label
                 >
             </div>
@@ -22,11 +22,11 @@
                     class="radio"
                     type="radio"
                     @click="hideResidentialOptions"
-                    :name="addressTypeName"
+                    :name="buildingTypeName"
                     value="business"
                     id=""
                 />
-                <label class="filter-label" :for="addressTypeName"
+                <label class="filter-label" :for="buildingTypeName"
                     >Business</label
                 >
             </div>
@@ -38,7 +38,7 @@
                     class="radio"
                     type="radio"
                     :name="residentialTypeName"
-                    value="appartment"
+                    value="apartment"
                     id=""
                 />
                 <label class="filter-label" :for="residentialTypeName"
@@ -122,7 +122,7 @@ export default {
         "unitNumberName",
         "buildingNumberName",
         "gateCodeName",
-        "addressTypeName",
+        "buildingTypeName",
         "residentialTypeName",
         "streetAddressVal",
         "cityVal",
