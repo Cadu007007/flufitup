@@ -32,8 +32,8 @@ class UpdateProfileRequest extends FormRequest
             'phone' => ['sometimes', 'unique:users,phone,' . auth()->id()],
             'birth_date' => ['sometimes', 'date'],
             'address.*.address_type' => ['required', 'in:pickup,drop'],
-            'address.*.building_type' => ['required', 'in:residential, business'],
-            'address.*.residential_type' => ['required_if:building_type,residential', 'in:apartment,house'],
+            'address.*.building_type' => ['required', 'in:residential,business'],
+            'address.*.residential_type' => ['required_if:address.*.building_type,residential', 'in:apartment,house'],
             'address.*.street' => ['required'],
             'address.*.city' => ['required'],
             'address.*.state' => ['required'],
@@ -45,7 +45,6 @@ class UpdateProfileRequest extends FormRequest
     }
     protected function failedValidation(Validator $validator)
     {
-        dd($validator->errors()->all());
         throw new HttpResponseException(
             response()->json([
                 'status' => false,

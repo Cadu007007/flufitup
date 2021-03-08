@@ -171,7 +171,7 @@ Route::get('/resend/code', [AuthController::class, 'resend'])->name('resend.code
 Route::post('/forget/password', [AuthController::class, 'resend'])->name('send.code');
 Route::post('/user/change_password', [AuthController::class, 'changePassword'])->name('forget.change.password');
 // Route::post('/update/forget/password',[AuthController::class,''])
-Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => 'auth:web'], function () {
     Route::get('/', [UserController::class, 'profile'])->name('index');
     Route::get('edit', [UserController::class, 'edit'])->name('edit');
     Route::post('update', [UserController::class, 'update'])->name('update');

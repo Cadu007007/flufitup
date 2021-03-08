@@ -5,7 +5,7 @@ class="PageContentContainer"
 id="ProfileEdit" 
 date="{{Carbon\Carbon::now()->format('d/m/Y')}}"
 formactionroute="{{ route('profile.update') }}"
-profileimage="{{ asset('images/icons/profile.svg') }}"
+profileimage="{{ asset(auth()->user()->avatar) ?? asset('images/icons/profile.svg') }}"
 :user="{{ $user }}"
 
 />
