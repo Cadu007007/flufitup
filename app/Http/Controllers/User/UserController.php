@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\UserAddress;
 use Carbon\Carbon;
@@ -21,6 +22,11 @@ class UserController extends Controller
     public function edit()
     {
         return view('user.profile.edit', ['active' => 'profile', 'user' => auth()->user()]);
+    }
+
+    public function changePassword(UpdatePasswordRequest $request)
+    {
+
     }
     public function update(UpdateProfileRequest $request)
     {

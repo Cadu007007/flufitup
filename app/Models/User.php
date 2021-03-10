@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,7 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'first_name', 'last_name', 'phone', 'password', 'isVerified',
-        'avatar',
+        'avatar', 'last_login',
     ];
 
     /**
@@ -36,7 +37,12 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_login' => 'datetime',
     ];
+    public function getLastLoginAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-M-d D g:i A');
+    }
     public function addresses()
     {
         return $this->hasMany(UserAddress::class);

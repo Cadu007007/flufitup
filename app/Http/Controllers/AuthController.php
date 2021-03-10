@@ -144,7 +144,7 @@ class AuthController extends Controller
             'phone_number' => ['required', 'exists:users,phone'],
         ]);
         if ($validated->fails()) {
-            dd($validated->errors());
+            // dd($validated->errors());
             return back()->withErrors($validated->errors())->withInput(['phone_number' => $request->phone_number]);
         }
 

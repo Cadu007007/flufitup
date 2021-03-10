@@ -4,8 +4,8 @@
 class="PageContentContainer" 
 id="Profile" 
 name="{{ auth()->user()->first_name . ' '.auth()->user()->last_name }}"
-lastlogin="Last Login : 08 / 25 / 2020, 09:35:21 PM"
-profileimage="{{ asset('images/icons/profile.svg') }}"
+lastlogin="Last Login : {{ auth()->user()->last_login }}"
+profileimage="{{ (auth()->user()->avatar) ? asset(auth()->user()->avatar) : asset('images/icons/profile.svg') }}"
 email="{{ auth()->user()->email }}"
 {{-- emailstatus="{{  $test=0 }}" --}}
 phone="{{  auth()->user()->phone }}"
@@ -15,7 +15,7 @@ birthday="{{  auth()->user()->birth_date }}"
 editprofileroute="{{ route('profile.edit') }}"
 changepasswordroute="{{  route('profile.change_password') }}"
 
-walletvalue="{{ $test="120" }}"
+walletvalue="{{ auth()->user()->wallet }}"
 walletcurrency="{{ $test="USD" }}"
 />
 

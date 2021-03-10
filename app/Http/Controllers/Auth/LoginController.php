@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,9 @@ class LoginController extends Controller
         if (Auth::guard('web')->attempt(['phone' => $request->phone_number, 'password' => $request->password], $request->remember)) {
             if (auth()->user()->isVerified) {
                 // dd('dd');
+                auth()->user()->last_login = Carbon::now();
+                auth()->user()->save();
+                // auth()->user()->update(['last_login', Carbon::now()]);
                 return redirect()->intended(route('home'));
             } else {
                 $phone_number = auth()->user()->phone;
