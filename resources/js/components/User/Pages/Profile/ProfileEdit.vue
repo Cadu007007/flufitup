@@ -5,7 +5,7 @@
             <p class="date">{{ date }}</p>
         </div>
 
-        <form :action="formactionroute" method="post">
+        <form :action="formactionroute" method="post" enctype="multipart/form-data">
             <div class="edit-profile-form-container">
                 <div class="form-input-container w-100">
                     <input type="hidden" :value="csrf" name="_token" />
@@ -19,7 +19,7 @@
                         <input
                             @change="readURL($event)"
                             type="file"
-                            name="image"
+                            name="avatar"
                             class="image-file"
                         />
                     </div>

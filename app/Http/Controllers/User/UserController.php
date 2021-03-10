@@ -4,9 +4,11 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Models\UserAddress;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Twilio\Rest\Client;
 
 class UserController extends Controller
 {
@@ -22,15 +24,15 @@ class UserController extends Controller
     }
     public function update(UpdateProfileRequest $request)
     {
-        dd($request);
+        // dd($request);
         // getting user from auth session
 
         $user = auth()->user();
 
         //email
-        $user->email = $request->email;
+        $user->email = ($request->email) ? $request->email : $user->email;
         //date of birth
-        $user->birth_date = Carbon::parse($request->birth_date);
+        $user->birth_date = Carbon::parse($request->birthday);
         //set avatar to new image if has sent
         if ($request->avatar) {
             if ($user->avatar) {
@@ -40,26 +42,27 @@ class UserController extends Controller
         }
         //addresses pick up one and drop also
         foreach ($request->address as $address) {
-
-            // UserAddress::create($address);
+            $user->addresses()->delete();
+            UserAddress::create($address);
         }
+        $user->save();
         //phone with set is verified to 0 and logout the user should be at the end
-        // if ($request->phone && ($request->phone != $user->phone)) {
-        //     $user->phone = $request->phone;
-        //     $user->isVerified = 0;
-        //     $token = getenv("TWILIO_AUTH_TOKEN");
-        //     $twilio_sid = getenv("TWILIO_SID");
-        //     $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
-        //     $twilio = new Client($twilio_sid, $token);
-        //     $twilio->verify->v2->services($twilio_verify_sid)
-        //         ->verifications
-        //         ->create($user->phone, "sms");
-        //     $user->save();
-        //     Auth::logout();
-        //     return redirect()->route('verify')->with(['phone_number' => $request->phone]);
+        if ($request->phone && ($request->phone != $user->phone)) {
+            $user->phone = $request->phone;
+            $user->isVerified = 0;
+            $token = getenv("TWILIO_AUTH_TOKEN");
+            $twilio_sid = getenv("TWILIO_SID");
+            $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
+            $twilio = new Client($twilio_sid, $token);
+            $twilio->verify->v2->services($twilio_verify_sid)
+                ->verifications
+                ->create('+201009595059', "sms");
+            $user->save();
+            Auth::logout();
+            return redirect()->route('verify_phone')->with(['phone_number' => $request->phone]);
 
-        // }
-
+        }
+        return back()->with('message', 'Successful Update');
         //returning is here
     }
 

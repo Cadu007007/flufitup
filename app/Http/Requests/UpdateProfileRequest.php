@@ -26,11 +26,12 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
 
+        // dd($this);
         return [
             'email' => ['sometimes', 'email', 'unique:users,email,' . auth()->id()],
-            'avatar' => ['sometimes', 'mimes:png,jpg'],
+            'avatar' => ['sometimes', 'image'],
             'phone' => ['sometimes', 'unique:users,phone,' . auth()->id()],
-            'birth_date' => ['sometimes', 'date'],
+            'birthday' => ['sometimes', 'date'],
             'address.*.address_type' => ['required', 'in:pickup,drop'],
             'address.*.building_type' => ['required', 'in:residential,business'],
             'address.*.residential_type' => ['required_if:address.*.building_type,residential', 'in:apartment,house'],

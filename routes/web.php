@@ -143,7 +143,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 });
 Route::get('/', function () {
     // dd(App\Models\User::all());
-    Auth::logout();
+    // Auth::logout();
     $packages = collect();
     $packages->adhoc = collect();
     $packages->bi_weekly = collect();
