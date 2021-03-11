@@ -112,13 +112,13 @@
                     gateCodeName="address[0][gate_code]"
                     :addressTypeVal="user[0].address[0].unit"
                     :residentialTypeVal="user[0].address[0].unit"
-                    :streetAddressVal="user[0].address[0].unit"
-                    :cityVal="user[0].address[0].unit"
-                    :stateVal="user[0].address[0].unit"
-                    :zipCodeVal="user[0].address[0].unit"
+                    :streetAddressVal="user[0].address[0].street"
+                    :cityVal="user[0].address[0].city"
+                    :stateVal="user[0].address[0].state"
+                    :zipCodeVal="user[0].address[0].zip_code"
                     :unitNumberVal="user[0].address[0].unit"
-                    :buildingNumberVal="user[0].address[0].unit"
-                    :gateCodeVal="user[0].address[0].unit"
+                    :buildingNumberVal="user[0].address[0].building"
+                    :gateCodeVal="user[0].address[0].gate"
                 />
 
                 <div class="drop-off-hint" v-if="!showdDropOffAddress">
@@ -133,7 +133,7 @@
                     </p>
                 </div>
 
-                <div class="" v-if="showdDropOffAddress">
+                <div class="" v-if="showdDropOffAddress || user[0].address[1] != undefined">
                 <input type="hidden" name="address[1][address_type]" value="drop" />
 
                     <AddressInputsContainer
@@ -147,15 +147,15 @@
                         unitNumberName="address[1][unit_number]"
                         buildingNumberName="address[1][building_name]"
                         gateCodeName="address[1][gate_code]"
-                        :addressTypeVal="user[0].address[0].unit"
-                        :residentialTypeVal="user[0].address[0].unit"
-                        :streetAddressVal="user[0].address[0].unit"
-                        :cityVal="user[0].address[0].unit"
-                        :stateVal="user[0].address[0].unit"
-                        :zipCodeVal="user[0].address[0].unit"
-                        :unitNumberVal="user[0].address[0].unit"
-                        :buildingNumberVal="user[0].address[0].unit"
-                        :gateCodeVal="user[0].address[0].unit"
+                        :addressTypeVal="user[0].address[1] != undefined ? user[0].address[1].unit : ''"
+                        :residentialTypeVal="user[0].address[1] != undefined ? user[0].address[1].unit : ''"
+                        :streetAddressVal="user[0].address[1] != undefined ? user[0].address[1].street : ''"
+                        :cityVal="user[0].address[1] != undefined ? user[0].address[1].city : ''"
+                        :stateVal="user[0].address[1] != undefined ? user[0].address[1].state : ''"
+                        :zipCodeVal="user[0].address[1] != undefined ? user[0].address[1].zip_code : ''"
+                        :unitNumberVal="user[0].address[1] != undefined ? user[0].address[1].unit : ''"
+                        :buildingNumberVal="user[0].address[1] != undefined ? user[0].address[1].building : ''"
+                        :gateCodeVal="user[0].address[1] != undefined ? user[0].address[1].gate : ''"
                     />
                 </div>
 

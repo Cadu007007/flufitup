@@ -20,14 +20,14 @@
     
      <Smart-Input-Container 
     title="New Password"
-    name="new_password"
+    name="password"
     placeholder="New Password"
     type="password"
     />
 <br>
     <Smart-Input-Container 
     title="Re-enter New Password"
-    name="confirm_new_password"
+    name="password_confirmation"
     placeholder="Re-enter New Password"
     type="password"
     />
