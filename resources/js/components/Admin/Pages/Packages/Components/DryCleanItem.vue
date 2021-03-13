@@ -15,7 +15,7 @@
             <input
                 :disabled="disablestate"
                 class="dry-clean-input"
-                type="number"
+                type="number" step="any" 
                 name="price"
                 min="0"
                 id=""

@@ -58,7 +58,7 @@
                     <input
                         :disabled="disablestate"
                         class="dry-clean-input"
-                        type="number"
+                        type="number" step="any" 
                         min="0"
                         name="price"
                         id=""

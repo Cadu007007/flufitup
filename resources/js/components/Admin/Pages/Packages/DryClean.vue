@@ -27,7 +27,7 @@
             />
             <input
                 class="household-input itemPriceInput"
-                type="number"
+                type="number" step="any" 
                 name="price"
                 min="0"
                 id=""

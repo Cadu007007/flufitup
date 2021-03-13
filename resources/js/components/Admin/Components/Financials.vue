@@ -5,7 +5,7 @@
             <p class="label">Tips</p>
             <input
                 class="financials-input"
-                type="number"
+                type="number" step="any" 
                 min="0"
                 name="tips"
                 id=""
@@ -17,7 +17,7 @@
             <p class="label">Bonus</p>
             <input
                 class="financials-input"
-                type="number"
+                type="number" step="any" 
                 min="0"
                 name="bonus"
                 id=""

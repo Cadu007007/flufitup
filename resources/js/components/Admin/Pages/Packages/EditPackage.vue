@@ -384,7 +384,7 @@
                             name="dry_clean_credit"
                             class="add-package-value"
                             placeholder="Dry Clean Credit"
-                            type="number"
+                            type="number" step="any" 
                             min="0"
                             :value="package.dry_clean_credit"
                             required
@@ -399,7 +399,7 @@
                             name="house_hold_credit"
                             class="add-package-value"
                             placeholder="House Hold Credit"
-                            type="number"
+                            type="number" step="any" 
                             min="0"
                             :value="package.house_hold_credit"
                             required
@@ -414,7 +414,7 @@
                             name="added_value_service"
                             class="add-package-value"
                             placeholder="Added Value Services Credit"
-                            type="number"
+                            type="number" step="any" 
                             min="0"
                             :value="package.added_value_service"
                             required
@@ -428,7 +428,7 @@
                             name="reward_points"
                             class="add-package-value"
                             placeholder="Rewards Points"
-                            type="number"
+                            type="number" step="any" 
                             min="0"
                             :value="package.reward_points"
                             required
@@ -442,7 +442,7 @@
                             name="price_of_extra_pound"
                             class="add-package-value"
                             placeholder="Price of Extra Pound"
-                            type="number"
+                            type="number" step="any" 
                             min="0"
                             :value="package.price_of_extra_pound"
                             required

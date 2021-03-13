@@ -18,7 +18,7 @@
             <input
                 :disabled="disablestate || updatedDone"
                 class="household-input"
-                type="number"
+                type="number" step="any" 
                 name="price"
                 min="0"
                 id=""
