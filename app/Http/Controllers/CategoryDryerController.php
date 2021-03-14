@@ -39,6 +39,7 @@ class CategoryDryerController extends Controller
     }
     public function delete(CategoryDryer $categoryDryer)
     {
+        $categoryDryer->dryers()->delete();
         $categoryDryer->delete();
         return response()->json(['success' => true]);
     }

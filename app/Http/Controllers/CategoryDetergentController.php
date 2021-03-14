@@ -39,6 +39,7 @@ class CategoryDetergentController extends Controller
     }
     public function delete(CategoryDetergent $categoryDetergent)
     {
+        $categoryDetergent->detergents()->delete();
         $categoryDetergent->delete();
         return response()->json(['success' => true, 'data' => $categoryDetergent]);
     }

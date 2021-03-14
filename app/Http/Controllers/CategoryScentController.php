@@ -39,6 +39,7 @@ class CategoryScentController extends Controller
     }
     public function delete(CategoryScent $categoryScent)
     {
+        $categoryScent->scents()->delete();
         $categoryScent->delete();
         return response()->json(['success' => true]);
     }

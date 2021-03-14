@@ -31,9 +31,8 @@ class PackageController extends Controller
         $categoryScents = CategoryScent::all()->each(function ($cat) {
             $cat->type = 'scent';
         });
-        $categories = $categoryDetergents->concat($categoryDryer)->concat($categoryFabrics)
-            ->concat($categoryScents);
-        return view('admin.packages.categories.index', ['active' => 'categories', 'categories' => $categories]);
+
+        return view('admin.packages.categories.index', ['active' => 'categories', 'categoryDetergents' => $categoryDetergents, 'categoryDryer' => $categoryDryer, 'categoryFabrics' => $categoryFabrics, 'categoryScents' => $categoryScents]);
 
     }
 

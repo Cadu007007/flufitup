@@ -39,6 +39,7 @@ class CategoryFabricController extends Controller
     }
     public function delete(CategoryFabric $categoryFabric)
     {
+        $categoryFabric->fabrics()->delete();
         $categoryFabric->delete();
         return response()->json(['success' => true]);
     }
