@@ -1,7 +1,7 @@
 <template>
   <div class="CreatePackagePriceCard">
     <div class="title">Package Price</div>
-    <input class="package-price" :required="isrequired" :name="pricename" type="number" min="0" placeholder="Package Price" v-model="formatedPrice">
+    <input class="package-price" :required="isrequired" :name="pricename" type="number" step="any"  min="0" placeholder="Package Price" v-model="formatedPrice">
 
     <div class="button-container">
         <button class="done" type="submit">Done</button>

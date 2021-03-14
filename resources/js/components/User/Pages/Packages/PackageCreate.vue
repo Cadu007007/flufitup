@@ -49,7 +49,7 @@
           <!-- showbagesinput -->
           <div class="more-bages" v-if="showbagesinput">
               <p class="label">Please specify</p>
-              <input class="more-bages-input" type="number" name="more_bages" min="4" max="10" value="4">
+              <input class="more-bages-input" type="number" step="any"  name="more_bages" min="4" max="10" value="4">
           </div>
 
           <Accordion-Calendar

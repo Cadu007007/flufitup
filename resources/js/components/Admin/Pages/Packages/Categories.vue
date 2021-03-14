@@ -86,6 +86,7 @@
                                 id=""
                                 class="select2 edit-select2 editCategoryType"
                                 style="width: 400px"
+                                disabled
                             >
                                 <option value="detergents">Detergents</option>
                                 <option value="fabric">Fabric Softener</option>
@@ -98,6 +99,7 @@
                     <div class="button-container" style="width: 40%">
                         <button class="save-button" type="submit">Save</button>
                         <button
+                            type="button"
                             class="cancel-button"
                             @click="editCategoryId = 0"
                         >
@@ -107,66 +109,282 @@
                 </div>
             </form>
 
-            <div class="seperator"></div>
+            <!-- Detergents -->
 
-            <div class="page-header">
-                <p
-                    class="title"
-                    style="margin: 5px 0"
-                    v-if="loadedCategories.length > 0"
-                >
-                    Added Categories
-                </p>
+            <div
+                class="seperator"
+                v-if="loadeddetergentCategories.length > 0"
+            ></div>
+
+            <div class="column" v-if="loadeddetergentCategories.length > 0">
+                <div class="page-header">
+                    <p class="title" style="margin: 5px 0">
+                        Detergents Categories
+                    </p>
+                </div>
+
+                <div class="categories-container">
+                    <div
+                        class="category-container"
+                        v-for="category in loadeddetergentCategories"
+                        :key="category.id"
+                    >
+                        <p class="category-title">
+                            {{ category.name }}
+                        </p>
+                        <p class="d-none">
+                            {{ format(category.type) }}
+                        </p>
+                        <div
+                            class="d-flex flex-row justify-content-center my-2 flex-wrap"
+                            style="width: 620px;"
+                        >
+                            <button
+                                class="button edit"
+                                @click="editCategory(category)"
+                            >
+                                Edit
+                            </button>
+                            <form
+                                action=""
+                                class="delete-form column"
+                                method="POST"
+                            >
+                                <input
+                                    type="hidden"
+                                    :value="csrf"
+                                    name="_token"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    class="categoryId"
+                                    :value="category.id"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="type"
+                                    class="categoryType"
+                                    :value="category.type"
+                                />
+                                <button
+                                    class="button delete"
+                                    type="button"
+                                    @click="deleteItem($event)"
+                                >
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="categories-container">
-                <div
-                    class="category-container"
-                    v-for="category in loadedCategories"
-                    :key="category.id"
-                >
-                    <p class="category-title">
-                        {{ category.name }}
+            <!-- Fabric -->
+
+            <div
+                class="seperator"
+                v-if="loadedfabricCategories.length > 0"
+            ></div>
+            <div class="column" v-if="loadedfabricCategories.length > 0">
+                <div class="page-header">
+                    <p class="title" style="margin: 5px 0">
+                        Fabric Softener Categories
                     </p>
-                    <p class="">
-                        {{ format(category.type) }}
-                    </p>
+                </div>
+
+                <div class="categories-container">
                     <div
-                        class="column"
-                        style="width: 100%; margin-bottom: 10px"
+                        class="category-container"
+                        v-for="category in loadedfabricCategories"
+                        :key="category.id"
                     >
-                        <button
-                            class="button edit"
-                            @click="editCategory(category.id)"
+                        <p class="category-title">
+                            {{ category.name }}
+                        </p>
+                        <p class="d-none">
+                            {{ format(category.type) }}
+                        </p>
+                        <div
+                            class="d-flex flex-row justify-content-center my-2 flex-wrap"
+                            style="width: 620px;"
                         >
-                            Edit
-                        </button>
-                        <form
-                            action=""
-                            class="delete-form column"
-                            method="POST"
-                        >
-                            <input type="hidden" :value="csrf" name="_token" />
-                            <input
-                                type="hidden"
-                                name="id"
-                                class="categoryId"
-                                :value="category.id"
-                            />
-                            <input
-                                type="hidden"
-                                name="type"
-                                class="categoryType"
-                                :value="category.type"
-                            />
                             <button
-                                class="button delete"
-                                type="button"
-                                @click="deleteItem($event)"
+                                class="button edit"
+                                @click="editCategory(category)"
                             >
-                                Delete
+                                Edit
                             </button>
-                        </form>
+                            <form
+                                action=""
+                                class="delete-form column"
+                                method="POST"
+                            >
+                                <input
+                                    type="hidden"
+                                    :value="csrf"
+                                    name="_token"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    class="categoryId"
+                                    :value="category.id"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="type"
+                                    class="categoryType"
+                                    :value="category.type"
+                                />
+                                <button
+                                    class="button delete"
+                                    type="button"
+                                    @click="deleteItem($event)"
+                                >
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dryer -->
+
+            <div
+                class="seperator"
+                v-if="loadeddryerCategories.length > 0"
+            ></div>
+            <div class="column" v-if="loadeddryerCategories.length > 0">
+                <div class="page-header">
+                    <p class="title" style="margin: 5px 0">
+                        Dryer Sheets Categories
+                    </p>
+                </div>
+
+                <div class="categories-container">
+                    <div
+                        class="category-container"
+                        v-for="category in loadeddryerCategories"
+                        :key="category.id"
+                    >
+                        <p class="category-title">
+                            {{ category.name }}
+                        </p>
+                        <p class="d-none">
+                            {{ format(category.type) }}
+                        </p>
+                        <div
+                            class="d-flex flex-row justify-content-center my-2 flex-wrap"
+                            style="width: 620px;"
+                        >
+                            <button
+                                class="button edit"
+                                @click="editCategory(category)"
+                            >
+                                Edit
+                            </button>
+                            <form
+                                action=""
+                                class="delete-form column"
+                                method="POST"
+                            >
+                                <input
+                                    type="hidden"
+                                    :value="csrf"
+                                    name="_token"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    class="categoryId"
+                                    :value="category.id"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="type"
+                                    class="categoryType"
+                                    :value="category.type"
+                                />
+                                <button
+                                    class="button delete"
+                                    type="button"
+                                    @click="deleteItem($event)"
+                                >
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scent Booster -->
+            <div
+                class="seperator"
+                v-if="loadedscentCategories.length > 0"
+            ></div>
+            <div class="column" v-if="loadedscentCategories.length > 0">
+                <div class="page-header">
+                    <p class="title" style="margin: 5px 0">
+                        Scent Booster Categories
+                    </p>
+                </div>
+
+                <div class="categories-container">
+                    <div
+                        class="category-container"
+                        v-for="category in loadedscentCategories"
+                        :key="category.id"
+                    >
+                        <p class="category-title">
+                            {{ category.name }}
+                        </p>
+                        <p class="d-none">
+                            {{ format(category.type) }}
+                        </p>
+                        <div
+                            class="d-flex flex-row justify-content-center my-2 flex-wrap"
+                            style="width: 620px;"
+                        >
+                            <button
+                                class="button edit"
+                                @click="editCategory(category)"
+                            >
+                                Edit
+                            </button>
+                            <form
+                                action=""
+                                class="delete-form column"
+                                method="POST"
+                            >
+                                <input
+                                    type="hidden"
+                                    :value="csrf"
+                                    name="_token"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    class="categoryId"
+                                    :value="category.id"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="type"
+                                    class="categoryType"
+                                    :value="category.type"
+                                />
+                                <button
+                                    class="button delete"
+                                    type="button"
+                                    @click="deleteItem($event)"
+                                >
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -199,7 +417,11 @@ export default {
             editCategoryId: 0,
             editCategoryType: "",
             selectedType: "",
-            loadedCategories: this.categories,
+            // loadedCategories: this.categories,
+            loadeddetergentCategories: this.detergetscategories,
+            loadeddryerCategories: this.dryercategories,
+            loadedfabricCategories: this.fabriccategories,
+            loadedscentCategories: this.scentcategories,
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute("content")
@@ -221,13 +443,39 @@ export default {
         "deleteformroutedryer",
         "addformroutescent",
         "editformroutescent",
-        "deleteformroutescent"
+        "deleteformroutescent",
+        "detergetscategories",
+        "fabriccategories",
+        "dryercategories",
+        "scentcategories"
     ],
     methods: {
-        editCategory(CategoryId) {
-            let selectedCategory = this.loadedCategories.find(
-                x => x.id == CategoryId
-            );
+        editCategory(Category) {
+            console.log("Category: ", Category);
+            let selectedCategory;
+            let selectorValue;
+            if (Category.type == "detergent") {
+                selectedCategory = this.loadeddetergentCategories.find(
+                    x => x.id == Category.id
+                );
+                selectorValue = "detergents";
+            } else if (Category.type == "fabric") {
+                selectedCategory = this.loadedfabricCategories.find(
+                    x => x.id == Category.id
+                );
+                selectorValue = "fabric";
+            } else if (Category.type == "dryer") {
+                selectedCategory = this.loadeddryerCategories.find(
+                    x => x.id == Category.id
+                );
+                selectorValue = "dryer";
+            } else if (Category.type == "scent") {
+                selectedCategory = this.loadedscentCategories.find(
+                    x => x.id == Category.id
+                );
+                selectorValue = "scent";
+            }
+
             this.editCategoryName = selectedCategory.name;
             this.editCategoryId = selectedCategory.id;
             this.editCategoryType = selectedCategory.type;
@@ -235,7 +483,7 @@ export default {
             setTimeout(() => {
                 $(".edit-select2").select2();
                 $(".edit-select2")
-                    .val(this.editCategoryType)
+                    .val(selectorValue)
                     .change();
             }, 100);
         },
@@ -268,6 +516,23 @@ export default {
             let dryerURL = this.addformroutedryer;
             let scentURL = this.addformroutescent;
 
+            let detergentsArray =
+                this.loadeddetergentCategories.length > 0
+                    ? this.loadeddetergentCategories
+                    : [];
+            let fabricsArray =
+                this.loadedfabricCategories.length > 0
+                    ? this.loadedfabricCategories
+                    : [];
+            let dryersArray =
+                this.loadeddryerCategories.length > 0
+                    ? this.loadeddryerCategories
+                    : [];
+            let scentsArray =
+                this.loadedscentCategories.length > 0
+                    ? this.loadedscentCategories
+                    : [];
+
             let selectedType = $(".addCategoryType").val();
             if (selectedType == "detergents") {
                 selectedURL = detergentsURL;
@@ -296,11 +561,38 @@ export default {
                     console.log("data: ", response.data);
                     if (response.data.success) {
                         addStatus = true;
-                        this.loadedCategories.push({
-                            id: response.data.data.id,
-                            name: response.data.data.name,
-                            type: selectedType
-                        });
+
+                        /* push data to the suitable array */
+                        if (selectedType == "detergents") {
+                            detergentsArray.push({
+                                id: response.data.data.id,
+                                name: response.data.data.name,
+                                type: selectedType
+                            });
+                            //console.log("detergents");
+                        } else if (selectedType == "fabric") {
+                            fabricsArray.push({
+                                id: response.data.data.id,
+                                name: response.data.data.name,
+                                type: selectedType
+                            });
+                            //console.log("fabric");
+                        } else if (selectedType == "dryer") {
+                            dryersArray.push({
+                                id: response.data.data.id,
+                                name: response.data.data.name,
+                                type: selectedType
+                            });
+                            //console.log("dryer");
+                        } else if (selectedType == "scent") {
+                            scentsArray.push({
+                                id: response.data.data.id,
+                                name: response.data.data.name,
+                                type: selectedType
+                            });
+                            //console.log("scent");
+                        }
+
                         //console.log("categories: ", this.loadedCategories);
                     }
                 })
@@ -310,10 +602,33 @@ export default {
                         this.clearAddInputs();
                     }
                 });
+
+            this.loadeddetergentCategories = detergentsArray;
+            this.loadedfabricCategories = fabricsArray;
+            this.loadeddryerCategories = dryersArray;
+            this.loadedscentCategories = scentsArray;
         },
         submitEditForm(event) {
             event.preventDefault();
             var formValues = $(event.target).serialize();
+
+            let detergentsArray =
+                this.loadeddetergentCategories.length > 0
+                    ? this.loadeddetergentCategories
+                    : [];
+            let fabricsArray =
+                this.loadedfabricCategories.length > 0
+                    ? this.loadedfabricCategories
+                    : [];
+            let dryersArray =
+                this.loadeddryerCategories.length > 0
+                    ? this.loadeddryerCategories
+                    : [];
+            let scentsArray =
+                this.loadedscentCategories.length > 0
+                    ? this.loadedscentCategories
+                    : [];
+
             //console.log("formValues: ", formValues);
             let selectedURL;
             let detergentsURL = this.editformroutedetergents.replace(
@@ -365,13 +680,41 @@ export default {
                     if (response.data.success) {
                         editStatus = true;
 
+                        if (selectedType == "detergents") {
+                            detergentsArray.find(
+                                x => x.id == response.data.data.id
+                            ).name = response.data.data.name;
+                            detergentsArray.find(
+                                x => x.id == response.data.data.id
+                            ).type = selectedType;
+                            //console.log("detergents");
+                        } else if (selectedType == "fabric") {
+                            fabricsArray.find(
+                                x => x.id == response.data.data.id
+                            ).name = response.data.data.name;
+                            fabricsArray.find(
+                                x => x.id == response.data.data.id
+                            ).type = selectedType;
+                            //console.log("fabric");
+                        } else if (selectedType == "dryer") {
+                            dryersArray.find(
+                                x => x.id == response.data.data.id
+                            ).name = response.data.data.name;
+                            dryersArray.find(
+                                x => x.id == response.data.data.id
+                            ).type = selectedType;
+                            //console.log("dryer");
+                        } else if (selectedType == "scent") {
+                            scentsArray.find(
+                                x => x.id == response.data.data.id
+                            ).name = response.data.data.name;
+                            scentsArray.find(
+                                x => x.id == response.data.data.id
+                            ).type = selectedType;
+                            //console.log("scent");
+                        }
+
                         //console.log("EDIT SUCCESS");
-                        this.loadedCategories.find(
-                            x => x.id == response.data.data.id
-                        ).name = response.data.data.name;
-                        this.loadedCategories.find(
-                            x => x.id == response.data.data.id
-                        ).type = selectedType;
 
                         //console.log("categories: ", this.loadedCategories);
                     }
@@ -382,6 +725,11 @@ export default {
                         this.editCategoryId = 0;
                     }
                 });
+
+            this.loadeddetergentCategories = detergentsArray;
+            this.loadedfabricCategories = fabricsArray;
+            this.loadeddryerCategories = dryersArray;
+            this.loadedscentCategories = scentsArray;
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
@@ -578,11 +926,12 @@ $red: rgb(207, 42, 42);
         flex-direction: row;
         flex-wrap: wrap;
         .category-container {
-            width: 200px;
-            height: 190px;
+            width: 100%;
+            height: 90px;
             margin: 20px 10px;
+            padding: 0 30px;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: space-between;
             border: 1px solid #ccc;
@@ -590,13 +939,13 @@ $red: rgb(207, 42, 42);
 
             .category-title {
                 width: 100%;
-                text-align: center;
-                margin: 20px auto;
+                text-align: left;
+                // margin: 20px auto;
                 font-size: 20px;
             }
             .button {
-                width: 90%;
-                margin: 5px auto;
+                width: 150px;
+                margin: 2px auto;
                 height: 40px;
                 border-radius: 20px;
                 font-size: 14px;

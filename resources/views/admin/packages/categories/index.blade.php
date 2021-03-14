@@ -1,9 +1,17 @@
 @extends('layouts.admin')
 @section('content')
+{{-- {{ dd($categories ) }} --}}
+{{-- {{ dd(collect($categories->where('type', 'fabric')->toArray()) ) }} --}}
+
 <Categories
 title="Categories"
 date="{{Carbon\Carbon::now()->format('D, d F')}}"
-:categories="{{ $categories }}"
+{{-- :categories="{{ $categories }}" --}}
+
+:detergetscategories="{{ collect($categories->where('type', 'detergent')) }}"
+:dryercategories="{{ $categories->where('type', 'dryer') }}"
+:fabriccategories="{{ $categories->where('type', 'fabric') }}"
+:scentcategories="{{ $categories->where('type', 'scent') }}"
 
 addformroutedetergents="{{ route('admin.packages.category.detergent.store') }}"
 editformroutedetergents="{{ route('admin.packages.category.detergent.update','category_id') }}"
