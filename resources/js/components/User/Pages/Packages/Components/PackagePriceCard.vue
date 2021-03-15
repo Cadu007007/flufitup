@@ -1,7 +1,7 @@
 <template>
   <div class="PackagePriceCard">
     <div class="title">Package Price</div>
-    <div class="price">{{price}} {{ currency }}</div>
+    <div class="price">{{price}} $</div>
 
     <div class="button-container">
         <button class="place-order" @click="$emit('go-to-payment')">Place Order</button>

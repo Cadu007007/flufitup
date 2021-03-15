@@ -77,7 +77,8 @@
                         />
                         <input
                             class="dry-clean-input"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             name="price"
                             id=""
@@ -159,9 +160,7 @@ export default {
         DetergentsTypeItem
     },
     methods: {
-        addNewItemContainer() {
-            this.loadedItems.push({ name: "", types: [{}] });
-        },
+
         readURL(event) {
             let input = event.target;
             console.log("input: ", input);
@@ -218,12 +217,13 @@ export default {
                 // processData: false, // Important!
             }).then(response => {
                 let returnedObject = response.data.data;
-                // console.log("returnedObject: ", returnedObject);
+                console.log("returnedObject: ", returnedObject);
                 /* push data in the array */
                 /* get the selected category id */
                 let selectedCategory = $("#categoryId").val();
+                console.log("selectedCategory: ", selectedCategory);
                 this.loadedItems
-                    .find(x => (x.id = selectedCategory))
+                    .find(x => (x.id = returnedObject.category_detergents_id))
                     .detergents.push({
                         id: returnedObject.id,
                         name: returnedObject.name,
@@ -235,6 +235,10 @@ export default {
                     "image_path",
                     returnedObject.image
                 );
+
+
+                console.log("Loaed items: ", this.loadedItems
+                    .find(x => (x.id = selectedCategory)));
                 // console.log("newImagePath: ", newImagePath);
                 setTimeout(() => {
                     $(".DetergentsTypeItem:last")
@@ -242,7 +246,10 @@ export default {
                         .attr("src", newImagePath);
                 }, 600);
 
+
                 // console.log("returnedObject.image: ", returnedObject.image);
+            }).then(() => {
+                window.location.href = window.location.href
             });
         }
     }

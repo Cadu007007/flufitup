@@ -1,13 +1,13 @@
 <template>
   <div class="order-detail">
     <p class="name">{{ name }}</p>
-    <p class="value"> {{value}}</p>
+    <p class="value"> {{value}} {{tag}}</p>
  </div>
 </template>
 
 <script>
 export default {
-props:['name','value']
+props:['name','value', 'tag']
 }
 </script>
 

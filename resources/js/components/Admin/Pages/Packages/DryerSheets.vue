@@ -77,7 +77,8 @@
                         />
                         <input
                             class="dry-clean-input"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             name="price"
                             id=""
@@ -212,33 +213,37 @@ export default {
                 data: formDateObject,
                 enctype: "multipart/form-data"
                 // processData: false, // Important!
-            }).then((response) => {
-                let returnedObject = response.data.data;
-                console.log("returnedObject: ", returnedObject);
-                /* push data in the array */
-                /* get the selected category id */
-                let selectedCategory = $("#categoryId").val();
-                loadedItems
-                    .find(x => (x.id = selectedCategory))
-                    .dryers.push({
-                        id: returnedObject.id,
-                        name: returnedObject.name,
-                        price: returnedObject.price,
+            })
+                .then(response => {
+                    let returnedObject = response.data.data;
+                    console.log("returnedObject: ", returnedObject);
+                    /* push data in the array */
+                    /* get the selected category id */
+                    let selectedCategory = $("#categoryId").val();
+                    loadedItems
+                        .find(x => (x.id = selectedCategory))
+                        .dryers.push({
+                            id: returnedObject.id,
+                            name: returnedObject.name,
+                            price: returnedObject.price,
 
-                        img: returnedObject.image
-                    });
-                /* update the last added image */
-                let newImagePath = this.imageasset.replace(
-                    "image_path",
-                    returnedObject.image
-                );
-                // console.log("newImagePath: ", newImagePath);
-                setTimeout(() => {
-                    $(".DetergentsTypeItem:last")
-                        .find(".uploaded-image")
-                        .attr("src", newImagePath);
-                }, 600);
-            });
+                            img: returnedObject.image
+                        });
+                    /* update the last added image */
+                    let newImagePath = this.imageasset.replace(
+                        "image_path",
+                        returnedObject.image
+                    );
+                    // console.log("newImagePath: ", newImagePath);
+                    setTimeout(() => {
+                        $(".DetergentsTypeItem:last")
+                            .find(".uploaded-image")
+                            .attr("src", newImagePath);
+                    }, 600);
+                })
+                .then(() => {
+                    window.location.href = window.location.href;
+                });
         }
     }
 };
