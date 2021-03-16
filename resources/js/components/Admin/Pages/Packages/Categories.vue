@@ -37,7 +37,7 @@
                                 required
                             >
                                 <option :value="null">Choose a type</option>
-                                <option value="detergents">Detergents</option>
+                                <option value="detergent">Detergents</option>
                                 <option value="fabric">Fabric Softener</option>
                                 <option value="dryer">Dryer Sheet</option>
                                 <option value="scent">Scent Booster</option>
@@ -88,7 +88,7 @@
                                 style="width: 400px"
                                 disabled
                             >
-                                <option value="detergents">Detergents</option>
+                                <option value="detergent">Detergents</option>
                                 <option value="fabric">Fabric Softener</option>
                                 <option value="dryer">Dryer Sheet</option>
                                 <option value="scent">Scent Booster</option>
@@ -458,7 +458,7 @@ export default {
                 selectedCategory = this.loadeddetergentCategories.find(
                     x => x.id == Category.id
                 );
-                selectorValue = "detergents";
+                selectorValue = "detergent";
             } else if (Category.type == "fabric") {
                 selectedCategory = this.loadedfabricCategories.find(
                     x => x.id == Category.id
@@ -534,9 +534,9 @@ export default {
                     : [];
 
             let selectedType = $(".addCategoryType").val();
-            if (selectedType == "detergents") {
+            if (selectedType == "detergent") {
                 selectedURL = detergentsURL;
-                //console.log("detergents");
+                //console.log("detergent");
             } else if (selectedType == "fabric") {
                 selectedURL = fabricURL;
                 //console.log("fabric");
@@ -563,13 +563,13 @@ export default {
                         addStatus = true;
 
                         /* push data to the suitable array */
-                        if (selectedType == "detergents") {
+                        if (selectedType == "detergent") {
                             detergentsArray.push({
                                 id: response.data.data.id,
                                 name: response.data.data.name,
                                 type: selectedType
                             });
-                            //console.log("detergents");
+                            //console.log("detergent");
                         } else if (selectedType == "fabric") {
                             fabricsArray.push({
                                 id: response.data.data.id,
@@ -651,9 +651,9 @@ export default {
             let selectedType = $(event.target)
                 .find(".editCategoryType")
                 .val();
-            if (selectedType == "detergents") {
+            if (selectedType == "detergent") {
                 selectedURL = detergentsURL;
-                //console.log("detergents");
+                //console.log("detergent");
             } else if (selectedType == "fabric") {
                 selectedURL = fabricURL;
                 //console.log("fabric");
@@ -680,14 +680,14 @@ export default {
                     if (response.data.success) {
                         editStatus = true;
 
-                        if (selectedType == "detergents") {
+                        if (selectedType == "detergent") {
                             detergentsArray.find(
                                 x => x.id == response.data.data.id
                             ).name = response.data.data.name;
                             detergentsArray.find(
                                 x => x.id == response.data.data.id
                             ).type = selectedType;
-                            //console.log("detergents");
+                            //console.log("detergent");
                         } else if (selectedType == "fabric") {
                             fabricsArray.find(
                                 x => x.id == response.data.data.id
@@ -733,7 +733,14 @@ export default {
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
+            console.log("deleteForm: ", deleteForm);
             //console.log("deleteForm: ", deleteForm);
+            let selectedType;
+            let detergentsArray = this.loadeddetergentCategories;
+            let fabricsArray = this.loadedfabricCategories;
+            let dryersArray = this.loadeddryerCategories;
+            let scentsArray = this.loadedscentCategories;
+            let selectedArray;
 
             let categoryId = $(deleteForm)
                 .find(".categoryId")
@@ -759,20 +766,26 @@ export default {
                     categoryId
                 );
 
-                let selectedType = $(deleteForm)
+                selectedType = $(deleteForm)
                     .find(".categoryType")
                     .val();
-                if (selectedType == "detergents") {
+
+                console.log("selectedType: ", selectedType);
+                if (selectedType == "detergent") {
                     selectedURL = detergentsURL;
-                    //console.log("detergents");
+                    selectedArray = detergentsArray;
+                    //console.log("detergent");
                 } else if (selectedType == "fabric") {
                     selectedURL = fabricURL;
+                    selectedArray = fabricsArray;
                     //console.log("fabric");
                 } else if (selectedType == "dryer") {
                     selectedURL = dryerURL;
+                    selectedArray = dryersArray;
                     //console.log("dryer");
                 } else if (selectedType == "scent") {
                     selectedURL = scentURL;
+                    selectedArray = scentsArray;
                     //console.log("scent");
                 } else {
                     //console.log("Not In IF");
@@ -780,22 +793,35 @@ export default {
                 }
                 //console.log("selectedURL: ", selectedURL);
 
+                // console.log("selectedURL : ", selectedURL);
                 axios({
                     url: selectedURL,
                     method: "DELETE",
                     data: formValues
-                }).then(response => {
-                    //console.log("data: ", response.data);
-                    if (response.data.success) {
-                        //console.log("DELETE SUCCESS");
-                        //console.log("List: ", this.loadedCategories);
-                        let filteredCategories = this.loadedCategories.filter(
-                            x => x.id != categoryId
-                        );
-                        //console.log("filteredCategories: ", filteredCategories);
-                        this.loadedCategories = filteredCategories;
-                    }
-                });
+                })
+                    .then(response => {
+                        //console.log("data: ", response.data);
+                        if (response.data.success) {
+                            //console.log("DELETE SUCCESS");
+                            //console.log("List: ", this.loadedCategories);
+                            selectedArray = selectedArray.filter(
+                                x => x.id != categoryId
+                            );
+                            console.log(response.data);
+                        }
+                    })
+                    .then(() => {
+                        console.log("selectedType: ", selectedType);
+                        if (selectedType == "detergent") {
+                            this.loadeddetergentCategories = selectedArray;
+                        } else if (selectedType == "fabric") {
+                            this.loadedfabricCategories = selectedArray;
+                        } else if (selectedType == "dryer") {
+                            this.loadeddryerCategories = selectedArray;
+                        } else if (selectedType == "scent") {
+                            this.loadedscentCategories = selectedArray;
+                        }
+                    });
             }
         }
     }
