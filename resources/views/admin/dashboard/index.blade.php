@@ -19,5 +19,6 @@ cancellationrequestsroute="{{ route('admin.dashboard.cancellation_requests') }}"
 :ordersnumber="{{ $state_numbers->orders_number_per_day }}"
 :pickupsrange="{{ $state_numbers->pickups_range }}"
 :pickups="{{ $pickups_number }}"
+:selectedranges="{{ $dates_range }}"
 />
 @endsection

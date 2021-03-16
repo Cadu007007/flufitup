@@ -1,5 +1,6 @@
 <template>
     <div class="DetergentsTypeItem">
+        <div class="seperator" v-if="index>0"></div>
         <form
             class="edit-form"
             method="POST"
@@ -32,7 +33,7 @@
                     <div class="cam-button">
                         <input
                             @change="readURL($event)"
-                            class="image-file"
+                            class="type-image-file"
                             type="file"
                             style="position: absolute; opacity: 0"
                             :disabled="disablestate"
@@ -97,6 +98,7 @@
                 </div>
             </div>
         </form>
+
     </div>
 </template>
 
@@ -131,7 +133,8 @@ export default {
         "itemid",
         "categoryid",
         "categoryidvalue",
-        "imageasset"
+        "imageasset",
+        "index"
     ],
     methods: {
         editPressed() {
@@ -169,7 +172,7 @@ export default {
             let removeButton = event.target;
             $(removeButton)
                 .parent()
-                .find(".image-file")
+                .find(".type-image-file")
                 .val("");
             $(removeButton)
                 .parent()
@@ -181,7 +184,7 @@ export default {
             event.preventDefault();
             console.log("event target: ", event.target);
             let editRoute = this.editformroute.replace("item_id", this.itemid);
-            let uploadedImage = $(event.target).find(".image-file")[0].files[0];
+            let uploadedImage = $(event.target).find(".type-image-file")[0].files[0];
             console.log("uploadedImage: ", uploadedImage);
             let csrf = this.csrf;
             let itemid = this.itemid;
@@ -214,7 +217,7 @@ export default {
                     category_dryers_id: categoryidvalue,
                     category_fabrics_id: categoryidvalue,
                     category_scents_id: categoryidvalue,
-                    image: $(event.target).find(".image-file")[0].files[0]
+                    image: $(event.target).find(".type-image-file")[0].files[0]
                 },
                 enctype: "multipart/form-data"
                 // processData: false, // Important!

@@ -20,8 +20,9 @@
             <p class="types-title">The Types</p>
 
             <Detergents-Type-Item
-                v-for="type in loadedtypes"
+                v-for="(type,index) in loadedtypes"
                 :key="type.id"
+                :index="index"
                 :label="type.name"
                 :price="type.price"
                 :categoryid="categoryid"

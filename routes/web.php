@@ -798,17 +798,21 @@ Route::get('/admin/dashboard', function () {
     $state_numbers->pickups_range = 8;
 
     $pickups_number = collect();
-    $pickups_number->push(['date' => '2020/12/1', 'title' => 'pickup', 'pickups' => '5']);
-    $pickups_number->push(['date' => '2020/12/4', 'title' => 'pickup', 'pickups' => '7']);
-    $pickups_number->push(['date' => '2020/12/8', 'title' => 'pickup', 'pickups' => '10']);
-    $pickups_number->push(['date' => '2020/12/14', 'title' => 'pickup', 'pickups' => '15']);
-    $pickups_number->push(['date' => '2020/12/18', 'title' => 'pickup', 'pickups' => '20']);
-    $pickups_number->push(['date' => '2021/1/4', 'title' => 'pickup', 'pickups' => '6']);
-    $pickups_number->push(['date' => '2021/1/8', 'title' => 'pickup', 'pickups' => '12']);
-    $pickups_number->push(['date' => '2021/1/19', 'title' => 'pickup', 'pickups' => '15']);
+    $pickups_number->push(['date' => '2021/03/01', 'title' => 'pickup', 'pickups' => '5']);
+    // $pickups_number->push(['date' => '2021/03/04', 'title' => 'pickup', 'pickups' => '7']);
+    // $pickups_number->push(['date' => '2021/03/8', 'title' => 'pickup', 'pickups' => '10']);
+    // $pickups_number->push(['date' => '2021/3/14', 'title' => 'pickup', 'pickups' => '15']);
+    // $pickups_number->push(['date' => '2021/3/18', 'title' => 'pickup', 'pickups' => '20']);
+    // $pickups_number->push(['date' => '2021/1/4', 'title' => 'pickup', 'pickups' => '6']);
+    // $pickups_number->push(['date' => '2021/1/8', 'title' => 'pickup', 'pickups' => '12']);
+    // $pickups_number->push(['date' => '2021/1/19', 'title' => 'pickup', 'pickups' => '15']);
+
+    $dates_range= collect();
+    $dates_range->push(['start_date' => '2021/03/01', 'end_date' => '2021/03/10', 'pickups' => '3']);
+    $dates_range->push(['start_date' => '2021/03/15', 'end_date' => '2021/03/18', 'pickups' => '6']);
 
     return view('admin.dashboard.index', ['active' => 'dashboard',
-        'state_numbers' => $state_numbers, 'pickups_number' => $pickups_number]);
+        'state_numbers' => $state_numbers, 'pickups_number' => $pickups_number,'dates_range' => $dates_range]);
 })->name('admin.dashboard');
 
 /* Total Clients */
