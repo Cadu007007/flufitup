@@ -4,7 +4,45 @@
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
         </div>
-        <div class="column">
+        <div class="d-flex flex-row flex-wrap">
+            <div class="column">
+                <!-- <div class="page-header">
+                    <p class="title" style="margin: 5px 0" v-if="loadedcities">
+                        Added Cities
+                    </p>
+                </div> -->
+
+                <div class="flex-container" v-if="loadedcities">
+                    <input
+                        type="text"
+                        class="city-search"
+                        v-model="searchCityName"
+                        @input="searchForCity"
+                        placeholder="Search"
+                        tabindex="0"
+                    />
+                    <div class="flex-column overflow-hidden">
+                        <p
+                            class="search-not-found"
+                            v-if="loadedcities.length == 0"
+                        >
+                            No cities found
+                        </p>
+                        <div
+                            class="city-user"
+                            :id="city.id"
+                            v-for="city in loadedcities"
+                            :key="city.id"
+                            @click="loadActiveCityUsers(city.id)"
+                        >
+                            <p class="city-name" style="margin-left: 20px">
+                                {{ city.name }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <form
                 method="POST"
                 class="add-form"
@@ -12,7 +50,7 @@
             >
                 <input type="hidden" :value="csrf" name="_token" />
 
-                <div class="column" v-if="editCityId == 0">
+                <div class="column w-75 mx-auto" v-if="editCityId == 0">
                     <div class="row">
                         <div class="city-name">
                             <p class="title">City Name:</p>
@@ -23,14 +61,17 @@
                                 placeholder="City Name"
                                 required
                             />
+                            <button class="save-button ml-4" type="submit">
+                                Add City
+                            </button>
                         </div>
                     </div>
 
-                    <div class="button-container">
+                    <!-- <div class="button-container">
                         <button class="save-button" type="submit">
                             Add City
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </form>
 
@@ -65,15 +106,7 @@
                 </div>
             </form>
 
-            <div class="seperator"></div>
-
-            <div class="page-header">
-                <p class="title" style="margin: 5px 0" v-if="loadedcities">
-                    Added Cities
-                </p>
-            </div>
-
-            <div class="cities-container">
+            <!-- <div class="cities-container">
                 <div
                     class="city-container"
                     v-for="city in loadedcities"
@@ -97,7 +130,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -205,6 +238,23 @@ export default {
             $(".addCityName")
                 .val("")
                 .change();
+        },
+        searchForCity() {
+            let cityName = this.searchCityName.toLowerCase();
+            let allCities = this.loadedcities;
+            this.searchCities = [];
+            if (cityName.length > 0) {
+                allCities.forEach((city, index) => {
+                    let currentCityName = city.name.toLowerCase();
+                    if (currentCityName.search(cityName) >= 0) {
+                        this.searchCities.push(city);
+                    }
+                });
+                this.loadedcities = this.searchCities;
+            } else {
+                /* load all cities */
+                this.loadedcities = this.cities;
+            }
         }
     }
 };
@@ -214,6 +264,10 @@ export default {
 $text-grey: #00000066;
 $blue: #22aee4;
 $red: rgb(207, 42, 42);
+$text-grey: #00000080;
+$light-grey: #eef2f4;
+$blue: #22aee4;
+$black: #000;
 
 .Cities {
     width: 100%;
@@ -246,25 +300,26 @@ $red: rgb(207, 42, 42);
         align-items: center;
         width: 100%;
         margin: 10px auto;
-        .save-button {
-            margin: 30px auto;
-            padding: 10px 40px;
-            height: 45px;
-            border-radius: 25px;
-            background: $blue;
-            color: #fff;
-            font-size: 18px;
-        }
-        .cancel-button {
-            margin: 30px auto;
-            padding: 10px 40px;
-            height: 45px;
-            border-radius: 25px;
-            color: $red;
-            border: 1px solid $red;
-            background: #fff;
-            font-size: 18px;
-        }
+    }
+
+    .save-button {
+        margin: 30px auto;
+        padding: 10px 40px;
+        height: 45px;
+        border-radius: 25px;
+        background: $blue;
+        color: #fff;
+        font-size: 18px;
+    }
+    .cancel-button {
+        margin: 30px auto;
+        padding: 10px 40px;
+        height: 45px;
+        border-radius: 25px;
+        color: $red;
+        border: 1px solid $red;
+        background: #fff;
+        font-size: 18px;
     }
 
     .city-name {
@@ -285,7 +340,7 @@ $red: rgb(207, 42, 42);
             text-align: center;
         }
         .city-name-input {
-            width: 580px;
+            width: 280px;
             background: #f9f9f9;
             border: 2px solid #ededed;
             border-radius: 7px;
@@ -337,6 +392,103 @@ $red: rgb(207, 42, 42);
                 &.delete {
                     border: 2px solid #ff0000;
                     color: #ff0000;
+                }
+            }
+        }
+    }
+
+    .flex-container {
+        width: 100%;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .city-search {
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-bottom: 12px;
+            width: 250px;
+        }
+        .flex-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 400px;
+            width: 250px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            position: relative;
+            .search-not-found {
+                text-align: center;
+                color: #aaa;
+                width: 100%;
+                margin: 10px auto;
+            }
+
+            .city-user {
+                margin: 8px 0;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                color: $black;
+                width: 250px;
+                &.active {
+                    color: $blue !important;
+                }
+                .city-name {
+                    font-family: "Open-Sans-Semibold";
+                    font-size: 16px;
+                }
+                .users-count {
+                    margin-left: 20px;
+                    font-family: "Open-Sans-Bold";
+                    font-size: 16px;
+                }
+            }
+        }
+        .users-card {
+            width: 444px;
+            height: fit-content;
+            box-shadow: 0px 0px 6px #0000001a;
+            border: 2px solid #e8ecf3;
+            margin-left: 200px;
+            padding: 16px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            max-height: 450px;
+            overflow-y: auto;
+            .user-container {
+                width: 100%;
+                height: 40px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                font-size: 15px;
+                font-family: "Open-Sans-Regular";
+                color: $text-grey;
+                border-bottom: 1px solid #eef2f4;
+                .card-title {
+                    font-family: "Open-Sans-Regular";
+                    color: $text-grey;
+                    height: 30px;
+                    padding-bottom: 5px;
+                }
+                .username {
+                    font-size: 13px;
+                    font-family: "Open-Sans-Bold";
+                    color: $blue;
+                    cursor: pointer;
+                    height: 35px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
                 }
             }
         }
