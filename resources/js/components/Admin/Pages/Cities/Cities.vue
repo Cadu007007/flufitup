@@ -12,7 +12,7 @@
                     </p>
                 </div> -->
 
-                <div class="flex-container" v-if="loadedcities">
+                <div class="cities-flex-container" v-if="loadedcities">
                     <input
                         type="text"
                         class="city-search"
@@ -35,9 +35,23 @@
                             :key="city.id"
                             @click="loadActiveCityUsers(city.id)"
                         >
-                            <p class="city-name" style="margin-left: 20px">
+                            <p class="city-item-name" style="margin-left: 20px">
                                 {{ city.name }}
                             </p>
+                            <div class="row">
+                                
+                                    <img
+                                        src="/images/admin/icons/edit-icon.svg"
+                                    @click="editCity(city.id)"
+                                    class="mx-1"
+                                    />
+                                </button>
+                                <img
+                                    src="/images/admin/icons/delete-icon.svg"
+                                    @click="deleteCity(city.id)"
+                                    class="mx-1"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,15 +59,18 @@
 
             <form
                 method="POST"
-                class="add-form"
+                class="add-form w-50"
                 @submit="addCitySubmit($event)"
+                 v-if="editCityId == 0"
             >
                 <input type="hidden" :value="csrf" name="_token" />
 
-                <div class="column w-75 mx-auto" v-if="editCityId == 0">
+                <div class="column w-100 mx-auto">
                     <div class="row">
                         <div class="city-name">
-                            <p class="title">City Name:</p>
+                            <p class="title text-dark font-size-24">
+                                Add New City
+                            </p>
                             <input
                                 type="text"
                                 class="city-name-input addCityName"
@@ -61,7 +78,7 @@
                                 placeholder="City Name"
                                 required
                             />
-                            <button class="save-button ml-4" type="submit">
+                            <button class="save-button mx-auto" type="submit">
                                 Add City
                             </button>
                         </div>
@@ -75,13 +92,13 @@
                 </div>
             </form>
 
-            <form action="" @submit="updateCitySubmit($event)">
+            <form class="add-form w-50"  v-if="editCityId > 0" action="" @submit="updateCitySubmit($event)">
                 <input type="hidden" :value="csrf" name="_token" />
 
-                <div class="column" v-if="editCityId > 0">
+                <div class="column mx-auto w-100">
                     <div class="row">
                         <div class="city-name">
-                            <p class="title">City Name:</p>
+                            <p class="title text-dark">Edit City Name</p>
                             <input
                                 type="text"
                                 class="city-name-input"
@@ -94,14 +111,22 @@
                                 name="id"
                                 v-model="editCityId"
                             />
-                        </div>
-                    </div>
 
-                    <div class="button-container" style="width: 40%">
-                        <button class="save-button" type="submit">Save</button>
-                        <button class="cancel-button" @click="editCityId = 0">
-                            Cancel
-                        </button>
+                            <div class="button-container" style="width: 300px">
+                                <button
+                                    class="save-button mx-auto"
+                                    type="submit"
+                                >
+                                    Save
+                                </button>
+                                <button
+                                    class="cancel-button mx-2"
+                                    @click="editCityId = 0"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -325,14 +350,16 @@ $black: #000;
     .city-name {
         width: 812px;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         margin: 0 auto;
         .title {
             color: $text-grey;
-            font-size: 16px;
-            width: 92px !important;
+            font-size: 22px;
+            // width: px !important;
+            font-weight: bold;
+            margin-bottom: 10px !important;
         }
         .center-title {
             position: relative;
@@ -340,7 +367,7 @@ $black: #000;
             text-align: center;
         }
         .city-name-input {
-            width: 280px;
+            width: 480px;
             background: #f9f9f9;
             border: 2px solid #ededed;
             border-radius: 7px;
@@ -397,7 +424,7 @@ $black: #000;
         }
     }
 
-    .flex-container {
+    .cities-flex-container {
         width: 100%;
         margin: 10px auto;
         display: flex;
@@ -410,7 +437,7 @@ $black: #000;
             padding: 5px 10px;
             border-radius: 5px;
             margin-bottom: 12px;
-            width: 250px;
+            width: 350px;
         }
         .flex-column {
             display: flex;
@@ -418,7 +445,7 @@ $black: #000;
             justify-content: flex-start;
             align-items: flex-start;
             height: 400px;
-            width: 250px;
+            width: 350px;
             overflow-y: auto;
             background: #f9f9f9;
             position: relative;
@@ -434,14 +461,16 @@ $black: #000;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
+                align-items: flex-start;
                 color: $black;
-                width: 250px;
+                width: 300px;
                 &.active {
                     color: $blue !important;
                 }
-                .city-name {
+                .city-item-name {
                     font-family: "Open-Sans-Semibold";
                     font-size: 16px;
+                    text-align: left !important;
                 }
                 .users-count {
                     margin-left: 20px;
