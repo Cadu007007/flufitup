@@ -6,7 +6,7 @@
     </div>
     <div class="flex-container">
         <div class="flex-column">
-            <div class="packages-type adhoc-packages">
+            <div class="packages-type adhoc-packages" v-if="addhoc.length > 0">
                 <div class="">
                     <p class="packages-type-title">Ad Hoc Packages</p>
                     <div class="flex-row" v-if="addhoc">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="packages-type biweekly-packages">
+            <div class="packages-type biweekly-packages" v-if="biweekly.length > 0">
                 <p class="packages-type-title">Biweekly Packages</p>
                     <div class="flex-row">
                         <PackageUsersCard
@@ -34,7 +34,7 @@
                         />
                     </div>
             </div>
-            <div class="packages-type monthly-packages">
+            <div class="packages-type monthly-packages" v-if="monthly.length > 0">
                 <p class="packages-type-title">Monthly Packages</p>
                 <div class="flex-row">
 
@@ -47,7 +47,7 @@
                     />
                 </div>
             </div>
-            <div class="packages-type tailored-packages">
+            <div class="packages-type tailored-packages" v-if="tailoredpackages">
                 <p class="packages-type-title">Tailored Packages</p>
                     <div class="flex-row">
                         <PackageUsersCard
