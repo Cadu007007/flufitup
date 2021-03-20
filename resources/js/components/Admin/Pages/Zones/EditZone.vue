@@ -43,7 +43,7 @@
                                     <select
                                         class="select2 "
                                         style="width: 430px;margin: 10px 0"
-                                        name="cities[]"
+                                        name="cities[name][]"
                                     >
                                         <option
                                             v-for="city in cities"
@@ -62,13 +62,13 @@
                                     <div class="d-flex flex-row">
                                         <input
                                             type="checkbox"
-                                            name="processing[]"
+                                            name="cities[processing][]"
                                             class="checkbox1"
                                             :checked="selectedcity.processing"
                                         />
                                         <input
                                             type="checkbox"
-                                            name="washing[]"
+                                            name="cities[washing][]"
                                             class="checkbox2"
                                             :checked="selectedcity.washing"
                                         />

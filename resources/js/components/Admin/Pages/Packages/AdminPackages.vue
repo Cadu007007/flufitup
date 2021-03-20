@@ -1,5 +1,8 @@
 <template>
     <div class="AdminPackages">
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
@@ -19,7 +22,9 @@
                                 :id="aPackage.id"
                                 :name="aPackage.name"
                                 :showpackageroute="showpackageroute"
-                                @delete-package="deletePackage(aPackage.id)"
+                                @delete-package="
+                                    deletePackage(aPackage.id, 'addhoc')
+                                "
                             />
                         </div>
                     </div>
@@ -36,7 +41,9 @@
                             :id="aPackage.id"
                             :name="aPackage.name"
                             :showpackageroute="showpackageroute"
-                            @delete-package="deletePackage(aPackage.id)"
+                            @delete-package="
+                                deletePackage(aPackage.id, 'biweekly')
+                            "
                         />
                     </div>
                 </div>
@@ -52,7 +59,9 @@
                             :id="aPackage.id"
                             :name="aPackage.name"
                             :showpackageroute="showpackageroute"
-                            @delete-package="deletePackage(aPackage.id)"
+                            @delete-package="
+                                deletePackage(aPackage.id, 'monthy')
+                            "
                         />
                     </div>
                 </div>
@@ -124,7 +133,7 @@ export default {
         goToCreateTailoredPackage() {
             window.location.href = this.addtailoredpackageroute;
         },
-        deletePackage(id) {
+        deletePackage(id, type) {
             console.log("Package ID: ", id);
             let selectedURL = this.deletepackageroute.replace("package_id", id);
             if (confirm("Are You Sure ?")) {
@@ -133,8 +142,31 @@ export default {
                     method: "DELETE",
                     data: id
                 }).then(response => {
+                    console.log("response: ", response);
                     if (response.data.success) {
                         this.showSuccessMessage(response.data.message);
+                        switch (type) {
+                            case "adhoc":
+                                console.log("ADHOC");
+                                this.adhocpackages = this.adhocpackages.filter(
+                                    x => x.id != id
+                                );
+                                break;
+                            case "biweekly":
+                                console.log("biweekly");
+
+                                this.biweeklypackages = this.biweeklypackages.filter(
+                                    x => x.id != id
+                                );
+                                break;
+                            case "monthly":
+                                console.log("monthly");
+
+                                this.monthlypackages = this.monthlypackages.filter(
+                                    x => x.id != id
+                                );
+                                break;
+                        }
                     }
                     /* push data in the array */
                 });

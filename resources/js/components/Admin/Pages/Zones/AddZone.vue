@@ -1,5 +1,6 @@
 <template>
-    <form method="POST" class="add-form" @submit="addSubmit($event)">
+<!-- @submit="addSubmit($event)" -->
+    <form method="POST" class="add-form" action="/dummy">
         <input type="hidden" :value="csrf" name="_token" />
         <div
             class="alert alert-success mt-3 text-center d-none successMessage"
@@ -39,7 +40,7 @@
                                 <select
                                     class="select2 zone-name-input zoneCityDropdown"
                                     style="width: 430px"
-                                    name="cities[]"
+                                    name="cities[name][]"
                                 >
                                     <option disabled selected>City Name</option>
                                     <option
@@ -54,12 +55,12 @@
                                 >
                                 <input
                                     type="checkbox"
-                                    name="processing[]"
+                                    name="cities[processing][]"
                                     class="checkbox1"
                                 />
                                 <input
                                     type="checkbox"
-                                    name="washing[]"
+                                    name="cities[washing][]"
                                     class="checkbox2"
                                 />
                             </div>
