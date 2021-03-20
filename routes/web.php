@@ -47,6 +47,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('edit/{id}', [PackageController::class, 'edit'])->name('edit');
             Route::put('update/{id}', [PackageController::class, 'update'])->name('update');
             Route::get('show/{id}', [PackageController::class, 'show'])->name('show');
+            Route::delete('delete/{id}', [PackageController::class, 'destroy'])->name('delete');
         });
         Route::group(['prefix' => 'dry/cleans', 'as' => 'dry.cleans.'], function () {
             Route::get('', [DryCleanController::class, 'index'])->name('index');
@@ -175,6 +176,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => 'auth:w
     Route::get('/', [UserController::class, 'profile'])->name('index');
     Route::get('edit', [UserController::class, 'edit'])->name('edit');
     Route::post('update', [UserController::class, 'update'])->name('update');
+    Route::post('change/password', [UserController::class, 'changePassword'])->name('change.password');
 });
 Auth::routes();
 // Route::post('login', [
@@ -807,12 +809,12 @@ Route::get('/admin/dashboard', function () {
     // $pickups_number->push(['date' => '2021/1/8', 'title' => 'pickup', 'pickups' => '12']);
     // $pickups_number->push(['date' => '2021/1/19', 'title' => 'pickup', 'pickups' => '15']);
 
-    $dates_range= collect();
+    $dates_range = collect();
     $dates_range->push(['start_date' => '2021/03/01', 'end_date' => '2021/03/10', 'pickups' => '3']);
     $dates_range->push(['start_date' => '2021/03/15', 'end_date' => '2021/03/18', 'pickups' => '6']);
 
     return view('admin.dashboard.index', ['active' => 'dashboard',
-        'state_numbers' => $state_numbers, 'pickups_number' => $pickups_number,'dates_range' => $dates_range]);
+        'state_numbers' => $state_numbers, 'pickups_number' => $pickups_number, 'dates_range' => $dates_range]);
 })->name('admin.dashboard');
 
 /* Total Clients */
