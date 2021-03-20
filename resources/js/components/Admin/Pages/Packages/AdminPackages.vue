@@ -134,6 +134,7 @@ export default {
             window.location.href = this.addtailoredpackageroute;
         },
         deletePackage(id, type) {
+            console.log("type: ", type);
             console.log("Package ID: ", id);
             let selectedURL = this.deletepackageroute.replace("package_id", id);
             if (confirm("Are You Sure ?")) {
@@ -146,23 +147,24 @@ export default {
                     if (response.data.success) {
                         this.showSuccessMessage(response.data.message);
                         switch (type) {
-                            case "adhoc":
+                            case "addhoc":
                                 console.log("ADHOC");
-                                this.adhocpackages = this.adhocpackages.filter(
+                                console.log("this.addhoc: ", this.addhoc);
+                                this.addhoc = this.addhoc.filter(
                                     x => x.id != id
                                 );
                                 break;
                             case "biweekly":
                                 console.log("biweekly");
 
-                                this.biweeklypackages = this.biweeklypackages.filter(
+                                this.biweekly = this.biweekly.filter(
                                     x => x.id != id
                                 );
                                 break;
                             case "monthly":
                                 console.log("monthly");
 
-                                this.monthlypackages = this.monthlypackages.filter(
+                                this.monthly = this.monthly.filter(
                                     x => x.id != id
                                 );
                                 break;

@@ -11,7 +11,12 @@
                 <!-- <img src="/images/admin/icons/delete-icon.svg" /> -->
             </div>
         </a>
-        <span @click="$emit('delete-package')" class="mx-1 delete-icon">X</span>
+        <img
+            src="/images/admin/icons/notification-cancel.svg"
+            alt=""
+            @click="$emit('delete-package')"
+            class="mx-1 delete-icon"
+        />
     </div>
 </template>
 
