@@ -18,7 +18,9 @@ class ZoneController extends Controller
     }
     public function create()
     {
-        return view('admin.zones.create', ['active' => 'zones', 'cities' => City::all()]);
+        // $cities = City::whereDoesntHave('zones')->get();
+        // dd($cities);
+        return view('admin.zones.create', ['active' => 'zones', 'cities' => City::whereDoesntHave('zones')->get()]);
 
     }
     public function store(ZoneRequest $request)
@@ -29,14 +31,15 @@ class ZoneController extends Controller
 
             ZoneCity::create(['zone_id' => $zone->id, 'city_id' => $city]);
         }
-        return response()->json(['success' => true, 'data' => $zone]);
+        return response()->json(['success' => true, 'data' => $zone, 'message' => 'Zone Created Successfully']);
         return ($request);
     }
     public function edit($id)
     {
         $zone = Zone::find($id);
         $zone->cities = $zone->cities;
-        $cities = City::all();
+        $cities = City::whereDoesntHave('zones')->get();
+        // dd($zone);
         return view('admin.zones.edit', ['active' => 'zones', 'zone' => $zone, 'cities' => $cities]);
 
     }
@@ -49,13 +52,13 @@ class ZoneController extends Controller
 
             ZoneCity::create(['zone_id' => $id, 'city_id' => $city]);
         }
-        return response()->json(['success' => true, 'data' => $zone]);
+        return response()->json(['success' => true, 'data' => $zone, 'message' => 'Zone Updated Successfully']);
 
     }
     public function delete($id)
     {
         Zone::find($id)->delete();
         ZoneCity::where('zone_id', $id)->delete();
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'message' => 'Zone Deleted Successfully']);
     }
 }

@@ -24,7 +24,7 @@ class DryerController extends Controller
         $data = $request->validated();
         $data['image'] = $request->file('image')->store('images', ['disk' => 'public']);
         $dryer = Dryer::create($data);
-        return response()->json(['success' => true, 'data' => $dryer]);
+        return response()->json(['success' => true, 'data' => $dryer, 'message' => 'Dryer Created Successfully']);
 
     }
     public function update(DryerRequest $request, Dryer $dryer)
@@ -35,12 +35,12 @@ class DryerController extends Controller
             $data['image'] = $request->file('image')->store('images', ['disk' => 'public']);
         }
         $dryer->update($data);
-        return response()->json(['success' => true, 'data' => $dryer]);
+        return response()->json(['success' => true, 'data' => $dryer, 'message' => 'Dryer Updated Successfully']);
     }
     public function delete(Dryer $dryer)
     {
         Storage::disk('public')->delete(($dryer->image));
         $dryer->delete();
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'message' => 'Dryer Deleted Successfully']);
     }
 }

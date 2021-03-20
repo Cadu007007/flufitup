@@ -22,7 +22,7 @@ class CategoryFabricController extends Controller
             return response()->json(['errors' => $validate->errors()]);
         }
         $categoryFabric = CategoryFabric::create(['name' => $request->name]);
-        return response()->json(['success' => true, 'data' => $categoryFabric]);
+        return response()->json(['success' => true, 'data' => $categoryFabric, 'message' => 'Category Fabric Created Successfully']);
 
     }
     public function update(Request $request, CategoryFabric $categoryFabric)
@@ -35,12 +35,12 @@ class CategoryFabricController extends Controller
 
         }
         $categoryFabric->update(['name' => $request->name]);
-        return response()->json(['success' => true, 'data' => $categoryFabric]);
+        return response()->json(['success' => true, 'data' => $categoryFabric, 'message' => 'Category Fabric Updated Successfully']);
     }
     public function delete(CategoryFabric $categoryFabric)
     {
         $categoryFabric->fabrics()->delete();
         $categoryFabric->delete();
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'message' => 'Category Fabric Deleted Successfully']);
     }
 }

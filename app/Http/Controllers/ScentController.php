@@ -24,7 +24,7 @@ class ScentController extends Controller
         $data = $request->validated();
         $data['image'] = $request->file('image')->store('images', ['disk' => 'public']);
         $scent = Scent::create($data);
-        return response()->json(['success' => true, 'data' => $scent]);
+        return response()->json(['success' => true, 'data' => $scent, 'message' => 'Scent Created Successfully']);
 
     }
     public function update(ScentRequest $request, Scent $scent)
@@ -35,12 +35,12 @@ class ScentController extends Controller
             $data['image'] = $request->file('image')->store('images', ['disk' => 'public']);
         }
         $scent->update($data);
-        return response()->json(['success' => true, 'data' => $scent]);
+        return response()->json(['success' => true, 'data' => $scent, 'message' => 'Scent Updated Successfully']);
     }
     public function delete(Scent $scent)
     {
         Storage::disk('public')->delete(($scent->image));
         $scent->delete();
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'message' => 'Scent Deleted Successfully']);
     }
 }

@@ -50,7 +50,7 @@ class PackageController extends Controller
     public function store(PackageRequest $request)
     {
         $package = Package::create($request->validated());
-        return response()->json(['success' => true, 'data' => $package]);
+        return response()->json(['success' => true, 'data' => $package, 'message' => 'Package Created Successfully']);
     }
     public function edit($id)
     {
@@ -68,7 +68,7 @@ class PackageController extends Controller
 
         $package = Package::find($package);
         $package->update($request->validated());
-        return response()->json(['success' => true, 'data' => $package]);
+        return response()->json(['success' => true, 'data' => $package, 'message' => 'Package Updated Successfully']);
     }
     public function index()
     {
@@ -79,6 +79,12 @@ class PackageController extends Controller
 
         return response()->json(['data' => Package::all()]);
 
+    }
+    public function destroy($id)
+    {
+        $package = Package::findOrFail($id);
+        $package->delete();
+        return response()->json(['success', true, 'message' => 'Package Deleted Successfully']);
     }
     public function show($id)
     {

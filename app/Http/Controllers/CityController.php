@@ -17,20 +17,20 @@ class CityController extends Controller
     {
 
         $city = City::create($request->validated());
-        return response()->json(['success' => true, 'data' => $city]);
+        return response()->json(['success' => true, 'data' => $city, 'message' => 'City Created Successfully']);
     }
     public function update(CityRequest $request, $id)
     {
         $city = City::find($id);
         $city->update($request->validated());
-        return response()->json(['success' => true, 'data' => $city]);
+        return response()->json(['success' => true, 'data' => $city, 'message' => 'City Updated Successfully']);
 
     }
     public function delete($id)
     {
         $city = City::find($id);
         $city->delete();
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'message' => 'City Deleted Successfully']);
 
     }
 }
