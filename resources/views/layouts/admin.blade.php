@@ -42,6 +42,9 @@
             </div>
 
             <div class="PageContainer">
+                @if($message ?? '')
+                <p class="alert alert-success successMessageAlert">{{ $message }}</p>
+                @endif
                 @yield('content')
             </div>
         </div>

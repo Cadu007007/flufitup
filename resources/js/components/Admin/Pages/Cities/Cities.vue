@@ -1,5 +1,8 @@
 <template>
     <div class="Cities">
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
@@ -39,13 +42,11 @@
                                 {{ city.name }}
                             </p>
                             <div class="row">
-                                
-                                    <img
-                                        src="/images/admin/icons/edit-icon.svg"
+                                <img
+                                    src="/images/admin/icons/edit-icon.svg"
                                     @click="editCity(city.id)"
                                     class="mx-1"
-                                    />
-                                </button>
+                                />
                                 <img
                                     src="/images/admin/icons/delete-icon.svg"
                                     @click="deleteCity(city.id)"
@@ -61,7 +62,7 @@
                 method="POST"
                 class="add-form w-50"
                 @submit="addCitySubmit($event)"
-                 v-if="editCityId == 0"
+                v-if="editCityId == 0"
             >
                 <input type="hidden" :value="csrf" name="_token" />
 
@@ -92,7 +93,12 @@
                 </div>
             </form>
 
-            <form class="add-form w-50"  v-if="editCityId > 0" action="" @submit="updateCitySubmit($event)">
+            <form
+                class="add-form w-50"
+                v-if="editCityId > 0"
+                action=""
+                @submit="updateCitySubmit($event)"
+            >
                 <input type="hidden" :value="csrf" name="_token" />
 
                 <div class="column mx-auto w-100">
@@ -203,6 +209,7 @@ export default {
                 method: "POST",
                 data: formValues
             }).then(response => {
+                this.showSuccessMessage(response.data.message);
                 let returnedObject = response.data.data;
                 console.log("returnedObject: ", returnedObject);
                 /* push data in the array */
@@ -234,6 +241,7 @@ export default {
                 method: "PUT",
                 data: formValues
             }).then(response => {
+                this.showSuccessMessage(response.data.message);
                 let returnedObject = response.data.data;
                 console.log("returnedObject: ", returnedObject);
                 this.loadedcities.find(x => x.id == this.editCityId).name =
@@ -251,6 +259,7 @@ export default {
                     data: id
                 }).then(response => {
                     if (response.data.success) {
+                        this.showSuccessMessage(response.data.message);
                         this.loadedcities = this.loadedcities.filter(
                             x => x.id != id
                         );
@@ -280,6 +289,13 @@ export default {
                 /* load all cities */
                 this.loadedcities = this.cities;
             }
+        },
+        showSuccessMessage(messageText) {
+            $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
         }
     }
 };

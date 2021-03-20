@@ -1,13 +1,13 @@
 <template>
     <div class="AddPackage">
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
         </div>
 
-        <div class="alert alert-success mt-3 text-center d-none successMessage">
-            Package Created Successfully
-        </div>
         <form method="post" class="add-form" @submit="addFormSubmit($event)">
             <input type="hidden" :value="csrf" name="_token" />
 
@@ -263,7 +263,8 @@
                             name="dry_clean_credit"
                             class="add-package-value"
                             placeholder="Dry Clean Credit"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             required
                         />
@@ -277,7 +278,8 @@
                             name="house_hold_credit"
                             class="add-package-value"
                             placeholder="House Hold Credit"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             required
                         />
@@ -291,7 +293,8 @@
                             name="added_value_service"
                             class="add-package-value"
                             placeholder="Added Value Services Credit"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             required
                         />
@@ -304,7 +307,8 @@
                             name="reward_points"
                             class="add-package-value"
                             placeholder="Rewards Points"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             required
                         />
@@ -317,7 +321,8 @@
                             name="price_of_extra_pound"
                             class="add-package-value"
                             placeholder="Price of Extra Pound"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             required
                         />
@@ -384,16 +389,14 @@ export default {
                 data: formValues
             }).then(response => {
                 console.log("data: ", response.data);
-                addStatus = response.data.success;
-            });
-            setTimeout(() => {
-                if (addStatus) {
-                    this.showSuccessMessage();
+                if (response.data.success) {
+                    this.showSuccessMessage(response.data.message);
                 }
-            }, 800);
+            });
         },
-        showSuccessMessage() {
+        showSuccessMessage(messageText) {
             $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
             setTimeout(() => {
                 $(".successMessage").addClass("d-none");
             }, 3000);

@@ -1,5 +1,8 @@
 <template>
     <div class="Zones">
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
@@ -24,10 +27,10 @@
 <script>
 import ZoneContainer from "./Components/ZoneContainer";
 export default {
-    data(){
-        return{
+    data() {
+        return {
             loadedZones: this.zones
-        }
+        };
     },
     components: {
         ZoneContainer
@@ -50,19 +53,27 @@ export default {
         },
         showDeleteModal(id) {
             if (confirm("Are you sure ?")) {
-                let selectedURL = this.deletezoneroute.replace('zone_id', id)
+                let selectedURL = this.deletezoneroute.replace("zone_id", id);
                 axios({
                     url: selectedURL,
                     method: "DELETE",
                     data: id
                 }).then(response => {
                     if (response.data.success) {
+                        this.showSuccessMessage(response.data.message);
                         this.loadedZones = this.loadedZones.filter(
                             x => x.id != id
                         );
                     }
                 });
             }
+        },
+        showSuccessMessage(messageText) {
+            $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
         }
     }
 };

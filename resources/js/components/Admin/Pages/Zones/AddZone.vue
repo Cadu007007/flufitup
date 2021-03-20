@@ -1,90 +1,90 @@
 <template>
-            <form
-                method="POST"
-                class="add-form"
-                @submit="addSubmit($event)"
-            >
-                <input type="hidden" :value="csrf" name="_token" />
+    <form method="POST" class="add-form" @submit="addSubmit($event)">
+        <input type="hidden" :value="csrf" name="_token" />
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
 
-    <div class="AddZone">
-        <div class="page-header">
-            <p class="title">{{ title }}</p>
-            <p class="date">{{ date }}</p>
-        </div>
-
-        <div class="alert alert-success mt-3 text-center d-none successMessage">
-            Zone Created Successfully
-        </div>
-        <div class="zone-cities-container">
-            <div class="zone-name">
-                <p class="title">Zone Name:</p>
-                <input
-                    type="text"
-                    class="zone-name-input"
-                    name="name"
-                    placeholder="Zone Name"
-                />
-                <p class="center-title">Proccessing Center</p>
-                <p class="center-title">Washing Center</p>
+        <div class="AddZone">
+            <div class="page-header">
+                <p class="title">{{ title }}</p>
+                <p class="date">{{ date }}</p>
             </div>
             <div class="zone-cities-container">
-                <div class="zone-city">
-                    <div class="first-row">
-                        <p class="title">Zone Cities:</p>
-                        <div class="city-row">
-                            <p class="text-center">Choose Zone Zities</p>
+                <div class="zone-name">
+                    <p class="title">Zone Name:</p>
+                    <input
+                        type="text"
+                        class="zone-name-input"
+                        name="name"
+                        placeholder="Zone Name"
+                    />
+                    <p class="center-title">Proccessing Center</p>
+                    <p class="center-title">Washing Center</p>
+                </div>
+                <div class="zone-cities-container">
+                    <div class="zone-city">
+                        <div class="first-row">
+                            <p class="title">Zone Cities:</p>
+                            <div class="city-row">
+                                <p class="text-center">Choose Zone Zities</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="cities">
-                        <div
-                            class="city-row"
-                            v-for="(input, index) in inputs"
-                            :key="index"
-                        >
-                            <select
-                                class="select2 zone-name-input zoneCityDropdown"
-                                style="width: 430px"
-                                name="cities[]"
+                        <div class="cities">
+                            <div
+                                class="city-row"
+                                v-for="(input, index) in inputs"
+                                :key="index"
                             >
-                            <option disabled selected>City Name</option>
-                                <option v-for="city in cities" :key="city.id"
-                                   :value="city.id" >{{city.name}}</option
+                                <select
+                                    class="select2 zone-name-input zoneCityDropdown"
+                                    style="width: 430px"
+                                    name="cities[]"
                                 >
-                            </select>
-                            <span class="delete-city" @click="removeCityRow"
-                                >X</span
-                            >
-                            <input
-                                type="checkbox"
-                                name="processing_center"
-                                class="checkbox1"
-                            />
-                            <input
-                                type="checkbox"
-                                name="washing_center"
-                                class="checkbox2"
-                            />
-                        </div>
+                                    <option disabled selected>City Name</option>
+                                    <option
+                                        v-for="city in cities"
+                                        :key="city.id"
+                                        :value="city.id"
+                                        >{{ city.name }}</option
+                                    >
+                                </select>
+                                <span class="delete-city" @click="removeCityRow"
+                                    >X</span
+                                >
+                                <input
+                                    type="checkbox"
+                                    name="processing[]"
+                                    class="checkbox1"
+                                />
+                                <input
+                                    type="checkbox"
+                                    name="washing[]"
+                                    class="checkbox2"
+                                />
+                            </div>
 
-                        <p class="add-another-city" @click="addButtonPressed()">
-                            Add Another City
-                        </p>
+                            <p
+                                class="add-another-city"
+                                @click="addButtonPressed()"
+                            >
+                                Add Another City
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="button-container">
-            <button class="save-button" type="submit">Save</button>
+            <div class="button-container">
+                <button class="save-button" type="submit">Save</button>
+            </div>
         </div>
-    </div>
-</form>
-
+    </form>
 </template>
 
 <script>
 export default {
-    props: ["title", "date","addzoneroute","cities"],
+    props: ["title", "date", "addzoneroute", "cities"],
     data() {
         return {
             inputs: 1,
@@ -113,22 +113,26 @@ export default {
                 data: formValues
             }).then(response => {
                 console.log(response.data);
-                if(response.data.success){
-                    this.showSuccessMessage()
-                    this.clearInputs()
+                if (response.data.success) {
+                    this.showSuccessMessage(response.data.message);
+                    this.clearInputs();
                 }
-                
             });
         },
-        showSuccessMessage() {
+        showSuccessMessage(messageText) {
             $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
             setTimeout(() => {
                 $(".successMessage").addClass("d-none");
             }, 3000);
         },
-        clearInputs(){
-            $(".zone-name-input").val("").change()
-            $(".zoneCityDropdown").val(null).change()
+        clearInputs() {
+            $(".zone-name-input")
+                .val("")
+                .change();
+            $(".zoneCityDropdown")
+                .val(null)
+                .change();
         }
     }
 };

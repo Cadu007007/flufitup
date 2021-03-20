@@ -1,6 +1,6 @@
 <template>
     <div class="DetergentsTypeItem">
-        <div class="seperator" v-if="index>0"></div>
+        <div class="seperator" v-if="index > 0"></div>
         <form
             class="edit-form"
             method="POST"
@@ -59,7 +59,8 @@
                     <input
                         :disabled="disablestate"
                         class="dry-clean-input"
-                        type="number" step="any" 
+                        type="number"
+                        step="any"
                         min="0"
                         name="price"
                         id=""
@@ -98,7 +99,6 @@
                 </div>
             </div>
         </form>
-
     </div>
 </template>
 
@@ -184,7 +184,8 @@ export default {
             event.preventDefault();
             console.log("event target: ", event.target);
             let editRoute = this.editformroute.replace("item_id", this.itemid);
-            let uploadedImage = $(event.target).find(".type-image-file")[0].files[0];
+            let uploadedImage = $(event.target).find(".type-image-file")[0]
+                .files[0];
             console.log("uploadedImage: ", uploadedImage);
             let csrf = this.csrf;
             let itemid = this.itemid;
@@ -221,20 +222,24 @@ export default {
                 },
                 enctype: "multipart/form-data"
                 // processData: false, // Important!
-            }).then(function(response) {
+            }).then(response => {
                 let returnedObject = response.data.data;
                 console.log("returnedObject: ", returnedObject);
                 if (response.data.success == true) {
                     disableState = true;
                     console.log("disableState: ", disableState);
-                }
-            });
-            setTimeout(() => {
-                if (disableState) {
+                    this.showSuccessMessage(response.data.message);
+
                     this.disablestate = disableState;
                     this.$emit("save-pressed");
                 }
-            }, 500);
+            });
+            // setTimeout(() => {
+            //     if (disableState) {
+            //         this.disablestate = disableState;
+            //         this.$emit("save-pressed");
+            //     }
+            // }, 500);
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
@@ -252,8 +257,10 @@ export default {
                     url: deleteRout,
                     method: "DELETE",
                     data: formValues
-                }).then(function(response) {
+                }).then(response => {
                     if (response.data.success) {
+                        this.showSuccessMessage(response.data.message);
+
                         $(event.target)
                             .parent()
                             .closest(".DetergentsTypeItem")
@@ -261,8 +268,15 @@ export default {
                     }
                 });
             }
+        },
+        showSuccessMessage(messageText) {
+            $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
         }
-    },
+    }
 };
 </script>
 

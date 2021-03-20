@@ -2,18 +2,15 @@
     <form method="POST" class="edit-form" @submit="editSubmit($event)">
         <input type="hidden" :value="csrf" name="_token" />
         <input type="hidden" :value="zone.id" name="id" />
-
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
         <div class="EditZone">
             <div class="page-header">
                 <p class="title">{{ title }}</p>
                 <p class="date">{{ date }}</p>
             </div>
 
-            <div
-                class="alert alert-success mt-3 text-center d-none successMessage"
-            >
-                Zone Updated Successfully
-            </div>
             <div class="zone-cities-container">
                 <div class="zone-name">
                     <p class="title">Zone Name:</p>
@@ -65,13 +62,15 @@
                                     <div class="d-flex flex-row">
                                         <input
                                             type="checkbox"
-                                            name="processing_center"
+                                            name="processing[]"
                                             class="checkbox1"
+                                            :checked="selectedcity.processing"
                                         />
                                         <input
                                             type="checkbox"
-                                            name="washing_center"
+                                            name="washing[]"
                                             class="checkbox2"
+                                            :checked="selectedcity.washing"
                                         />
                                     </div>
                                 </div>
@@ -97,6 +96,11 @@
 
 <script>
 export default {
+    mounted() {
+        setTimeout(() => {
+            console.log(this.zone);
+        }, 500);
+    },
     props: ["title", "date", "zone", "updatezoneroute", "cities"],
     data() {
         return {
@@ -120,7 +124,7 @@ export default {
             event.preventDefault();
             var formValues = $(".edit-form").serialize();
             console.log("formValues: ", formValues);
-            let selectedURL = this.updatezoneroute
+            let selectedURL = this.updatezoneroute;
             console.log("selectedURL: ", selectedURL);
             axios({
                 url: selectedURL,
@@ -129,16 +133,17 @@ export default {
             }).then(response => {
                 console.log(response.data);
                 if (response.data.success) {
-                    this.showSuccessMessage();
+                    this.showSuccessMessage(response.data.message);
                 }
             });
         },
-        showSuccessMessage() {
+        showSuccessMessage(messageText) {
             $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
             setTimeout(() => {
                 $(".successMessage").addClass("d-none");
             }, 3000);
-        },
+        }
     }
 };
 </script>
@@ -246,7 +251,6 @@ $blue: #22aee4;
                         top: -24px;
                     }
                     .checkbox2 {
-                        
                         position: relative;
                         left: 660px;
                         top: -26px;

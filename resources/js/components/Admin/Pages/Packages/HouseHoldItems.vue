@@ -1,5 +1,8 @@
 <template>
     <div class="Household">
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
@@ -27,7 +30,8 @@
             />
             <input
                 class="household-input itemPriceInput"
-                type="number" step="any" 
+                type="number"
+                step="any"
                 name="price"
                 min="0"
                 id=""
@@ -122,28 +126,43 @@ export default {
             var formValues = $(".add-form").serialize();
             console.log("formValues: ", formValues);
             let loadedItems = this.loadedItems;
-            $.ajax({
+
+            axios({
                 url: this.addformroute,
-                type: "POST",
-                data: formValues,
-                success: function(data) {
-                    let returnObject = data.data;
+                method: "POST",
+                data: formValues
+            })
+                .then(response => {
+                    let returnObject = response.data.data;
                     loadedItems.push({
                         id: returnObject.id,
                         name: returnObject.name,
                         price: returnObject.price
                     });
-                }
-            });
-            setTimeout(() => {
-                this.loadedItems = loadedItems;
-                this.clearAddInputs();
-            }, 500);
+                    if (response.data.success) {
+                        this.showSuccessMessage(response.data.message);
+                    }
+                })
+                .then(() => {
+                    this.loadedItems = loadedItems;
+                    this.clearAddInputs();
+                });
         },
 
         clearAddInputs() {
-            $(".itemNameInput").val("").change();
-            $(".itemPriceInput").val("").change();
+            $(".itemNameInput")
+                .val("")
+                .change();
+            $(".itemPriceInput")
+                .val("")
+                .change();
+        },
+        showSuccessMessage(messageText) {
+            $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
         }
     }
 };

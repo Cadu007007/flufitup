@@ -1,5 +1,8 @@
 <template>
     <div class="Categories">
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
@@ -561,7 +564,7 @@ export default {
                     console.log("data: ", response.data);
                     if (response.data.success) {
                         addStatus = true;
-
+                        this.showSuccessMessage(response.data.message);
                         /* push data to the suitable array */
                         if (selectedType == "detergent") {
                             detergentsArray.push({
@@ -680,6 +683,7 @@ export default {
                     if (response.data.success) {
                         editStatus = true;
 
+                        this.showSuccessMessage(response.data.message);
                         if (selectedType == "detergent") {
                             detergentsArray.find(
                                 x => x.id == response.data.data.id
@@ -808,6 +812,7 @@ export default {
                                 x => x.id != categoryId
                             );
                             console.log(response.data);
+                            this.showSuccessMessage(response.data.message);
                         }
                     })
                     .then(() => {
@@ -823,6 +828,13 @@ export default {
                         }
                     });
             }
+        },
+        showSuccessMessage(messageText) {
+            $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
         }
     }
 };

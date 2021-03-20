@@ -18,6 +18,15 @@
             $('.select2').select2()
         }, 500);
     })
+
+    /* Show Success Message */
+    // function showSuccessMessage(messageText) {
+    //         $(".successMessageAlert").removeClass("d-none");
+    //         $(".successMessage").text(messageText);
+    //         setTimeout(() => {
+    //             $(".successMessageAlert").addClass("d-none");
+    //         }, 3000);
+    //     },
 </script>
 </body>
 </html>

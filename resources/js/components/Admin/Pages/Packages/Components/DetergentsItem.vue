@@ -97,7 +97,8 @@ export default {
         },
         changeIsDisabled() {
             this.disableState = !this.disableState;
-        }
+        },
+        
     }
 };
 </script>

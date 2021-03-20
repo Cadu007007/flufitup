@@ -18,7 +18,8 @@
             <input
                 :disabled="disablestate || updatedDone"
                 class="household-input"
-                type="number" step="any" 
+                type="number"
+                step="any"
                 name="price"
                 min="0"
                 id=""
@@ -42,11 +43,7 @@
             </span>
             <div class="" v-show="!disablestate">
                 <button class="save" type="submit">Save</button>
-                <button
-                    class="cancel"
-                    type="button"
-                    @click="cancelClicked()"
-                >
+                <button class="cancel" type="button" @click="cancelClicked()">
                     Cancel
                 </button>
             </div>
@@ -95,17 +92,16 @@ export default {
 
             let updateDoneState = this.updatedDone;
 
-            $.ajax({
+            axios({
                 url: editRoute,
-                type: "PUT",
-                data: formValues,
-                success: function(data) {
-                    if (data.success) {
-                        let returnedObject = data.data;
-                        console.log(
-                            "Value of ~ file: HouseHoldItem.vue ~ line 98 ~ submitEditForm ~ returnedObject",
-                            returnedObject
-                        );
+                method: "PUT",
+                data: formValues
+            })
+                .then(response => {
+                    if (response.data.success) {
+                        this.showSuccessMessage(response.data.message);
+                        let returnedObject = response.data.data;
+                        console.log("returnedObject: ", returnedObject);
                         let selectedId = returnedObject.id;
                         console.log("selectedId: ", selectedId);
                         updatedLabel = returnedObject.name;
@@ -113,17 +109,15 @@ export default {
                         updatedPrice = returnedObject.price;
                         updateDoneState = true;
                     }
-                }
-            });
+                })
+                .then(() => {
+                    this.updatedlabel = updatedLabel;
+                    this.updatedprice = updatedPrice;
+                    this.updatedDone = updateDoneState;
 
-            setTimeout(() => {
-                this.updatedlabel = updatedLabel;
-                this.updatedprice = updatedPrice;
-                this.updatedDone = updateDoneState;
-
-                console.log("this.updatedDone: ", this.updatedDone);
-                this.cancelClicked()
-            }, 500);
+                    console.log("this.updatedDone: ", this.updatedDone);
+                    this.cancelClicked();
+                });
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
@@ -137,25 +131,30 @@ export default {
                     this.itemid
                 );
 
-                $.ajax({
+                axios({
                     url: deleteRout,
-                    type: "DELETE",
-                    data: formValues,
-                    success: function(data) {
-                        console.log("data: ", data);
-                        if (data.success) {
-                            let itemContainer = $(deleteForm).parents(
-                                ".edit-form"
-                            );
-                            $(itemContainer).remove();
-                        }
+                    method: "DELETE",
+                    data: formValues
+                }).then(response => {
+                    if (response.data.success) {
+                        this.showSuccessMessage(response.data.message);
+
+                        let itemContainer = $(deleteForm).parents(".edit-form");
+                        $(itemContainer).remove();
                     }
                 });
             }
         },
+        showSuccessMessage(messageText) {
+            $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
+        },
         cancelClicked() {
             this.disablestate = true;
-        },
+        }
     }
 };
 </script>

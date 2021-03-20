@@ -1,11 +1,11 @@
 <template>
     <div class="EditPackage">
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
-        </div>
-        <div class="alert alert-success mt-3 text-center d-none successMessage">
-            Package Updated Successfully
         </div>
 
         <form method="post" class="edit-form" @submit="editFormSubmit($event)">
@@ -384,7 +384,8 @@
                             name="dry_clean_credit"
                             class="add-package-value"
                             placeholder="Dry Clean Credit"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             :value="package.dry_clean_credit"
                             required
@@ -399,7 +400,8 @@
                             name="house_hold_credit"
                             class="add-package-value"
                             placeholder="House Hold Credit"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             :value="package.house_hold_credit"
                             required
@@ -414,7 +416,8 @@
                             name="added_value_service"
                             class="add-package-value"
                             placeholder="Added Value Services Credit"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             :value="package.added_value_service"
                             required
@@ -428,7 +431,8 @@
                             name="reward_points"
                             class="add-package-value"
                             placeholder="Rewards Points"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             :value="package.reward_points"
                             required
@@ -442,7 +446,8 @@
                             name="price_of_extra_pound"
                             class="add-package-value"
                             placeholder="Price of Extra Pound"
-                            type="number" step="any" 
+                            type="number"
+                            step="any"
                             min="0"
                             :value="package.price_of_extra_pound"
                             required
@@ -506,7 +511,6 @@ export default {
                 this.package.id
             );
             console.log("selectedURL: ", selectedURL);
-            let updateStatus;
 
             axios({
                 url: selectedURL,
@@ -514,16 +518,14 @@ export default {
                 data: formValues
             }).then(response => {
                 console.log("data: ", response.data);
-                updateStatus = true;
-            });
-            setTimeout(() => {
-                if (updateStatus) {
-                    this.showSuccessMessage();
+                if (response.data.success) {
+                    this.showSuccessMessage(response.data.message);
                 }
-            }, 800);
+            });
         },
-        showSuccessMessage() {
+        showSuccessMessage(messageText) {
             $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
             setTimeout(() => {
                 $(".successMessage").addClass("d-none");
             }, 3000);

@@ -1,28 +1,34 @@
 <template>
-  <div class="AdminPackages">  
-    <div class="page-header">
-        <p class="title">{{title}}</p>
-        <p class="date">{{date}}</p>
-    </div>
-    <div class="flex-container">
-        <div class="flex-column">
-            <div class="packages-type adhoc-packages" v-if="addhoc.length > 0">
-                <div class="">
-                    <p class="packages-type-title">Ad Hoc Packages</p>
-                    <div class="flex-row" v-if="addhoc">
-                        <PackageUsersCard
-                        
-                            v-for="aPackage in addhoc"
-                            :key="aPackage.id"
-                            :id="aPackage.id"
-                            :name="aPackage.name"
-                            :showpackageroute="showpackageroute"
-                        />
+    <div class="AdminPackages">
+        <div class="page-header">
+            <p class="title">{{ title }}</p>
+            <p class="date">{{ date }}</p>
+        </div>
+        <div class="flex-container">
+            <div class="flex-column">
+                <div
+                    class="packages-type adhoc-packages"
+                    v-if="addhoc.length > 0"
+                >
+                    <div class="">
+                        <p class="packages-type-title">Ad Hoc Packages</p>
+                        <div class="flex-row" v-if="addhoc">
+                            <PackageUsersCard
+                                v-for="aPackage in addhoc"
+                                :key="aPackage.id"
+                                :id="aPackage.id"
+                                :name="aPackage.name"
+                                :showpackageroute="showpackageroute"
+                                @delete-package="deletePackage(aPackage.id)"
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="packages-type biweekly-packages" v-if="biweekly.length > 0">
-                <p class="packages-type-title">Biweekly Packages</p>
+                <div
+                    class="packages-type biweekly-packages"
+                    v-if="biweekly.length > 0"
+                >
+                    <p class="packages-type-title">Biweekly Packages</p>
                     <div class="flex-row">
                         <PackageUsersCard
                             v-for="aPackage in biweekly"
@@ -30,25 +36,31 @@
                             :id="aPackage.id"
                             :name="aPackage.name"
                             :showpackageroute="showpackageroute"
-
+                            @delete-package="deletePackage(aPackage.id)"
                         />
                     </div>
-            </div>
-            <div class="packages-type monthly-packages" v-if="monthly.length > 0">
-                <p class="packages-type-title">Monthly Packages</p>
-                <div class="flex-row">
-
-                    <PackageUsersCard
-                        v-for="aPackage in monthly"
-                        :key="aPackage.id"
-                        :id="aPackage.id"
-                        :name="aPackage.name"
-                        :showpackageroute="showpackageroute"
-                    />
                 </div>
-            </div>
-            <div class="packages-type tailored-packages" v-if="tailoredpackages">
-                <p class="packages-type-title">Tailored Packages</p>
+                <div
+                    class="packages-type monthly-packages"
+                    v-if="monthly.length > 0"
+                >
+                    <p class="packages-type-title">Monthly Packages</p>
+                    <div class="flex-row">
+                        <PackageUsersCard
+                            v-for="aPackage in monthly"
+                            :key="aPackage.id"
+                            :id="aPackage.id"
+                            :name="aPackage.name"
+                            :showpackageroute="showpackageroute"
+                            @delete-package="deletePackage(aPackage.id)"
+                        />
+                    </div>
+                </div>
+                <div
+                    class="packages-type tailored-packages"
+                    v-if="tailoredpackages"
+                >
+                    <p class="packages-type-title">Tailored Packages</p>
                     <div class="flex-row">
                         <PackageUsersCard
                             v-for="aPackage in tailoredpackages"
@@ -56,19 +68,25 @@
                             :id="aPackage.id"
                             :name="aPackage.name"
                             :showpackageroute="edittailoredpackageroute"
-
                         />
                         <!-- Add new tailored package -->
-                        <div class="add-new-tailored" @click="goToCreateTailoredPackage()">
+                        <div
+                            class="add-new-tailored"
+                            @click="goToCreateTailoredPackage()"
+                        >
                             Add New
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-
+        <img
+            src="/images/admin/icons/zones-add-icon.svg"
+            @click="goToAddPackage"
+            alt=""
+            class="add-package"
+        />
     </div>
-        <img src="/images/admin/icons/zones-add-icon.svg" @click="goToAddPackage" alt="" class="add-package">
-  </div>
 </template>
 
 <script>
@@ -86,6 +104,7 @@ export default {
         "tailoredpackages",
         "addpackageroute",
         "showpackageroute",
+        "deletepackageroute",
         "addtailoredpackageroute",
         "edittailoredpackageroute"
     ],
@@ -93,17 +112,40 @@ export default {
         return {
             activepackageid: 0,
             packageusers: [],
-            addhoc: this.adhocpackages || [' '],
-            biweekly: this.biweeklypackages || [' '],
-            monthly: this.monthlypackages || [' '],
+            addhoc: this.adhocpackages || [" "],
+            biweekly: this.biweeklypackages || [" "],
+            monthly: this.monthlypackages || [" "]
         };
     },
     methods: {
-        goToAddPackage(){
-            window.location.href = this.addpackageroute
+        goToAddPackage() {
+            window.location.href = this.addpackageroute;
         },
-        goToCreateTailoredPackage(){
-            window.location.href= this.addtailoredpackageroute
+        goToCreateTailoredPackage() {
+            window.location.href = this.addtailoredpackageroute;
+        },
+        deletePackage(id) {
+            console.log("Package ID: ", id);
+            let selectedURL = this.deletepackageroute.replace("package_id", id);
+            if (confirm("Are You Sure ?")) {
+                axios({
+                    url: selectedURL,
+                    method: "DELETE",
+                    data: id
+                }).then(response => {
+                    if (response.data.success) {
+                        this.showSuccessMessage(response.data.message);
+                    }
+                    /* push data in the array */
+                });
+            }
+        },
+        showSuccessMessage(messageText) {
+            $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
         }
     }
 };
@@ -115,27 +157,25 @@ $light-grey: #eef2f4;
 $blue: #22aee4;
 $black: #000;
 
-.AdminPackages{
+.AdminPackages {
     width: 100%;
     height: 100%;
-    .page-header{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        .title{
+    .page-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .title {
             margin: 26px 0 0 0;
             font-size: 21px;
-            font-family: 'Open-Sans-SemiBold';
+            font-family: "Open-Sans-SemiBold";
         }
-        .date{
+        .date {
             font-size: 12px;
             color: $text-grey;
-            font-family: 'Open-Sans-Regular';
+            font-family: "Open-Sans-Regular";
         }
-
     }
-
 
     .flex-container {
         width: 100%;
@@ -145,26 +185,25 @@ $black: #000;
         flex-wrap: wrap;
         justify-content: flex-start;
         align-items: flex-start;
-        .flex-column{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
+        .flex-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
 
-        .packages-type {
-            .flex-row{
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                align-items: center;
-            }
-            .packages-type-title {
-                font-family: "Open-Sans-Bold";
-                font-size: 16px;
-                margin: 22px 0 22px 0;
+            .packages-type {
+                .flex-row {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                }
+                .packages-type-title {
+                    font-family: "Open-Sans-Bold";
+                    font-size: 16px;
+                    margin: 22px 0 22px 0;
                 }
             }
-
         }
 
         .packages-users-card {
@@ -180,7 +219,7 @@ $black: #000;
             align-items: flex-start;
             max-height: 450px;
             overflow-y: auto;
-            margin-top: 52px;;
+            margin-top: 52px;
             /* position: fixed;
             right: 150px; */
             .user-container {
@@ -213,33 +252,32 @@ $black: #000;
             }
         }
     }
-    .add-package{
+    .add-package {
         position: fixed;
         bottom: 20px;
         right: 30px;
         cursor: pointer;
     }
     /* Add new tailored package card */
-    .add-new-tailored{
-    width: 200px;
-    height: 150px;
-    margin: 12px 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    color: $black;
-    box-shadow: 0px 0px 3px #0000001A;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    color: orange;
-    font-weight: bold;
-    &.active-card{
-    color: $blue !important;
-    border: 1px solid $blue;
+    .add-new-tailored {
+        width: 200px;
+        height: 150px;
+        margin: 12px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        color: $black;
+        box-shadow: 0px 0px 3px #0000001a;
+        border-radius: 20px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        color: orange;
+        font-weight: bold;
+        &.active-card {
+            color: $blue !important;
+            border: 1px solid $blue;
+        }
     }
-    
-}
 }
 </style>
