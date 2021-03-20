@@ -47,6 +47,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('edit/{id}', [PackageController::class, 'edit'])->name('edit');
             Route::put('update/{id}', [PackageController::class, 'update'])->name('update');
             Route::get('show/{id}', [PackageController::class, 'show'])->name('show');
+            Route::delete('delete/{id}', [PackageController::class, 'destroy'])->name('delete');
         });
         Route::group(['prefix' => 'dry/cleans', 'as' => 'dry.cleans.'], function () {
             Route::get('', [DryCleanController::class, 'index'])->name('index');
