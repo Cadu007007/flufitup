@@ -84,7 +84,7 @@ class PackageController extends Controller
     {
         $package = Package::findOrFail($id);
         $package->delete();
-        return response()->json(['success', true, 'message' => 'Package Deleted Successfully']);
+        return response()->json(['success' => true, 'message' => 'Package Deleted Successfully']);
     }
     public function show($id)
     {
