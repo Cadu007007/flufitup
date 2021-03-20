@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProfileRequest;
 use App\Models\UserAddress;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Twilio\Rest\Client;
 
@@ -27,6 +28,11 @@ class UserController extends Controller
     public function changePassword(UpdatePasswordRequest $request)
     {
 
+        if (Hash::check($request->old_password, auth()->user()->password)) {
+            auth()->user()->update(['password' => Hash::make($request->password)]);
+            return response()->json(['success' => true, 'message' => 'Password Updated Successfully']);
+        }
+        return response()->json(['success' => false, 'message' => 'Old Password Not Correct Please Try Again']);
     }
     public function update(UpdateProfileRequest $request)
     {

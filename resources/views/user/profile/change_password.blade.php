@@ -4,7 +4,7 @@
 <Profile-Change-Password 
 class="PageContentContainer" 
 id="ProfileChangePassword"
-formactionroute="{{ route('dummy') }}"
+formactionroute="{{ route('profile.change.password') }}"
 />
 
 

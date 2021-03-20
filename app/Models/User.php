@@ -43,6 +43,10 @@ class User extends Authenticatable
     {
         return Carbon::parse($value)->format('Y-M-d D g:i A');
     }
+    public function getAvatarAttribute($value)
+    {
+        return 'storage/' . $value;
+    }
     public function addresses()
     {
         return $this->hasMany(UserAddress::class);
