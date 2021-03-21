@@ -1,5 +1,12 @@
 <template>
     <div class="ProfileEdit">
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
+        <div
+            class="alert alert-danger mt-3 text-center d-none errorMessage"
+        ></div>
+
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
@@ -312,8 +319,30 @@ export default {
                 if (response.data.success) {
                     this.showSuccessMessage(response.data.message);
                     this.clearInputs();
+                } else {
+                    this.showErrorMessage(response.data.messages);
                 }
             });
+        },
+
+        showSuccessMessage(messageText) {
+            $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
+        },
+        showErrorMessage(errors) {
+            let errorsText = "";
+            errors.forEach(error => {
+                errorsText += error + "</br>";
+            });
+            console.log("errorsText: ", errorsText);
+            $(".errorMessage").removeClass("d-none");
+            $(".errorMessage").html(errorsText);
+            setTimeout(() => {
+                $(".errorMessage").addClass("d-none");
+            }, 3000);
         }
     }
 };
