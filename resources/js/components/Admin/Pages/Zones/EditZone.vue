@@ -41,9 +41,9 @@
                                     :key="selectedcity.id"
                                 >
                                     <select
-                                        class="select2 "
+                                        class="select2 zoneCityDropdown"
                                         style="width: 430px;margin: 10px 0"
-                                        name="cities[name][]"
+                                        name=""
                                     >
                                         <option
                                             v-for="city in cities"
@@ -62,14 +62,14 @@
                                     <div class="d-flex flex-row">
                                         <input
                                             type="checkbox"
-                                            name="cities[processing][]"
-                                            class="checkbox1"
+                                            name=""
+                                            class="checkbox1 cityProcessing"
                                             :checked="selectedcity.processing"
                                         />
                                         <input
                                             type="checkbox"
-                                            name="cities[washing][]"
-                                            class="checkbox2"
+                                            name=""
+                                            class="checkbox2 cityWashing"
                                             :checked="selectedcity.washing"
                                         />
                                     </div>
@@ -126,10 +126,34 @@ export default {
             console.log("formValues: ", formValues);
             let selectedURL = this.updatezoneroute;
             console.log("selectedURL: ", selectedURL);
+
+            let citiesArray = [];
+            $(".zoneCityDropdown").each((index, city) => {
+                let cityObject = {};
+                cityObject.name = $(city).val();
+                cityObject.processing = $(city)
+                    .parent()
+                    .find(".cityProcessing")
+                    .prop("checked");
+                cityObject.washing = $(city)
+                    .parent()
+                    .find(".cityWashing")
+                    .prop("checked");
+                console.log("cityObject: ", cityObject);
+                citiesArray.push(cityObject);
+            });
+            console.log("citiesArray: ", citiesArray);
+            let zoneName = $(".zone-name-input").val();
+
+            let formData = [];
+            formData.name = zoneName;
+            formData.cities = citiesArray;
+            console.log(formData);
+
             axios({
                 url: selectedURL,
                 method: "PUT",
-                data: formValues
+                data: formData
             }).then(response => {
                 console.log(response.data);
                 if (response.data.success) {

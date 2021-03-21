@@ -39,7 +39,7 @@
                                 <select
                                     class="select2 zone-name-input zoneCityDropdown"
                                     style="width: 430px"
-                                    name="cities[name][]"
+                                    name=""
                                 >
                                     <option disabled selected>City Name</option>
                                     <option
@@ -54,13 +54,13 @@
                                 >
                                 <input
                                     type="checkbox"
-                                    name="cities[processing][]"
-                                    class="checkbox1"
+                                    name=""
+                                    class="checkbox1 cityProcessing"
                                 />
                                 <input
                                     type="checkbox"
-                                    name="cities[washing][]"
-                                    class="checkbox2"
+                                    name=""
+                                    class="checkbox2 cityWashing"
                                 />
                             </div>
 
@@ -107,10 +107,33 @@ export default {
             event.preventDefault();
             var formValues = $(".add-form").serialize();
             console.log("formValues: ", formValues);
+
+            let citiesArray = [];
+            $(".zoneCityDropdown").each((index, city) => {
+                let cityObject = {};
+                cityObject.name = $(city).val();
+                cityObject.processing = $(city)
+                    .parent()
+                    .find(".cityProcessing")
+                    .prop("checked");
+                cityObject.washing = $(city)
+                    .parent()
+                    .find(".cityWashing")
+                    .prop("checked");
+                console.log("cityObject: ", cityObject);
+                citiesArray.push(cityObject);
+            });
+            console.log("citiesArray: ", citiesArray);
+            let zoneName = $(".zone-name-input").val();
+
+            let formData = [];
+            formData.name = zoneName;
+            formData.cities = citiesArray;
+            console.log(formData);
             axios({
                 url: this.addzoneroute,
                 method: "POST",
-                data: formValues
+                data: formData
             }).then(response => {
                 console.log(response.data);
                 if (response.data.success) {
