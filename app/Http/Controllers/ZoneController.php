@@ -38,8 +38,14 @@ class ZoneController extends Controller
     public function edit($id)
     {
         $zone = Zone::find($id);
-        $zone->cities = $zone->cities;
-        $cities = City::whereDoesntHave('zones')->get();
+        $zone->cities = $zone->cities->each(function ($city) {
+            $city->washing = $city->pivot->washing;
+            $city->processing = $city->pivot->processing;
+        });
+        // dd($zone);
+        $cities = City::whereDoesntHave('zones')->orWhereHas('zones', function ($query) use ($zone) {
+            return $query->where('zone_id', $zone->id);
+        })->get();
         // dd($zone);
         return view('admin.zones.edit', ['active' => 'zones', 'zone' => $zone, 'cities' => $cities]);
 
