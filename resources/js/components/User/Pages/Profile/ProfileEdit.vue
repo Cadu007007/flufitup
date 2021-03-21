@@ -1,14 +1,17 @@
 <template>
     <div class="ProfileEdit">
-        <div
-            class="alert alert-success mt-3 text-center d-none successMessage"
-        ></div>
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
         </div>
 
-        <form :action="formactionroute" method="post" enctype="multipart/form-data">
+        <form
+            :action="formactionroute"
+            method="post"
+            enctype="multipart/form-data"
+            @submit="submitForm($event)"
+            class="form"
+        >
             <div class="edit-profile-form-container">
                 <div class="form-input-container w-100">
                     <input type="hidden" :value="csrf" name="_token" />
@@ -101,7 +104,11 @@
                 </div>
 
                 <!-- Pickup -->
-                <input type="hidden" name="address[0][address_type]" value="pickup" />
+                <input
+                    type="hidden"
+                    name="address[0][address_type]"
+                    value="pickup"
+                />
                 <AddressInputsContainer
                     title="Pickup"
                     buildingTypeName="address[0][building_type]"
@@ -136,8 +143,17 @@
                     </p>
                 </div>
 
-                <div class="" v-if="showdDropOffAddress || user[0].address[1] != undefined">
-                <input type="hidden" name="address[1][address_type]" value="drop" />
+                <div
+                    class=""
+                    v-if="
+                        showdDropOffAddress || user[0].address[1] != undefined
+                    "
+                >
+                    <input
+                        type="hidden"
+                        name="address[1][address_type]"
+                        value="drop"
+                    />
 
                     <AddressInputsContainer
                         title="Drop off"
@@ -150,15 +166,51 @@
                         unitNumberName="address[1][unit_number]"
                         buildingNumberName="address[1][building_name]"
                         gateCodeName="address[1][gate_code]"
-                        :addressTypeVal="user[0].address[1] != undefined ? user[0].address[1].unit : ''"
-                        :residentialTypeVal="user[0].address[1] != undefined ? user[0].address[1].unit : ''"
-                        :streetAddressVal="user[0].address[1] != undefined ? user[0].address[1].street : ''"
-                        :cityVal="user[0].address[1] != undefined ? user[0].address[1].city : ''"
-                        :stateVal="user[0].address[1] != undefined ? user[0].address[1].state : ''"
-                        :zipCodeVal="user[0].address[1] != undefined ? user[0].address[1].zip_code : ''"
-                        :unitNumberVal="user[0].address[1] != undefined ? user[0].address[1].unit : ''"
-                        :buildingNumberVal="user[0].address[1] != undefined ? user[0].address[1].building : ''"
-                        :gateCodeVal="user[0].address[1] != undefined ? user[0].address[1].gate : ''"
+                        :addressTypeVal="
+                            user[0].address[1] != undefined
+                                ? user[0].address[1].unit
+                                : ''
+                        "
+                        :residentialTypeVal="
+                            user[0].address[1] != undefined
+                                ? user[0].address[1].unit
+                                : ''
+                        "
+                        :streetAddressVal="
+                            user[0].address[1] != undefined
+                                ? user[0].address[1].street
+                                : ''
+                        "
+                        :cityVal="
+                            user[0].address[1] != undefined
+                                ? user[0].address[1].city
+                                : ''
+                        "
+                        :stateVal="
+                            user[0].address[1] != undefined
+                                ? user[0].address[1].state
+                                : ''
+                        "
+                        :zipCodeVal="
+                            user[0].address[1] != undefined
+                                ? user[0].address[1].zip_code
+                                : ''
+                        "
+                        :unitNumberVal="
+                            user[0].address[1] != undefined
+                                ? user[0].address[1].unit
+                                : ''
+                        "
+                        :buildingNumberVal="
+                            user[0].address[1] != undefined
+                                ? user[0].address[1].building
+                                : ''
+                        "
+                        :gateCodeVal="
+                            user[0].address[1] != undefined
+                                ? user[0].address[1].gate
+                                : ''
+                        "
                     />
                 </div>
 
@@ -242,7 +294,27 @@ export default {
                 $(".phoneInput").focus();
             }, 300);
         },
-        
+
+        submitForm(event) {
+            event.preventDefault();
+            let uploadedImage = $(".image-file")[0].files[0];
+
+            let formData = $(event.target).serializeArray();
+            formData.push({ name: "image", value: uploadedImage });
+            console.log("formData: ", formData);
+
+            axios({
+                url: this.formactionroute,
+                method: "POST",
+                data: formData
+            }).then(response => {
+                console.log(response.data);
+                if (response.data.success) {
+                    this.showSuccessMessage(response.data.message);
+                    this.clearInputs();
+                }
+            });
+        }
     }
 };
 </script>

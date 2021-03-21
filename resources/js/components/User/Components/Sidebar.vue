@@ -1,9 +1,9 @@
 <template>
 <div class="Sidebar">
   <img  :src=logo alt="" class="logo">
-
+<!-- 
   <img src="/images/icons/arrow-left.svg" alt="" class="collapse-sidebar">
-  <img src="/images/icons/arrow-right.svg" alt="" class="expand-sidebar hidden">
+  <img src="/images/icons/arrow-right.svg" alt="" class="expand-sidebar hidden"> -->
 <div class="items">
   <SidebarItem :class=" active == 'home' ? 'active' : '' " 
   class="HomeSidebarItem" 

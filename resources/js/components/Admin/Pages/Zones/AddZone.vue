@@ -125,10 +125,11 @@ export default {
                 citiesArray.push(cityObject);
             });
             console.log("citiesArray: ", citiesArray);
+            
             let zoneName = $(".zone-name-input").val();
             
 
-            let formData = [];
+            let formData = {};
             formData.name = zoneName;
             formData.cities = citiesArray;
             console.log(formData);
