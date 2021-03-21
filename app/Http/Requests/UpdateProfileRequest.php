@@ -2,9 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\JsonResponse;
 
 class UpdateProfileRequest extends FormRequest
 {
@@ -44,13 +43,20 @@ class UpdateProfileRequest extends FormRequest
             'address.*.gate_code' => ['sometimes'],
         ];
     }
-    protected function failedValidation(Validator $validator)
+    // protected function failedValidation(Validator $validator)
+    // {
+    //     throw new HttpResponseException(
+    //         response()->json([
+    //             'status' => false,
+    //             'messages' => $validator->errors()->all(),
+    //         ], 200)
+    //     );
+    // }
+    public function response(array $errors)
     {
-        throw new HttpResponseException(
-            response()->json([
-                'status' => false,
-                'messages' => $validator->errors()->all(),
-            ], 200)
-        );
+        if ($this->expectsJson()) {
+            return new JsonResponse($errors, 422);
+        }
+
     }
 }

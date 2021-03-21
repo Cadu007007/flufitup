@@ -11,5 +11,5 @@ class ZoneCity extends Model
 
     protected $table = 'zone_cities';
 
-    protected $fillable = ['zone_id', 'city_id'];
+    protected $fillable = ['zone_id', 'city_id', 'processing', 'washing'];
 }
