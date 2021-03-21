@@ -15,6 +15,6 @@ class Zone extends Model
 
     public function cities()
     {
-        return $this->belongsToMany(City::class, 'zone_cities');
+        return $this->belongsToMany(City::class, 'zone_cities')->withPivot(['washing', 'processing']);
     }
 }
