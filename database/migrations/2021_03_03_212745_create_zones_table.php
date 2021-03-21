@@ -16,8 +16,7 @@ class CreateZonesTable extends Migration
         Schema::create('zones', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->boolean('processing')->default(0);
-            $table->boolean('washing')->default(0);
+
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ class Zone extends Model
 
     protected $table = 'zones';
 
-    protected $fillable = ['name', 'processing', 'washing'];
+    protected $fillable = ['name'];
 
     public function cities()
     {

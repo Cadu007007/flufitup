@@ -25,11 +25,12 @@ class ZoneRequest extends FormRequest
      */
     public function rules()
     {
+        // return $this;
         $rules = [
             'cities' => 'required',
-            'cities.*' => 'required',
-            'processing' => 'sometimes',
-            'washing' => 'sometimes',
+            'cities.*.name' => 'required',
+            'cities.*.processing' => 'required',
+            'cities.*.washing' => 'required',
         ];
         if (request()->method() == 'POST') {
 

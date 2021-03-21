@@ -17,6 +17,8 @@ class CreateZoneCitiesTable extends Migration
             $table->id();
             $table->foreignId('zone_id')->on('zones');
             $table->foreignId('city_id')->on('cities');
+            $table->boolean('processing')->default(0);
+            $table->boolean('washing')->default(0);
             $table->timestamps();
         });
     }
