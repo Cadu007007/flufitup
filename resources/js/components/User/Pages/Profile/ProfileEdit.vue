@@ -1,5 +1,8 @@
 <template>
     <div class="ProfileEdit">
+        <div
+            class="alert alert-success mt-3 text-center d-none successMessage"
+        ></div>
         <div class="page-header">
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
@@ -238,7 +241,8 @@ export default {
             setTimeout(() => {
                 $(".phoneInput").focus();
             }, 300);
-        }
+        },
+        
     }
 };
 </script>

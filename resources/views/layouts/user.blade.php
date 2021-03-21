@@ -12,6 +12,7 @@
         routetologout="{{ route('logout') }}"{{-- {{ route('user.login') }} --}}
         ></Sidebar>
     </div>
+    
     @yield('content')
 </div>
 

@@ -1,5 +1,6 @@
 <template>
-    <form method="POST" class="edit-form" @submit="editSubmit($event)">
+<!-- @submit="editSubmit($event)" -->
+    <form method="POST" class="edit-form" action="/dummy">
         <input type="hidden" :value="csrf" name="_token" />
         <input type="hidden" :value="zone.id" name="id" />
         <div

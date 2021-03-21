@@ -1,5 +1,6 @@
 <template>
-    <form method="POST" class="add-form" @submit="addSubmit($event)">
+<!-- @submit="addSubmit($event)" -->
+    <form method="POST" class="add-form" action="/dummy">
         <input type="hidden" :value="csrf" name="_token" />
         <div
             class="alert alert-success mt-3 text-center d-none successMessage"
@@ -125,6 +126,7 @@ export default {
             });
             console.log("citiesArray: ", citiesArray);
             let zoneName = $(".zone-name-input").val();
+            
 
             let formData = [];
             formData.name = zoneName;
