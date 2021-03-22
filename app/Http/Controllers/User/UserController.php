@@ -30,9 +30,11 @@ class UserController extends Controller
 
         if (Hash::check($request->old_password, auth()->user()->password)) {
             auth()->user()->update(['password' => Hash::make($request->password)]);
-            return response()->json(['success' => true, 'message' => 'Password Updated Successfully']);
+            return redirect()->back()->with('message', 'Password Updated Successfully');
+            // return response()->json(['success' => true, 'message' => 'Password Updated Successfully']);
         }
-        return response()->json(['success' => false, 'message' => 'Old Password Not Correct Please Try Again']);
+        return redirect()->back()->withErrors(['Old Password Not Correct Please Try Again']);
+        // return response()->json(['success' => false, 'message' => 'Old Password Not Correct Please Try Again']);
     }
     public function update(UpdateProfileRequest $request)
     {

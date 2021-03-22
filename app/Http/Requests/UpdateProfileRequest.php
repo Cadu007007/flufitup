@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\JsonResponse;
 
 class UpdateProfileRequest extends FormRequest
 {
@@ -52,11 +51,11 @@ class UpdateProfileRequest extends FormRequest
     //         ], 200)
     //     );
     // }
-    public function response(array $errors)
-    {
-        if ($this->expectsJson()) {
-            return new JsonResponse($errors, 422);
-        }
+    // public function response(array $errors)
+    // {
+    //     if ($this->expectsJson()) {
+    //         return new JsonResponse($errors, 422);
+    //     }
 
-    }
+    // }
 }
