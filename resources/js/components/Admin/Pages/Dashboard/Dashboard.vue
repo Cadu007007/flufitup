@@ -89,6 +89,8 @@
                     <th scope="col">Start Date</th>
                     <th scope="col">End Date</th>
                     <th scope="col">No. of Pickups</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -97,6 +99,22 @@
                     <td>{{ range.start_date }}</td>
                     <td>{{ range.end_date }}</td>
                     <td>{{ range.pickups }}</td>
+                    <td>
+                        <button
+                            class="btn btn-primary"
+                            @click="editItem(range)"
+                        >
+                            Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button
+                            class="btn btn-danger"
+                            @click="deleteItem(range)"
+                        >
+                            Delete
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -114,6 +132,36 @@
             @value-selected="updateRangeValue"
             :value="loadedRangeNumber"
         />
+
+        <form action="">
+            <input type="hidden" :value="csrf" name="_token" />
+            <div class="edit-range-modal" v-show="showEditModal">
+                <div class="PickupsRange mx-auto position-relative">
+                    <p class="title">Edit No. of Pickup for Range</p>
+                    <input
+                        type="number"
+                        class="editRangeNumber form-control mt-2"
+                        style="width: 80%"
+                        name="no_pickups"
+                    />
+                    <input
+                        class="date-input editRangeStartDate"
+                        type="date"
+                        value=""
+                        name="first_effective_date"
+                    />
+                    <input
+                        class="date-input editRangeEndDate"
+                        type="date"
+                        value=""
+                        name="second_effective_date"
+                    />
+
+                    <button class="save-button" type="submit">Save</button>
+                    <span class="close" @click="closeModal">X</span>
+                </div>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -243,7 +291,11 @@ export default {
             selectedDates: [],
             firstSelecedDate: [],
             secondSelecedDate: [],
-            loadedPickups: this.pickups
+            loadedPickups: this.pickups,
+            showEditModal: false,
+            csrf: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content")
         };
     },
     methods: {
@@ -402,14 +454,38 @@ export default {
                 currentDate = addDays.call(currentDate, 1);
             }
             return dates;
+        },
+
+        editItem(rangeItem) {
+            window.scrollTo(0,0)
+            document.getElementsByTagName("body")[0].style.overflow = "hidden !important";
+            console.log("rangeItem: ", rangeItem);
+            this.showEditModal = true;
+            console.log(
+                "rangeItem.start_date.replace('/','-'): ",
+                rangeItem.start_date.replace("/", "-")
+            );
+
+            $(".editRangeNumber").val(rangeItem.pickups);
+            $(".editRangeStartDate").val(
+                rangeItem.start_date.replaceAll("/", "-")
+            );
+            $(".editRangeEndDate").val(rangeItem.end_date.replaceAll("/", "-"));
+        },
+
+        closeModal() {
+            this.showEditModal = false;
+            document.getElementsByTagName("body")[0].style.overflow = "auto";
         }
     }
 };
 </script>
 
 <style lang="scss">
-$text-grey: #00000066;
+$text-grey: #00000080;
+$light-grey: #eef2f4;
 $blue: #22aee4;
+$black: #000;
 
 .Dashboard {
     width: 100%;
@@ -515,5 +591,83 @@ $blue: #22aee4;
     /* XX Number Of Orders XX */
 
     /* XX Handle Calendar XX */
+
+    .edit-range-modal {
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #000000, $alpha: 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 4;
+        .modal-container {
+            padding: 30px;
+
+            width: 400px;
+            height: 400px;
+            background: #e8ecf3;
+            border: 1px solid #f9f9f9;
+            border-radius: 20px;
+            position: relative;
+            overflow-y: auto;
+
+            .title {
+                font-family: "Open-Sans-Bold";
+                font-size: 16px;
+                color: $blue;
+                width: 100%;
+                text-align: center;
+            }
+            .input-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                width: 100%;
+                margin: 10px auto;
+                .title {
+                    text-align: left;
+                    font-family: "Open-Sans-regular";
+                    font-size: 16px;
+                    color: $black;
+                    margin-bottom: 10px;
+                }
+                .input {
+                    width: 100%;
+                    max-width: 628px;
+                    background: #f9f9f9;
+                    border: 2px solid #ededed;
+                    border-radius: 7px;
+                    padding: 12px;
+                }
+            }
+            .button-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 40px auto;
+                .save-button {
+                    width: 170px;
+                    height: 39px;
+                    background: $blue;
+                    border: 1px solid $blue;
+                    border-radius: 31px;
+                    font-size: 14px;
+                    font-family: "Open-Sans-Bold";
+                    color: #fff;
+                }
+            }
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    }
 }
 </style>

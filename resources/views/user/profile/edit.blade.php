@@ -1,6 +1,7 @@
 @extends('layouts.user')
 @section('content')
 {{-- {{dd($user[0])}} --}}
+{{-- {{ $messages ?? '' }} --}}
 <Profile-Edit 
 class="PageContentContainer" 
 id="ProfileEdit" 

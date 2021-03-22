@@ -1,6 +1,6 @@
 <template>
 <!-- @submit="editSubmit($event)" -->
-    <form method="POST" class="edit-form" action="/dummy">
+    <form method="POST" class="edit-form" @submit="editSubmit($event)">
         <input type="hidden" :value="csrf" name="_token" />
         <input type="hidden" :value="zone.id" name="id" />
         <div
@@ -146,7 +146,7 @@ export default {
             console.log("citiesArray: ", citiesArray);
             let zoneName = $(".zone-name-input").val();
 
-            let formData = [];
+            let formData = {};
             formData.name = zoneName;
             formData.cities = citiesArray;
             console.log(formData);

@@ -72,7 +72,7 @@ $orange: #ffa800;
     .date-input {
         border: 1px solid #ccc;
         padding: 5px;
-        width: 150px;
+        width: 200px;
         text-align: center;
         margin-top: 10px;
         border-radius: 10px;
