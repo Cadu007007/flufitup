@@ -22,7 +22,9 @@ class UserController extends Controller
 
     public function edit()
     {
-        return view('user.profile.edit', ['active' => 'profile', 'user' => auth()->user()]);
+        $user = auth()->user();
+        $user->addresses = $user->addresses;
+        return view('user.profile.edit', ['active' => 'profile', 'user' => $user]);
     }
 
     public function changePassword(UpdatePasswordRequest $request)
@@ -42,7 +44,6 @@ class UserController extends Controller
         // getting user from auth session
 
         $user = auth()->user();
-
         //email
         $user->email = ($request->email) ? $request->email : $user->email;
         //date of birth
