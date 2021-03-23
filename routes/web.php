@@ -696,16 +696,16 @@ Route::get('/profile/change_password', function () {
     return view('user.profile.change_password', ['active' => 'profile']);
 })->name('profile.change_password');
 
-Route::get('/profile/edit', function () {
+// Route::get('/profile/edit', function () {
 
-    $address = collect();
-    $address->push(['street' => '1', 'city' => '2', 'state' => '3', 'zip_code' => '4', 'unit' => '5', 'building' => '6', 'gate' => '7']);
+//     $address = collect();
+//     $address->push(['street' => '1', 'city' => '2', 'state' => '3', 'zip_code' => '4', 'unit' => '5', 'building' => '6', 'gate' => '7']);
 
-    $user = collect();
-    $user->push(['name' => 'Mohamed Salah', 'email' => 'Salah@gmail.com', 'phone' => '+20 01111111111', 'birthday' => '1990-01-01', 'address' => $address]);
+//     $user = collect();
+//     $user->push(['name' => 'Mohamed Salah', 'email' => 'Salah@gmail.com', 'phone' => '+20 01111111111', 'birthday' => '1990-01-01', 'address' => $address]);
 
-    return view('user.profile.edit', ['active' => 'profile', 'user' => $user]);
-})->name('profile.edit');
+//     return view('user.profile.edit', ['active' => 'profile', 'user' => $user]);
+// })->name('profile.edit');
 
 /*****************************
  *  Chat

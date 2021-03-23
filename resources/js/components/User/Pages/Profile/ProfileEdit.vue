@@ -12,11 +12,11 @@
             <p class="date">{{ date }}</p>
         </div>
 
+        <!-- @submit="submitForm($event)" -->
         <form
             :action="formactionroute"
             method="post"
             enctype="multipart/form-data"
-            @submit="submitForm($event)"
             class="form"
         >
             <div class="edit-profile-form-container">
@@ -44,7 +44,7 @@
                             <input
                                 type="email"
                                 placeholder="Enter yout email"
-                                :value="user[0].email"
+                                :value="user.email"
                                 name="email"
                                 class="input emailInput"
                                 :disabled="emaildisabled"
@@ -84,7 +84,7 @@
                             <input
                                 type="phone"
                                 placeholder="Enter your phone"
-                                :value="user[0].phone"
+                                :value="user.phone"
                                 name="phone"
                                 class="input phoneInput"
                                 :disabled="phonedisabled"
@@ -116,6 +116,7 @@
                     name="address[0][address_type]"
                     value="pickup"
                 />
+                <!-- :addressTypeVal="user.addresses[0].address_type" -->
                 <AddressInputsContainer
                     title="Pickup"
                     buildingTypeName="address[0][building_type]"
@@ -127,15 +128,15 @@
                     unitNumberName="address[0][unit_number]"
                     buildingNumberName="address[0][building_name]"
                     gateCodeName="address[0][gate_code]"
-                    :addressTypeVal="user[0].address[0].unit"
-                    :residentialTypeVal="user[0].address[0].unit"
-                    :streetAddressVal="user[0].address[0].street"
-                    :cityVal="user[0].address[0].city"
-                    :stateVal="user[0].address[0].state"
-                    :zipCodeVal="user[0].address[0].zip_code"
-                    :unitNumberVal="user[0].address[0].unit"
-                    :buildingNumberVal="user[0].address[0].building"
-                    :gateCodeVal="user[0].address[0].gate"
+                    :selectedbuildingtype="user.addresses[0].building_type"
+                    :residentialTypeVal="user.addresses[0].residential_type"
+                    :streetAddressVal="user.addresses[0].street"
+                    :cityVal="user.addresses[0].city"
+                    :stateVal="user.addresses[0].state"
+                    :zipCodeVal="user.addresses[0].zip"
+                    :unitNumberVal="user.addresses[0].unit_number"
+                    :buildingNumberVal="user.addresses[0].building_name"
+                    :gateCodeVal="user.addresses[0].gate_code"
                 />
 
                 <div class="drop-off-hint" v-if="!showdDropOffAddress">
@@ -152,9 +153,7 @@
 
                 <div
                     class=""
-                    v-if="
-                        showdDropOffAddress || user[0].address[1] != undefined
-                    "
+                    v-if="showdDropOffAddress || user.addresses[1] != undefined"
                 >
                     <input
                         type="hidden"
@@ -173,49 +172,49 @@
                         unitNumberName="address[1][unit_number]"
                         buildingNumberName="address[1][building_name]"
                         gateCodeName="address[1][gate_code]"
-                        :addressTypeVal="
-                            user[0].address[1] != undefined
-                                ? user[0].address[1].unit
+                        :selectedbuildingtype="
+                            user.addresses[1] != undefined
+                                ? user.addresses[1].building_type
                                 : ''
                         "
                         :residentialTypeVal="
-                            user[0].address[1] != undefined
-                                ? user[0].address[1].unit
+                            user.addresses[1] != undefined
+                                ? user.addresses[1].residential_type
                                 : ''
                         "
                         :streetAddressVal="
-                            user[0].address[1] != undefined
-                                ? user[0].address[1].street
+                            user.addresses[1] != undefined
+                                ? user.addresses[1].street
                                 : ''
                         "
                         :cityVal="
-                            user[0].address[1] != undefined
-                                ? user[0].address[1].city
+                            user.addresses[1] != undefined
+                                ? user.addresses[1].city
                                 : ''
                         "
                         :stateVal="
-                            user[0].address[1] != undefined
-                                ? user[0].address[1].state
+                            user.addresses[1] != undefined
+                                ? user.addresses[1].state
                                 : ''
                         "
                         :zipCodeVal="
-                            user[0].address[1] != undefined
-                                ? user[0].address[1].zip_code
+                            user.addresses[1] != undefined
+                                ? user.addresses[1].zip
                                 : ''
                         "
                         :unitNumberVal="
-                            user[0].address[1] != undefined
-                                ? user[0].address[1].unit
+                            user.addresses[1] != undefined
+                                ? user.addresses[1].unit_number
                                 : ''
                         "
                         :buildingNumberVal="
-                            user[0].address[1] != undefined
-                                ? user[0].address[1].building
+                            user.addresses[1] != undefined
+                                ? user.addresses[1].building_name
                                 : ''
                         "
                         :gateCodeVal="
-                            user[0].address[1] != undefined
-                                ? user[0].address[1].gate
+                            user.addresses[1] != undefined
+                                ? user.addresses[1].gate_code
                                 : ''
                         "
                     />
@@ -227,7 +226,7 @@
                         inputName="birthday"
                         placeholder="MM / DD / YYYY"
                         type="date"
-                        :inputval="user[0].birthday"
+                        :inputval="user.birth_date"
                     />
                     <!-- <div class="d-flex flex-row justify-content-start">
     <input type="checkbox" name="above_age">

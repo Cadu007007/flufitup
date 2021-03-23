@@ -7,7 +7,7 @@
                 <input
                     class="radio"
                     type="radio"
-                    checked
+                    :checked="selectedbuildingtype == 'residential'"
                     @click="showResidentialOptions"
                     :name="buildingTypeName"
                     value="residential"
@@ -21,6 +21,7 @@
                 <input
                     class="radio"
                     type="radio"
+                    :checked="selectedbuildingtype == 'business'"
                     @click="hideResidentialOptions"
                     :name="buildingTypeName"
                     value="business"
@@ -32,11 +33,12 @@
             </div>
         </div>
 
-        <div class="filter-options" v-if="isResidential">
+        <div class="filter-options" v-if="isResidential == true">
             <div class="filter">
                 <input
                     class="radio"
                     type="radio"
+                    :checked="residentialTypeVal == 'apartment'"
                     :name="residentialTypeName"
                     value="apartment"
                     id=""
@@ -49,6 +51,7 @@
                 <input
                     class="radio"
                     type="radio"
+                    :checked="residentialTypeVal == 'house'"
                     :name="residentialTypeName"
                     value="house"
                     id=""
@@ -110,7 +113,8 @@
 export default {
     data() {
         return {
-            isResidential: true
+            isResidential:
+                this.selectedbuildingtype == "residential" ? true : false
         };
     },
     props: [
@@ -130,7 +134,10 @@ export default {
         "zipCodeVal",
         "unitNumberVal",
         "buildingNumberVal",
-        "gateCodeVal"
+        "gateCodeVal",
+
+        "residentialTypeVal",
+        "selectedbuildingtype"
     ],
     methods: {
         hideResidentialOptions() {

@@ -10,9 +10,14 @@
     </div>
     <div class="d-flex flex-column">
         <div class="w-100 px-4 mb-0" style="  background: #FAFAFA;">
-            <div
-            class="alert alert-success mt-3 text-center d-none  successMessage"
-        ></div>
+            @if (session()->get('message') != null)
+                <div class="alert alert-success mt-3 text-center successMessage">{{ session()->get('message') }}</div>
+            @endif
+            @if (count($errors) > 0)
+                <div class="alert alert-danger mt-3 text-center errorMessage">
+                    {!! implode('', $errors->all('<div>:message</div>')) !!}
+                </div>
+            @endif
         </div>
         @yield('content')
     </div>
