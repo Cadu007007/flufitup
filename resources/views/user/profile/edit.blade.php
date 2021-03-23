@@ -1,6 +1,6 @@
 @extends('layouts.user')
 @section('content')
-{{dd($user->addresses)}}
+{{-- {{dd($user->addresses)}} --}}
 <Profile-Edit 
 class="PageContentContainer" 
 id="ProfileEdit" 

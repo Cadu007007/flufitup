@@ -19,6 +19,7 @@
                     inputName="old_password"
                     placeholder="Old Password"
                     type="password"
+                    :isrequired="true"
                 />
                 <br />
 
@@ -27,6 +28,7 @@
                     inputName="password"
                     placeholder="New Password"
                     type="password"
+                    :isrequired="true"
                 />
                 <br />
                 <Smart-Input-Container
@@ -34,6 +36,7 @@
                     inputName="password_confirmation"
                     placeholder="Re-enter New Password"
                     type="password"
+                    :isrequired="true"
                 />
             </div>
 
@@ -64,7 +67,7 @@ export default {
         submitForm(event) {
             event.preventDefault();
 
-            let formData = $(event.target).serializeArray();
+            let formData = $(event.target).serialize();
 
             axios({
                 url: this.formactionroute,
