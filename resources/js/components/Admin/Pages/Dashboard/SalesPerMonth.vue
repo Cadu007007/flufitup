@@ -336,7 +336,6 @@ $color5: #ff0000;
 
             .table-head-icon{
                 margin-left: 10px;
-                margin-top: 15px;
             }
         }
         .username-head{

@@ -86,7 +86,9 @@
                 <button class="btn red">Current Orders</button>
             </div>
 
-            <Wallet-Modal v-show="modalstate" @hide-modal="hidemodal" />
+            <Wallet-Modal v-show="modalstate" 
+            :walletroute="editwalletroute"
+            @hide-modal="hidemodal" :walletvalue="0" />
         </div>
     </div>
 </template>
@@ -101,7 +103,7 @@ export default {
     },
     props: {
         user: Array,
-        editwalletroute: String
+        editwalletroute: String,
     },
     components: {
         WalletModal

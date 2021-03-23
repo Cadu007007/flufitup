@@ -8,11 +8,23 @@
             <input type="hidden" :value="csrf" name="_token" />
 
             <div class="container">
-                <div class="left">
+                <div class="left position-relative">
+                    <span
+                        class="remove-image"
+                        @click="removeImage($event)"
+                        hidden
+                        >X</span
+                    >
                     <img
                         src="/images/icons/profile.svg"
                         alt=""
-                        class="userimage"
+                        class="uploaded-image"
+                    />
+                    <input
+                        type="file"
+                        class="image-file"
+                        name="image"
+                        @change="readURL($event)"
                     />
                 </div>
 
@@ -94,11 +106,32 @@
 
                     <div class="info-container">
                         <p class="title">ID Type</p>
-                        <select name="id_type" id="" class="select2" style="width: 300px">
-                            <option value="driver" :selected="staff[0].id_type == 'driver'">Driver’s licenses</option>
-                            <option value="employment" :selected="staff[0].id_type == 'employment'">Employment Authorization Card</option>
-                            <option value="passport" :selected="staff[0].id_type == 'passport'">Passport</option>
-                            <option value="green_card" :selected="staff[0].id_type == 'green_card'">Green Card</option>
+                        <select
+                            name="id_type"
+                            id=""
+                            class="select2"
+                            style="width: 300px"
+                        >
+                            <option
+                                value="driver"
+                                :selected="staff[0].id_type == 'driver'"
+                                >Driver’s licenses</option
+                            >
+                            <option
+                                value="employment"
+                                :selected="staff[0].id_type == 'employment'"
+                                >Employment Authorization Card</option
+                            >
+                            <option
+                                value="passport"
+                                :selected="staff[0].id_type == 'passport'"
+                                >Passport</option
+                            >
+                            <option
+                                value="green_card"
+                                :selected="staff[0].id_type == 'green_card'"
+                                >Green Card</option
+                            >
                         </select>
                     </div>
                     <div class="info-container">
@@ -156,6 +189,40 @@ export default {
     components: {
         AdminAuthorizations,
         LaunderyAssignments
+    },
+    methods: {
+        readURL(event) {
+            let input = event.target;
+            console.log("input: ", input);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    let imageContainer = $(input)
+                        .parent()
+                        .parent()
+                        .find(".uploaded-image");
+                    $(input)
+                        .parent()
+                        .parent()
+                        .find(".remove-image")
+                        .removeAttr("hidden");
+                    imageContainer.attr("src", e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        },
+        removeImage(event) {
+            let removeButton = event.target;
+            $(removeButton)
+                .parent()
+                .find(".image-file")
+                .val("");
+            $(removeButton)
+                .parent()
+                .find(".uploaded-image")
+                .attr("src", "");
+            $(removeButton).attr("hidden", true);
+        }
     }
 };
 </script>
@@ -205,7 +272,7 @@ $red: red;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            .userimage {
+            .uploaded-image {
                 width: 140px;
                 height: 140px;
                 border-radius: 70px;
@@ -272,10 +339,31 @@ $red: red;
             background: $blue;
         }
     }
-.auth {
+    .auth {
         .auth-title {
             color: $blue;
         }
+    }
+
+    .image-file {
+        width: 140px;
+        height: 140px;
+        background: #ccc;
+        position: absolute;
+        opacity: 0;
+        border-radius: 70px;
+    }
+    .remove-image {
+        position: absolute;
+        left: 83%;
+        font-size: 10px;
+        background: red;
+        width: 15px;
+        height: 15px;
+        text-align: center;
+        border-radius: 10px;
+        top: 2px;
+        color: #222;
     }
 }
 </style>

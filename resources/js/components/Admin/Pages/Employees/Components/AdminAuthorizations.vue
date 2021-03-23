@@ -2,7 +2,7 @@
   <div class="auth">
     <p class="auth-title">Authorizations</p>
     <div class="flex-container">
-        <div class="row"  v-for="role in authorizations" :key="role.id">
+        <div class="row flex-nowrap"  v-for="role in authorizations" :key="role.id">
             <input type="checkbox" :hidden="readonly" :checked="role.checked" :name="role.name" v-if="superadmin">
             <p class="text" :class="readonly ? 'grey' : ''">{{role.text}}</p>
         </div>

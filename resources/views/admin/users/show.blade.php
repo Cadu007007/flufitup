@@ -3,5 +3,6 @@
 
 <Show-User 
 :user="{{ $user }}"
+editwalletroute="{{ route('admin.users') }}"
 />
 @endsection

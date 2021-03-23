@@ -1185,7 +1185,7 @@ Route::get('/admin/users/show/{id}', function () {
         'email' => 'test@test.com',
         'birthday' => '1990-11-11',
         'phone' => '01286727987',
-        'wallet' => 50,
+        'wallet' => 0,
         'currency' => 'USD',
         'package' => '']);
 

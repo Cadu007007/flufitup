@@ -4,15 +4,27 @@
             <p class="title">{{ title }}</p>
             <p class="date">{{ date }}</p>
         </div>
-        <form action="/dummy" method="post">
+        <form class="add-form" method="post" @submit="submitForm($event)">
             <input type="hidden" :value="csrf" name="_token" />
 
             <div class="container">
-                <div class="left">
+                <div class="left position-relative">
+                    <span
+                        class="remove-image"
+                        @click="removeImage($event)"
+                        hidden
+                        >X</span
+                    >
                     <img
                         src="/images/icons/profile.svg"
                         alt=""
-                        class="userimage"
+                        class="uploaded-image"
+                    />
+                    <input
+                        type="file"
+                        class="image-file"
+                        name="image"
+                        @change="readURL($event)"
                     />
                 </div>
 
@@ -86,9 +98,16 @@
                     </div>
                     <div class="info-container">
                         <p class="title">ID Type</p>
-                        <select name="id_type" id="" class="select2" style="width: 300px">
+                        <select
+                            name="id_type"
+                            id=""
+                            class="select2"
+                            style="width: 300px"
+                        >
                             <option value="driver">Driver’s licenses</option>
-                            <option value="employment">Employment Authorization Card</option>
+                            <option value="employment"
+                                >Employment Authorization Card</option
+                            >
                             <option value="passport">Passport</option>
                             <option value="green_card">Green Card</option>
                         </select>
@@ -134,7 +153,7 @@ import AdminAuthorizations from "../Components/AdminAuthorizations";
 import LaunderyAssignments from "./Components/LaunderyAssignments";
 
 export default {
-    props: ["title", "date"],
+    props: ["title", "date","formroute"],
     data() {
         return {
             csrf: document
@@ -145,6 +164,75 @@ export default {
     components: {
         AdminAuthorizations,
         LaunderyAssignments
+    },
+    methods: {
+        readURL(event) {
+            let input = event.target;
+            console.log("input: ", input);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    let imageContainer = $(input)
+                        .parent()
+                        .parent()
+                        .find(".uploaded-image");
+                    $(input)
+                        .parent()
+                        .parent()
+                        .find(".remove-image")
+                        .removeAttr("hidden");
+                    imageContainer.attr("src", e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        },
+        removeImage(event) {
+            let removeButton = event.target;
+            $(removeButton)
+                .parent()
+                .find(".image-file")
+                .val("");
+            $(removeButton)
+                .parent()
+                .find(".uploaded-image")
+                .attr("src", "");
+            $(removeButton).attr("hidden", true);
+        },
+        submitForm(event) {
+            event.preventDefault();
+            var formValues = $(".add-form").serializeArray();
+            let input = $(".image-file")[0]
+            // console.log("input: ", input);
+            formValues.push({name: 'image', value: input.files[0] })
+            let formData = {};
+            for (let index = 0; index < formValues.length; index++) {
+                let arrayItem = formValues[index]
+                console.log("arrayItem: ", arrayItem);
+                let itemName =arrayItem.name 
+                let itemValue =arrayItem.value 
+                formData[itemName] = itemValue
+            }
+            console.log("formData: ", formData);
+
+            // console.log("formValues: ", formValues);
+            axios({
+                url: this.formroute,
+                method: "POST",
+                data: formData
+            }).then(response => {
+                console.log(response.data);
+                if (response.data.sucess) {
+                    this.showSuccessMessage(response.data.message);
+                }
+            });
+        },
+        showSuccessMessage(messageText) {
+            $(".successMessage").removeClass("d-none");
+            $(".successMessage").text(messageText);
+            setTimeout(() => {
+                $(".successMessage").addClass("d-none");
+            }, 3000);
+        }
     }
 };
 </script>
@@ -176,13 +264,12 @@ $red: red;
             font-family: "Open-Sans-Regular";
         }
     }
-        .seperator{
-    width: 100%;
-    height: 1px;
-    margin: 10px 0;
-    background: #ccc;
-}
-
+    .seperator {
+        width: 100%;
+        height: 1px;
+        margin: 10px 0;
+        background: #ccc;
+    }
 
     .container {
         width: 100%;
@@ -195,7 +282,7 @@ $red: red;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            .userimage {
+            .uploaded-image {
                 width: 140px;
                 height: 140px;
                 border-radius: 70px;
@@ -270,6 +357,27 @@ $red: red;
         .auth-title {
             color: $blue;
         }
+    }
+
+    .image-file {
+        width: 140px;
+        height: 140px;
+        background: #ccc;
+        position: absolute;
+        opacity: 0;
+        border-radius: 70px;
+    }
+    .remove-image {
+        position: absolute;
+        left: 83%;
+        font-size: 10px;
+        background: red;
+        width: 15px;
+        height: 15px;
+        text-align: center;
+        border-radius: 10px;
+        top: 2px;
+        color: #222;
     }
 }
 </style>
