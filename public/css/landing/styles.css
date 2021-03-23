@@ -205,7 +205,7 @@ button {
 
 .header-container .left .header-link,
 .header-container .right .header-link {
-  height: 21px;
+  height: 31px;
 }
 
 .header-container .left .icon,
@@ -236,7 +236,6 @@ button {
 
 .hero-container {
   padding: 0 100px;
-  height: calc(100vh - 28px - 122px);
   display: flex;
   flex-direction: column;
 }
@@ -267,7 +266,8 @@ button {
   justify-content: space-between;
   align-items: center;
   margin: 20px 0;
-  width: 348px;
+  max-width: 348px;
+  flex-wrap: wrap;
 }
 
 .hero-container .left .buttons-container .large-button {
@@ -297,16 +297,13 @@ button {
 /* ---------- City Location ----------  */
 
 .city-location {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  justify-content: center;
-  align-items: center;
-  -moz-column-gap: 30px;
-       column-gap: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   position: relative;
-  padding: 0 140px;
+  padding: 0 20px;
   width: 100%;
-  height: 172px;
+  min-height: 172px;
   border-radius: 0px 0px 50px 50px;
   position: relative;
   background-repeat: no-repeat;
@@ -373,7 +370,7 @@ button {
   background: #FDBD42;
   color: #fff;
   right: 0px;
-  width: 150px;
+  width: 30%;
   height: 50px;
   font-size: 15px;
 }
@@ -483,7 +480,6 @@ button {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  min-height: 100vh;
   padding: 60px 130px;
 }
 
@@ -506,7 +502,8 @@ button {
 
 .our-services-container .services-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 30px 0;
@@ -514,15 +511,7 @@ button {
   margin-top: 20px;
 }
 
-.our-services-container .services-container .services-part {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 80%;
-  margin: 20px 0;
-}
-
-.our-services-container .services-container .services-part .service-container {
+.our-services-container .services-container .service-container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -530,28 +519,28 @@ button {
   width: 300px;
 }
 
-.our-services-container .services-container .services-part .service-container .icon {
+.our-services-container .services-container .service-container .icon {
   width: 50px;
   height: 50px;
   margin: 0 20px;
 }
 
-.our-services-container .services-container .services-part .service-container .service-info {
+.our-services-container .services-container .service-container .service-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.our-services-container .services-container .services-part .service-container .service-info .title {
+.our-services-container .services-container .service-container .service-info .title {
   font-size: 16px;
   font-weight: bold;
 }
 
-.our-services-container .services-container .services-part .service-container .service-info .subtitle {
+.our-services-container .services-container .service-container .service-info .subtitle {
   font-size: 12px;
 }
 
-.our-services-container .services-container .services-part .service-container .service-info .read-more {
+.our-services-container .services-container .service-container .service-info .read-more {
   font-size: 12px;
   margin: 5px 0 0 40px;
   color: #FDBD42;
@@ -561,6 +550,10 @@ button {
 /* ---------- XX Our Services XX ----------  */
 
 /* --------- Our Packages ---------- */
+
+.PackageContainer {
+  margin: 20px !important;
+}
 
 .our-packages {
   width: 100%;
@@ -629,7 +622,7 @@ button {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 600px;
+  width: 100%;
   text-align: right;
 }
 
@@ -657,7 +650,7 @@ button {
   display: flex;
   flex-direction: column;
   margin: 20px auto 0 auto;
-  height: 700px;
+  min-height: 700px;
   padding: 40px 130px 60px 130px;
   background: #F8F8F8;
 }
@@ -679,15 +672,11 @@ button {
 }
 
 .contact-us .contact-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
   margin: 30px 0;
 }
 
 .contact-us .contact-form .left .form-image {
-  width: 444px;
+  max-width: 444px;
 }
 
 .contact-us .contact-form .right {
@@ -698,6 +687,7 @@ button {
 
 .contact-us .contact-form .right .form-input {
   width: 100%;
+  min-width: 300px;
   height: 50px;
   border-radius: 25px;
   padding: 0 24px;
@@ -797,4 +787,77 @@ button {
 }
 
 /* ------------- XX Contact US XX ---------- */
+
+/* RESPONSIVE */
+
+@media screen and (min-width: 991px) {
+  .form-image {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .city-location {
+    justify-content: center !important;
+  }
+
+  .city-location .right,
+  .city-location .left {
+    margin: 20px auto !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .why-choose-us-container {
+    padding: 50px;
+  }
+
+  .our-services-container {
+    padding: 50px 20px;
+  }
+
+  .title-container {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .packages-title {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .packages-container {
+    justify-content: center !important;
+  }
+
+  .step-container:nth-child(odd) {
+    flex-direction: column-reverse !important;
+    text-align: center !important;
+  }
+
+  .step-container:nth-child(even) {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  .form-image {
+    display: none;
+  }
+
+  .our-packages {
+    padding: 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 30px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section {
+    padding: 30px 10px !important;
+  }
+}
 
