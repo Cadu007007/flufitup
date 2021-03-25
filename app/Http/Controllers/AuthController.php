@@ -17,7 +17,7 @@ class AuthController extends Controller
         $data = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'numeric', 'unique:users'],
+            'phone' => ['required', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         // dd($data);
@@ -36,6 +36,7 @@ class AuthController extends Controller
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
+        session(['phone_number' => $data['phone']]);
         return redirect()->route('verify_phone')->with(['phone_number' => $data['phone']]);
     }
     protected function verify(Request $request)
@@ -67,11 +68,15 @@ class AuthController extends Controller
 
     public function verifyPhone(Request $request)
     {
-        // dd($request);
+
+        // dd(session()->get('phone_number'));
         // dd(Session::get('forget'));
-        $user = User::where('phone', $request->phone_number)->first();
+        dd($request);
+        $phone = session()->get('phone_number') ?? $request->phone_number;
+        $user = User::where('phone', $phone)->first();
+        // dd($user);
         if (!$user->isVerified || Session::get('forget') == true) {
-            return view('auth.verify_phone', ['active' => 'logout', 'phone_number' => $request->phone_number ?? null]);
+            return view('auth.verify_phone', ['active' => 'logout', 'phone_number' => $phone ?? null]);
         }
         abort(403, 'You Trying To Verify Phone Number Already Verified');
 
