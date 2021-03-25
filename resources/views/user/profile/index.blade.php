@@ -1,5 +1,6 @@
 @extends('layouts.user')
 @section('content')
+{{-- {{ dd(auth()->user()) }} --}}
 <Profile 
 class="PageContentContainer" 
 id="Profile" 

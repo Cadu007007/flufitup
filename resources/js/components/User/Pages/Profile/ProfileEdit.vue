@@ -128,15 +128,51 @@
                     unitNumberName="address[0][unit_number]"
                     buildingNumberName="address[0][building_name]"
                     gateCodeName="address[0][gate_code]"
-                    :selectedbuildingtype="user.addresses[0].building_type"
-                    :residentialTypeVal="user.addresses[0].residential_type"
-                    :streetAddressVal="user.addresses[0].street"
-                    :cityVal="user.addresses[0].city"
-                    :stateVal="user.addresses[0].state"
-                    :zipCodeVal="user.addresses[0].zip"
-                    :unitNumberVal="user.addresses[0].unit_number"
-                    :buildingNumberVal="user.addresses[0].building_name"
-                    :gateCodeVal="user.addresses[0].gate_code"
+                    :selectedbuildingtype="
+                        user.addresses[0] != undefined
+                            ? user.addresses[0].building_type
+                            : ''
+                    "
+                    :residentialTypeVal="
+                        user.addresses[0] != undefined
+                            ? user.addresses[0].residential_type
+                            : ''
+                    "
+                    :streetAddressVal="
+                        user.addresses[0] != undefined
+                            ? user.addresses[0].street
+                            : ''
+                    "
+                    :cityVal="
+                        user.addresses[0] != undefined
+                            ? user.addresses[0].city
+                            : ''
+                    "
+                    :stateVal="
+                        user.addresses[0] != undefined
+                            ? user.addresses[0].state
+                            : ''
+                    "
+                    :zipCodeVal="
+                        user.addresses[0] != undefined
+                            ? user.addresses[0].zip
+                            : ''
+                    "
+                    :unitNumberVal="
+                        user.addresses[0] != undefined
+                            ? user.addresses[0].unit_number
+                            : ''
+                    "
+                    :buildingNumberVal="
+                        user.addresses[0] != undefined
+                            ? user.addresses[0].building_name
+                            : ''
+                    "
+                    :gateCodeVal="
+                        user.addresses[0] != undefined
+                            ? user.addresses[0].gate_code
+                            : ''
+                    "
                 />
 
                 <div class="drop-off-hint" v-if="!showdDropOffAddress">
