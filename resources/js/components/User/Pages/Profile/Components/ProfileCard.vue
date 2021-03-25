@@ -84,13 +84,13 @@ $blue: #22AEE4;
         width: 100%;
         position: relative;
         .image{
-            width: 90px;
-            height: 90px;
+            width: 120px;
+            height: 120px;
             margin-top: 17px;
-            border-radius: 25px;
+            border-radius: 60px;
         }
         .name{
-            margin-top: 24px;
+            margin-top: 10px;
             font-size: 18px;
             font-weight: bold;
             color: $black;
