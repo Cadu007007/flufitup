@@ -140,7 +140,7 @@
                             <option value="recommendation">As per Manufacturer Recommendation</option>
                         </select>
                     </div>
-                    <div class="" style="margin-bottom: 20px">
+                    <!-- <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             Folding Options
                         </p>
@@ -153,9 +153,9 @@
                             <option value="1">Folding Only</option>
                             <option value="2">Folding & Hanger</option>
                         </select>
-                    </div>
+                    </div> -->
 
-                    <div class="" style="margin-bottom: 20px">
+                    <!-- <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             Hangers Options
                         </p>
@@ -168,7 +168,7 @@
                             <option value="1">Hanger Per Bags (xx$ Per Bag)</option>
                             <option value="2">Hanger Per Piece (xx$ Per Piece)</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">

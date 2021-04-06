@@ -1,13 +1,36 @@
-@extends('layouts.user')
-@section('content')
-<div class="PageContentContainer">
+@include('components.user.header')
 
-    <User-Create-Package
-    title="Add Package"
-    date="{{Carbon\Carbon::now()->format('D, d F')}}"
-    storepackageroute= "{{ route('admin.packages.store') }}"
-    />
+<div id="app">
+    <div class="Sidebar-container">
+
+    </div>
+    <div class="d-flex flex-column">
+        <div class="w-100 px-4 mb-0" style="  background: #FAFAFA;">
+            @if (session()->get('message') != null)
+                <div class="alert alert-success mt-3 text-center successMessage">{{ session()->get('message') }}</div>
+            @endif
+            @if (count($errors) > 0)
+                <div class="alert alert-danger mt-3 text-center errorMessage">
+                    {!! implode('', $errors->all('<div>:message</div>')) !!}
+                </div>
+            @endif
+        </div>
+        <div class="PageContentContainer">
+
+            <User-Create-Package
+            title="Add Package"
+            date="{{Carbon\Carbon::now()->format('D, d F')}}"
+            storepackageroute= "{{ route('admin.packages.store') }}"
+            />
+        </div>
+    </div>
 </div>
+@include('components.user.footer')
+{{-- 
+
+@extends('layouts.user')
+@section('content') --}}
+
 {{-- 
 <Package-Create
 class="PageContentContainer" 
@@ -35,4 +58,4 @@ formactionroute="{{ route('dummy') }}"
 summaryroute="{{ route('package.summary') }}"
 /> --}}
 
-@endsection
+{{-- @endsection --}}
