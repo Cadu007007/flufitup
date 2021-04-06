@@ -1,6 +1,14 @@
 @extends('layouts.user')
 @section('content')
+<div class="PageContentContainer">
 
+    <User-Create-Package
+    title="Add Package"
+    date="{{Carbon\Carbon::now()->format('D, d F')}}"
+    storepackageroute= "{{ route('admin.packages.store') }}"
+    />
+</div>
+{{-- 
 <Package-Create
 class="PageContentContainer" 
 id="PackageCreate" 
@@ -25,6 +33,6 @@ formactionroute="{{ route('dummy') }}"
 :fabrictypes="{{ $fabric_types }}"
 :fabrictypesitems="{{ $fabric_types_items }}"
 summaryroute="{{ route('package.summary') }}"
-/>
+/> --}}
 
 @endsection
