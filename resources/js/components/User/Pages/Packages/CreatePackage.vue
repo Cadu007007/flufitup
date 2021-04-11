@@ -8,7 +8,11 @@
             <p class="date">{{ date }}</p>
         </div>
 
-        <form method="post" class="add-form" @submit="storePackageInLocalStorage($event)">
+        <form
+            method="post"
+            class="add-form"
+            @submit="storePackageInLocalStorage($event)"
+        >
             <input type="hidden" :value="csrf" name="_token" />
 
             <div class="flex-row">
@@ -20,7 +24,7 @@
                         <select
                             name="duration"
                             id=""
-                            class="select2"
+                            class="select2 packageDuration"
                             style="width:300px; margin-top: 20px"
                             required
                         >
@@ -29,6 +33,7 @@
                             <option value="4_weeks">4 Weeks</option>
                         </select>
                     </div>
+
                     <!-- 
                     <div class="package-features">
                         <AddPackageItem
@@ -41,20 +46,34 @@
                     </div> -->
 
                     <!-- if duration > 1 day -->
-                    <div class="" style="margin-bottom: 20px">
+                    <div
+                        class=""
+                        style="margin-bottom: 20px"
+                        v-show="selectedDuration != '1_day'"
+                    >
                         <p class="title" style="margin-bottom: 10px">
                             No. of Pickups Per Week
                         </p>
                         <select
                             name="no_pickups"
                             id=""
-                            class="select2"
+                            class="select2 pickupsDropdown"
                             style="width:300px; margin-top: 20px"
                             required
                         >
                             <option value="1">1 Pickup</option>
                             <option value="2">2 Pickup</option>
                         </select>
+                    </div>
+
+                    <div class="mb-3" v-if="selectedpickups > 0">
+                        <Accordion-Calendar
+                            :pickups="selectedpickups"
+                            class="accordion"
+                            :hasradio="false"
+                            title="Choose your date"
+                            :options="weeks"
+                        />
                     </div>
 
                     <div class="" style="margin-bottom: 20px">
@@ -64,7 +83,7 @@
                         <select
                             name="bags_per_pickup"
                             id=""
-                            class="select2"
+                            class="select2 bagsDropdown"
                             style="width:300px; margin-top: 20px"
                             required
                         >
@@ -73,8 +92,14 @@
                             <option value="3">3 Bags</option>
                             <option value="more">More Bags</option>
                         </select>
+                        <input
+                            class="add-package-value"
+                            id="moreBags"
+                            type="number"
+                            name="more_bags"
+                            min="4"
+                        />
                     </div>
-
 
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
@@ -83,11 +108,28 @@
                         <input
                             name="dry_clean_credit"
                             class="add-package-value"
+                            id="maxWeightInput"
                             placeholder="Maximum Weight"
-                            type="number"
-                            step="any"
-                            min="0"
+                            type="text"
+                            readonly
                         />
+                        
+                    </div>
+                    
+                    <div class="" style="margin-bottom: 20px" v-show="selectedDuration != '1_day'">
+                        <p class="title" style="margin-bottom: 10px">
+                            Total No. of Bags per package
+                        </p>
+                        <input
+                            name="total_pages"
+                            class="add-package-value"
+                            id="totalBags"
+                            placeholder="Total No. of Bags per package"
+                            type="text"
+                            v-model="totalbags"
+                            readonly
+                        />
+                        
                     </div>
 
                     <div class="" style="margin-bottom: 20px">
@@ -137,7 +179,9 @@
                             <option value="tumble_dry">Tumble Dry</option>
                             <option value="air_dry">Air Dry</option>
                             <option value="air_dry_flat">Air Dry - Flat</option>
-                            <option value="recommendation">As per Manufacturer Recommendation</option>
+                            <option value="recommendation"
+                                >As per Manufacturer Recommendation</option
+                            >
                         </select>
                     </div>
                     <!-- <div class="" style="margin-bottom: 20px">
@@ -250,7 +294,6 @@
                             <option value="3">Special Line</option>
                         </select>
                     </div>
-                    
 
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
@@ -263,7 +306,6 @@
                             type="number"
                             step="any"
                             min="0"
-                            
                         />
                     </div>
 
@@ -278,7 +320,6 @@
                             type="number"
                             step="any"
                             min="0"
-                            
                         />
                     </div>
 
@@ -293,7 +334,6 @@
                             type="number"
                             step="any"
                             min="0"
-                            
                         />
                     </div>
                     <div class="" style="margin-bottom: 20px">
@@ -307,7 +347,6 @@
                             type="number"
                             step="any"
                             min="0"
-                            
                         />
                     </div>
                     <div class="" style="margin-bottom: 20px">
@@ -321,7 +360,6 @@
                             type="number"
                             step="any"
                             min="0"
-                            
                         />
                     </div>
                 </div>
@@ -329,12 +367,18 @@
                 <div class="price-card-container">
                     <div class="CreatePackagePriceCard">
                         <div class="title">Package Price</div>
-                        <input class="package-price" readonly  type="number" step="any"  min="0" placeholder="Package Price">
+                        <input
+                            class="package-price"
+                            readonly
+                            type="number"
+                            step="any"
+                            min="0"
+                            placeholder="Package Price"
+                        />
 
                         <div class="button-container">
                             <button class="done" type="submit">Done</button>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -350,21 +394,77 @@
 import AddPackageItem from "./Components/AddPackageItem";
 import CreatePackagePriceCard from "./Components/CreatePackagePriceCard";
 import AddedValueContainer from "./Components/AddedValueContainer";
+import AccordionCalendar from "./Components/AccordionCalendar";
 
 export default {
+    mounted() {
+        setTimeout(() => {
+            $(".pickupsDropdown").on("change", () => {
+                this.selectedpickups = $(".pickupsDropdown").val();
+                this.sumTotalBags()
+            });
+            $(".packageDuration").on("change", () => {
+                let selectedDurationValue = $(".packageDuration").val();
+                this.selectedDuration = selectedDurationValue;
+                if (selectedDurationValue == "2_weeks") {
+                    this.weeks = 2;
+                } else if (selectedDurationValue == "4_weeks") {
+                    this.weeks = 4;
+                } else {
+                    this.weeks = 0;
+                }
+                $(".pickupsDropdown").change();
+            });
+
+            $(".bagsDropdown")
+                .on("change", () => {
+                    let selectedBagsValue = $(".bagsDropdown").val();
+                    if (selectedBagsValue == "more") {
+                        $("#moreBags")
+                            .removeAttr("hidden")
+                            .val(4)
+                            .change();
+                    } else {
+                        $("#moreBags")
+                            .attr("hidden", true)
+                            .val(0);
+                        $("#maxWeightInput").val(
+                            selectedBagsValue * 15 + " Pounds"
+                        );
+                    }
+                    this.sumTotalBags()
+
+                })
+                .trigger("change");
+            $("#moreBags").on("change", () => {
+                let selectedBagsValue = $("#moreBags").val();
+                if (selectedBagsValue > 0) {
+                    $("#maxWeightInput").val(
+                        selectedBagsValue * 15 + " Pounds"
+                    );
+                }
+                this.sumTotalBags()
+            });
+        }, 500);
+    },
     props: ["title", "date", "addedvalues", "storepackageroute"],
     data() {
         return {
             name: "",
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
-                .getAttribute("content")
+                .getAttribute("content"),
+            selectedpickups: 0,
+            selectedDuration: "1_day",
+            weeks: 2,
+            totalbags: 1
         };
     },
     components: {
         AddPackageItem,
         CreatePackagePriceCard,
-        AddedValueContainer
+        AddedValueContainer,
+        AccordionCalendar
     },
     methods: {
         clearPackageName() {
@@ -380,10 +480,13 @@ export default {
             event.preventDefault();
             var formValues = $(".add-form").serialize();
 
-            // var formData = JSON.parse(JSON.stringify($(".add-form").serializeArray())); 
-            localStorage.setItem("createdPackage", formValues)
-            console.log("Form Values: ", localStorage.getItem("createdPackage"));
-            
+            // var formData = JSON.parse(JSON.stringify($(".add-form").serializeArray()));
+            localStorage.setItem("createdPackage", formValues);
+            console.log(
+                "Form Values: ",
+                localStorage.getItem("createdPackage")
+            );
+
             // axios({
             //     url: selectedURL,
             //     method: "POST",
@@ -401,6 +504,21 @@ export default {
             setTimeout(() => {
                 $(".successMessage").addClass("d-none");
             }, 3000);
+        },
+        pickupsChanged(event) {
+            alert($(event.target).val());
+        },
+        sumTotalBags(){
+            /* duration */
+                let selectedDueation = this.weeks
+                let selectedPickups = this.selectedpickups
+                let selectedBags
+                if($(".bagsDropdown").val() == "more"){
+                    selectedBags = $("#moreBags").val()
+                }else {
+                    selectedBags = $(".bagsDropdown").val()
+                }
+                this.totalbags = selectedDueation*selectedPickups*selectedBags
         }
     }
 };
@@ -411,13 +529,10 @@ $text-grey: #00000066;
 $orange: #ffa800;
 $blue: #22aee4;
 
-
-
 $white: #ffffff;
-$red: #FF0000CC;
-$green: #00C319;
-$blue: #22AEE4;
-
+$red: #ff0000cc;
+$green: #00c319;
+$blue: #22aee4;
 
 .AddPackage {
     width: 100%;
@@ -498,14 +613,12 @@ $blue: #22AEE4;
     }
 }
 
-
-
-.CreatePackagePriceCard{
+.CreatePackagePriceCard {
     background: $white;
     width: 330px;
     height: 180px;
     margin-top: 24px;
-    border: 1px solid #E7E7E7;
+    border: 1px solid #e7e7e7;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -514,42 +627,60 @@ $blue: #22AEE4;
     padding: 12px 0;
     background: $white;
     color: $blue;
-    .title{
+    .title {
         font-size: 16px;
-        font-family: 'Lato-Bold';
+        font-family: "Lato-Bold";
     }
 
-    .package-price{
+    .package-price {
         width: 280px;
         height: 40px;
-        background: #F9F9F9;
+        background: #f9f9f9;
         padding: 13px 24px;
-        border: 1px solid #EDEDED;
+        border: 1px solid #ededed;
         border-radius: 7px;
         margin: 0 auto;
     }
-    .price{
+    .price {
         font-size: 30px;
         margin: 12px 0;
-        font-family: 'Lato-Bold';
-    }    
+        font-family: "Lato-Bold";
+    }
 
-    .button-container{
+    .button-container {
         width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         margin-bottom: 10px;
-            .done{
-                width: 168px;
-                height: 40px;
-                background: $blue;
-                color: $white;
-                border-radius: 35px;
-                font-size: 14px;
-            }
+        .done {
+            width: 168px;
+            height: 40px;
+            background: $blue;
+            color: $white;
+            border-radius: 35px;
+            font-size: 14px;
         }
+    }
+}
 
+/* override calendar accordion styles */
+.AccordionCalendar {
+    border-radius: 15px;
+}
+.AccordionCalendar .header {
+    background: #fff !important;
+    border-radius: inherit;
+}
+.AccordionCalendar .options {
+    padding: 10px 0 !important;
+    border-top: 1px solid #eee;
+}
+.AccordionCalendar .options .option {
+    margin-bottom: 10px;
+}
+.AccordionCalendar .options .option .option-label {
+    margin-left: 30px !important;
 }
 </style>

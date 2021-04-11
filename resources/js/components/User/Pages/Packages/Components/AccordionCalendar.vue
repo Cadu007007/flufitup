@@ -50,7 +50,7 @@
                 />
             </div>
 
-            <div class="option">
+            <div class="option" v-show="options > 2">
                 <p class="option-label"  :class="!selectedDate3 ? 'in-active' : '' " @click="selectedDate3 ? openCalendar(3) : ''">
                     Week 3
                     <span class="date"
@@ -69,7 +69,7 @@
                 />
             </div>
 
-            <div class="option">
+            <div class="option" v-show="options > 2">
                 <p class="option-label" :class="!selectedDate5 ? 'in-active' : '' " @click="selectedDate5 ? openCalendar(4) : ''">
                     Week 4
                     <span class="date"
@@ -553,7 +553,7 @@ export default {
         closeModal() {
             // hide modal and enable body scrolling
             this.showmodal = false;
-            document.getElementsByTagName("body")[0].style.overflow = "auto";
+            document.getElementsByTagName("body")[0].style.overflowX = "hidden";
         },
         test(){
             alert('Escap')

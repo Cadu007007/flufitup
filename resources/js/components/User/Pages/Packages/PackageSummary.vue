@@ -28,8 +28,8 @@
                         class="accordion"
                         :hasradio="false"
                         title="Choose your date"
+                        :options="4"
                     />
-                        <!-- :options="dateoptions" -->
                 </div>
             </div>
             <div class="col-lg-8 mx-auto my-4">
