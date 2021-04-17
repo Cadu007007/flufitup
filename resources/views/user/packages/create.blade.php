@@ -17,22 +17,19 @@
         </div>
         <div class="PageContentContainer">
 
-            <User-Create-Package
-            title="Add Package"
-            date="{{Carbon\Carbon::now()->format('D, d F')}}"
-            storepackageroute= "{{ route('admin.packages.store') }}"
-            />
+            <User-Create-Package title="Add Package" date="{{ Carbon\Carbon::now()->format('D, d F') }}"
+                storepackageroute="{{ route('admin.packages.store') }}" :detergentstypes="{{ $detergents_types }}"
+                :detergentstypesitems="{{ $detergents_types_items }}" :fabrictypes="{{ $fabric_types }}"
+                :fabrictypesitems="{{ $fabric_types_items }}" :drycleanitems="{{ $dry_clean_items }}"
+                :householditems="{{ $household_items }}" />
         </div>
     </div>
 </div>
 @include('components.user.footer')
-{{-- 
-
-@extends('layouts.user')
+{{-- @extends('layouts.user')
 @section('content') --}}
 
-{{-- 
-<Package-Create
+{{-- <Package-Create
 class="PageContentContainer" 
 id="PackageCreate" 
 date="{{Carbon\Carbon::now()->format('m-d-Y')}}"

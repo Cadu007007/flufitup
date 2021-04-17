@@ -66,7 +66,53 @@
                         </select>
                     </div>
 
-                    <div class="mb-3" v-if="selectedpickups > 0">
+                    <!-- 1 day calendar -->
+                    <p
+                        class="option-label my-3 font-size-18 w-50 text-primary"
+                        @click="openCalendar()"
+                        v-show="selectedDuration == '1_day'"
+                    >
+                        Pickup Date
+                        <span class="ml-2 date">{{ selectedDate1 }}</span>
+                    </p>
+                    <div class="1-day-calendar">
+                        <input type="hidden" v-model="selectedDate1" />
+                        <div
+                            class="calendars-modal"
+                            id="calendarsModal"
+                            v-if="showmodal"
+                            @keydown.esc="closeModal"
+                            tabindex="0"
+                        >
+                            <div
+                                class="calendar-container"
+                                v-show="selectedDuration == '1_day'"
+                            >
+                                <input
+                                    type="hidden"
+                                    name="pickup_date"
+                                    v-model="pickupdate"
+                                />
+                                <p class="calendar-title">Pickup Date</p>
+                                <custom-datepicker
+                                    @dateSelected="setDate($event)"
+                                    :date="selectedDate1"
+                                    :primaryColor="primaryColor"
+                                    :wrapperStyles="wrapperStyles"
+                                    :headerStyles="headerStyles"
+                                />
+                                <button
+                                    type="button"
+                                    class="calender-button"
+                                    @click="handleCalendarAndCloseModal()"
+                                >
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3" v-if="selectedpickups > 0 && selectedDuration != '1_day' ">
                         <Accordion-Calendar
                             :pickups="selectedpickups"
                             class="accordion"
@@ -113,10 +159,13 @@
                             type="text"
                             readonly
                         />
-                        
                     </div>
-                    
-                    <div class="" style="margin-bottom: 20px" v-show="selectedDuration != '1_day'">
+
+                    <div
+                        class=""
+                        style="margin-bottom: 20px"
+                        v-show="selectedDuration != '1_day'"
+                    >
                         <p class="title" style="margin-bottom: 10px">
                             Total No. of Bags per package
                         </p>
@@ -129,7 +178,6 @@
                             v-model="totalbags"
                             readonly
                         />
-                        
                     </div>
 
                     <div class="" style="margin-bottom: 20px">
@@ -176,15 +224,15 @@
                             style="width:300px; margin-top: 20px"
                             required
                         >
+                            <option value="recommendation" selected
+                                >As per Manufacturer Recommendation</option
+                            >
                             <option value="tumble_dry">Tumble Dry</option>
                             <option value="air_dry">Air Dry</option>
                             <option value="air_dry_flat">Air Dry - Flat</option>
-                            <option value="recommendation"
-                                >As per Manufacturer Recommendation</option
-                            >
                         </select>
                     </div>
-                    <!-- <div class="" style="margin-bottom: 20px">
+                    <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             Folding Options
                         </p>
@@ -194,10 +242,52 @@
                             class="select2"
                             style="width:300px; margin-top: 20px"
                         >
-                            <option value="1">Folding Only</option>
+                            <option value="1" selected>Folding Only</option>
                             <option value="2">Folding & Hanger</option>
                         </select>
-                    </div> -->
+                    </div>
+
+                    <div class="slider-container">
+                        <div
+                            class="title font-weight-bold my-4 text-center text-primary"
+                        >
+                            Detergents
+                        </div>
+                        <Slider
+                            @itemclicked="detergentitemclicked"
+                            @slidechanged="detergentslidechanged"
+                            :perpage="3"
+                            :types="detergentstypes"
+                            :typesitems="detergentstypesitems"
+                        />
+
+                        <input
+                            type="hidden"
+                            class="hidden-item"
+                            id="selectedDetergents"
+                        />
+                    </div>
+
+                    <div class="slider-container">
+                        <div
+                            class="title font-weight-bold my-4 text-center text-primary"
+                        >
+                            Fabric Softener
+                        </div>
+                        <Slider
+                            @itemclicked="fabricitemclicked"
+                            @slidechanged="fabricslidechanged"
+                            :perpage="3"
+                            :types="fabrictypes"
+                            :typesitems="fabrictypesitems"
+                        />
+
+                        <input
+                            type="hidden"
+                            class="hidden-item"
+                            id="selectedFabric"
+                        />
+                    </div>
 
                     <!-- <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
@@ -295,7 +385,142 @@
                         </select>
                     </div>
 
-                    <div class="" style="margin-bottom: 20px">
+                    <div class="question-container">
+                        <p class="question">
+                            Add Nature friendly garment Freshener ( Only for
+                            1.5s per bag )
+                        </p>
+                        <div class="answers">
+                            <div class="answer">
+                                <input
+                                    class="radio natureRadio"
+                                    type="radio"
+                                    name="add_nature_garment"
+                                    value="yes"
+                                    id=""
+                                />
+                                <label
+                                    class="option-label"
+                                    for="add_nature_garment"
+                                    >Yes</label
+                                >
+                            </div>
+                            <div class="answer">
+                                <input
+                                    class="radio natureRadio"
+                                    type="radio"
+                                    checked
+                                    name="add_nature_garment"
+                                    value="no"
+                                    id=""
+                                />
+                                <label
+                                    class="option-label"
+                                    for="add_nature_garment"
+                                    >No</label
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Freshner -->
+                    <div class="drycleanContainer">
+                        <div class="question-container">
+                            <p class="question">
+                                Add Dry Clean Items
+                            </p>
+                            <div class="answers">
+                                <div class="answer">
+                                    <input
+                                        class="radio"
+                                        type="radio"
+                                        name="add_dry_clean"
+                                        value="yes"
+                                        id=""
+                                    />
+                                    <label
+                                        class="option-label"
+                                        for="add_dry_clean"
+                                        >Yes</label
+                                    >
+                                </div>
+                                <div class="answer">
+                                    <input
+                                        class="radio"
+                                        type="radio"
+                                        checked
+                                        name="add_dry_clean"
+                                        value="no"
+                                        id=""
+                                    />
+                                    <label
+                                        class="option-label"
+                                        for="add_dry_clean"
+                                        >No</label
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-10 mx-auto my-4">
+                            <ItemsList
+                                v-show="isdrycleanselected"
+                                title="Dry Clean"
+                                :items="drycleanitems"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="householdContainer">
+                        <div class="question-container">
+                            <p class="question">
+                                Add Household Items
+                            </p>
+                            <div class="answers">
+                                <div class="answer">
+                                    <input
+                                        class="radio"
+                                        type="radio"
+                                        name="add_household"
+                                        value="yes"
+                                        id=""
+                                    />
+                                    <label
+                                        class="option-label"
+                                        for="add_household"
+                                        >Yes</label
+                                    >
+                                </div>
+                                <div class="answer">
+                                    <input
+                                        class="radio"
+                                        type="radio"
+                                        checked
+                                        name="add_household"
+                                        value="no"
+                                        id=""
+                                    />
+                                    <label
+                                        class="option-label"
+                                        for="add_household"
+                                        >No</label
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="col-lg-10 mx-auto my-4"
+                            v-show="ishouseholdselected"
+                        >
+                            <ItemsList
+                                title="Household Items"
+                                :items="householditems"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             Dry Clean Credit
                         </p>
@@ -307,9 +532,9 @@
                             step="any"
                             min="0"
                         />
-                    </div>
+                    </div> -->
 
-                    <div class="" style="margin-bottom: 20px">
+                    <!-- <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             House Hold Credit
                         </p>
@@ -321,9 +546,9 @@
                             step="any"
                             min="0"
                         />
-                    </div>
+                    </div> -->
 
-                    <div class="" style="margin-bottom: 20px">
+                    <!-- <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             Added Value Services Credit
                         </p>
@@ -335,8 +560,8 @@
                             step="any"
                             min="0"
                         />
-                    </div>
-                    <div class="" style="margin-bottom: 20px">
+                    </div> -->
+                    <!-- <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             Rewards Points
                         </p>
@@ -348,8 +573,8 @@
                             step="any"
                             min="0"
                         />
-                    </div>
-                    <div class="" style="margin-bottom: 20px">
+                    </div> -->
+                    <!-- <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             Price of Extra Pound
                         </p>
@@ -361,7 +586,7 @@
                             step="any"
                             min="0"
                         />
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="price-card-container">
@@ -391,17 +616,22 @@
 </template>
 
 <script>
+import CustomDatepicker from "vue-custom-datepicker";
+
 import AddPackageItem from "./Components/AddPackageItem";
 import CreatePackagePriceCard from "./Components/CreatePackagePriceCard";
 import AddedValueContainer from "./Components/AddedValueContainer";
 import AccordionCalendar from "./Components/AccordionCalendar";
+
+import ItemsList from "./Components/ItemsList";
+import Slider from "./Components/Slider";
 
 export default {
     mounted() {
         setTimeout(() => {
             $(".pickupsDropdown").on("change", () => {
                 this.selectedpickups = $(".pickupsDropdown").val();
-                this.sumTotalBags()
+                this.sumTotalBags();
             });
             $(".packageDuration").on("change", () => {
                 let selectedDurationValue = $(".packageDuration").val();
@@ -432,8 +662,10 @@ export default {
                             selectedBagsValue * 15 + " Pounds"
                         );
                     }
-                    this.sumTotalBags()
-
+                    $(
+                        "input[type=radio][name=add_nature_garment]:checked"
+                    ).trigger("change");
+                    this.sumTotalBags();
                 })
                 .trigger("change");
             $("#moreBags").on("change", () => {
@@ -443,13 +675,103 @@ export default {
                         selectedBagsValue * 15 + " Pounds"
                     );
                 }
-                this.sumTotalBags()
+                $("input[type=radio][name=add_nature_garment]:checked").trigger(
+                    "change"
+                );
+                this.sumTotalBags();
+            });
+
+            $(".option-label").click(function() {
+                $(this)
+                    .parent()
+                    .find(".radio")
+                    .click();
+
+                let selectedValue = $(this)
+                    .parent()
+                    .find(".radio")
+                    .val();
+
+                console.log("selectedValue: ", selectedValue);
+
+                if (selectedValue == "no") {
+                    $(this)
+                        .parent()
+                        .parent()
+                        .parent()
+                        .parent()
+                        .find(".checkbox")
+                        .each((index, item) => {
+                            console.log("Item: ", $(item).prop("checked"));
+                            $(item).prop("checked", false);
+                        });
+                }
+            });
+
+            /* Nature changed */
+            $("input[type=radio][name=add_nature_garment]").change(event => {
+                let selectedValue = event.target.value;
+                this.bagsprice = 0;
+                console.log("selectedValue: ", selectedValue);
+                if (selectedValue == "yes") {
+                    /* calculate bags price */
+                    let bagsSelectedCount = 0;
+                    let bagsCount = $(".bagsDropdown").val();
+                    if (bagsCount == "more") {
+                        bagsSelectedCount = $("#moreBags").val();
+                    } else {
+                        bagsSelectedCount = bagsCount;
+                    }
+                    this.bagsprice = bagsSelectedCount * 1.5;
+                } else {
+                    this.bagsprice = 0;
+                }
+
+                this.sumPackageTotal();
+            });
+            $("input[type=radio][name=add_dry_clean]").change(event => {
+                let selectedValue = event.target.value;
+                this.isdrycleanselected = selectedValue == "yes" ? true : false;
+                this.sumPackageTotal();
+            });
+            $("input[type=radio][name=add_household]").change(event => {
+                let selectedValue = event.target.value;
+                this.ishouseholdselected =
+                    selectedValue == "yes" ? true : false;
+                this.sumPackageTotal();
+            });
+
+            $(".checkbox").click(() => {
+                this.sumPackageTotal();
+            });
+            $(".radio").click(() => {
+                this.sumPackageTotal();
+            });
+
+            $(".slide-type").click(() => {
+                console.log("TEST: ", $(this));
+                this.sumPackageTotal();
             });
         }, 500);
     },
-    props: ["title", "date", "addedvalues", "storepackageroute"],
+    props: [
+        "title",
+        "date",
+        "addedvalues",
+        "storepackageroute",
+        "detergentstypes",
+        "detergentstypesitems",
+        "fabrictypes",
+        "fabrictypesitems",
+        "fabrictypes",
+        "fabrictypesitems",
+        "drycleanitems",
+        "householditems"
+    ],
     data() {
         return {
+            showmodal: false,
+
             name: "",
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
@@ -457,16 +779,51 @@ export default {
             selectedpickups: 0,
             selectedDuration: "1_day",
             weeks: 2,
-            totalbags: 1
+            totalbags: 1,
+            isdrycleanselected: false,
+            ishouseholdselected: false,
+            bagsprice: 0,
+            selectedDate1: "",
+            pickupdate: "",
+
+            wrapperStyles: { width: "100%" },
+            headerStyles: {
+                width: "350px",
+                margin: "0 auto",
+                background: "#fff",
+                color: "#000",
+                fontWeight: "bolder",
+                fontFamiley: "Lato-Bold"
+            },
+            primaryColor: "#FDBD42"
         };
     },
     components: {
         AddPackageItem,
         CreatePackagePriceCard,
         AddedValueContainer,
-        AccordionCalendar
+        AccordionCalendar,
+        ItemsList,
+        Slider,
+        "custom-datepicker": CustomDatepicker
     },
     methods: {
+        openCalendar() {
+            this.opencalendar = true;
+            this.showmodal = true;
+        },
+        handleCalendarAndCloseModal() {
+            this.closeModal();
+        },
+        closeModal() {
+            // hide modal and enable body scrolling
+            this.showmodal = false;
+            document.getElementsByTagName("body")[0].style.overflowX = "hidden";
+        },
+
+        setDate(date) {
+            this.selectedDate1 = date;
+        },
         clearPackageName() {
             this.name = "";
         },
@@ -477,6 +834,7 @@ export default {
             this.items.splice(index, 1);
         },
         storePackageInLocalStorage(event) {
+            alert("SUBMIt");
             event.preventDefault();
             var formValues = $(".add-form").serialize();
 
@@ -508,17 +866,59 @@ export default {
         pickupsChanged(event) {
             alert($(event.target).val());
         },
-        sumTotalBags(){
+        sumTotalBags() {
             /* duration */
-                let selectedDueation = this.weeks
-                let selectedPickups = this.selectedpickups
-                let selectedBags
-                if($(".bagsDropdown").val() == "more"){
-                    selectedBags = $("#moreBags").val()
-                }else {
-                    selectedBags = $(".bagsDropdown").val()
-                }
-                this.totalbags = selectedDueation*selectedPickups*selectedBags
+            let selectedDueation = this.weeks;
+            let selectedPickups = this.selectedpickups;
+            let selectedBags;
+            if ($(".bagsDropdown").val() == "more") {
+                selectedBags = $("#moreBags").val();
+            } else {
+                selectedBags = $(".bagsDropdown").val();
+            }
+            this.totalbags = selectedDueation * selectedPickups * selectedBags;
+        },
+        detergentitemclicked(id) {
+            $("#selectedDetergents").val(id);
+            this.sumPackageTotal();
+        },
+        fabricitemclicked(id) {
+            $("#selectedFabric").val(id);
+            this.sumPackageTotal();
+        },
+        detergentslidechanged() {
+            $("#selectedDetergents").val(null);
+            this.sumPackageTotal();
+        },
+        fabricslidechanged() {
+            $("#selectedFabric").val(null);
+            this.sumPackageTotal();
+        },
+        natureChanged(radioElement) {},
+
+        slidechanged() {
+            alert("Slide Changed");
+        },
+        sumPackageTotal() {
+            setTimeout(() => {
+                /* get selected detergents and house hold */
+                let packagePrice = 0;
+                $(".item-container").each((index, item) => {
+                    if ($(item).hasClass("selected-item")) {
+                        let itemPrice = $(item).data("price");
+                        packagePrice += itemPrice;
+                    }
+                });
+
+                $(".checkbox:checked").each((index, item) => {
+                    let itemPrice = $(item).data("price");
+                    packagePrice += itemPrice;
+                });
+                packagePrice += this.bagsprice;
+
+                console.log("packagePrice: ", packagePrice);
+                $(".package-price").val(packagePrice);
+            }, 500);
         }
     }
 };
@@ -534,6 +934,8 @@ $red: #ff0000cc;
 $green: #00c319;
 $blue: #22aee4;
 
+$text-grey: #00000066;
+$black: #000000;
 .AddPackage {
     width: 100%;
     height: 100%;
@@ -558,6 +960,41 @@ $blue: #22aee4;
         flex-direction: row;
         justify-content: flex-start;
         align-items: flex-start;
+
+        .question-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 520px;
+            margin: 40px 0;
+            .question {
+                font-size: 18px;
+                font-family: "Lato-Bold";
+                color: $black;
+            }
+            .answers {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-start;
+                .answer {
+                    width: 80px;
+                    margin-top: 12px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    .option-label {
+                        margin-left: 10px;
+                    }
+                    .radio {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
     }
     .price-card-container {
         margin-left: 100px;
@@ -665,6 +1102,50 @@ $blue: #22aee4;
     }
 }
 
+.calendars-modal {
+    background: rgba($color: #000000, $alpha: 0.5);
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: $white;
+    width: 600px;
+    margin: 100px auto;
+    border-radius: 30px;
+    .calendar-title {
+        text-align: left;
+        margin: 20px auto 0 auto;
+        font-weight: bold;
+        color: $blue;
+        width: 90%;
+    }
+    .calender-button {
+        width: 160px;
+        height: 31px;
+        color: $white;
+        font-size: 14px;
+        font-family: "Lato-Bold";
+        background: $blue;
+        border-radius: 35px;
+        margin: 10px auto 25px;
+    }
+}
+.cd-body-wrapper {
+    margin: 10px auto !important;
+    background: #fff;
+}
+.cd-body-wrapper header button {
+    background: #22aee4;
+    border-radius: 20px;
+}
 /* override calendar accordion styles */
 .AccordionCalendar {
     border-radius: 15px;
