@@ -76,7 +76,13 @@
                         <span class="ml-2 date">{{ selectedDate1 }}</span>
                     </p>
                     <div class="1-day-calendar">
-                        <input type="hidden" v-model="selectedDate1" />
+                        <input
+                            type="text"
+                            name="pickup_date"
+                            required
+                            v-model="selectedDate1"
+                            style="opacity: 0;margin-top: -40px;position: absolute;z-index: -1;"
+                        />
                         <div
                             class="calendars-modal"
                             id="calendarsModal"
@@ -88,11 +94,11 @@
                                 class="calendar-container"
                                 v-show="selectedDuration == '1_day'"
                             >
-                                <input
-                                    type="hidden"
+                                <!-- <input
+                                    type="text"
                                     name="pickup_date"
                                     v-model="pickupdate"
-                                />
+                                /> -->
                                 <p class="calendar-title">Pickup Date</p>
                                 <custom-datepicker
                                     @dateSelected="setDate($event)"
@@ -112,7 +118,12 @@
                         </div>
                     </div>
 
-                    <div class="mb-3" v-if="selectedpickups > 0 && selectedDuration != '1_day' ">
+                    <div
+                        class="mb-3"
+                        v-if="
+                            selectedpickups > 0 && selectedDuration != '1_day'
+                        "
+                    >
                         <Accordion-Calendar
                             :pickups="selectedpickups"
                             class="accordion"
@@ -134,8 +145,15 @@
                             required
                         >
                             <option value="1">1 Bag</option>
-                            <option value="2">2 Bags</option>
+                            <option value="2" selected>2 Bags</option>
                             <option value="3">3 Bags</option>
+                            <option value="4">4 Bags</option>
+                            <option value="5">5 Bags</option>
+                            <option value="6">6 Bags</option>
+                            <option value="7">7 Bags</option>
+                            <option value="8">8 Bags</option>
+                            <option value="9">9 Bags</option>
+                            <option value="10">10 Bags</option>
                             <option value="more">More Bags</option>
                         </select>
                         <input
@@ -143,7 +161,7 @@
                             id="moreBags"
                             type="number"
                             name="more_bags"
-                            min="4"
+                            min="11"
                         />
                     </div>
 
@@ -187,13 +205,12 @@
                         <select
                             name="return_service"
                             id=""
-                            class="select2"
+                            class="select2 returnService"
                             style="width:300px; margin-top: 20px"
-                            required
                         >
-                            <option value="12">12 Hours</option>
+                            <option value="48" selected>48 Hours</option>
                             <option value="24">24 Hours</option>
-                            <option value="48">48 Hours</option>
+                            <option value="12">12 Hours</option>
                         </select>
                     </div>
 
@@ -220,9 +237,8 @@
                         <select
                             name="dryer_option"
                             id=""
-                            class="select2"
+                            class="select2 dryerOption"
                             style="width:300px; margin-top: 20px"
-                            required
                         >
                             <option value="recommendation" selected
                                 >As per Manufacturer Recommendation</option
@@ -237,13 +253,17 @@
                             Folding Options
                         </p>
                         <select
-                            name="folding_option"
+                            name="folding_option foldingOption"
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
                         >
-                            <option value="1" selected>Folding Only</option>
-                            <option value="2">Folding & Hanger</option>
+                            <option value="folding" selected
+                                >Folding Only</option
+                            >
+                            <option value="folding_hanger"
+                                >Folding & Hanger</option
+                            >
                         </select>
                     </div>
 
@@ -313,7 +333,6 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
-                            required
                         >
                             <option value="1">Standard Line</option>
                             <option value="2">Special Line</option>
@@ -329,7 +348,6 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
-                            required
                         >
                             <option value="0">None</option>
                             <option value="1">Standard Line</option>
@@ -361,7 +379,6 @@
                             id=""
                             class="select2"
                             style="width:300px; margin-top: 20px"
-                            required
                         >
                             <option value="1">None</option>
                             <option value="2">1 Sheet</option>
@@ -602,7 +619,13 @@
                         />
 
                         <div class="button-container">
-                            <button class="done" type="submit">Done</button>
+                            <button
+                                class="done"
+                                data-agree="false"
+                                type="submit"
+                            >
+                                Done
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -633,6 +656,11 @@ export default {
                 this.selectedpickups = $(".pickupsDropdown").val();
                 this.sumTotalBags();
             });
+
+            $(".returnService").on("change", () => {
+                this.sumPackageTotal();
+            });
+
             $(".packageDuration").on("change", () => {
                 let selectedDurationValue = $(".packageDuration").val();
                 this.selectedDuration = selectedDurationValue;
@@ -652,12 +680,14 @@ export default {
                     if (selectedBagsValue == "more") {
                         $("#moreBags")
                             .removeAttr("hidden")
-                            .val(4)
+                            .attr("required", true)
+                            .val(11)
                             .change();
                     } else {
                         $("#moreBags")
+                            .removeAttr("required")
                             .attr("hidden", true)
-                            .val(0);
+                            .val(null);
                         $("#maxWeightInput").val(
                             selectedBagsValue * 15 + " Pounds"
                         );
@@ -903,10 +933,12 @@ export default {
             setTimeout(() => {
                 /* get selected detergents and house hold */
                 let packagePrice = 0;
+                let detergentsOrSoftenerCount = 0;
                 $(".item-container").each((index, item) => {
                     if ($(item).hasClass("selected-item")) {
                         let itemPrice = $(item).data("price");
                         packagePrice += itemPrice;
+                        detergentsOrSoftenerCount++;
                     }
                 });
 
@@ -915,6 +947,74 @@ export default {
                     packagePrice += itemPrice;
                 });
                 packagePrice += this.bagsprice;
+
+                /* add % about selected duration */
+                let percentage = 0;
+                let selectedReturnValue = $(".returnService").val();
+                if (selectedReturnValue == 12) {
+                    percentage = 0.45;
+                    /* alert if air selected */
+
+                    let dryerValue = $(".dryerOption").val();
+                    if (
+                        dryerValue == "air_dry" ||
+                        dryerValue == "air_dry_flat"
+                    ) {
+                        $("button[type=submit]").attr("disabled", true);
+                        alert(
+                            "Selected drying option is not suitable for 12hrs return service"
+                        );
+                    } else {
+                        $("button[type=submit]").removeAttr("disabled");
+                    }
+                } else if (selectedReturnValue == 24) {
+                    percentage = 0.25;
+                }
+
+                let selectedBags = $(".bagsDropdown").val();
+                let enteredBags = 0;
+                if (selectedBags == "more") {
+                    enteredBags = $("#moreBags").val();
+                } else {
+                    enteredBags = selectedBags;
+                }
+                /* folding */
+                if ($(".foldingOption").val() == "folding_hanger") {
+                    packagePrice += 5 * enteredBags;
+                }
+
+                /* detergents or softener */
+                if (detergentsOrSoftenerCount > 0) {
+                    packagePrice += 0.5 * enteredBags;
+                }
+
+                /* garment freshener */
+                let selectedNatureGarment = $(
+                    "input[name=add_nature_garment]:checked"
+                ).val();
+                if (selectedNatureGarment == "yes") {
+                    packagePrice += 1.5 * enteredBags;
+                }
+
+                /* if dry clean or household selected .. confirm */
+                if (
+                    $("input[name=add_dry_clean]:checked").val() == "yes" ||
+                    $("input[name=add_household]:checked").val() == "yes"
+                ) {
+                    if ($("button[type=submit]").attr("data-agree") != "true") {
+                        $("button[type=submit]").attr("disabled", true);
+                        if (
+                            confirm(
+                                "Service price will be added to the final invoice total after counting dry clean/household items, agree?"
+                            )
+                        ) {
+                            $("button[type=submit]").removeAttr("disabled");
+                            $("button[type=submit]").attr("data-agree", "true");
+                        }
+                    }
+                }
+
+                packagePrice = packagePrice + packagePrice * percentage;
 
                 console.log("packagePrice: ", packagePrice);
                 $(".package-price").val(packagePrice);
