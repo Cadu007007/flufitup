@@ -10,14 +10,15 @@
                 :key="item.id"
                 class="row w-50 d-flex flex-row justify-content-center my-2"
             >
-                <p class="mr-4 itemTitle">{{ item.title }}</p>
-                <b class="mr-4">${{ item.price }}</b>
+                <label :for="item.name" class="p mr-4 itemTitle">{{ item.title }}</label>
+                <label :for="item.name" class="font-weight-bold mr-4">${{ item.price }}</label>
                 <input
                     style="width: 50px; height: 24px"
                     type="checkbox"
                     class="checkbox"
                     :data-price="item.price"
                     :name="item.name"
+                    :id="item.name"
                 />
             </div>
         </div>

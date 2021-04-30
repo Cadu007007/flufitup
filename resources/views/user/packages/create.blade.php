@@ -4,7 +4,7 @@
     <div class="Sidebar-container">
 
     </div>
-    {{ dd($detergents_types->detergents) }}
+    {{-- {{ dd($detergents_types[0]->detergents) }} --}}
     <div class="d-flex flex-column">
         <div class="w-100 px-4 mb-0" style="  background: #FAFAFA;">
             @if (session()->get('message') != null)
@@ -20,8 +20,8 @@
 
             <User-Create-Package title="Add Package" date="{{ Carbon\Carbon::now()->format('D, d F') }}"
                 storepackageroute="{{ route('admin.packages.store') }}" :detergentstypes="{{ $detergents_types }}"
-                :detergentstypesitems="{{ $detergents_types->detergents }}" :fabrictypes="{{ $fabric_types }}"
-                :fabrictypesitems="{{ $fabric_types_items }}" :drycleanitems="{{ $dry_clean_items }}"
+                :fabrictypes="{{ $fabric_types }}"
+                :drycleanitems="{{ $dry_clean_items }}"
                 :householditems="{{ $household_items }}" />
         </div>
     </div>

@@ -267,7 +267,7 @@
                         </select>
                     </div>
 
-                    <div class="slider-container">
+                    <div class="slider-container detergentSlider">
                         <div
                             class="title font-weight-bold my-4 text-center text-primary"
                         >
@@ -278,7 +278,7 @@
                             @slidechanged="detergentslidechanged"
                             :perpage="3"
                             :types="detergentstypes"
-                            :typesitems="detergentstypesitems"
+                            :typesitems="this.detergentstypes.map(x=>x.detergents)"
                         />
 
                         <input
@@ -288,7 +288,7 @@
                         />
                     </div>
 
-                    <div class="slider-container">
+                    <div class="slider-container fabricSlider">
                         <div
                             class="title font-weight-bold my-4 text-center text-primary"
                         >
@@ -299,7 +299,7 @@
                             @slidechanged="fabricslidechanged"
                             :perpage="3"
                             :types="fabrictypes"
-                            :typesitems="fabrictypesitems"
+                            :typesitems="this.fabrictypes.map(x => x.fabrics)"
                         />
 
                         <input
@@ -479,7 +479,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-10 mx-auto my-4">
+                        <div class="col-lg-12 mx-auto my-4">
                             <ItemsList
                                 v-show="isdrycleanselected"
                                 title="Dry Clean"
@@ -527,7 +527,7 @@
                         </div>
 
                         <div
-                            class="col-lg-10 mx-auto my-4"
+                            class="col-lg-12 mx-auto my-4"
                             v-show="ishouseholdselected"
                         >
                             <ItemsList
@@ -652,6 +652,12 @@ import Slider from "./Components/Slider";
 export default {
     mounted() {
         setTimeout(() => {
+            // console.log("detergentstypes: ", this.detergentstypes);
+            console.log(
+                "detergentstypes map: ",
+                this.detergentstypes.map(x => x.detergents)
+            );
+
             $(".pickupsDropdown").on("change", () => {
                 this.selectedpickups = $(".pickupsDropdown").val();
                 this.sumTotalBags();
@@ -790,16 +796,14 @@ export default {
         "addedvalues",
         "storepackageroute",
         "detergentstypes",
-        "detergentstypesitems",
         "fabrictypes",
-        "fabrictypesitems",
-        "fabrictypes",
-        "fabrictypesitems",
         "drycleanitems",
         "householditems"
     ],
     data() {
         return {
+            // detergentstypesitems: this.detergentstypes.map(x.detergents),
+            // fabrictypesitems: this.fabrictypes.map(x => x.fabrics),
             showmodal: false,
 
             name: "",
@@ -934,19 +938,31 @@ export default {
                 /* get selected detergents and house hold */
                 let packagePrice = 0;
                 let detergentsOrSoftenerCount = 0;
-                $(".item-container").each((index, item) => {
+                $(".detergentSlider .item-container").each((index, item) => {
                     if ($(item).hasClass("selected-item")) {
                         let itemPrice = $(item).data("price");
-                        packagePrice += itemPrice;
+                        console.log("Detergent Item Price: ", itemPrice);
+                        packagePrice += parseFloat(itemPrice);
+                        detergentsOrSoftenerCount++;
+                    }
+                });
+
+                $(".fabricSlider .item-container").each((index, item) => {
+                    if ($(item).hasClass("selected-item")) {
+                        let itemPrice = $(item).data("price");
+                        console.log("Fabrics Item Price: ", itemPrice);
+
+                        packagePrice += parseFloat(itemPrice);
                         detergentsOrSoftenerCount++;
                     }
                 });
 
                 $(".checkbox:checked").each((index, item) => {
                     let itemPrice = $(item).data("price");
-                    packagePrice += itemPrice;
+                    packagePrice += parseFloat(itemPrice);
                 });
-                packagePrice += this.bagsprice;
+                console.log("bagsprice: ", this.bagsprice);
+                packagePrice += parseFloat(this.bagsprice);
 
                 /* add % about selected duration */
                 let percentage = 0;
@@ -1014,9 +1030,12 @@ export default {
                     }
                 }
 
-                packagePrice = packagePrice + packagePrice * percentage;
+                console.log("percentage: ", percentage);
+                let percentageValue = packagePrice * percentage
+                console.log("percentageValue: ", percentageValue);
+                packagePrice += parseFloat(percentageValue) 
 
-                console.log("packagePrice: ", packagePrice);
+                console.log("packagePrice Final: ", packagePrice);
                 $(".package-price").val(packagePrice);
             }, 500);
         }

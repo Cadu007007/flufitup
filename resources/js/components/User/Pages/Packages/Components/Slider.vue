@@ -11,7 +11,7 @@
                     :class="type.id == selectedTypeId ? 'active' : ''"
                     @click="showTypeItems(type.id)"
                 >
-                    {{ type.title }}
+                    {{ type.name }}
                 </div>
             </slide>
         </carousel>
@@ -26,12 +26,12 @@
                 :data-price="item.price"
                 @click="$emit('itemclicked', item.id)"
             >
-                <img :src="item.src" alt="" class="item-image" />
+                <img :src="formattedurl(item.image)" alt="" class="item-image" />
                 <div
                     class="d-flex w-50 flex-column justify-content-center align-items-center"
                 >
                     <p class="type mb-2 text-center item-title">
-                        {{ item.title }}
+                        {{ item.name }}
                     </p>
                     <p class="item-price text-center">{{ item.price }}$</p>
                 </div>
@@ -44,40 +44,79 @@
 import { Carousel, Slide } from "vue-carousel";
 
 export default {
-    
     data() {
         return {
             filteredItems: [],
             selectedTypeId: 0
         };
     },
+    // computed: {
+    //      formattedurl: function(url){
+    //          alert(url)
+    //         return window.location.origin +'/storage' + url
+    //     }
+    // },
     props: ["types", "typesitems", "perpage"],
     methods: {
         showTypeItems(typeId) {
+            console.log("Slider types: ", this.types[0].type); // detergent
             this.selectedTypeId = typeId;
             let filteredItemsArray = [];
-            for (let i = 0; i < this.typesitems.length; i++) {
-                if (this.typesitems[i].type_id == typeId) {
-                    filteredItemsArray.push(this.typesitems[i]);
-                }
+            console.log("Type Items: ", this.typesitems[0]);
+
+            let category_id;
+            switch (this.types[0].type) {
+                case "detergent":
+                    for (let i = 0; i < this.typesitems[0].length; i++) {
+                        if (
+                            this.typesitems[0][i].category_detergents_id ==
+                            typeId
+                        ) {
+                            filteredItemsArray.push(this.typesitems[0][i]);
+                        }
+                    }
+                    break;
+
+                    case "fabric":
+                    for (let i = 0; i < this.typesitems[0].length; i++) {
+                        if (
+                            this.typesitems[0][i].category_fabrics_id ==
+                            typeId
+                        ) {
+                            filteredItemsArray.push(this.typesitems[0][i]);
+                        }
+                    }
+                    break;
             }
+
+            // for (let i = 0; i < this.typesitems[0].length; i++) {
+            //     if (this.typesitems[0][i].category_detergents_id == typeId) {
+            //         filteredItemsArray.push(this.typesitems[0][i]);
+            //     }
+            // }
+
+            console.log("filteredItemsArray: ", filteredItemsArray);
             this.filteredItems = filteredItemsArray;
-
-
 
             /* add click action */
             setTimeout(() => {
                 $(".item-container").click(function() {
-                    $(this).find(".item-container").removeClass("selected-item");
+                    $(this)
+                    .parent()
+                        .find(".item-container")
+                        .removeClass("selected-item");
                     $(this).addClass("selected-item");
-                    console.log("Price: ", $(this).data('price'));
+                    console.log("Price: ", $(this).data("price"));
                 });
             }, 500);
 
-
-            this.$emit('slidechanged')
-
+            this.$emit("slidechanged");
+        },
+ formattedurl(url){
+            //  alert(url)
+            return window.location.origin +'/storage/' + url
         }
+       
     },
     components: {
         Carousel,
@@ -120,6 +159,9 @@ export default {
         border-radius: 10px;
         &.selected-item {
             border: 1px solid blue;
+        }
+        .item-title{
+            width: 95px;
         }
         .item-image {
             width: 100px;
