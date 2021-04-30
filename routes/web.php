@@ -142,6 +142,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     });
 
 });
+
+Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+    Route::group(['prefix' => 'packages', 'as' => 'packages.'], function () {
+        Route::get('create', [PackageController::class, 'userCreate'])->name('create');
+    });
+});
 Route::get('/', function () {
     // dd(App\Models\User::all());
     // Auth::logout();
@@ -557,132 +563,132 @@ Route::get('/packages/summary/{id?}', function () {
     ]);
 })->name('package.summary');
 
-Route::get('/packages/create', function () {
-    $options = collect();
-    $options->service = collect();
-    $options->wash = collect();
-    $options->pickup = collect();
-    $options->load_size = collect();
-    $options->date = collect();
-    $options->return_duration = collect();
-    $options->added_value = collect();
-    $options->added_value_choices = collect();
+// Route::get('/packages/create', function () {
+//     $options = collect();
+//     $options->service = collect();
+//     $options->wash = collect();
+//     $options->pickup = collect();
+//     $options->load_size = collect();
+//     $options->date = collect();
+//     $options->return_duration = collect();
+//     $options->added_value = collect();
+//     $options->added_value_choices = collect();
 
-    $options->service->push(['title' => 'Washing and Folding', 'value' => '1']);
-    $options->service->push(['title' => 'Wash, Fold and Dry Clean', 'value' => '2']);
-    $options->service->push(['title' => 'Dry Clean Service with Delivery', 'value' => '3']);
-    $options->service->push(['title' => 'Dry Clean Delivery Service Only', 'value' => '4']);
+//     $options->service->push(['title' => 'Washing and Folding', 'value' => '1']);
+//     $options->service->push(['title' => 'Wash, Fold and Dry Clean', 'value' => '2']);
+//     $options->service->push(['title' => 'Dry Clean Service with Delivery', 'value' => '3']);
+//     $options->service->push(['title' => 'Dry Clean Delivery Service Only', 'value' => '4']);
 
-    $options->wash->push(['title' => 'Washing and Folding', 'value' => '1']);
-    $options->wash->push(['title' => 'Wash, Fold and Dry Clean', 'value' => '2']);
-    $options->wash->push(['title' => 'Dry Clean Service with Delivery', 'value' => '3']);
-    $options->wash->push(['title' => 'Dry Clean Delivery Service Only', 'value' => '4']);
+//     $options->wash->push(['title' => 'Washing and Folding', 'value' => '1']);
+//     $options->wash->push(['title' => 'Wash, Fold and Dry Clean', 'value' => '2']);
+//     $options->wash->push(['title' => 'Dry Clean Service with Delivery', 'value' => '3']);
+//     $options->wash->push(['title' => 'Dry Clean Delivery Service Only', 'value' => '4']);
 
-    $options->pickup->push(['title' => '1 Pickup', 'value' => '1']);
-    $options->pickup->push(['title' => '2 Pickups', 'value' => '2']);
+//     $options->pickup->push(['title' => '1 Pickup', 'value' => '1']);
+//     $options->pickup->push(['title' => '2 Pickups', 'value' => '2']);
 
-    $options->load_size->push(['title' => '15 Lbs.', 'value' => '15']);
-    $options->load_size->push(['title' => '30 Lbs.', 'value' => '30']);
-    $options->load_size->push(['title' => '45 Lbs.', 'value' => '45']);
-    $options->load_size->push(['title' => 'Bigger Load (More than 3 Bags)', 'value' => 'more']);
+//     $options->load_size->push(['title' => '15 Lbs.', 'value' => '15']);
+//     $options->load_size->push(['title' => '30 Lbs.', 'value' => '30']);
+//     $options->load_size->push(['title' => '45 Lbs.', 'value' => '45']);
+//     $options->load_size->push(['title' => 'Bigger Load (More than 3 Bags)', 'value' => 'more']);
 
-    $options->date->push(['title' => 'Week One', 'value' => '1']);
-    $options->date->push(['title' => 'Week Two', 'value' => '2']);
-    $options->date->push(['title' => 'Week Three', 'value' => '3']);
-    $options->date->push(['title' => 'Week Four', 'value' => '4']);
+//     $options->date->push(['title' => 'Week One', 'value' => '1']);
+//     $options->date->push(['title' => 'Week Two', 'value' => '2']);
+//     $options->date->push(['title' => 'Week Three', 'value' => '3']);
+//     $options->date->push(['title' => 'Week Four', 'value' => '4']);
 
-    $options->return_duration->push(['title' => '12 hrs', 'value' => '12']);
-    $options->return_duration->push(['title' => '24 hrs', 'value' => '24']);
-    $options->return_duration->push(['title' => '48 hrs', 'value' => '48']);
+//     $options->return_duration->push(['title' => '12 hrs', 'value' => '12']);
+//     $options->return_duration->push(['title' => '24 hrs', 'value' => '24']);
+//     $options->return_duration->push(['title' => '48 hrs', 'value' => '48']);
 
-    $options->added_value->push(['title' => 'Use hungers instead of Folding', 'value' => '1']);
-    $options->added_value->push(['title' => 'Individual Garment Wrapping', 'value' => '2']);
+//     $options->added_value->push(['title' => 'Use hungers instead of Folding', 'value' => '1']);
+//     $options->added_value->push(['title' => 'Individual Garment Wrapping', 'value' => '2']);
 
-    $options->added_value_choices->push(['title' => 'T‐Shirts', 'name' => 't-shirt']);
-    $options->added_value_choices->push(['title' => 'Trousers', 'name' => 'trousers']);
-    $options->added_value_choices->push(['title' => 'V‐Neck', 'name' => 'v_neck']);
-    $options->added_value_choices->push(['title' => 'Blouses', 'name' => 'blouses']);
-    $options->added_value_choices->push(['title' => 'Hoodies', 'name' => 'hoodies']);
-    $options->added_value_choices->push(['title' => 'Sleep-Wear', 'name' => 'sleep_wear']);
-    $options->added_value_choices->push(['title' => 'Shirts', 'name' => 'shirts']);
-    $options->added_value_choices->push(['title' => 'Polo Shirts', 'name' => 'polo_shirts']);
-    $options->added_value_choices->push(['title' => 'Skirts', 'name' => 'skirts']);
-    $options->added_value_choices->push(['title' => 'Sweat Shirts', 'name' => 'sweat_shirts']);
-    $options->added_value_choices->push(['title' => 'Dresses', 'name' => 'dresses']);
-    $options->added_value_choices->push(['title' => 'Jeans', 'name' => 'jeans']);
-    $options->added_value_choices->push(['title' => 'Bra ( Up to 4 )', 'name' => 'bra']);
-    $options->added_value_choices->push(['title' => 'Shorts', 'name' => 'shorts']);
-    $options->added_value_choices->push(['title' => 'Overalls', 'name' => 'overalls']);
+//     $options->added_value_choices->push(['title' => 'T‐Shirts', 'name' => 't-shirt']);
+//     $options->added_value_choices->push(['title' => 'Trousers', 'name' => 'trousers']);
+//     $options->added_value_choices->push(['title' => 'V‐Neck', 'name' => 'v_neck']);
+//     $options->added_value_choices->push(['title' => 'Blouses', 'name' => 'blouses']);
+//     $options->added_value_choices->push(['title' => 'Hoodies', 'name' => 'hoodies']);
+//     $options->added_value_choices->push(['title' => 'Sleep-Wear', 'name' => 'sleep_wear']);
+//     $options->added_value_choices->push(['title' => 'Shirts', 'name' => 'shirts']);
+//     $options->added_value_choices->push(['title' => 'Polo Shirts', 'name' => 'polo_shirts']);
+//     $options->added_value_choices->push(['title' => 'Skirts', 'name' => 'skirts']);
+//     $options->added_value_choices->push(['title' => 'Sweat Shirts', 'name' => 'sweat_shirts']);
+//     $options->added_value_choices->push(['title' => 'Dresses', 'name' => 'dresses']);
+//     $options->added_value_choices->push(['title' => 'Jeans', 'name' => 'jeans']);
+//     $options->added_value_choices->push(['title' => 'Bra ( Up to 4 )', 'name' => 'bra']);
+//     $options->added_value_choices->push(['title' => 'Shorts', 'name' => 'shorts']);
+//     $options->added_value_choices->push(['title' => 'Overalls', 'name' => 'overalls']);
 
-    $detergents_types = collect();
-    $detergents_types->push(['id' => 1, 'title' => "Brand 1"]);
-    $detergents_types->push(['id' => 2, 'title' => "Brand 2"]);
-    $detergents_types->push(['id' => 3, 'title' => "Brand 3"]);
+//     $detergents_types = collect();
+//     $detergents_types->push(['id' => 1, 'title' => "Brand 1"]);
+//     $detergents_types->push(['id' => 2, 'title' => "Brand 2"]);
+//     $detergents_types->push(['id' => 3, 'title' => "Brand 3"]);
 
-    $detergents_types_items = collect();
-    $detergents_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $detergents_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $detergents_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
+//     $detergents_types_items = collect();
+//     $detergents_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+//     $detergents_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+//     $detergents_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
-    $dryer_sheet_types = collect();
-    $dryer_sheet_types->push(['id' => 1, 'title' => "Dryer Brand 1"]);
-    $dryer_sheet_types->push(['id' => 2, 'title' => "Dryer Brand 2"]);
-    $dryer_sheet_types->push(['id' => 3, 'title' => "Dryer Brand 3"]);
+//     $dryer_sheet_types = collect();
+//     $dryer_sheet_types->push(['id' => 1, 'title' => "Dryer Brand 1"]);
+//     $dryer_sheet_types->push(['id' => 2, 'title' => "Dryer Brand 2"]);
+//     $dryer_sheet_types->push(['id' => 3, 'title' => "Dryer Brand 3"]);
 
-    $dryer_sheet_types_items = collect();
-    $dryer_sheet_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $dryer_sheet_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $dryer_sheet_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
+//     $dryer_sheet_types_items = collect();
+//     $dryer_sheet_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+//     $dryer_sheet_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+//     $dryer_sheet_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
-    $booster_types = collect();
-    $booster_types->push(['id' => 1, 'title' => "Booster Brand 1"]);
-    $booster_types->push(['id' => 2, 'title' => "Booster Brand 2"]);
-    $booster_types->push(['id' => 3, 'title' => "Booster Brand 3"]);
+//     $booster_types = collect();
+//     $booster_types->push(['id' => 1, 'title' => "Booster Brand 1"]);
+//     $booster_types->push(['id' => 2, 'title' => "Booster Brand 2"]);
+//     $booster_types->push(['id' => 3, 'title' => "Booster Brand 3"]);
 
-    $booster_types_items = collect();
-    $booster_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $booster_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $booster_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
+//     $booster_types_items = collect();
+//     $booster_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+//     $booster_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+//     $booster_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
-    $fabric_types = collect();
-    $fabric_types->push(['id' => 1, 'title' => "Fabric Brand 1"]);
-    $fabric_types->push(['id' => 2, 'title' => "Fabric Brand 2"]);
-    $fabric_types->push(['id' => 3, 'title' => "Fabric Brand 3"]);
+//     $fabric_types = collect();
+//     $fabric_types->push(['id' => 1, 'title' => "Fabric Brand 1"]);
+//     $fabric_types->push(['id' => 2, 'title' => "Fabric Brand 2"]);
+//     $fabric_types->push(['id' => 3, 'title' => "Fabric Brand 3"]);
 
-    $fabric_types_items = collect();
-    $fabric_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
-    $fabric_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
-    $fabric_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
+//     $fabric_types_items = collect();
+//     $fabric_types_items->push(['id' => 1, 'src' => "", 'title' => "Item 1", 'price' => 120, 'type_id' => 1]);
+//     $fabric_types_items->push(['id' => 2, 'src' => "", 'title' => "Item 2", 'price' => 100, 'type_id' => 2]);
+//     $fabric_types_items->push(['id' => 3, 'src' => "", 'title' => "Item 3", 'price' => 200, 'type_id' => 3]);
 
-    $dry_clean_items = collect();
-    $dry_clean_items->push(['id' => 1, 'title' => 'Item 1', 'price' => 30, 'name' => 'item1']);
-    $dry_clean_items->push(['id' => 2, 'title' => 'Item 2', 'price' => 40, 'name' => 'item2']);
-    $dry_clean_items->push(['id' => 3, 'title' => 'Item 3', 'price' => 50, 'name' => 'item3']);
-    $dry_clean_items->push(['id' => 4, 'title' => 'Item 4', 'price' => 60, 'name' => 'item4']);
-    $dry_clean_items->push(['id' => 5, 'title' => 'Item 5', 'price' => 70, 'name' => 'item5']);
-    $dry_clean_items->push(['id' => 6, 'title' => 'Item 6', 'price' => 70, 'name' => 'item6']);
+//     $dry_clean_items = collect();
+//     $dry_clean_items->push(['id' => 1, 'title' => 'Item 1', 'price' => 30, 'name' => 'item1']);
+//     $dry_clean_items->push(['id' => 2, 'title' => 'Item 2', 'price' => 40, 'name' => 'item2']);
+//     $dry_clean_items->push(['id' => 3, 'title' => 'Item 3', 'price' => 50, 'name' => 'item3']);
+//     $dry_clean_items->push(['id' => 4, 'title' => 'Item 4', 'price' => 60, 'name' => 'item4']);
+//     $dry_clean_items->push(['id' => 5, 'title' => 'Item 5', 'price' => 70, 'name' => 'item5']);
+//     $dry_clean_items->push(['id' => 6, 'title' => 'Item 6', 'price' => 70, 'name' => 'item6']);
 
-    $household_items = collect();
-    $household_items->push(['id' => 1, 'title' => 'Item 7', 'price' => 10, 'name' => 'item1']);
-    $household_items->push(['id' => 2, 'title' => 'Item 8', 'price' => 20, 'name' => 'item2']);
-    $household_items->push(['id' => 3, 'title' => 'Item 9', 'price' => 30, 'name' => 'item3']);
-    $household_items->push(['id' => 4, 'title' => 'Item 10', 'price' => 40, 'name' => 'item4']);
-    $household_items->push(['id' => 5, 'title' => 'Item 11', 'price' => 50, 'name' => 'item5']);
-    $household_items->push(['id' => 6, 'title' => 'Item 12', 'price' => 60, 'name' => 'item6']);
+//     $household_items = collect();
+//     $household_items->push(['id' => 1, 'title' => 'Item 7', 'price' => 10, 'name' => 'item1']);
+//     $household_items->push(['id' => 2, 'title' => 'Item 8', 'price' => 20, 'name' => 'item2']);
+//     $household_items->push(['id' => 3, 'title' => 'Item 9', 'price' => 30, 'name' => 'item3']);
+//     $household_items->push(['id' => 4, 'title' => 'Item 10', 'price' => 40, 'name' => 'item4']);
+//     $household_items->push(['id' => 5, 'title' => 'Item 11', 'price' => 50, 'name' => 'item5']);
+//     $household_items->push(['id' => 6, 'title' => 'Item 12', 'price' => 60, 'name' => 'item6']);
 
-    return view('user.packages.create', ['active' => 'packages', 'options' => $options,
-        'detergents_types' => $detergents_types,
-        'detergents_types_items' => $detergents_types_items,
-        'dryer_sheet_types' => $dryer_sheet_types,
-        'dryer_sheet_types_items' => $dryer_sheet_types_items,
-        'booster_types' => $booster_types,
-        'booster_types_items' => $booster_types_items,
-        'fabric_types' => $fabric_types,
-        'fabric_types_items' => $fabric_types_items,
-        'dry_clean_items' => $dry_clean_items,
-        'household_items' => $household_items,
-    ]);
-})->name('package.create');
+//     return view('user.packages.create', ['active' => 'packages', 'options' => $options,
+//         'detergents_types' => $detergents_types,
+//         'detergents_types_items' => $detergents_types_items,
+//         'dryer_sheet_types' => $dryer_sheet_types,
+//         'dryer_sheet_types_items' => $dryer_sheet_types_items,
+//         'booster_types' => $booster_types,
+//         'booster_types_items' => $booster_types_items,
+//         'fabric_types' => $fabric_types,
+//         'fabric_types_items' => $fabric_types_items,
+//         'dry_clean_items' => $dry_clean_items,
+//         'household_items' => $household_items,
+//     ]);
+// })->name('package.create');
 
 Route::get('/packages/payment', function () {
     return view('user.packages.payment', ['active' => 'packages']);

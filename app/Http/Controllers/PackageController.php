@@ -43,6 +43,7 @@ class PackageController extends Controller
         $detergents = Detergent::all();
         $scents = Scent::all();
         $dryers = Dryer::all();
+        // dd('dd');
         return view('admin.packages.create', ['active' => 'packages', 'fabrics' => $fabrics,
             'detergents' => $detergents, 'scents' => $scents, 'dryers' => $dryers]);
 
@@ -92,5 +93,17 @@ class PackageController extends Controller
         return view('admin.packages.show', ['active' => 'packages', 'package' => $package]);
 
         return response()->json(['data' => Package::find($id)]);
+    }
+
+    public function userCreate()
+    {
+        $fabrics = Fabric::all();
+        $detergents = Detergent::all();
+        $scents = Scent::all();
+        $dryers = Dryer::all();
+        // dd('dd');
+        return view('user.packages.create', ['active' => 'packages', 'fabrics' => $fabrics,
+            'detergents' => $detergents, 'scents' => $scents, 'dryers' => $dryers]);
+
     }
 }
