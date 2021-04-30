@@ -868,7 +868,7 @@ export default {
             this.items.splice(index, 1);
         },
         storePackageInLocalStorage(event) {
-            alert("SUBMIt");
+            // alert("SUBMIt");
             event.preventDefault();
             var formValues = $(".add-form").serialize();
 
@@ -879,6 +879,7 @@ export default {
                 localStorage.getItem("createdPackage")
             );
 
+window.location.href = window.location.href
             // axios({
             //     url: selectedURL,
             //     method: "POST",
