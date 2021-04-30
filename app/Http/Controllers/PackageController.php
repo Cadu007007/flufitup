@@ -104,16 +104,20 @@ class PackageController extends Controller
         // dd('dd');
         $categoryDetergents = CategoryDetergent::all()->each(function ($cat) {
             $cat->type = 'detergent';
+            $cat->detergents = $cat->detergents;
         });
         // dd($categoryDetergents);
         $categoryDryer = CategoryDryer::all()->each(function ($cat) {
             $cat->type = 'dryer';
+            $cat->dryers = $cat->dryers;
         });
         $categoryFabrics = CategoryFabric::all()->each(function ($cat) {
             $cat->type = 'fabric';
+            $cat->fabrics = $cat->fabrics;
         });
         $categoryScents = CategoryScent::all()->each(function ($cat) {
             $cat->type = 'scent';
+            $cat->scents = $cat->scents;
         });
 
 //         active' => 'packages', 'options' => $options,
