@@ -30,6 +30,7 @@ var EditOrder = require('./components/User/Pages/Home/EditOrder.vue').default
 
 /* Packages */
 var Packages = require('./components/User/Pages/Packages/Packages.vue').default
+var UserCreatePackage = require('./components/User/Pages/Packages/CreatePackage.vue').default
 var PackageSummary = require('./components/User/Pages/Packages/PackageSummary.vue').default
 var PackageCreate = require('./components/User/Pages/Packages/PackageCreate.vue').default
 var OnlinePayment = require('./components/User/Pages/Packages/OnlinePayment.vue').default
@@ -154,6 +155,7 @@ const app = new Vue({
         Home,
         EditOrder,
         Packages,
+        UserCreatePackage,
         PackageSummary,
         PackageOrderSummary,
         PackageCreate,
