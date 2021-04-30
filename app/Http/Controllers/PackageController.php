@@ -97,13 +97,38 @@ class PackageController extends Controller
 
     public function userCreate()
     {
-        $fabrics = Fabric::all();
-        $detergents = Detergent::all();
-        $scents = Scent::all();
-        $dryers = Dryer::all();
+        // $fabrics = Fabric::all();
+        // $detergents = Detergent::all();
+        // $scents = Scent::all();
+        // $dryers = Dryer::all();
         // dd('dd');
-        return view('user.packages.create', ['active' => 'packages', 'fabrics' => $fabrics,
-            'detergents' => $detergents, 'scents' => $scents, 'dryers' => $dryers]);
+        $categoryDetergents = CategoryDetergent::all()->each(function ($cat) {
+            $cat->type = 'detergent';
+        });
+        // dd($categoryDetergents);
+        $categoryDryer = CategoryDryer::all()->each(function ($cat) {
+            $cat->type = 'dryer';
+        });
+        $categoryFabrics = CategoryFabric::all()->each(function ($cat) {
+            $cat->type = 'fabric';
+        });
+        $categoryScents = CategoryScent::all()->each(function ($cat) {
+            $cat->type = 'scent';
+        });
+
+//         active' => 'packages', 'options' => $options,
+        // //         'detergents_types' => $detergents_types,
+        // //         'detergents_types_items' => $detergents_types_items,
+        // //         'dryer_sheet_types' => $dryer_sheet_types,
+        // //         'dryer_sheet_types_items' => $dryer_sheet_types_items,
+        // //         'booster_types' => $booster_types,
+        // //         'booster_types_items' => $booster_types_items,
+        // //         'fabric_types' => $fabric_types,
+        // //         'fabric_types_items' => $fabric_types_items,
+        // //         'dry_clean_items' => $dry_clean_items,
+        // //         'household_items' => $household_items,
+        return view('user.packages.create', ['active' => 'packages', 'fabric_types' => $categoryFabrics,
+            'detergents_types' => $categoryDetergents, 'scents_types' => $categoryScents, 'dryer_sheet_types' => $categoryDryer]);
 
     }
 }
