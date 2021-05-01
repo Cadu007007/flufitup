@@ -24,6 +24,7 @@
                     type="text" style="opacity: 0"
                     name="week1_pickup_dates"
                     required
+                    class="week1-input"
                     :value="
                         selectedDate2
                             ? selectedDate1 + ';' + selectedDate2
@@ -44,6 +45,7 @@
                     type="text" style="opacity: 0"
                     name="week2_pickup_dates"
                     required
+                    class="week2-input"
                     :value="
                         selectedDate4
                             ? selectedDate3 + ';' + selectedDate4
@@ -64,6 +66,7 @@
                     type="text" style="opacity: 0"
                     name="week3_pickup_dates"
                     required
+                    class="week3-input"
                     :value="
                         selectedDate6
                             ? selectedDate5 + ';' + selectedDate6
@@ -84,6 +87,7 @@
                     type="text" style="opacity: 0"
                     name="week4_pickup_dates"
                     required
+                    class="week4-input"
                     :value="
                         selectedDate8
                             ? selectedDate7 + ';' + selectedDate8
@@ -446,6 +450,14 @@ export default {
         },
         setDate1(date) {
             this.selectedDate1 = date;
+            /* clear week 2,3,4 */
+            this.selectedDate2= ""
+            this.selectedDate3= ""
+            this.selectedDate4= ""
+            this.selectedDate5= ""
+            this.selectedDate6= ""
+            this.selectedDate7= ""
+            this.selectedDate8= ""
 
             // Set all limits
             this.limits1_week.start = moment(date)
@@ -478,21 +490,45 @@ export default {
         },
         setDate2(date) {
             this.selectedDate2 = date;
+
+            this.selectedDate3= ""
+            this.selectedDate4= ""
+            this.selectedDate5= ""
+            this.selectedDate6= ""
+            this.selectedDate7= ""
+            this.selectedDate8= ""
         },
         setDate3(date) {
             this.selectedDate3 = date;
+            
+            this.selectedDate4= ""
+            this.selectedDate5= ""
+            this.selectedDate6= ""
+            this.selectedDate7= ""
+            this.selectedDate8= ""
         },
         setDate4(date) {
             this.selectedDate4 = date;
+            this.selectedDate5= ""
+            this.selectedDate6= ""
+            this.selectedDate7= ""
+            this.selectedDate8= ""
         },
         setDate5(date) {
             this.selectedDate5 = date;
+            this.selectedDate6= ""
+            this.selectedDate7= ""
+            this.selectedDate8= ""
         },
         setDate6(date) {
             this.selectedDate6 = date;
+            this.selectedDate7= ""
+            this.selectedDate8= ""
         },
         setDate7(date) {
             this.selectedDate7 = date;
+            this.selectedDate8= ""
+
         },
         setDate8(date) {
             this.selectedDate8 = date;
@@ -561,7 +597,21 @@ export default {
         },
         test(){
             alert('Escap')
-        }
+        },
+        week1changed(){
+            alert("Week 1 Changed")
+        },
+        week2changed(){
+            alert("Week 2 Changed")
+        },
+        week3changed(){
+            alert("Week 3 Changed")
+        },
+        week4changed(){
+            alert("Week 4 Changed")
+        },
+
+
     }
 };
 </script>
