@@ -21,8 +21,9 @@
                     </span>
                 </p>
                 <input
-                    type="hidden"
+                    type="text" style="opacity: 0"
                     name="week1_pickup_dates"
+                    required
                     :value="
                         selectedDate2
                             ? selectedDate1 + ';' + selectedDate2
@@ -40,8 +41,9 @@
                     </span>
                 </p>
                 <input
-                    type="hidden"
+                    type="text" style="opacity: 0"
                     name="week2_pickup_dates"
+                    required
                     :value="
                         selectedDate4
                             ? selectedDate3 + ';' + selectedDate4
@@ -59,8 +61,9 @@
                     </span>
                 </p>
                 <input
-                    type="hidden"
+                    type="text" style="opacity: 0"
                     name="week3_pickup_dates"
+                    required
                     :value="
                         selectedDate6
                             ? selectedDate5 + ';' + selectedDate6
@@ -78,8 +81,9 @@
                     </span>
                 </p>
                 <input
-                    type="hidden"
+                    type="text" style="opacity: 0"
                     name="week4_pickup_dates"
+                    required
                     :value="
                         selectedDate8
                             ? selectedDate7 + ';' + selectedDate8

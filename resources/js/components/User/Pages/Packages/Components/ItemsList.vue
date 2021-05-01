@@ -8,10 +8,10 @@
             <div
                 v-for="item in items"
                 :key="item.id"
-                class="row w-50 d-flex flex-row justify-content-center my-2"
+                class="row d-flex flex-row justify-content-center my-2 mx-1"
             >
-                <label :for="item.name" class="p mr-4 itemTitle">{{ item.title }}</label>
-                <label :for="item.name" class="font-weight-bold mr-4">${{ item.price }}</label>
+                <label :for="item.name" class="p mr-1 itemTitle">{{ item.name }}</label>
+                <label :for="item.name" class="font-weight-bold mr-1">${{ item.price }}</label>
                 <input
                     style="width: 50px; height: 24px"
                     type="checkbox"

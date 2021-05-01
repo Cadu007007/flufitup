@@ -4,7 +4,7 @@
     <div class="Sidebar-container">
 
     </div>
-    {{-- {{ dd($detergents_types[0]->detergents) }} --}}
+    {{-- {{dd($dry_clean_items)}} --}}
     <div class="d-flex flex-column">
         <div class="w-100 px-4 mb-0" style="  background: #FAFAFA;">
             @if (session()->get('message') != null)

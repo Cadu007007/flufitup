@@ -77,6 +77,7 @@
                     </p>
                     <div class="1-day-calendar">
                         <input
+                        class="1day-date"
                             type="text"
                             name="pickup_date"
                             required
@@ -670,12 +671,33 @@ export default {
             $(".packageDuration").on("change", () => {
                 let selectedDurationValue = $(".packageDuration").val();
                 this.selectedDuration = selectedDurationValue;
+                console.log("selectedDurationValue: ", selectedDurationValue);
                 if (selectedDurationValue == "2_weeks") {
                     this.weeks = 2;
+                    /* remove required from 1 day date */
+                    $(".1day-date").removeAttr("required")
+                    /* add required to weeks inputs */
+                    $("#week1Input").attr("required", true)
+                    $(".week1-input").attr("required",true)
+                    $(".week2-input").attr("required",true)
                 } else if (selectedDurationValue == "4_weeks") {
                     this.weeks = 4;
+                    /* remove required from 1 day date */
+                    $(".1day-date").removeAttr("required")
+                    /* add required to weeks inputs */
+                    $(".week1-input").attr("required",true)
+                    $(".week2-input").attr("required",true)
+                    $(".week3-input").attr("required",true)
+                    $(".week4-input").attr("required",true)
                 } else {
                     this.weeks = 0;
+                    /* remove required from 1 day date */
+                    $(".1day-date").attr("required", true)
+                    /* add required to weeks inputs */
+                    $(".week1-input").removeAttr("required",true)
+                    $(".week2-input").removeAttr("required",true)
+                    $(".week3-input").removeAttr("required",true)
+                    $(".week4-input").removeAttr("required",true)
                 }
                 $(".pickupsDropdown").change();
             });
