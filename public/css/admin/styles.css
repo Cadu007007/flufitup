@@ -229,7 +229,6 @@ body {
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  height: calc(100vh- 75px);
   padding: 0 140px;
 }
 

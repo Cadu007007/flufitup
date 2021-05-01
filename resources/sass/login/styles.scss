@@ -3,7 +3,7 @@
 @import "../global.scss";
 .login-container {
     @include grid-1fr-1fr;
-    height: calc(100vh - #{$header-height});
+    // height: calc(100vh - #{$header-height});
     padding: 0 140px;
     .right {
         @include flex-center-center-column;

@@ -66,10 +66,12 @@
 
 .navbar-container {
     @include flex-center-center;
-    padding: 40px 0 0 0;
+    padding: 20px 0 20px 0;
     height: $navbar-height;
     .navbar-item {
         margin: 0 10px;
+        width: 130px;
+        text-align: center;
     }
 }
 

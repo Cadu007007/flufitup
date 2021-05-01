@@ -1,7 +1,7 @@
 <template>
     <div class="landing-container" id="fullpage">
         <div class="hero-container section item">
-            <div class="navbar-container">
+            <div class="navbar-container flex-wrap">
                 <a href="#whyChooseUs" class="navbar-item">
                     Why Choose Us
                 </a>
@@ -9,7 +9,7 @@
                     Our Service
                 </a>
 
-                <div class="navbar-item logo">
+                <div class="navbar-item logo d-none d-sm-block">
                     <img class="icon" src="/images/logo.png" alt="" />
                 </div>
                 <a href="#howItWork" class="navbar-item">

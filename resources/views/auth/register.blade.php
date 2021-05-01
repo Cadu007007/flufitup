@@ -1,5 +1,5 @@
 @include('components.landing.header')
-<div class="register-container">
+<div class="register-container d-flex flex-wrap">
     <div class="left">
         <img class="signup-vector" src="{{ asset('images/login-vector.svg') }}" alt="">
     </div>

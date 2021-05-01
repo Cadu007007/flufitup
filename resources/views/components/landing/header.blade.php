@@ -21,7 +21,7 @@
     </head>
     <body>
 
-<div class="header-container">
+<div class="header-container px-0 px-lg-4">
     <div class="left">  
         <div class="icon-title-div">
             <img class="icon" src="{{ asset('images/icons/phone.svg') }}" alt="">
@@ -32,7 +32,7 @@
             <p class="header-text">Email Address</p>     
         </div>
     </div>
-    <div class="right">
+    <div class="right d-none d-md-flex">
         <a class="header-link" href="" target="_blank">
             <img class="icon" src="{{ asset('images/icons/facebook-grey.svg') }}" alt="">
         </a>

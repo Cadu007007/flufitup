@@ -68,7 +68,7 @@ $content-right-margin: 24px;
     }
     .login-container {
         @include grid-1fr-1fr;
-        height: calc(100vh- #{$logo-container-height});
+        // height: calc(100vh- #{$logo-container-height});
         padding: 0 140px;
         .left {
             @include flex-center-center-column;
