@@ -18,7 +18,7 @@
         </div>
         <div class="PageContentContainer">
 
-            <User-Create-Package title="Add Package" date="{{ Carbon\Carbon::now()->format('D, d F') }}"
+            <User-Create-Package title="Create Your Package" date="{{ Carbon\Carbon::now()->format('D, d F') }}"
                 storepackageroute="{{ route('admin.packages.store') }}" :detergentstypes="{{ $detergents_types }}"
                 :fabrictypes="{{ $fabric_types }}"
                 :drycleanitems="{{ $dry_clean_items }}"

@@ -19,7 +19,7 @@
                 <div class="flex-column">
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
-                            Package Duration
+                           Choose Your Package Duration
                         </p>
                         <select
                             name="duration"
@@ -68,11 +68,11 @@
 
                     <!-- 1 day calendar -->
                     <p
-                        class="option-label my-3 font-size-18 w-50 text-primary"
+                        class="option-label my-3 font-size-18 w-75 text-primary"
                         @click="openCalendar()"
                         v-show="selectedDuration == '1_day'"
                     >
-                        Pickup Date
+                        Select Your Pickup Date
                         <span class="ml-2 date">{{ selectedDate1 }}</span>
                     </p>
                     <div class="1-day-calendar">
@@ -100,7 +100,7 @@
                                     name="pickup_date"
                                     v-model="pickupdate"
                                 /> -->
-                                <p class="calendar-title">Pickup Date</p>
+                                <p class="calendar-title">Please Select Your Pickup Date/s</p>
                                 <custom-datepicker
                                     @dateSelected="setDate($event)"
                                     :date="selectedDate1"
@@ -136,7 +136,7 @@
 
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
-                            Allowed Bags per Pickup
+                            Select how many bags per pickup
                         </p>
                         <select
                             name="bags_per_pickup"
@@ -168,7 +168,7 @@
 
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
-                            Maximum Weight
+                            Maximum allowed weight per pickup
                         </p>
                         <input
                             name="dry_clean_credit"
@@ -201,7 +201,7 @@
 
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
-                            Return Service
+                            Select your desired Service Return Duration
                         </p>
                         <select
                             name="return_service"
@@ -233,7 +233,7 @@
 
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
-                            Drying Options
+                            Select your laundry drying method
                         </p>
                         <select
                             name="dryer_option"
@@ -251,7 +251,7 @@
                     </div>
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
-                            Folding Options
+                            Select your clean laundry setup
                         </p>
                         <select
                             name="folding_option foldingOption"
@@ -263,7 +263,7 @@
                                 >Folding Only</option
                             >
                             <option value="folding_hanger"
-                                >Folding & Hanger</option
+                                >Folding&Hangers</option
                             >
                         </select>
                     </div>
@@ -272,7 +272,7 @@
                         <div
                             class="title font-weight-bold my-4 text-center text-primary"
                         >
-                            Detergents
+                            Select your preferred laundry Detergent
                         </div>
                         <Slider
                             @itemclicked="detergentitemclicked"
@@ -293,7 +293,7 @@
                         <div
                             class="title font-weight-bold my-4 text-center text-primary"
                         >
-                            Fabric Softener
+                            Select your preferred Fabric Softener
                         </div>
                         <Slider
                             @itemclicked="fabricitemclicked"
@@ -325,7 +325,7 @@
                         </select>
                     </div> -->
 
-                    <div class="" style="margin-bottom: 20px">
+                    <!-- <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
                             Laundry Detergent
                         </p>
@@ -385,25 +385,13 @@
                             <option value="2">1 Sheet</option>
                             <option value="3">Multiple Per Bag</option>
                         </select>
-                    </div>
+                    </div> -->
 
-                    <div class="" style="margin-bottom: 20px">
-                        <p class="title" style="margin-bottom: 10px">
-                            Fabric Fresheners
-                        </p>
-                        <select
-                            name="fabric_id"
-                            id=""
-                            class="select2"
-                            style="width:300px; margin-top: 20px"
-                        >
-                            <option value="1">None</option>
-                            <option value="2">Standard Line</option>
-                            <option value="3">Special Line</option>
-                        </select>
-                    </div>
 
-                    <div class="question-container">
+
+                      
+
+                    <!-- <div class="question-container">
                         <p class="question">
                             Add Nature friendly garment Freshener ( Only for
                             1.5s per bag )
@@ -439,11 +427,68 @@
                                 >
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Freshner -->
+                    
+                      <div class="question-container">
+                            
+                            <p class="question">
+                                Add Nature friendly garment Freshener ( Only for
+                            1.5s per bag )
+                            </p>
+                            <div class="answers">
+                                <div class="answer">
+                                    <input
+                                        class="radio"
+                                        type="radio"
+                                        name="add_fabric"
+                                        value="yes"
+                                        id=""
+                                    />
+                                    <label
+                                        class="option-label"
+                                        for="add_fabric"
+                                        >Yes</label
+                                    >
+                                </div>
+                                <div class="answer">
+                                    <input
+                                        class="radio"
+                                        type="radio"
+                                        checked
+                                        name="add_fabric"
+                                        value="no"
+                                        id=""
+                                    />
+                                    <label
+                                        class="option-label"
+                                        for="add_fabric"
+                                        >No</label
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        
+                    <div class="" style="margin-bottom: 20px" v-show="showfabric">
+                        <p class="title" style="margin-bottom: 10px">
+                            Fabric Fresheners
+                        </p>
+                        <select
+                            name="fabric_id"
+                            id=""
+                            class="select2"
+                            style="width:300px; margin-top: 20px"
+                        >
+                            <option value="1">None</option>
+                            <option value="2">Standard Line</option>
+                            <option value="3">Special Line</option>
+                        </select>
+                    </div>
+
                     <div class="drycleanContainer">
                         <div class="question-container">
+                            
                             <p class="question">
                                 Add Dry Clean Items
                             </p>
@@ -480,9 +525,9 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-12 mx-auto my-4">
+                        <div class="col-lg-12 mx-auto my-4" v-show="isdrycleanselected">
                             <ItemsList
-                                v-show="isdrycleanselected"
+                                
                                 title="Dry Clean"
                                 :items="drycleanitems"
                             />
@@ -787,6 +832,11 @@ export default {
 
                 this.sumPackageTotal();
             });
+            $("input[type=radio][name=add_fabric]").change(event => {
+                let selectedValue = event.target.value;
+                this.showfabric = selectedValue == "yes" ? true : false;
+                this.sumPackageTotal();
+            });
             $("input[type=radio][name=add_dry_clean]").change(event => {
                 let selectedValue = event.target.value;
                 this.isdrycleanselected = selectedValue == "yes" ? true : false;
@@ -798,6 +848,14 @@ export default {
                     selectedValue == "yes" ? true : false;
                 this.sumPackageTotal();
             });
+
+ $("input[type=radio][name=add_household]").change(event => {
+                let selectedValue = event.target.value;
+                this.ishouseholdselected =
+                    selectedValue == "yes" ? true : false;
+                this.sumPackageTotal();
+            });
+
 
             $(".checkbox").click(() => {
                 this.sumPackageTotal();
@@ -838,6 +896,7 @@ export default {
             totalbags: 1,
             isdrycleanselected: false,
             ishouseholdselected: false,
+            showfabric: false,
             bagsprice: 0,
             selectedDate1: "",
             pickupdate: "",
@@ -878,7 +937,18 @@ export default {
         },
 
         setDate(date) {
-            this.selectedDate1 = date;
+            this.selectedDate1 = this.formatDate(date);
+        },
+        formatDate(date){
+            console.log(date);
+            let dateArray = date.split('-')
+            let year =dateArray[0]
+            let month =dateArray[1]
+            let day =dateArray[2]
+            let formatedDate = `${month}/${day}/${year}`
+            return formatedDate
+            // console.log(`${month}/${day}/${year}`);
+
         },
         clearPackageName() {
             this.name = "";
@@ -1271,7 +1341,7 @@ $black: #000000;
     }
     .calender-button {
         width: 160px;
-        height: 31px;
+        height: 51px;
         color: $white;
         font-size: 14px;
         font-family: "Lato-Bold";

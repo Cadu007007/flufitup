@@ -12,16 +12,29 @@
             />
         </div>
         <div class="options" v-show="isopen || openstate">
-            <div class="option">
+            <div class="option mb-3">
                 <p class="option-label" @click="openCalendar(1)">
                     Week 1
-                    <span class="date"
-                        >{{ selectedDate1 }}
-                        {{ selectedDate2 ? " & " + selectedDate2 : "" }}
+                    <span class="ml-4 mr-1" style="font-size: 14px">
+                        {{ selectedDate1 ? "Pickup 1: " : "" }}
                     </span>
+                    <span class="date black"
+                        >{{ selectedDate1 }}
+                    </span>
+
+                    <span class="ml-4 mr-1" style="font-size: 14px">
+                        {{ selectedDate2 ? "Pickup 2: " : "" }}
+                    </span>
+                    <span class="date black"
+                        >{{ selectedDate2 ? selectedDate2 : '' }}
+                    </span>
+                        
+
+
                 </p>
                 <input
-                    type="text" style="opacity: 0"
+                    type="hidden"
+                    style="opacity: 0"
                     name="week1_pickup_dates"
                     required
                     class="week1-input"
@@ -33,16 +46,31 @@
                 />
             </div>
 
-            <div class="option">
-                <p class="option-label" :class="!selectedDate1 ? 'in-active' : '' " @click="selectedDate1 ? openCalendar(2) : ''">
+            <div class="option mb-3">
+                <p
+                    class="option-label"
+                    :class="!selectedDate1 ? 'in-active' : ''"
+                    @click="selectedDate1 ? openCalendar(2) : ''"
+                >
                     Week 2
-                    <span class="date"
+
+                    <span class="ml-4 mr-1" style="font-size: 14px">
+                        {{ selectedDate3 ? "Pickup 1: " : "" }}
+                    </span>
+                    <span class="date black"
                         >{{ selectedDate3 }}
-                        {{ selectedDate4 ? " & " + selectedDate4 : "" }}
+                    </span>
+
+                    <span class="ml-4 mr-1" style="font-size: 14px">
+                        {{ selectedDate4 ? "Pickup 2: " : "" }}
+                    </span>
+                    <span class="date black"
+                        >{{ selectedDate4 ? selectedDate4 : '' }}
                     </span>
                 </p>
                 <input
-                    type="text" style="opacity: 0"
+                    type="hidden"
+                    style="opacity: 0"
                     name="week2_pickup_dates"
                     required
                     class="week2-input"
@@ -54,16 +82,33 @@
                 />
             </div>
 
-            <div class="option" v-show="options > 2">
-                <p class="option-label"  :class="!selectedDate3 ? 'in-active' : '' " @click="selectedDate3 ? openCalendar(3) : ''">
+            <div class="option mb-3" v-show="options > 2">
+                <p
+                    class="option-label"
+                    :class="!selectedDate3 ? 'in-active' : ''"
+                    @click="selectedDate3 ? openCalendar(3) : ''"
+                >
                     Week 3
-                    <span class="date"
+                    
+
+
+                    <span class="ml-4 mr-1" style="font-size: 14px">
+                        {{ selectedDate5 ? "Pickup 1: " : "" }}
+                    </span>
+                    <span class="date black"
                         >{{ selectedDate5 }}
-                        {{ selectedDate6 ? " & " + selectedDate6 : "" }}
+                    </span>
+
+                    <span class="ml-4 mr-1" style="font-size: 14px">
+                        {{ selectedDate6 ? "Pickup 2: " : "" }}
+                    </span>
+                    <span class="date black"
+                        >{{ selectedDate6 ? selectedDate6 : '' }}
                     </span>
                 </p>
                 <input
-                    type="text" style="opacity: 0"
+                    type="hidden"
+                    style="opacity: 0"
                     name="week3_pickup_dates"
                     required
                     class="week3-input"
@@ -76,15 +121,31 @@
             </div>
 
             <div class="option" v-show="options > 2">
-                <p class="option-label" :class="!selectedDate5 ? 'in-active' : '' " @click="selectedDate5 ? openCalendar(4) : ''">
+                <p
+                    class="option-label"
+                    :class="!selectedDate5 ? 'in-active' : ''"
+                    @click="selectedDate5 ? openCalendar(4) : ''"
+                >
                     Week 4
-                    <span class="date"
+                   
+
+                    <span class="ml-4 mr-1" style="font-size: 14px">
+                        {{ selectedDate7 ? "Pickup 1: " : "" }}
+                    </span>
+                    <span class="date black"
                         >{{ selectedDate7 }}
-                        {{ selectedDate8 ? " & " + selectedDate8 : "" }}
+                    </span>
+
+                    <span class="ml-4 mr-1" style="font-size: 14px">
+                        {{ selectedDate8 ? "Pickup 2: " : "" }}
+                    </span>
+                    <span class="date black"
+                        >{{ selectedDate8 ? selectedDate8 : '' }}
                     </span>
                 </p>
                 <input
-                    type="text" style="opacity: 0"
+                    type="hidden"
+                    style="opacity: 0"
                     name="week4_pickup_dates"
                     required
                     class="week4-input"
@@ -97,7 +158,13 @@
             </div>
         </div>
 
-        <div class="calendars-modal" id="calendarsModal" v-if="showmodal" @keydown.esc="closeModal"  tabindex="0">
+        <div
+            class="calendars-modal"
+            id="calendarsModal"
+            v-if="showmodal"
+            @keydown.esc="closeModal"
+            tabindex="0"
+        >
             <!-- First Week -->
             <div class="calendar-container" v-if="showweek1pickup1calendar">
                 <p class="calendar-title">Week 1/ Pickup 1</p>
@@ -112,7 +179,7 @@
                 <button
                     v-if="pickups > 1"
                     type="button"
-                    class="calender-button"
+                    class="calender-button next-button"
                     @click="selectedDate1 ? handleCalendar(1) : ''"
                 >
                     Next
@@ -166,7 +233,7 @@
                 <button
                     v-if="pickups > 1"
                     type="button"
-                    class="calender-button"
+                    class="calender-button next-button"
                     @click="selectedDate3 ? handleCalendar(3) : ''"
                 >
                     Next
@@ -220,7 +287,7 @@
                 <button
                     v-if="pickups > 1"
                     type="button"
-                    class="calender-button"
+                    class="calender-button next-button"
                     @click="selectedDate5 ? handleCalendar(5) : ''"
                 >
                     Next
@@ -243,8 +310,7 @@
                     :primaryColor="primaryColor"
                     :wrapperStyles="wrapperStyles"
                     :limits="limits3"
-                    :headerStyles = "headerStyles"
-
+                    :headerStyles="headerStyles"
                 />
                 <button
                     type="button"
@@ -271,13 +337,12 @@
                     :wrapperStyles="wrapperStyles"
                     :limits="limits4"
                     :headerStyles="headerStyles"
-
                 />
 
                 <button
                     v-if="pickups > 1"
                     type="button"
-                    class="calender-button"
+                    class="calender-button next-button"
                     @click="selectedDate7 ? handleCalendar(7) : ''"
                 >
                     Next
@@ -301,7 +366,6 @@
                     :wrapperStyles="wrapperStyles"
                     :limits="limits4"
                     :headerStyles="headerStyles"
-
                 />
                 <button
                     type="button"
@@ -339,7 +403,7 @@ export default {
 
             selectedweek: 0,
             selecteddatevalue: "",
-            selectedDate1: '',
+            selectedDate1: "",
             selectedDate2: "",
             selectedDate3: "",
             selectedDate4: "",
@@ -349,9 +413,15 @@ export default {
             selectedDate8: "",
 
             wrapperStyles: { width: "100%" },
-            headerStyles: { width: '350px', margin: '0 auto', background: "#fff", color: "#000" , fontWeight: 'bolder', fontFamiley: 'Lato-Bold' },
+            headerStyles: {
+                width: "350px",
+                margin: "0 auto",
+                background: "#fff",
+                color: "#000",
+                fontWeight: "bolder",
+                fontFamiley: "Lato-Bold"
+            },
             primaryColor: "#FDBD42",
-
 
             limits1: {
                 start: moment().format("YYYY-MM-DD"),
@@ -388,8 +458,7 @@ export default {
                 end: moment(this.selecteddatevalue)
                     .add(32, "day")
                     .format("YYYY-MM-DD")
-            },
-
+            }
         };
     },
     components: {
@@ -443,21 +512,21 @@ export default {
             // show calendars modal and stop body scrolling
             this.showmodal = true;
             // set focus to modal to enable escap
-            setTimeout(function(){
-                document.getElementById('calendarsModal').focus()
-            }, 100)
+            setTimeout(function() {
+                document.getElementById("calendarsModal").focus();
+            }, 100);
             document.getElementsByTagName("body")[0].style.overflow = "hidden";
         },
         setDate1(date) {
             this.selectedDate1 = date;
             /* clear week 2,3,4 */
-            this.selectedDate2= ""
-            this.selectedDate3= ""
-            this.selectedDate4= ""
-            this.selectedDate5= ""
-            this.selectedDate6= ""
-            this.selectedDate7= ""
-            this.selectedDate8= ""
+            this.selectedDate2 = "";
+            this.selectedDate3 = "";
+            this.selectedDate4 = "";
+            this.selectedDate5 = "";
+            this.selectedDate6 = "";
+            this.selectedDate7 = "";
+            this.selectedDate8 = "";
 
             // Set all limits
             this.limits1_week.start = moment(date)
@@ -491,44 +560,43 @@ export default {
         setDate2(date) {
             this.selectedDate2 = date;
 
-            this.selectedDate3= ""
-            this.selectedDate4= ""
-            this.selectedDate5= ""
-            this.selectedDate6= ""
-            this.selectedDate7= ""
-            this.selectedDate8= ""
+            this.selectedDate3 = "";
+            this.selectedDate4 = "";
+            this.selectedDate5 = "";
+            this.selectedDate6 = "";
+            this.selectedDate7 = "";
+            this.selectedDate8 = "";
         },
         setDate3(date) {
             this.selectedDate3 = date;
-            
-            this.selectedDate4= ""
-            this.selectedDate5= ""
-            this.selectedDate6= ""
-            this.selectedDate7= ""
-            this.selectedDate8= ""
+
+            this.selectedDate4 = "";
+            this.selectedDate5 = "";
+            this.selectedDate6 = "";
+            this.selectedDate7 = "";
+            this.selectedDate8 = "";
         },
         setDate4(date) {
             this.selectedDate4 = date;
-            this.selectedDate5= ""
-            this.selectedDate6= ""
-            this.selectedDate7= ""
-            this.selectedDate8= ""
+            this.selectedDate5 = "";
+            this.selectedDate6 = "";
+            this.selectedDate7 = "";
+            this.selectedDate8 = "";
         },
         setDate5(date) {
             this.selectedDate5 = date;
-            this.selectedDate6= ""
-            this.selectedDate7= ""
-            this.selectedDate8= ""
+            this.selectedDate6 = "";
+            this.selectedDate7 = "";
+            this.selectedDate8 = "";
         },
         setDate6(date) {
             this.selectedDate6 = date;
-            this.selectedDate7= ""
-            this.selectedDate8= ""
+            this.selectedDate7 = "";
+            this.selectedDate8 = "";
         },
         setDate7(date) {
             this.selectedDate7 = date;
-            this.selectedDate8= ""
-
+            this.selectedDate8 = "";
         },
         setDate8(date) {
             this.selectedDate8 = date;
@@ -595,23 +663,21 @@ export default {
             this.showmodal = false;
             document.getElementsByTagName("body")[0].style.overflowX = "hidden";
         },
-        test(){
-            alert('Escap')
+        test() {
+            alert("Escap");
         },
-        week1changed(){
-            alert("Week 1 Changed")
+        week1changed() {
+            alert("Week 1 Changed");
         },
-        week2changed(){
-            alert("Week 2 Changed")
+        week2changed() {
+            alert("Week 2 Changed");
         },
-        week3changed(){
-            alert("Week 3 Changed")
+        week3changed() {
+            alert("Week 3 Changed");
         },
-        week4changed(){
-            alert("Week 4 Changed")
-        },
-
-
+        week4changed() {
+            alert("Week 4 Changed");
+        }
     }
 };
 </script>
@@ -621,6 +687,7 @@ $white: #ffffff;
 $black: #000000;
 $grey: #f1f3f7;
 $blue: #22aee4;
+$orange: rgb(253, 189, 66);
 $shadow: 0px 0px 10px #0000001a;
 .AccordionCalendar {
     width: 100%;
@@ -663,16 +730,23 @@ $shadow: 0px 0px 10px #0000001a;
             }
             .option-label {
                 margin-left: 54px;
-                font-size: 14px;
+                font-size: 16px;
                 color: $black;
 
-                &.in-active{
+                &.in-active {
                     color: #555;
                 }
                 .date {
-                    margin-left: 20px;
-                    font-size: 12px;
-                    color: $blue;
+                    // margin-left: 20px;
+                    // color: $blue;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+                .blue {
+                    color: #22aee4 !important;
+                }
+                .black {
+                    color: #222 !important;
                 }
             }
         }
@@ -705,21 +779,23 @@ $shadow: 0px 0px 10px #0000001a;
         }
         .calender-button {
             width: 160px;
-            height: 31px;
+            height: 51px;
             color: $white;
             font-size: 14px;
-            font-family: "Lato-Bold";
             background: $blue;
+            font-family: "Lato-Bold";
             border-radius: 35px;
             margin: 10px auto 25px;
-            
+            &.next-button {
+                background: $orange;
+            }
         }
     }
     .cd-body-wrapper {
-        margin: 10px auto !important; 
+        margin: 10px auto !important;
         background: #fff;
     }
-    .cd-body-wrapper header button  {
+    .cd-body-wrapper header button {
         background: #22aee4;
         border-radius: 20px;
     }
