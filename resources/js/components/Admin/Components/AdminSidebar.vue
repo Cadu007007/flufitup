@@ -62,7 +62,7 @@
             :routetodetergents="routetodetergents"
             :routetofabricsoftener="routetofabricsoftener"
             :routetodryersheets="routetodryersheets"
-            :routetoscentbooster="routetoscentbooster"
+            :routetofreshener="routetofreshener"
         />
 
         <AdminSidebarItem
@@ -156,6 +156,7 @@ export default {
         "routetofabricsoftener",
         "routetodryersheets",
         "routetoscentbooster",
+        "routetofreshener",
         "routetousers",
         "routetoadmins",
         "routetopickupplanner",

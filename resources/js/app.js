@@ -80,6 +80,7 @@ var Detergents = require('./components/Admin/Pages/Packages/Detergents.vue').def
 var FabricSoftener = require('./components/Admin/Pages/Packages/FabricSoftener.vue').default
 var DryerSheets = require('./components/Admin/Pages/Packages/DryerSheets.vue').default
 var ScentBooster = require('./components/Admin/Pages/Packages/ScentBooster.vue').default
+var Freshener = require('./components/Admin/Pages/Packages/Freshener.vue').default
 
 /* Create New Package */
 var CreatePackage = require('./components/Admin/Pages/Packages/CreatePackage.vue').default
@@ -189,6 +190,7 @@ const app = new Vue({
         FabricSoftener,
         DryerSheets,
         ScentBooster,
+        Freshener,
         /* create package */
         CreatePackage,
         /* show package */

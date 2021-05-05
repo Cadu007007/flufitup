@@ -27,6 +27,7 @@
                 routetofabricsoftener="{{ route('admin.packages.fabrics.index') }}"
                 routetodryersheets="{{ route('admin.packages.dryers.index') }}"
                 routetoscentbooster="{{ route('admin.packages.scents.index') }}"
+                routetofreshener="{{ route('admin.packages.fresheners.index') }}"
 
                 routetousers="{{ route('admin.users') }}"
 

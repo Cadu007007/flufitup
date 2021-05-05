@@ -48,11 +48,19 @@
             icon='/images/admin/icons/detergents.svg' 
             iconActive='/images/admin/icons/detergents-active.svg'
             />
-            <AdminSidebarItem :class=" active == 'scent' ? 'active' : '' " 
+            <!-- <AdminSidebarItem :class=" active == 'scent' ? 'active' : '' " 
             class="AdminSidebarSubItem" 
             :href=routetoscentbooster
             title="Scent Booster"
             itemtooltip="Scent Booster"
+            icon='/images/admin/icons/detergents.svg' 
+            iconActive='/images/admin/icons/detergents-active.svg'
+            /> -->
+            <AdminSidebarItem :class=" active == 'freshener' ? 'active' : '' " 
+            class="AdminSidebarSubItem" 
+            :href=routetofreshener
+            title="Frehener"
+            itemtooltip="Frehener"
             icon='/images/admin/icons/detergents.svg' 
             iconActive='/images/admin/icons/detergents-active.svg'
             />
@@ -82,7 +90,7 @@ export default {
 props: ['icon', 'iconActive','active',
         'routetopackages',
         'routetodryclean','routetohouseholditems','routetodetergents',
-        'routetofabricsoftener', 'routetodryersheets','routetoscentbooster',
+        'routetofabricsoftener', 'routetodryersheets','routetoscentbooster','routetofreshener',
         ],
         components:{
             AdminSidebarItem
