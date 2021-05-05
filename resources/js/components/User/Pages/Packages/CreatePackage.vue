@@ -19,7 +19,7 @@
                 <div class="flex-column">
                     <div class="" style="margin-bottom: 20px">
                         <p class="title" style="margin-bottom: 10px">
-                           Choose Your Package Duration
+                            Choose Your Package Duration
                         </p>
                         <select
                             name="duration"
@@ -77,7 +77,7 @@
                     </p>
                     <div class="1-day-calendar">
                         <input
-                        class="1day-date"
+                            class="1day-date"
                             type="text"
                             name="pickup_date"
                             required
@@ -100,7 +100,9 @@
                                     name="pickup_date"
                                     v-model="pickupdate"
                                 /> -->
-                                <p class="calendar-title">Please Select Your Pickup Date/s</p>
+                                <p class="calendar-title">
+                                    Please Select Your Pickup Date/s
+                                </p>
                                 <custom-datepicker
                                     @dateSelected="setDate($event)"
                                     :date="selectedDate1"
@@ -279,7 +281,9 @@
                             @slidechanged="detergentslidechanged"
                             :perpage="3"
                             :types="detergentstypes"
-                            :typesitems="this.detergentstypes.map(x=>x.detergents)"
+                            :typesitems="
+                                this.detergentstypes.map(x => x.detergents)
+                            "
                         />
 
                         <input
@@ -387,10 +391,6 @@
                         </select>
                     </div> -->
 
-
-
-                      
-
                     <!-- <div class="question-container">
                         <p class="question">
                             Add Nature friendly garment Freshener ( Only for
@@ -430,47 +430,46 @@
                     </div> -->
 
                     <!-- Freshner -->
-                    
-                      <div class="question-container">
-                            
-                            <p class="question">
-                                Add Nature friendly garment Freshener ( Only for
+
+                    <div class="question-container">
+                        <p class="question">
+                            Add Nature friendly garment Freshener ( Only for
                             1.5s per bag )
-                            </p>
-                            <div class="answers">
-                                <div class="answer">
-                                    <input
-                                        class="radio"
-                                        type="radio"
-                                        name="add_fabric"
-                                        value="yes"
-                                        id=""
-                                    />
-                                    <label
-                                        class="option-label"
-                                        for="add_fabric"
-                                        >Yes</label
-                                    >
-                                </div>
-                                <div class="answer">
-                                    <input
-                                        class="radio"
-                                        type="radio"
-                                        checked
-                                        name="add_fabric"
-                                        value="no"
-                                        id=""
-                                    />
-                                    <label
-                                        class="option-label"
-                                        for="add_fabric"
-                                        >No</label
-                                    >
-                                </div>
+                        </p>
+                        <div class="answers">
+                            <div class="answer">
+                                <input
+                                    class="radio"
+                                    type="radio"
+                                    name="add_fabric"
+                                    value="yes"
+                                    id=""
+                                />
+                                <label class="option-label" for="add_fabric"
+                                    >Yes</label
+                                >
+                            </div>
+                            <div class="answer">
+                                <input
+                                    class="radio"
+                                    type="radio"
+                                    checked
+                                    name="add_fabric"
+                                    value="no"
+                                    id=""
+                                />
+                                <label class="option-label" for="add_fabric"
+                                    >No</label
+                                >
                             </div>
                         </div>
-                        
-                    <div class="" style="margin-bottom: 20px" v-show="showfabric">
+                    </div>
+
+                    <div
+                        class=""
+                        style="margin-bottom: 20px"
+                        v-show="showfabric"
+                    >
                         <p class="title" style="margin-bottom: 10px">
                             Fabric Fresheners
                         </p>
@@ -485,10 +484,31 @@
                             <option value="3">Special Line</option>
                         </select>
                     </div>
+                    <!-- <div class="slider-container detergentSlider">
+                        <div
+                            class="title font-weight-bold my-4 text-center text-primary"
+                        >
+                            Select your preferred GarmentFresheners
+                        </div>
+                        <Slider
+                            @itemclicked="detergentitemclicked"
+                            @slidechanged="detergentslidechanged"
+                            :perpage="3"
+                            :types="detergentstypes"
+                            :typesitems="
+                                this.detergentstypes.map(x => x.detergents)
+                            "
+                        />
+
+                        <input
+                            type="hidden"
+                            class="hidden-item"
+                            id="selectedDetergents"
+                        />
+                    </div> -->
 
                     <div class="drycleanContainer">
                         <div class="question-container">
-                            
                             <p class="question">
                                 Add Dry Clean Items
                             </p>
@@ -525,9 +545,11 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-12 mx-auto my-4" v-show="isdrycleanselected">
+                        <div
+                            class="col-lg-12 mx-auto my-4"
+                            v-show="isdrycleanselected"
+                        >
                             <ItemsList
-                                
                                 title="Dry Clean"
                                 :items="drycleanitems"
                             />
@@ -720,29 +742,29 @@ export default {
                 if (selectedDurationValue == "2_weeks") {
                     this.weeks = 2;
                     /* remove required from 1 day date */
-                    $(".1day-date").removeAttr("required")
+                    $(".1day-date").removeAttr("required");
                     /* add required to weeks inputs */
-                    $("#week1Input").attr("required", true)
-                    $(".week1-input").attr("required",true)
-                    $(".week2-input").attr("required",true)
+                    $("#week1Input").attr("required", true);
+                    $(".week1-input").attr("required", true);
+                    $(".week2-input").attr("required", true);
                 } else if (selectedDurationValue == "4_weeks") {
                     this.weeks = 4;
                     /* remove required from 1 day date */
-                    $(".1day-date").removeAttr("required")
+                    $(".1day-date").removeAttr("required");
                     /* add required to weeks inputs */
-                    $(".week1-input").attr("required",true)
-                    $(".week2-input").attr("required",true)
-                    $(".week3-input").attr("required",true)
-                    $(".week4-input").attr("required",true)
+                    $(".week1-input").attr("required", true);
+                    $(".week2-input").attr("required", true);
+                    $(".week3-input").attr("required", true);
+                    $(".week4-input").attr("required", true);
                 } else {
                     this.weeks = 0;
                     /* remove required from 1 day date */
-                    $(".1day-date").attr("required", true)
+                    $(".1day-date").attr("required", true);
                     /* add required to weeks inputs */
-                    $(".week1-input").removeAttr("required",true)
-                    $(".week2-input").removeAttr("required",true)
-                    $(".week3-input").removeAttr("required",true)
-                    $(".week4-input").removeAttr("required",true)
+                    $(".week1-input").removeAttr("required", true);
+                    $(".week2-input").removeAttr("required", true);
+                    $(".week3-input").removeAttr("required", true);
+                    $(".week4-input").removeAttr("required", true);
                 }
                 $(".pickupsDropdown").change();
             });
@@ -849,13 +871,12 @@ export default {
                 this.sumPackageTotal();
             });
 
- $("input[type=radio][name=add_household]").change(event => {
+            $("input[type=radio][name=add_household]").change(event => {
                 let selectedValue = event.target.value;
                 this.ishouseholdselected =
                     selectedValue == "yes" ? true : false;
                 this.sumPackageTotal();
             });
-
 
             $(".checkbox").click(() => {
                 this.sumPackageTotal();
@@ -939,16 +960,15 @@ export default {
         setDate(date) {
             this.selectedDate1 = this.formatDate(date);
         },
-        formatDate(date){
+        formatDate(date) {
             console.log(date);
-            let dateArray = date.split('-')
-            let year =dateArray[0]
-            let month =dateArray[1]
-            let day =dateArray[2]
-            let formatedDate = `${month}/${day}/${year}`
-            return formatedDate
+            let dateArray = date.split("-");
+            let year = dateArray[0];
+            let month = dateArray[1];
+            let day = dateArray[2];
+            let formatedDate = `${month}/${day}/${year}`;
+            return formatedDate;
             // console.log(`${month}/${day}/${year}`);
-
         },
         clearPackageName() {
             this.name = "";
@@ -971,7 +991,7 @@ export default {
                 localStorage.getItem("createdPackage")
             );
 
-window.location.href = window.location.href
+            window.location.href = window.location.href;
             // axios({
             //     url: selectedURL,
             //     method: "POST",
@@ -1124,9 +1144,9 @@ window.location.href = window.location.href
                 }
 
                 console.log("percentage: ", percentage);
-                let percentageValue = packagePrice * percentage
+                let percentageValue = packagePrice * percentage;
                 console.log("percentageValue: ", percentageValue);
-                packagePrice += parseFloat(percentageValue) 
+                packagePrice += parseFloat(percentageValue);
 
                 console.log("packagePrice Final: ", packagePrice);
                 $(".package-price").val(packagePrice);

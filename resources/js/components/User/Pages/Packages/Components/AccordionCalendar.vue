@@ -19,14 +19,14 @@
                         {{ selectedDate1 ? "Pickup 1: " : "" }}
                     </span>
                     <span class="date black"
-                        >{{ selectedDate1 }}
+                        >{{ formatDate(selectedDate1) }}
                     </span>
 
                     <span class="ml-4 mr-1" style="font-size: 14px">
                         {{ selectedDate2 ? "Pickup 2: " : "" }}
                     </span>
                     <span class="date black"
-                        >{{ selectedDate2 ? selectedDate2 : '' }}
+                        >{{ selectedDate2 ? formatDate(selectedDate2) : '' }}
                     </span>
                         
 
@@ -58,14 +58,14 @@
                         {{ selectedDate3 ? "Pickup 1: " : "" }}
                     </span>
                     <span class="date black"
-                        >{{ selectedDate3 }}
+                        >{{ formatDate(selectedDate3) }}
                     </span>
 
                     <span class="ml-4 mr-1" style="font-size: 14px">
                         {{ selectedDate4 ? "Pickup 2: " : "" }}
                     </span>
                     <span class="date black"
-                        >{{ selectedDate4 ? selectedDate4 : '' }}
+                        >{{ selectedDate4 ? formatDate(selectedDate4) : '' }}
                     </span>
                 </p>
                 <input
@@ -96,14 +96,14 @@
                         {{ selectedDate5 ? "Pickup 1: " : "" }}
                     </span>
                     <span class="date black"
-                        >{{ selectedDate5 }}
+                        >{{ formatDate(selectedDate5) }}
                     </span>
 
                     <span class="ml-4 mr-1" style="font-size: 14px">
                         {{ selectedDate6 ? "Pickup 2: " : "" }}
                     </span>
                     <span class="date black"
-                        >{{ selectedDate6 ? selectedDate6 : '' }}
+                        >{{ selectedDate6 ? formatDate(selectedDate6) : '' }}
                     </span>
                 </p>
                 <input
@@ -133,14 +133,14 @@
                         {{ selectedDate7 ? "Pickup 1: " : "" }}
                     </span>
                     <span class="date black"
-                        >{{ selectedDate7 }}
+                        >{{ formatDate(selectedDate7) }}
                     </span>
 
                     <span class="ml-4 mr-1" style="font-size: 14px">
                         {{ selectedDate8 ? "Pickup 2: " : "" }}
                     </span>
                     <span class="date black"
-                        >{{ selectedDate8 ? selectedDate8 : '' }}
+                        >{{ selectedDate8 ? formatDate(selectedDate8) : '' }}
                     </span>
                 </p>
                 <input
@@ -600,6 +600,20 @@ export default {
         },
         setDate8(date) {
             this.selectedDate8 = date;
+        },
+        formatDate(date){
+            console.log(date);
+            if(date != ""){
+
+                let dateArray = date.split('-')
+            let year =dateArray[0]
+            let month =dateArray[1]
+            let day =dateArray[2]
+            let formatedDate = `${month}/${day}/${year}`
+            return formatedDate
+            }
+            // console.log(`${month}/${day}/${year}`);
+
         },
         hideAllCalendars() {
             this.showweek1pickup2calendar = false;
