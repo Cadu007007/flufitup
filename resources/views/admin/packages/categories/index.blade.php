@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 {{-- {{ dd($categoryScents ) }} --}}
+{{-- {{ dd($categoryFreshener ) }} --}}
 {{-- {{ dd($categoryFabrics ) }} --}}
 {{-- {{ dd($categoryDryer ) }} --}}
 {{-- {{ dd($categoryDetergents ) }} --}}
@@ -14,6 +15,7 @@ date="{{Carbon\Carbon::now()->format('D, d F')}}"
 :dryercategories="{{ $categoryDryer }}"
 :fabriccategories="{{ $categoryFabrics }}"
 :scentcategories="{{ $categoryScents}}"
+:freshenercategories="{{ $categoryFreshener}}"
 
 addformroutedetergents="{{ route('admin.packages.category.detergent.store') }}"
 editformroutedetergents="{{ route('admin.packages.category.detergent.update','category_id') }}"
@@ -32,6 +34,12 @@ deleteformroutedryer="{{ route('admin.packages.category.dryer.delete','category_
 addformroutescent="{{ route('admin.packages.category.scent.store') }}"
 editformroutescent="{{ route('admin.packages.category.scent.update','category_id') }}"
 deleteformroutescent="{{ route('admin.packages.category.scent.delete','category_id') }}"
+
+
+
+addformroutefreshener="{{ route('admin.packages.category.freshener.store') }}"
+editformroutefreshener="{{ route('admin.packages.category.freshener.update','category_id') }}"
+deleteformroutefreshener="{{ route('admin.packages.category.freshener.delete','category_id') }}"
 
 
 />

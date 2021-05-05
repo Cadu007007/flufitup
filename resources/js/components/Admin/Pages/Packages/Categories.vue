@@ -44,6 +44,7 @@
                                 <option value="fabric">Fabric Softener</option>
                                 <option value="dryer">Dryer Sheet</option>
                                 <option value="scent">Scent Booster</option>
+                                <option value="freshener">Freshener</option>
                             </select>
                         </div>
                     </div>
@@ -95,6 +96,8 @@
                                 <option value="fabric">Fabric Softener</option>
                                 <option value="dryer">Dryer Sheet</option>
                                 <option value="scent">Scent Booster</option>
+                                <option value="freshener">Freshener</option>
+
                             </select>
                         </div>
                     </div>
@@ -391,6 +394,74 @@
                     </div>
                 </div>
             </div>
+            <!-- Fresheners  -->
+            <div
+                class="seperator"
+                v-if="loadedfreshenerCategories.length > 0"
+            ></div>
+            <div class="column" v-if="loadedfreshenerCategories.length > 0">
+                <div class="page-header">
+                    <p class="title" style="margin: 5px 0">
+                        Fresheners Categories
+                    </p>
+                </div>
+
+                <div class="categories-container">
+                    <div
+                        class="category-container"
+                        v-for="category in loadedfreshenerCategories"
+                        :key="category.id"
+                    >
+                        <p class="category-title">
+                            {{ category.name }}
+                        </p>
+                        <p class="d-none">
+                            {{ format(category.type) }}
+                        </p>
+                        <div
+                            class="d-flex flex-row justify-content-center my-2 flex-wrap"
+                            style="width: 620px;"
+                        >
+                            <button
+                                class="button edit"
+                                @click="editCategory(category)"
+                            >
+                                Edit
+                            </button>
+                            <form
+                                action=""
+                                class="delete-form column"
+                                method="POST"
+                            >
+                                <input
+                                    type="hidden"
+                                    :value="csrf"
+                                    name="_token"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    class="categoryId"
+                                    :value="category.id"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="type"
+                                    class="categoryType"
+                                    :value="category.type"
+                                />
+                                <button
+                                    class="button delete"
+                                    type="button"
+                                    @click="deleteItem($event)"
+                                >
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -425,6 +496,7 @@ export default {
             loadeddryerCategories: this.dryercategories,
             loadedfabricCategories: this.fabriccategories,
             loadedscentCategories: this.scentcategories,
+            loadedfreshenerCategories: this.freshenercategories,
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute("content")
@@ -447,10 +519,14 @@ export default {
         "addformroutescent",
         "editformroutescent",
         "deleteformroutescent",
+        "addformroutefreshener",
+        "editformroutefreshener",
+        "deleteformroutefreshener",
         "detergetscategories",
         "fabriccategories",
         "dryercategories",
-        "scentcategories"
+        "scentcategories",
+        "freshenercategories",
     ],
     methods: {
         editCategory(Category) {
@@ -477,6 +553,11 @@ export default {
                     x => x.id == Category.id
                 );
                 selectorValue = "scent";
+            } else if (Category.type == "freshener") {
+                selectedCategory = this.loadedfreshenerCategories.find(
+                    x => x.id == Category.id
+                );
+                selectorValue = "freshener";
             }
 
             this.editCategoryName = selectedCategory.name;
@@ -518,6 +599,7 @@ export default {
             let fabricURL = this.addformroutefabric;
             let dryerURL = this.addformroutedryer;
             let scentURL = this.addformroutescent;
+            let freshenerURL = this.addformroutefreshener;
 
             let detergentsArray =
                 this.loadeddetergentCategories.length > 0
@@ -535,6 +617,10 @@ export default {
                 this.loadedscentCategories.length > 0
                     ? this.loadedscentCategories
                     : [];
+            let freshenersArray =
+                this.loadedfreshenerCategories.length > 0
+                    ? this.loadedfreshenerCategories
+                    : [];
 
             let selectedType = $(".addCategoryType").val();
             if (selectedType == "detergent") {
@@ -548,6 +634,9 @@ export default {
                 //console.log("dryer");
             } else if (selectedType == "scent") {
                 selectedURL = scentURL;
+                //console.log("scent");
+            } else if (selectedType == "freshener") {
+                selectedURL = freshenerURL;
                 //console.log("scent");
             } else {
                 //console.log("Not In IF");
@@ -595,6 +684,14 @@ export default {
                             });
                             //console.log("scent");
                         }
+                         else if (selectedType == "freshener") {
+                            freshenersArray.push({
+                                id: response.data.data.id,
+                                name: response.data.data.name,
+                                type: selectedType
+                            });
+                            //console.log("scent");
+                        }
 
                         //console.log("categories: ", this.loadedCategories);
                     }
@@ -610,6 +707,7 @@ export default {
             this.loadedfabricCategories = fabricsArray;
             this.loadeddryerCategories = dryersArray;
             this.loadedscentCategories = scentsArray;
+            this.loadedfreshenerCategories = freshenersArray;
         },
         submitEditForm(event) {
             event.preventDefault();
@@ -631,6 +729,12 @@ export default {
                 this.loadedscentCategories.length > 0
                     ? this.loadedscentCategories
                     : [];
+            let freshenersArray =
+                this.loadedfreshenerCategories.length > 0
+                    ? this.loadedfreshenerCategories
+                    : [];
+
+console.log("freshenersArray: ", freshenersArray);
 
             //console.log("formValues: ", formValues);
             let selectedURL;
@@ -650,6 +754,11 @@ export default {
                 "category_id",
                 this.editCategoryId
             );
+            
+            let freshenerURL = this.editformroutefreshener.replace(
+                "category_id",
+                this.editCategoryId
+            );
 
             let selectedType = $(event.target)
                 .find(".editCategoryType")
@@ -665,6 +774,9 @@ export default {
                 //console.log("dryer");
             } else if (selectedType == "scent") {
                 selectedURL = scentURL;
+                //console.log("scent");
+            } else if (selectedType == "freshener") {
+                selectedURL = freshenerURL;
                 //console.log("scent");
             } else {
                 //console.log("Not In IF");
@@ -716,6 +828,14 @@ export default {
                                 x => x.id == response.data.data.id
                             ).type = selectedType;
                             //console.log("scent");
+                        } else if (selectedType == "freshener") {
+                            freshenersArray.find(
+                                x => x.id == response.data.data.id
+                            ).name = response.data.data.name;
+                            freshenersArray.find(
+                                x => x.id == response.data.data.id
+                            ).type = selectedType;
+                            //console.log("scent");
                         }
 
                         //console.log("EDIT SUCCESS");
@@ -734,6 +854,7 @@ export default {
             this.loadedfabricCategories = fabricsArray;
             this.loadeddryerCategories = dryersArray;
             this.loadedscentCategories = scentsArray;
+            this.loadedfreshenerCategories = freshenersArray;
         },
         deleteItem(event) {
             let deleteForm = $(event.target).parent();
@@ -744,6 +865,7 @@ export default {
             let fabricsArray = this.loadedfabricCategories;
             let dryersArray = this.loadeddryerCategories;
             let scentsArray = this.loadedscentCategories;
+            let freshenersArray = this.loadedfreshenerCategories;
             let selectedArray;
 
             let categoryId = $(deleteForm)
@@ -769,6 +891,10 @@ export default {
                     "category_id",
                     categoryId
                 );
+                let freshenerURL = this.deleteformroutefreshener.replace(
+                    "category_id",
+                    categoryId
+                );
 
                 selectedType = $(deleteForm)
                     .find(".categoryType")
@@ -790,6 +916,10 @@ export default {
                 } else if (selectedType == "scent") {
                     selectedURL = scentURL;
                     selectedArray = scentsArray;
+                    //console.log("scent");
+                } else if (selectedType == "freshener") {
+                    selectedURL = freshenerURL;
+                    selectedArray = freshenersArray;
                     //console.log("scent");
                 } else {
                     //console.log("Not In IF");
@@ -825,6 +955,8 @@ export default {
                             this.loadeddryerCategories = selectedArray;
                         } else if (selectedType == "scent") {
                             this.loadedscentCategories = selectedArray;
+                        } else if (selectedType == "freshener") {
+                            this.loadedfreshenerCategories = selectedArray;
                         }
                     });
             }

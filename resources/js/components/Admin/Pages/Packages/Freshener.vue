@@ -115,7 +115,7 @@
                 :key="item.id"
                 :categories="categories"
                 :name="item.name"
-                :types="item.scents"
+                :types="item.fresheners"
                 :itemid="item.id"
                 :editformroute="editformroute"
                 :deleteformroute="deleteformroute"
@@ -207,7 +207,7 @@ export default {
             formDateObject.append("_token", this.csrf);
             formDateObject.append("name", this.itemName);
             formDateObject.append("price", this.itemPrice);
-            formDateObject.append("category_scents_id", $("#categoryId").val());
+            formDateObject.append("category_fresheners_id", $("#categoryId").val());
             formDateObject.append("image", uploadedImage);
             let loadedItems = this.loadedItems;
             axios({
@@ -225,7 +225,7 @@ export default {
                     let selectedCategory = $("#categoryId").val();
                     loadedItems
                         .find(x => (x.id = selectedCategory))
-                        .scents.push({
+                        .fresheners.push({
                             id: returnedObject.id,
                             name: returnedObject.name,
                             price: returnedObject.price,

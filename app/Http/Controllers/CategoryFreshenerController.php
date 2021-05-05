@@ -39,7 +39,7 @@ class CategoryFreshenerController extends Controller
     }
     public function delete(CategoryFreshener $categoryFreshener)
     {
-        $categoryFreshener->scents()->delete();
+        $categoryFreshener->fresheners()->delete(); // salah .. was scents
         $categoryFreshener->delete();
         return response()->json(['success' => true, 'message' => 'Category Freshener Deleted Successfully']);
     }

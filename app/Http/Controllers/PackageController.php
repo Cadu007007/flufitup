@@ -8,6 +8,7 @@ use App\Models\CategoryDetergent;
 use App\Models\CategoryDryer;
 use App\Models\CategoryFabric;
 use App\Models\CategoryScent;
+use App\Models\CategoryFreshener;
 use App\Models\Detergent;
 use App\Models\DryClean;
 use App\Models\Dryer;
@@ -33,8 +34,12 @@ class PackageController extends Controller
         $categoryScents = CategoryScent::all()->each(function ($cat) {
             $cat->type = 'scent';
         });
+        
+        $categoryFreshener = CategoryFreshener::all()->each(function ($cat) {
+            $cat->type = 'freshener';
+        });
 
-        return view('admin.packages.categories.index', ['active' => 'categories', 'categoryDetergents' => $categoryDetergents, 'categoryDryer' => $categoryDryer, 'categoryFabrics' => $categoryFabrics, 'categoryScents' => $categoryScents]);
+        return view('admin.packages.categories.index', ['active' => 'categories', 'categoryDetergents' => $categoryDetergents, 'categoryDryer' => $categoryDryer, 'categoryFabrics' => $categoryFabrics, 'categoryScents' => $categoryScents, 'categoryFreshener' => $categoryFreshener]);
 
     }
 

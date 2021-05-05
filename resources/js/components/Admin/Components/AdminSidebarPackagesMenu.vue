@@ -59,8 +59,8 @@
             <AdminSidebarItem :class=" active == 'freshener' ? 'active' : '' " 
             class="AdminSidebarSubItem" 
             :href=routetofreshener
-            title="Frehener"
-            itemtooltip="Frehener"
+            title="freshener"
+            itemtooltip="freshener"
             icon='/images/admin/icons/detergents.svg' 
             iconActive='/images/admin/icons/detergents-active.svg'
             />
@@ -75,7 +75,7 @@ export default {
     mounted() {
         if(this.active == 'packages' || this.active == 'dry_clean'
           || this.active == 'household_items' || this.active == 'detergents'
-          || this.active == 'fabric' || this.active == 'dryer' || this.active == 'scent' 
+          || this.active == 'fabric' || this.active == 'dryer' || this.active == 'scent' || this.active == 'freshener' 
          ){
             this.showitems = true
             // show packages active icon
