@@ -33,4 +33,9 @@ class CityController extends Controller
         return response()->json(['success' => true, 'message' => 'City Deleted Successfully']);
 
     }
+
+//     public function searchCity()
+    //     {
+    //;
+    //     }
 }

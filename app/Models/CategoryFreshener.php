@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryFreshener extends Model
 {
     use HasFactory;
-    protected $table = 'category_freshers';
+    protected $table = 'category_fresheners';
 
     protected $fillable = ['name'];
 
