@@ -4,12 +4,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryDetergentController;
 use App\Http\Controllers\CategoryDryerController;
 use App\Http\Controllers\CategoryFabricController;
+use App\Http\Controllers\CategoryFreshenerController;
 use App\Http\Controllers\CategoryScentController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DetergentController;
 use App\Http\Controllers\DryCleanController;
 use App\Http\Controllers\DryerController;
 use App\Http\Controllers\FabricController;
+use App\Http\Controllers\FreshenerController;
 use App\Http\Controllers\HouseholdController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ScentController;
@@ -91,6 +93,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::delete('delete/{categoryScent}', [CategoryScentController::class, 'delete'])->name('delete');
 
         });
+        Route::group(['prefix' => 'category/freshener', 'as' => 'category.freshener.'], function () {
+            Route::get('', [CategoryFreshenerController::class, 'index'])->name('index');
+            Route::post('store', [CategoryFreshenerController::class, 'store'])->name('store');
+            Route::put('update/{categoryScent}', [CategoryFreshenerController::class, 'update'])->name('update');
+            Route::delete('delete/{categoryScent}', [CategoryFreshenerController::class, 'delete'])->name('delete');
+
+        });
         Route::group(['prefix' => 'detergents', 'as' => 'detergents.'], function () {
             Route::get('/', [DetergentController::class, 'index'])->name('index');
             Route::post('store', [DetergentController::class, 'store'])->name('store');
@@ -121,6 +130,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::post('store', [ScentController::class, 'store'])->name('store');
             Route::put('update/{scent}', [ScentController::class, 'update'])->name('update');
             Route::delete('delete/{scent}', [ScentController::class, 'delete'])->name('delete');
+
+        });
+        Route::group(['prefix' => 'fresheners', 'as' => 'fresheners.'], function () {
+            Route::get('', [FreshenerController::class, 'index'])->name('index');
+            Route::post('store', [FreshenerController::class, 'store'])->name('store');
+            Route::put('update/{freshener}', [FreshenerController::class, 'update'])->name('update');
+            Route::delete('delete/{freshener}', [FreshenerController::class, 'delete'])->name('delete');
 
         });
     });
