@@ -218,6 +218,7 @@ export default {
                     category_dryers_id: categoryidvalue,
                     category_fabrics_id: categoryidvalue,
                     category_scents_id: categoryidvalue,
+                    category_fresheners_id: categoryidvalue,
                     image: $(event.target).find(".type-image-file")[0].files[0]
                 },
                 enctype: "multipart/form-data"

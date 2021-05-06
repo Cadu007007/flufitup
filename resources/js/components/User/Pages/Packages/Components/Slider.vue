@@ -87,6 +87,16 @@ export default {
                         }
                     }
                     break;
+                    case "freshener":
+                    for (let i = 0; i < this.typesitems[0].length; i++) {
+                        if (
+                            this.typesitems[0][i].category_fresheners_id ==
+                            typeId
+                        ) {
+                            filteredItemsArray.push(this.typesitems[0][i]);
+                        }
+                    }
+                    break;
             }
 
             // for (let i = 0; i < this.typesitems[0].length; i++) {
