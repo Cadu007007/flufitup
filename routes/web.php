@@ -32,6 +32,9 @@ use Illuminate\Support\Facades\Route;
  */
 // Route::get('test/repo', [DryCleanController::class, 'index']);
 
+Route::group(['prefix' => ''], function () {
+    Route::get('city/search', [CityController::class, 'searchCity'])->name('search.city');
+});
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     // Route::post('store', [DetergentController::class, 'store'])->name('detergent.store');

@@ -11,15 +11,19 @@ class CityController extends Controller
     public function index()
     {
         $cities = City::all();
+        $cities->each(function ($city) {
+            $city->zipcodes = $city->zips;
+        });
         return view('admin.cities.index', ['active' => 'cities', 'cities' => $cities]);
 
     }
     public function store(CityRequest $request)
     {
 
-        return response()->json(['success' => true, 'message' => $request->zips]);
+        // return response()->json(['success' => true, 'message' => $request->zips]);
         $city = City::create($request->only(['name']));
-        foreach ($request->zips as $zip) {
+        $zips = explode(',', $request->zips);
+        foreach ($zips as $zip) {
 
             Zip::create(['code' => $zip, 'city_id' => $city->id]);
         }
@@ -29,20 +33,36 @@ class CityController extends Controller
     public function update(CityRequest $request, $id)
     {
         $city = City::find($id);
+
         $city->update($request->validated());
+        $city->zips()->delete();
+        $zips = explode(',', $request->zips);
+        foreach ($zips as $zip) {
+
+            Zip::create(['code' => $zip, 'city_id' => $city->id]);
+        }
+        $city->zipcodes = $city->zips;
         return response()->json(['success' => true, 'data' => $city, 'message' => 'City Updated Successfully']);
 
     }
     public function delete($id)
     {
         $city = City::find($id);
+        $city->zips()->delete();
         $city->delete();
         return response()->json(['success' => true, 'message' => 'City Deleted Successfully']);
 
     }
 
-//     public function searchCity()
-    //     {
-    //;
-    //     }
+    public function searchCity()
+    {
+        $zips = Zip::where('code', request()->get('zip'))->get();
+
+        if (count($zips)) {
+            return response()->json(['success' => true, 'message' => 'This Zip Code Is Supported By Us.']);
+
+        }
+        return response()->json(['success' => false, 'message' => 'Sorry We Not Support Your Area , Wait Us Soon !']);
+
+    }
 }
