@@ -9,7 +9,7 @@ date="{{Carbon\Carbon::now()->format('m-d-Y')}}"
 :packagebiweeklylist="{{ $packages->bi_weekly}}"
 :packagesmonthlylist="{{ $packages->monthly}}"
 packageshowroute="{{ route('package.show', 'package_id') }}"
-packagecreateroute="{{ route('package.create') }}"
+packagecreateroute="{{ route('user.packages.create') }}"
 oldordersroute="{{ route('old_orders') }}"
 />
 
