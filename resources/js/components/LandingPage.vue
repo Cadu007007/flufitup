@@ -78,11 +78,11 @@
 
         </div>
 
-                <p class="mt-2 alert alert-danger w-75 mx-auto" id="searchFailMessage" v-if="searchstatus == 0">
+                <p class="mt-2 alert alert-danger w-75 mx-auto text-center" id="searchFailMessage" v-show="searchstatus == 0">
                     Faild
                 </p>
 
-                <p class="mt-2 alert alert-success w-75 mx-auto" id="searchSuccessMessage" v-if="searchstatus == 1">
+                <p class="mt-2 alert alert-success w-75 mx-auto text-center" id="searchSuccessMessage" v-show="searchstatus == 1">
                     Success
                 </p>
 
@@ -659,16 +659,24 @@ export default {
         searchCity(){
             if (this.citycode != ""){
             /* search for the city */
-            let formData={}
-            formData.zip = this.citycode
+            let formData= this.citycode
 
+console.log("formData: ", formData);
             let selectedURL = this.searchcityurl
             axios({
                 url: selectedURL,
-                method: "POST",
+                method: "GET",
                 data: formData
             }).then(response => {
-                console.log(response);
+                console.log(response.data);
+                if (response.data.success){
+                    this.searchstatus = 1
+                    $("#searchSuccessMessage").text(response.data.message)
+
+                } else {
+                    this.searchstatus = 0
+                    $("#searchFailMessage").text(response.data.message)
+                }
             });
 
                 // search.city 
