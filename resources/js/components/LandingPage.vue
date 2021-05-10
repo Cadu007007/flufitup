@@ -661,12 +661,14 @@ export default {
             /* search for the city */
             let formData= this.citycode
 
-console.log("formData: ", formData);
+            console.log("formData: ", formData);
             let selectedURL = this.searchcityurl
             axios({
                 url: selectedURL,
                 method: "GET",
-                data: formData
+                data: {
+                zip: formData
+            }
             }).then(response => {
                 console.log(response.data);
                 if (response.data.success){
