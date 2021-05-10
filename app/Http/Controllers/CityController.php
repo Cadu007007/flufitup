@@ -57,11 +57,12 @@ class CityController extends Controller
     public function searchCity()
     {
         $zips = Zip::where('code', request()->get('zip'))->get();
-        if (!$zip) {
-            return response()->json(['success' => true, 'message' => 'City Deleted Successfully']);
+
+        if (count($zips)) {
+            return response()->json(['success' => true, 'message' => 'This Zip Code Is Supported By Us']);
 
         }
-        return response()->json(['success' => true, 'message' => 'City Deleted Successfully']);
+        return response()->json(['success' => true, 'message' => 'Sorry We Not Support Your Area , Wait Us Soon !']);
 
     }
 }
