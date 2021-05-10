@@ -80,15 +80,18 @@
                             />
 
                             <input
-                                v-for="zipcode in codes" :key="zipcode"
+                                v-for="zipcode in codes"
+                                :key="zipcode"
                                 type="text"
-                                class="city-name-input addCityName mt-1"
+                                class="city-name-input addCityName mt-1 zipcodes-add-input"
                                 name="zips[]"
                                 placeholder="Zip Code"
                                 required
                             />
-                            <p class="text-center mt-3" @click="codes++">Add a ZIP code</p>
-                            
+                            <p class="text-center mt-3" @click="codes++">
+                                Add a ZIP code
+                            </p>
+
                             <button class="save-button mx-auto" type="submit">
                                 Add City
                             </button>
@@ -128,18 +131,31 @@
                                 v-model="editCityId"
                             />
 
-
                             <input
-                                v-for="zipcode in loadedcodes" :key="zipcode"
+                                v-for="zipcode in loadedcodes"
+                                :key="zipcode"
                                 type="text"
-                                class="city-name-input addCityName mt-1"
+                                class="city-name-input addCityName mt-1 zipcodes-edit-input"
                                 name="zips[]"
                                 :value="zipcode.code"
                                 placeholder="Zip Code"
                                 required
                             />
-                            <p class="text-center mt-3" @click="loadedcodes++">Add a ZIP code</p>
-                            
+
+
+                            <input
+                                v-for="zipcode in editcodes"
+                                :key="zipcode"
+                                type="text"
+                                class="city-name-input addCityName mt-1 zipcodes-edit-input"
+                                name="zips[]"
+                                placeholder="Zip Code"
+                                required
+                            />
+
+                            <p class="text-center mt-3" @click="editcodes++">
+                                Add a ZIP code
+                            </p>
 
                             <div class="button-container" style="width: 300px">
                                 <button
@@ -207,9 +223,10 @@ export default {
             editCityName: "",
             editCityId: 0,
             codes: 0,
+            editcodes: 0,
             cityname: "",
             loadedcities: this.cities,
-            searchCityName: '',
+            searchCityName: "",
             loadedcodes: [],
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
@@ -229,7 +246,18 @@ export default {
         addCitySubmit(event) {
             event.preventDefault();
             var formValues = $(".add-form").serialize();
+
+            /* get zips */
+            let zips = [];
+            $(".zipcodes-add-input").each(function(index, item) {
+                zips.push($(item).val());
+            });
+
+            formValues += `&zips=${zips.toString()}`;
+
             console.log("formValues: ", formValues);
+
+            console.log("zips: ", zips);
             axios({
                 url: this.addcityroute,
                 method: "POST",
@@ -251,18 +279,26 @@ export default {
             console.log("selectedCity: ", selectedCity);
             this.editCityName = selectedCity.name;
             this.editCityId = selectedCity.id;
-            this.loadedcodes = selectedCity.zipcodes || []
+            this.loadedcodes = selectedCity.zipcodes || [];
         },
 
         updateCitySubmit(event) {
             event.preventDefault();
             var formValues = $(event.target).serialize();
-            console.log("formValues: ", formValues);
             let selectedURL = this.editcityroute.replace(
                 "city_id",
                 this.editCityId
             );
             console.log("selectedURL: ", selectedURL);
+
+            let zips = [];
+            $(".zipcodes-edit-input").each(function(index, item) {
+                zips.push($(item).val());
+            });
+
+            formValues += `&zips=${zips.toString()}`;
+            console.log("formValues: ", formValues);
+
             axios({
                 url: selectedURL,
                 method: "PUT",
