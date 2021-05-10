@@ -36,7 +36,6 @@
                             :id="city.id"
                             v-for="city in loadedcities"
                             :key="city.id"
-                            @click="loadActiveCityUsers(city.id)"
                         >
                             <p class="city-item-name" style="margin-left: 20px">
                                 {{ city.name }}
@@ -79,6 +78,17 @@
                                 placeholder="City Name"
                                 required
                             />
+
+                            <input
+                                v-for="zipcode in codes" :key="zipcode"
+                                type="text"
+                                class="city-name-input addCityName mt-1"
+                                name="zip[]"
+                                placeholder="Zip Code"
+                                required
+                            />
+                            <p class="text-center mt-3" @click="codes++">Add a ZIP code</p>
+                            
                             <button class="save-button mx-auto" type="submit">
                                 Add City
                             </button>
@@ -117,6 +127,19 @@
                                 name="id"
                                 v-model="editCityId"
                             />
+
+
+                            <input
+                                v-for="zipcode in loadedcodes" :key="zipcode"
+                                type="text"
+                                class="city-name-input addCityName mt-1"
+                                name="zip[]"
+                                :value="zipcode.code"
+                                placeholder="Zip Code"
+                                required
+                            />
+                            <p class="text-center mt-3" @click="loadedcodes++">Add a ZIP code</p>
+                            
 
                             <div class="button-container" style="width: 300px">
                                 <button
@@ -183,8 +206,11 @@ export default {
         return {
             editCityName: "",
             editCityId: 0,
+            codes: 0,
             cityname: "",
             loadedcities: this.cities,
+            searchCityName: '',
+            loadedcodes: [],
             csrf: document
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute("content")
@@ -225,6 +251,7 @@ export default {
             console.log("selectedCity: ", selectedCity);
             this.editCityName = selectedCity.name;
             this.editCityId = selectedCity.id;
+            this.loadedcodes = selectedCity.zipcodes || []
         },
 
         updateCitySubmit(event) {

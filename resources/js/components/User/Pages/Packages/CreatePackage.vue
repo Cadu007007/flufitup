@@ -441,11 +441,11 @@
                                 <input
                                     class="radio"
                                     type="radio"
-                                    name="add_fabric"
+                                    name="add_freshener"
                                     value="yes"
                                     id=""
                                 />
-                                <label class="option-label" for="add_fabric"
+                                <label class="option-label" for="add_freshener"
                                     >Yes</label
                                 >
                             </div>
@@ -454,21 +454,21 @@
                                     class="radio"
                                     type="radio"
                                     checked
-                                    name="add_fabric"
+                                    name="add_freshener"
                                     value="no"
                                     id=""
                                 />
-                                <label class="option-label" for="add_fabric"
+                                <label class="option-label" for="add_freshener"
                                     >No</label
                                 >
                             </div>
                         </div>
                     </div>
 
-                    <div
+                    <!-- <div
                         class=""
                         style="margin-bottom: 20px"
-                        v-show="showfabric"
+                        v-show="showfreshener"
                     >
                         <p class="title" style="margin-bottom: 10px">
                             Fabric Fresheners
@@ -483,29 +483,30 @@
                             <option value="2">Standard Line</option>
                             <option value="3">Special Line</option>
                         </select>
-                    </div>
-                    <!-- <div class="slider-container detergentSlider">
+                    </div> -->
+                    <div class="slider-container freshenerSlider hidden-element">
                         <div
                             class="title font-weight-bold my-4 text-center text-primary"
                         >
-                            Select your preferred GarmentFresheners
+                            Select your preferred Garment Fresheners
                         </div>
                         <Slider
-                            @itemclicked="detergentitemclicked"
-                            @slidechanged="detergentslidechanged"
+                            @itemclicked="fresheneritemclicked"
+                            @slidechanged="freshenerslidechanged"
                             :perpage="3"
-                            :types="detergentstypes"
+                            :types="freshenertypes"
                             :typesitems="
-                                this.detergentstypes.map(x => x.detergents)
+                                this.freshenertypes.map(x => x.fresheners)
                             "
                         />
+                        
 
                         <input
                             type="hidden"
                             class="hidden-item"
-                            id="selectedDetergents"
+                            id="selectedFreshener"
                         />
-                    </div> -->
+                    </div>
 
                     <div class="drycleanContainer">
                         <div class="question-container">
@@ -854,9 +855,17 @@ export default {
 
                 this.sumPackageTotal();
             });
-            $("input[type=radio][name=add_fabric]").change(event => {
+            $("input[type=radio][name=add_freshener]").change(event => {
                 let selectedValue = event.target.value;
-                this.showfabric = selectedValue == "yes" ? true : false;
+                this.showfreshener = selectedValue == "yes" ? true : false;
+                if(this.showfreshener){
+
+                    $(".freshenerSlider").removeClass('hidden-element')
+                } else {
+                    $(".freshenerSlider").addClass('hidden-element')
+                    /* remove selected */
+                    $(".freshenerSlider .item-container").removeClass('selected-item')
+                }
                 this.sumPackageTotal();
             });
             $("input[type=radio][name=add_dry_clean]").change(event => {
@@ -898,6 +907,7 @@ export default {
         "storepackageroute",
         "detergentstypes",
         "fabrictypes",
+        "freshenertypes",
         "drycleanitems",
         "householditems"
     ],
@@ -917,7 +927,7 @@ export default {
             totalbags: 1,
             isdrycleanselected: false,
             ishouseholdselected: false,
-            showfabric: false,
+            showfreshener: false,
             bagsprice: 0,
             selectedDate1: "",
             pickupdate: "",
@@ -1033,12 +1043,20 @@ export default {
             $("#selectedFabric").val(id);
             this.sumPackageTotal();
         },
+        fresheneritemclicked(id) {
+            $("#selectedFreshener").val(id);
+            this.sumPackageTotal();
+        },
         detergentslidechanged() {
             $("#selectedDetergents").val(null);
             this.sumPackageTotal();
         },
         fabricslidechanged() {
             $("#selectedFabric").val(null);
+            this.sumPackageTotal();
+        },
+        freshenerslidechanged() {
+            $("#selectedFreshener").val(null);
             this.sumPackageTotal();
         },
         natureChanged(radioElement) {},
@@ -1067,6 +1085,16 @@ export default {
 
                         packagePrice += parseFloat(itemPrice);
                         detergentsOrSoftenerCount++;
+                    }
+                });
+
+                $(".freshenerSlider .item-container").each((index, item) => {
+                    if ($(item).hasClass("selected-item")) {
+                        let itemPrice = $(item).data("price");
+                        console.log("Fresheners Item Price: ", itemPrice);
+
+                        packagePrice += parseFloat(itemPrice);
+                        // detergentsOrSoftenerCount++;
                     }
                 });
 
@@ -1368,6 +1396,18 @@ $black: #000000;
         background: $blue;
         border-radius: 35px;
         margin: 10px auto 25px;
+    }
+
+
+
+}
+
+.hidden-element{
+    opacity: 0;
+    height: 1px !important;
+    * {
+    height: 1px !important;
+
     }
 }
 .cd-body-wrapper {

@@ -5,6 +5,8 @@
 
     </div>
     {{-- {{dd($dry_clean_items)}} --}}
+    
+    {{-- {{ dd($freshener_types) }} --}}
     <div class="d-flex flex-column">
         <div class="w-100 px-4 mb-0" style="  background: #FAFAFA;">
             @if (session()->get('message') != null)
@@ -21,6 +23,7 @@
             <User-Create-Package title="Create Your Package" date="{{ Carbon\Carbon::now()->format('D, d F') }}"
                 storepackageroute="{{ route('admin.packages.store') }}" :detergentstypes="{{ $detergents_types }}"
                 :fabrictypes="{{ $fabric_types }}"
+                :freshenertypes="{{ $freshener_types }}"
                 :drycleanitems="{{ $dry_clean_items }}"
                 :householditems="{{ $household_items }}" />
         </div>

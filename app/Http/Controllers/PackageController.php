@@ -129,6 +129,11 @@ class PackageController extends Controller
             $cat->type = 'scent';
             $cat->scents = $cat->scents;
         });
+        
+        $categoryfresheners = CategoryFreshener::all()->each(function ($cat) {
+            $cat->type = 'freshener';
+            $cat->fresheners = $cat->fresheners;
+        });
 
 //         active' => 'packages', 'options' => $options,
         // //         'detergents_types' => $detergents_types,
@@ -156,7 +161,7 @@ class PackageController extends Controller
         // $household_items->push(['id' => 2, 'title' => 'Household 2', 'price' => 6, 'name' => 'house_2']);
 
         return view('user.packages.create', ['active' => 'packages', 'fabric_types' => $categoryFabrics,
-            'detergents_types' => $categoryDetergents, 'scents_types' => $categoryScents, 'dryer_sheet_types' => $categoryDryer, 'dry_clean_items' => $dry_clean_items, 'household_items' => $household_items]);
+            'detergents_types' => $categoryDetergents, 'scents_types' => $categoryScents,'freshener_types' => $categoryfresheners , 'dryer_sheet_types' => $categoryDryer,  'dry_clean_items' => $dry_clean_items, 'household_items' => $household_items]);
 
     }
 }
