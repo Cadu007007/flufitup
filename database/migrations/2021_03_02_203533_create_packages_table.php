@@ -29,6 +29,7 @@ class CreatePackagesTable extends Migration
             $table->foreignId('fabric_id')->on('fabrics')->nullable();
             $table->foreignId('scent_id')->on('scents')->nullable();
             $table->foreignId('dryer_id')->on('dryers')->nullable();
+            $table->foreignId('freshener_id')->on('fresheners')->nullable();
             $table->decimal('dry_clean_credit')->default(0);
             $table->decimal('house_hold_credit')->default(0);
             $table->decimal('added_value_service')->default(0);

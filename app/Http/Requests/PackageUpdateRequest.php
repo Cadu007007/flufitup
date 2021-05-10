@@ -40,6 +40,7 @@ class PackageUpdateRequest extends FormRequest
             'detergent_id' => ['required'],
             'laundry_softener' => ['required'],
             'fabric_id' => ['sometimes'],
+            'freshener_id' => ['sometimes'],
             'scent_id' => ['sometimes'],
             'dryer_id' => ['sometimes'],
             'dry_clean_credit' => ['sometimes'],

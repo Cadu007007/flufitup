@@ -24,7 +24,7 @@ class Package extends Model
         'dryer_option',
         'washing_option', 'detergent_id', 'laundry_softener', 'fabric_id', 'scent_id',
         'dryer_id', 'dry_clean_credit', 'house_hold_credit', 'added_value_service',
-        'reward_points', 'price_of_extra_pound',
+        'reward_points', 'price_of_extra_pound', 'freshener_id',
     ];
 
 }

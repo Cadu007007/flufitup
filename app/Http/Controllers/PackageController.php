@@ -7,12 +7,13 @@ use App\Http\Requests\PackageUpdateRequest;
 use App\Models\CategoryDetergent;
 use App\Models\CategoryDryer;
 use App\Models\CategoryFabric;
-use App\Models\CategoryScent;
 use App\Models\CategoryFreshener;
+use App\Models\CategoryScent;
 use App\Models\Detergent;
 use App\Models\DryClean;
 use App\Models\Dryer;
 use App\Models\Fabric;
+use App\Models\Freshener;
 use App\Models\Household;
 use App\Models\Package;
 use App\Models\Scent;
@@ -34,7 +35,7 @@ class PackageController extends Controller
         $categoryScents = CategoryScent::all()->each(function ($cat) {
             $cat->type = 'scent';
         });
-        
+
         $categoryFreshener = CategoryFreshener::all()->each(function ($cat) {
             $cat->type = 'freshener';
         });
@@ -50,9 +51,10 @@ class PackageController extends Controller
         $detergents = Detergent::all();
         $scents = Scent::all();
         $dryers = Dryer::all();
+        $fresheners = Freshener::all();
         // dd('dd');
         return view('admin.packages.create', ['active' => 'packages', 'fabrics' => $fabrics,
-            'detergents' => $detergents, 'scents' => $scents, 'dryers' => $dryers]);
+            'detergents' => $detergents, 'scents' => $scents, 'fresheners' => $fresheners, 'dryers' => $dryers]);
 
     }
     public function store(PackageRequest $request)
@@ -67,8 +69,9 @@ class PackageController extends Controller
         $detergents = Detergent::all();
         $scents = Scent::all();
         $dryers = Dryer::all();
+        $fresheners = Freshener::all();
         return view('admin.packages.edit', ['active' => 'packages', 'package' => $package, 'fabrics' => $fabrics,
-            'detergents' => $detergents, 'scents' => $scents, 'dryers' => $dryers]);
+            'detergents' => $detergents, 'fresheners' => $fresheners, 'scents' => $scents, 'dryers' => $dryers]);
 
     }
     public function update(PackageUpdateRequest $request, $package)
