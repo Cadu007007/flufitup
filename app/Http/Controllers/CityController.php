@@ -59,10 +59,10 @@ class CityController extends Controller
         $zips = Zip::where('code', request()->get('zip'))->get();
 
         if (count($zips)) {
-            return response()->json(['success' => true, 'message' => 'This Zip Code Is Supported By Us']);
+            return response()->json(['success' => true, 'message' => 'This Zip Code Is Supported By Us.']);
 
         }
-        return response()->json(['success' => true, 'message' => 'Sorry We Not Support Your Area , Wait Us Soon !']);
+        return response()->json(['success' => false, 'message' => 'Sorry We Not Support Your Area , Wait Us Soon !']);
 
     }
 }
