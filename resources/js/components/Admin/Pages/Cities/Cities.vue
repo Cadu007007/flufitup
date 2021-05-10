@@ -83,7 +83,7 @@
                                 v-for="zipcode in codes" :key="zipcode"
                                 type="text"
                                 class="city-name-input addCityName mt-1"
-                                name="zip[]"
+                                name="zips[]"
                                 placeholder="Zip Code"
                                 required
                             />
@@ -133,7 +133,7 @@
                                 v-for="zipcode in loadedcodes" :key="zipcode"
                                 type="text"
                                 class="city-name-input addCityName mt-1"
-                                name="zip[]"
+                                name="zips[]"
                                 :value="zipcode.code"
                                 placeholder="Zip Code"
                                 required
