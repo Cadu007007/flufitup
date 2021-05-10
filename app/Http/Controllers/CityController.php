@@ -41,19 +41,27 @@ class CityController extends Controller
 
             Zip::create(['code' => $zip, 'city_id' => $city->id]);
         }
+        $city->zipcodes = $city->zips;
         return response()->json(['success' => true, 'data' => $city, 'message' => 'City Updated Successfully']);
 
     }
     public function delete($id)
     {
         $city = City::find($id);
+        $city->zips()->delete();
         $city->delete();
         return response()->json(['success' => true, 'message' => 'City Deleted Successfully']);
 
     }
 
-//     public function searchCity()
-    //     {
-    //;
-    //     }
+    public function searchCity()
+    {
+        $zips = Zip::where('code', request()->get('zip'))->get();
+        if (!$zip) {
+            return response()->json(['success' => true, 'message' => 'City Deleted Successfully']);
+
+        }
+        return response()->json(['success' => true, 'message' => 'City Deleted Successfully']);
+
+    }
 }
