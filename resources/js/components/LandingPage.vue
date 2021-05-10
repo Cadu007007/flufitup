@@ -68,13 +68,24 @@
                     <input
                         type="text"
                         class="address"
-                        placeholder="Enter Your Address"
+                        placeholder="Enter Your Address ZIP code"
                         name="address"
+                        v-model="citycode"
                     />
-                    <button class="address-go-button">GO</button>
+                    <button @click="searchCity" class="address-go-button">GO</button>
                 </div>
             </div>
+
         </div>
+
+                <p class="mt-2 alert alert-danger w-75 mx-auto" id="searchFailMessage" v-if="searchstatus == 0">
+                    Faild
+                </p>
+
+                <p class="mt-2 alert alert-success w-75 mx-auto" id="searchSuccessMessage" v-if="searchstatus == 1">
+                    Success
+                </p>
+
         <div class="why-choose-us-container section item" id="whyChooseUs">
             <div class="title-container">
                 <p class="title">
@@ -624,7 +635,9 @@ import PackageContainer from "../components/User/Pages/Packages/Components/Packa
 export default {
     data() {
         return {
-            activefeature: 0
+            activefeature: 0,
+            citycode: "",
+            searchstatus: -1,
         };
     },
     components: {
@@ -636,11 +649,31 @@ export default {
         packagebiweeklylist: Array,
         packagesmonthlylist: Array,
         packageshowroute: String,
-        packagecreateroute: String
+        packagecreateroute: String,
+        searchcityurl: String,
     },
     methods: {
         handleHover(id) {
             this.activefeature = id;
+        },
+        searchCity(){
+            if (this.citycode != ""){
+            /* search for the city */
+            let formData={}
+            formData.zip = this.citycode
+
+            let selectedURL = this.searchcityurl
+            axios({
+                url: selectedURL,
+                method: "POST",
+                data: formData
+            }).then(response => {
+                console.log(response);
+            });
+
+                // search.city 
+                // zip
+            }
         }
     }
 };
