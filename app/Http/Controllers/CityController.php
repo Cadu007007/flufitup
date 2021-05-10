@@ -17,10 +17,11 @@ class CityController extends Controller
     public function store(CityRequest $request)
     {
 
+        return response()->json(['success' => true, 'message' => $request->zips]);
         $city = City::create($request->only(['name']));
         foreach ($request->zips as $zip) {
 
-            Zip::create(['code' => $zip, 'city_id']);
+            Zip::create(['code' => $zip, 'city_id' => $city->id]);
         }
 
         return response()->json(['success' => true, 'data' => $city, 'message' => 'City Created Successfully']);

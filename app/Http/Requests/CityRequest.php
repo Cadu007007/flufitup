@@ -29,13 +29,14 @@ class CityRequest extends FormRequest
 
             return [
                 'name' => 'required|unique:cities,name',
-                'zips' => 'array|required',
+                'zips' => 'required',
 
             ];
         } else {
 
             return [
                 'name' => 'required|unique:cities,name,' . $this->id,
+                'zips' => 'required',
 
             ];
         }
