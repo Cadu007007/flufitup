@@ -19,7 +19,8 @@ class CityController extends Controller
 
         return response()->json(['success' => true, 'message' => $request->zips]);
         $city = City::create($request->only(['name']));
-        foreach ($request->zips as $zip) {
+        $zips = explode(',', $request->zips);
+        foreach ($zips as $zip) {
 
             Zip::create(['code' => $zip, 'city_id' => $city->id]);
         }
