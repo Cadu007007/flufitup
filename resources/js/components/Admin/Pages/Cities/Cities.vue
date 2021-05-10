@@ -309,6 +309,8 @@ export default {
                 console.log("returnedObject: ", returnedObject);
                 this.loadedcities.find(x => x.id == this.editCityId).name =
                     returnedObject.name;
+                this.loadedcities.find(x => x.id == this.editCityId).zipcodes =
+                    returnedObject.zipcodes;
                 /* push data in the array */
                 this.editCityId = 0;
             });
