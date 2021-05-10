@@ -17,4 +17,9 @@ class City extends Model
     {
         return $this->belongsToMany(Zone::class, 'zone_cities');
     }
+
+    public function zips()
+    {
+        return $this->hasMany(Zip::class);
+    }
 }

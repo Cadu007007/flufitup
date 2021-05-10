@@ -29,6 +29,7 @@ class CityRequest extends FormRequest
 
             return [
                 'name' => 'required|unique:cities,name',
+                'zips' => 'array|required',
 
             ];
         } else {

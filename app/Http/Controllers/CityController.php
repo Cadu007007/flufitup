@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CityRequest;
 use App\Models\City;
+use App\Models\Zip;
 
 class CityController extends Controller
 {
@@ -16,7 +17,12 @@ class CityController extends Controller
     public function store(CityRequest $request)
     {
 
-        $city = City::create($request->validated());
+        $city = City::create($request->only(['name']));
+        foreach ($request->zips as $zip) {
+
+            Zip::create(['code' => $zip, 'city_id']);
+        }
+
         return response()->json(['success' => true, 'data' => $city, 'message' => 'City Created Successfully']);
     }
     public function update(CityRequest $request, $id)
