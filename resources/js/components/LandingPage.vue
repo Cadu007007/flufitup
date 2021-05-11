@@ -63,8 +63,8 @@
                     standard dummy text ever since the 1500s
                 </p>
             </div>
-            <div class="right col-lg-8 mb-2  ml-auto" style="max-width: 600px">
-                <div class="address-box">
+            <div class="right col-lg-8 mb-2  ml-auto d-flex flex-column" style="max-width: 600px">
+                <div class="address-box ml-0">
                     <input
                         type="text"
                         class="address"
@@ -74,17 +74,18 @@
                     />
                     <button @click="searchCity" class="address-go-button">GO</button>
                 </div>
+                <p class="mt-2 alert alert-danger w-100 mx-auto text-center" id="searchFailMessage" v-show="searchstatus == 0">
+                    Faild
+                </p>
+
+                <p class="mt-2 alert alert-success w-100 mx-auto text-center" id="searchSuccessMessage" v-show="searchstatus == 1">
+                    Success
+                </p>
             </div>
 
         </div>
 
-                <p class="mt-2 alert alert-danger w-75 mx-auto text-center" id="searchFailMessage" v-show="searchstatus == 0">
-                    Faild
-                </p>
-
-                <p class="mt-2 alert alert-success w-75 mx-auto text-center" id="searchSuccessMessage" v-show="searchstatus == 1">
-                    Success
-                </p>
+                
 
         <div class="why-choose-us-container section item" id="whyChooseUs">
             <div class="title-container">
@@ -658,17 +659,10 @@ export default {
         },
         searchCity(){
             if (this.citycode != ""){
-            /* search for the city */
-            let formData= this.citycode
-
-            console.log("formData: ", formData);
-            let selectedURL = this.searchcityurl
+            let selectedURL = this.searchcityurl+`/?zip=${this.citycode}`
             axios({
                 url: selectedURL,
                 method: "GET",
-                data: {
-                zip: formData
-            }
             }).then(response => {
                 console.log(response.data);
                 if (response.data.success){
