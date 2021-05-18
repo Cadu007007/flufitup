@@ -79,16 +79,29 @@
                                 required
                             />
 
-                            <input
-                                v-for="zipcode in codes"
+                            <div
+                                class="d-flex flex-row justify-content-center align-items-center position-relative"
+                                v-for="(zipcode, index) in codes"
                                 :key="zipcode"
-                                type="text"
-                                class="city-name-input addCityName mt-1 zipcodes-add-input"
-                                name="zips[]"
-                                placeholder="Zip Code"
-                                required
-                            />
-                            <p class="text-center mt-3" @click="codes++">
+                            >
+                                <input
+                                    type="text"
+                                    class="city-name-input addCityName mt-1 zipcodes-add-input"
+                                    name="zips[]"
+                                    placeholder="Zip Code"
+                                    required
+                                />
+                                <span
+                                    class="position-absolute"
+                                    style="right: -20px"
+                                    @click="removeAddCode(index)"
+                                    >X</span
+                                >
+                            </div>
+                            <p
+                                class="text-center mt-3"
+                                @click="codes.push(codes.length)"
+                            >
                                 Add a ZIP code
                             </p>
 
@@ -131,29 +144,51 @@
                                 v-model="editCityId"
                             />
 
-                            <input
+                            <div
+                                class="d-flex flex-row justify-content-center align-items-center position-relative"
                                 v-for="zipcode in loadedcodes"
                                 :key="zipcode"
-                                type="text"
-                                class="city-name-input addCityName mt-1 zipcodes-edit-input"
-                                name="zips[]"
-                                :value="zipcode.code"
-                                placeholder="Zip Code"
-                                required
-                            />
+                                :id="'loaded' + zipcode.code"
+                            >
+                                <input
+                                    type="text"
+                                    class="city-name-input addCityName mt-1 zipcodes-edit-input"
+                                    name="zips[]"
+                                    :value="zipcode.code"
+                                    placeholder="Zip Code"
+                                    required
+                                />
 
+                                <span
+                                    class="position-absolute"
+                                    style="right: -20px"
+                                    @click="removeEditCode(zipcode.code)"
+                                    >X</span
+                                >
+                            </div>
 
-                            <input
-                                v-for="zipcode in editcodes"
-                                :key="zipcode"
-                                type="text"
-                                class="city-name-input addCityName mt-1 zipcodes-edit-input"
-                                name="zips[]"
-                                placeholder="Zip Code"
-                                required
-                            />
+                            <div
+                                class="d-flex flex-row justify-content-center align-items-center position-relative"
+                                v-for="(zipcode,index) in editcodes"
+                                :key="index"
+                                :id="'appended' + index"
+                            >
+                                <input
+                                    type="text"
+                                    class="city-name-input addCityName mt-1 zipcodes-edit-input"
+                                    name="zips[]"
+                                    placeholder="Zip Code"
+                                    required
+                                />
 
-                            <p class="text-center mt-3" @click="editcodes++">
+                                <span
+                                    class="position-absolute"
+                                    style="right: -20px"
+                                    @click="removeAppendedCode(index)"
+                                    >X</span
+                                >
+                            </div>
+                            <p class="text-center mt-3" @click="editcodes.push(editcodes.length)">
                                 Add a ZIP code
                             </p>
 
@@ -222,8 +257,8 @@ export default {
         return {
             editCityName: "",
             editCityId: 0,
-            codes: 0,
-            editcodes: 0,
+            codes: [],
+            editcodes: [],
             cityname: "",
             loadedcities: this.cities,
             searchCityName: "",
@@ -361,6 +396,19 @@ export default {
             setTimeout(() => {
                 $(".successMessage").addClass("d-none");
             }, 3000);
+        },
+        removeAddCode(index) {
+            console.log("index: ", index);
+            this.codes.splice(index, 1);
+            // this.codes[index]
+        },
+        removeEditCode(parentId) {
+            console.log("parentId: ", parentId);
+            $("#loaded" + parentId).remove();
+        },
+        removeAppendedCode(parentId) {
+            console.log("parentId: ", parentId);
+            $("#appended" + parentId).remove();
         }
     }
 };
