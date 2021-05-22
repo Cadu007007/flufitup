@@ -37,7 +37,9 @@
 
                     <div class="buttons-container">
                         <a href="/login">
-                            <button class="large-button active mt-2">LOG IN</button>
+                            <button class="large-button active mt-2">
+                                LOG IN
+                            </button>
                         </a>
                         <a href="/register">
                             <button class="large-button mt-2">SIGN UP</button>
@@ -63,7 +65,10 @@
                     standard dummy text ever since the 1500s
                 </p>
             </div>
-            <div class="right col-lg-8 mb-2  ml-auto d-flex flex-column" style="max-width: 600px">
+            <div
+                class="right col-lg-8 mb-2 pb-3  ml-auto d-flex flex-column"
+                style="max-width: 600px"
+            >
                 <div class="address-box ml-0">
                     <input
                         type="text"
@@ -71,21 +76,40 @@
                         placeholder="Enter Your Address ZIP code"
                         name="address"
                         v-model="citycode"
+                        @keydown.enter="searchCity"
                     />
-                    <button @click="searchCity" class="address-go-button">GO</button>
+                    <button @click="searchCity" class="address-go-button">
+                        GO
+                    </button>
                 </div>
-                <p class="mt-2 alert alert-danger w-100 mx-auto text-center" id="searchFailMessage" v-show="searchstatus == 0">
+                
+                <p
+                    class="mt-2 py-1 alert alert-danger w-100 mx-auto text-center"
+                    id="searchFailMessage"
+                    v-show="searchstatus == 0"
+                >
                     Faild
                 </p>
 
-                <p class="mt-2 alert alert-success w-100 mx-auto text-center" id="searchSuccessMessage" v-show="searchstatus == 1">
+                <p
+                    class="mt-2 py-1 alert alert-success w-100 mx-auto text-center"
+                    id="searchSuccessMessage"
+                    v-show="searchstatus == 1"
+                >
                     Success
                 </p>
+
+                <div class="mt-2" v-show="searchstatus == 1">
+                    <select
+                        name="city_id"
+                        id=""
+                        class="select2 citiesList"
+                        style="width: 300px"
+                    >
+                    </select>
+                </div>
             </div>
-
         </div>
-
-                
 
         <div class="why-choose-us-container section item" id="whyChooseUs">
             <div class="title-container">
@@ -633,12 +657,17 @@
 <script>
 import VueScrollSnap from "vue-scroll-snap";
 import PackageContainer from "../components/User/Pages/Packages/Components/PackageContainer";
+$(document).ready(function() {
+    setTimeout(() => {
+        $(".select2").select2();
+    }, 500);
+});
 export default {
     data() {
         return {
             activefeature: 0,
             citycode: "",
-            searchstatus: -1,
+            searchstatus: -1
         };
     },
     components: {
@@ -651,31 +680,47 @@ export default {
         packagesmonthlylist: Array,
         packageshowroute: String,
         packagecreateroute: String,
-        searchcityurl: String,
+        searchcityurl: String
     },
     methods: {
         handleHover(id) {
             this.activefeature = id;
         },
-        searchCity(){
-            if (this.citycode != ""){
-            let selectedURL = this.searchcityurl+`/?zip=${this.citycode}`
-            axios({
-                url: selectedURL,
-                method: "GET",
-            }).then(response => {
-                console.log(response.data);
-                if (response.data.success){
-                    this.searchstatus = 1
-                    $("#searchSuccessMessage").text(response.data.message)
+        searchCity() {
+            if (this.citycode != "") {
+                let selectedURL = this.searchcityurl + `/?zip=${this.citycode}`;
+                axios({
+                    url: selectedURL,
+                    method: "GET"
+                }).then(response => {
+                    if (response.data.success) {
+                        /* city found */
+                        this.searchstatus = 1;
+                        $("#searchSuccessMessage").text(response.data.message);
 
-                } else {
-                    this.searchstatus = 0
-                    $("#searchFailMessage").text(response.data.message)
-                }
-            });
+                        /* show dropdown with cities */
+                        let searchedCities = response.data.data;
+                        /* empty cities list */
+                        $(".citiesList").html("");
+                        let allCities = "";
+                        for (
+                            let index = 0;
+                            index < searchedCities.length;
+                            index++
+                        ) {
+                            const element = searchedCities[index];
+                            console.log(element);
+                            allCities += `<option value='${element}'>${element}</option>`;
+                        }
+                        console.log("allCities: ", allCities);
+                        $(".citiesList").html(allCities);
+                    } else {
+                        this.searchstatus = 0;
+                        $("#searchFailMessage").text(response.data.message);
+                    }
+                });
 
-                // search.city 
+                // search.city
                 // zip
             }
         }
