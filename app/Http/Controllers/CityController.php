@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CityRequest;
 use App\Models\City;
 use App\Models\Zip;
+use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
@@ -54,15 +55,18 @@ class CityController extends Controller
 
     }
 
-    public function searchCity()
+    public function searchCity(Request $request)
     {
-        $zips = Zip::where('code', request()->get('zip'))->get();
+        $zips = Zip::where('code', request('zip'))->get();
 
         if (count($zips)) {
-            return response()->json(['success' => true, 'message' => 'This Zip Code Is Supported By Us.']);
+            $cities_ids = $zips->pluck('city_id');
 
+            $cities_names = City::whereIn('id', $cities_ids)->pluck('name');
+
+            return response()->json(['success' => true, 'message' => 'This Zip Code Is Supported By Us.', 'data' => $cities_names]);
         }
-        return response()->json(['success' => false, 'message' => 'Sorry We Not Support Your Area , Wait Us Soon !']);
+        return response()->json(['success' => false, 'message' => "This Zip Code Is Not Supported By Us.'"]);
 
     }
 }
